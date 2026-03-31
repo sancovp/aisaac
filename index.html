@@ -1,0 +1,465 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');
+
+  #isaac-site *, #isaac-site *::before, #isaac-site *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+
+  #isaac-site {
+    --black: #0a0a0a;
+    --off-white: #f0ede6;
+    --amber: #e8a120;
+    --grey: #2a2a2a;
+    --grey-light: #555;
+    --mono: 'DM Mono', monospace;
+    --display: 'Syne', sans-serif;
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--mono);
+    font-weight: 300;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #isaac-site .site-header {
+    width: 100%;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(232,161,32,0.15);
+    background: var(--black);
+  }
+
+  #isaac-site .logo {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    text-transform: uppercase;
+  }
+
+  #isaac-site .nav-cta {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--amber);
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  #isaac-site .nav-cta:hover { background: var(--off-white); }
+
+  #isaac-site .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 5rem 5rem;
+    gap: 4rem;
+    position: relative;
+  }
+
+  #isaac-site .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    opacity: 0.3;
+  }
+
+  #isaac-site .hero-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  #isaac-site .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  #isaac-site h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    color: var(--off-white);
+  }
+  #isaac-site h1 span { color: var(--amber); display: block; }
+
+  #isaac-site .hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #999;
+    max-width: 38ch;
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+  #isaac-site .hero-sub strong { color: var(--off-white); font-style: normal; font-weight: 400; }
+
+  #isaac-site .cta-group { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+
+  #isaac-site .cta-primary {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--amber);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  #isaac-site .cta-primary:hover { background: var(--off-white); }
+
+  #isaac-site .cta-secondary {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--grey-light);
+    text-decoration: none;
+    border-bottom: 1px solid var(--grey-light);
+    padding-bottom: 2px;
+  }
+
+  #isaac-site .photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-width: 360px;
+    margin-left: auto;
+    position: relative;
+    border: 1px solid rgba(232,161,32,0.3);
+    overflow: hidden;
+  }
+
+  #isaac-site .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 6rem;
+    font-weight: 800;
+    color: rgba(232,161,32,0.2);
+  }
+
+  #isaac-site .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--grey);
+    border-bottom: 1px solid var(--grey);
+  }
+
+  #isaac-site .stat {
+    padding: 2.5rem 3rem;
+    border-right: 1px solid var(--grey);
+  }
+  #isaac-site .stat:last-child { border-right: none; }
+
+  #isaac-site .stat-num {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  #isaac-site .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+  }
+
+  #isaac-site .section { padding: 5rem; }
+  #isaac-site .section-dark { background: var(--grey); }
+  #isaac-site .section-amber { background: var(--amber); }
+
+  #isaac-site .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  #isaac-site .section-tag::before {
+    content: '';
+    display: block;
+    width: 2rem; height: 1px;
+    background: var(--amber);
+  }
+  #isaac-site .section-amber .section-tag { color: rgba(0,0,0,0.5); }
+  #isaac-site .section-amber .section-tag::before { background: rgba(0,0,0,0.4); }
+
+  #isaac-site h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    max-width: 22ch;
+  }
+  #isaac-site .section-amber h2 { color: var(--black); max-width: 26ch; }
+
+  #isaac-site .video-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  #isaac-site .video-text p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #999;
+    margin-bottom: 1.2rem;
+  }
+  #isaac-site .video-text p strong { color: var(--off-white); font-weight: 400; }
+
+  #isaac-site .video-embed {
+    aspect-ratio: 16/9;
+    background: #111;
+    border: 1px solid rgba(232,161,32,0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #isaac-site .video-embed iframe { width: 100%; height: 100%; border: none; }
+
+  #isaac-site .video-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--grey-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+  }
+
+  #isaac-site .play-icon {
+    width: 56px; height: 56px;
+    border: 1px solid rgba(232,161,32,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+  }
+
+  #isaac-site .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  #isaac-site .step { border-top: 1px solid var(--grey); padding-top: 2rem; }
+
+  #isaac-site .step-num {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 3rem;
+    color: rgba(232,161,32,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  #isaac-site .step h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: var(--off-white);
+  }
+
+  #isaac-site .step p { font-size: 0.85rem; line-height: 1.7; color: var(--grey-light); }
+
+  #isaac-site .section-amber p {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 60ch;
+    color: rgba(0,0,0,0.7);
+  }
+
+  #isaac-site .final-cta { text-align: center; padding: 7rem 5rem; }
+
+  #isaac-site .final-cta h2 { margin: 0 auto 1.5rem; max-width: none; }
+  #isaac-site .final-cta p {
+    font-size: 0.9rem;
+    color: var(--grey-light);
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+
+  #isaac-site .cta-big {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--amber);
+    padding: 1.2rem 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  #isaac-site .cta-big:hover { background: var(--off-white); }
+
+  #isaac-site .site-footer {
+    padding: 2rem 5rem;
+    border-top: 1px solid var(--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--grey-light);
+  }
+
+  @media (max-width: 900px) {
+    #isaac-site .hero { grid-template-columns: 1fr; padding: 4rem 2rem; }
+    #isaac-site .hero-right { order: -1; }
+    #isaac-site .photo-frame { max-width: 240px; margin: 0 auto; }
+    #isaac-site .stats { grid-template-columns: 1fr; }
+    #isaac-site .stat { border-right: none; border-bottom: 1px solid var(--grey); }
+    #isaac-site .section { padding: 4rem 2rem; }
+    #isaac-site .video-inner { grid-template-columns: 1fr; gap: 2rem; }
+    #isaac-site .steps { grid-template-columns: 1fr; }
+    #isaac-site .final-cta { padding: 4rem 2rem; }
+    #isaac-site .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    #isaac-site .site-header { padding: 1rem 1.5rem; }
+  }
+</style>
+
+<div id="isaac-site">
+
+  <div class="site-header">
+    <div class="logo">Isaac</div>
+    <a href="#isaac-contact" class="nav-cta">Book a Call</a>
+  </div>
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">AI Transformation</div>
+      <h1>Your business.<br><span>Finally running</span>the way you designed it.</h1>
+      <p class="hero-sub">
+        I find the part of your operations that <strong>humans keep breaking</strong> and rebuild it so AI runs it instead. Your people stay. Your fires become fixable. Your SOPs actually execute.
+      </p>
+      <div class="cta-group">
+        <a href="#isaac-contact" class="cta-primary">Let's Talk</a>
+        <a href="#isaac-video" class="cta-secondary">See how it works</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="photo-frame">
+        <!-- REPLACE WITH: <img src="YOUR_PHOTO_URL" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="photo-placeholder">I</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">100×</div>
+      <div class="stat-label">Faster than human SOP execution</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30 days</div>
+      <div class="stat-label">To a working system, not a plan</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">New software required</div>
+    </div>
+  </div>
+
+  <div class="section section-dark" id="isaac-video">
+    <div class="video-inner">
+      <div class="video-text">
+        <div class="section-tag">The briefing</div>
+        <h2>Four minutes. Then you'll know.</h2>
+        <p>This explainer was <strong>generated by AI.</strong> Not because it was faster — because that's the point.</p>
+        <p>It covers why your lowest-level operations keep failing, what an AI worker actually is, and what your business looks like 90 days from now.</p>
+        <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#e8a120;">No jargon. No hype. Just the truth.</p>
+      </div>
+      <div class="video-embed">
+        <!-- REPLACE WITH: <iframe src="https://www.youtube.com/embed/YOUR_ID" allowfullscreen></iframe> -->
+        <div class="video-placeholder">
+          <div class="play-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span>Your video goes here</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">How it works</div>
+    <h2>Three months. One broken SOP fixed permanently.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>We find the fire.</h3>
+        <p>You tell me where operations keep breaking. I tell you which one to fix first and why. No strategy decks. One conversation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We build the system.</h3>
+        <p>Month one is a working MVP connected to your existing tools. Month two is debugging. Month three it runs itself.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Your people become operators.</h3>
+        <p>Nobody gets fired. Nobody learns to code. They get a helper that does the work. You get a company that executes the way you always intended.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-amber">
+    <div class="section-tag">The honest part</div>
+    <h2>AI won't save your business. It will make it work the way you designed it.</h2>
+    <p>Adding AI is the competitive floor now, not the moonshot. The businesses that haven't started are already behind. The goal isn't to automate your company — it's to become the meta company of yourself. The company that owns the system that runs the company. We get there one SOP at a time.</p>
+  </div>
+
+  <div class="final-cta section" id="isaac-contact">
+    <div class="section-tag" style="justify-content:center">Ready?</div>
+    <h2>Tell me which SOP is on fire.</h2>
+    <p>One call. I'll tell you exactly what I'd do and whether it makes sense for you.</p>
+    <!-- REPLACE YOUR_LINK -->
+    <a href="https://calendly.com/YOUR_LINK" class="cta-big">Book a Free Call</a>
+  </div>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">This site was built by AI. That's the point.</span>
+  </div>
+
+</div>
