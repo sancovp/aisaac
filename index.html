@@ -242,36 +242,8 @@
     background: #111;
     border: 1px solid rgba(232,161,32,0.2);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-  #isaac-site .video-embed iframe { width: 100%; height: 100%; border: none; }
-
-  #isaac-site .video-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    color: var(--grey-light);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    width: 100%;
-    height: 100%;
-    min-height: 200px;
-  }
-
-  #isaac-site .play-icon {
-    width: 56px; height: 56px;
-    border: 1px solid rgba(232,161,32,0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--amber);
-  }
+  #isaac-site .video-embed iframe { width: 100%; height: 100%; border: none; display: block; }
 
   #isaac-site .steps {
     display: grid;
@@ -308,8 +280,124 @@
     color: rgba(0,0,0,0.7);
   }
 
-  #isaac-site .final-cta { text-align: center; padding: 7rem 5rem; }
+  /* OFFERS */
+  #isaac-site .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
 
+  #isaac-site .offer-card {
+    border: 1px solid var(--grey);
+    padding: 2rem;
+  }
+
+  #isaac-site .offer-card.highlight {
+    border-color: var(--amber);
+    background: rgba(232,161,32,0.05);
+  }
+
+  #isaac-site .offer-price {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 3rem;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  #isaac-site .offer-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    margin-bottom: 1.5rem;
+  }
+
+  #isaac-site .offer-card ul {
+    list-style: none;
+    font-size: 0.8rem;
+    line-height: 2;
+    color: var(--grey-light);
+  }
+
+  #isaac-site .offer-card ul li::before {
+    content: '— ';
+    color: var(--amber);
+    opacity: 0.5;
+  }
+
+  #isaac-site .platform-note {
+    margin-top: 2rem;
+    border: 1px solid rgba(232,161,32,0.3);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(232,161,32,0.04);
+  }
+
+  #isaac-site .platform-note-text {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--grey-light);
+    max-width: 55ch;
+  }
+
+  #isaac-site .platform-note-text strong { color: var(--off-white); font-weight: 400; }
+
+  #isaac-site .platform-price {
+    text-align: right;
+    padding-left: 2rem;
+    flex-shrink: 0;
+  }
+
+  #isaac-site .platform-price .price {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  #isaac-site .platform-price .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+  }
+
+  #isaac-site .addons-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  #isaac-site .addon {
+    border: 1px solid var(--grey);
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #isaac-site .addon-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+  }
+
+  #isaac-site .addon-price {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--amber);
+  }
+
+  #isaac-site .final-cta { text-align: center; padding: 7rem 5rem; }
   #isaac-site .final-cta h2 { margin: 0 auto 1.5rem; max-width: none; }
   #isaac-site .final-cta p {
     font-size: 0.9rem;
@@ -352,6 +440,10 @@
     #isaac-site .section { padding: 4rem 2rem; }
     #isaac-site .video-inner { grid-template-columns: 1fr; gap: 2rem; }
     #isaac-site .steps { grid-template-columns: 1fr; }
+    #isaac-site .offers-grid { grid-template-columns: 1fr; }
+    #isaac-site .addons-row { grid-template-columns: 1fr; }
+    #isaac-site .platform-note { flex-direction: column; gap: 1rem; }
+    #isaac-site .platform-price { text-align: left; padding-left: 0; }
     #isaac-site .final-cta { padding: 4rem 2rem; }
     #isaac-site .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
     #isaac-site .site-header { padding: 1rem 1.5rem; }
@@ -361,7 +453,7 @@
 <div id="isaac-site">
 
   <div class="site-header">
-    <div class="logo">Isaac</div>
+    <div class="logo">Isaac — TWI</div>
     <a href="#isaac-contact" class="nav-cta">Book a Call</a>
   </div>
 
@@ -410,13 +502,7 @@
         <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#e8a120;">No jargon. No hype. Just the truth.</p>
       </div>
       <div class="video-embed">
-        <!-- REPLACE WITH: <iframe src="https://www.youtube.com/embed/YOUR_ID" allowfullscreen></iframe> -->
         <iframe src="https://www.youtube.com/embed/GCl6WmuSr8g" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-          <div class="play-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <span>Your video goes here</span>
-        </div>
       </div>
     </div>
   </div>
@@ -443,6 +529,75 @@
     </div>
   </div>
 
+  <!-- OFFERS -->
+  <div class="section section-dark" id="isaac-offers">
+    <div class="section-tag">Engagement Options</div>
+    <h2>Choose your starting point.</h2>
+
+    <div class="offers-grid">
+      <div class="offer-card">
+        <div class="offer-price">$1k</div>
+        <div class="offer-name">Advisory / mo</div>
+        <ul>
+          <li>2 × 1hr strategy sessions</li>
+          <li>SOP audit and prioritization</li>
+          <li>AI roadmap for your business</li>
+          <li>No building included</li>
+        </ul>
+      </div>
+
+      <div class="offer-card highlight">
+        <div class="offer-price">$5k</div>
+        <div class="offer-name">Transformation / mo</div>
+        <ul>
+          <li>Advisory included</li>
+          <li>Active build pipeline</li>
+          <li>One SOP at a time</li>
+          <li>5 skills + 1 MCP per agent</li>
+          <li>Claude Cowork setup + config</li>
+          <li>24/7 autonomous workers</li>
+        </ul>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-price" style="font-size:2rem;padding-top:0.5rem;">À La Carte</div>
+        <div class="offer-name">Add-Ons</div>
+        <ul>
+          <li>Custom MCP integrations</li>
+          <li>Analytics engines</li>
+          <li>Data pipelines</li>
+          <li>Optimization suites</li>
+          <li>Inference / reasoning layers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="addons-row">
+      <div class="addon">
+        <div class="addon-name">Live System Support</div>
+        <div class="addon-price">+$500/mo</div>
+      </div>
+      <div class="addon">
+        <div class="addon-name">Ontology Deployment</div>
+        <div class="addon-price">$5k setup</div>
+      </div>
+      <div class="addon">
+        <div class="addon-name">Ontology Maintenance</div>
+        <div class="addon-price">+$500/mo</div>
+      </div>
+    </div>
+
+    <div class="platform-note">
+      <div class="platform-note-text">
+        Each worker seat requires <strong>Claude Max</strong> — billed directly to Anthropic, not to you. Seats run 24/7. Your $15/hr employee costs $2,600/mo and goes home at 5. The AI seat works while they sleep.
+      </div>
+      <div class="platform-price">
+        <div class="price">$200</div>
+        <div class="label">per seat / mo</div>
+      </div>
+    </div>
+  </div>
+
   <div class="section section-amber">
     <div class="section-tag">The honest part</div>
     <h2>AI won't save your business. It will make it work the way you designed it.</h2>
@@ -453,12 +608,11 @@
     <div class="section-tag" style="justify-content:center">Ready?</div>
     <h2>Tell me which SOP is on fire.</h2>
     <p>One call. I'll tell you exactly what I'd do and whether it makes sense for you.</p>
-    <!-- REPLACE YOUR_LINK -->
     <a href="https://calendly.com/YOUR_LINK" class="cta-big">Book a Free Call</a>
   </div>
 
   <div class="site-footer">
-    <span>© 2026 Isaac</span>
+    <span>© 2026 Isaac — TWI Consulting</span>
     <span style="color:rgba(232,161,32,0.4);font-style:italic;">This site was built by AI. That's the point.</span>
   </div>
 
