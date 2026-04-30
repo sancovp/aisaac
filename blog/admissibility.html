@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">April 2026</div>
+    <h1>Admissibility Engineering: The Missing Layer</h1>
+    <p class="post-subtitle">Better context is not more context. Better context is context whose boundary, authority, and hidden causal edges are known.</p>
+
+    <h2>The Category Shift</h2>
+    <p>The hypebeast world says: <em>Give the agent better context.</em></p>
+    <p>Admissibility Engineering says: <em>Better context is context whose boundary, authority, and hidden causal edges are known.</em></p>
+    <p>A giant context window full of stale docs, partial search results, missing hidden callers, and false comments can make the model <em>worse</em>. Admissible context is not bigger. It is bounded, typed, and checkable.</p>
+
+    <hr>
+
+    <h2>The Invariant</h2>
+    <blockquote>No transformation without a bounded witness path.</blockquote>
+    <p>For code, admissibility might require:</p>
+<pre>entrypoint known
+execution path traced
+hidden calls exposed
+side effects known
+contracts identified
+docs/comments checked
+tests located
+validation path exists</pre>
+    <p>For story logic, admissibility might require:</p>
+<pre>theme known
+grand argument known
+premises bound
+scene obligations generated
+literal events/dialogue grounded
+upward proof path closes</pre>
+    <p>For business automation, admissibility might require:</p>
+<pre>SOP boundary known
+owner known
+inputs/outputs known
+exception paths known
+approval points known
+tool permissions known
+failure recovery known</pre>
+    <p>Different domains. Same invariant.</p>
+
+    <hr>
+
+    <h2>Bridging the Hype</h2>
+
+    <h3>"Prompt Engineering is dead"</h3>
+    <p>Prompt Engineering was never dead. It became one local interface inside a larger context-control system. But Context Engineering is also not enough, because context can be stale, excessive, contradictory, or missing hidden causal edges. The deeper correction: <em>Context must be admissible.</em></p>
+
+    <h3>"MCP/tools make agents powerful"</h3>
+    <p>Tools increase action capacity. They do not automatically increase action understanding. A tool call can trigger hidden effects:</p>
+<pre>file edit
+→ hook fires
+→ state file changes
+→ index updates
+→ graph changes
+→ future retrieval changes</pre>
+    <p>The deeper correction: <em>Tool Engineering needs Action Causality Maps.</em> A tool is not just an API. It is an event in an environment.</p>
+
+    <h3>"Agents need harnesses"</h3>
+    <p>Yes. The harness is the runtime wrapper that makes agents reliable. The deeper correction: <em>A harness without admissibility gates can reliably execute inadmissible actions.</em> That is very dangerous and very common.</p>
+
+    <h3>"Agents fail because they lose context"</h3>
+    <p>Sometimes. But often they do not lack context — they lack <strong>concentration</strong>. They had the information somewhere in the window but failed to keep it operationally active while editing. The deeper correction: <em>Concentration Engineering stabilizes attention over the active semantic boundary.</em></p>
+
+    <h3>"Agents should learn from feedback"</h3>
+    <p>Yes, but feedback loops can rot. If the loop stores bad summaries, stale docs, false assumptions, and hidden side effects, the agent gets worse while appearing more "contextual." The deeper correction: <em>Emergence Engineering distinguishes productive bootstrapping from degenerative accumulation.</em></p>
+
+    <hr>
+
+    <h2>Catastrophe Engineering</h2>
+    <p>A catastrophe is an observed failure that invalidates the agent's current semantic frame. Catastrophe Engineering designs failures so that:</p>
+<pre>1. the invalid frame is named
+2. the missing boundary object is exposed
+3. the required higher-order frame is supplied
+4. the repair adds a persistent witness or gate
+5. future agents encounter the improved boundary
+   before repeating the failure</pre>
+
+    <p>Example:</p>
+<pre>Failure:
+  Agent edited a generated file directly.
+
+Local patch:
+  Revert generated file and edit source.
+
+Catastrophe abstraction:
+  The system lacks a generated-artifact admissibility marker.
+
+New rule:
+  GeneratedFileEditedDirectlyError
+
+New witness:
+  DOCMAGIC: GENERATED-BY source=templates/agent.py.j2
+
+New gate:
+  Before editing any file, check generated_by(file, source).
+
+Future effect:
+  The same class of mistake becomes less likely.</pre>
+    <blockquote>Every recurring mistake should be engineered into a catastrophe surface that forces the agent to fold into the semantic space where the mistake becomes obvious.</blockquote>
+
+    <hr>
+
+    <h2>Related Principles</h2>
+
+    <h3>Traceback-Based Adversarial Prompting</h3>
+    <p>A traceback is not just an error report. In an agentic system, a traceback is an instruction surface. Agent-engineered tracebacks should prime the model into the semantic frame required to repair the failure.</p>
+<pre>ADMISSIBILITY ERROR: Missing execution-boundary witness.
+
+The agent attempted to edit produce_node_output()
+as if it were locally owned. However, this function
+is indirectly called by FlowPatternRegistry.hydrate().
+
+Required repair:
+1. Read the hidden caller.
+2. Preserve the ChainConfig-compatible return contract.
+3. Update the local DOCMAGIC:HIDDEN-CALL marker.
+4. Rerun tests/test_chain_hydration.py.
+
+Do not patch this function until the hidden caller
+contract is accounted for.</pre>
+    <p>That error is diagnosis + adversarial correction + context packet + next action constraint + semantic frame switch — all in one.</p>
+
+    <h3>Errors for Everything</h3>
+    <p>If you want to sculpt an agent's action space, you need possible failures to be explicitly representable. An agent can only be redirected when the system can say: <em>This action is not allowed because X.</em></p>
+    <blockquote>A system's ability to guide an LLM is bounded by the granularity of the errors it can raise.</blockquote>
+
+    <h3>Detection Requires Typed Semantics</h3>
+    <p>A raw string is an untyped semantic fog machine. If something is only represented as <code>str</code>, then from the program's perspective it is not a theme, premise, contract, file path, hidden caller, argument surface, stance target, or repair instruction. It is just characters.</p>
+    <blockquote>Detection requires typed semantic commitments. If the system only has strings, it can only guess.</blockquote>
+
+    <div class="post-nav">
+      <a href="seven-disciplines.html">← The 7 Disciplines</a>
+      <a href="docmagic-stack.html">Where DocMagic Sits →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI Consulting</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">April 2026</div>
+    <h1>Where DocMagic Sits in the Stack</h1>
+    <p class="post-subtitle">DocMagic is an Admissibility Engineering tool, a Concentration Engineering support surface, and an Emergence Engineering repair loop. Here's what that means concretely.</p>
+
+    <h2>The Concrete Problem</h2>
+    <blockquote>AI agents cannot safely edit what they cannot see.</blockquote>
+    <p>A repo is not just a pile of files. It is a set of overlapping execution surfaces: source code, tests, docs, comments, generated artifacts, state files, hooks, workflows, runtime side effects, and retrieval/indexing layers.</p>
+    <p>Human developers often know these relationships implicitly. LLM agents usually do not. They search, read a few visible files, infer a local story, and then edit code as if the hidden causal system does not exist.</p>
+    <p>That is how AI-coded repos drift.</p>
+
+    <hr>
+
+    <h2>What DocMagic Scans</h2>
+    <p>DocMagic scans for 7 categories of invisible coupling:</p>
+<pre>HTTP calls        — cross-service calls to localhost ports
+File triggers     — daemons watching directories for changes
+Hook bridges      — code registered to fire on events
+MCP references    — tool calls embedded in strings
+Cross-imports     — imports reaching across package boundaries
+State files       — shared mutable state via temp/config files
+Multi-write drift — multiple writers to the same file</pre>
+
+    <h2>What It Produces</h2>
+    <p>Every hidden connection gets a local, searchable, agent-readable breadcrumb:</p>
+<pre># DOCMAGIC: HTTP → localhost:8080/hook/posttooluse (CAVE)
+# Contract: POST JSON with tool_name, tool_input, tool_response
+# Sync-with: omnisanc_logic.py, paia_posttooluse.py
+def _post_to_cave_hook(tool_name, tool_input, response):
+    ...</pre>
+    <p>The breadcrumb is not documentation. It is an <strong>admissibility marker</strong>. It tells the next agent: <em>this function participates in a hidden causal chain. Include these edges in your edit boundary or you will break something you cannot see.</em></p>
+
+    <hr>
+
+    <h2>Three Roles in the Stack</h2>
+
+    <h3>1. Admissibility Engineering Tool</h3>
+    <p>DocMagic answers the pre-edit question: <em>Is this operation licensed by enough visible structure to be safely performed?</em></p>
+    <p>Before the agent touches any file, DocMagic can tell it:</p>
+<pre>This file has 3 hidden callers you haven't read.
+This function writes to a state file watched by 2 daemons.
+This comment claims behavior the code no longer performs.
+This import crosses a package boundary into a subsystem
+  with its own release cycle.</pre>
+    <p>Without DocMagic, the agent edits locally and hopes. With DocMagic, the agent knows its edit boundary before it starts.</p>
+
+    <h3>2. Concentration Engineering Surface</h3>
+    <p>DocMagic annotations keep the agent aware of nonlocal behavior <em>at the exact point where it matters</em> — in the source file, at the function definition, right where the agent's cursor is.</p>
+    <p>Context Engineering loads information into the window. Concentration Engineering keeps the agent <em>using</em> that information at the right moment. A <code># DOCMAGIC: HIDDEN-CALL</code> comment does both simultaneously: it is context injection AND attention anchoring at the exact edit site.</p>
+
+    <h3>3. Emergence Engineering Repair Loop</h3>
+    <p>Every time DocMagic runs, it detects new hidden edges and patches the explanatory surfaces. This is a concrete emergence loop:</p>
+<pre>agent acts → code changes
+→ DocMagic scans → finds new hidden edges
+→ annotations added → explanatory surfaces repaired
+→ next agent sees better boundaries
+→ edits become safer
+→ system becomes more self-readable</pre>
+    <p>The repo improves its own admissibility over time. Each scan makes the next edit safer. That is productive emergence — not vague magic, but a concrete repair loop.</p>
+
+    <hr>
+
+    <h2>The Hypebeast Translation</h2>
+    <p>The hypebeast complaint: <em>AI coding agents make messy, brittle, weird code.</em></p>
+    <p>The technical answer:</p>
+    <blockquote>Of course AI-coded repos rot. The agent's visible context diverges from the repo's actual execution/causality geometry. Repair the geometry, then the agent can act inside a better self-model.</blockquote>
+
+    <hr>
+
+    <h2>Try It</h2>
+<pre>pip install docmagic</pre>
+    <p>Copy the skill to your project:</p>
+<pre>cp -r .claude/skills/docmagic/ your-project/.claude/skills/docmagic/</pre>
+    <p>Claude reads the skill, becomes Doctor Magic, and scans before editing.</p>
+    <p><a href="https://github.com/sancovp/docmagic" style="color:var(--amber);">GitHub →</a></p>
+
+    <div class="post-nav">
+      <a href="admissibility.html">← Admissibility Engineering</a>
+      <a href="./">All posts →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI Consulting</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>

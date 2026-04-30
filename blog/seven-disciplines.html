@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">April 2026</div>
+    <h1>The 7 Engineering Disciplines for AI Agents</h1>
+    <p class="post-subtitle">Prompt Engineering, Context Engineering, Tool Engineering, and Harness Engineering are already common. The next three extend the stack into the deeper problem: making AI agent systems safe, bounded, self-aware, and capable of improving instead of drifting.</p>
+
+    <h2>The Stack</h2>
+<pre>Prompt Engineering       — shape the instruction
+↓
+Context Engineering      — shape what the model sees
+↓
+Tool Engineering         — shape what the model can do
+↓
+Harness Engineering      — shape the loop
+↓
+Admissibility Engineering — shape what's allowed
+↓
+Concentration Engineering — shape sustained awareness
+↓
+Emergence Engineering     — shape the feedback loop</pre>
+
+    <p>The common hype-cycle version says: <em>Agents need better prompts, better context, better tools, and better harnesses.</em></p>
+    <p>That is true, but incomplete.</p>
+    <p>The deeper technical question is:</p>
+    <blockquote>What makes a transformation allowed, what keeps the model aware of that allowance while acting, and what makes the whole loop compound instead of rot?</blockquote>
+
+    <hr>
+
+    <h2>1. Prompt Engineering</h2>
+    <p><strong>Prompt Engineering</strong> is the discipline of shaping the local instruction surface. It answers: <em>What do I say to the model so it performs this operation correctly?</em></p>
+<pre>Use this style.
+Follow these steps.
+Return JSON.
+Do not edit before reading.
+Explain contradictions explicitly.</pre>
+    <p>Prompt Engineering is still useful, but it is not enough for agents because agents are not single-message systems. Agents run across files, tools, memory, retries, hidden state, errors, and long trajectories.</p>
+    <p>The social-media realization was: <em>Prompts are not the product. The system around the prompt is the product.</em> That leads naturally to Context Engineering and Harness Engineering.</p>
+
+    <hr>
+
+    <h2>2. Context Engineering</h2>
+    <p><strong>Context Engineering</strong> is the discipline of deciding what the model sees, when it sees it, and in what shape. It answers: <em>What information should be loaded into the model's working memory for this step?</em></p>
+    <p>This includes retrieval, memory, summaries, tool outputs, schemas, docs, examples, state, logs, task packets, compression, and context pruning.</p>
+    <p>The hypebeast version: <em>Context Engineering is the new Prompt Engineering.</em></p>
+    <p>The technical version: <em>Context Engineering is dynamic attention substrate management.</em></p>
+    <p>But Context Engineering alone does not solve the deeper problem. More context is not the same as admissible context. If the hidden edge is not represented anywhere, retrieval cannot retrieve it. If stale docs say <code>X</code> and code does <code>Y</code>, context injection can make the model <em>worse</em> by injecting false authority.</p>
+
+    <hr>
+
+    <h2>3. Tool Engineering</h2>
+    <p><strong>Tool Engineering</strong> is the discipline of designing the functions, APIs, MCP servers, commands, schemas, and affordances that let the agent act. It answers: <em>What actions can the model take, and how are those actions exposed?</em></p>
+    <p>The hypebeast realization: <em>Agents are only as good as their tools.</em></p>
+    <p>The technical correction: <em>Agents are only as good as their tools plus the conditions under which tool use is valid.</em></p>
+    <p>A tool can be perfectly designed and still dangerous if the agent does not know what hidden hooks fire when it uses it. A tool call is not just an API call. It is an event inside an environment. That means Tool Engineering needs <strong>Action Causality Maps</strong>.</p>
+
+    <hr>
+
+    <h2>4. Harness Engineering</h2>
+    <p><strong>Harness Engineering</strong> is the discipline of building the control system around the model. It answers: <em>How do we orchestrate the model, tools, context, memory, validation, retries, policies, and completion criteria into a reliable agent loop?</em></p>
+<pre>when context gets loaded
+which tools are available
+which action is allowed
+how errors are handled
+when to retry
+when to escalate
+what counts as done
+what tests/evals must pass
+how state is persisted
+how costs are controlled</pre>
+    <p>The hypebeast realization: <em>The same LLM can be dumb or useful depending on the harness.</em> Correct.</p>
+    <p>But Harness Engineering often still assumes the system can know enough by retrieval, tools, tests, and policies. The next layer says: <em>First, we need to define whether the operation is even admissible.</em> A harness without admissibility gates can reliably execute inadmissible actions. That is dangerous.</p>
+
+    <hr>
+
+    <h2>5. Admissibility Engineering</h2>
+    <p><strong>Admissibility Engineering</strong> is the discipline of determining whether an AI transformation is allowed under the currently known causal, semantic, and operational boundaries. It answers: <em>Is this operation licensed by enough visible structure to be safely performed?</em></p>
+    <p>This is the missing layer under Harness Engineering. A harness may say: <code>read files → edit → run tests → commit</code>. Admissibility Engineering says:</p>
+<pre>Wait.
+
+Was the execution boundary closed?
+Were hidden callers found?
+Were generated files marked?
+Do docs/comments match behavior?
+Do tool calls trigger hidden state updates?
+Does this edit cross subsystem boundaries?
+What validates the specific semantic change?</pre>
+    <p>The core invariant:</p>
+    <blockquote>No transformation without a bounded witness path.</blockquote>
+
+    <h3>Admissibility vs Validation</h3>
+    <p><strong>Validation</strong> asks: <em>Did the output pass?</em></p>
+    <p><strong>Admissibility</strong> asks: <em>Was this operation allowed before it happened?</em></p>
+    <p>You need both. Validation is post-transform. Admissibility is pre-transform and during-transform boundary control.</p>
+
+    <h3>Admissibility vs Documentation</h3>
+    <p>Documentation says: <em>Here is what this means.</em></p>
+    <p>Admissibility says: <em>Here is what must be known before this can be safely changed, trusted, or composed.</em></p>
+    <p>That is why a local breadcrumb like this is not merely a comment:</p>
+<pre># DOCMAGIC: HIDDEN-CALL
+# Called indirectly by: FlowPatternRegistry.hydrate()
+# Contract: return shape must remain compatible with
+#   ChainConfig.from_node_output()
+# Sync-with: tests/test_chain_hydration.py, docs/flowpatterns.md
+def produce_node_output(...):
+    ...</pre>
+    <p>It is an <strong>admissibility marker</strong>. It tells a future agent: <em>This function is not locally interpretable. You must include this hidden caller and contract in your edit boundary.</em></p>
+    <p><a href="admissibility.html" style="color:var(--amber);">Read the full deep dive on Admissibility Engineering →</a></p>
+
+    <hr>
+
+    <h2>6. Concentration Engineering</h2>
+    <p><strong>Concentration Engineering</strong> is the discipline of keeping the model's active attention locked onto the correct admissible boundary while it acts. It answers: <em>Can the agent remain aware of the system-shape it is operating inside?</em></p>
+    <p>This matters because even when the right facts are available, LLMs drift. They read the hook map, then edit the local file as if the hook map never existed. They read the contradiction, then harmonize it. They see tests, but forget the semantic target.</p>
+    <p>Context Engineering asks: <em>What should be in the context window?</em></p>
+    <p>Concentration Engineering asks: <em>How do we keep the model using the right part of the context at the right moment?</em> That is a different discipline.</p>
+    <p>Concentration Engineering designs: active task packets, invariant reminders, pre-edit gates, contradiction elevation, context refresh hooks, execution-boundary summaries, hidden-edge checklists, attention anchors, and recursive self-checks.</p>
+
+    <hr>
+
+    <h2>7. Emergence Engineering</h2>
+    <p><strong>Emergence Engineering</strong> is the discipline of designing feedback loops so continuous AI systems become more capable, coherent, and self-describing over time instead of accumulating hidden debt. It answers: <em>Does this loop compound or decay?</em></p>
+    <p>A degenerate agent loop:</p>
+<pre>agent sees partial context
+→ edits local code
+→ hidden edge breaks
+→ docs drift
+→ retrieval worsens
+→ future agent trusts stale surface
+→ system becomes less admissible</pre>
+    <p>A productive emergence loop:</p>
+<pre>agent acts
+→ system observes hidden effects
+→ missing witnesses are detected
+→ comments/docs/maps/tests are repaired
+→ admissibility improves
+→ future edits become safer
+→ system becomes more self-readable</pre>
+    <p>Emergence Engineering is the transition from the first loop to the second. It is not "emergence" as vague magic. It is concrete: feedback channels, state observation, drift detection, repair surfaces, admissibility gates, concentration scaffolds, self-model updates, and fixed-point criteria.</p>
+
+    <hr>
+
+    <h2>The Sharp Version</h2>
+<pre>Prompt Engineering       — say the right thing.
+Context Engineering      — show the right things.
+Tool Engineering         — expose the right actions.
+Harness Engineering      — run the right loop.
+Admissibility Engineering — permit only bounded transformations.
+Concentration Engineering — keep attention inside the boundary.
+Emergence Engineering     — make the loop compound.</pre>
+
+    <div class="post-nav">
+      <a href="./">← All posts</a>
+      <a href="admissibility.html">Admissibility Engineering →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI Consulting</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>
