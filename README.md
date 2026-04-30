@@ -1,2 +1,25 @@
-# aisaac
-AIsaac is an AI Transformation Agency that accompanies you on you or your business' AI integration journey. AIsaac ensures that you use the latest tech and methods while working up from the bottom of your specific needs in order to transform SOPs so that they: save you money, save you time, and make you more money.
+# AIsaac — AI Transformation
+
+Your business, finally running the way you designed it.
+
+I find the workflow your team keeps rescuing by hand, turn it into a visible operating system, and install AI workers that execute it the same way every time. Your people stay. The process stops leaking. Your SOPs become executable.
+
+## What I do
+
+1. **Make execution observable** — your workflow stops living in people's heads
+2. **Turn fires into diagnostics** — failures become process data, not blame
+3. **Move people into operator roles** — supervise and improve, not repeat
+4. **Compound the operating system** — one SOP at a time, the business gets more consistent
+
+## Open Source Tools
+
+- **[DocMagic](https://github.com/sancovp/docmagic)** — Repo-level causality scanner. Finds hidden connections, stale docs, and invisible coupling that make AI agents drift.
+- **[Sanctuary Revolution](https://github.com/sancovp/sanctuary-revolution-alpha)** — Compound intelligence system. Skills, flights, knowledge graphs, autonomous agents.
+
+## Site
+
+[aisaac.pages.dev](https://aisaac.pages.dev)
+
+## Book a call
+
+[cal.com/aisaac/ai-agents-for-your-business](https://cal.com/aisaac/ai-agents-for-your-business)
