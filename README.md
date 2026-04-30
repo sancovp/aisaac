@@ -18,7 +18,7 @@ I find the workflow your team keeps rescuing by hand, turn it into a visible ope
 
 ## Site
 
-[aisaac.pages.dev](https://aisaac.pages.dev)
+[sancovp.github.io/aisaac/](https://sancovp.github.io/aisaac/)
 
 ## Book a call
 
