@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local env
+.env
+.env.local
+
+# Editor dirs
+.vscode/
+.idea/
+
+# Simulator/build artifacts (these get built, not tracked)
+simulator/twi-jobworld-*/
+simulator/backend/__pycache__/
