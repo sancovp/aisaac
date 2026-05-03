@@ -2,83 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Transformation — Isaac TWI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --black: #0a0a0a; --off-white: #f0ede6; --amber: #e8a120; --grey: #2a2a2a; --grey-light: #555; --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif; }
-    body { background: var(--black); color: var(--off-white); font-family: var(--mono); font-weight: 300; }
-    a { color: inherit; }
-    .header { padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(232,161,32,0.15); }
-    .logo { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: var(--amber); text-transform: uppercase; text-decoration: none; }
-    .nav-cta { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); background: var(--amber); padding: 0.5rem 1.2rem; text-decoration: none; }
-    .nav-cta:hover { background: var(--off-white); }
-    .tag { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
-    .tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--amber); }
-    section { padding: 5rem; }
-    .dark { background: var(--grey); }
-    h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95; margin-bottom: 1.5rem; }
-    h1 span { color: var(--amber); }
-    h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.05; margin-bottom: 1.5rem; max-width: 28ch; }
-    .sub { font-size: 1rem; line-height: 1.8; color: #999; max-width: 54ch; margin-bottom: 2.5rem; font-style: italic; }
-    .sub strong { color: var(--off-white); font-style: normal; font-weight: 400; }
-    .cta-big { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--amber); padding: 1.2rem 3rem; text-decoration: none; display: inline-block; }
-    .cta-big:hover { background: var(--off-white); }
-
-    .pricing-table { margin-top: 3rem; }
-    .price-row { display: flex; align-items: stretch; border-bottom: 1px solid rgba(240,237,230,0.08); }
-    .price-row:first-child { border-top: 1px solid rgba(240,237,230,0.08); }
-    .price-row.highlight { background: rgba(232,161,32,0.04); border-color: rgba(232,161,32,0.15); }
-    .price-label { width: 220px; flex-shrink: 0; padding: 1.5rem; font-family: var(--display); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; border-right: 1px solid rgba(240,237,230,0.08); }
-    .price-amount { width: 180px; flex-shrink: 0; padding: 1.5rem; font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--amber); display: flex; align-items: center; border-right: 1px solid rgba(240,237,230,0.08); }
-    .price-amount .period { font-size: 0.7rem; color: #aaa; font-weight: 300; margin-left: 0.3rem; }
-    .price-desc { flex: 1; padding: 1.5rem; font-size: 0.8rem; color: #aaa; line-height: 1.6; display: flex; align-items: center; }
-
-    .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    .menu-item { border: 1px solid rgba(240,237,230,0.12); padding: 1.5rem 2rem; }
-    .menu-item h3 { font-family: var(--display); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
-    .menu-item .menu-price { font-size: 0.7rem; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 0.6rem; }
-    .menu-item p { font-size: 0.78rem; line-height: 1.6; color: #aaa; }
-    .menu-item.coming { opacity: 0.4; }
-    .menu-item.coming::after { content: 'COMING SOON'; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--grey-light); margin-top: 0.8rem; display: block; }
-
-    .guarantee { margin-top: 3rem; border: 2px solid var(--amber); padding: 3rem; text-align: center; background: rgba(232,161,32,0.04); }
-    .guarantee h3 { font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--amber); margin-bottom: 1rem; }
-    .guarantee p { font-size: 0.85rem; color: #bbb; line-height: 1.8; max-width: 56ch; margin: 0 auto; }
-
-    .soma-callout { margin-top: 3rem; border: 1px solid rgba(232,161,32,0.3); padding: 2.5rem; background: rgba(232,161,32,0.03); display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-    .soma-callout-text h3 { font-family: var(--display); font-weight: 800; font-size: 1.1rem; margin-bottom: 0.5rem; }
-    .soma-callout-text p { font-size: 0.8rem; color: #aaa; line-height: 1.6; max-width: 45ch; }
-    .soma-cta { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid var(--amber); padding: 0.8rem 1.5rem; white-space: nowrap; flex-shrink: 0; }
-    .soma-cta:hover { background: var(--amber); color: var(--black); }
-
-    .honest { background: var(--amber); padding: 5rem; }
-    .honest .tag { color: rgba(0,0,0,0.5); }
-    .honest .tag::before { background: rgba(0,0,0,0.4); }
-    .honest h2 { color: var(--black); }
-    .honest p { font-size: 1rem; line-height: 1.8; max-width: 60ch; color: rgba(0,0,0,0.7); }
-
-    .final-cta { text-align: center; padding: 7rem 5rem; }
-    .final-cta h2 { margin: 0 auto 1.5rem; max-width: none; }
-    .final-cta p { font-size: 0.9rem; color: var(--grey-light); margin: 0 auto 1rem; font-style: italic; max-width: 56ch; }
-    .final-cta .tag { justify-content: center; }
-    .scarcity { font-size: 0.8rem; color: var(--amber); margin-top: 2rem; }
-
-    .footer { padding: 2rem 5rem; border-top: 1px solid var(--grey); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--grey-light); }
-    @media (max-width: 900px) {
-      section, .honest { padding: 3rem 2rem; }
-      .price-row { flex-direction: column; }
-      .price-label, .price-amount { width: 100%; border-right: none; }
-      .menu-grid { grid-template-columns: 1fr; }
-      .soma-callout { flex-direction: column; align-items: flex-start; }
-      .final-cta { padding: 4rem 2rem; }
-      .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
-      .header { padding: 1rem 1.5rem; }
-    }
-  </style>
-</head>
+  </head>
 <body>
 
   <div class="header">
