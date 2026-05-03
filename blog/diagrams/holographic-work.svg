@@ -1,97 +1,169 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="645" viewBox="0 0 800 645">
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="652" viewBox="0 0 1120 652">
 <defs><style>
 
 </style></defs>
 <rect width="100%" height="100%" fill="#ffffff"/>
-<g transform="translate(20.00,30.00)">
-<text x="180.00" y="38.00" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#1e1e1e" text-anchor="start"><tspan x="180.00" dy="0">HOLOGRAPHIC WORK</tspan></text>
+<g transform="translate(40.00,60.00)" opacity="0.25">
+<path d="M-1.60 59.42 L281.05 61.81 L280.25 398.23 L0.93 401.53" stroke="none" fill="#dbe4ff"/>
+<path d="M0.66 60.74 C55.76 60.89,111.57 58.67,279.39 60.30 M-0.50 60.20 C62.32 60.62,124.02 60.19,279.56 60.58 M281.02 58.83 C280.73 134.77,281.19 206.81,280.93 399.42 M280.20 59.47 C280.16 150.68,279.51 242.53,280.27 400.23 M280.81 399.84 C220.40 399.85,157.93 399.44,1.41 399.69 M279.28 399.89 C174.68 400.20,70.10 399.99,0.72 400.03 M-0.48 399.81 C0.84 301.47,-0.31 205.09,0.39 59.20 M0.15 400.67 C-0.52 275.88,-0.18 152.04,0.29 60.66" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<text x="140.00" y="66.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#757575" text-anchor="start"><tspan x="140.00" dy="0">Every piece contains the whole. Everything is the</tspan></text>
+<g transform="translate(40.00,60.00)">
+<text x="15.00" y="84.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4a9eed" text-anchor="start"><tspan x="15.00" dy="0">WORK ZONE</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<text x="140.00" y="86.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#757575" text-anchor="start"><tspan x="140.00" dy="0">same thing at different levels of compilation.</tspan></text>
+<g transform="translate(40.00,60.00)" opacity="0.25">
+<path d="M368.40 59.42 L691.05 61.81 L690.25 398.23 L370.93 401.53" stroke="none" fill="#e5dbff"/>
+<path d="M370.60 60.67 C433.78 60.81,497.61 58.79,689.44 60.27 M369.55 60.19 C441.14 60.57,511.73 60.17,689.59 60.53 M691.02 58.83 C690.73 134.77,691.19 206.81,690.93 399.42 M690.20 59.47 C690.16 150.68,689.51 242.53,690.27 400.23 M690.74 399.85 C621.71 399.86,550.79 399.48,371.29 399.72 M689.34 399.90 C569.65 400.18,449.97 399.99,370.66 400.03 M369.52 399.81 C370.84 301.47,369.69 205.09,370.39 59.20 M370.15 400.67 C369.48 275.88,369.82 152.04,370.29 60.66" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)" opacity="0.30">
-<path d="M18.40 109.42 L321.05 111.81 L320.25 328.23 L20.93 331.53" stroke="none" fill="#a5d8ff"/>
-<path d="M20.63 110.71 C79.77 110.85,139.59 108.73,319.42 110.29 M19.52 110.19 C86.73 110.60,152.87 110.18,319.57 110.55 M321.33 108.48 C320.95 158.92,321.55 204.28,321.21 329.25 M320.26 109.31 C320.21 168.30,319.36 228.12,320.35 330.31 M320.77 329.84 C256.05 329.86,189.36 329.46,21.35 329.70 M319.31 329.89 C207.16 330.19,95.04 329.99,20.69 330.03 M19.38 329.76 C21.09 265.58,19.59 203.96,20.51 108.95 M20.19 330.87 C19.33 249.40,19.77 169.16,20.38 110.86" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<text x="385.00" y="84.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#8b5cf6" text-anchor="start"><tspan x="385.00" dy="0">WORLD</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<text x="40.00" y="134.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#4a9eed" text-anchor="start"><tspan x="40.00" dy="0">HUMAN CONTEXT</tspan></text>
+<g transform="translate(40.00,60.00)" opacity="0.25">
+<path d="M758.40 59.42 L1041.05 61.81 L1040.25 398.23 L760.93 401.53" stroke="none" fill="#d3f9d8"/>
+<path d="M760.66 60.74 C815.76 60.89,871.57 58.67,1039.39 60.30 M759.50 60.20 C822.32 60.62,884.02 60.19,1039.56 60.58 M1041.02 58.83 C1040.73 134.77,1041.19 206.81,1040.93 399.42 M1040.20 59.47 C1040.16 150.68,1039.51 242.53,1040.27 400.23 M1040.81 399.84 C980.40 399.85,917.93 399.44,761.41 399.69 M1039.28 399.89 C934.68 400.20,830.10 399.99,760.72 400.03 M759.52 399.81 C760.84 301.47,759.69 205.09,760.39 59.20 M760.15 400.67 C759.48 275.88,759.82 152.04,760.29 60.66" stroke="#22c55e" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M38.40 149.42 L301.05 151.81 L300.25 198.23 L40.93 201.53" stroke="none" fill="#a5d8ff"/>
-<path d="M40.69 150.77 C91.75 150.93,143.55 148.62,299.37 150.31 M39.48 150.21 C97.90 150.65,155.17 150.20,299.54 150.60 M301.54 148.25 C301.10 162.11,301.79 170.11,301.39 199.13 M300.30 149.20 C300.24 162.56,299.27 176.87,300.41 200.35 M300.84 199.83 C244.75 199.85,186.50 199.41,41.47 199.68 M299.25 199.89 C202.19 200.21,105.16 199.99,40.75 200.03 M39.28 199.72 C41.26 184.13,39.53 171.50,40.59 148.79 M40.22 201.00 C39.22 181.16,39.73 162.72,40.44 150.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<text x="775.00" y="84.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#22c55e" text-anchor="start"><tspan x="775.00" dy="0">LEARN ZONE</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M38.40 209.42 L161.05 211.81 L160.25 248.23 L40.93 251.53" stroke="none" fill="#a5d8ff"/>
-<path d="M40.86 210.96 C63.68 211.16,87.44 208.27,159.21 210.39 M39.35 210.26 C67.00 210.81,93.21 210.24,159.42 210.75 M161.54 208.25 C161.10 219.93,161.79 225.76,161.39 249.13 M160.30 209.20 C160.24 219.88,159.27 231.50,160.41 250.35 M161.05 249.79 C135.15 249.81,106.56 249.26,41.84 249.60 M159.06 249.86 C114.80 250.26,70.58 249.99,40.94 250.04 M39.28 249.72 C41.26 237.00,39.53 227.24,40.59 208.79 M40.22 251.00 C39.22 234.80,39.73 220.00,40.44 210.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<text x="280.00" y="12.00" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#1e1e1e" text-anchor="start"><tspan x="280.00" dy="0">HOLOGRAPHIC WORK</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M168.40 209.42 L301.05 211.81 L300.25 248.23 L170.93 251.53" stroke="none" fill="#a5d8ff"/>
-<path d="M170.86 210.96 C195.68 211.16,221.44 208.27,299.21 210.39 M169.35 210.26 C199.22 210.81,227.64 210.24,299.42 210.75 M301.54 208.25 C301.10 219.93,301.79 225.76,301.39 249.13 M300.30 209.20 C300.24 219.88,299.27 231.50,300.41 250.35 M301.05 249.79 C272.99 249.81,242.24 249.26,171.84 249.60 M299.06 249.86 C251.04 250.26,203.06 249.99,170.94 250.04 M169.28 249.72 C171.26 237.00,169.53 227.24,170.59 208.79 M170.22 251.00 C169.22 234.80,169.73 220.00,170.44 210.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<text x="220.00" y="36.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#757575" text-anchor="start"><tspan x="220.00" dy="0">Partial evaluation accumulates. Composition anneals the whole.</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M38.40 259.42 L301.05 261.81 L300.25 308.23 L40.93 311.53" stroke="none" fill="#a5d8ff"/>
-<path d="M40.69 260.77 C91.75 260.93,143.55 258.62,299.37 260.31 M39.48 260.21 C97.90 260.65,155.17 260.20,299.54 260.60 M301.54 258.25 C301.10 272.11,301.79 280.11,301.39 309.13 M300.30 259.20 C300.24 272.56,299.27 286.87,300.41 310.35 M300.84 309.83 C244.75 309.85,186.50 309.41,41.47 309.68 M299.25 309.89 C202.19 310.21,105.16 309.99,40.75 310.03 M39.28 309.72 C41.26 294.13,39.53 281.50,40.59 258.79 M40.22 311.00 C39.22 291.16,39.73 272.72,40.44 260.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M28.40 109.42 L251.05 111.81 L250.25 168.23 L30.93 171.53" stroke="none" fill="#a5d8ff"/>
+<path d="M30.74 110.84 C73.72 111.01,117.52 108.50,249.31 110.34 M29.44 110.23 C79.08 110.71,127.47 110.21,249.50 110.65 M251.54 108.25 C251.10 124.28,251.79 134.46,251.39 169.13 M250.30 109.20 C250.24 125.24,249.27 142.23,250.41 170.35 M250.91 169.82 C203.45 169.83,153.65 169.36,31.59 169.65 M249.18 169.88 C167.22 170.23,85.29 169.99,30.81 170.04 M29.28 169.72 C31.26 151.26,29.53 135.76,30.59 108.79 M30.22 171.00 C29.22 147.52,29.73 125.45,30.44 110.99" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)" opacity="0.30">
-<path d="M438.40 109.42 L741.05 111.81 L740.25 328.23 L440.93 331.53" stroke="none" fill="#d0bfff"/>
-<path d="M440.63 110.71 C499.77 110.85,559.59 108.73,739.42 110.29 M439.52 110.19 C506.73 110.60,572.87 110.18,739.57 110.55 M741.33 108.48 C740.95 158.92,741.55 204.28,741.21 329.25 M740.26 109.31 C740.21 168.30,739.36 228.12,740.35 330.31 M740.77 329.84 C676.05 329.86,609.36 329.46,441.35 329.70 M739.31 329.89 C627.16 330.19,515.04 329.99,440.69 330.03 M439.38 329.76 C441.09 265.58,439.59 203.96,440.51 108.95 M440.19 330.87 C439.33 249.40,439.77 169.16,440.38 110.86" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M38.40 199.42 L121.05 201.81 L120.25 248.23 L40.93 251.53" stroke="none" fill="#fff3bf"/>
+<path d="M40.86 200.96 C55.68 201.16,71.44 198.27,119.21 200.39 M39.35 200.26 C58.15 200.81,75.50 200.24,119.42 200.75 M121.54 198.25 C121.10 212.11,121.79 220.11,121.39 249.13 M120.30 199.20 C120.24 212.56,119.27 226.87,120.41 250.35 M121.05 249.79 C103.78 249.81,83.81 249.26,41.84 249.60 M119.06 249.86 C89.84 250.26,60.65 249.99,40.94 250.04 M39.28 249.72 C41.26 234.13,39.53 221.50,40.59 198.79 M40.22 251.00 C39.22 231.16,39.73 212.72,40.44 200.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<text x="460.00" y="134.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#8b5cf6" text-anchor="start"><tspan x="460.00" dy="0">AI CONTEXT</tspan></text>
+<g transform="translate(40.00,60.00)">
+<path d="M128.40 199.42 L211.05 201.81 L210.25 248.23 L130.93 251.53" stroke="none" fill="#fff3bf"/>
+<path d="M130.86 200.96 C145.68 201.16,161.44 198.27,209.21 200.39 M129.35 200.26 C148.15 200.81,165.50 200.24,209.42 200.75 M211.54 198.25 C211.10 212.11,211.79 220.11,211.39 249.13 M210.30 199.20 C210.24 212.56,209.27 226.87,210.41 250.35 M211.05 249.79 C193.78 249.81,173.81 249.26,131.84 249.60 M209.06 249.86 C179.84 250.26,150.65 249.99,130.94 250.04 M129.28 249.72 C131.26 234.13,129.53 221.50,130.59 198.79 M130.22 251.00 C129.22 231.16,129.73 212.72,130.44 200.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M458.40 149.42 L721.05 151.81 L720.25 198.23 L460.93 201.53" stroke="none" fill="#d0bfff"/>
-<path d="M460.69 150.77 C511.75 150.93,563.55 148.62,719.37 150.31 M459.48 150.21 C517.90 150.65,575.17 150.20,719.54 150.60 M721.54 148.25 C721.10 162.11,721.79 170.11,721.39 199.13 M720.30 149.20 C720.24 162.56,719.27 176.87,720.41 200.35 M720.84 199.83 C664.75 199.85,606.50 199.41,461.47 199.68 M719.25 199.89 C622.19 200.21,525.16 199.99,460.75 200.03 M459.28 199.72 C461.26 184.13,459.53 171.50,460.59 148.79 M460.22 201.00 C459.22 181.16,459.73 162.72,460.44 150.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M38.40 259.42 L121.05 261.81 L120.25 308.23 L40.93 311.53" stroke="none" fill="#fff3bf"/>
+<path d="M40.86 260.96 C55.68 261.16,71.44 258.27,119.21 260.39 M39.35 260.26 C58.15 260.81,75.50 260.24,119.42 260.75 M121.54 258.25 C121.10 272.11,121.79 280.11,121.39 309.13 M120.30 259.20 C120.24 272.56,119.27 286.87,120.41 310.35 M121.05 309.79 C103.78 309.81,83.81 309.26,41.84 309.60 M119.06 309.86 C89.84 310.26,60.65 309.99,40.94 310.04 M39.28 309.72 C41.26 294.13,39.53 281.50,40.59 258.79 M40.22 311.00 C39.22 291.16,39.73 272.72,40.44 260.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M458.40 209.42 L581.05 211.81 L580.25 248.23 L460.93 251.53" stroke="none" fill="#d0bfff"/>
-<path d="M460.86 210.96 C483.68 211.16,507.44 208.27,579.21 210.39 M459.35 210.26 C487.00 210.81,513.21 210.24,579.42 210.75 M581.54 208.25 C581.10 219.93,581.79 225.76,581.39 249.13 M580.30 209.20 C580.24 219.88,579.27 231.50,580.41 250.35 M581.05 249.79 C555.15 249.81,526.56 249.26,461.84 249.60 M579.06 249.86 C534.80 250.26,490.58 249.99,460.94 250.04 M459.28 249.72 C461.26 237.00,459.53 227.24,460.59 208.79 M460.22 251.00 C459.22 234.80,459.73 220.00,460.44 210.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M128.40 259.42 L211.05 261.81 L210.25 308.23 L130.93 311.53" stroke="none" fill="#fff3bf"/>
+<path d="M130.86 260.96 C145.68 261.16,161.44 258.27,209.21 260.39 M129.35 260.26 C148.15 260.81,165.50 260.24,209.42 260.75 M211.54 258.25 C211.10 272.11,211.79 280.11,211.39 309.13 M210.30 259.20 C210.24 272.56,209.27 286.87,210.41 310.35 M211.05 309.79 C193.78 309.81,173.81 309.26,131.84 309.60 M209.06 309.86 C179.84 310.26,150.65 309.99,130.94 310.04 M129.28 309.72 C131.26 294.13,129.53 281.50,130.59 258.79 M130.22 311.00 C129.22 291.16,129.73 272.72,130.44 260.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M588.40 209.42 L721.05 211.81 L720.25 248.23 L590.93 251.53" stroke="none" fill="#d0bfff"/>
-<path d="M590.86 210.96 C615.68 211.16,641.44 208.27,719.21 210.39 M589.35 210.26 C619.22 210.81,647.64 210.24,719.42 210.75 M721.54 208.25 C721.10 219.93,721.79 225.76,721.39 249.13 M720.30 209.20 C720.24 219.88,719.27 231.50,720.41 250.35 M721.05 249.79 C692.99 249.81,662.24 249.26,591.84 249.60 M719.06 249.86 C671.04 250.26,623.06 249.99,590.94 250.04 M589.28 249.72 C591.26 237.00,589.53 227.24,590.59 208.79 M590.22 251.00 C589.22 234.80,589.73 220.00,590.44 210.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<text x="30.00" y="334.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#f59e0b" text-anchor="start"><tspan x="30.00" dy="0">each partial = the WHOLE</tspan><tspan x="30.00" dy="17.5">compressed to one facet</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M458.40 259.42 L721.05 261.81 L720.25 308.23 L460.93 311.53" stroke="none" fill="#d0bfff"/>
-<path d="M460.69 260.77 C511.75 260.93,563.55 258.62,719.37 260.31 M459.48 260.21 C517.90 260.65,575.17 260.20,719.54 260.60 M721.54 258.25 C721.10 272.11,721.79 280.11,721.39 309.13 M720.30 259.20 C720.24 272.56,719.27 286.87,720.41 310.35 M720.84 309.83 C664.75 309.85,606.50 309.41,461.47 309.68 M719.25 309.89 C622.19 310.21,525.16 309.99,460.75 310.03 M459.28 309.72 C461.26 294.13,459.53 281.50,460.59 258.79 M460.22 311.00 C459.22 291.16,459.73 272.72,460.44 260.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M57.45 358.67 C57.45 358.67,57.45 358.67,57.45 358.67 M57.45 358.67 C57.45 358.67,57.45 358.67,57.45 358.67 M57.70 368.16 C65.68 364.39,69.76 354.29,75.69 352.90 M59.01 369.20 C63.49 365.05,68.75 357.68,73.68 350.65 M61.71 378.56 C69.64 369.34,74.54 365.30,79.76 356.61 M62.14 375.94 C68.69 370.91,73.64 363.43,80.25 355.72 M72.14 379.30 C73.50 376.11,75.24 371.60,82.42 364.07 M71.07 380.60 C74.22 376.87,76.49 373.39,83.26 366.19" stroke="#f59e0b" stroke-width="-1" fill="none" stroke-linecap="round"/>
+<path d="M73.12 350.17 C75.94 350.63,79.38 354.11,81.10 356.71 C82.82 359.30,83.50 362.79,83.43 365.73 C83.37 368.66,82.65 371.97,80.72 374.30 C78.78 376.64,74.77 379.28,71.80 379.73 C68.83 380.19,65.43 378.92,62.89 377.03 C60.34 375.15,57.42 371.54,56.56 368.43 C55.70 365.32,56.60 361.06,57.72 358.37 C58.83 355.69,60.06 353.54,63.25 352.33 C66.44 351.12,74.24 350.79,76.85 351.12 C79.45 351.45,78.97 354.09,78.89 354.32 M75.33 350.60 C78.30 351.30,81.27 354.00,82.78 356.59 C84.29 359.19,85.18 362.95,84.40 366.19 C83.62 369.43,80.37 373.75,78.07 376.04 C75.78 378.33,73.71 379.84,70.63 379.91 C67.55 379.97,61.79 378.35,59.59 376.42 C57.39 374.49,57.80 371.28,57.45 368.31 C57.10 365.34,56.24 361.61,57.49 358.60 C58.74 355.59,62.16 351.19,64.96 350.23 C67.76 349.28,72.72 352.42,74.30 352.86 C75.88 353.30,74.50 352.87,74.45 352.89" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M378.40 359.42 L451.05 411.81 L380.25 458.23 L310.93 411.53" stroke="none" fill="#ffd8a8"/>
-<path d="M380.86 360.96 C393.68 371.16,407.44 378.27,449.21 410.39 M379.35 360.26 C395.93 371.88,411.08 382.38,449.42 410.75 M451.54 408.25 C435.87 422.11,421.34 430.11,381.39 459.13 M450.30 409.20 C431.45 422.56,411.69 436.87,380.41 460.35 M381.05 459.79 C365.93 449.02,348.12 437.70,311.84 409.60 M379.06 459.86 C353.60 441.47,328.17 422.40,310.94 410.04 M309.28 409.72 C331.34 394.13,349.68 381.50,380.59 358.79 M310.22 411.00 C334.69 391.16,360.66 372.72,380.44 360.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<text x="90.00" y="369.00" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#757575" text-anchor="start"><tspan x="90.00" dy="0">= hologram fragment</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M170.86 330.96 C203.68 343.16,237.44 352.27,339.21 390.39 M169.35 330.26 C208.07 344.09,245.35 356.81,339.42 390.75" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M324.19 393.76 C327.98 393.24,330.73 392.52,339.89 389.72 M325.62 393.29 C330.77 391.97,336.29 391.33,339.54 390.03" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M338.94 391.01 C337.80 388.87,335.64 386.42,330.13 378.32 M340.36 390.54 C336.70 386.04,333.48 382.32,329.78 378.63" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M220.86 250.96 C235.68 251.16,251.44 248.27,299.21 250.39 M219.35 250.26 C238.15 250.81,255.50 250.24,299.42 250.75" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M285.95 258.51 C289.38 257.05,291.77 255.37,299.89 249.72 M287.37 258.04 C291.86 255.02,296.75 252.69,299.54 250.03" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M298.94 251.01 C297.16 249.67,294.35 247.99,286.89 242.22 M300.36 250.54 C295.59 247.41,291.21 245.09,286.55 242.53" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M590.86 330.96 C555.68 343.16,521.44 352.27,419.21 390.39 M589.35 330.26 C552.81 344.09,514.83 356.81,419.42 390.75" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M428.69 379.62 C427.60 382.04,425.43 384.16,419.89 389.72 M430.12 379.15 C426.67 382.77,423.45 387.18,419.54 390.03" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M418.94 391.01 C422.74 391.59,425.49 391.97,434.63 392.47 M420.36 390.54 C425.57 391.18,431.09 392.50,434.28 392.77" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M373.40 189.42 L441.05 241.81 L375.25 288.23 L310.93 241.53" stroke="none" fill="#ffd8a8"/>
+<path d="M375.86 190.96 C387.68 201.16,400.44 208.27,439.21 240.39 M374.35 190.26 C389.83 201.88,403.86 212.38,439.42 240.75 M441.54 238.25 C426.96 252.11,413.52 260.11,376.39 289.13 M440.30 239.20 C422.80 252.56,404.37 266.87,375.41 290.35 M376.05 289.79 C362.01 279.02,345.28 267.70,311.84 239.60 M374.06 289.86 C350.48 271.47,326.93 252.40,310.94 240.04 M309.28 239.72 C329.90 224.13,346.81 211.50,375.59 188.79 M310.22 241.00 C332.87 221.16,357.02 202.72,375.44 190.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M380.86 460.96 C379.68 469.16,379.44 474.27,379.21 500.39 M379.35 460.26 C380.44 469.67,380.09 477.95,379.42 500.75" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M369.73 485.63 C372.57 488.83,374.12 491.75,379.86 499.66 M371.44 485.06 C374.70 490.17,378.22 496.15,379.44 500.03" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M378.73 501.22 C381.51 498.17,383.07 494.84,388.86 484.07 M380.44 500.65 C383.41 494.64,386.92 489.50,388.44 484.44" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M440.86 240.96 C451.68 241.16,463.44 238.27,499.21 240.39 M439.35 240.26 C453.72 240.81,466.65 240.24,499.42 240.75" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M485.95 248.51 C489.38 247.05,491.77 245.37,499.89 239.72 M487.37 248.04 C491.86 245.02,496.75 242.69,499.54 240.03" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M498.94 241.01 C497.16 239.67,494.35 237.99,486.89 232.22 M500.36 240.54 C495.59 237.41,491.21 235.09,486.55 232.53" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<path d="M238.40 499.42 L521.05 501.81 L520.25 558.23 L240.93 561.53" stroke="none" fill="#b2f2bb"/>
-<path d="M240.66 500.74 C295.76 500.89,351.57 498.67,519.39 500.30 M239.50 500.20 C302.32 500.62,364.02 500.19,519.56 500.58 M521.54 498.25 C521.10 514.28,521.79 524.46,521.39 559.13 M520.30 499.20 C520.24 515.24,519.27 532.23,520.41 560.35 M520.81 559.84 C460.40 559.85,397.93 559.44,241.41 559.69 M519.28 559.89 C414.68 560.20,310.10 559.99,240.72 560.03 M239.28 559.72 C241.26 541.26,239.53 525.76,240.59 498.79 M240.22 561.00 C239.22 537.52,239.73 515.45,240.44 500.99" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(40.00,60.00)">
+<path d="M508.40 119.42 L671.05 121.81 L670.25 198.23 L510.93 201.53" stroke="none" fill="#b2f2bb"/>
+<path d="M510.86 120.96 C541.68 121.16,573.44 118.27,669.21 120.39 M509.35 120.26 C545.86 120.81,580.92 120.24,669.42 120.75 M671.54 118.25 C671.10 138.63,671.79 153.16,671.39 199.13 M670.30 119.20 C670.24 140.61,669.27 162.97,670.41 200.35 M671.05 199.79 C636.52 199.81,599.30 199.26,511.84 199.60 M669.06 199.86 C609.77 200.26,550.50 199.99,510.94 200.04 M509.28 199.72 C511.26 175.53,509.53 154.29,510.59 118.79 M510.22 201.00 C509.22 170.24,509.73 140.90,510.44 120.99" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<g transform="translate(20.00,30.00)">
-<text x="100.00" y="589.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#757575" text-anchor="start"><tspan x="100.00" dy="0">Frameworks are cognitive equipment AND operational skills.</tspan></text>
+<g transform="translate(40.00,60.00)">
+<text x="510.00" y="218.00" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#757575" text-anchor="start"><tspan x="510.00" dy="0">blog + skill + framework</tspan><tspan x="510.00" dy="16.25">+ product + docs + video</tspan></text>
 </g>
-<g transform="translate(20.00,30.00)"><text x="170" y="181" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">4 Billion Token Life Context</text></g>
-<g transform="translate(20.00,30.00)"><text x="100" y="236" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">Taste</text></g>
-<g transform="translate(20.00,30.00)"><text x="235" y="236" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">Judgment</text></g>
-<g transform="translate(20.00,30.00)"><text x="170" y="291" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">Pattern Recognition</text></g>
-<g transform="translate(20.00,30.00)"><text x="590" y="181" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">200K Token Window</text></g>
-<g transform="translate(20.00,30.00)"><text x="520" y="236" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">Speed</text></g>
-<g transform="translate(20.00,30.00)"><text x="655" y="236" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">Consistency</text></g>
-<g transform="translate(20.00,30.00)"><text x="590" y="291" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">24/7 Operation</text></g>
-<g transform="translate(20.00,30.00)"><text x="380" y="416" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#f59e0b" text-anchor="middle">COMPOSE</text></g>
-<g transform="translate(20.00,30.00)"><text x="380" y="537" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#22c55e" text-anchor="middle">Compound Intelligence</text></g>
+<g transform="translate(40.00,60.00)">
+<path d="M590.86 200.96 C589.68 211.16,589.44 218.27,589.21 250.39 M589.35 200.26 C590.44 211.88,590.09 222.38,589.42 250.75" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M581.44 238.02 C583.80 240.69,585.10 243.12,589.89 249.72 M582.86 237.55 C585.59 241.81,588.51 246.79,589.54 250.03" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M588.94 251.01 C591.26 248.47,592.55 245.70,597.39 236.73 M590.36 250.54 C592.84 245.54,595.77 241.25,597.04 237.04" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="598.00" y="232.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#8b5cf6" text-anchor="start"><tspan x="598.00" dy="0">ship</tspan></text>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M569.04 263.27 C577.26 260.93,589.43 261.48,598.68 262.40 C607.92 263.33,616.97 265.60,624.50 268.82 C632.04 272.04,640.34 276.61,643.89 281.72 C647.43 286.82,647.43 293.72,645.78 299.46 C644.12 305.20,639.54 311.83,633.95 316.14 C628.36 320.46,620.95 323.23,612.24 325.33 C603.53 327.43,591.09 329.37,581.67 328.74 C572.25 328.10,563.30 324.98,555.73 321.52 C548.15 318.06,539.79 313.31,536.23 307.97 C532.66 302.64,532.83 294.96,534.34 289.51 C535.84 284.07,538.18 279.88,545.27 275.28 C552.36 270.68,570.44 264.16,576.88 261.92 C583.32 259.67,583.73 261.34,583.92 261.82 M610.17 262.58 C619.19 263.82,628.15 269.69,634.02 274.13 C639.89 278.57,643.75 283.69,645.39 289.23 C647.04 294.76,647.05 302.33,643.91 307.35 C640.78 312.37,634.09 315.89,626.60 319.36 C619.12 322.82,608.14 327.10,599.00 328.16 C589.86 329.22,580.59 327.75,571.75 325.73 C562.91 323.71,552.44 320.33,545.98 316.04 C539.52 311.75,534.52 305.15,532.99 299.97 C531.46 294.80,533.29 290.16,536.80 285.01 C540.32 279.86,546.95 272.96,554.07 269.09 C561.20 265.22,570.54 262.92,579.54 261.79 C588.53 260.66,603.27 262.09,608.03 262.30 C612.78 262.51,608.37 262.16,608.06 263.04" stroke="none" fill="#d0bfff"/>
+<path d="M603.32 261.56 C612.24 262.29,622.29 267.01,629.06 270.99 C635.83 274.96,641.16 280.19,643.95 285.42 C646.74 290.64,647.88 296.82,645.78 302.36 C643.69 307.90,637.91 314.50,631.40 318.66 C624.89 322.82,615.84 325.91,606.71 327.30 C597.58 328.69,585.88 328.48,576.64 327.00 C567.41 325.51,558.27 322.12,551.30 318.39 C544.32 314.65,537.45 309.96,534.80 304.58 C532.15 299.21,532.98 291.48,535.42 286.12 C537.85 280.75,542.82 276.42,549.41 272.39 C556.01 268.37,564.50 263.44,575.00 261.96 C585.50 260.49,605.17 262.69,612.40 263.55 C619.64 264.41,619.00 266.49,618.43 267.12 M566.72 264.14 C574.76 261.93,588.26 261.49,597.66 262.24 C607.06 262.99,615.40 265.22,623.12 268.64 C630.84 272.05,640.11 277.52,643.99 282.74 C647.87 287.95,647.85 294.71,646.40 299.92 C644.96 305.13,641.11 309.41,635.32 313.97 C629.52 318.53,620.40 324.71,611.63 327.28 C602.85 329.86,592.04 330.32,582.65 329.43 C573.26 328.54,563.02 325.53,555.26 321.93 C547.50 318.33,539.74 312.95,536.08 307.84 C532.42 302.72,531.70 296.76,533.31 291.25 C534.91 285.73,539.75 279.27,545.73 274.75 C551.72 270.24,565.51 265.65,569.23 264.16 C572.95 262.67,567.95 265.39,568.07 265.80" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M518.40 344.42 L661.05 346.81 L660.25 373.23 L520.93 376.53" stroke="none" fill="#eebefa"/>
+<path d="M520.86 345.96 C547.68 346.16,575.44 343.27,659.21 345.39 M519.35 345.26 C551.43 345.81,582.06 345.24,659.42 345.75 M661.54 343.25 C661.10 352.76,661.79 356.41,661.39 374.13 M660.30 344.20 C660.24 352.19,659.27 361.13,660.41 375.35 M661.05 374.79 C630.84 374.81,597.93 374.26,521.84 374.60 M659.06 374.86 C607.28 375.26,555.54 374.99,520.94 375.04 M519.28 374.72 C521.26 364.87,519.53 357.97,520.59 343.79 M520.22 376.00 C519.22 363.43,519.73 352.27,520.44 345.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M590.64 330.72 C589.76 333.87,589.58 334.70,589.40 345.29 M589.51 330.20 C590.33 333.93,590.06 336.82,589.56 345.56" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M581.44 333.02 C583.80 335.69,585.10 338.12,589.89 344.72 M582.86 332.55 C585.59 336.81,588.51 341.79,589.54 345.03" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M588.94 346.01 C591.26 343.47,592.55 340.70,597.39 331.73 M590.36 345.54 C592.84 340.54,595.77 336.25,597.04 332.04" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M660.86 295.96 C681.68 296.16,703.44 293.27,769.21 295.39 M659.35 295.26 C684.79 295.81,708.78 295.24,769.42 295.75" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M755.95 303.51 C759.38 302.05,761.77 300.37,769.89 294.72 M757.37 303.04 C761.86 300.02,766.75 297.69,769.54 295.03" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M768.94 296.01 C767.16 294.67,764.35 292.99,756.89 287.22 M770.36 295.54 C765.59 292.41,761.21 290.09,756.55 287.53" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="680.00" y="292.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#22c55e" text-anchor="start"><tspan x="680.00" dy="0">observe</tspan></text>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M778.40 109.42 L1021.05 111.81 L1020.25 188.23 L780.93 191.53" stroke="none" fill="#c3fae8"/>
+<path d="M780.71 110.80 C827.73 110.97,875.54 108.56,1019.34 110.33 M779.46 110.22 C833.49 110.68,886.32 110.20,1019.52 110.63 M1021.54 108.25 C1021.10 128.63,1021.79 143.16,1021.39 189.13 M1020.30 109.20 C1020.24 130.61,1019.27 152.97,1020.41 190.35 M1020.88 189.82 C969.10 189.84,915.07 189.39,781.53 189.66 M1019.21 189.88 C929.71 190.22,840.23 189.99,780.78 190.03 M779.28 189.72 C781.26 165.53,779.53 144.29,780.59 108.79 M780.22 191.00 C779.22 160.24,779.73 130.90,780.44 110.99" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="785.00" y="208.00" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#757575" text-anchor="start"><tspan x="785.00" dy="0">what worked? what didn't?</tspan><tspan x="785.00" dy="16.25">what resonated?</tspan></text>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M900.86 240.96 C899.68 251.16,899.44 258.27,899.21 290.39 M899.35 240.26 C900.44 251.88,900.09 262.38,899.42 290.75" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M891.44 278.02 C893.80 280.69,895.10 283.12,899.89 289.72 M892.86 277.55 C895.59 281.81,898.51 286.79,899.54 290.03" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M898.94 291.01 C901.26 288.47,902.55 285.70,907.39 276.73 M900.36 290.54 C902.84 285.54,905.77 281.25,907.04 277.04" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M798.40 294.42 L1001.05 296.81 L1000.25 348.23 L800.93 351.53" stroke="none" fill="#ffc9c9"/>
+<path d="M800.77 295.87 C839.71 296.05,879.50 293.44,999.29 295.35 M799.42 295.24 C844.67 295.73,888.62 295.22,999.48 295.68 M1001.54 293.25 C1001.10 308.19,1001.79 317.28,1001.39 349.13 M1000.30 294.20 C1000.24 308.90,999.27 324.55,1000.41 350.35 M1000.95 349.81 C957.79 349.83,912.22 349.34,801.65 349.64 M999.15 349.87 C924.74 350.24,850.35 349.99,800.85 350.04 M799.28 349.72 C801.26 332.70,799.53 318.63,800.59 293.79 M800.22 351.00 C799.22 329.34,799.73 309.09,800.44 295.99" stroke="#ef4444" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M800.86 350.96 C779.68 367.16,759.44 380.27,699.21 430.39 M799.35 350.26 C778.30 368.52,755.82 385.66,699.42 430.75" stroke="#ef4444" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8"/>
+<path d="M704.40 417.04 C704.17 419.96,702.87 422.60,699.89 429.72 M705.82 416.57 C703.93 421.13,702.24 426.45,699.54 430.03" stroke="#ef4444" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M698.94 431.01 C702.75 430.59,705.51 429.97,714.71 427.46 M700.36 430.54 C705.55 429.39,711.10 428.93,714.37 427.77" stroke="#ef4444" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M618.40 429.42 L821.05 431.81 L820.25 483.23 L620.93 486.53" stroke="none" fill="#d3f9d8"/>
+<path d="M620.77 430.87 C659.71 431.05,699.50 428.44,819.29 430.35 M619.42 430.24 C664.67 430.73,708.62 430.22,819.48 430.68 M821.54 428.25 C821.10 443.19,821.79 452.28,821.39 484.13 M820.30 429.20 C820.24 443.90,819.27 459.55,820.41 485.35 M820.95 484.81 C777.79 484.83,732.22 484.34,621.65 484.64 M819.15 484.87 C744.74 485.24,670.35 484.99,620.85 485.04 M619.28 484.72 C621.26 467.70,619.53 453.63,620.59 428.79 M620.22 486.00 C619.22 464.34,619.73 444.09,620.44 430.99" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="620.00" y="503.00" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#757575" text-anchor="start"><tspan x="620.00" dy="0">new pattern -&gt; new skill -&gt; new rule</tspan><tspan x="620.00" dy="16.25">-&gt; better partials next cycle</tspan></text>
+</g>
+<g transform="translate(40.00,60.00)">
+<path d="M620.62 457.70 C559.77 447.84,499.59 435.74,319.42 407.28 M619.53 457.19 C553.91 446.52,487.25 435.04,319.58 407.55 M321.15 405.69 C281.67 357.89,243.04 305.72,141.04 176.35 M320.22 406.40 C271.87 344.63,222.83 283.56,140.30 177.26" stroke="#ef4444" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8"/>
+<path d="M155.42 184.95 C153.07 183.79,149.47 182.24,139.86 176.66 M157.13 184.38 C151.03 181.43,145.38 179.45,139.44 177.03" stroke="#ef4444" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M138.73 178.22 C140.27 181.89,140.53 185.26,142.38 194.49 M140.44 177.65 C141.41 183.53,142.62 190.30,141.96 194.85" stroke="#ef4444" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="180.00" y="446.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#ef4444" text-anchor="start"><tspan x="180.00" dy="0">LOOP — better every cycle</tspan></text>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="150.00" y="546.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="start"><tspan x="150.00" dy="0">Compound intelligence: output the cause-and-effect chain,</tspan></text>
+</g>
+<g transform="translate(40.00,60.00)">
+<text x="150.00" y="568.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="start"><tspan x="150.00" dy="0">observe the outputs being observed, feed back, learn.</tspan></text>
+</g>
+<g transform="translate(40.0,60.0)"><text x="140" y="147" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#1e1e1e" text-anchor="middle">DO WORK</text></g>
+<g transform="translate(40.0,60.0)"><text x="80" y="231" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">blog</text></g>
+<g transform="translate(40.0,60.0)"><text x="170" y="231" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">skill</text></g>
+<g transform="translate(40.0,60.0)"><text x="80" y="291" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">code</text></g>
+<g transform="translate(40.0,60.0)"><text x="170" y="291" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">rule</text></g>
+<g transform="translate(40.0,60.0)"><text x="260" y="255" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#757575" text-anchor="middle">accumulate</text></g>
+<g transform="translate(40.0,60.0)"><text x="375" y="247" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#1e1e1e" text-anchor="middle">ANNEAL</text></g>
+<g transform="translate(40.0,60.0)"><text x="590" y="166" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle">THE PACKAGE</text></g>
+<g transform="translate(40.0,60.0)"><text x="590" y="301" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1e1e1e" text-anchor="middle">people see it</text></g>
+<g transform="translate(40.0,60.0)"><text x="590" y="364" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e1e1e" text-anchor="middle">clicks, reads, buys</text></g>
+<g transform="translate(40.0,60.0)"><text x="900" y="145" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle">OBSERVE THE</text></g>
+<g transform="translate(40.0,60.0)"><text x="900" y="167" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle">OBSERVATION</text></g>
+<g transform="translate(40.0,60.0)"><text x="900" y="330" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#ef4444" text-anchor="middle">FEEDBACK</text></g>
+<g transform="translate(40.0,60.0)"><text x="720" y="465" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#22c55e" text-anchor="middle">LEARN</text></g>
 </svg>
