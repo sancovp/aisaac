@@ -14,6 +14,10 @@
     <h1>The Progressive Disclosure Harness</h1>
     <p class="post-subtitle">Why your AI agent drowns in its own tools — and the 5-line fix that makes complex workflows actually work.</p>
 
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/progressive-disclosure-harness.png" alt="Progressive Disclosure Harness diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
     <h2>The Problem Nobody Talks About</h2>
     <p>Ok so here's the thing about AI agents in production: they get <em>worse</em> the more capable you make them.</p>
     <p>Not a little worse. Catastrophically worse. You give the agent 20 integrations and 300 available tools, and it starts hallucinating tools that don't exist. It forgets the tool it called thirty seconds ago. Three steps into a ten-step workflow, it stops and asks "what should I do next?" — like a surgeon putting down the scalpel mid-operation to ask the nurse what organ they're working on.</p>
@@ -29,7 +33,10 @@
 
 
 
-    <h2>The Insight: What If the Agent Didn't Need to See?</h2>
+    
+    <!-- AI-IMAGE: An AI agent drowning in 300 floating tool icons, eyes unfocused, context window overflowing - contrasted with a calm agent seeing just one clear instruction card, dark workspace -->
+
+<h2>The Insight: What If the Agent Didn't Need to See?</h2>
     <p>The breakthrough is embarrassingly simple once you see it: <strong>what if the agent only saw what it needed for the current step?</strong></p>
     <p>Not all 300 tools. Not a 4,000-token system prompt describing every possible workflow. Just the one instruction it needs right now, including the literal tool call string — and nothing else.</p>
     <p>Think about how a GPS works. It doesn't show you the entire road network of the country. It shows you the next turn. You don't need to see the whole route. You need to see the next instruction, execute it, and then get the next one.</p>
@@ -88,7 +95,10 @@ Required: add definition first.
 
     <hr>
 
-    <h2>The Architecture (Four Layers, Zero Magic)</h2>
+    
+    <!-- AI-IMAGE: A GPS navigation metaphor - the entire road network of a country shown faded in background, with just the next turn instruction glowing brightly in the foreground -->
+
+<h2>The Architecture (Four Layers, Zero Magic)</h2>
     <p>The full system has four layers, each one built only when the previous level broke:</p>
 
     <p><strong>Layer 0: Skill Trigger</strong> — about 50 tokens. A tiny file that says "when doing X, call get_instructions()." This is the only thing loaded into the agent's context at rest. 50 tokens instead of 2,000.</p>
@@ -143,7 +153,10 @@ Step 3: Call step_three(result)</pre>
 
     <hr>
 
-    <h2>The Deeper Pattern</h2>
+    
+    <!-- AI-IMAGE: Four stacked architectural layers shown as translucent floors - skill trigger (tiny), get_instructions (small), flight config (medium), meta-tool (large) - with an agent moving through them step by step -->
+
+<h2>The Deeper Pattern</h2>
     <p>Here's what I realized building this over four months: harnesses don't create procedures. They <em>encode</em> procedures you already have.</p>
     <p>Every time you correct an AI agent — "no, check the file first," "always validate before saving," "don't skip the tagging step" — you're expressing an implicit SOP. You have a procedure in your head. You just haven't written it down. The harness is the mechanism for writing it down in a way the agent can't ignore.</p>
     <p>Which means the hardest part isn't the code. The hardest part is noticing the pattern: "I keep saying this same thing." Once you notice that, the 5-line guard writes itself.</p>

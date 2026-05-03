@@ -13,6 +13,10 @@
     <h1>SHELL: Turn Any Toolkit Into a Game Your Agent Can Play</h1>
     <p class="post-subtitle">Most AI agents fail not because they lack tools, but because nobody defined the rules of the game. SHELL is the missing compilation step.</p>
 
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/shell.png" alt="SHELL diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
     <h2>The Problem Nobody Talks About</h2>
     <p>Your team just gave the AI agent access to 30 tools. A knowledge graph. A code review system. A deployment pipeline. The agent has <em>everything it needs</em>.</p>
     <p>And it still drifts. Makes invalid moves. Forgets what it was doing. Calls tools in the wrong order. Exits at the wrong time. Never quite finishes.</p>
@@ -39,7 +43,10 @@
 
     <hr>
 
-    <h2>What a SHELL Actually Is</h2>
+    
+    <!-- AI-IMAGE: A video game dungeon entrance portal with glowing boundary runes, showing the transition from overworld rules to instance rules, with an AI agent stepping through the threshold -->
+
+<h2>What a SHELL Actually Is</h2>
     <p>A SHELL is a bounded autonomous zone compiled from a toolkit. You take a raw set of tools &mdash; an API, a function library, a set of integrations &mdash; and you <em>compile</em> it into a game with rules, a persona, clear boundaries, and enforcement.</p>
     <p>Compilation has four steps:</p>
 
@@ -84,7 +91,10 @@ Required: [what must exist first].
 
     <hr>
 
-    <h2>Shells Nest</h2>
+    
+    <!-- AI-IMAGE: A compiled SHELL shown as a game board with four quadrants (pilot, vehicle, mission control, interaction loops) and an AI agent persona standing at center with clear rules displayed -->
+
+<h2>Shells Nest</h2>
     <p>Here is where it gets powerful. Shells can contain shells.</p>
     <p>Imagine an agent operating in a "Framework Synthesis" shell &mdash; reading conversations, identifying patterns, structuring a document. Midway through, it needs to capture concepts in a knowledge graph. That triggers entry to a "Knowledge Graph" shell. The inner shell operates under its own rules, captures the concepts, exits with results. The outer shell picks up where it left off.</p>
     <p>This creates stack-like execution. Each level has its own rules, its own persona, its own boundary. The outermost shell exits back to the human with a complete result.</p>
@@ -130,7 +140,10 @@ Enforcement:
 
     <hr>
 
-    <h2>Monday Morning Protocol</h2>
+    
+    <!-- AI-IMAGE: Nested shells shown as Russian dolls - outer shell (framework synthesis), middle shell (knowledge graph), inner shell (concept capture) - each with its own persona and rules, translucent layered view -->
+
+<h2>Monday Morning Protocol</h2>
     <p>Pick one toolkit your team uses repeatedly. Fill in the four slots:</p>
     <ol>
       <li><strong>Game Rules.</strong> What decides? What tools? What must stay true? What is the flow?</li>

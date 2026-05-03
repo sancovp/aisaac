@@ -13,6 +13,10 @@
     <h1>The 7 Engineering Disciplines for AI Agents</h1>
     <p class="post-subtitle">Prompt Engineering, Context Engineering, Tool Engineering, and Harness Engineering are already common. The next three extend the stack into the deeper problem: making AI agent systems safe, bounded, self-aware, and capable of improving instead of drifting.</p>
 
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/seven-disciplines.png" alt="The 7 Engineering Disciplines diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
     <h2>The Stack</h2>
 <pre>Prompt Engineering       — shape the instruction
 ↓
@@ -86,7 +90,10 @@ how costs are controlled</pre>
 
     <hr>
 
-    <h2>5. Admissibility Engineering</h2>
+    
+    <!-- AI-IMAGE: Seven stacked layers of an engineering discipline tower, each layer a different color from bottom (prompt engineering, warm red) to top (emergence engineering, cool violet), with light flowing upward -->
+
+<h2>5. Admissibility Engineering</h2>
     <p><strong>Admissibility Engineering</strong> is the discipline of determining whether an AI transformation is allowed under the currently known causal, semantic, and operational boundaries. It answers: <em>Is this operation licensed by enough visible structure to be safely performed?</em></p>
     <p>This is the missing layer under Harness Engineering. A harness may say: <code>read files → edit → run tests → commit</code>. Admissibility Engineering says:</p>
 <pre>Wait.
@@ -122,7 +129,10 @@ def produce_node_output(...):
 
     <hr>
 
-    <h2>6. Concentration Engineering</h2>
+    
+    <!-- AI-IMAGE: A boundary membrane with typed semantic markers glowing at every entry point, showing admissibility gates that check whether operations are licensed before they execute -->
+
+<h2>6. Concentration Engineering</h2>
     <p><strong>Concentration Engineering</strong> is the discipline of keeping the model's active attention locked onto the correct admissible boundary while it acts. It answers: <em>Can the agent remain aware of the system-shape it is operating inside?</em></p>
     <p>This matters because even when the right facts are available, LLMs drift. They read the hook map, then edit the local file as if the hook map never existed. They read the contradiction, then harmonize it. They see tests, but forget the semantic target.</p>
     <p>Context Engineering asks: <em>What should be in the context window?</em></p>
@@ -153,7 +163,10 @@ def produce_node_output(...):
 
     <hr>
 
-    <h2>The Sharp Version</h2>
+    
+    <!-- AI-IMAGE: A feedback loop showing two paths - degenerate (red spiral of drift, stale docs, worse retrieval) and productive (green spiral of observation, repair, improved admissibility) - diverging from the same starting point -->
+
+<h2>The Sharp Version</h2>
 <pre>Prompt Engineering       — say the right thing.
 Context Engineering      — show the right things.
 Tool Engineering         — expose the right actions.

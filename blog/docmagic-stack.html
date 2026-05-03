@@ -13,6 +13,10 @@
     <h1>Where DocMagic Sits in the Stack</h1>
     <p class="post-subtitle">DocMagic is an Admissibility Engineering tool, a Concentration Engineering support surface, and an Emergence Engineering repair loop. Here's what that means concretely.</p>
 
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/docmagic-stack.png" alt="DocMagic Stack diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
     <h2>The Concrete Problem</h2>
     <blockquote>AI agents cannot safely edit what they cannot see.</blockquote>
     <p>A repo is not just a pile of files. It is a set of overlapping execution surfaces: source code, tests, docs, comments, generated artifacts, state files, hooks, workflows, runtime side effects, and retrieval/indexing layers.</p>
@@ -47,7 +51,10 @@ def _post_to_cave_hook(tool_name, tool_input, response):
 
     <hr>
 
-    <h2>Three Roles in the Stack</h2>
+    
+    <!-- AI-IMAGE: A code file with invisible connections illuminated - red lines showing hidden callers, blue lines showing state file watchers, green breadcrumb markers at each danger point, dark IDE aesthetic -->
+
+<h2>Three Roles in the Stack</h2>
 
     <h3>1. Admissibility Engineering Tool</h3>
     <p>DocMagic answers the pre-edit question: <em>Is this operation licensed by enough visible structure to be safely performed?</em></p>
@@ -75,14 +82,20 @@ This import crosses a package boundary into a subsystem
 
     <hr>
 
-    <h2>The Hypebeast Translation</h2>
+    
+    <!-- AI-IMAGE: A repository shown as a living organism with glowing neural pathways connecting files, with DocMagic annotations appearing as bioluminescent markers at each hidden connection point -->
+
+<h2>The Hypebeast Translation</h2>
     <p>The hypebeast complaint: <em>AI coding agents make messy, brittle, weird code.</em></p>
     <p>The technical answer:</p>
     <blockquote>Of course AI-coded repos rot. The agent's visible context diverges from the repo's actual execution/causality geometry. Repair the geometry, then the agent can act inside a better self-model.</blockquote>
 
     <hr>
 
-    <h2>Try It</h2>
+    
+    <!-- AI-IMAGE: A magnifying glass revealing hidden dependency chains beneath innocent-looking code, the revealed connections glowing in amber against a dark terminal background -->
+
+<h2>Try It</h2>
 <pre>pip install docmagic</pre>
     <p>Copy the skill to your project:</p>
 <pre>cp -r .claude/skills/docmagic/ your-project/.claude/skills/docmagic/</pre>
