@@ -1,87 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="645" viewBox="0 0 800 645">
-<defs><style>
-
-</style></defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620">
 <rect width="100%" height="100%" fill="#1e1e2e" rx="12"/>
-<g transform="translate(20.00,30.00)">
-<text x="180.00" y="38.00" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#e8a120" text-anchor="start"><tspan x="180.00" dy="0">HOLOGRAPHIC WORK</tspan></text>
-</g>
-<g transform="translate(20.00,30.00)">
-<text x="140.00" y="66.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="start"><tspan x="140.00" dy="0">Every piece contains the whole. Everything is the</tspan></text>
-</g>
-<g transform="translate(20.00,30.00)">
-<text x="140.00" y="86.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="start"><tspan x="140.00" dy="0">same thing at different levels of compilation.</tspan></text>
-</g>
-<g transform="translate(20.00,30.00)" opacity="0.30">
-<path d="M18.40 109.42 L321.05 111.81 L320.25 328.23 L20.93 331.53" stroke="none" fill="#1e3a5f"/>
-<path d="M20.63 110.71 C79.77 110.85,139.59 108.73,319.42 110.29 M19.52 110.19 C86.73 110.60,152.87 110.18,319.57 110.55 M321.33 108.48 C320.95 158.92,321.55 204.28,321.21 329.25 M320.26 109.31 C320.21 168.30,319.36 228.12,320.35 330.31 M320.77 329.84 C256.05 329.86,189.36 329.46,21.35 329.70 M319.31 329.89 C207.16 330.19,95.04 329.99,20.69 330.03 M19.38 329.76 C21.09 265.58,19.59 203.96,20.51 108.95 M20.19 330.87 C19.33 249.40,19.77 169.16,20.38 110.86" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<text x="40.00" y="134.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#4a9eed" text-anchor="start"><tspan x="40.00" dy="0">HUMAN CONTEXT</tspan></text>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M38.40 149.42 L301.05 151.81 L300.25 198.23 L40.93 201.53" stroke="none" fill="#1e3a5f"/>
-<path d="M40.69 150.77 C91.75 150.93,143.55 148.62,299.37 150.31 M39.48 150.21 C97.90 150.65,155.17 150.20,299.54 150.60 M301.54 148.25 C301.10 162.11,301.79 170.11,301.39 199.13 M300.30 149.20 C300.24 162.56,299.27 176.87,300.41 200.35 M300.84 199.83 C244.75 199.85,186.50 199.41,41.47 199.68 M299.25 199.89 C202.19 200.21,105.16 199.99,40.75 200.03 M39.28 199.72 C41.26 184.13,39.53 171.50,40.59 148.79 M40.22 201.00 C39.22 181.16,39.73 162.72,40.44 150.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M38.40 209.42 L161.05 211.81 L160.25 248.23 L40.93 251.53" stroke="none" fill="#1e3a5f"/>
-<path d="M40.86 210.96 C63.68 211.16,87.44 208.27,159.21 210.39 M39.35 210.26 C67.00 210.81,93.21 210.24,159.42 210.75 M161.54 208.25 C161.10 219.93,161.79 225.76,161.39 249.13 M160.30 209.20 C160.24 219.88,159.27 231.50,160.41 250.35 M161.05 249.79 C135.15 249.81,106.56 249.26,41.84 249.60 M159.06 249.86 C114.80 250.26,70.58 249.99,40.94 250.04 M39.28 249.72 C41.26 237.00,39.53 227.24,40.59 208.79 M40.22 251.00 C39.22 234.80,39.73 220.00,40.44 210.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M168.40 209.42 L301.05 211.81 L300.25 248.23 L170.93 251.53" stroke="none" fill="#1e3a5f"/>
-<path d="M170.86 210.96 C195.68 211.16,221.44 208.27,299.21 210.39 M169.35 210.26 C199.22 210.81,227.64 210.24,299.42 210.75 M301.54 208.25 C301.10 219.93,301.79 225.76,301.39 249.13 M300.30 209.20 C300.24 219.88,299.27 231.50,300.41 250.35 M301.05 249.79 C272.99 249.81,242.24 249.26,171.84 249.60 M299.06 249.86 C251.04 250.26,203.06 249.99,170.94 250.04 M169.28 249.72 C171.26 237.00,169.53 227.24,170.59 208.79 M170.22 251.00 C169.22 234.80,169.73 220.00,170.44 210.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M38.40 259.42 L301.05 261.81 L300.25 308.23 L40.93 311.53" stroke="none" fill="#1e3a5f"/>
-<path d="M40.69 260.77 C91.75 260.93,143.55 258.62,299.37 260.31 M39.48 260.21 C97.90 260.65,155.17 260.20,299.54 260.60 M301.54 258.25 C301.10 272.11,301.79 280.11,301.39 309.13 M300.30 259.20 C300.24 272.56,299.27 286.87,300.41 310.35 M300.84 309.83 C244.75 309.85,186.50 309.41,41.47 309.68 M299.25 309.89 C202.19 310.21,105.16 309.99,40.75 310.03 M39.28 309.72 C41.26 294.13,39.53 281.50,40.59 258.79 M40.22 311.00 C39.22 291.16,39.73 272.72,40.44 260.99" stroke="#4a9eed" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)" opacity="0.30">
-<path d="M438.40 109.42 L741.05 111.81 L740.25 328.23 L440.93 331.53" stroke="none" fill="#2d1b69"/>
-<path d="M440.63 110.71 C499.77 110.85,559.59 108.73,739.42 110.29 M439.52 110.19 C506.73 110.60,572.87 110.18,739.57 110.55 M741.33 108.48 C740.95 158.92,741.55 204.28,741.21 329.25 M740.26 109.31 C740.21 168.30,739.36 228.12,740.35 330.31 M740.77 329.84 C676.05 329.86,609.36 329.46,441.35 329.70 M739.31 329.89 C627.16 330.19,515.04 329.99,440.69 330.03 M439.38 329.76 C441.09 265.58,439.59 203.96,440.51 108.95 M440.19 330.87 C439.33 249.40,439.77 169.16,440.38 110.86" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<text x="460.00" y="134.00" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#8b5cf6" text-anchor="start"><tspan x="460.00" dy="0">AI CONTEXT</tspan></text>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M458.40 149.42 L721.05 151.81 L720.25 198.23 L460.93 201.53" stroke="none" fill="#2d1b69"/>
-<path d="M460.69 150.77 C511.75 150.93,563.55 148.62,719.37 150.31 M459.48 150.21 C517.90 150.65,575.17 150.20,719.54 150.60 M721.54 148.25 C721.10 162.11,721.79 170.11,721.39 199.13 M720.30 149.20 C720.24 162.56,719.27 176.87,720.41 200.35 M720.84 199.83 C664.75 199.85,606.50 199.41,461.47 199.68 M719.25 199.89 C622.19 200.21,525.16 199.99,460.75 200.03 M459.28 199.72 C461.26 184.13,459.53 171.50,460.59 148.79 M460.22 201.00 C459.22 181.16,459.73 162.72,460.44 150.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M458.40 209.42 L581.05 211.81 L580.25 248.23 L460.93 251.53" stroke="none" fill="#2d1b69"/>
-<path d="M460.86 210.96 C483.68 211.16,507.44 208.27,579.21 210.39 M459.35 210.26 C487.00 210.81,513.21 210.24,579.42 210.75 M581.54 208.25 C581.10 219.93,581.79 225.76,581.39 249.13 M580.30 209.20 C580.24 219.88,579.27 231.50,580.41 250.35 M581.05 249.79 C555.15 249.81,526.56 249.26,461.84 249.60 M579.06 249.86 C534.80 250.26,490.58 249.99,460.94 250.04 M459.28 249.72 C461.26 237.00,459.53 227.24,460.59 208.79 M460.22 251.00 C459.22 234.80,459.73 220.00,460.44 210.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M588.40 209.42 L721.05 211.81 L720.25 248.23 L590.93 251.53" stroke="none" fill="#2d1b69"/>
-<path d="M590.86 210.96 C615.68 211.16,641.44 208.27,719.21 210.39 M589.35 210.26 C619.22 210.81,647.64 210.24,719.42 210.75 M721.54 208.25 C721.10 219.93,721.79 225.76,721.39 249.13 M720.30 209.20 C720.24 219.88,719.27 231.50,720.41 250.35 M721.05 249.79 C692.99 249.81,662.24 249.26,591.84 249.60 M719.06 249.86 C671.04 250.26,623.06 249.99,590.94 250.04 M589.28 249.72 C591.26 237.00,589.53 227.24,590.59 208.79 M590.22 251.00 C589.22 234.80,589.73 220.00,590.44 210.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M458.40 259.42 L721.05 261.81 L720.25 308.23 L460.93 311.53" stroke="none" fill="#2d1b69"/>
-<path d="M460.69 260.77 C511.75 260.93,563.55 258.62,719.37 260.31 M459.48 260.21 C517.90 260.65,575.17 260.20,719.54 260.60 M721.54 258.25 C721.10 272.11,721.79 280.11,721.39 309.13 M720.30 259.20 C720.24 272.56,719.27 286.87,720.41 310.35 M720.84 309.83 C664.75 309.85,606.50 309.41,461.47 309.68 M719.25 309.89 C622.19 310.21,525.16 309.99,460.75 310.03 M459.28 309.72 C461.26 294.13,459.53 281.50,460.59 258.79 M460.22 311.00 C459.22 291.16,459.73 272.72,460.44 260.99" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M378.40 359.42 L451.05 411.81 L380.25 458.23 L310.93 411.53" stroke="none" fill="#5c3d1a"/>
-<path d="M380.86 360.96 C393.68 371.16,407.44 378.27,449.21 410.39 M379.35 360.26 C395.93 371.88,411.08 382.38,449.42 410.75 M451.54 408.25 C435.87 422.11,421.34 430.11,381.39 459.13 M450.30 409.20 C431.45 422.56,411.69 436.87,380.41 460.35 M381.05 459.79 C365.93 449.02,348.12 437.70,311.84 409.60 M379.06 459.86 C353.60 441.47,328.17 422.40,310.94 410.04 M309.28 409.72 C331.34 394.13,349.68 381.50,380.59 358.79 M310.22 411.00 C334.69 391.16,360.66 372.72,380.44 360.99" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M170.86 330.96 C203.68 343.16,237.44 352.27,339.21 390.39 M169.35 330.26 C208.07 344.09,245.35 356.81,339.42 390.75" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M324.19 393.76 C327.98 393.24,330.73 392.52,339.89 389.72 M325.62 393.29 C330.77 391.97,336.29 391.33,339.54 390.03" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M338.94 391.01 C337.80 388.87,335.64 386.42,330.13 378.32 M340.36 390.54 C336.70 386.04,333.48 382.32,329.78 378.63" stroke="#4a9eed" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M590.86 330.96 C555.68 343.16,521.44 352.27,419.21 390.39 M589.35 330.26 C552.81 344.09,514.83 356.81,419.42 390.75" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M428.69 379.62 C427.60 382.04,425.43 384.16,419.89 389.72 M430.12 379.15 C426.67 382.77,423.45 387.18,419.54 390.03" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M418.94 391.01 C422.74 391.59,425.49 391.97,434.63 392.47 M420.36 390.54 C425.57 391.18,431.09 392.50,434.28 392.77" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M380.86 460.96 C379.68 469.16,379.44 474.27,379.21 500.39 M379.35 460.26 C380.44 469.67,380.09 477.95,379.42 500.75" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M369.73 485.63 C372.57 488.83,374.12 491.75,379.86 499.66 M371.44 485.06 C374.70 490.17,378.22 496.15,379.44 500.03" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M378.73 501.22 C381.51 498.17,383.07 494.84,388.86 484.07 M380.44 500.65 C383.41 494.64,386.92 489.50,388.44 484.44" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<path d="M238.40 499.42 L521.05 501.81 L520.25 558.23 L240.93 561.53" stroke="none" fill="#1a4d2e"/>
-<path d="M240.66 500.74 C295.76 500.89,351.57 498.67,519.39 500.30 M239.50 500.20 C302.32 500.62,364.02 500.19,519.56 500.58 M521.54 498.25 C521.10 514.28,521.79 524.46,521.39 559.13 M520.30 499.20 C520.24 515.24,519.27 532.23,520.41 560.35 M520.81 559.84 C460.40 559.85,397.93 559.44,241.41 559.69 M519.28 559.89 C414.68 560.20,310.10 559.99,240.72 560.03 M239.28 559.72 C241.26 541.26,239.53 525.76,240.59 498.79 M240.22 561.00 C239.22 537.52,239.73 515.45,240.44 500.99" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g transform="translate(20.00,30.00)">
-<text x="100.00" y="589.00" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#a0a0a0" text-anchor="start"><tspan x="100.00" dy="0">Frameworks are cognitive equipment AND operational skills.</tspan></text>
-</g>
+
+<!-- Title -->
+<text x="400" y="35" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#e8a120" text-anchor="middle" font-weight="bold">HOLOGRAPHIC WORK</text>
+<text x="400" y="60" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#a0a0a0" text-anchor="middle">Every piece contains the whole. Everything is the same thing at different levels of compilation.</text>
+
+<!-- Human Context Zone -->
+<rect x="30" y="90" width="320" height="240" rx="12" fill="#1e3a5f" fill-opacity="0.3" stroke="#4a9eed" stroke-width="2"/>
+<text x="50" y="115" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4a9eed" font-weight="bold">HUMAN CONTEXT</text>
+
+<rect x="50" y="130" width="280" height="45" rx="8" fill="#1e3a5f" stroke="#4a9eed" stroke-width="1"/>
+<text x="190" y="158" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">4 Billion Token Life Context</text>
+
+<rect x="50" y="185" width="130" height="40" rx="8" fill="#1e3a5f" stroke="#4a9eed" stroke-width="1"/>
+<text x="115" y="210" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">Taste</text>
+
+<rect x="190" y="185" width="140" height="40" rx="8" fill="#1e3a5f" stroke="#4a9eed" stroke-width="1"/>
+<text x="260" y="210" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">Judgment</text>
+
+<rect x="50" y="235" width="280" height="45" rx="8" fill="#1e3a5f" stroke="#4a9eed" stroke-width="1"/>
+<text x="190" y="263" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">Pattern Recognition</text>
+
+<rect x="50" y="290" width="280" height="30" rx="8" fill="#1e3a5f" stroke="#4a9eed" stroke-width="1"/>
+<text x="190" y="310" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#4a9eed" text-anchor="middle">Combinatorial Prediction</text>
+
+<!-- AI Context Zone -->
+<rect x="450" y="90" width="320" height="240" rx="12" fill="#2d1b69" fill-opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
+<text x="470" y="115" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#8b5cf6" font-weight="bold">AI CONTEXT</text>
+
+<rect x="470" y="130" width="280" height="45" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1"/>
+<text x="610" y="158" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">200K Token Window</text>
+
+<rect x="470" y="185" width="130" height="40" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1"/>
+<text x="535" y="210" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">Speed</text>
+
+<rect x="610" y="185" width="140" height="40" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1"/>
+<text x="680" y="210" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">Consistency</text>
+
+<rect x="470" y="235" width="280" height="45" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1"/>
+<text x="610" y="263" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#e5e5e5" text-anchor="middle">24/7 Operation</text>
+
+<rect x="470" y="290" width="280" height="30" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1"/>
+<text x="610" y="310" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#8b5cf6" text-anchor="middle">Never Forgets</text>
+
+<!-- Arrows to Compose -->
+<line x1="200" y1="330" x2="360" y2="390" stroke="#4a9eed" stroke-width="2" marker-end="url(#arrowBlue)"/>
+<line x1="600" y1="330" x2="440" y2="390" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowPurple)"/>
+
+<!-- Arrow markers -->
+<defs>
+  <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4a9eed"/></marker>
+  <marker id="arrowPurple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#8b5cf6"/></marker>
+  <marker id="arrowAmber" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b"/></marker>
+</defs>
+
+<!-- Compose Diamond -->
+<polygon points="400,370 460,410 400,450 340,410" fill="#5c3d1a" stroke="#f59e0b" stroke-width="2"/>
+<text x="400" y="415" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#f59e0b" text-anchor="middle" font-weight="bold">COMPOSE</text>
+
+<!-- Arrow down -->
+<line x1="400" y1="450" x2="400" y2="490" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrowAmber)"/>
+
+<!-- Output -->
+<rect x="260" y="495" width="280" height="55" rx="12" fill="#1a4d2e" stroke="#22c55e" stroke-width="2"/>
+<text x="400" y="528" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#22c55e" text-anchor="middle" font-weight="bold">Compound Intelligence</text>
+
+<!-- Bottom text -->
+<text x="400" y="585" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#a0a0a0" text-anchor="middle" font-style="italic">Frameworks are cognitive equipment AND operational skills.</text>
+<text x="400" y="605" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666" text-anchor="middle">The same thing at different levels of compilation.</text>
 </svg>
