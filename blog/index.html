@@ -1,216 +1,181 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');
-  #isaac-site *, #isaac-site *::before, #isaac-site *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  #isaac-site {
-    --black: #0a0a0a; --off-white: #f0ede6; --amber: #e8a120; --grey: #2a2a2a; --grey-light: #555;
-    --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif;
-    background: var(--black); color: var(--off-white); font-family: var(--mono); font-weight: 300; overflow-x: hidden; width: 100%;
-  }
-  #isaac-site .site-header { width: 100%; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(232,161,32,0.15); background: var(--black); }
-  #isaac-site .logo { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: var(--amber); text-transform: uppercase; text-decoration: none; }
-  #isaac-site .nav-cta { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); background: var(--amber); padding: 0.5rem 1.2rem; text-decoration: none; }
-  #isaac-site .blog-list { padding: 5rem; max-width: 800px; margin: 0 auto; }
-  #isaac-site .blog-list h1 { font-family: var(--display); font-weight: 800; font-size: 2.5rem; margin-bottom: 1rem; color: var(--off-white); }
-  #isaac-site .blog-list .subtitle { font-size: 0.9rem; color: var(--grey-light); font-style: italic; margin-bottom: 4rem; }
-  #isaac-site .blog-card { border-top: 1px solid var(--grey); padding: 2rem 0; }
-  #isaac-site .blog-card .date { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.8rem; }
-  #isaac-site .blog-card h2 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; margin-bottom: 0.8rem; }
-  #isaac-site .blog-card h2 a { color: var(--off-white); text-decoration: none; }
-  #isaac-site .blog-card h2 a:hover { color: var(--amber); }
-  #isaac-site .blog-card p { font-size: 0.85rem; line-height: 1.7; color: var(--grey-light); margin-bottom: 1rem; }
-  #isaac-site .blog-card .read-more { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--amber); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--amber); padding-bottom: 2px; }
-  #isaac-site .site-footer { padding: 2rem 5rem; border-top: 1px solid var(--grey); display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--grey-light); }
-  @media (max-width: 900px) { #isaac-site .blog-list { padding: 3rem 2rem; } #isaac-site .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; } #isaac-site .site-header { padding: 1rem 1.5rem; } }
-</style>
-
+<link rel="stylesheet" href="blog-style.css">
 <div id="isaac-site">
   <div class="site-header">
     <a href="../" class="logo">Isaac — TWI</a>
-    <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    <div class="nav-links">
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
   </div>
 
-  <div class="blog-list">
+  <article>
+    <div class="post-tag">Blog</div>
     <h1>Writing</h1>
-    <p class="subtitle">Engineering disciplines, agent architecture, and what actually works.</p>
+    <p class="post-subtitle">Engineering disciplines, agent architecture, and what actually works.</p>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="ok-stable-signal.html">OK Stable Signal: Stop Building on Hope</a></h2>
-      <p>Feeling ready is not being ready. The difference between towers that stand and towers that collapse is a verification protocol most people skip. Four properties. One discipline. Zero collapse.</p>
-      <a href="ok-stable-signal.html" class="read-more">Read &rarr;</a>
-    </div>
+    <div style="display:grid;gap:1.2rem;margin-top:2rem;">
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="flow.html">Flow: Why Effortless Execution Is an Engineering Problem</a></h2>
-      <p>Flow isn't a talent. It's what happens when five structural conditions are met. Miss any one and you grind. Meet all five and hours vanish into progress. Here's the checklist.</p>
-      <a href="flow.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="holographic-work.html" class="blog-card">
+        <h3>Holographic Work</h3>
+        <p>Every piece contains the whole. One conversation through compound intelligence infrastructure produces skills, blogs, code, content, knowledge, business, autobiography, and rules — automatically.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="externalization.html">Externalization: Your Brain Is Lossy Storage</a></h2>
-      <p>Your brain holds 4 things at once. Your systems can hold everything. The insight that died in your head is gone forever. Three rules for making your external systems an extension of your mind, not a backup of it.</p>
-      <a href="externalization.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="ok-stable-signal.html" class="blog-card">
+        <h3>OK Stable Signal: Stop Building on Hope</h3>
+        <p>Feeling ready is not being ready. The difference between towers that stand and towers that collapse is a verification protocol most people skip. Four properties. One discipline. Zero collapse.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="crowning.html">Crowning: The Moment Your System Comes Alive</a></h2>
-      <p>You build layer after layer. Then something shifts — the structure stops being something you maintain and starts being something that maintains you. That shift is engineering, not magic.</p>
-      <a href="crowning.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="flow.html" class="blog-card">
+        <h3>Flow: Why Effortless Execution Is an Engineering Problem</h3>
+        <p>Flow isn't a talent. It's what happens when five structural conditions are met. Miss any one and you grind. Meet all five and hours vanish into progress.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="calibration.html">Calibration: Why Your Best Judgment Keeps Betraying You</a></h2>
-      <p>You trust your intuition. But have you ever checked whether it's actually right? Fitting clicks are right 75% of the time. Desire clicks are right 20%. Calibration tells you which is which.</p>
-      <a href="calibration.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="externalization.html" class="blog-card">
+        <h3>Externalization: Your Brain Is Lossy Storage</h3>
+        <p>Your brain holds 4 things at once. Your systems can hold everything. Three rules for making your external systems an extension of your mind, not a backup of it.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="composition.html">Composition: Working Pieces Don't Make Working Wholes</a></h2>
-      <p>Every piece works perfectly in isolation. Plug them together and disaster. Five requirements for composition that actually holds — in code, teams, and AI deployments.</p>
-      <a href="composition.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="crowning.html" class="blog-card">
+        <h3>Crowning: The Moment Your System Comes Alive</h3>
+        <p>You build layer after layer. Then something shifts — the structure stops being something you maintain and starts being something that maintains you.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="blanket.html">The Blanket: Your System Needs a Membrane, Not a Wall</a></h2>
-      <p>Walls starve. No boundaries overwhelm. The third option — a selective membrane that filters, selects, and learns — is how every living system survives contact with the outside world.</p>
-      <a href="blanket.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="calibration.html" class="blog-card">
+        <h3>Calibration: Why Your Best Judgment Keeps Betraying You</h3>
+        <p>You trust your intuition. But have you ever checked whether it's actually right? Fitting clicks are right 75% of the time. Desire clicks are right 20%.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="seam-repair.html">Seam Repair: What to Do When Alignment Breaks</a></h2>
-      <p>You can't prevent every break in coordination. But you can recover from any of them — if you have a seven-step protocol instead of a panic response.</p>
-      <a href="seam-repair.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="composition.html" class="blog-card">
+        <h3>Composition: Working Pieces Don't Make Working Wholes</h3>
+        <p>Every piece works perfectly in isolation. Plug them together and disaster. Five requirements for composition that actually holds.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="mission-control.html">Mission Control: Three Questions That Kill Drift</a></h2>
-      <p>You don't lose alignment in one dramatic moment. You lose it gradually, while being extremely busy doing the wrong thing. Three questions, asked every 10 minutes, fix it permanently.</p>
-      <a href="mission-control.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="blanket.html" class="blog-card">
+        <h3>The Blanket: Your System Needs a Membrane, Not a Wall</h3>
+        <p>Walls starve. No boundaries overwhelm. The third option — a selective membrane that filters, selects, and learns.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="helming.html">Helming: Why You Can't See What to Build Next</a></h2>
-      <p>You're not stuck because you're not smart enough. You're stuck because you haven't finished the layer that gives you vision of the next one. Completion creates sight.</p>
-      <a href="helming.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="seam-repair.html" class="blog-card">
+        <h3>Seam Repair: What to Do When Alignment Breaks</h3>
+        <p>You can't prevent every break in coordination. But you can recover from any of them — if you have a seven-step protocol instead of a panic response.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="shell.html">SHELL: Turn Any Toolkit Into a Game Your Agent Can Play</a></h2>
-      <p>Most AI agents fail not because they lack tools, but because nobody defined the rules of the game. SHELL is the missing compilation step between capabilities and competence.</p>
-      <a href="shell.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="mission-control.html" class="blog-card">
+        <h3>Mission Control: Three Questions That Kill Drift</h3>
+        <p>You don't lose alignment in one dramatic moment. You lose it gradually, while being extremely busy doing the wrong thing.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="interaction-loop.html">Why Your Systems Break When They Talk to Each Other</a></h2>
-      <p>The capability was there. The protocol wasn't. The seven-element interaction loop that turns fragile handoffs into bulletproof coordination — in AI agents, teams, and everything between.</p>
-      <a href="interaction-loop.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="helming.html" class="blog-card">
+        <h3>Helming: Why You Can't See What to Build Next</h3>
+        <p>You're not stuck because you're not smart enough. You're stuck because you haven't finished the layer that gives you vision of the next one.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="meta-cognitive-awareness.html">The Skill That Makes Every Other Skill Work</a></h2>
-      <p>Meta-cognitive awareness isn't a nice-to-have. It's the prerequisite your entire operating system depends on. Without it, your framework collection is a library nobody reads.</p>
-      <a href="meta-cognitive-awareness.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="shell.html" class="blog-card">
+        <h3>SHELL: Turn Any Toolkit Into a Game Your Agent Can Play</h3>
+        <p>Most AI agents fail not because they lack tools, but because nobody defined the rules of the game.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="hiel.html">HIEL: Your AI Is a Heat Engine — Stop Treating It Like a Calculator</a></h2>
-      <p>The randomness in AI outputs is not a bug. It is energy. Heat-Informed Energy Ligation is the doctrine for harnessing stochasticity instead of fighting it.</p>
-      <a href="hiel.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="interaction-loop.html" class="blog-card">
+        <h3>Why Your Systems Break When They Talk to Each Other</h3>
+        <p>The capability was there. The protocol wasn't. The seven-element interaction loop that turns fragile handoffs into bulletproof coordination.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="reach.html">What Your "Distraction" Is Actually Doing</a></h2>
-      <p>The pre-conscious pattern assembly that looks like procrastination is actually your brain collecting analogies. Here's how to catch the Reach and turn it into frameworks that didn't exist before.</p>
-      <a href="reach.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="meta-cognitive-awareness.html" class="blog-card">
+        <h3>The Skill That Makes Every Other Skill Work</h3>
+        <p>Meta-cognitive awareness isn't a nice-to-have. It's the prerequisite your entire operating system depends on.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="allegorization-compiler.html">The Allegorization Compiler</a></h2>
-      <p>How to forge the framework you need when nobody has invented it yet — using analogies from completely unrelated domains and an LLM as a pattern-collapse engine.</p>
-      <a href="allegorization-compiler.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="hiel.html" class="blog-card">
+        <h3>HIEL: Your AI Is a Heat Engine</h3>
+        <p>The randomness in AI outputs is not a bug. It is energy. Heat-Informed Energy Ligation is the doctrine for harnessing stochasticity.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="progressive-disclosure-harness.html">The Progressive Disclosure Harness</a></h2>
-      <p>AI agents get worse the more tools you give them. The fix is embarrassingly simple: show the agent only what it needs for the current step, and make the tools refuse invalid transitions. From 3-hour babysitting sessions to 15-minute autonomous runs.</p>
-      <a href="progressive-disclosure-harness.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="reach.html" class="blog-card">
+        <h3>What Your "Distraction" Is Actually Doing</h3>
+        <p>The pre-conscious pattern assembly that looks like procrastination is actually your brain collecting analogies.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="thermal-dynamics.html">Cognitive Thermal Dynamics</a></h2>
-      <p>Your brain overheats from unprocessed complexity the same way a CPU overheats from unprocessed instructions. The YouTube tab isn't procrastination — it's thermoregulation. Here's the framework for reading your mental temperature.</p>
-      <a href="thermal-dynamics.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="allegorization-compiler.html" class="blog-card">
+        <h3>The Allegorization Compiler</h3>
+        <p>How to forge the framework you need when nobody has invented it yet — using analogies from completely unrelated domains.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="soseeh.html">SOSEEH: The 2-Minute Complexity Kill</a></h2>
-      <p>When your brain white-screens on a complex system, four questions decompose any blob into solvable pieces. Pilot, Vehicle, Mission Control, Interaction Loops. The blank slot is the bug.</p>
-      <a href="soseeh.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="progressive-disclosure-harness.html" class="blog-card">
+        <h3>The Progressive Disclosure Harness</h3>
+        <p>AI agents get worse the more tools you give them. The fix: show the agent only what it needs for the current step.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="towering.html">Towering: Why Your Complexity Keeps Collapsing</a></h2>
-      <p>You don't have an intelligence problem. You have a foundation problem. Buddhist practitioners, Everest skiers, and U2 pilots all solved it the same way — and your AI systems need the same discipline.</p>
-      <a href="towering.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="thermal-dynamics.html" class="blog-card">
+        <h3>Cognitive Thermal Dynamics</h3>
+        <p>Your brain overheats from unprocessed complexity the same way a CPU overheats from unprocessed instructions.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="halo.html">HALO: Why Your AI Collaboration Keeps Falling Apart</a></h2>
-      <p>The problem is not the AI. It is the invisible seam between your context and the machine's context — and nobody is maintaining it. HALO-SHIELD is the operational doctrine for staying in sanctuary.</p>
-      <a href="halo.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="soseeh.html" class="blog-card">
+        <h3>SOSEEH: The 2-Minute Complexity Kill</h3>
+        <p>Four questions decompose any blob into solvable pieces. Pilot, Vehicle, Mission Control, Interaction Loops. The blank slot is the bug.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">May 2026</div>
-      <h2><a href="the-system-audit.html">The 30-Day System Audit</a></h2>
-      <p>The right SOP to automate first is never the most painful one. It's the most leaky one — the one that bleeds the most time and attention without producing compounding value. Here's how to find it.</p>
-      <a href="the-system-audit.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="towering.html" class="blog-card">
+        <h3>Towering: Why Your Complexity Keeps Collapsing</h3>
+        <p>You don't have an intelligence problem. You have a foundation problem. The same discipline that works for Everest skiers works for AI systems.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">April 2026</div>
-      <h2><a href="seven-disciplines.html">The 7 Engineering Disciplines for AI Agents</a></h2>
-      <p>Prompt Engineering, Context Engineering, Tool Engineering, and Harness Engineering are already common. The next three — Admissibility, Concentration, and Emergence — are where serious agent systems live.</p>
-      <a href="seven-disciplines.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="halo.html" class="blog-card">
+        <h3>HALO: Why Your AI Collaboration Keeps Falling Apart</h3>
+        <p>The problem is not the AI. It is the invisible seam between your context and the machine's context — and nobody is maintaining it.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">April 2026</div>
-      <h2><a href="admissibility.html">Admissibility Engineering: The Missing Layer</a></h2>
-      <p>More context is not the same as admissible context. If the hidden edge is not represented anywhere, retrieval cannot retrieve it. This is why AI-coded repos drift.</p>
-      <a href="admissibility.html" class="read-more">Read &rarr;</a>
-    </div>
+      <a href="the-system-audit.html" class="blog-card">
+        <h3>The 30-Day System Audit</h3>
+        <p>The right SOP to automate first is never the most painful one. It's the most leaky one.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
 
-    <div class="blog-card">
-      <div class="date">April 2026</div>
-      <h2><a href="docmagic-stack.html">Where DocMagic Sits in the Stack</a></h2>
-      <p>DocMagic is an Admissibility Engineering tool, a Concentration Engineering support surface, and an Emergence Engineering repair loop. Here's why that matters.</p>
-      <a href="docmagic-stack.html" class="read-more">Read &rarr;</a>
+      <a href="seven-disciplines.html" class="blog-card">
+        <h3>The 7 Engineering Disciplines for AI Agents</h3>
+        <p>Prompt, Context, Tool, and Harness Engineering are common. The next three — Admissibility, Concentration, and Emergence — are where serious agent systems live.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
+
+      <a href="admissibility.html" class="blog-card">
+        <h3>Admissibility Engineering: The Missing Layer</h3>
+        <p>More context is not the same as admissible context. If the hidden edge is not represented anywhere, retrieval cannot retrieve it.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
+
+      <a href="docmagic-stack.html" class="blog-card">
+        <h3>Where DocMagic Sits in the Stack</h3>
+        <p>DocMagic is an Admissibility Engineering tool, a Concentration Engineering support surface, and an Emergence Engineering repair loop.</p>
+        <span class="read-link">Read &rarr;</span>
+      </a>
+
     </div>
-  </div>
+  </article>
 
   <div class="site-footer">
-    <span>&copy; 2026 Isaac — TWI Consulting</span>
-    <span><a href="../" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+    <span>&copy; 2026 Isaac — TWI</span>
+    <span><a href="../" style="color:var(--mercury-blue);text-decoration:none;">&larr; Home</a></span>
   </div>
 </div>
