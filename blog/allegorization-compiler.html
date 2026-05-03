@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>The Allegorization Compiler</h1>
+    <p class="post-subtitle">How to forge the framework you need when nobody has invented it yet — using analogies from completely unrelated domains and an LLM as a pattern-collapse engine.</p>
+
+    <h2>The Problem That Has No Name</h2>
+    <p>Ok so here's the situation. You're drowning in complexity. Something is wrong with how your system works — your team, your architecture, your business — and you can <em>feel</em> it, but you can't name it.</p>
+    <p>You go to an AI for help. You describe the problem. The AI gives you generic advice because you don't have the vocabulary to explain what's actually broken. "It's drifting" gets you "have you tried better documentation?" Thanks.</p>
+    <p>You search for frameworks. You read blog posts. Nothing fits. The thing you need doesn't have a name yet. Nobody has written the framework for your specific failure pattern.</p>
+    <blockquote>You can't discuss what you can't name. And you can't name what hasn't been collapsed into words yet.</blockquote>
+    <p>This is the <strong>unlabeled-thing problem</strong>. Your brain is doing something sophisticated — pattern-matching across situations, reaching for structure — but it's pre-linguistic. The insight exists below the surface. It hasn't been compiled into vocabulary yet.</p>
+    <p>Every executive has been here. The board deck that doesn't land because the real issue has no industry term. The architecture review where everyone agrees something is off but nobody can point to what. The strategy session that produces generic recommendations because the specific structural failure has no name.</p>
+
+    <hr>
+
+    <h2>The Discovery</h2>
+    <p>I was building an AI agent system. The architecture kept losing coherence — the AI would drift from its mission, start doing things I didn't ask for, and slowly become useless. I couldn't talk to the AI about this problem because "it's drifting" produced nothing useful.</p>
+    <p>Then I noticed something about my own behavior. When I was stuck, I was unconsciously seeking catharsis in extreme environment content — Everest expeditions, U2 reconnaissance flights, wingsuit jumps. I was binging this stuff for hours. Not because it was relaxing. Because it <em>felt like</em> my situation.</p>
+    <p>That's when I caught myself: <strong>my brain was already doing the work.</strong> It was collecting analogies from completely unrelated domains. Not consciously thinking "this is like that" — just scanning structures abstractly, sorting the climber from the equipment from the coordinator.</p>
+    <p>Pre-linguistic pattern-matching. My mind was reaching for something it couldn't yet name.</p>
+    <p>The insight: if my brain is already triangulating across domains, maybe the LLM can collapse the pattern into words for me.</p>
+
+    <hr>
+
+    <h2>How It Works</h2>
+    <p>I fed Claude three analogies: "What structure do Everest expeditions, fighter jet missions, and wingsuit jumps share?"</p>
+    <p>The AI triangulated instantly. From the transcript:</p>
+    <blockquote>"Your brain's zooming in on system-of-systems, not just 'wow, vibes.' One human doing something 'simple' on top of a ridiculous amount of invisible infrastructure."</blockquote>
+    <p>It found the universal: every extreme environment has a <strong>Pilot</strong> (moment-to-moment navigation), a <strong>Vehicle</strong> (execution layers), <strong>Mission Control</strong> (coordination keeping alignment), and <strong>Interaction Loops</strong> (how components communicate).</p>
+    <p>I knew immediately it was right. Not because I could prove it — because it <em>clicked</em>. The unlabeled thing I'd been reaching for suddenly had names.</p>
+    <p>That framework became SOSEEH — reusable cognitive equipment for decomposing any coordination problem in about two minutes. Fill in the four slots. When one is blank, you've found the bug.</p>
+    <p>The first thing I checked: "Where's my mission control?"</p>
+    <p>Answer: I didn't have one. Nothing in my architecture periodically checked whether the AI was still on mission. That's why drift was inevitable. I fixed the structure. Drift stopped.</p>
+
+    <hr>
+
+    <h2>The Method</h2>
+    <p>Here's the repeatable process — what I now call the Allegorization Compiler:</p>
+
+    <h3>1. Notice the heat</h3>
+    <p>Complexity anxiety has a feeling. White-screening, tab-switching, the urge to watch YouTube instead of working. That feeling is not procrastination. It's your brain signaling that the problem has no vocabulary yet.</p>
+
+    <h3>2. Catch the reach</h3>
+    <p>Notice what content you're reaching for as catharsis. What domains <em>feel like</em> your situation? The discomfort is data. Ask: "What am I reaching for?"</p>
+
+    <h3>3. Stack analogies from different domains</h3>
+    <p>Collect three or more examples from <strong>completely unrelated fields</strong> that share the failure pattern you're feeling. This is the critical step — and it's counterintuitive.</p>
+    <p>If you're debugging a software problem and you pick three software examples, the LLM finds software patterns. You already know those. That's why the first attempt failed:</p>
+    <pre>BAD STACK (same domain):
+  Chatbots that forget context
+  AI that hallucinates
+  Language models that lose coherence
+  → Output: "attention/memory limitations"
+  → Useless. Already knew that.
+
+GOOD STACK (domain variance):
+  Everest expedition losing radio contact
+  Orchestra that can't hear the conductor
+  Assembly line with downstream QA failures
+  → Output: "coordination layer that keeps components aligned"
+  → Universal. Became "mission control."</pre>
+    <p>Domain variance forces the LLM to find what's <em>actually</em> shared, not what's domain-specific. Physical systems, coordination systems, temporal systems — the discomfort of reaching outside your field is the point.</p>
+
+    <h3>4. Feed to LLM and triangulate</h3>
+    <p>The prompt is simple: "What structure do [X], [Y], [Z] share?"</p>
+    <p>The AI has seen patterns across all domains. You're using it as a pattern-collapse engine — something that can find the universal bones that appear across wildly different situations.</p>
+
+    <h3>5. Validate by click, not proof</h3>
+    <p>When the output lands, you know. Not because you can prove it's correct — because the unlabeled thing suddenly has a name and you recognize it. If it doesn't click, your stack was too narrow. Add more domain variance and try again.</p>
+
+    <h3>6. Name and equip</h3>
+    <p>The universal becomes vocabulary. You can now discuss what you couldn't name before. The framework becomes <strong>equipment</strong> — a reusable cognitive tool you can apply in two minutes to any problem of that type.</p>
+
+    <hr>
+
+    <h2>Why This Is Not Just "Prompting"</h2>
+    <p>Ok so the natural objection: "You're just asking the AI a clever question."</p>
+    <p>No. Here's what's actually happening:</p>
+    <ol>
+      <li>Your brain provides analogical isomorphisms — structural correspondences it detected pre-linguistically</li>
+      <li>The AI collapses them into named structure</li>
+      <li>That structure becomes a shared metalanguage between you and the AI</li>
+      <li>Now both of you speak the same compressed language</li>
+      <li>Every future interaction is automatically shaped by it</li>
+    </ol>
+    <p>The framework isn't a prompt trick. It's a <strong>semantic attractor</strong> — a piece of context that reshapes how the AI processes everything that follows. Paste the Allegorization Compiler document into a fresh Claude context and it immediately understands what "reaching," "stacking," and "triangulation" mean without being told. The framework trains the AI's attention by being in context.</p>
+    <blockquote>"The trick here is this framework is an exact allegory that is never getting fully collapsed. You never think about instancing this framework — the background of knowing the info literally fixes the way you handle yourself with me."</blockquote>
+    <p>This is what separates it from prompt engineering. You're not writing instructions. You're installing attractors in meaning-space. The AI doesn't follow the framework — it <em>becomes conditioned by</em> the framework. And so do you.</p>
+
+    <hr>
+
+    <h2>What It Produces</h2>
+    <p>The Allegorization Compiler forges <strong>equipment</strong> — reusable cognitive filter sets you can apply to problems of a specific type. SOSEEH is one example. But you can forge equipment for:</p>
+    <ul>
+      <li><strong>Your specific failure patterns.</strong> The thing that keeps breaking in your business has a structure. Three analogies from different domains will surface it.</li>
+      <li><strong>Your specific coordination problems.</strong> The reason your team keeps misaligning has a universal shape. You just haven't named it yet.</li>
+      <li><strong>Your specific strategic gaps.</strong> The thing your competitors don't understand about your market has structural invariants. Name them and they become weapons.</li>
+    </ul>
+    <p>The payoff is asymmetric: one AC run produces equipment you use forever. Two minutes per application, infinite applications.</p>
+
+    <hr>
+
+    <h2>The Executive Version</h2>
+    <p>You don't need to understand LLMs to use this. Here's the stripped-down version:</p>
+    <ol>
+      <li>You're stuck on a problem you can feel but not name.</li>
+      <li>Think of three situations from completely different fields that <em>feel like</em> your situation. A mountain expedition, an orchestra, a factory floor — anything that resonates structurally.</li>
+      <li>Ask an AI: "What structure do these three things share?"</li>
+      <li>The AI will find the universal. It will name the parts you couldn't name.</li>
+      <li>Map those parts back to your situation. The blank slot is the bug.</li>
+      <li>Fix the blank slot. Problem named, problem solved.</li>
+    </ol>
+    <p>You just forged a framework that didn't exist before. Nobody had to invent it for you. You compiled it from your own pattern-matching, using the AI as the compiler.</p>
+
+    <hr>
+
+    <h2>Why This Matters Now</h2>
+    <p>Every business is about to face complexity that no existing framework covers. The AI transition isn't like digitization or cloud migration — there are no established playbooks because the technology changes what's possible faster than consultants can write frameworks.</p>
+    <p>The companies that win won't be the ones who hired the best consultant with the best existing framework. They'll be the ones who can <strong>forge their own equipment</strong> — name their own problems, build their own vocabulary, create their own compressed language for talking to AI about their specific situation.</p>
+    <p>That's what the Allegorization Compiler does. It's a framework for making frameworks. A forge for cognitive equipment. The meta-tool that produces the tools you need.</p>
+    <p>The alternative is waiting for someone else to name your problem for you. That worked when change was slow. It doesn't work anymore.</p>
+
+    <div class="post-nav">
+      <a href="./">← All posts</a>
+      <a href="../frameworks.html">Explore the Frameworks →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>

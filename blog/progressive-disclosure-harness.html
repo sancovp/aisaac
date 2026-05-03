@@ -1,0 +1,173 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>The Progressive Disclosure Harness</h1>
+    <p class="post-subtitle">Why your AI agent drowns in its own tools — and the 5-line fix that makes complex workflows actually work.</p>
+
+    <h2>The Problem Nobody Talks About</h2>
+    <p>Ok so here's the thing about AI agents in production: they get <em>worse</em> the more capable you make them.</p>
+    <p>Not a little worse. Catastrophically worse. You give the agent 20 integrations and 300 available tools, and it starts hallucinating tools that don't exist. It forgets the tool it called thirty seconds ago. Three steps into a ten-step workflow, it stops and asks "what should I do next?" — like a surgeon putting down the scalpel mid-operation to ask the nurse what organ they're working on.</p>
+    <p>This is the context window problem, and almost nobody building AI agents is solving it correctly. They're solving it by making the context window bigger, or by fine-tuning the model harder, or by writing longer system prompts with more instructions.</p>
+    <p>All of which makes the problem worse.</p>
+
+    <blockquote>Every additional capability you add to an AI agent makes <strong>all</strong> of its capabilities work worse. The traditional approach of "give the agent everything it might need" fundamentally does not scale.</blockquote>
+
+    <hr>
+
+    <h2>The Insight: What If the Agent Didn't Need to See?</h2>
+    <p>The breakthrough is embarrassingly simple once you see it: <strong>what if the agent only saw what it needed for the current step?</strong></p>
+    <p>Not all 300 tools. Not a 4,000-token system prompt describing every possible workflow. Just the one instruction it needs right now, including the literal tool call string — and nothing else.</p>
+    <p>Think about how a GPS works. It doesn't show you the entire road network of the country. It shows you the next turn. You don't need to see the whole route. You need to see the next instruction, execute it, and then get the next one.</p>
+    <p>That's the Progressive Disclosure Harness.</p>
+
+    <hr>
+
+    <h2>Two Pieces. That's It.</h2>
+    <p>The harness has exactly two components, and they solve different failure modes:</p>
+
+    <h3>1. The Instruction Servo</h3>
+    <p>A JSON file with waypoints. Each waypoint contains one step of the workflow — the instruction the agent reads, including the exact tool call it needs to make. The agent reads step 1, executes it, asks for step 2, executes that, and so on.</p>
+    <p>We call it a "servo" because it positions the agent — like a servo motor that holds a precise angle. The agent doesn't need to know the whole workflow. It doesn't need to plan. It reads its current instruction, does the thing, and asks for the next one.</p>
+    <p>This solves: "what should I do next?" and "I forgot what tool to call."</p>
+
+    <h3>2. The Enforcement Layer</h3>
+    <p>Instructions alone aren't enough. The agent can still try to skip steps, call tools in the wrong order, or jump ahead. So the tools themselves contain state machine logic that <em>refuses invalid transitions</em>.</p>
+    <p>When the agent tries to do step 3 before step 2 is complete, the tool doesn't throw an error. It returns a message like:</p>
+    <pre>BLOCKED: Cannot add concept to pair 5.
+Current state: no definition assigned.
+Required: add definition first.
+→ Call: tag_pair(5, 'definition')</pre>
+    <p>The agent reads "BLOCKED," reads the corrective instruction, follows it, and gets back on track. No human intervention. No hand-holding. The tools literally tell the agent how to fix the problem.</p>
+    <p>This solves: "the agent skipped three steps and now everything is broken."</p>
+
+    <hr>
+
+    <h2>The Numbers That Changed My Mind</h2>
+    <p>I didn't build this because it was theoretically elegant. I built it because I was losing my damn mind babysitting an AI through the same workflow for the tenth time.</p>
+
+    <p><strong>Before any harness:</strong></p>
+    <ul>
+      <li>3 hours per conversation to complete one workflow</li>
+      <li>50% of attempts failed and had to restart from scratch</li>
+      <li>Agent asked "what should I do next?" constantly</li>
+      <li>I had to sit there the entire time, correcting every other step</li>
+    </ul>
+
+    <p><strong>After the first harness</strong> (one guard, one workflow file — built in 2 hours):</p>
+    <ul>
+      <li>45 minutes per conversation</li>
+      <li>90% success rate</li>
+      <li>Agent followed steps without asking for clarification</li>
+      <li>I could start the workflow and come back later</li>
+    </ul>
+
+    <p><strong>After the full system</strong> (4 months of iteration):</p>
+    <ul>
+      <li>15 minutes to process multiple items that used to take all morning</li>
+      <li>98% success rate — the 2% failures were content issues, not agent confusion</li>
+      <li>Agent perfectly chains through an 8-phase pipeline without a single "what next?"</li>
+      <li>Context usage dropped from 4,000 tokens to 350</li>
+    </ul>
+
+    <p>Total time reclaimed: roughly 18 hours per week. That's a part-time job I got back.</p>
+
+    <hr>
+
+    <h2>The Architecture (Four Layers, Zero Magic)</h2>
+    <p>The full system has four layers, each one built only when the previous level broke:</p>
+
+    <p><strong>Layer 0: Skill Trigger</strong> — about 50 tokens. A tiny file that says "when doing X, call get_instructions()." This is the only thing loaded into the agent's context at rest. 50 tokens instead of 2,000.</p>
+
+    <p><strong>Layer 1: get_instructions()</strong> — a tool that returns orientation. "Here are the available workflows. Here's how to start." The agent discovers what's available on demand, not preloaded.</p>
+
+    <p><strong>Layer 2: Flight Config</strong> — the step-by-step waypoints. Each one contains the exact instruction for that step, including literal tool call syntax. The agent only sees one step at a time.</p>
+
+    <p><strong>Layer 3: Meta-tool</strong> — instead of loading 300 tools from 20 integrations into context, you load 3 functions: discover, get details, execute. The agent discovers tools on demand through one wrapper. 3 tools in context instead of 300.</p>
+
+    <p>Plus the enforcement layer — state machine guards baked into every tool that matters.</p>
+
+    <blockquote>The result: hundreds of tools available, zero context explosion, perfect forward-chaining through complex workflows. Built with four files and some if-statements.</blockquote>
+
+    <hr>
+
+    <h2>Why This Matters For Your Business</h2>
+    <p>Most AI automation fails silently. The agent does 7 out of 10 steps correctly, gets confused on step 8, does something wrong, and nobody notices until the damage is downstream. The failure mode isn't spectacular — it's a slow bleed of errors that erodes trust until someone says "we tried AI, it doesn't work."</p>
+    <p>The harness changes the failure mode entirely. Instead of <em>wrong output</em>, you get <em>no output</em>. The agent hits a guard, gets BLOCKED, and either self-corrects or stops. You don't get garbage. You get a clean signal that something needs attention.</p>
+    <p>This is a fundamentally different reliability model. And it applies to any multi-step workflow where the steps have dependencies:</p>
+    <ul>
+      <li>Document processing pipelines that must tag before they classify</li>
+      <li>Onboarding flows that must verify before they provision</li>
+      <li>Content pipelines that must review before they publish</li>
+      <li>Data workflows that must validate before they transform</li>
+      <li>Any SOP where "do step 3 before step 2" would be a disaster</li>
+    </ul>
+
+    <hr>
+
+    <h2>Start Monday Morning</h2>
+    <p>You don't need the full architecture to start. You need 5 lines of code and 15 minutes.</p>
+
+    <p><strong>Step 1:</strong> Pick your messiest workflow — the one where the agent goes off-rails most often.</p>
+    <p><strong>Step 2:</strong> Find the step that, if skipped, breaks everything downstream.</p>
+    <p><strong>Step 3:</strong> Add one guard to that step's tool:</p>
+    <pre>def do_step_two(data):
+    if not state.get('step_one_complete'):
+        return 'BLOCKED: Run step_one() first.'
+    # ... actual logic
+    state['step_two_complete'] = True
+    return result</pre>
+    <p><strong>Step 4:</strong> Write the workflow steps in your system prompt:</p>
+    <pre>Step 1: Call step_one(input)
+Step 2: Call step_two(result)
+Step 3: Call step_three(result)</pre>
+    <p><strong>Step 5:</strong> Test it. Try to make the agent skip step 1. Watch the BLOCKED message fire. Watch the agent self-correct.</p>
+
+    <p>You now have a harness. The agent can't skip the step that matters. Expand from there — add more guards, externalize the steps to a file, add the meta-tool when context gets crowded again. Each piece gets built when the previous level breaks, not before.</p>
+
+    <blockquote>Rule of thumb: if you've corrected the AI the same way twice, you have a procedure. Harness it.</blockquote>
+
+    <hr>
+
+    <h2>The Deeper Pattern</h2>
+    <p>Here's what I realized building this over four months: harnesses don't create procedures. They <em>encode</em> procedures you already have.</p>
+    <p>Every time you correct an AI agent — "no, check the file first," "always validate before saving," "don't skip the tagging step" — you're expressing an implicit SOP. You have a procedure in your head. You just haven't written it down. The harness is the mechanism for writing it down in a way the agent can't ignore.</p>
+    <p>Which means the hardest part isn't the code. The hardest part is noticing the pattern: "I keep saying this same thing." Once you notice that, the 5-line guard writes itself.</p>
+    <p>And once you start noticing, you can't stop. Every repeated correction becomes a potential harness. Every "the agent always does this wrong" becomes a guard waiting to be written. The system compounds — each harness makes the next one easier to identify and build.</p>
+
+    <hr>
+
+    <h2>What's Next</h2>
+    <p>The Progressive Disclosure Harness is one of the frameworks in the <a href="../frameworks.html" style="color:var(--amber);">TWI Framework Library</a>. It sits at the intersection of Harness Engineering and Concentration Engineering — two of the <a href="seven-disciplines.html" style="color:var(--amber);">seven engineering disciplines</a> for building AI systems that actually compound.</p>
+    <p>If your business runs on multi-step workflows and you're tired of babysitting the AI through each one, there are two paths:</p>
+
+    <div style="margin: 2rem 0; padding: 2rem; border: 1px solid rgba(232,161,32,0.2); background: rgba(232,161,32,0.03);">
+      <h3 style="color: var(--amber); margin-bottom: 0.8rem;">Build It Yourself</h3>
+      <p style="margin-bottom: 0;">Start with the Monday Morning protocol above. 5 lines, 15 minutes. You'll know within a week if this pattern fits your workflows. The <a href="../frameworks.html" style="color:var(--amber);">framework documentation</a> has the full architecture, guard templates, and a multi-week roadmap.</p>
+    </div>
+
+    <div style="margin: 2rem 0; padding: 2rem; border: 1px solid rgba(232,161,32,0.2); background: rgba(232,161,32,0.03);">
+      <h3 style="color: var(--amber); margin-bottom: 0.8rem;">Get It Built</h3>
+      <p style="margin-bottom: 0;">I build these systems for businesses that want reliable AI workflows without the months of iteration. 30-day audit to identify which SOPs to harness first, then implementation that actually sticks. <a href="https://cal.com/aisaac/ai-agents-for-your-business" style="color:var(--amber);">Book a call</a> and tell me which workflow is driving you crazy.</p>
+    </div>
+
+    <div class="post-nav">
+      <a href="./">← All posts</a>
+      <a href="the-system-audit.html">The 30-Day System Audit →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>
