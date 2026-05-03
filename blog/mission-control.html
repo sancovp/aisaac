@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>Mission Control: Three Questions That Kill Drift</h1>
+    <p class="post-subtitle">You don't lose alignment in one dramatic moment. You lose it gradually, silently, while being extremely busy doing the wrong thing.</p>
+
+    <h2>The Drift Problem</h2>
+    <p>You start a work session with clear intentions. Build this feature. Ship this deliverable. Solve this problem. And for the first twenty minutes, you're locked in.</p>
+    <p>Then you notice a code smell. You refactor it. The refactor touches another file. You improve that too. Thirty minutes later you're deep in a rabbit hole that has nothing to do with the feature you sat down to build.</p>
+    <p>You were busy the entire time. Productively busy, even — every individual action was reasonable. But the <em>session</em> failed. Because <strong>nobody was checking whether the work still served the mission.</strong></p>
+    <p>This is the drift problem. And it doesn't just happen to individuals. It happens to teams, to AI agents, to entire organizations. Any system without an alignment check will drift. The only question is how far.</p>
+
+    <hr>
+
+    <h2>The Missing Component</h2>
+    <p>I was building an agent architecture using a framework called SOSEEH — which identifies four universal components of any system navigating complexity: Pilot, Vehicle, Mission Control, and Interaction Loops.</p>
+    <p>When I applied SOSEEH to my own operations, the diagnosis was instant:</p>
+
+    <blockquote>"You're missing Mission Control. There's no coordination layer checking alignment. That's why drift is inevitable."</blockquote>
+
+    <p>I had a pilot (me, making decisions). I had a vehicle (the tools, the codebase, the systems). I had interaction loops (feedback from testing, from users). But I had zero Mission Control — nothing periodically asking "is this activity actually serving the goal?"</p>
+    <p>SOSEEH told me <em>that</em> I needed Mission Control. It didn't tell me <em>how</em> to implement it.</p>
+    <p>So I experimented. And what actually worked was embarrassingly simple.</p>
+
+    <hr>
+
+    <h2>Three Questions. That's It.</h2>
+    <p>Every N exchanges — or every 10 minutes, or every logical checkpoint — ask three questions:</p>
+
+    <div style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--amber); padding: 1.5rem; margin: 2rem 0;">
+      <p style="margin: 0 0 1rem 0;"><strong>1. Are we still on mission?</strong></p>
+      <p style="margin: 0 0 0.5rem 0; opacity: 0.8;">Does current activity serve the original goal?</p>
+      <p style="margin: 0 0 1rem 0;"><strong>2. What's changed?</strong></p>
+      <p style="margin: 0 0 0.5rem 0; opacity: 0.8;">What new information affects the plan?</p>
+      <p style="margin: 0 0 1rem 0;"><strong>3. What's the next checkpoint?</strong></p>
+      <p style="margin: 0; opacity: 0.8;">When do we check alignment again?</p>
+    </div>
+
+    <p>That's the entire protocol. Three questions. Asked periodically. Answered honestly.</p>
+    <p>The simplicity is the point. Complex protocols don't get followed. These three questions can be asked in 30 seconds. And those 30 seconds are the difference between a session that compounds and a session that wanders.</p>
+
+    <hr>
+
+    <h2>Why Something This Simple Works</h2>
+    <p>The protocol works through four mechanisms:</p>
+
+    <h3>Externalization</h3>
+    <p>The mission is stated explicitly at each check-in. It's not in your head — where it drifts, morphs, and softens — but in front of you. Spoken out loud or written down. The moment you externalize the mission, you can compare your activity against it.</p>
+
+    <h3>Detection</h3>
+    <p>Drift cannot survive inspection. When you sincerely ask "are we still on mission?" the honest answer exposes divergence. You literally cannot drift unknowingly if you're periodically checking. The question is the detector.</p>
+
+    <h3>Correction Windows</h3>
+    <p>Small drifts are easy to correct. Large drifts require unwinding hours of work. The frequency of check-ins determines how large drifts can grow before detection. Check every 10 minutes and you catch 10-minute drifts. Check every 4 hours and you lose half a day.</p>
+
+    <h3>Temporal Anchoring</h3>
+    <p>"What's the next checkpoint?" keeps the future tethered. You know when inspection happens next. This creates accountability even when you're working alone. The upcoming checkpoint exerts gentle gravitational pull toward the mission.</p>
+
+    <hr>
+
+    <h2>The Honesty Problem</h2>
+    <p>Here's where most people fail: they turn the check-in into a ritual instead of an inspection.</p>
+    <p>"Are we on mission?" "Yep." Next.</p>
+    <p>That's not Mission Control. That's a rubber stamp. A check-in that always approves is not checking anything.</p>
+    <p>The fix is requiring specific answers. Not "yes" but: <em>"The mission is X. Current activity is Y. Y serves X because Z."</em></p>
+    <p>The specificity forces genuine inspection. If you can't articulate the connection between what you're doing and why you started — you just caught drift. That's the protocol working exactly as intended.</p>
+    <p>The uncomfortable truth: <strong>Mission Control's value comes from the times it catches drift.</strong> If it never catches anything, either you have superhuman focus or your check-ins are theater.</p>
+
+    <hr>
+
+    <h2>Same Protocol, Every Scale</h2>
+    <p>The power of this protocol is that it scales without changing:</p>
+
+    <h3>Individual Work</h3>
+    <p>Every 10 minutes, self-check. "Am I building the feature or refactoring unrelated code?" Catch drift before it eats the session.</p>
+
+    <h3>Human-AI Collaboration</h3>
+    <p>Every 10 exchanges: "Are we still working on X?" When context feels off: "Let me restate what I'm trying to accomplish." Before major actions: "Does this serve the goal we set?"</p>
+
+    <h3>Team Coordination</h3>
+    <p>Daily standups ask the same three questions. Sprint retros ask them at a larger timescale. Quarterly reviews ask them at a strategic level. Same questions, different altitude.</p>
+
+    <h3>AI Agent Systems</h3>
+    <p>Every N tool calls: mission_control_check(). After workflow phases: phase_gate_check(). When uncertainty spikes: explicit alignment query. The agent that checks alignment is the agent that stays useful.</p>
+
+    <hr>
+
+    <h2>What Happens When You Catch Drift</h2>
+    <p>Detection without correction is just observation. When you catch drift, the protocol is simple:</p>
+    <ol>
+      <li><strong>Stop current activity.</strong> Not "after I finish this." Now.</li>
+      <li><strong>Return to mission-aligned work.</strong> The thing you sat down to do.</li>
+      <li><strong>Log the tangent for later.</strong> If it's genuinely valuable, it'll still be valuable tomorrow. If it's not valuable enough to survive a day, it wasn't valuable enough to derail today.</li>
+    </ol>
+    <p>The default is return-to-mission. Exceptions require justification. Not the other way around.</p>
+    <p>A 10-minute drift corrected immediately costs 10 minutes. A 10-minute drift "finished later" costs 10 minutes plus however long "later" takes to arrive, plus the cognitive load of the open loop. Immediate correction is almost always cheaper.</p>
+
+    <hr>
+
+    <h2>The Minimum Viable Version</h2>
+    <p>If everything else in this article fades, keep this:</p>
+    <p style="font-size: 1.1em; padding: 1rem; border: 1px solid var(--amber); text-align: center; margin: 2rem 0;"><strong>Every 10 minutes, ask: "Does what I'm doing right now serve the goal I stated at the start?"</strong></p>
+    <p>If yes, continue.</p>
+    <p>If no, stop and return.</p>
+    <p>That's Mission Control at its core. Everything else is elaboration.</p>
+
+    <hr>
+
+    <h2>See the Full Picture</h2>
+    <p>Mission Control is one of the four components identified by <a href="soseeh.html">SOSEEH</a>. It connects to <a href="seam-repair.html">Seam Repair</a> (what to do when check-ins reveal a break), <a href="helming.html">Helming</a> (the vision you get when layers complete), and the full system we build with clients.</p>
+    <p style="margin-top: 1.5rem;"><a href="../frameworks.html" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); padding-bottom: 2px;">Browse All Frameworks →</a></p>
+    <p style="margin-top: 2rem;">If your AI systems drift off-task, your team keeps building the wrong thing, or your sessions end with "what did we actually accomplish?" — you're missing Mission Control. Three questions, asked regularly, answered honestly. We can help you install it.</p>
+    <p style="margin-top: 1.5rem;"><a href="https://cal.com/aisaac/ai-agents-for-your-business" style="font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); background: var(--amber); padding: 0.6rem 1.5rem; text-decoration: none; display: inline-block;">Book a Call</a></p>
+
+    <div class="post-nav">
+      <a href="seam-repair.html">← Seam Repair</a>
+      <a href="halo.html">HALO →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI Consulting</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>

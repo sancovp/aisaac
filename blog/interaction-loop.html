@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>Why Your Systems Break When They Talk to Each Other</h1>
+    <p class="post-subtitle">The seven-element protocol that turns fragile handoffs into bulletproof coordination — in AI agents, teams, and everything between.</p>
+
+    <h2>The Silent Failures</h2>
+    <p>I was building an agent system. The agent could call tools. The tools could return results. On paper, everything was connected. In practice, coordination kept breaking.</p>
+    <p>The agent called a tool and didn't know what to do with certain response types. A tool returned an error but the agent treated it as success. A long-running tool had no timeout and the agent waited forever. Two tools had overlapping responsibilities and the agent called both unnecessarily.</p>
+    <p>Every individual component worked. The <em>connections</em> between them didn't. And the connections were never designed — they were assumed.</p>
+
+    <blockquote>The capability was there. The protocol wasn't. Nobody had defined how the pieces actually talk to each other.</blockquote>
+
+    <hr>
+
+    <h2>The Interaction Loop</h2>
+    <p>After tracing every failure back to its root, I found they all shared the same shape: <strong>an undefined interaction loop.</strong></p>
+    <p>An interaction loop is the protocol for how two components communicate. Not "they can talk" but "there are explicit rules for how they talk." After fixing the system, I extracted what a well-defined loop actually requires. Seven elements. Miss any one, and you have a hole that will break under pressure.</p>
+
+    <h3>The Seven Elements</h3>
+    <ol>
+      <li><strong>Trigger.</strong> What initiates the communication? What event causes Component A to talk to Component B? If the answer is "whenever it feels like it," you have inconsistent activation.</li>
+      <li><strong>Message.</strong> What is communicated? What data, what format, what semantics? If the message is ambiguous, one side will think "success" and the other will think "failure."</li>
+      <li><strong>Expected Response.</strong> What should come back? What types of responses are valid? Without a response contract, interpretation diverges.</li>
+      <li><strong>Timeout.</strong> How long to wait? What happens if nothing comes back? If the answer is "forever," congratulations — you've built a system that can freeze permanently on one slow handoff.</li>
+      <li><strong>Error Handling.</strong> What if the response is unexpected? What are the failure modes? "Pretend it won't fail" is not a strategy. It's a time bomb.</li>
+      <li><strong>State Change.</strong> What changes as a result of the interaction? How do both components update? Without this, you get ghost state — components that think they're synchronized but aren't.</li>
+      <li><strong>Authority.</strong> Who can trigger this interaction? Who must respond? What permissions apply? When both sides think the other is in charge, nothing happens. When both sides think they're in charge, everything conflicts.</li>
+    </ol>
+
+    <p>Each undefined element is a potential failure point. Define all seven, and the loop is robust. Leave one blank, and you've left a door open for the kind of failure that's invisible until it's catastrophic.</p>
+
+    <hr>
+
+    <h2>The Five Pathologies</h2>
+    <p>Looking across system failures — in software, in teams, in organizations — I found the same five broken patterns recurring everywhere:</p>
+
+    <p><strong>Undefined trigger.</strong> "When should this component talk to that one?" Nobody knows. Result: interactions happen sporadically. Sometimes too much. Sometimes not at all. Debugging is a nightmare because you can't reproduce the conditions.</p>
+
+    <p><strong>Ambiguous message.</strong> "What does this response mean?" Depends on who's reading it. Component A sends a status code that means "partial success." Component B interprets it as "complete success." The system appears to work until someone audits the output.</p>
+
+    <p><strong>Missing timeout.</strong> "How long should I wait?" Forever, apparently. One slow dependency blocks the entire chain. Cascading delays propagate through the system. Everything looks stuck but nothing has technically failed.</p>
+
+    <p><strong>No error handling.</strong> "What if this fails?" Silence. The failure is swallowed. State corrupts quietly. By the time someone notices, the root cause is buried under three layers of compensating behavior.</p>
+
+    <p><strong>Authority confusion.</strong> "Who's responsible for this handoff?" Both sides assume the other handles it. Result: action gaps — things that nobody does because everybody thinks somebody else is doing them. Or worse: action conflicts — both sides act, producing contradictory results.</p>
+
+    <blockquote>Every pathology has the same root: the loop wasn't designed. It was assumed.</blockquote>
+
+    <hr>
+
+    <h2>Loops Compose</h2>
+    <p>Real systems don't have one interaction loop. They have dozens, and those loops compose in specific ways:</p>
+
+    <p><strong>Sequential:</strong> A triggers B, B triggers C. Each loop is a link in a chain. If B's output format doesn't match C's expected input, the chain breaks at the join.</p>
+
+    <p><strong>Parallel:</strong> A triggers B and C simultaneously. Both run. Results merge. If the merge strategy isn't defined, you get race conditions, duplicated work, or contradictory state.</p>
+
+    <p><strong>Nested:</strong> A triggers B, which internally runs its own loop with C. B returns when its internal loop completes. If inner errors don't propagate to the outer loop, A thinks everything is fine when it isn't.</p>
+
+    <p><strong>Conditional:</strong> A triggers B if condition X is true, C if condition Y is true. If conditions aren't mutually exclusive, both fire. If they're not exhaustive, neither fires.</p>
+
+    <p>Composition adds complexity, but follows the same principle: <strong>each individual loop must be defined, and the relationships between loops must also be explicit.</strong> Individually-correct loops can still fail when combined if nobody designed the composition.</p>
+
+    <hr>
+
+    <h2>The Audit Protocol</h2>
+    <p>Here's the practical version. Use this for any system you're building, debugging, or inheriting:</p>
+
+    <ol>
+      <li><strong>List every interaction.</strong> What components talk to what other components? Don't assume — draw it. If you can't draw it, you don't have a loop, you have an assumption.</li>
+      <li><strong>For each interaction, fill in the seven elements.</strong> Trigger, message, response, timeout, error handling, state change, authority. If you can't answer any of these, the loop isn't designed yet. That blank cell is where your system will break.</li>
+      <li><strong>Check implicit loops.</strong> Components often interact through shared state, side effects, or conventions. These implicit loops work during development and break in production. Make them explicit.</li>
+      <li><strong>Verify composition.</strong> For sequential loops: do outputs match inputs? For parallel loops: is the merge strategy defined? For nested loops: do inner errors propagate? For conditional loops: are conditions complete and disjoint?</li>
+      <li><strong>Test under pressure.</strong> What happens at timeout? With unexpected responses? When authority is contested? The loop protocol <em>is</em> the documentation. Keep it with the code.</li>
+    </ol>
+
+    <hr>
+
+    <h2>Beyond Software</h2>
+    <p>Here's the part that surprised me: this isn't just about code. Interaction loops show up everywhere.</p>
+
+    <p><strong>Team communication.</strong> When one team hands off work to another, what's the trigger? What's the expected response? What's the timeout? What happens if nobody picks it up? Most handoff failures in organizations trace back to undefined loops — not lack of capability, but lack of protocol.</p>
+
+    <p><strong>Manager-report dynamics.</strong> Your one-on-one has an interaction loop. Is the trigger scheduled or event-driven? What's the message format — status update, problem flag, or decision request? What's the expected response — action, acknowledgment, or escalation? When managers and reports have different answers to these questions, the one-on-one "isn't working" — but the real problem is the loop was never designed.</p>
+
+    <p><strong>AI agent orchestration.</strong> This is where interaction loops become existential. When you have multiple AI agents coordinating — each with their own capabilities, context, and authority — undefined loops don't just cause bugs. They cause agents that spin, hallucinate, or take unauthorized actions. The seven-element protocol isn't optional for AI. It's structural safety.</p>
+
+    <blockquote>In a world where AI agents coordinate autonomously, every undefined loop is a potential autonomous failure. Define the protocol or accept the chaos.</blockquote>
+
+    <hr>
+
+    <h2>What Comes Next</h2>
+    <p>Interaction loops are one component of a larger systems design framework — how to build things that actually work reliably under pressure, whether those things are AI agents, teams, or organizations. The pattern is always the same: make implicit coordination explicit, define the protocol, test the failure modes.</p>
+    <p>Explore the <a href="../frameworks.html" style="color:var(--amber);">frameworks</a> to see how interaction loops fit into the bigger picture. Or if you're building AI systems and discovering that coordination failures are eating your reliability — <a href="https://cal.com/aisaac/ai-agents-for-your-business" style="color:var(--amber);">let's talk about it</a>.</p>
+
+    <div class="post-nav">
+      <a href="meta-cognitive-awareness.html">← Meta-Cognitive Awareness</a>
+      <a href="shell.html">SHELL →</a>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>

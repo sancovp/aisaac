@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../transform.html" class="nav-link">Services</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>Composition</h1>
+    <p class="post-subtitle">Working pieces don't automatically produce working wholes. Composition has to be designed.</p>
+
+    <h2>The Assembly Lie</h2>
+    <p>You build Component A. It works perfectly. You build Component B. Flawless. Component C, D, E — all tested, all green, all shipping.</p>
+    <p>Then you plug them together.</p>
+    <p>Disaster. Not because any piece is broken. Every piece is beautiful in isolation. But together? Interfaces mismatch. Assumptions collide. Data flows in shapes nobody agreed on. Errors in A look like success to B. The same field name means different things on different sides of the boundary.</p>
+    <p>You've just discovered the hard way that <strong>composition is not assembly</strong>.</p>
+
+    <blockquote>Individual component quality doesn't guarantee composition quality. The agent system had individually-correct loops that failed in combination. The parts were fine. The whole was garbage.</blockquote>
+
+    <hr>
+
+    <h2>The Five Requirements</h2>
+    <p>After watching this pattern repeat across software, teams, strategies, and frameworks, a clear picture emerges. Successful composition requires exactly five things. Miss any one of them and the combination fails — no matter how good the individual pieces are.</p>
+
+    <h3>1. Interface Clarity</h3>
+    <p>Each component must declare what it takes and what it gives. Not just types — <strong>semantics</strong>. What does this input <em>mean</em>? What guarantees does this output <em>provide</em>? Ambiguous interfaces produce misinterpretation even when both sides are "correct."</p>
+
+    <h3>2. Assumption Alignment</h3>
+    <p>Every component makes assumptions about its environment. For composition to work, those assumptions must not conflict. If A assumes the data is sorted and B assumes it doesn't matter, you get a time bomb that only detonates at scale.</p>
+
+    <h3>3. Boundary Protocols</h3>
+    <p>Where A ends and B begins must be explicit. What triggers the handoff? What's transferred? What's expected back? What happens when it fails? Implicit boundaries are where composition goes to die.</p>
+
+    <h3>4. Error Propagation</h3>
+    <p>When A fails, what does B see? If A's failure looks like A's success to B, your composition is broken in a way that won't show up in unit tests. It'll show up in production, at 2 AM, when the data has been silently corrupted for six hours.</p>
+
+    <h3>5. Semantic Compatibility</h3>
+    <p>Not just "the types match" but "the <strong>meanings</strong> match." Component A returns <code>user_id</code>. Component B expects <code>user_id</code>. Types match. But A means "the database row ID" and B means "the auth provider's external ID." The composition compiles. The composition runs. The composition produces garbage.</p>
+
+    <hr>
+
+    <h2>Composition Debt</h2>
+    <p>When composition is ignored during building, debt accumulates. And unlike financial debt, composition debt <strong>compounds multiplicatively</strong>.</p>
+    <ul>
+      <li><strong>"We'll figure out the interface later."</strong> Later means pain. The implementation has already baked in assumptions that can't be changed without a rewrite.</li>
+      <li><strong>"It should just work."</strong> "Should" is debt. "Will, because the contract says so" is engineering.</li>
+      <li><strong>"A and B share this state."</strong> Shared state is coupled fate. Change one, break the other. Eventually, change anything, break everything.</li>
+      <li><strong>"We'll deal with error handling later."</strong> Failure modes compose too. If you don't design how failures propagate, failures will design it for you.</li>
+    </ul>
+    <p>Each piece of composition debt makes the next composition harder. Eventually you reach a state that every long-lived codebase and every mature organization knows intimately: <strong>nothing can be changed without breaking everything else</strong>. The system is frozen, not by design, but by accumulated composition debt.</p>
+
+    <blockquote>Composition debt compounds. Every poorly-composed piece makes subsequent composition harder. Eventually: a system where change is impossible without cascading breakage. The debt isn't in the pieces. It's in the spaces between them.</blockquote>
+
+    <hr>
+
+    <h2>Composition-First Design</h2>
+    <p>The alternative is simple in principle, demanding in practice: design for composition from the start.</p>
+    <ol>
+      <li><strong>Define interfaces before implementing.</strong> What will this component take? Give? Guarantee? Define it first. Then build to the interface. The interface constrains implementation — that's the point.</li>
+      <li><strong>Surface assumptions explicitly.</strong> For each component: what does it assume about inputs? Environment? Concurrency? When composing: compare assumption lists. Conflicts discovered during debugging cost 10x more than conflicts discovered during design.</li>
+      <li><strong>Test composition, not just components.</strong> Component tests passing tells you nothing about composition quality. After unit tests: test A → B. Test B → C. Test A → B → C. Test error propagation across every boundary.</li>
+    </ol>
+    <p>The investment is upfront. The payoff is permanent. Composition-first systems grow naturally. Composition-ignorant systems fossilize.</p>
+
+    <hr>
+
+    <h2>The Composition Checklist</h2>
+    <p>Before combining any two things — functions, modules, teams, strategies — run through this:</p>
+    <ul>
+      <li><strong>Interface:</strong> What does A give? What does B take? Is it explicit?</li>
+      <li><strong>Semantics:</strong> Do the meanings match across the boundary?</li>
+      <li><strong>Assumptions:</strong> What does A assume? What does B assume? Are they compatible?</li>
+      <li><strong>Boundary:</strong> What triggers handoff? What's transferred? What returns?</li>
+      <li><strong>Errors:</strong> How does A's failure appear to B? Is it handled?</li>
+    </ul>
+    <p>All boxes checked means composition is <strong>designed</strong>. Missing boxes means composition is <strong>hoped for</strong>. And hope is not an engineering strategy.</p>
+
+    <hr>
+
+    <h2>Why This Matters for Your Business</h2>
+    <p>Every business is a composition problem. Departments compose into organizations. Workflows compose into processes. Tools compose into stacks. People compose into teams.</p>
+    <p>When a project fails despite every team delivering their part on time, that's a composition failure. When a tool stack produces weird results despite each tool working perfectly, that's a composition failure. When a strategy makes sense on paper but falls apart in execution, odds are good that the components weren't designed to compose.</p>
+    <p>This is especially critical when adding AI to your operations. An AI agent isn't a standalone magic box. It's a component that has to compose with your existing systems, your team's workflows, and your data pipelines. If you don't define the interfaces — what goes in, what comes out, what the semantics are — you get the same composition failures you get everywhere else. Just faster and at scale.</p>
+    <p>The organizations that win with AI are the ones that treat it as a composition problem: define the interfaces first, surface the assumptions, test the boundaries, handle the errors. The ones that lose are the ones that plug AI in and say "it should just work."</p>
+
+    <blockquote>Working pieces don't produce working wholes. Not in code. Not in teams. Not in AI deployments. Composition must be designed — and the ones who design it first will outrun the ones who debug it later.</blockquote>
+
+    <hr>
+
+    <div class="post-nav" style="flex-direction:column;gap:1.5rem;align-items:center;text-align:center;">
+      <p style="color:#999;font-size:0.85rem;margin-bottom:0;">Ready to design composition into your systems instead of debugging it later?</p>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" style="font-family:var(--mono);font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--amber);padding:0.7rem 2rem;text-decoration:none;display:inline-block;">Book a Free Call</a>
+      <div style="display:flex;justify-content:space-between;width:100%;padding-top:1.5rem;border-top:1px solid var(--grey);">
+        <a href="./">← All posts</a>
+        <a href="../frameworks.html">Explore Frameworks →</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="site-footer">
+    <span>© 2026 Isaac — TWI</span>
+    <span><a href="../" style="color:var(--amber);text-decoration:none;">← Home</a></span>
+  </div>
+</div>
