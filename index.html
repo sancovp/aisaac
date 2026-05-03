@@ -1,927 +1,240 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');
-
-  #isaac-site *, #isaac-site *::before, #isaac-site *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  #isaac-site {
-    --black: #0a0a0a;
-    --off-white: #f0ede6;
-    --amber: #e8a120;
-    --grey: #2a2a2a;
-    --grey-light: #555;
-    --mono: 'DM Mono', monospace;
-    --display: 'Syne', sans-serif;
-    background: var(--black);
-    color: var(--off-white);
-    font-family: var(--mono);
-    font-weight: 300;
-    overflow-x: hidden;
-    width: 100%;
-  }
-
-  #isaac-site .site-header {
-    width: 100%;
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(232,161,32,0.15);
-    background: var(--black);
-  }
-
-  #isaac-site .logo {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 1rem;
-    letter-spacing: 0.08em;
-    color: var(--amber);
-    text-transform: uppercase;
-  }
-
-  #isaac-site .nav-cta {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--amber);
-    padding: 0.5rem 1.2rem;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  #isaac-site .nav-cta:hover {
-    background: var(--off-white);
-  }
-
-  #isaac-site .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 6rem 5rem 5rem;
-    gap: 4rem;
-    position: relative;
-  }
-
-  #isaac-site .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--amber), transparent);
-    opacity: 0.3;
-  }
-
-  #isaac-site .hero-tag,
-  #isaac-site .section-tag {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  #isaac-site .hero-tag {
-    margin-bottom: 2rem;
-  }
-
-  #isaac-site .hero-tag::before,
-  #isaac-site .section-tag::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 1px;
-    background: var(--amber);
-  }
-
-  #isaac-site h1 {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-    color: var(--off-white);
-  }
-
-  #isaac-site h1 span {
-    color: var(--amber);
-    display: block;
-  }
-
-  #isaac-site .hero-sub {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #999;
-    max-width: 44ch;
-    margin-bottom: 3rem;
-    font-style: italic;
-  }
-
-  #isaac-site .hero-sub strong {
-    color: var(--off-white);
-    font-style: normal;
-    font-weight: 400;
-  }
-
-  #isaac-site .cta-group {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  #isaac-site .cta-primary,
-  #isaac-site .cta-big {
-    font-family: var(--mono);
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--amber);
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.2s;
-  }
-
-  #isaac-site .cta-primary {
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    padding: 1rem 2rem;
-  }
-
-  #isaac-site .cta-big {
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    padding: 1.2rem 3rem;
-  }
-
-  #isaac-site .cta-primary:hover,
-  #isaac-site .cta-big:hover {
-    background: var(--off-white);
-  }
-
-  #isaac-site .cta-secondary {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: var(--grey-light);
-    text-decoration: none;
-    border-bottom: 1px solid var(--grey-light);
-    padding-bottom: 2px;
-  }
-
-  #isaac-site .hero-video {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border: 1px solid rgba(232,161,32,0.3);
-    overflow: hidden;
-    background: #111;
-  }
-
-  #isaac-site .hero-video iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-  }
-
-  #isaac-site .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--grey);
-    border-bottom: 1px solid var(--grey);
-  }
-
-  #isaac-site .stat {
-    padding: 2.5rem 3rem;
-    border-right: 1px solid var(--grey);
-  }
-
-  #isaac-site .stat:last-child {
-    border-right: none;
-  }
-
-  #isaac-site .stat-num {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 2.5rem;
-    color: var(--amber);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  #isaac-site .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-  }
-
-  #isaac-site .section {
-    padding: 5rem;
-  }
-
-  #isaac-site .section-dark {
-    background: var(--grey);
-  }
-
-  #isaac-site .section-amber {
-    background: var(--amber);
-  }
-
-  #isaac-site .section-amber .section-tag {
-    color: rgba(0,0,0,0.5);
-  }
-
-  #isaac-site .section-amber .section-tag::before {
-    background: rgba(0,0,0,0.4);
-  }
-
-  #isaac-site h2 {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: clamp(1.8rem, 3.5vw, 3rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-    max-width: 24ch;
-  }
-
-  #isaac-site .section-amber h2 {
-    color: var(--black);
-    max-width: 28ch;
-  }
-
-  #isaac-site .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 4rem;
-  }
-
-  #isaac-site .steps.four {
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 2rem;
-  }
-
-  #isaac-site .step {
-    border-top: 1px solid var(--grey);
-    padding-top: 2rem;
-  }
-
-  #isaac-site .section-dark .step {
-    border-top-color: rgba(240,237,230,0.12);
-  }
-
-  #isaac-site .step-num {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 3rem;
-    color: rgba(232,161,32,0.15);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  #isaac-site .step-num.small {
-    font-size: 1rem;
-    color: var(--amber);
-    opacity: 1;
-  }
-
-  #isaac-site .step h3 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 0.8rem;
-    color: var(--off-white);
-  }
-
-  #isaac-site .step p {
-    font-size: 0.85rem;
-    line-height: 1.7;
-    color: var(--grey-light);
-  }
-
-  #isaac-site .section-dark .step p {
-    color: #aaa;
-  }
-
-  #isaac-site .section-amber p {
-    font-size: 1rem;
-    line-height: 1.8;
-    max-width: 62ch;
-    color: rgba(0,0,0,0.7);
-  }
-
-  #isaac-site .offers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  #isaac-site .offer-card {
-    border: 1px solid rgba(240,237,230,0.12);
-    padding: 2rem;
-  }
-
-  #isaac-site .offer-card.highlight {
-    border-color: var(--amber);
-    background: rgba(232,161,32,0.05);
-  }
-
-  #isaac-site .offer-price {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 3rem;
-    color: var(--amber);
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-
-  #isaac-site .offer-name {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-    margin-bottom: 1.5rem;
-  }
-
-  #isaac-site .offer-card ul {
-    list-style: none;
-    font-size: 0.8rem;
-    line-height: 2;
-    color: #aaa;
-  }
-
-  #isaac-site .offer-card ul li::before {
-    content: '— ';
-    color: var(--amber);
-    opacity: 0.5;
-  }
-
-  #isaac-site .addons-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  #isaac-site .addon {
-    border: 1px solid rgba(240,237,230,0.12);
-    padding: 1rem 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #isaac-site .addon-name {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #aaa;
-  }
-
-  #isaac-site .addon-price {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: var(--amber);
-    white-space: nowrap;
-  }
-
-  #isaac-site .platform-note {
-    margin-top: 2rem;
-    border: 1px solid rgba(232,161,32,0.3);
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(232,161,32,0.04);
-  }
-
-  #isaac-site .platform-note-text {
-    font-size: 0.8rem;
-    line-height: 1.7;
-    color: #aaa;
-    max-width: 62ch;
-  }
-
-  #isaac-site .platform-note-text strong {
-    color: var(--off-white);
-    font-weight: 400;
-  }
-
-  #isaac-site .platform-price {
-    text-align: right;
-    padding-left: 2rem;
-    flex-shrink: 0;
-  }
-
-  #isaac-site .platform-price .price {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 2rem;
-    color: var(--amber);
-    line-height: 1;
-  }
-
-  #isaac-site .platform-price .label {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-  }
-
-  #isaac-site .final-cta {
-    text-align: center;
-    padding: 7rem 5rem;
-  }
-
-  #isaac-site .final-cta h2 {
-    margin: 0 auto 1.5rem;
-    max-width: none;
-  }
-
-  #isaac-site .final-cta p {
-    font-size: 0.9rem;
-    color: var(--grey-light);
-    margin: 0 auto 3rem;
-    font-style: italic;
-    max-width: 56ch;
-  }
-
-  #isaac-site .final-cta .section-tag {
-    justify-content: center;
-  }
-
-  #isaac-site .site-footer {
-    padding: 2rem 5rem;
-    border-top: 1px solid var(--grey);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--grey-light);
-  }
-
-  @media (max-width: 1100px) {
-    #isaac-site .steps.four {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 900px) {
-    #isaac-site .hero {
-      grid-template-columns: 1fr;
-      padding: 4rem 2rem;
-      gap: 2.5rem;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isaac — TWI | AI Transformation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --off-white: #f0ede6;
+      --amber: #e8a120;
+      --grey: #2a2a2a;
+      --grey-light: #555;
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
     }
 
-    #isaac-site .hero-right {
-      order: -1;
-    }
-
-    #isaac-site .stats {
-      grid-template-columns: 1fr;
-    }
-
-    #isaac-site .stat {
-      border-right: none;
-      border-bottom: 1px solid var(--grey);
-    }
-
-    #isaac-site .stat:last-child {
-      border-bottom: none;
-    }
-
-    #isaac-site .section {
-      padding: 4rem 2rem;
-    }
-
-    #isaac-site .steps,
-    #isaac-site .steps.four,
-    #isaac-site .offers-grid,
-    #isaac-site .addons-row {
-      grid-template-columns: 1fr;
-    }
-
-    #isaac-site .platform-note {
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: var(--mono);
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
     }
 
-    #isaac-site .platform-price {
-      text-align: left;
-      padding-left: 0;
+    .header {
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(232,161,32,0.15);
     }
 
-    #isaac-site .final-cta {
+    .logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-light);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--off-white); }
+
+    .router {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 4rem 2rem;
     }
 
-    #isaac-site .site-footer {
-      flex-direction: column;
-      gap: 1rem;
+    .router-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .router-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--amber);
+    }
+
+    .router h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
       text-align: center;
-      padding: 2rem;
+      margin-bottom: 0.8rem;
     }
 
-    #isaac-site .site-header {
-      padding: 1rem 1.5rem;
+    .router h1 span { color: var(--amber); }
+
+    .router-sub {
+      font-size: 0.9rem;
+      color: var(--grey-light);
+      text-align: center;
+      margin-bottom: 4rem;
+      font-style: italic;
     }
-  }
-</style>
 
-<div id="isaac-site">
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 960px;
+      width: 100%;
+    }
 
-  <div class="site-header">
+    .card {
+      border: 1px solid var(--grey);
+      padding: 2.5rem 2rem;
+      text-decoration: none;
+      color: var(--off-white);
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: var(--amber);
+      background: rgba(232,161,32,0.04);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--grey-light);
+      flex: 1;
+    }
+
+    .card-cta {
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card:hover .card-cta { gap: 1rem; }
+
+    .card.highlight {
+      border-color: var(--amber);
+      background: rgba(232,161,32,0.03);
+    }
+
+    .footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--grey);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--grey-light);
+    }
+
+    @media (max-width: 800px) {
+      .cards { grid-template-columns: 1fr; max-width: 400px; }
+      .header { padding: 1rem 1.5rem; }
+      .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
     <div class="logo">Isaac — TWI</div>
-    <div style="display:flex;gap:2rem;align-items:center;">
-      <a href="blog/" style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);text-decoration:none;">Blog</a>
-      <a href="#isaac-contact" class="nav-cta">Book a Call</a>
+    <div class="nav-links">
+      <a href="blog/">Blog</a>
+      <a href="https://github.com/sancovp/sanctuary-revolution-alpha">Open Source</a>
     </div>
   </div>
 
-  <div class="hero">
-    <div class="hero-left">
-      <div class="hero-tag">AI Transformation</div>
-      <h1>The operating system<br><span>for your business</span><br>that runs without you.</h1>
-      <p class="hero-sub">
-        I learned to code entirely through AI — no CS degree, no bootcamp. That constraint forced me to solve problems at the root. Two years later: a system that builds systems, runs itself, and improves while you sleep. <strong>The point isn't to replace your people. It's to become the company that owns the system that runs the company.</strong>
-      </p>
-      <div class="cta-group">
-        <a href="#isaac-contact" class="cta-primary">Let's Talk</a>
-        <a href="#isaac-video" class="cta-secondary">See how it works</a>
-      </div>
-    </div>
+  <div class="router">
+    <div class="router-tag">Welcome</div>
+    <h1>What brings you <span>here?</span></h1>
+    <p class="router-sub">Three paths. Same engine. Pick yours.</p>
 
-    <div class="hero-right" id="isaac-video">
-      <div class="hero-video">
-        <iframe
-          src="https://www.youtube.com/embed/GCl6WmuSr8g"
-          allowfullscreen
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-        </iframe>
-      </div>
-    </div>
-  </div>
+    <div class="cards">
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Your business runs while you sleep — no more waiting for office hours to start</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">30 days</div>
-      <div class="stat-label">To a working MVP connected to your existing tools — not a slide deck</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">∞</div>
-      <div class="stat-label">One SOP done right compounds — the system gets smarter, not more complex</div>
+      <a href="learn.html" class="card">
+        <div class="card-icon">&#x2726;</div>
+        <h2>I want to understand what's actually possible with AI.</h2>
+        <p>Frameworks, architecture, the 7-stack methodology. How compound AI systems work — and how to think about building them. Free content, community, depth.</p>
+        <div class="card-cta">Learn &rarr;</div>
+      </a>
+
+      <a href="build.html" class="card">
+        <div class="card-icon">&#x2692;</div>
+        <h2>I want to build AI-powered businesses myself.</h2>
+        <p>Jobworld is free and open source. Compile a running AI business from a config file. Templates, tools, documentation. You build, we provide the system.</p>
+        <div class="card-cta">Build &rarr;</div>
+      </a>
+
+      <a href="transform.html" class="card highlight">
+        <div class="card-icon">&#x26A1;</div>
+        <h2>I need AI running in my business now.</h2>
+        <p>We build your custom AI automation system. Every lead answered in 60 seconds. Every SOP running itself. Guaranteed results in 30 days or your money back.</p>
+        <div class="card-cta">Get started &rarr;</div>
+      </a>
+
     </div>
   </div>
 
-  <div class="section section-dark">
-    <div class="section-tag">The four things</div>
-    <h2>If you only believe one thing, believe this:</h2>
-    <p style="font-size:1rem;line-height:1.8;color:#aaa;max-width:60ch;margin-bottom:3rem;">The businesses that win the next decade aren’t the ones that added AI. They’re the ones that own the system AI runs inside. One SOP done deeply — so the machine does the work, and your people supervise it.</p>
-
-    <div class="steps four">
-      <div class="step">
-        <div class="step-num small">01</div>
-        <h3>Make the invisible visible</h3>
-        <p>Your workflow stops living in people’s heads. The system sees what happened, what failed, and what comes next. No more tribal knowledge disappearing when someone leaves.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num small">02</div>
-        <h3>Turn failure into data</h3>
-        <p>When the AI gets something wrong, the failure becomes process data. You fix the system. You stop blaming the person and start improving the machine.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num small">03</div>
-        <h3>Your people become operators</h3>
-        <p>Your team supervises, corrects, and improves the workflow — instead of doing the same step by hand every time. The work gets done. Your people move up the stack.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num small">04</div>
-        <h3>Compound, don’t add</h3>
-        <p>Once one SOP runs itself, it feeds the next. The system gets smarter. The business gets more consistent. You stop scaling chaos and start scaling execution.</p>
-      </div>
-    </div>
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Built with AI. The site &mdash; and the systems I sell.</span>
   </div>
 
-  <div class="section">
-    <div class="section-tag">How it works</div>
-    <h2>90 days. One SOP running itself. Then you own it.</h2>
-
-    <div style="display:flex;align-items:center;gap:1.5rem;margin-top:3rem;position:relative;flex-wrap:wrap;">
-      <!-- Month 1 -->
-      <div style="flex:1;min-width:180px;border:1px solid rgba(232,161,32,0.3);padding:1.5rem;position:relative;">
-        <div style="font-family:var(--display);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;">Month 1</div>
-        <div style="font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--off-white);margin-bottom:0.5rem;">Find the fire</div>
-        <div style="font-size:0.75rem;color:#888;line-height:1.6;">Which SOP, which tool, which sequence. One conversation and we know what to build.</div>
-        <div style="position:absolute;top:1rem;right:1rem;">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect x="2" y="6" width="24" height="20" rx="2" stroke="#e8a120" stroke-width="1.5" fill="none"/>
-            <line x1="2" y1="12" x2="26" y2="12" stroke="#e8a120" stroke-width="1.5"/>
-            <line x1="8" y1="2" x2="8" y2="8" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="20" y1="2" x2="20" y2="8" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="7" y1="17" x2="11" y2="17" stroke="#555" stroke-width="1"/>
-            <line x1="7" y1="20" x2="14" y2="20" stroke="#555" stroke-width="1"/>
-            <line x1="7" y1="23" x2="10" y2="23" stroke="#555" stroke-width="1"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Arrow 1 -->
-      <svg width="40" height="24" viewBox="0 0 40 24" fill="none" style="flex-shrink:0;">
-        <path d="M0 20 L30 4 L40 4" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-        <path d="M30 4 L30 10" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M25 6 L31 10 L37 6" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-
-      <!-- Month 2 -->
-      <div style="flex:1;min-width:180px;border:1px solid rgba(232,161,32,0.3);padding:1.5rem;position:relative;">
-        <div style="font-family:var(--display);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;">Month 2</div>
-        <div style="font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--off-white);margin-bottom:0.5rem;">Build & debug</div>
-        <div style="font-size:0.75rem;color:#888;line-height:1.6;">Working MVP connected to your tools. Debug, repair, harden. Runs without intervention by day 60.</div>
-        <div style="position:absolute;top:1rem;right:1rem;">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <path d="M8 14 L12 10 L16 14 L20 6" stroke="#4ecdc4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="22" cy="6" r="3" stroke="#4ecdc4" stroke-width="1.5" fill="none"/>
-            <path d="M22 3 L22 1 M22 9 L22 11 M19 6 L17 6 M25 6 L27 6" stroke="#4ecdc4" stroke-width="1" stroke-linecap="round"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Arrow 2 -->
-      <svg width="40" height="24" viewBox="0 0 40 24" fill="none" style="flex-shrink:0;">
-        <path d="M0 20 L30 4 L40 4" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-        <path d="M30 4 L30 10" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M25 6 L31 10 L37 6" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-
-      <!-- Month 3 -->
-      <div style="flex:1;min-width:180px;border:1px solid rgba(232,161,32,0.3);padding:1.5rem;position:relative;background:rgba(232,161,32,0.04);">
-        <div style="font-family:var(--display);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;">Month 3</div>
-        <div style="font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--off-white);margin-bottom:0.5rem;">Your team runs it</div>
-        <div style="font-size:0.75rem;color:#888;line-height:1.6;">Your people become operators. They supervise, correct, improve. You step out of the loop.</div>
-        <div style="position:absolute;top:1rem;right:1rem;">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="10" r="5" stroke="#e8a120" stroke-width="1.5" fill="none"/>
-            <path d="M4 24 C4 19 8 16 14 16 C20 16 24 19 24 24" stroke="#e8a120" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Uptrend overlay -->
-      <svg width="100%" height="60" viewBox="0 0 400 60" preserveAspectRatio="none" style="position:absolute;bottom:-10px;left:0;pointer-events:none;opacity:0.25;z-index:0;" fill="none">
-        <path d="M 20 50 Q 120 48 200 30 T 380 8" stroke="#e8a120" stroke-width="1.5" stroke-dasharray="6 4"/>
-        <path d="M 20 50 Q 120 48 200 30 T 380 8" stroke="#e8a120" stroke-width="6" stroke-linecap="round" opacity="0.08"/>
-      </svg>
-    </div>
-  </div>
-
-  <div class="section section-dark" id="isaac-offers">
-    <div class="section-tag">Engagement Options</div>
-    <h2>Choose your starting point.</h2>
-
-    <div class="offers-grid">
-      <div class="offer-card">
-        <div class="offer-price">$1k</div>
-        <div class="offer-name">AI Blueprint Session</div>
-        <ul>
-          <li>2 × 1hr strategy sessions</li>
-          <li>Exact SOP to build first — and why</li>
-          <li>AI roadmap for your business</li>
-          <li>Workflow prioritization — what's fire, what's not</li>
-          <li>You implement with a map, not a guess</li>
-        </ul>
-      </div>
-
-      <div class="offer-card highlight">
-        <div class="offer-price">$5k</div>
-        <div class="offer-name">30-Day Operating System Challenge</div>
-        <ul>
-          <li>3-month minimum engagement</li>
-          <li>Full advisory included</li>
-          <li>One SOP built, deployed, and hardened</li>
-          <li>Working MVP in month one</li>
-          <li>Debugging and process repair in month two</li>
-          <li>Operator handoff in month three</li>
-          <li>Claude worker setup and configuration</li>
-        </ul>
-        <p style="font-size:0.75rem;color:var(--amber);margin-top:1rem;border-top:1px solid rgba(240,237,230,0.12);padding-top:1rem;">Guarantee: If you don't get a working MVP in 30 days, you pay nothing. Full refund. No questions asked.</p>
-      </div>
-
-      <div class="offer-card">
-        <div class="offer-price" style="font-size:2rem;padding-top:0.5rem;">À La Carte</div>
-        <div class="offer-name">Add-Ons</div>
-        <ul>
-          <li>Custom MCP integrations — your tools talk to each other without code</li>
-          <li>Analytics engine — your data becomes a decision system, not a spreadsheet</li>
-          <li>Data pipeline architecture — clean data flows where it needs to, when it needs to</li>
-          <li>AI worker configuration — an AI that knows its job and does it without babysitting</li>
-          <li>Inference layer tuning — AI that actually hears what you're asking it to do</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="addons-row">
-      <div class="addon">
-        <div class="addon-name">Live System Support</div>
-        <div class="addon-price">+$500/mo</div>
-      </div>
-      <div class="addon">
-        <div class="addon-name">Ontology Deployment</div>
-        <div class="addon-price">$5k setup</div>
-      </div>
-      <div class="addon">
-        <div class="addon-name">Ontology Maintenance</div>
-        <div class="addon-price">+$500/mo</div>
-      </div>
-    </div>
-
-    <div class="platform-note">
-      <div class="platform-note-text">
-        Each AI worker seat requires a <strong>Claude Max</strong> account, paid directly to Anthropic and separate from my fee. This isn't about replacing your people — it's about building the operating system your people supervise, correct, and improve. They move up the stack. You stop being the bottleneck.
-      </div>
-      <div class="platform-price">
-        <div class="price">$200</div>
-        <div class="label">per seat / mo</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section section-amber">
-    <div class="section-tag">The honest part</div>
-    <h2>AI won't save your business. It will expose whether you have one.</h2>
-    <p>
-      Adding AI is the competitive floor now, not the moonshot. The businesses that haven't started are already behind. But here's what most people get wrong: AI doesn't fix a broken business. It makes the brokenness faster and more visible. That's actually a good thing — now you can see exactly what to fix. The companies that win the next decade aren't the ones adding AI. They're the ones that finally built the operating system their business was supposed to have.
-    </p>
-  </div>
-
-  <div class="section">
-    <div class="section-tag">Why me</div>
-    <h2>Why I can build this (and most can't).</h2>
-    <p style="font-size:0.95rem;line-height:1.8;color:#aaa;max-width:60ch;margin-bottom:3rem;">
-      I learned to code entirely through AI — no CS degree, no bootcamp. No fallback. When the AI failed, I couldn't just write it myself. That constraint meant every solution had to be architectural. I couldn't work around the hard parts. I had to solve them.
-    </p>
-
-    <div class="steps three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:2rem;">
-      <div class="step">
-        <div class="step-num small">The constraint</div>
-        <h3>No CS degree. No bootcamp. No safety net.</h3>
-        <p>When you can't fall back on "I'll just write it myself," every solution has to work at the level where AI actually operates — not around it.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num small">Two years</div>
-        <h3>Battle-tested against my own medicine, every day.</h3>
-        <p>Everything I sell, I built for myself first. The systems that run TWI, Stillpoint Media, and the newsletter automation — they're not demonstrations. They're production.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num small">The proof</div>
-        <h3>My agent runs my business while I sleep.</h3>
-        <p>TWI Jobworld. Stillpoint Media's newsletter. DocMagic. Sanctuary Revolution. These aren't case studies. They're what I built by doing exactly what I tell you to do.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section section-dark">
-    <div class="section-tag">The Methodology</div>
-    <h2>The system behind the system.</h2>
-    <p style="font-size:0.95rem;line-height:1.8;color:#aaa;max-width:60ch;margin-bottom:3rem;">
-      Before I could build systems that run themselves, I had to build the operating system for building them. Seven engineering disciplines — the last three are where it gets interesting.
-    </p>
-
-    <!-- 7 Layer Stack -->
-    <div style="margin-top:2.5rem;position:relative;">
-      <!-- Stack layers: Prompt(1) bottom → Emergence(7) top -->
-      <!-- Layer 1: Prompt Engineering -->
-      <div style="display:flex;align-items:stretch;gap:0;border-bottom:1px solid rgba(232,161,32,0.08);">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,161,32,0.4);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.08);writing-mode:vertical-rl;transform:rotate(180deg);">01</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.03);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--off-white);">Prompt Engineering</div>
-          <div style="font-size:0.7rem;color:#666;margin-top:2px;">Say the right thing to the AI.</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.15;"></div>
-      </div>
-      <!-- Layer 2: Context Engineering -->
-      <div style="display:flex;align-items:stretch;gap:0;border-bottom:1px solid rgba(232,161,32,0.08);">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,161,32,0.4);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.08);writing-mode:vertical-rl;transform:rotate(180deg);">02</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.04);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--off-white);">Context Engineering</div>
-          <div style="font-size:0.7rem;color:#666;margin-top:2px;">Show the AI the right information.</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.22;"></div>
-      </div>
-      <!-- Layer 3: Tool Engineering -->
-      <div style="display:flex;align-items:stretch;gap:0;border-bottom:1px solid rgba(232,161,32,0.08);">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,161,32,0.4);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.08);writing-mode:vertical-rl;transform:rotate(180deg);">03</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.05);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--off-white);">Tool Engineering</div>
-          <div style="font-size:0.7rem;color:#666;margin-top:2px;">Give the AI the right actions.</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.3;"></div>
-      </div>
-      <!-- Layer 4: Harness Engineering -->
-      <div style="display:flex;align-items:stretch;gap:0;border-bottom:1px solid rgba(232,161,32,0.08);">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,161,32,0.4);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.08);writing-mode:vertical-rl;transform:rotate(180deg);">04</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.06);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--off-white);">Harness Engineering</div>
-          <div style="font-size:0.7rem;color:#666;margin-top:2px;">Run the right loop.</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.38;"></div>
-      </div>
-      <!-- Layer 5: Admissibility Engineering — highlighted -->
-      <div style="display:flex;align-items:stretch;gap:0;border-bottom:1px solid rgba(232,161,32,0.2);">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.2);writing-mode:vertical-rl;transform:rotate(180deg);">05</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.1);border-left:2px solid var(--amber);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--amber);">Admissibility Engineering</div>
-          <div style="font-size:0.7rem;color:#999;margin-top:2px;">Define the boundary before acting. Is this operation licensed by enough visible structure to be safely performed?</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.55;"></div>
-      </div>
-      <!-- Layer 6: Concentration Engineering -->
-      <div style="display:flex;align-items:stretch;gap:0;border-bottom:1px solid rgba(232,161,32,0.08);">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,161,32,0.5);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.08);writing-mode:vertical-rl;transform:rotate(180deg);">06</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.07);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--off-white);">Concentration Engineering</div>
-          <div style="font-size:0.7rem;color:#888;margin-top:2px;">Keep the AI inside the boundary.</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.7;"></div>
-      </div>
-      <!-- Layer 7: Emergence Engineering — top, brightest -->
-      <div style="display:flex;align-items:stretch;gap:0;">
-        <div style="width:80px;flex-shrink:0;font-family:var(--display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;justify-content:center;padding:0.6rem 0.4rem;border-right:1px solid rgba(232,161,32,0.15);writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;">07</div>
-        <div style="flex:1;padding:0.6rem 1rem;background:rgba(232,161,32,0.09);border-left:2px solid rgba(232,161,32,0.5);">
-          <div style="font-family:var(--display);font-weight:700;font-size:0.8rem;color:var(--off-white);">Emergence Engineering</div>
-          <div style="font-size:0.7rem;color:#999;margin-top:2px;">Make the loop compound. The system improves itself over time instead of accumulating hidden debt.</div>
-        </div>
-        <div style="width:4px;background:#e8a120;opacity:0.85;"></div>
-      </div>
-    </div>
-
-    <p style="margin-top:2rem;font-size:0.85rem;color:var(--amber);">
-      <a href="blog/" style="color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber);padding-bottom:2px;">Read the full framework →</a>
-      &nbsp;&nbsp;The same methodology built DocMagic, TWI Jobworld, and Stillpoint Media's newsletter automation.
-    </p>
-  </div>
-
-  <div class="section section-dark">
-    <div class="section-tag">Open Source</div>
-    <h2>Free tools that fix real problems.</h2>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">&#x2726;</div>
-        <h3>DocMagic</h3>
-        <p>Your repo is lying to your AI agent. DocMagic finds where. Scans for hidden connections, stale documentation, and invisible coupling that cause AI coding failures. Install it, equip the skill, and Claude becomes Doctor Magic.</p>
-        <p style="margin-top:1rem;"><a href="https://github.com/sancovp/docmagic" style="color:var(--amber);text-decoration:none;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--amber);padding-bottom:2px;">GitHub →</a></p>
-      </div>
-
-      <div class="step">
-        <div class="step-num">&#x2726;</div>
-        <h3>Sanctuary Revolution</h3>
-        <p>The compound intelligence system that powers everything I build. Open source under GPBL license. Skills, flights, knowledge graphs, autonomous agents — the full stack for building AI systems that compound over time.</p>
-        <p style="margin-top:1rem;"><a href="https://github.com/sancovp/sanctuary-revolution-alpha" style="color:var(--amber);text-decoration:none;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--amber);padding-bottom:2px;">GitHub →</a></p>
-      </div>
-
-      <div class="step">
-        <div class="step-num">&#x2726;</div>
-        <h3>TWI Jobworld</h3>
-        <p>Zero employees. A full company. All AI. Instantiate an AI-powered business that runs itself — content, growth, revenue, research, and engineering all handled by agents you coordinate via a live dashboard. Built on Claude Code.</p>
-        <p style="margin-top:1rem;"><a href="https://github.com/sancovp/twi-jobworld-plugin" style="color:var(--amber);text-decoration:none;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--amber);padding-bottom:2px;">GitHub →</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="final-cta section" id="isaac-contact">
-    <div class="section-tag">Ready?</div>
-    <h2>One call. I'll tell you exactly which SOP to fix first and how to build it so it runs itself.</h2>
-    <p>The call is free. You'll leave knowing whether your business is a candidate for this — and if it is, you'll know exactly what we'd build first.</p>
-    <p style="font-size:0.8rem;color:#555;margin-top:1.5rem;">I take on 3 Transformation clients at a time. When those slots are full, they're full.</p>
-    <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="cta-big">Book a Free Discovery Call</a>
-  </div>
-
-  <div class="site-footer">
-    <span>© 2026 Isaac — TWI</span>
-    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Built with AI. The site — and the systems I sell.</span>
-  </div>
-
-</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build — Isaac TWI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --off-white: #f0ede6; --amber: #e8a120; --grey: #2a2a2a; --grey-light: #555; --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif; }
+    body { background: var(--black); color: var(--off-white); font-family: var(--mono); font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; }
+    .header { padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(232,161,32,0.15); }
+    .logo { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: var(--amber); text-transform: uppercase; text-decoration: none; }
+    .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; text-align: center; }
+    .content h1 { font-family: var(--display); font-weight: 800; font-size: 2.5rem; margin-bottom: 1.5rem; }
+    .content h1 span { color: var(--amber); }
+    .content p { font-size: 0.9rem; color: var(--grey-light); max-width: 50ch; line-height: 1.8; margin-bottom: 2rem; }
+    .content a { color: var(--black); background: var(--amber); padding: 1rem 2.5rem; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: var(--mono); }
+    .content a:hover { background: var(--off-white); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="/" class="logo">Isaac — TWI</a>
+  </div>
+  <div class="content">
+    <h1>Build AI businesses <span>yourself.</span></h1>
+    <p>Jobworld is free and open source. Compile a running AI business from a config file. Install it, run it, own it.</p>
+    <a href="https://github.com/sancovp/twi-jobworld-plugin">Get Jobworld &rarr;</a>
+  </div>
+</body>
+</html>

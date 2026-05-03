@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Transformation — Isaac TWI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --off-white: #f0ede6;
+      --amber: #e8a120;
+      --grey: #2a2a2a;
+      --grey-light: #555;
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+    }
+    body { background: var(--black); color: var(--off-white); font-family: var(--mono); font-weight: 300; }
+
+    .header {
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(232,161,32,0.15);
+    }
+    .logo { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: var(--amber); text-transform: uppercase; text-decoration: none; }
+    .nav-cta {
+      font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--black); background: var(--amber); padding: 0.5rem 1.2rem; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--off-white); }
+
+    .tag {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber);
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;
+    }
+    .tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--amber); }
+
+    section { padding: 5rem; }
+    section.dark { background: var(--grey); }
+    section.amber-bg { background: var(--amber); }
+
+    h1 {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+    h1 span { color: var(--amber); }
+
+    h2 {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.05;
+      margin-bottom: 1.5rem; max-width: 26ch;
+    }
+
+    .hero { padding: 6rem 5rem 5rem; }
+    .hero-sub {
+      font-size: 1rem; line-height: 1.8; color: #999; max-width: 52ch;
+      margin-bottom: 2.5rem; font-style: italic;
+    }
+    .hero-sub strong { color: var(--off-white); font-style: normal; font-weight: 400; }
+
+    .cta-big {
+      font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--black); background: var(--amber); padding: 1.2rem 3rem;
+      text-decoration: none; display: inline-block; transition: all 0.2s;
+    }
+    .cta-big:hover { background: var(--off-white); }
+
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--grey); border-bottom: 1px solid var(--grey);
+    }
+    .stat { padding: 2.5rem 3rem; border-right: 1px solid var(--grey); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--display); font-weight: 800; font-size: 2.5rem; color: var(--amber); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey-light); }
+
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 3rem;
+    }
+    .step { border-top: 1px solid rgba(240,237,230,0.12); padding-top: 2rem; }
+    .step-num { font-family: var(--display); font-weight: 800; font-size: 1rem; color: var(--amber); margin-bottom: 1rem; }
+    .step h3 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.8rem; }
+    .step p { font-size: 0.85rem; line-height: 1.7; color: #aaa; }
+
+    .offers {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem;
+    }
+    .offer-card {
+      border: 1px solid rgba(240,237,230,0.12); padding: 2.5rem;
+    }
+    .offer-card.highlight {
+      border-color: var(--amber); background: rgba(232,161,32,0.05);
+    }
+    .offer-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem;
+    }
+    .offer-name {
+      font-family: var(--display); font-weight: 800; font-size: 1.5rem; margin-bottom: 0.3rem;
+    }
+    .offer-price {
+      font-family: var(--display); font-weight: 800; font-size: 2.5rem; color: var(--amber); margin-bottom: 1rem;
+    }
+    .offer-card ul {
+      list-style: none; font-size: 0.8rem; line-height: 2.2; color: #aaa;
+    }
+    .offer-card ul li::before { content: '— '; color: var(--amber); opacity: 0.5; }
+
+    .guarantee-box {
+      margin-top: 2rem; border: 1px solid var(--amber); padding: 2rem;
+      background: rgba(232,161,32,0.06); text-align: center;
+    }
+    .guarantee-box h3 {
+      font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--amber); margin-bottom: 0.8rem;
+    }
+    .guarantee-box p { font-size: 0.85rem; color: #aaa; line-height: 1.7; max-width: 60ch; margin: 0 auto; }
+
+    .honest {
+      background: var(--amber); padding: 5rem;
+    }
+    .honest .tag { color: rgba(0,0,0,0.5); }
+    .honest .tag::before { background: rgba(0,0,0,0.4); }
+    .honest h2 { color: var(--black); max-width: 28ch; }
+    .honest p { font-size: 1rem; line-height: 1.8; max-width: 60ch; color: rgba(0,0,0,0.7); }
+
+    .final-cta {
+      text-align: center; padding: 7rem 5rem;
+    }
+    .final-cta h2 { margin: 0 auto 1.5rem; max-width: none; }
+    .final-cta p { font-size: 0.9rem; color: var(--grey-light); margin: 0 auto 1rem; font-style: italic; max-width: 56ch; }
+    .final-cta .tag { justify-content: center; }
+
+    .scarcity {
+      font-size: 0.8rem; color: var(--amber); margin-top: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer {
+      padding: 2rem 5rem; border-top: 1px solid var(--grey);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.7rem; letter-spacing: 0.1em; color: var(--grey-light);
+    }
+
+    @media (max-width: 900px) {
+      .hero, section { padding: 4rem 2rem; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--grey); }
+      .stat:last-child { border-bottom: none; }
+      .steps, .offers { grid-template-columns: 1fr; }
+      .final-cta { padding: 4rem 2rem; }
+      .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+      .header { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="/" class="logo">Isaac — TWI</a>
+    <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Free Audit</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="tag">AI Transformation</div>
+    <h1>Every lead answered<br>in 60 seconds.<br>Every SOP <span>running itself.</span></h1>
+    <p class="hero-sub">
+      We build custom AI automation systems for service businesses. The same architecture that runs our own business — configured for yours.
+      <strong>Guaranteed measurable results in 30 days, or your money back.</strong>
+    </p>
+    <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="cta-big">Book Your Free AI Audit</a>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">&lt;60s</div>
+      <div class="stat-label">AI responds to every lead — nights, weekends, holidays</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30 days</div>
+      <div class="stat-label">To measurable changes in your business — guaranteed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$200</div>
+      <div class="stat-label">Per AI worker per month — not $50K/year for another hire</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="dark">
+    <div class="tag">How it works</div>
+    <h2>Three steps. You participate. We build.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Free AI Audit</h3>
+        <p>30-minute call. We map your processes, find the #1 automation opportunity, and give you a written roadmap. You keep it regardless — even if you never pay us a dollar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We build it</h3>
+        <p>Your custom AI system, connected to your existing tools, running your SOPs. Lead response, scheduling, follow-ups, quoting — whatever the audit identified. Working in 30 days.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Your team runs it</h3>
+        <p>We train your people to supervise the system. They move up the stack — from doing repetitive work to managing AI that does it. You own everything we build.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section>
+    <div class="tag">Engagement options</div>
+    <h2>Start where you're ready.</h2>
+
+    <div class="offers">
+      <div class="offer-card">
+        <div class="offer-label">Ongoing relationship</div>
+        <div class="offer-name">Retainer</div>
+        <div class="offer-price">Monthly</div>
+        <ul>
+          <li>Monthly strategy call with Isaac</li>
+          <li>Review what's working, identify next automations</li>
+          <li>Priority access — retainer clients get first dibs on transformation slots</li>
+          <li>Purchase custom implementations from this relationship</li>
+          <li>The easy first step — low commitment, high ongoing value</li>
+        </ul>
+      </div>
+
+      <div class="offer-card highlight">
+        <div class="offer-label">The full build</div>
+        <div class="offer-name">90-Day Transformation</div>
+        <div class="offer-price">$5K<span style="font-size:1rem;color:#aaa;font-weight:300;">/month</span></div>
+        <ul>
+          <li>3-month minimum engagement</li>
+          <li>Full AI operations audit</li>
+          <li>Custom build — your SOPs, your tools, your AI system</li>
+          <li>AI lead responder — every inquiry answered in under 60 seconds</li>
+          <li>AI phone agent — dedicated number, qualifies leads, books your calendar</li>
+          <li>SOP documentation — every process replayable</li>
+          <li>Operator handoff — your team trained to run and extend it</li>
+          <li>Monthly optimization calls included</li>
+        </ul>
+        <p style="font-size:0.75rem;color:var(--amber);margin-top:1.5rem;border-top:1px solid rgba(240,237,230,0.12);padding-top:1rem;">
+          30-day guarantee: measurable changes in your business or full refund. Conditional on your participation.
+        </p>
+      </div>
+    </div>
+
+    <div class="guarantee-box">
+      <h3>The 30-Day Guarantee</h3>
+      <p>Measurable changes in your business within 30 days — or full refund. The condition: you participate the way I tell you. Show up to calls. Give me access to your systems. Follow the process. If you do that and it doesn't work, you pay nothing.</p>
+    </div>
+
+    <p class="scarcity" style="text-align:center;margin-top:2rem;">
+      We take on 1–3 new clients at a time. When those spots are full, they're full.<br>
+      Retainer clients get preference when transformation slots open.
+    </p>
+  </section>
+
+  <!-- THE MATH -->
+  <section class="dark">
+    <div class="tag">The math</div>
+    <h2>This pays for itself before month 2.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="color:rgba(232,161,32,0.3);">&#x2716;</div>
+        <h3>One missed lead per week</h3>
+        <p>= $2K–$10K/year in lost revenue. Your AI responds in 60 seconds. Nights. Weekends. Holidays. No lead falls through again.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:rgba(232,161,32,0.3);">&#x2716;</div>
+        <h3>20 hrs/week on repetitive tasks</h3>
+        <p>= $25K–$50K/year in employee wages doing work that doesn't need a human. Your AI runs those SOPs. Your people move up the stack.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--amber);">&#x2714;</div>
+        <h3>One AI worker seat</h3>
+        <p>= $200/month. Not a $50K salary. Not a contractor. Not an agency. A system that runs your processes 24/7 and gets smarter over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONEST -->
+  <div class="honest">
+    <div class="tag">The honest part</div>
+    <h2>AI won't save a broken business. It will show you exactly where it's broken.</h2>
+    <p>
+      Adding AI is the competitive floor now, not the moonshot. The businesses that haven't started are already behind. But AI doesn't fix chaos — it makes chaos faster and more visible. That's actually a good thing. Now you can see exactly what to fix. We build the operating system your business was supposed to have.
+    </p>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="tag">Ready?</div>
+    <h2>One call. 30 minutes. You'll know exactly what to automate first.</h2>
+    <p>The audit is free. You'll leave knowing whether your business is a candidate — and if it is, exactly what we'd build first.</p>
+    <p style="font-size:0.8rem;color:var(--grey-light);margin-bottom:3rem;">You keep the roadmap regardless. Even if you never pay us a dollar.</p>
+    <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="cta-big">Book Your Free AI Audit</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Built with AI. The site &mdash; and the systems I sell.</span>
+  </div>
+
+</body>
+</html>
