@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frameworks — Isaac TWI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --off-white: #f0ede6; --amber: #e8a120; --grey: #2a2a2a; --grey-light: #555; --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif; }
+    body { background: var(--black); color: var(--off-white); font-family: var(--mono); font-weight: 300; }
+    a { color: inherit; }
+    .header { padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(232,161,32,0.15); }
+    .logo { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: var(--amber); text-transform: uppercase; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-light); text-decoration: none; }
+    .nav-links a:hover { color: var(--off-white); }
+    .tag { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--amber); }
+    section { padding: 5rem; }
+    .dark { background: var(--grey); }
+    h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 0.95; margin-bottom: 1.5rem; }
+    h1 span { color: var(--amber); }
+    h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.05; margin-bottom: 1.5rem; max-width: 28ch; }
+    .sub { font-size: 0.95rem; line-height: 1.8; color: #999; max-width: 56ch; margin-bottom: 3rem; }
+
+    .frameworks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+    .fw-card { border: 1px solid rgba(240,237,230,0.12); padding: 2rem; text-decoration: none; color: var(--off-white); transition: all 0.2s; }
+    .fw-card:hover { border-color: var(--amber); background: rgba(232,161,32,0.04); transform: translateY(-2px); }
+    .fw-num { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--amber); margin-bottom: 0.8rem; text-transform: uppercase; }
+    .fw-card h3 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.6rem; }
+    .fw-card p { font-size: 0.78rem; line-height: 1.7; color: #aaa; }
+    .fw-card .arrow { color: var(--amber); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 1rem; display: block; }
+    .fw-card.coming { opacity: 0.5; pointer-events: none; }
+    .fw-card.coming .arrow { display: none; }
+    .fw-card.coming::after { content: 'COMING SOON'; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--grey-light); margin-top: 1rem; display: block; }
+
+    .patreon-cta { margin-top: 3rem; border: 1px solid rgba(232,161,32,0.3); padding: 2.5rem; background: rgba(232,161,32,0.03); text-align: center; }
+    .patreon-cta h3 { font-family: var(--display); font-weight: 800; font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .patreon-cta p { font-size: 0.85rem; color: #aaa; line-height: 1.7; max-width: 50ch; margin: 0 auto 1.5rem; }
+    .cta-big { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--amber); padding: 1rem 2.5rem; text-decoration: none; display: inline-block; }
+    .cta-big:hover { background: var(--off-white); }
+
+    .footer { padding: 2rem 5rem; border-top: 1px solid var(--grey); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--grey-light); }
+    @media (max-width: 900px) {
+      section { padding: 3rem 2rem; }
+      .frameworks-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+      .header { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="/" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Isaac</a>
+      <a href="gnosys.html">GNOSYS</a>
+      <a href="transform.html">Services</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="tag">Frameworks</div>
+    <h1>How to build <span>AI systems</span> that compound.</h1>
+    <p class="sub">Each framework is a piece of the architecture. Together they form a complete methodology for building AI systems that improve themselves over time. Click any framework for the deep dive.</p>
+
+    <div class="frameworks-grid">
+
+      <a href="blog/seven-disciplines.html" class="fw-card">
+        <div class="fw-num">Foundation</div>
+        <h3>The 7-Stack of AI Engineering</h3>
+        <p>Prompts → Context → Tools → Harness → Admissibility → Concentration → Emergence. The assembly sequence for any AI system. Most businesses die at layer 4.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/admissibility.html" class="fw-card">
+        <div class="fw-num">Layer 5</div>
+        <h3>Admissibility Engineering</h3>
+        <p>Define the boundary before acting. Is this operation licensed by enough visible structure to be safely performed? The layer nobody else builds.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="#" class="fw-card coming">
+        <div class="fw-num">Architecture</div>
+        <h3>The Mahājālakala Engine</h3>
+        <p>Every business is a trace of the same engine running in a different domain. Compiler compilers that output entire genres of human-level work and chain them.</p>
+      </a>
+
+      <a href="#" class="fw-card coming">
+        <div class="fw-num">Bootstrap</div>
+        <h3>The Observation Chain</h3>
+        <p>Observation-to-rule self-bootstrapping. The loop converges because each iteration deposits rules into the ontology, shaping the next iteration.</p>
+      </a>
+
+      <a href="#" class="fw-card coming">
+        <div class="fw-num">Compilation</div>
+        <h3>Futamura Projection Tower</h3>
+        <p>P0: source code. P1: interpreter. P2: compiler. P3: compiler-compiler. Each level produces the next. The system that makes the system that makes the system.</p>
+      </a>
+
+      <a href="#" class="fw-card coming">
+        <div class="fw-num">Meta</div>
+        <h3>SOMA — Self Organizing Meta Architecture</h3>
+        <p>The system understands itself. Ontology + logic programming + automated reasoning. Not automation — guaranteed intelligence.</p>
+      </a>
+
+      <a href="blog/the-system-audit.html" class="fw-card">
+        <div class="fw-num">Practical</div>
+        <h3>The 30-Day System Audit</h3>
+        <p>How to find the #1 automation in any business in 30 minutes. The diagnostic framework behind every TWI engagement.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/docmagic-stack.html" class="fw-card">
+        <div class="fw-num">Tool</div>
+        <h3>DocMagic Stack</h3>
+        <p>Your repo is lying to your AI agent. DocMagic finds where. The tool that makes AI coding actually work.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+    </div>
+
+    <div class="patreon-cta">
+      <h3>Get all frameworks + seed wiki + direct access</h3>
+      <p>Join the Patreon for Discord role, full seed wiki access, every framework document, and ask Isaac questions directly.</p>
+      <a href="#" class="cta-big">Join Patreon &rarr;</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Frameworks for building AI that compounds.</span>
+  </div>
+
+</body>
+</html>

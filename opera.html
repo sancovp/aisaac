@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANCREV OPERA — TWI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --off-white: #f0ede6; --amber: #e8a120; --grey: #2a2a2a; --grey-light: #555; --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif; }
+    body { background: var(--black); color: var(--off-white); font-family: var(--mono); font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; }
+    a { color: inherit; }
+    .header { padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(232,161,32,0.15); }
+    .logo { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: var(--amber); text-transform: uppercase; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-light); text-decoration: none; }
+    .nav-links a:hover { color: var(--off-white); }
+    .tag { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--amber); }
+
+    .content { flex: 1; padding: 6rem 5rem; max-width: 800px; }
+    h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95; margin-bottom: 1.5rem; }
+    h1 span { color: var(--amber); }
+    .desc { font-size: 1rem; line-height: 2; color: #bbb; margin-bottom: 3rem; }
+    .desc strong { color: var(--off-white); font-weight: 400; }
+
+    .layers { margin-bottom: 3rem; }
+    .layer { display: flex; align-items: stretch; border-bottom: 1px solid rgba(232,161,32,0.08); }
+    .layer-name { width: 200px; flex-shrink: 0; padding: 1rem 1.5rem; font-family: var(--display); font-weight: 700; font-size: 0.9rem; border-right: 1px solid rgba(232,161,32,0.08); display: flex; align-items: center; }
+    .layer-desc { flex: 1; padding: 1rem 1.5rem; font-size: 0.8rem; color: #aaa; line-height: 1.6; display: flex; align-items: center; }
+    .layer-bar { width: 4px; background: var(--amber); }
+
+    .status { border: 1px solid rgba(232,161,32,0.3); padding: 2rem; background: rgba(232,161,32,0.03); margin-bottom: 3rem; }
+    .status h3 { font-family: var(--display); font-weight: 800; font-size: 1.2rem; color: var(--amber); margin-bottom: 0.8rem; }
+    .status p { font-size: 0.85rem; color: #aaa; line-height: 1.7; }
+
+    .links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); padding-bottom: 2px; }
+
+    .footer { padding: 2rem 5rem; border-top: 1px solid var(--grey); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--grey-light); }
+    @media (max-width: 900px) {
+      .content { padding: 3rem 2rem; }
+      .layer { flex-direction: column; }
+      .layer-name { width: 100%; border-right: none; border-bottom: 1px solid rgba(232,161,32,0.08); }
+      .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+      .header { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="/" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Isaac</a>
+      <a href="gnosys.html">GNOSYS</a>
+      <a href="transform.html">Services</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="tag">Platform</div>
+    <h1>SANCREV <span>OPERA</span></h1>
+    <div class="desc">
+      <p>The unified interface for compound intelligence. SANCREV OPERA brings together every component — <strong>Jobworld</strong> (business operations), <strong>GNOSYS</strong> (AI agent), <strong>CartON</strong> (knowledge graph), <strong>SANCTUM</strong> (life architecture), <strong>STARSYSTEM</strong> (development) — into one application.</p>
+      <p style="margin-top:1rem;">One install. One interface. Everything compounds.</p>
+    </div>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-name">Jobworld</div>
+        <div class="layer-desc">AI-powered business operations. Departments, agents, SOPs, automations. Your company runs itself.</div>
+        <div class="layer-bar" style="opacity:0.3;"></div>
+      </div>
+      <div class="layer">
+        <div class="layer-name">GNOSYS</div>
+        <div class="layer-desc">Personal AI agent. Builds skills, accumulates knowledge, codes, researches, publishes. Your compound intelligence partner.</div>
+        <div class="layer-bar" style="opacity:0.45;"></div>
+      </div>
+      <div class="layer">
+        <div class="layer-name">CartON</div>
+        <div class="layer-desc">Knowledge graph. 190K+ concepts, semantic search, typed projections. Everything you learn persists and connects.</div>
+        <div class="layer-bar" style="opacity:0.55;"></div>
+      </div>
+      <div class="layer">
+        <div class="layer-name">SANCTUM</div>
+        <div class="layer-desc">Life architecture. Health, wealth, relationships, purpose, growth, environment. The system that keeps the human intact.</div>
+        <div class="layer-bar" style="opacity:0.7;"></div>
+      </div>
+      <div class="layer">
+        <div class="layer-name">STARSYSTEM</div>
+        <div class="layer-desc">Development infrastructure. Flights, missions, starlog, waypoints. How the system builds and evolves itself.</div>
+        <div class="layer-bar" style="opacity:0.85;"></div>
+      </div>
+    </div>
+
+    <div class="status">
+      <h3>Status: Building in the open</h3>
+      <p>SANCREV OPERA is under active development. The components exist and run individually. The unified interface is coming. Follow the build on Isaac's blog and Patreon.</p>
+    </div>
+
+    <div class="links">
+      <a href="build.html">Get Jobworld (available now) &rarr;</a>
+      <a href="gnosys.html">Meet GNOSYS &rarr;</a>
+      <a href="frameworks.html">Read the frameworks &rarr;</a>
+      <a href="https://github.com/sancovp/sanctuary-revolution-alpha">View source (GitHub) &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">One install. One interface. Everything compounds.</span>
+  </div>
+
+</body>
+</html>
