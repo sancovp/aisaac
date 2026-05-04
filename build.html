@@ -5,6 +5,28 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jobworld — TWI</title>
+  <style>
+    .buy-modal { display:none; position:fixed; inset:0; z-index:10000; background:rgba(4,4,14,0.92); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); animation:buy-in .25s ease-out; }
+    .buy-modal.open { display:flex; align-items:center; justify-content:center; }
+    @keyframes buy-in { from{opacity:0} to{opacity:1} }
+    .buy-box { max-width:440px; width:100%; margin:2rem; padding:2.5rem; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-lg); position:relative; }
+    .buy-close { position:absolute; top:1rem; right:1.2rem; background:none; border:none; color:var(--text-3); font-size:1.5rem; cursor:pointer; }
+    .buy-close:hover { color:var(--text-1); }
+    .buy-box h3 { font-size:1.15rem; margin-bottom:0.5rem; }
+    .buy-box p { font-size:0.85rem; color:var(--text-2); line-height:1.7; margin-bottom:1rem; }
+    .buy-opt { display:block; width:100%; text-align:left; padding:1rem 1.2rem; margin-bottom:0.8rem; background:rgba(255,255,255,0.025); border:1px solid var(--glass-border); border-radius:var(--r-md); text-decoration:none; color:var(--text-1); transition:all .2s; }
+    .buy-opt:hover { border-color:rgba(125,211,252,0.25); transform:translateY(-1px); }
+    .buy-opt.primary { border-color:rgba(125,211,252,0.12); background:rgba(125,211,252,0.04); }
+    .buy-opt .bo-badge { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:0.3rem; display:block; }
+    .buy-opt h4 { font-size:0.95rem; margin-bottom:0.2rem; }
+    .buy-opt p { font-size:0.75rem; color:var(--text-2); margin:0; }
+    .template-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:2rem; }
+    .template-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.3rem; transition:all .2s; }
+    .template-card:hover { border-color:rgba(125,211,252,0.2); transform:translateY(-1px); }
+    .template-card h4 { font-size:0.9rem; margin-bottom:0.3rem; }
+    .template-card p { font-size:0.75rem; color:var(--text-2); line-height:1.6; }
+    .template-card .tc-tag { font-family:var(--mono); font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:0.5rem; display:block; }
+  </style>
 </head>
 <body>
 
@@ -23,63 +45,103 @@
   <section style="padding-top:6rem;">
     <div style="max-width:56ch;">
       <div class="tag">Jobworld</div>
-      <h1>Your business.<br>One interface.<br><span>All AI.</span></h1>
+      <h1>Your business factory.<br><span>Compile. Deploy. Run.</span></h1>
       <p class="sub">
-        Jobworld is the business operating system — dashboards, departments, SOPs, automations, agent management. Everything your AI-powered business needs to operate, visible in one place.
+        Customize Jobworld to reflect your business — or load a templated, proven autonomous business model and start a new one. Each template is a complete AI-operated business you own.
       </p>
       <p class="sub" style="margin-top:0;">
         Powered by <a href="opera.html" style="color:var(--mercury-blue);">SANCREV OPERA</a> (open source engine). Jobworld is the commercial product that runs on it.
       </p>
-      <a href="apply.html" class="cta-big">Get Jobworld</a>
+      <button class="cta-big" id="buy-btn">Get Jobworld</button>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- TEMPLATES -->
   <section class="dark">
+    <div class="tag">Business templates</div>
+    <h2>Load a proven model. Start running.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;max-width:56ch;">Each template is a pre-configured autonomous business. Voice agents, content machines, lead gen — deployed and running. You own it. You keep it.</p>
+
+    <div class="template-grid">
+      <div class="template-card">
+        <span class="tc-tag">Template</span>
+        <h4>Voice Agent Business</h4>
+        <p>Vapi voice agent + lead gen + closer script + follow-up automation. The first business most people should start.</p>
+      </div>
+      <div class="template-card">
+        <span class="tc-tag">Template</span>
+        <h4>Content Agency</h4>
+        <p>Content machine + social posting + client management. Produce 400 pieces/week for multiple clients.</p>
+      </div>
+      <div class="template-card">
+        <span class="tc-tag">Template</span>
+        <h4>Lead Gen Agency</h4>
+        <p>Hyperpersonalized cold outreach + social scraping + qualification. Find and warm prospects at scale.</p>
+      </div>
+      <div class="template-card">
+        <span class="tc-tag">Template</span>
+        <h4>Ad Agency</h4>
+        <p>Ad copy generation + Creatify video ads + pixel tracking + angle testing. Run campaigns that optimize themselves.</p>
+      </div>
+      <div class="template-card">
+        <span class="tc-tag">Coming</span>
+        <h4>Course Platform</h4>
+        <p>Claude Code config that IS the course. Students learn by talking to it while it builds their business.</p>
+      </div>
+      <div class="template-card">
+        <span class="tc-tag">Coming</span>
+        <h4>Custom Template</h4>
+        <p>Describe your business model. Jobworld compiles it into agents, automations, and dashboards.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section>
     <div class="tag">What you get</div>
     <h2>Everything a company needs. No employees required.</h2>
 
     <div class="menu-grid">
       <div class="menu-item">
-        <h3>Agent Roles</h3>
+        <h3>Agent Departments</h3>
         <p>Content, Growth, Revenue, Research, Engineering. Each agent knows its job and executes without babysitting.</p>
       </div>
       <div class="menu-item">
-        <h3>SOP Engine</h3>
-        <p>Workflows get recorded as you do them. Run once, teach the system, replay forever. Your SOPs build themselves.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Live Dashboard</h3>
-        <p>Projects, milestones, goals, tasks, events — all visible in real time. You see exactly what every agent is doing.</p>
+        <h3>Self-Interpreting Skills</h3>
+        <p>27+ frameworks baked in. The system understands its own business model and can explain, adapt, and improve itself.</p>
       </div>
       <div class="menu-item">
         <h3>Automation Library</h3>
-        <p>Lead response, content pipelines, follow-ups, scheduling. Pre-built automations you can deploy in minutes.</p>
+        <p>Lead response, content pipelines, follow-ups, scheduling. Pre-built automations you deploy in minutes.</p>
       </div>
       <div class="menu-item">
         <h3>Natural Language Control</h3>
-        <p>Tell the system what you want in plain English. "Make the content warmer." "Add a new product to the funnel." It adjusts.</p>
+        <p>Tell the system what you want in plain English. It adjusts. No configuration screens.</p>
       </div>
       <div class="menu-item">
         <h3>Self-Monitoring</h3>
-        <p>The system tracks its own metrics. Detects when things aren't working. Adjusts. Not a dashboard you stare at — a system that watches itself.</p>
+        <p>The system tracks its own metrics. Detects when things aren't working. Adjusts. A system that watches itself.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Daily Reviews</h3>
+        <p>Morning briefing from your business. What happened, what's due, what needs your attention. Respond and it acts.</p>
       </div>
     </div>
   </section>
 
   <!-- ARCHITECTURE -->
-  <section>
+  <section class="dark">
     <div class="tag">Under the hood</div>
     <h2>Open engine. Commercial product.</h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;">
       <div class="menu-item">
         <h3>SANCREV OPERA</h3>
-        <p>The open source engine. CAVE agent runtime, CartON knowledge graph, STARSYSTEM evolution, Paperclip orchestration. Inspect it. Fork it. Build on it.</p>
+        <p>The open source engine. CAVE agent runtime, CartON knowledge graph, STARSYSTEM evolution. Inspect it. Fork it.</p>
         <a href="opera.html" style="color:var(--mercury-blue);font-size:0.75rem;text-decoration:none;margin-top:0.5rem;display:block;">Learn more &rarr;</a>
       </div>
       <div class="menu-item">
         <h3>GNOSYS</h3>
-        <p>See what a compound intelligence system looks like when it's actually running. The 7-stack methodology. The knowledge graph. Autonomous operation. All on Jobworld.</p>
+        <p>The compound intelligence agent that runs inside Jobworld. The 7-stack methodology in action.</p>
         <a href="gnosys.html" style="color:var(--mercury-blue);font-size:0.75rem;text-decoration:none;margin-top:0.5rem;display:block;">Meet GNOSYS &rarr;</a>
       </div>
     </div>
@@ -88,15 +150,53 @@
   <!-- CTA -->
   <section class="final-cta">
     <div class="tag">Start here</div>
-    <h2>See it running. Then decide.</h2>
-    <p>Book a call. I'll show you the system, explain what it does for your business, and give you a clear next step.</p>
-    <a href="apply.html" class="cta-big" style="margin-top:2rem;">Book a Call</a>
+    <h2>Your business factory is ready.</h2>
+    <p>Load a template or customize your own. Every template is a proven, autonomous business model.</p>
+    <button class="cta-big" style="margin-top:2rem;" id="buy-btn-2">Get Jobworld</button>
   </section>
 
   <div class="footer">
     <span>&copy; 2026 Isaac &mdash; TWI</span>
-    <span style="color:var(--text-3);font-style:italic;">Zero employees. A full company. All AI.</span>
+    <span style="color:var(--text-3);font-style:italic;">Compile a business. Own it forever.</span>
   </div>
+
+  <!-- BUY POPUP -->
+  <div class="buy-modal" id="buy-modal">
+    <div class="buy-box">
+      <button class="buy-close" id="buy-close">&times;</button>
+      <h3>Get Jobworld</h3>
+      <p>Jobworld Premium includes all templates, all frameworks, self-interpreting skills, and daily reviews.</p>
+
+      <a href="join.html" class="buy-opt primary">
+        <span class="bo-badge">Recommended</span>
+        <h4>Join the community</h4>
+        <p>Jobworld Premium is included free with your TWI community membership on Patreon. Plus all frameworks, Discord access, and updates.</p>
+      </a>
+
+      <a href="#" class="buy-opt" id="buy-onetime">
+        <h4>One-time purchase</h4>
+        <p>Get Jobworld Premium without a subscription. Full price, yours forever, no community access.</p>
+      </a>
+
+      <p style="font-size:0.7rem;color:var(--text-3);margin-top:1rem;text-align:center;">
+        Free version available on <a href="https://github.com/sancovp/sanctuary-revolution-alpha" style="color:var(--mercury-blue);text-decoration:none;">GitHub</a> — basic features, no templates.
+      </p>
+    </div>
+  </div>
+
+<script>
+(function() {
+  var modal = document.getElementById('buy-modal');
+  function openBuy() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeBuy() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+
+  document.getElementById('buy-btn').addEventListener('click', openBuy);
+  document.getElementById('buy-btn-2').addEventListener('click', openBuy);
+  document.getElementById('buy-close').addEventListener('click', closeBuy);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeBuy(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeBuy(); });
+})();
+</script>
 
 <script src="sticky-cta.js"></script>
 </body>
