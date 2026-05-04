@@ -1,0 +1,8 @@
+{
+  "domain": "video_production",
+  "subdomain": null,
+  "category": "single_turn_process",
+  "what": "TTS audio generation with frame-accurate timing for video sync",
+  "when": "Creating voiceover audio for explainer videos, tutorials, or any video content that needs narration",
+  "describes_component": null
+}

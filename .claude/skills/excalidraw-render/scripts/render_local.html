@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<style>* { margin: 0; padding: 0; } body { background: #fff; } #root { display: inline-block; } #root svg { display: block; }</style>
+</head><body>
+<div id="root"></div>
+<script type="module">
+import { exportToSvg } from "https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.18.1/+esm";
+window.renderDiagram = async function(jsonData) {
+  try {
+    const data = typeof jsonData === "string" ? JSON.parse(jsonData) : jsonData;
+    const svg = await exportToSvg({ elements: data.elements || [], appState: { ...(data.appState || {}), exportBackground: true }, files: data.files || {} });
+    document.getElementById("root").innerHTML = "";
+    document.getElementById("root").appendChild(svg);
+    window.__renderComplete = true;
+    return { success: true };
+  } catch (err) {
+    window.__renderComplete = true;
+    window.__renderError = err.message;
+    return { success: false, error: err.message };
+  }
+};
+window.__moduleReady = true;
+</script>
+</body></html>

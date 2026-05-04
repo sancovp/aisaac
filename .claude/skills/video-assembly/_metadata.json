@@ -1,0 +1,8 @@
+{
+  "domain": "video_production",
+  "subdomain": null,
+  "category": "single_turn_process",
+  "what": "FFmpeg video assembly pipeline combining Remotion segments with TTS audio",
+  "when": "Assembling final explainer videos from rendered segments and voiceover audio",
+  "describes_component": null
+}

@@ -1,0 +1,8 @@
+{
+  "domain": "video_production",
+  "subdomain": null,
+  "category": "single_turn_process",
+  "what": "Automated video QC \u2014 render frames via Playwright, review screenshots for errors, fix and re-render until clean",
+  "when": "After writing a Remotion composition, before publishing video content",
+  "describes_component": null
+}
