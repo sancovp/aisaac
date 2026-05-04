@@ -344,7 +344,7 @@ section { padding: 5rem; }
 
 /* ── Footer ── */
 .footer {
-  padding: 2rem 5rem; border-top: 1px solid var(--glass-border);
+  padding: 2rem 5rem 4rem; border-top: 1px solid var(--glass-border);
   display: flex; justify-content: space-between; align-items: center;
   font-size: 0.7rem; color: var(--text-3);
 }

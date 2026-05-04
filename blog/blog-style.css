@@ -155,7 +155,7 @@
 
 /* Footer */
 #isaac-site .site-footer {
-  padding: 2rem 5rem; border-top: 1px solid var(--glass-border);
+  padding: 2rem 5rem 4rem; border-top: 1px solid var(--glass-border);
   display: flex; justify-content: space-between; align-items: center;
   font-size: 0.7rem; color: var(--text-3);
 }
@@ -186,6 +186,39 @@
   color: var(--mercury-blue); margin-top: 1rem; display: block;
 }
 
+/* Blog CTA */
+#isaac-site .blog-cta {
+  margin: 0 auto 2rem; max-width: 820px; padding: 2.5rem 3rem;
+  background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border); border-radius: var(--r-lg);
+  position: relative; overflow: hidden;
+}
+#isaac-site .blog-cta::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cta-accent, var(--mercury-blue)) 30%, var(--cta-accent, var(--mercury-blue)) 70%, transparent);
+}
+#isaac-site .blog-cta-transform { --cta-accent: var(--mercury-teal); }
+#isaac-site .blog-cta-build { --cta-accent: var(--mercury-violet); }
+#isaac-site .blog-cta-learn { --cta-accent: var(--mercury-blue); }
+#isaac-site .blog-cta-label {
+  font-weight: 600; font-size: 1.15rem; color: var(--text-1); margin-bottom: 0.5rem;
+}
+#isaac-site .blog-cta-desc {
+  font-size: 0.85rem; line-height: 1.7; color: var(--text-2); margin-bottom: 1.5rem; max-width: 52ch;
+}
+#isaac-site .blog-cta-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+#isaac-site .blog-cta-primary {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #000; background: linear-gradient(135deg, var(--cta-accent, var(--mercury-blue)), var(--mercury-violet));
+  padding: 0.6rem 1.5rem; border-radius: var(--r-sm); text-decoration: none; transition: all 0.3s;
+}
+#isaac-site .blog-cta-primary:hover { filter: brightness(1.2); transform: translateY(-1px); }
+#isaac-site .blog-cta-secondary {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--cta-accent, var(--mercury-blue)); text-decoration: none; transition: color 0.2s;
+}
+#isaac-site .blog-cta-secondary:hover { color: var(--text-1); }
+
 /* Responsive */
 @media (max-width: 900px) {
   #isaac-site article { padding: 3rem 2rem; }
@@ -193,4 +226,6 @@
   #isaac-site .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
   #isaac-site .blog-grid { grid-template-columns: 1fr; }
   #isaac-site .section { padding: 3rem 2rem; }
+  #isaac-site .blog-cta { margin: 0 1.5rem; padding: 2rem 1.5rem; }
+  #isaac-site .blog-cta-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }

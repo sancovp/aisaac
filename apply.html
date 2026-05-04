@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply — Isaac TWI</title>
+  <style>
+    .apply-wrap { max-width: 560px; margin: 0 auto; padding: 6rem 2rem 4rem; min-height: 80vh; }
+    .apply-tag { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .apply-tag::before { content: ''; width: 2rem; height: 1px; background: var(--mercury-blue); }
+    .apply-h { font-weight: 700; font-size: 1.8rem; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.8rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .apply-sub { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; margin-bottom: 2.5rem; }
+    .apply-step { display: none; }
+    .apply-step.active { display: block; animation: step-in 0.3s ease-out; }
+    @keyframes step-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .apply-q { font-weight: 600; font-size: 1.1rem; color: var(--text-1); margin-bottom: 1.5rem; }
+    .apply-opts { display: flex; flex-direction: column; gap: 0.8rem; }
+    .apply-opt {
+      background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md);
+      padding: 1rem 1.5rem; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; color: var(--text-2);
+    }
+    .apply-opt:hover { border-color: rgba(125,211,252,0.25); color: var(--text-1); transform: translateY(-1px); }
+    .apply-opt.selected { border-color: var(--mercury-blue); color: var(--text-1); background: rgba(125,211,252,0.06); }
+    .apply-input {
+      width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md);
+      padding: 0.8rem 1.2rem; color: var(--text-1); font-family: var(--body); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    }
+    .apply-input:focus { border-color: var(--mercury-blue); }
+    .apply-input::placeholder { color: var(--text-3); }
+    .apply-next {
+      margin-top: 2rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
+      padding: 0.6rem 1.8rem; border-radius: var(--r-sm); border: none; cursor: pointer; transition: all 0.3s;
+    }
+    .apply-next:hover { filter: brightness(1.2); transform: translateY(-1px); }
+    .apply-next:disabled { opacity: 0.3; cursor: not-allowed; transform: none; filter: none; }
+    .apply-progress { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+    .apply-dot { width: 2rem; height: 3px; border-radius: 2px; background: var(--glass-border); transition: background 0.3s; }
+    .apply-dot.done { background: var(--mercury-blue); }
+    .apply-dot.current { background: var(--mercury-violet); }
+    .apply-result { padding: 2rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-lg); margin-top: 1.5rem; }
+    .apply-result h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--text-1); }
+    .apply-result p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; margin-bottom: 1rem; }
+    .apply-result .cta-big { display: inline-block; margin-top: 0.5rem; margin-right: 1rem; }
+    .apply-alt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--mercury-blue); text-decoration: none; }
+    .apply-alt:hover { color: var(--text-1); }
+    .apply-escape { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); font-size: 0.8rem; color: var(--text-3); }
+    .apply-escape a { color: var(--mercury-violet); text-decoration: none; }
+    .apply-escape a:hover { color: var(--text-1); }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="/" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="transform.html">Services</a>
+      <a href="blog/">Blog</a>
+    </div>
+  </div>
+
+  <div class="apply-wrap">
+    <div class="apply-tag">Application</div>
+    <h1 class="apply-h">Work with Isaac</h1>
+    <p class="apply-sub">A few questions so I can point you to the right thing. Takes 30 seconds.</p>
+
+    <div class="apply-progress">
+      <div class="apply-dot current" data-step="0"></div>
+      <div class="apply-dot" data-step="1"></div>
+      <div class="apply-dot" data-step="2"></div>
+      <div class="apply-dot" data-step="3"></div>
+    </div>
+
+    <!-- Step 0: Business owner? -->
+    <div class="apply-step active" data-step="0">
+      <div class="apply-q">Are you a business owner?</div>
+      <div class="apply-opts">
+        <div class="apply-opt" data-value="yes" data-next="1">Yes, I run a business</div>
+        <div class="apply-opt" data-value="starting" data-next="1">Starting one — not live yet</div>
+        <div class="apply-opt" data-value="exploring" data-next="result-learn">Just exploring what's possible with AI</div>
+      </div>
+    </div>
+
+    <!-- Step 1: Revenue -->
+    <div class="apply-step" data-step="1">
+      <div class="apply-q">What's your monthly revenue?</div>
+      <div class="apply-opts">
+        <div class="apply-opt" data-value="pre" data-next="result-school">Pre-revenue / under $5K</div>
+        <div class="apply-opt" data-value="5-10k" data-next="result-school">$5K — $10K</div>
+        <div class="apply-opt" data-value="10-20k" data-next="2">$10K — $20K</div>
+        <div class="apply-opt" data-value="20-50k" data-next="2">$20K — $50K</div>
+        <div class="apply-opt" data-value="50k+" data-next="2">$50K+</div>
+      </div>
+    </div>
+
+    <!-- Step 2: Bottleneck -->
+    <div class="apply-step" data-step="2">
+      <div class="apply-q">What's eating your time?</div>
+      <div class="apply-opts">
+        <div class="apply-opt" data-value="leads" data-next="3">Answering leads / follow-up</div>
+        <div class="apply-opt" data-value="content" data-next="3">Creating content consistently</div>
+        <div class="apply-opt" data-value="ops" data-next="3">Operations and repetitive tasks</div>
+        <div class="apply-opt" data-value="all" data-next="3">All of it — I need the whole system</div>
+      </div>
+    </div>
+
+    <!-- Step 3: Timeline -->
+    <div class="apply-step" data-step="3">
+      <div class="apply-q">How soon do you want AI running?</div>
+      <div class="apply-opts">
+        <div class="apply-opt" data-value="now" data-next="result-qualified">This week</div>
+        <div class="apply-opt" data-value="soon" data-next="result-qualified">This month</div>
+        <div class="apply-opt" data-value="later" data-next="result-qualified">Just scoping it out</div>
+      </div>
+    </div>
+
+    <!-- Result: Qualified -->
+    <div class="apply-step" data-step="result-qualified">
+      <div class="apply-q">You qualify.</div>
+      <div class="apply-result">
+        <h3>Two ways to start right now:</h3>
+        <p><strong>Option 1:</strong> Talk to my AI agent. It knows your situation, it'll walk you through exactly what I'd build for your business, and it can get you started immediately. No obligation.</p>
+        <p id="vapi-placeholder" style="font-size:0.75rem;color:var(--text-3);margin-bottom:1rem;">[AI agent call — coming soon. For now, book directly.]</p>
+        <p><strong>Option 2:</strong> Book a free discovery call with me directly. 30 minutes, no pitch — I'll tell you what to automate and in what order. You keep the roadmap regardless.</p>
+        <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="cta-big" style="margin-top:1rem;">Book Free Discovery Call</a>
+      </div>
+      <div class="apply-escape">
+        <p>Want to skip the process? <a href="https://cal.com/aisaac/paid-session">$500 for 55 minutes with Isaac — no qualification needed.</a></p>
+      </div>
+    </div>
+
+    <!-- Result: School (under $10K) -->
+    <div class="apply-step" data-step="result-school">
+      <div class="apply-q">The school is your fastest path.</div>
+      <div class="apply-result">
+        <h3>Here's the honest answer:</h3>
+        <p>My retainer and automation builds are designed for businesses already doing $10K+/mo. At your stage, the ROI math doesn't work yet — and I won't take your money for something that won't pay off.</p>
+        <p>What WILL work: learning to build this yourself. The 7-stack methodology, the frameworks, the exact system I use. That's what the school teaches.</p>
+        <a href="learn.html" class="cta-big" style="margin-top:1rem;">Start Learning (Free)</a>
+        <br><br>
+        <p style="font-size:0.8rem;color:var(--text-2);">Want to be notified when the next cohort opens?</p>
+        <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+          <input type="email" class="apply-input" id="school-email" placeholder="your@email.com" style="max-width:280px;">
+          <button class="apply-next" onclick="captureEmail('school')" style="margin-top:0;">Notify Me</button>
+        </div>
+      </div>
+      <div class="apply-escape">
+        <p>Still want direct access? <a href="https://cal.com/aisaac/paid-session">$500 for 55 minutes with Isaac — no qualification needed.</a></p>
+      </div>
+    </div>
+
+    <!-- Result: Learn (just exploring) -->
+    <div class="apply-step" data-step="result-learn">
+      <div class="apply-q">Start here.</div>
+      <div class="apply-result">
+        <h3>The best way to learn what's possible:</h3>
+        <p>27 frameworks, real architecture, zero fluff. The blog explains everything — how compound AI systems work, how to think about building them, and where the industry is actually headed.</p>
+        <a href="blog/" class="cta-big" style="margin-top:1rem;">Read the Blog</a>
+        <span style="margin-left:1rem;"><a href="learn.html" class="apply-alt">Or browse the curriculum &rarr;</a></span>
+      </div>
+      <div class="apply-escape">
+        <p>Want a direct conversation? <a href="https://cal.com/aisaac/paid-session">$500 for 55 minutes with Isaac.</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Built with AI. The site — and the systems I sell.</span>
+  </div>
+
+<script>
+var answers = {};
+
+document.addEventListener('click', function(e) {
+  var opt = e.target.closest('.apply-opt');
+  if (!opt) return;
+
+  // Mark selected
+  var siblings = opt.parentElement.querySelectorAll('.apply-opt');
+  siblings.forEach(function(s) { s.classList.remove('selected'); });
+  opt.classList.add('selected');
+
+  // Store answer
+  var step = opt.closest('.apply-step').dataset.step;
+  answers[step] = opt.dataset.value;
+
+  // Navigate after brief delay
+  var next = opt.dataset.next;
+  setTimeout(function() { goToStep(next); }, 200);
+});
+
+function goToStep(stepId) {
+  // Hide all steps
+  document.querySelectorAll('.apply-step').forEach(function(s) { s.classList.remove('active'); });
+
+  // Show target
+  var target = document.querySelector('.apply-step[data-step="' + stepId + '"]');
+  if (target) target.classList.add('active');
+
+  // Update progress dots
+  var dots = document.querySelectorAll('.apply-dot');
+  var stepNum = parseInt(stepId);
+  dots.forEach(function(d) {
+    var ds = parseInt(d.dataset.step);
+    d.classList.remove('done', 'current');
+    if (!isNaN(stepNum)) {
+      if (ds < stepNum) d.classList.add('done');
+      else if (ds === stepNum) d.classList.add('current');
+    } else {
+      // Result step — all dots done
+      d.classList.add('done');
+    }
+  });
+
+  // Store to localStorage
+  try { localStorage.setItem('twi_apply', JSON.stringify(answers)); } catch(e) {}
+}
+
+function captureEmail(source) {
+  var input = document.getElementById(source + '-email');
+  var email = input ? input.value.trim() : '';
+  if (!email || !email.includes('@')) { input.focus(); return; }
+  answers.email = email;
+  answers.source = source;
+  try { localStorage.setItem('twi_apply', JSON.stringify(answers)); } catch(e) {}
+  // TODO: POST to form backend (Formspree, etc.)
+  input.value = '';
+  input.placeholder = 'Saved — we\'ll be in touch.';
+  input.disabled = true;
+}
+</script>
+
+<script src="sticky-cta.js"></script>
+</body>
+</html>
