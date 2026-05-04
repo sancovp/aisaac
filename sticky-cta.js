@@ -134,7 +134,8 @@
           '<h3>Here\'s the honest answer:</h3>' +
           '<p>My builds are for businesses doing $10K+/mo. At your stage, learning to build it yourself will give you the best ROI.</p>' +
           '<p>The 7-stack methodology, the frameworks, the exact system I use — that\'s what the school teaches.</p>' +
-          '<a href="learn.html" class="qual-cta">Start Learning (Free)</a>' +
+          '<a href="school.html" class="qual-cta">Enter the School</a>' +
+          '<a href="free.html" class="qual-alt">Or browse free tools →</a>' +
           '<br><br>' +
           '<p style="font-size:0.8rem;">Get notified when the next cohort opens:</p>' +
           '<div class="qual-email-row">' +
