@@ -22,42 +22,78 @@ INBOUND PIPELINE:
 
 ## Phase 1: Manual + Claude Code (this week)
 
-### Step 1: Build Prospect List
-- Source: Google Maps (local businesses), LinkedIn Sales Navigator, Instagram hashtags
-- Filter: businesses that take phone calls (restaurants, dentists, realtors, contractors, etc.)
-- Tool: Firecrawl API scrapes their website → clean markdown
-- Store: CSV or Airtable (simple, no infra needed)
+### Step 1: Build Prospect List + Multi-Filter Scoring
 
-### Step 2: Enrich Each Prospect
-Claude Code agent reads:
-- Their website (via Firecrawl)
-- Their Google Business profile
-- Their social media (Instagram bio, recent posts, LinkedIn)
-- Their reviews (pain points surface here)
+The pipeline narrows and scores. Each filter produces hard evidence.
 
-Output per prospect:
+**Filter 1 — Businesses in niche + location**
+- Source: Google Maps, Yelp, industry directories
+- Niche: businesses that take phone calls (dentists, realtors, contractors, restaurants, law firms)
+- Tool: Firecrawl scrapes Google Maps by niche + location
+- Output: ~500 raw results per niche/location
+
+**Filter 2 — Find the OWNER on social media + they're active**
+- Cross-reference business name → LinkedIn, Instagram, Facebook, Twitter/X
+- Active = posted in last 30 days
+- Output: ~150 remain (30% have active owners)
+
+**Filter 3 — Evidence of the problem**
+Hard evidence they have the pain we solve:
+- Reviews say "hard to reach," "never answers the phone," "left a voicemail"
+- Website says "leave a message" or has no chat/phone
+- Google Business shows "typically responds in 1-2 days" (too slow)
+- They posted about hiring a receptionist or being overwhelmed
+- Output: ~60 remain
+
+**Filter 4 — Awareness level**
+Have they posted ABOUT AI, voice agents, or automation?
+- **HOT (aware + no solution):** posted about AI/voice agents, interested but hasn't implemented → ~25
+- **WARM (problem visible, unaware of solution):** has the problem but hasn't connected it to AI → ~35
+
+**Filter 5 — Current automation level**
+- Already has AI voice agent → skip (or upsell to L3+)
+- Has some automation (Zapier, basic chatbot) → mid-tier prospect
+- Zero automation → best prospect for first sale
+
+**Lead Score Output:**
 ```json
 {
   "name": "Dr. Smith",
   "business": "Smith Family Dental",
   "website": "smithdental.com",
-  "pain_points": ["missed calls during procedures", "receptionist overwhelmed"],
-  "recent_posts": ["just hired a new hygienist", "open Saturdays now"],
-  "reviews_mention": ["hard to reach by phone", "great once you get in"],
-  "personalization_hook": "Your patients love you but can't reach you by phone"
+  "owner_social": "instagram.com/drsmith_dds",
+  "owner_active": true,
+  "last_post": "2026-04-28",
+  "score": "HOT",
+  "evidence": {
+    "problem": ["3 reviews mention 'hard to reach by phone'", "site says 'leave a message'"],
+    "awareness": ["posted about 'AI in dentistry' on LinkedIn 2 weeks ago"],
+    "current_automation": "none detected",
+    "personalization_hooks": [
+      "just hired a new hygienist (scaling, busier)",
+      "open Saturdays now (more calls, less staff)",
+      "3 reviews: patients love you but can't reach you"
+    ]
+  }
 }
 ```
 
-### Step 3: Generate Personalized Outreach
+### Step 2: Generate Personalized Outreach (scored by lead temperature)
 
-**DM Template (Referral Bait — from Automate AI Consulting):**
-"Hey [Name], I'm hoping you can help me out. I know [Business] takes calls from leads and I'm looking to have a couple businesses test my AI voice agent system for a month for free. It answers calls, qualifies leads, and books appointments 24/7. Would you be open to trying it? You can even call the demo line right now to hear it: [Vapi number]"
+**HOT leads (aware + problem + no solution):**
+"Hey [Name], I saw you posted about [AI topic]. I noticed [Business] still routes to voicemail after hours — I built an AI voice agent that handles exactly that. Want to test it free for a month? Call this number right now and hear it: [Vapi demo]"
+
+**WARM leads (problem visible + unaware):**
+"Hey [Name], I was looking at [Business] reviews and noticed a few mention trouble reaching you by phone. I built something for exactly that — an AI that answers every call in 60 seconds, qualifies leads, and books appointments. Want to try it free? You can test it right now: [Vapi demo]"
+
+**Referral Bait DM (universal):**
+"Hey [Name], I'm hoping you can help me out. I know [Business] takes calls from leads and I'm looking to have a couple businesses test my AI voice agent system for a month for free. Would you be open to trying it? Call the demo line right now to hear it: [Vapi number]"
 
 **Email Template (CAN-SPAM compliant):**
-Subject: "[Business] — your patients can't reach you by phone"
-Body: Personalized based on enrichment data. References specific reviews/posts.
+Subject: "[Business] — [specific evidence, e.g. 'your patients can't reach you by phone']"
+Body: Personalized referencing specific reviews/posts/evidence from enrichment.
 CTA: "Reply 'yes' and I'll set up a 30-second test call"
-Footer: Unsubscribe link (CAN-SPAM required)
+Footer: Physical address + unsubscribe link (CAN-SPAM required)
 
 ### Step 4: Send
 - Email: Gmail API or SMTP (start manual, automate later)
