@@ -117,15 +117,14 @@
 
       // Result: Qualified
       '<div class="qual-step" data-qstep="result-qualified">' +
-        '<div class="qual-q">You qualify.</div>' +
+        '<div class="qual-q">You\'re a fit.</div>' +
         '<div class="qual-result">' +
-          '<h3>Two ways to start:</h3>' +
-          '<p><strong>Option 1:</strong> Talk to my AI agent right now. It knows your situation and can get you started immediately.</p>' +
-          '<p style="font-size:0.7rem;color:#64748b;">[AI agent — coming soon. Book directly for now.]</p>' +
-          '<p><strong>Option 2:</strong> Free discovery call with me. 30 minutes, I tell you what to automate. You keep the roadmap regardless.</p>' +
-          '<a href="https://cal.com/aisaac/ai-agents-for-your-business" class="qual-cta">Book Free Discovery Call</a>' +
+          '<h3>See it in action:</h3>' +
+          '<p>Our AI agent will walk you through exactly what we\'d build for your business — live, right now. No obligation.</p>' +
+          '<a href="#" class="qual-cta" data-demo-call>Get a Demo</a>' +
+          '<p style="font-size:0.7rem;color:#64748b;margin-top:1rem;">[AI demo launching soon — book a discovery call in the meantime.]<br><a href="https://cal.com/aisaac/ai-agents-for-your-business" style="color:#7dd3fc;font-size:0.75rem;">Book discovery call →</a></p>' +
         '</div>' +
-        '<div class="qual-escape"><p>Skip the process? <a href="https://cal.com/aisaac/paid-session">$500 for 55 min with Isaac — no qualification needed.</a></p></div>' +
+        '<p style="text-align:center;margin-top:1.5rem;"><a href="transform.html" class="qual-alt" style="margin:0;font-size:0.75rem;">Show me more first →</a></p>' +
       '</div>' +
 
       // Result: School
