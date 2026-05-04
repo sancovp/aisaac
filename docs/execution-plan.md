@@ -34,22 +34,71 @@ Phase 1 is JUST Claude Code + skills. If Claude Code works, Phase 1 works.
 
 ---
 
-## PHASE 1: Claude Code Level (Target: 3-5 days)
+## PHASE 1: Finish B2B Funnel End-to-End
 
-### What We Build
+GATE: a prospect can go from ad → site → survey → Vapi → payment.
+
+- [ ] Wire Vapi demo agent with cascade script (close → book → B2C → nurture)
+- [ ] Stripe product + checkout link for voice agent setup
+- [ ] Connect "Get a Demo" on site to Vapi widget
+- [ ] Lead gen working (even manual cold email/DMs first)
+- [ ] First ad running (Creatify avatar + belief chain script, $50/day)
+- [ ] Test full path end-to-end
+
+## PHASE 2: Get Clients + Finish Jobworld (parallel)
+
+GATE: paying clients + Jobworld premium live on Patreon.
+
+- [ ] Sell retainer / pre-built while building
+- [ ] Move premium skills BEHIND Patreon (free Jobworld keeps basics)
+- [ ] Set up Patreon with PAIAB / SANCTUM / CAVE tiers
+- [ ] Clean up Discord (sparse, organized by tier, role-gated channels)
+- [ ] Jobworld premium = self-interpreting skills + all frameworks + business models
+- [ ] Free Jobworld = basics only
+
+## PHASE 3: Find Autonomous Business Config
+
+GATE: one configuration runs profitably without Isaac touching it daily.
+
+- [ ] Keep selling, keep iterating
+- [ ] Test which business model runs itself with least intervention
+- [ ] Voice agent business? Content agency? Lead gen? Find the winner.
+- [ ] Document what works (this documentation IS the course material)
+
+## PHASE 4: B2C Content About Jobworld Models
+
+GATE: B2C revenue from templates / courses / community.
+
+- [ ] "Buy a Business" templates from proven Phase 3 configs
+- [ ] Course system: encode HOW we built the winning config
+- [ ] Content machine pumping (Hormozi 400 pieces/week model)
+- [ ] Wantrepreneur book published ($2.99 Amazon)
+- [ ] Community growing on Discord + Patreon
+
+## PHASE 5: Back to SANCREV
+
+- [ ] Fold all learnings into OPERA
+- [ ] Add STARSYSTEM to every agent repo (recompile)
+- [ ] Egregore Compiler from proven patterns
+- [ ] The real product emerges from proven business models
+- [ ] Ads showing compiler generating what was built by hand
+
+---
+
+## Agent Repos (built as needed across phases)
 
 Each agent = a Claude Code skill + a branded GitHub repo.
 
-| # | Agent | What It Does | Repo Name | Priority |
-|---|-------|-------------|-----------|----------|
-| 1 | Voice Agent Setup | Configures Vapi for a business in 10 min | ai-voice-agent | DAY 1 |
-| 2 | AI Demo Caller | The Vapi agent that sells (the cascade) | ai-demo-agent | DAY 1 |
-| 3 | Content Machine | CartON/prompts → blog posts, social, scripts | ai-content-machine | DAY 2 |
-| 4 | Lead Gen | Cold email writer + qualification + follow-up | ai-lead-gen | DAY 2 |
-| 5 | Ad Copy Generator | Angles, advertorials, belief chains | ai-ad-copy | DAY 3 |
-| 6 | VSL Script Writer | Video sales letter scripts from frameworks | ai-vsl-writer | DAY 3 |
-| 7 | Morning Briefing | Daily business summary from all systems | ai-morning-briefing | DAY 3 |
-| 8 | Project Manager | Task tracking, follow-up, blocker detection | ai-project-manager | DAY 4 |
+| # | Agent | What It Does | Repo Name | Phase |
+|---|-------|-------------|-----------|-------|
+| 1 | Voice Agent Setup | Configures Vapi for a business in 10 min | ai-voice-agent | 1 |
+| 2 | AI Demo Caller | The Vapi agent that sells (the cascade) | ai-demo-agent | 1 |
+| 3 | Content Machine | CartON/prompts → blog posts, social, scripts | ai-content-machine | 1-2 |
+| 4 | Lead Gen | Cold email writer + qualification + follow-up | ai-lead-gen | 1 |
+| 5 | Ad Copy Generator | Angles, advertorials, belief chains | ai-ad-copy | 1-2 |
+| 6 | VSL Script Writer | Video sales letter scripts from frameworks | ai-vsl-writer | 1-2 |
+| 7 | Morning Briefing | Daily business summary from all systems | ai-morning-briefing | 2 |
+| 8 | Project Manager | Task tracking, follow-up, blocker detection | ai-project-manager | 2 |
 
 ### Each Repo Contains
 
