@@ -5,7 +5,24 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frameworks — Isaac TWI</title>
-  </head>
+  <script src="https://unpkg.com/force-graph"></script>
+  <style>
+    #graph-container { width: 100%; height: 500px; border-bottom: 1px solid var(--glass-border); position: relative; }
+    #graph-container canvas { cursor: grab; }
+    .graph-legend { position: absolute; bottom: 1rem; left: 1.5rem; display: flex; gap: 1.2rem; font-size: 0.65rem; color: var(--text-3); z-index: 10; }
+    .graph-legend span::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    .leg-paiab::before { background: #7dd3fc; }
+    .leg-sanctum::before { background: #a78bfa; }
+    .leg-cave::before { background: #5eead4; }
+    .leg-starsystem::before { background: #fbbf24; }
+    .leg-emergence::before { background: #fda4af; }
+    .facet-filter { display: flex; gap: 0.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .facet-btn { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: var(--r-sm); border: 1px solid var(--glass-border); background: transparent; color: var(--text-3); cursor: pointer; transition: all 0.2s; }
+    .facet-btn:hover, .facet-btn.active { color: var(--text-1); border-color: var(--mercury-blue); background: rgba(125,211,252,0.06); }
+    .fw-section { margin-top: 1rem; }
+    .fw-section h3 { font-size: 0.85rem; color: var(--mercury-blue); margin-bottom: 0.8rem; font-family: var(--mono); letter-spacing: 0.06em; }
+  </style>
+</head>
 <body>
 
   <div class="header">
@@ -19,225 +36,335 @@
     </div>
   </div>
 
-  <section>
+  <section style="padding-top:5rem;padding-bottom:1rem;">
     <div class="tag">Frameworks</div>
     <h1>How to build <span>AI systems</span> that compound.</h1>
-    <p class="sub">Each framework is a piece of the architecture. Together they form a complete methodology for building AI systems that improve themselves over time. Click any framework for the deep dive.</p>
+    <p class="sub">Each framework is a piece of the architecture. Click any node to read the deep dive.</p>
+  </section>
 
-    <div class="frameworks-grid">
+  <div id="graph-container">
+    <div class="graph-legend">
+      <span class="leg-paiab">PAIAB</span>
+      <span class="leg-sanctum">SANCTUM</span>
+      <span class="leg-cave">CAVE</span>
+      <span class="leg-starsystem">STARSYSTEM</span>
+      <span class="leg-emergence">Emergence</span>
+    </div>
+  </div>
 
-      <a href="blog/seven-disciplines.html" class="fw-card">
-        <div class="fw-num">Foundation</div>
-        <h3>The 7-Stack of AI Engineering</h3>
-        <p>Prompts → Context → Tools → Harness → Admissibility → Concentration → Emergence. The assembly sequence for any AI system. Most businesses die at layer 4.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
+  <section>
+    <div class="facet-filter">
+      <button class="facet-btn active" data-filter="all">All</button>
+      <button class="facet-btn" data-filter="paiab">PAIAB</button>
+      <button class="facet-btn" data-filter="sanctum">SANCTUM</button>
+      <button class="facet-btn" data-filter="cave">CAVE</button>
+      <button class="facet-btn" data-filter="emergence">Emergence</button>
+    </div>
 
-      <a href="blog/admissibility.html" class="fw-card">
-        <div class="fw-num">Layer 5</div>
-        <h3>Admissibility Engineering</h3>
-        <p>Define the boundary before acting. Is this operation licensed by enough visible structure to be safely performed? The layer nobody else builds.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
+    <div class="frameworks-grid" id="fw-grid">
 
-      <a href="blog/soseeh.html" class="fw-card">
-        <div class="fw-num">Decomposition</div>
-        <h3>SOSEEH — The 2-Minute Complexity Kill</h3>
-        <p>Four questions decompose any blob. Pilot, Vehicle, Mission Control, Interaction Loops. The blank slot is the bug. Two minutes to diagnosis.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/halo.html" class="fw-card">
-        <div class="fw-num">Collaboration</div>
-        <h3>HALO — Human-AI Linked Operations</h3>
-        <p>The seam between your context and the AI's context is where collaboration lives or dies. HALO-SHIELD is the doctrine for staying in sanctuary.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/hiel.html" class="fw-card">
-        <div class="fw-num">Energy</div>
-        <h3>HIEL — Heat-Informed Energy Ligation</h3>
-        <p>AI stochasticity is not noise — it is energy. The doctrine for harnessing probabilistic outputs instead of fighting them.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/towering.html" class="fw-card">
-        <div class="fw-num">Structure</div>
-        <h3>Towering</h3>
-        <p>Layer-by-layer building with verification at each level. Skip a layer, the tower collapses. Complete each one, and the structure becomes self-maintaining.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/thermal-dynamics.html" class="fw-card">
-        <div class="fw-num">Capacity</div>
-        <h3>Cognitive Thermal Dynamics</h3>
-        <p>Your brain has a temperature. Unprocessed complexity is heat. Four cooling mechanisms, four thermal zones. Read your gauges before you white-screen.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/progressive-disclosure-harness.html" class="fw-card">
-        <div class="fw-num">Harness</div>
-        <h3>The Progressive Disclosure Harness</h3>
-        <p>Show the agent only what it needs for the current step. Make the tools refuse invalid transitions. From 3-hour babysitting to 15-minute autonomous runs.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/allegorization-compiler.html" class="fw-card">
-        <div class="fw-num">Meta-Tool</div>
-        <h3>The Allegorization Compiler</h3>
-        <p>Forge frameworks that don't exist yet. Stack analogies from unrelated domains, feed to an LLM, triangulate the universal. A framework for making frameworks.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/mission-control.html" class="fw-card">
-        <div class="fw-num">Alignment</div>
-        <h3>Mission Control</h3>
-        <p>Three questions, asked every 10 minutes, that kill drift permanently. The simplest protocol that separates sessions that compound from sessions that wander.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/calibration.html" class="fw-card">
-        <div class="fw-num">Verification</div>
-        <h3>Calibration</h3>
-        <p>Your cognitive instruments give readings all day. Have you ever checked whether those readings are accurate? The loop that makes intuition trustworthy.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/shell.html" class="fw-card">
-        <div class="fw-num">Agent Design</div>
-        <h3>SHELL</h3>
-        <p>Turn any toolkit into a game your agent can play. Define the rules, the boundaries, the persona, and the enforcement. Capabilities become competence.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/flow.html" class="fw-card">
-        <div class="fw-num">Performance</div>
-        <h3>Flow</h3>
-        <p>Five structural conditions, zero negotiation. Flow is not weather — it is architecture. Meet all five conditions and hours vanish into progress.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/blanket.html" class="fw-card">
-        <div class="fw-num">Boundaries</div>
-        <h3>The Blanket</h3>
-        <p>Walls starve. No boundaries overwhelm. The selective membrane that filters, learns, and lets your system thrive. The middle path that actually works.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/ok-stable-signal.html" class="fw-card">
-        <div class="fw-num">Signals</div>
-        <h3>OK Stable Signal</h3>
-        <p>Stop building on hope. Four properties that separate real verification from feelings dressed up as evidence. The protocol that prevents collapse.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/crowning.html" class="fw-card">
-        <div class="fw-num">Emergence</div>
-        <h3>Crowning</h3>
-        <p>The moment your system stops being something you maintain and starts maintaining you. Self-hosting, obvious modifications, composition fluency, flow operation.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/seam-repair.html" class="fw-card">
-        <div class="fw-num">Recovery</div>
-        <h3>Seam Repair</h3>
-        <p>Seven steps from break to recovery. Detect, stop, stabilize, diagnose, repair, verify, prevent. Fast repair means breaks cost minutes, not hours.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/helming.html" class="fw-card">
-        <div class="fw-num">Vision</div>
-        <h3>Helming</h3>
-        <p>Completion creates vision. When a layer finishes, the next layer's requirements become visible. You can't see over a wall you haven't climbed yet.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/externalization.html" class="fw-card">
-        <div class="fw-num">Infrastructure</div>
-        <h3>Externalization</h3>
-        <p>Your brain holds 4 items. Your systems hold everything. External systems are not backups of your mind — they are extensions of it. Design them accordingly.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/composition.html" class="fw-card">
-        <div class="fw-num">Integration</div>
-        <h3>Composition</h3>
-        <p>Working pieces don't produce working wholes. Five requirements for composition that holds — interface clarity, assumption alignment, boundary protocols, error propagation, semantic compatibility.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/reach.html" class="fw-card">
-        <div class="fw-num">Insight</div>
-        <h3>The Reach</h3>
-        <p>Your "distraction" is pre-conscious pattern assembly. Catch it, stack it, triangulate it. Turn guilt into frameworks that didn't exist before.</p>
-        <span class="arrow">Read &rarr;</span>
-      </a>
-
-      <a href="blog/meta-cognitive-awareness.html" class="fw-card">
-        <div class="fw-num">Operating System</div>
+      <a href="blog/meta-cognitive-awareness.html" class="fw-card" data-facet="sanctum" data-level="5">
+        <div class="fw-num">ROOT</div>
         <h3>Meta-Cognitive Awareness</h3>
-        <p>The skill that makes every other skill work. Without the ability to observe your own cognition, every framework you learn is inert. The prerequisite for everything.</p>
+        <p>The skill that makes every other skill work. The prerequisite for everything.</p>
         <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="blog/interaction-loop.html" class="fw-card">
-        <div class="fw-num">Protocol</div>
+      <a href="blog/seven-disciplines.html" class="fw-card" data-facet="emergence" data-level="1-7">
+        <div class="fw-num">L1-L7</div>
+        <h3>The 7-Stack of AI Engineering</h3>
+        <p>Prompts → Context → Tools → Harness → Admissibility → Concentration → Emergence.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/the-fair-game.html" class="fw-card" data-facet="cave" data-level="1-7">
+        <div class="fw-num">L1-L7</div>
+        <h3>The Fair Game</h3>
+        <p>Six economic levels. Seven complexity levels. The punchline the AI agency world doesn't want you to understand.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/shell.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>SHELL</h3>
+        <p>Turn any toolkit into a game your agent can play. Capabilities become competence.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/admissibility.html" class="fw-card" data-facet="paiab" data-level="5">
+        <div class="fw-num">L5</div>
+        <h3>Admissibility Engineering</h3>
+        <p>More context is not admissible context. The hidden edge problem.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/hiel.html" class="fw-card" data-facet="paiab" data-level="6">
+        <div class="fw-num">L6</div>
+        <h3>HIEL — Heat-Informed Energy Ligation</h3>
+        <p>AI randomness is energy, not noise. Harness stochasticity.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/halo.html" class="fw-card" data-facet="paiab" data-level="5">
+        <div class="fw-num">L5</div>
+        <h3>HALO — Human-AI Linked Operations</h3>
+        <p>The seam between your context and the AI's context.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/interaction-loop.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
         <h3>Interaction Loop</h3>
-        <p>Seven elements define how components talk. Trigger, message, response, timeout, error handling, state change, authority. Miss one and the handoff breaks.</p>
+        <p>Seven elements define how components talk. Miss one and the handoff breaks.</p>
         <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="blog/the-system-audit.html" class="fw-card">
-        <div class="fw-num">Practical</div>
-        <h3>The 30-Day System Audit</h3>
-        <p>How to find the #1 automation in any business in 30 minutes. The diagnostic framework behind every TWI engagement.</p>
+      <a href="blog/progressive-disclosure-harness.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Progressive Disclosure Harness</h3>
+        <p>Show the agent only what it needs for the current step.</p>
         <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="blog/docmagic-stack.html" class="fw-card">
-        <div class="fw-num">Tool</div>
+      <a href="blog/composition.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Composition</h3>
+        <p>Working pieces don't make working wholes. Five requirements.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/soseeh.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>SOSEEH</h3>
+        <p>Four questions decompose any blob. The 2-minute complexity kill.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/allegorization-compiler.html" class="fw-card" data-facet="paiab" data-level="5">
+        <div class="fw-num">L5</div>
+        <h3>Allegorization Compiler</h3>
+        <p>Forge frameworks from analogies across unrelated domains.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/docmagic-stack.html" class="fw-card" data-facet="paiab" data-level="5-6">
+        <div class="fw-num">L5-6</div>
         <h3>DocMagic Stack</h3>
-        <p>Your repo is lying to your AI agent. DocMagic finds where. The tool that makes AI coding actually work.</p>
+        <p>Where admissibility tools sit in the stack.</p>
         <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="#" class="fw-card coming">
-        <div class="fw-num">Architecture</div>
-        <h3>The Mahājālakala Engine</h3>
-        <p>Every business is a trace of the same engine running in a different domain. Compiler compilers that output entire genres of human-level work and chain them.</p>
+      <a href="blog/flow.html" class="fw-card" data-facet="sanctum" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Flow</h3>
+        <p>Five structural conditions. Flow is engineering, not talent.</p>
+        <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="#" class="fw-card coming">
-        <div class="fw-num">Bootstrap</div>
-        <h3>The Observation Chain</h3>
-        <p>Observation-to-rule self-bootstrapping. The loop converges because each iteration deposits rules into the ontology, shaping the next iteration.</p>
+      <a href="blog/externalization.html" class="fw-card" data-facet="sanctum" data-level="3">
+        <div class="fw-num">L3</div>
+        <h3>Externalization</h3>
+        <p>Your brain holds 4 things. Your systems hold everything.</p>
+        <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="#" class="fw-card coming">
-        <div class="fw-num">Compilation</div>
-        <h3>Futamura Projection Tower</h3>
-        <p>P0: source code. P1: interpreter. P2: compiler. P3: compiler-compiler. Each level produces the next. The system that makes the system that makes the system.</p>
+      <a href="blog/calibration.html" class="fw-card" data-facet="sanctum" data-level="5">
+        <div class="fw-num">L5</div>
+        <h3>Calibration</h3>
+        <p>Your intuition lies to you 20% of the time. Check the instruments.</p>
+        <span class="arrow">Read &rarr;</span>
       </a>
 
-      <a href="#" class="fw-card coming">
-        <div class="fw-num">Meta</div>
-        <h3>SOMA — Self Organizing Meta Architecture</h3>
-        <p>The system understands itself. Ontology + logic programming + automated reasoning. Not automation — guaranteed intelligence.</p>
+      <a href="blog/blanket.html" class="fw-card" data-facet="sanctum" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>The Blanket</h3>
+        <p>Membrane, not wall. The third option between starving and overwhelm.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/reach.html" class="fw-card" data-facet="sanctum" data-level="3">
+        <div class="fw-num">L3</div>
+        <h3>Reach</h3>
+        <p>Your distraction is pre-conscious pattern assembly. Catch it.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/thermal-dynamics.html" class="fw-card" data-facet="sanctum" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Cognitive Thermal Dynamics</h3>
+        <p>Your brain overheats like a CPU. Four cooling mechanisms.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/mission-control.html" class="fw-card" data-facet="cave" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Mission Control</h3>
+        <p>Three questions that kill drift. Every 10 minutes.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/the-system-audit.html" class="fw-card" data-facet="cave" data-level="2">
+        <div class="fw-num">L2</div>
+        <h3>The 30-Day System Audit</h3>
+        <p>Find the leakiest SOP. Automate that first.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/towering.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Towering</h3>
+        <p>Foundations before features. The discipline from Everest to AI.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/ok-stable-signal.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>OK Stable Signal</h3>
+        <p>Stop building on hope. Four verification properties.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/seam-repair.html" class="fw-card" data-facet="paiab" data-level="4">
+        <div class="fw-num">L4</div>
+        <h3>Seam Repair</h3>
+        <p>Seven steps from break to recovery. Fast repair = minutes not hours.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/helming.html" class="fw-card" data-facet="sanctum" data-level="6">
+        <div class="fw-num">L6</div>
+        <h3>Helming</h3>
+        <p>Vision comes from completion. Finish the layer to see the next one.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/crowning.html" class="fw-card" data-facet="emergence" data-level="6">
+        <div class="fw-num">L6</div>
+        <h3>Crowning</h3>
+        <p>The moment the system starts maintaining you instead of the reverse.</p>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+
+      <a href="blog/holographic-work.html" class="fw-card" data-facet="emergence" data-level="6">
+        <div class="fw-num">L6</div>
+        <h3>Holographic Work</h3>
+        <p>Every piece contains the whole. One conversation produces everything.</p>
+        <span class="arrow">Read &rarr;</span>
       </a>
 
     </div>
 
-    <div class="patreon-cta">
-      <h3>Get all frameworks + seed wiki + direct access</h3>
-      <p>Join the Patreon for Discord role, full seed wiki access, every framework document, and ask Isaac questions directly.</p>
-      <a href="#" class="cta-big">Join Patreon &rarr;</a>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="join.html" class="cta-big">Join Sanctuary Revolution</a>
     </div>
   </section>
 
   <div class="footer">
     <span>&copy; 2026 Isaac &mdash; TWI</span>
-    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Frameworks for building AI that compounds.</span>
+    <span style="color:var(--text-3);font-style:italic;">Frameworks for building AI that compounds.</span>
   </div>
+
+<script>
+(function() {
+  var colors = { paiab: '#7dd3fc', sanctum: '#a78bfa', cave: '#5eead4', starsystem: '#fbbf24', emergence: '#fda4af' };
+
+  // Framework nodes
+  var frameworks = [
+    { id: 'meta-cognitive', name: 'Meta-Cognitive Awareness', facet: 'sanctum', level: 5, url: 'blog/meta-cognitive-awareness.html' },
+    { id: 'seven-disciplines', name: '7 Disciplines', facet: 'emergence', level: 7, url: 'blog/seven-disciplines.html' },
+    { id: 'fair-game', name: 'The Fair Game', facet: 'cave', level: 2, url: 'blog/the-fair-game.html' },
+    { id: 'shell', name: 'SHELL', facet: 'paiab', level: 4, url: 'blog/shell.html' },
+    { id: 'admissibility', name: 'Admissibility', facet: 'paiab', level: 5, url: 'blog/admissibility.html' },
+    { id: 'hiel', name: 'HIEL', facet: 'paiab', level: 6, url: 'blog/hiel.html' },
+    { id: 'halo', name: 'HALO', facet: 'paiab', level: 5, url: 'blog/halo.html' },
+    { id: 'interaction-loop', name: 'Interaction Loop', facet: 'paiab', level: 4, url: 'blog/interaction-loop.html' },
+    { id: 'progressive-disclosure', name: 'Prog. Disclosure', facet: 'paiab', level: 4, url: 'blog/progressive-disclosure-harness.html' },
+    { id: 'composition', name: 'Composition', facet: 'paiab', level: 4, url: 'blog/composition.html' },
+    { id: 'soseeh', name: 'SOSEEH', facet: 'paiab', level: 4, url: 'blog/soseeh.html' },
+    { id: 'allegorization', name: 'Allegorization', facet: 'paiab', level: 5, url: 'blog/allegorization-compiler.html' },
+    { id: 'docmagic', name: 'DocMagic', facet: 'paiab', level: 5, url: 'blog/docmagic-stack.html' },
+    { id: 'flow', name: 'Flow', facet: 'sanctum', level: 4, url: 'blog/flow.html' },
+    { id: 'externalization', name: 'Externalization', facet: 'sanctum', level: 3, url: 'blog/externalization.html' },
+    { id: 'calibration', name: 'Calibration', facet: 'sanctum', level: 5, url: 'blog/calibration.html' },
+    { id: 'blanket', name: 'The Blanket', facet: 'sanctum', level: 4, url: 'blog/blanket.html' },
+    { id: 'reach', name: 'Reach', facet: 'sanctum', level: 3, url: 'blog/reach.html' },
+    { id: 'thermal', name: 'Thermal Dynamics', facet: 'sanctum', level: 4, url: 'blog/thermal-dynamics.html' },
+    { id: 'mission-control', name: 'Mission Control', facet: 'cave', level: 4, url: 'blog/mission-control.html' },
+    { id: 'system-audit', name: 'System Audit', facet: 'cave', level: 2, url: 'blog/the-system-audit.html' },
+    { id: 'towering', name: 'Towering', facet: 'paiab', level: 4, url: 'blog/towering.html' },
+    { id: 'ok-stable', name: 'OK Stable Signal', facet: 'paiab', level: 4, url: 'blog/ok-stable-signal.html' },
+    { id: 'seam-repair', name: 'Seam Repair', facet: 'paiab', level: 4, url: 'blog/seam-repair.html' },
+    { id: 'helming', name: 'Helming', facet: 'sanctum', level: 6, url: 'blog/helming.html' },
+    { id: 'crowning', name: 'Crowning', facet: 'emergence', level: 6, url: 'blog/crowning.html' },
+    { id: 'holographic', name: 'Holographic Work', facet: 'emergence', level: 6, url: 'blog/holographic-work.html' }
+  ];
+
+  // Dependency links (from framework-architecture.md)
+  var deps = [
+    ['meta-cognitive', 'calibration'], ['meta-cognitive', 'externalization'],
+    ['meta-cognitive', 'towering'], ['meta-cognitive', 'flow'],
+    ['meta-cognitive', 'blanket'], ['meta-cognitive', 'soseeh'],
+    ['meta-cognitive', 'admissibility'], ['meta-cognitive', 'hiel'],
+    ['meta-cognitive', 'allegorization'], ['meta-cognitive', 'holographic'],
+    ['externalization', 'reach'], ['towering', 'ok-stable'],
+    ['ok-stable', 'composition'], ['composition', 'interaction-loop'],
+    ['interaction-loop', 'shell'], ['shell', 'progressive-disclosure'],
+    ['flow', 'thermal'], ['blanket', 'mission-control'],
+    ['mission-control', 'seam-repair'], ['seam-repair', 'helming'],
+    ['admissibility', 'halo'], ['admissibility', 'docmagic'],
+    ['seven-disciplines', 'fair-game'], ['fair-game', 'system-audit'],
+    ['holographic', 'crowning']
+  ];
+
+  var nodes = frameworks.map(function(f) {
+    return { id: f.id, name: f.name, facet: f.facet, level: f.level, url: f.url, val: f.facet === 'emergence' ? 8 : 4 };
+  });
+
+  var links = deps.map(function(d) { return { source: d[0], target: d[1] }; });
+
+  var container = document.getElementById('graph-container');
+  var graph = ForceGraph()(container)
+    .graphData({ nodes: nodes, links: links })
+    .backgroundColor('transparent')
+    .linkColor(function() { return 'rgba(255,255,255,0.08)'; })
+    .linkWidth(1)
+    .linkCurvature(0.15)
+    .nodeCanvasObject(function(node, ctx, globalScale) {
+      var r = node.facet === 'emergence' ? 12 : 7;
+      var col = colors[node.facet] || '#888';
+      // Glow
+      var glow = ctx.createRadialGradient(node.x, node.y, r*0.3, node.x, node.y, r*3);
+      glow.addColorStop(0, col.replace(')', ',0.25)').replace('rgb', 'rgba'));
+      glow.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.beginPath(); ctx.arc(node.x, node.y, r*3, 0, 2*Math.PI); ctx.fillStyle = glow; ctx.fill();
+      // Circle
+      ctx.beginPath(); ctx.arc(node.x, node.y, r, 0, 2*Math.PI); ctx.fillStyle = col; ctx.fill();
+      // Label
+      var fs = Math.max(10/globalScale, 3);
+      ctx.font = fs + 'px Inter, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText(node.name, node.x, node.y + r + 2/globalScale);
+    })
+    .nodeCanvasObjectMode(function() { return 'replace'; })
+    .onNodeClick(function(node) { if (node.url) window.location.href = node.url; })
+    .d3Force('charge').strength(-300);
+  graph.d3Force('link').distance(80);
+  setTimeout(function() { graph.zoomToFit(400, 40); }, 3000);
+
+  // Filter buttons
+  document.querySelectorAll('.facet-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.facet-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.dataset.filter;
+      document.querySelectorAll('.fw-card').forEach(function(card) {
+        card.style.display = (f === 'all' || card.dataset.facet === f) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
 
 <script src="sticky-cta.js"></script>
 </body>
