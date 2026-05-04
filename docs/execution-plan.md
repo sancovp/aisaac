@@ -2,6 +2,31 @@
 
 Last updated: 2026-05-04
 
+## Product Sequence (THE ORDER)
+
+```
+#2 Jobworld (done)
+  → #3 Premium Pack (package existing skills into Jobworld)
+    → #5 Voice Agent Business template (first "buy a business")
+      → #4 Course System (encode HOW we built #5 = the curriculum)
+        → #1 Egregore Compiler (connects #3→#5→#4 into one system)
+          → ADS: "Watch it compile what we built by hand"
+```
+
+Each step produces the next step's input. The build IS the course IS the proof IS the ad.
+
+## Five Products (separated)
+
+1. **Egregore Compiler** — persona + domain → full autonomous business. ENDGAME.
+2. **Jobworld** — the app/dashboard. DONE (exists).
+3. **Premium Jobworld Self-Mastery Pack** — Jobworld + all frameworks + self-interpreting skills. NEXT.
+4. **Course System** — Claude Code config that IS the course. You talk, it teaches AND builds. AFTER #5.
+5. **"Buy a Business" Templates** — pre-configured Jobworld for one business model. AFTER #3.
+   - 5a. Voice Agent Business (Vapi + lead gen + closer) — FIRST TEMPLATE
+   - 5b. Content Agency Business
+   - 5c. Lead Gen Business
+   - 5d. Ad Agency Business
+
 ## The Rule
 
 Phase 1 CANNOT depend on STARSYSTEM, OPERA, CAVE, SOMA, or anything that might not work.
