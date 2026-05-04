@@ -1,41 +1,22 @@
 <link rel="stylesheet" href="blog-style.css">
-<script src="https://unpkg.com/force-graph@1.47.4/dist/force-graph.min.js"></script>
 <style>
-  .filter-bar { display:flex;gap:0.5rem;margin:1.5rem 0;flex-wrap:wrap;justify-content:center; }
-  .fbtn { font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid rgba(255,255,255,0.07);background:transparent;color:rgba(255,255,255,0.3);cursor:pointer;transition:all .2s; }
-  .fbtn:hover,.fbtn.active { color:var(--text-1);border-color:rgba(125,211,252,0.3);background:rgba(125,211,252,0.05); }
-
-  /* 7-Stack */
-  .stack-7 { margin:2rem 0;perspective:800px; }
-  .stack-level { position:relative;padding:0.6rem 1rem 0.6rem 3.5rem;margin-bottom:2px;border-radius:8px;min-height:2.8rem;display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem;transition:all .3s;
-    background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
-    transform:rotateX(2deg);transform-origin:bottom center; }
-  .stack-level:hover { background:rgba(255,255,255,0.04);border-color:rgba(125,211,252,0.1); }
-  .stack-level .level-label { position:absolute;left:0.8rem;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.15);width:2rem;text-align:right; }
-  .stack-level.l7 { border-color:rgba(253,164,175,0.15);background:rgba(253,164,175,0.03); }
-  .stack-level.l7 .level-label { color:rgba(253,164,175,0.4); }
-  .stack-level.l6 { border-color:rgba(167,139,250,0.1);background:rgba(167,139,250,0.02); }
-  .stack-level.l5 { border-color:rgba(125,211,252,0.08); }
-  .stack-level.empty { opacity:0.4; }
-  .stack-level.empty::after { content:'—';font-size:0.6rem;color:rgba(255,255,255,0.1); }
-
-  .post-dot { display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.6rem;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);text-decoration:none;transition:all .2s;cursor:pointer; }
-  .post-dot:hover { background:rgba(125,211,252,0.08);border-color:rgba(125,211,252,0.2);transform:translateY(-1px); }
-  .post-dot .dot-circle { width:6px;height:6px;border-radius:50%;flex-shrink:0; }
-  .post-dot .dot-label { font-size:0.65rem;color:var(--text-2);white-space:nowrap; }
-  .post-dot:hover .dot-label { color:var(--text-1); }
-  .post-dot.hidden { display:none; }
-
-  .dot-paiab { background:#7dd3fc; }
-  .dot-sanctum { background:#a78bfa; }
-  .dot-cave { background:#5eead4; }
-  .dot-emergence { background:#fda4af; }
-
-  .graph-legend { position:absolute;bottom:0.8rem;left:1rem;display:flex;gap:1rem;font-size:0.55rem;color:rgba(255,255,255,0.25);z-index:10; }
-  .graph-legend span { display:flex;align-items:center;gap:3px; }
-  .graph-legend .lg { width:6px;height:6px;border-radius:50%;display:inline-block; }
+  .search-bar { width:100%;padding:0.7rem 1rem;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:8px;color:var(--text-1);font-size:0.85rem;outline:none;font-family:var(--body);margin-bottom:1rem; }
+  .search-bar:focus { border-color:var(--mercury-blue); }
+  .search-bar::placeholder { color:var(--text-3); }
+  .tag-bar { display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem; }
+  .tag-btn { font-family:var(--mono);font-size:0.55rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:20px;border:1px solid rgba(255,255,255,0.07);background:transparent;color:var(--text-3);cursor:pointer;transition:all .15s; }
+  .tag-btn:hover { color:var(--text-2);border-color:rgba(255,255,255,0.15); }
+  .tag-btn.active { color:var(--text-1);border-color:var(--mercury-blue);background:rgba(125,211,252,0.06); }
+  .blog-card .card-tags { display:flex;gap:0.3rem;margin-top:0.6rem; }
+  .card-tag { font-family:var(--mono);font-size:0.5rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.15rem 0.4rem;border-radius:10px;border:1px solid rgba(255,255,255,0.06); }
+  .card-tag.t-paiab { color:#7dd3fc;border-color:rgba(125,211,252,0.15); }
+  .card-tag.t-sanctum { color:#a78bfa;border-color:rgba(167,139,250,0.15); }
+  .card-tag.t-cave { color:#5eead4;border-color:rgba(94,234,212,0.15); }
+  .card-tag.t-emergence { color:#fda4af;border-color:rgba(253,164,175,0.15); }
+  .card-tag.t-level { color:var(--text-3);border-color:rgba(255,255,255,0.08); }
+  .blog-card.hidden { display:none; }
+  .result-count { font-size:0.7rem;color:var(--text-3);margin-bottom:1rem; }
 </style>
-
 <div id="isaac-site">
   <div class="site-header">
     <a href="../index.html" class="logo">Isaac — TWI</a>
@@ -51,81 +32,84 @@
   <article>
     <div class="post-tag">Blog</div>
     <h1>Writing</h1>
-    <p class="post-subtitle">27 frameworks for compound intelligence. Filter by facet. Stratified by complexity level.</p>
+    <p class="post-subtitle">Engineering disciplines, agent architecture, and what actually works.</p>
 
-    <!-- FILTER -->
-    <div class="filter-bar">
-      <button class="fbtn active" data-f="all">All</button>
-      <button class="fbtn" data-f="paiab">PAIAB</button>
-      <button class="fbtn" data-f="sanctum">SANCTUM</button>
-      <button class="fbtn" data-f="cave">CAVE</button>
-      <button class="fbtn" data-f="emergence">Emergence</button>
+    <input type="text" class="search-bar" id="search" placeholder="Search frameworks...">
+
+    <div class="tag-bar">
+      <button class="tag-btn active" data-tag="all">All</button>
+      <button class="tag-btn" data-tag="paiab">PAIAB</button>
+      <button class="tag-btn" data-tag="sanctum">SANCTUM</button>
+      <button class="tag-btn" data-tag="cave">CAVE</button>
+      <button class="tag-btn" data-tag="emergence">Emergence</button>
+      <span style="width:1px;background:rgba(255,255,255,0.07);margin:0 0.3rem;"></span>
+      <button class="tag-btn" data-tag="l2">L2</button>
+      <button class="tag-btn" data-tag="l3">L3</button>
+      <button class="tag-btn" data-tag="l4">L4</button>
+      <button class="tag-btn" data-tag="l5">L5</button>
+      <button class="tag-btn" data-tag="l6">L6</button>
+      <button class="tag-btn" data-tag="l7">L7</button>
     </div>
 
-    <!-- FORCE GRAPH -->
-    <div id="fw-graph" style="width:100%;height:380px;border:1px solid rgba(255,255,255,0.07);border-radius:12px;position:relative;overflow:hidden;">
-      <div class="graph-legend">
-        <span><span class="lg" style="background:#7dd3fc"></span>PAIAB</span>
-        <span><span class="lg" style="background:#a78bfa"></span>SANCTUM</span>
-        <span><span class="lg" style="background:#5eead4"></span>CAVE</span>
-        <span><span class="lg" style="background:#fda4af"></span>Emergence</span>
-      </div>
-    </div>
+    <div class="result-count" id="count">27 posts</div>
 
-    <!-- 7-STACK -->
-    <div class="stack-7">
-      <div class="stack-level l7">
-        <span class="level-label">L7</span>
-        <a href="seven-disciplines.html" class="post-dot" data-facet="emergence"><span class="dot-circle dot-emergence"></span><span class="dot-label">7 Disciplines</span></a>
-        <span style="font-size:0.5rem;color:rgba(253,164,175,0.3);margin-left:0.5rem;">emergence engineering — no posts yet</span>
-      </div>
-      <div class="stack-level l6">
-        <span class="level-label">L6</span>
-        <a href="hiel.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">HIEL</span></a>
-        <a href="helming.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Helming</span></a>
-        <a href="crowning.html" class="post-dot" data-facet="emergence"><span class="dot-circle dot-emergence"></span><span class="dot-label">Crowning</span></a>
-        <a href="holographic-work.html" class="post-dot" data-facet="emergence"><span class="dot-circle dot-emergence"></span><span class="dot-label">Holographic Work</span></a>
-      </div>
-      <div class="stack-level l5">
-        <span class="level-label">L5</span>
-        <a href="admissibility.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Admissibility</span></a>
-        <a href="halo.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">HALO</span></a>
-        <a href="calibration.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Calibration</span></a>
-        <a href="meta-cognitive-awareness.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Meta-Cognitive</span></a>
-        <a href="allegorization-compiler.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Allegorization</span></a>
-        <a href="docmagic-stack.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">DocMagic</span></a>
-      </div>
-      <div class="stack-level l4">
-        <span class="level-label">L4</span>
-        <a href="shell.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">SHELL</span></a>
-        <a href="interaction-loop.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Interaction Loop</span></a>
-        <a href="progressive-disclosure-harness.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Prog. Disclosure</span></a>
-        <a href="composition.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Composition</span></a>
-        <a href="soseeh.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">SOSEEH</span></a>
-        <a href="ok-stable-signal.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">OK Stable</span></a>
-        <a href="towering.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Towering</span></a>
-        <a href="seam-repair.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Seam Repair</span></a>
-        <a href="flow.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Flow</span></a>
-        <a href="blanket.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">The Blanket</span></a>
-        <a href="thermal-dynamics.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Thermal Dynamics</span></a>
-        <a href="mission-control.html" class="post-dot" data-facet="cave"><span class="dot-circle dot-cave"></span><span class="dot-label">Mission Control</span></a>
-      </div>
-      <div class="stack-level">
-        <span class="level-label">L3</span>
-        <a href="externalization.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Externalization</span></a>
-        <a href="reach.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Reach</span></a>
-      </div>
-      <div class="stack-level">
-        <span class="level-label">L2</span>
-        <a href="the-fair-game.html" class="post-dot" data-facet="cave"><span class="dot-circle dot-cave"></span><span class="dot-label">The Fair Game</span></a>
-        <a href="the-system-audit.html" class="post-dot" data-facet="cave"><span class="dot-circle dot-cave"></span><span class="dot-label">System Audit</span></a>
-      </div>
-      <div class="stack-level">
-        <span class="level-label">L1</span>
-        <span style="font-size:0.5rem;color:rgba(255,255,255,0.15);">beginner posts coming soon</span>
-      </div>
-    </div>
+    <div style="display:grid;gap:1rem;" id="posts">
 
+      <a href="the-fair-game.html" class="blog-card" data-facet="cave" data-level="l2" data-search="the fair game economic levels agency markup information asymmetry"><h3>The Fair Game</h3><p>Six levels of economic participation, seven levels of complexity, and the punchline nobody in the AI agency world wants you to understand.</p><div class="card-tags"><span class="card-tag t-cave">CAVE</span><span class="card-tag t-level">L2</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="holographic-work.html" class="blog-card" data-facet="emergence" data-level="l6" data-search="holographic work compound intelligence one conversation produces everything"><h3>Holographic Work</h3><p>Every piece contains the whole. One conversation produces everything.</p><div class="card-tags"><span class="card-tag t-emergence">Emergence</span><span class="card-tag t-level">L6</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="seven-disciplines.html" class="blog-card" data-facet="emergence" data-level="l7" data-search="seven disciplines 7 stack engineering prompt context tool harness admissibility concentration emergence"><h3>The 7 Engineering Disciplines</h3><p>Prompt, Context, Tool, Harness, Admissibility, Concentration, Emergence.</p><div class="card-tags"><span class="card-tag t-emergence">Emergence</span><span class="card-tag t-level">L7</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="shell.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="shell toolkit game agent play rules boundaries"><h3>SHELL</h3><p>Turn any toolkit into a game your agent can play.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="admissibility.html" class="blog-card" data-facet="paiab" data-level="l5" data-search="admissibility engineering hidden edge retrieval context"><h3>Admissibility Engineering</h3><p>If the hidden edge is not represented anywhere, retrieval cannot retrieve it.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L5</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="hiel.html" class="blog-card" data-facet="paiab" data-level="l6" data-search="hiel heat informed energy ligation ai randomness stochasticity"><h3>HIEL</h3><p>AI randomness is energy, not noise. Harness stochasticity.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L6</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="halo.html" class="blog-card" data-facet="paiab" data-level="l5" data-search="halo human ai linked operations collaboration seam context"><h3>HALO</h3><p>The invisible seam between your context and the machine's context.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L5</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="interaction-loop.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="interaction loop protocol systems talk handoff coordination"><h3>Interaction Loop</h3><p>Seven elements that turn fragile handoffs into bulletproof coordination.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="progressive-disclosure-harness.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="progressive disclosure harness tools agent worse fix staged"><h3>Progressive Disclosure Harness</h3><p>AI agents get worse the more tools you give them. The fix: staged reveals.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="composition.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="composition working pieces wholes integration interface"><h3>Composition</h3><p>Working pieces don't make working wholes. Five requirements.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="soseeh.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="soseeh complexity kill decompose pilot vehicle mission control"><h3>SOSEEH</h3><p>Four questions decompose any blob into solvable pieces.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="allegorization-compiler.html" class="blog-card" data-facet="paiab" data-level="l5" data-search="allegorization compiler forge framework analogy domain"><h3>Allegorization Compiler</h3><p>Forge frameworks from analogies across unrelated domains.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L5</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="docmagic-stack.html" class="blog-card" data-facet="paiab" data-level="l5" data-search="docmagic stack admissibility concentration emergence tool"><h3>DocMagic Stack</h3><p>Where admissibility tools sit in the stack.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L5</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="ok-stable-signal.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="ok stable signal verification hope collapse properties"><h3>OK Stable Signal</h3><p>Stop building on hope. Four verification properties.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="towering.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="towering complexity collapsing foundation layer"><h3>Towering</h3><p>You have a foundation problem, not an intelligence problem.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="seam-repair.html" class="blog-card" data-facet="paiab" data-level="l4" data-search="seam repair alignment breaks recovery protocol"><h3>Seam Repair</h3><p>Seven-step protocol instead of a panic response.</p><div class="card-tags"><span class="card-tag t-paiab">PAIAB</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="flow.html" class="blog-card" data-facet="sanctum" data-level="l4" data-search="flow effortless execution engineering structural conditions"><h3>Flow</h3><p>Five structural conditions. Meet all five and hours vanish into progress.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="externalization.html" class="blog-card" data-facet="sanctum" data-level="l3" data-search="externalization brain lossy storage systems extension"><h3>Externalization</h3><p>Your brain holds 4 things. Your systems hold everything.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L3</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="calibration.html" class="blog-card" data-facet="sanctum" data-level="l5" data-search="calibration judgment intuition fitting clicks desire clicks"><h3>Calibration</h3><p>Fitting clicks are right 75%. Desire clicks are right 20%.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L5</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="meta-cognitive-awareness.html" class="blog-card" data-facet="sanctum" data-level="l5" data-search="meta cognitive awareness skill prerequisite operating system"><h3>Meta-Cognitive Awareness</h3><p>The prerequisite your entire operating system depends on.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L5</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="blanket.html" class="blog-card" data-facet="sanctum" data-level="l4" data-search="blanket membrane wall boundaries filter selective"><h3>The Blanket</h3><p>Membrane, not wall. The third option between starving and overwhelm.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="reach.html" class="blog-card" data-facet="sanctum" data-level="l3" data-search="reach distraction pattern assembly procrastination analogies"><h3>Reach</h3><p>Your distraction is pre-conscious pattern assembly.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L3</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="thermal-dynamics.html" class="blog-card" data-facet="sanctum" data-level="l4" data-search="cognitive thermal dynamics brain overheats cpu complexity cooling"><h3>Cognitive Thermal Dynamics</h3><p>Your brain overheats from unprocessed complexity.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="helming.html" class="blog-card" data-facet="sanctum" data-level="l6" data-search="helming vision build next completion layer"><h3>Helming</h3><p>Vision comes from completion. Finish the layer to see the next one.</p><div class="card-tags"><span class="card-tag t-sanctum">SANCTUM</span><span class="card-tag t-level">L6</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="crowning.html" class="blog-card" data-facet="emergence" data-level="l6" data-search="crowning system comes alive maintains you self-hosting"><h3>Crowning</h3><p>The system starts maintaining you instead of the reverse.</p><div class="card-tags"><span class="card-tag t-emergence">Emergence</span><span class="card-tag t-level">L6</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="mission-control.html" class="blog-card" data-facet="cave" data-level="l4" data-search="mission control three questions drift alignment"><h3>Mission Control</h3><p>Three questions that kill drift. Every 10 minutes.</p><div class="card-tags"><span class="card-tag t-cave">CAVE</span><span class="card-tag t-level">L4</span></div><span class="read-link">Read &rarr;</span></a>
+
+      <a href="the-system-audit.html" class="blog-card" data-facet="cave" data-level="l2" data-search="system audit 30 day sop automation leaky"><h3>The 30-Day System Audit</h3><p>The right SOP to automate first is the most leaky one.</p><div class="card-tags"><span class="card-tag t-cave">CAVE</span><span class="card-tag t-level">L2</span></div><span class="read-link">Read &rarr;</span></a>
+
+    </div>
   </article>
 
   <div class="site-footer" style="padding-bottom:4rem;">
@@ -136,92 +120,32 @@
 
 <script>
 (function(){
-  var colors = {paiab:'#7dd3fc',sanctum:'#a78bfa',cave:'#5eead4',emergence:'#fda4af'};
-  var fws=[
-    {id:'meta-cognitive',name:'Meta-Cognitive',facet:'sanctum',url:'meta-cognitive-awareness.html'},
-    {id:'seven-disciplines',name:'7 Disciplines',facet:'emergence',url:'seven-disciplines.html'},
-    {id:'fair-game',name:'Fair Game',facet:'cave',url:'the-fair-game.html'},
-    {id:'shell',name:'SHELL',facet:'paiab',url:'shell.html'},
-    {id:'admissibility',name:'Admissibility',facet:'paiab',url:'admissibility.html'},
-    {id:'hiel',name:'HIEL',facet:'paiab',url:'hiel.html'},
-    {id:'halo',name:'HALO',facet:'paiab',url:'halo.html'},
-    {id:'interaction-loop',name:'Interaction Loop',facet:'paiab',url:'interaction-loop.html'},
-    {id:'prog-disclosure',name:'Prog Disclosure',facet:'paiab',url:'progressive-disclosure-harness.html'},
-    {id:'composition',name:'Composition',facet:'paiab',url:'composition.html'},
-    {id:'soseeh',name:'SOSEEH',facet:'paiab',url:'soseeh.html'},
-    {id:'allegorization',name:'Allegorization',facet:'paiab',url:'allegorization-compiler.html'},
-    {id:'docmagic',name:'DocMagic',facet:'paiab',url:'docmagic-stack.html'},
-    {id:'flow',name:'Flow',facet:'sanctum',url:'flow.html'},
-    {id:'externalization',name:'Externalization',facet:'sanctum',url:'externalization.html'},
-    {id:'calibration',name:'Calibration',facet:'sanctum',url:'calibration.html'},
-    {id:'blanket',name:'Blanket',facet:'sanctum',url:'blanket.html'},
-    {id:'reach',name:'Reach',facet:'sanctum',url:'reach.html'},
-    {id:'thermal',name:'Thermal',facet:'sanctum',url:'thermal-dynamics.html'},
-    {id:'mission-control',name:'Mission Ctrl',facet:'cave',url:'mission-control.html'},
-    {id:'system-audit',name:'Sys Audit',facet:'cave',url:'the-system-audit.html'},
-    {id:'towering',name:'Towering',facet:'paiab',url:'towering.html'},
-    {id:'ok-stable',name:'OK Stable',facet:'paiab',url:'ok-stable-signal.html'},
-    {id:'seam-repair',name:'Seam Repair',facet:'paiab',url:'seam-repair.html'},
-    {id:'helming',name:'Helming',facet:'sanctum',url:'helming.html'},
-    {id:'crowning',name:'Crowning',facet:'emergence',url:'crowning.html'},
-    {id:'holographic',name:'Holographic',facet:'emergence',url:'holographic-work.html'}
-  ];
-  var deps=[
-    ['meta-cognitive','calibration'],['meta-cognitive','externalization'],
-    ['meta-cognitive','towering'],['meta-cognitive','flow'],
-    ['meta-cognitive','blanket'],['meta-cognitive','soseeh'],
-    ['meta-cognitive','admissibility'],['meta-cognitive','hiel'],
-    ['meta-cognitive','allegorization'],['meta-cognitive','holographic'],
-    ['externalization','reach'],['towering','ok-stable'],
-    ['ok-stable','composition'],['composition','interaction-loop'],
-    ['interaction-loop','shell'],['shell','prog-disclosure'],
-    ['flow','thermal'],['blanket','mission-control'],
-    ['mission-control','seam-repair'],['seam-repair','helming'],
-    ['admissibility','halo'],['admissibility','docmagic'],
-    ['seven-disciplines','fair-game'],['fair-game','system-audit'],
-    ['holographic','crowning']
-  ];
+  var cards = document.querySelectorAll('#posts .blog-card');
+  var search = document.getElementById('search');
+  var count = document.getElementById('count');
+  var activeTag = 'all';
 
-  var allNodes = fws.map(function(f){return{id:f.id,name:f.name,facet:f.facet,url:f.url};});
-  var allLinks = deps.map(function(d){return{source:d[0],target:d[1]};});
-  var el = document.getElementById('fw-graph');
-  var graph;
-
-  function buildGraph(filter) {
-    var nodes = filter==='all' ? allNodes : allNodes.filter(function(n){return n.facet===filter;});
-    var nodeIds = new Set(nodes.map(function(n){return n.id;}));
-    var links = allLinks.filter(function(l){return nodeIds.has(l.source)&&nodeIds.has(l.target)||(typeof l.source==='object'&&nodeIds.has(l.source.id)&&nodeIds.has(l.target.id));});
-    if(graph){graph.graphData({nodes:nodes.map(function(n){return Object.assign({},n);}),links:links.map(function(l){return{source:typeof l.source==='object'?l.source.id:l.source,target:typeof l.target==='object'?l.target.id:l.target};})});setTimeout(function(){graph.zoomToFit(400,30);},500);}
+  function filter() {
+    var q = search.value.toLowerCase();
+    var n = 0;
+    cards.forEach(function(c) {
+      var matchTag = activeTag === 'all' || c.dataset.facet === activeTag || c.dataset.level === activeTag;
+      var matchSearch = !q || c.dataset.search.indexOf(q) !== -1 || c.querySelector('h3').textContent.toLowerCase().indexOf(q) !== -1;
+      var show = matchTag && matchSearch;
+      c.classList.toggle('hidden', !show);
+      if (show) n++;
+    });
+    count.textContent = n + ' post' + (n !== 1 ? 's' : '');
   }
 
-  try{
-    graph=ForceGraph()(el).graphData({nodes:allNodes,links:allLinks})
-      .backgroundColor('transparent').linkColor(function(){return'rgba(255,255,255,0.06)';})
-      .linkWidth(1).linkCurvature(0.15)
-      .nodeCanvasObject(function(n,ctx,gs){
-        var r=n.facet==='emergence'?10:6;var c=colors[n.facet]||'#888';
-        ctx.beginPath();ctx.arc(n.x,n.y,r,0,2*Math.PI);ctx.fillStyle=c;ctx.fill();
-        var fs=Math.max(9/gs,3);ctx.font=fs+'px Inter,sans-serif';
-        ctx.textAlign='center';ctx.textBaseline='top';ctx.fillStyle='rgba(148,163,184,0.8)';
-        ctx.fillText(n.name,n.x,n.y+r+2/gs);
-      }).nodeCanvasObjectMode(function(){return'replace';})
-      .onNodeClick(function(n){if(n.url)window.location.href=n.url;})
-      .cooldownTime(4000).d3AlphaDecay(0.02).d3VelocityDecay(0.3);
-    graph.d3Force('charge').strength(-250);
-    graph.d3Force('link').distance(70);
-    setTimeout(function(){graph.zoomToFit(400,30);},3500);
-  }catch(e){el.innerHTML='<p style="padding:2rem;color:#64748b;font-size:0.8rem;">Graph loading...</p>';}
+  search.addEventListener('input', filter);
 
-  // Filters — update BOTH graph and stack dots
-  document.querySelectorAll('.fbtn').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tag-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tag-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      var f=btn.dataset.f;
-      buildGraph(f);
-      document.querySelectorAll('.post-dot[data-facet]').forEach(function(d){
-        d.classList.toggle('hidden',f!=='all'&&d.dataset.facet!==f);
-      });
+      activeTag = btn.dataset.tag;
+      filter();
     });
   });
 })();
