@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Sanctuary Revolution — TWI</title>
+  <style>
+    .join-tiers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .join-tier { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-lg); padding: 2rem; position: relative; overflow: hidden; }
+    .join-tier::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--tier-accent, var(--mercury-blue)), transparent); }
+    .join-tier.all { grid-column: span 2; border-color: rgba(125,211,252,0.15); }
+    .join-tier .tier-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .join-tier h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .join-tier .tier-price { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 1rem; }
+    .join-tier p { font-size: 0.8rem; color: var(--text-2); line-height: 1.7; margin-bottom: 1rem; }
+    .join-tier ul { font-size: 0.8rem; color: var(--text-2); line-height: 1.8; margin: 0 0 1.5rem 1.2rem; }
+    .join-tier ul li::marker { color: var(--tier-accent, var(--mercury-blue)); }
+    .join-tier.paiab { --tier-accent: var(--mercury-blue); }
+    .join-tier.sanctum { --tier-accent: var(--mercury-violet); }
+    .join-tier.cave { --tier-accent: var(--mercury-teal); }
+    .join-tier.all { --tier-accent: var(--amber); }
+    .waitlist-row { display: flex; gap: 0.5rem; }
+    .waitlist-input { flex: 1; max-width: 240px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-sm); padding: 0.5rem 0.8rem; color: var(--text-1); font-size: 0.8rem; outline: none; font-family: var(--body); }
+    .waitlist-input:focus { border-color: var(--mercury-blue); }
+    .waitlist-input::placeholder { color: var(--text-3); }
+    .waitlist-btn { font-family: var(--mono); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--tier-accent, var(--mercury-blue)), var(--mercury-violet)); padding: 0.5rem 1rem; border-radius: var(--r-sm); border: none; cursor: pointer; transition: all 0.3s; }
+    .waitlist-btn:hover { filter: brightness(1.2); }
+    .downsell { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); }
+    .downsell p { font-size: 0.8rem; color: var(--text-3); margin-bottom: 0.5rem; }
+    @media (max-width: 900px) { .join-tiers { grid-template-columns: 1fr; } .join-tier.all { grid-column: span 1; } }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="/" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="transform.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a href="apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="padding-top:6rem;">
+    <div style="max-width:56ch;">
+      <div class="tag">Community</div>
+      <h1>Join <span>Sanctuary Revolution</span></h1>
+      <p class="sub">Three domains of compound intelligence. Pick the one that matters to you — or get all three. Each tier unlocks skills, frameworks, and access that the free layer doesn't include.</p>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section>
+    <div class="join-tiers">
+
+      <div class="join-tier paiab">
+        <div class="tier-icon">&#x2692;</div>
+        <h3>PAIAB</h3>
+        <div class="tier-price">Agent Building + STARSYSTEM &mdash; monthly</div>
+        <p>Build your own AI agents. Skills, flight configs, personas, MCP tools, the full dev workflow. This is the builder's path.</p>
+        <ul>
+          <li>Advanced agent-building skills</li>
+          <li>STARSYSTEM flight configs + mission templates</li>
+          <li>Private #paiab channels</li>
+          <li>DUO system + SDNA agent framework</li>
+        </ul>
+        <div class="waitlist-row">
+          <input type="email" class="waitlist-input" data-tier="paiab" placeholder="your@email.com">
+          <button class="waitlist-btn" onclick="joinWaitlist('paiab', this)">Join Waitlist</button>
+        </div>
+      </div>
+
+      <div class="join-tier sanctum">
+        <div class="tier-icon">&#x2660;</div>
+        <h3>SANCTUM</h3>
+        <div class="tier-price">Life Architecture &mdash; monthly</div>
+        <p>Six dimensions: health, wealth, relationships, purpose, growth, environment. The system that keeps the human intact while everything else compounds.</p>
+        <ul>
+          <li>Ritual + goal + boundary tracking skills</li>
+          <li>Sanctuary Degree calculator</li>
+          <li>Private #sanctum channels</li>
+          <li>Journal system + life architecture frameworks</li>
+        </ul>
+        <div class="waitlist-row">
+          <input type="email" class="waitlist-input" data-tier="sanctum" placeholder="your@email.com">
+          <button class="waitlist-btn" onclick="joinWaitlist('sanctum', this)">Join Waitlist</button>
+        </div>
+      </div>
+
+      <div class="join-tier cave">
+        <div class="tier-icon">&#x26A1;</div>
+        <h3>CAVE</h3>
+        <div class="tier-price">Business Automation &mdash; monthly</div>
+        <p>Funnels, automations, Jobworld dashboards, revenue generation. The system that turns your business into an AI-operated machine.</p>
+        <ul>
+          <li>Business automation skills + CAVE runtime</li>
+          <li>Jobworld dashboard templates</li>
+          <li>Private #cave channels</li>
+          <li>Funnel architecture + AIDA fractal frameworks</li>
+        </ul>
+        <div class="waitlist-row">
+          <input type="email" class="waitlist-input" data-tier="cave" placeholder="your@email.com">
+          <button class="waitlist-btn" onclick="joinWaitlist('cave', this)">Join Waitlist</button>
+        </div>
+      </div>
+
+      <div class="join-tier all">
+        <div class="tier-icon">&#x2726;</div>
+        <h3>All Access</h3>
+        <div class="tier-price">Everything &mdash; monthly</div>
+        <p>All three domains. PAIAB + SANCTUM + CAVE. Every skill, every channel, every framework. Priority support from Isaac. The full Sanctuary Revolution.</p>
+        <div class="waitlist-row">
+          <input type="email" class="waitlist-input" data-tier="all" placeholder="your@email.com">
+          <button class="waitlist-btn" onclick="joinWaitlist('all', this)">Join Waitlist</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DOWNSELL -->
+    <div class="downsell">
+      <p>Not ready to commit? Start free.</p>
+      <a href="https://discord.gg/m4HZY7xNG3" class="cta-big" style="font-size:0.7rem;">Join the Discord</a>
+      <p style="margin-top:1rem;font-size:0.7rem;color:var(--text-3);">Free community. Blog access. Open source OPERA. No payment required.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="dark">
+    <div class="tag">How it works</div>
+    <h2>The skills ARE the courses.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;">
+      When you join a tier, you unlock skills that your AI agent can invoke. Learn about the DUO system → your GNOSYS can run <code>make-duo</code>. Learn about funnels → your agent can build one. The knowledge and the capability are the same thing. This isn't a course you watch — it's a system you use.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="final-cta">
+    <div class="tag">The full vision</div>
+    <h2>One system. Your agent, your business, your life. All compounding.</h2>
+    <p>SANCREV OPERA is the engine. The community is where you learn to drive it.</p>
+    <a href="opera.html" class="cta-big" style="margin-top:2rem;">Learn about OPERA</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Join the revolution.</span>
+  </div>
+
+<script>
+function joinWaitlist(tier, btn) {
+  var row = btn.parentElement;
+  var input = row.querySelector('.waitlist-input');
+  var email = input.value.trim();
+  if (!email || email.indexOf('@') === -1) { input.focus(); return; }
+  var data = { email: email, tier: tier, ts: new Date().toISOString() };
+  try { 
+    var existing = JSON.parse(localStorage.getItem('sancrev_waitlist') || '[]');
+    existing.push(data);
+    localStorage.setItem('sancrev_waitlist', JSON.stringify(existing));
+  } catch(e) {}
+  input.value = '';
+  input.placeholder = "You're on the list.";
+  input.disabled = true;
+  btn.disabled = true;
+  btn.textContent = 'Added';
+}
+</script>
+
+<script src="sticky-cta.js"></script>
+</body>
+</html>

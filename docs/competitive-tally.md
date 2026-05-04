@@ -116,3 +116,20 @@ Last updated: 2026-05-04
 Nick Puru makes more money teaching L1-L2 than Isaac makes building L1-L7. The market doesn't pay for depth — it pays for proof. Isaac has depth. Isaac needs proof. Every day without a customer is a day the depth depreciates because competitors are shipping.
 
 The technical moat is real but INVISIBLE. Make it visible or it doesn't exist.
+
+---
+
+## Community Tier Structure (Sanctuary Revolution)
+
+| Tier | Facet | Content | Platform |
+|------|-------|---------|----------|
+| Free | — | Discord, blog, OPERA repo, free skills | Discord |
+| PAIAB | Agent Building + STARSYSTEM | Advanced agent skills, flight configs, DUO system, SDNA | Discord + Patreon |
+| SANCTUM | Life Architecture | Rituals, journal, 6-dimension tracking, SD calculator | Discord + Patreon |
+| CAVE | Business | Automations, funnels, Jobworld, AIDA fractal | Discord + Patreon |
+| All Access | Everything | All three + priority support | Discord + Patreon |
+| Cohort | School | Teaches you to USE all of it together (one-time) | SeedPublishing |
+| Mastermind | VIP | Group access to Isaac, all upsells handed | Annual |
+
+Skills unlock per tier = different private repos / skill packs.
+"The skills ARE the courses" — learn DUOs → agent can run make-duo.
