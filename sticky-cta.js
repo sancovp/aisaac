@@ -55,7 +55,7 @@
     bar.className = 'sticky-cta-bar';
     bar.innerHTML =
       '<span class="sticky-cta-text">AI automation for your business — guaranteed results in 30 days.</span>' +
-      '<span class="sticky-cta-btn" data-qual-open>Apply</span>';
+      '<span class="sticky-cta-btn" data-qual-open>Book a Call</span>';
     document.body.appendChild(bar);
   }
 

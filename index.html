@@ -5,7 +5,44 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isaac — TWI | AI Transformation</title>
-  </head>
+  <style>
+    .router-flow { display: none; max-width: 520px; margin: 0 auto; animation: flow-in .4s ease-out; }
+    .router-flow.active { display: block; }
+    .cards.hidden { display: none; }
+    @keyframes flow-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .flow-progress { display: flex; gap: 0.5rem; margin-bottom: 2rem; justify-content: center; }
+    .flow-dot { width: 2rem; height: 3px; border-radius: 2px; background: var(--glass-border); transition: background 0.3s; }
+    .flow-dot.done { background: var(--mercury-blue); }
+    .flow-dot.current { background: var(--mercury-violet); }
+    .flow-step { display: none; animation: flow-in .3s ease-out; }
+    .flow-step.active { display: block; }
+    .flow-q { font-weight: 600; font-size: 1.15rem; color: var(--text-1); margin-bottom: 1.5rem; text-align: center; }
+    .flow-opts { display: flex; flex-direction: column; gap: 0.7rem; }
+    .flow-opt {
+      background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md);
+      padding: 0.9rem 1.3rem; cursor: pointer; font-size: 0.9rem; color: var(--text-2); transition: all 0.2s; text-align: left;
+    }
+    .flow-opt:hover { border-color: rgba(125,211,252,0.25); color: var(--text-1); transform: translateY(-1px); }
+    .flow-opt.selected { border-color: var(--mercury-blue); color: var(--text-1); background: rgba(125,211,252,0.06); }
+    .flow-result { padding: 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-lg); margin-top: 1rem; text-align: left; }
+    .flow-result h3 { font-size: 1.05rem; color: var(--text-1); margin-bottom: 0.6rem; }
+    .flow-result p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; margin-bottom: 0.8rem; }
+    .flow-result strong { color: var(--text-1); }
+    .flow-cta { display: inline-block; margin-top: 0.5rem; }
+    .flow-alt { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--mercury-blue); text-decoration: none; margin-left: 1rem; }
+    .flow-alt:hover { color: var(--text-1); }
+    .flow-escape { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--glass-border); font-size: 0.75rem; color: var(--text-3); text-align: center; }
+    .flow-escape a { color: var(--mercury-violet); text-decoration: none; }
+    .flow-escape a:hover { color: var(--text-1); }
+    .flow-email-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .flow-input { flex: 1; max-width: 260px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-sm); padding: 0.6rem 1rem; color: var(--text-1); font-size: 0.85rem; outline: none; font-family: var(--body); }
+    .flow-input:focus { border-color: var(--mercury-blue); }
+    .flow-input::placeholder { color: var(--text-3); }
+    .flow-small-btn { font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); padding: 0.5rem 1rem; border-radius: var(--r-sm); border: none; cursor: pointer; }
+    .flow-back { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); cursor: pointer; text-decoration: none; display: block; text-align: center; margin-bottom: 1rem; }
+    .flow-back:hover { color: var(--text-1); }
+  </style>
+</head>
 <body>
 
   <div class="header">
@@ -15,7 +52,7 @@
       <a href="build.html">Jobworld</a>
       <a href="transform.html">Services</a>
       <a href="blog/">Blog</a>
-      <a href="apply.html" class="nav-cta">Book a Call</a>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="nav-cta">Book a Call</a>
     </div>
   </div>
 
@@ -24,8 +61,7 @@
     <h1>What brings you <span>here?</span></h1>
     <p class="router-sub">Three paths. Same engine. Pick yours.</p>
 
-    <div class="cards">
-
+    <div class="cards" id="router-cards">
       <a href="learn.html" class="card">
         <div class="card-icon">&#x2726;</div>
         <h2>I want to understand what's actually possible with AI.</h2>
@@ -40,12 +76,87 @@
         <div class="card-cta">Jobworld &rarr;</div>
       </a>
 
-      <a href="transform.html" class="card highlight">
+      <a href="#" class="card highlight" id="card-transform">
         <div class="card-icon">&#x26A1;</div>
         <h2>I need AI running in my business now.</h2>
         <p>We build your custom AI automation system. Every lead answered in 60 seconds. Every SOP running itself. Guaranteed results in 30 days or your money back.</p>
         <div class="card-cta">Get started &rarr;</div>
       </a>
+    </div>
+
+    <!-- Qualification flow (appears when Transform card clicked) -->
+    <div class="router-flow" id="router-flow">
+      <a class="flow-back" id="flow-back">&larr; Back to paths</a>
+
+      <div class="flow-progress">
+        <div class="flow-dot current" data-fdot="0"></div>
+        <div class="flow-dot" data-fdot="1"></div>
+        <div class="flow-dot" data-fdot="2"></div>
+      </div>
+
+      <!-- Revenue -->
+      <div class="flow-step active" data-fstep="0">
+        <div class="flow-q">What's your monthly revenue?</div>
+        <div class="flow-opts">
+          <div class="flow-opt" data-fval="pre" data-fgo="result-school">Pre-revenue / under $5K</div>
+          <div class="flow-opt" data-fval="5-10k" data-fgo="result-school">$5K — $10K</div>
+          <div class="flow-opt" data-fval="10-20k" data-fgo="1">$10K — $20K</div>
+          <div class="flow-opt" data-fval="20-50k" data-fgo="1">$20K — $50K</div>
+          <div class="flow-opt" data-fval="50k+" data-fgo="1">$50K+</div>
+        </div>
+      </div>
+
+      <!-- Bottleneck -->
+      <div class="flow-step" data-fstep="1">
+        <div class="flow-q">What's eating your time?</div>
+        <div class="flow-opts">
+          <div class="flow-opt" data-fval="leads" data-fgo="2">Answering leads / follow-up</div>
+          <div class="flow-opt" data-fval="content" data-fgo="2">Creating content consistently</div>
+          <div class="flow-opt" data-fval="ops" data-fgo="2">Operations and repetitive tasks</div>
+          <div class="flow-opt" data-fval="all" data-fgo="2">All of it — I need the whole system</div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="flow-step" data-fstep="2">
+        <div class="flow-q">How soon do you want AI running?</div>
+        <div class="flow-opts">
+          <div class="flow-opt" data-fval="now" data-fgo="result-qualified">This week</div>
+          <div class="flow-opt" data-fval="soon" data-fgo="result-qualified">This month</div>
+          <div class="flow-opt" data-fval="later" data-fgo="result-qualified">Just scoping it out</div>
+        </div>
+      </div>
+
+      <!-- Qualified -->
+      <div class="flow-step" data-fstep="result-qualified">
+        <div class="flow-q">You qualify.</div>
+        <div class="flow-result">
+          <h3>Two ways to start:</h3>
+          <p><strong>Option 1:</strong> Talk to my AI agent right now. It knows your situation and can get you started immediately.</p>
+          <p style="font-size:0.7rem;color:var(--text-3);">[AI agent — coming soon. Book directly for now.]</p>
+          <p><strong>Option 2:</strong> Free discovery call with me. 30 minutes — I tell you what to automate. You keep the roadmap regardless.</p>
+          <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="cta-big flow-cta">Book a Call</a>
+        </div>
+        <div class="flow-escape"><p>Skip the process? <a href="https://cal.com/aisaac/paid-session">$500 for 55 min with Isaac — no qualification needed.</a></p></div>
+      </div>
+
+      <!-- School -->
+      <div class="flow-step" data-fstep="result-school">
+        <div class="flow-q">The school is your fastest path.</div>
+        <div class="flow-result">
+          <h3>Here's the honest answer:</h3>
+          <p>My builds are for businesses doing $10K+/mo. At your stage, learning to build it yourself gives you the best ROI.</p>
+          <p>The 7-stack methodology, the frameworks, the exact system I use — the school teaches all of it.</p>
+          <a href="learn.html" class="cta-big flow-cta">Start Learning (Free)</a>
+          <br><br>
+          <p style="font-size:0.8rem;color:var(--text-2);">Get notified when the next cohort opens:</p>
+          <div class="flow-email-row">
+            <input type="email" class="flow-input" id="flow-school-email" placeholder="your@email.com">
+            <button class="flow-small-btn" id="flow-notify-btn">Notify Me</button>
+          </div>
+        </div>
+        <div class="flow-escape"><p>Still want direct access? <a href="https://cal.com/aisaac/paid-session">$500 for 55 min with Isaac.</a></p></div>
+      </div>
 
     </div>
   </div>
@@ -54,6 +165,79 @@
     <span>&copy; 2026 Isaac &mdash; TWI</span>
     <span style="color:rgba(232,161,32,0.4);font-style:italic;">Built with AI. The site &mdash; and the systems I sell.</span>
   </div>
+
+<script>
+(function() {
+  var cards = document.getElementById('router-cards');
+  var flow = document.getElementById('router-flow');
+  var transformCard = document.getElementById('card-transform');
+  var backBtn = document.getElementById('flow-back');
+  var answers = {};
+
+  // Transform card → start qualification flow
+  transformCard.addEventListener('click', function(e) {
+    e.preventDefault();
+    cards.classList.add('hidden');
+    flow.classList.add('active');
+    goFlowStep('0');
+  });
+
+  // Back → show cards again
+  backBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    flow.classList.remove('active');
+    cards.classList.remove('hidden');
+  });
+
+  // Option clicks
+  flow.addEventListener('click', function(e) {
+    var opt = e.target.closest('.flow-opt');
+    if (!opt) return;
+    opt.parentElement.querySelectorAll('.flow-opt').forEach(function(s) { s.classList.remove('selected'); });
+    opt.classList.add('selected');
+    var step = opt.closest('.flow-step').dataset.fstep;
+    answers['step' + step] = opt.dataset.fval;
+    var next = opt.dataset.fgo;
+    setTimeout(function() { goFlowStep(next); }, 200);
+  });
+
+  function goFlowStep(id) {
+    flow.querySelectorAll('.flow-step').forEach(function(s) { s.classList.remove('active'); });
+    var target = flow.querySelector('.flow-step[data-fstep="' + id + '"]');
+    if (target) target.classList.add('active');
+    var num = parseInt(id);
+    flow.querySelectorAll('.flow-dot').forEach(function(d) {
+      var ds = parseInt(d.dataset.fdot);
+      d.className = 'flow-dot';
+      if (!isNaN(num)) {
+        if (ds < num) d.classList.add('done');
+        else if (ds === num) d.classList.add('current');
+      } else { d.classList.add('done'); }
+    });
+    // Hide back button on results
+    backBtn.style.display = id.indexOf('result') === 0 ? 'none' : 'block';
+    try { localStorage.setItem('twi_qualify', JSON.stringify(answers)); } catch(e) {}
+  }
+
+  // Email capture
+  var notifyBtn = document.getElementById('flow-notify-btn');
+  if (notifyBtn) {
+    notifyBtn.addEventListener('click', function() {
+      var input = document.getElementById('flow-school-email');
+      if (!input) return;
+      var email = input.value.trim();
+      if (!email || email.indexOf('@') === -1) { input.focus(); return; }
+      answers.email = email;
+      try { localStorage.setItem('twi_qualify', JSON.stringify(answers)); } catch(e) {}
+      input.value = '';
+      input.placeholder = "Saved — we'll be in touch.";
+      input.disabled = true;
+      notifyBtn.disabled = true;
+      notifyBtn.textContent = 'Done';
+    });
+  }
+})();
+</script>
 
 <script src="sticky-cta.js"></script>
 </body>
