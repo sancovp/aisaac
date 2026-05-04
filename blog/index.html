@@ -1,5 +1,41 @@
 <link rel="stylesheet" href="blog-style.css">
 <script src="https://unpkg.com/force-graph@1.47.4/dist/force-graph.min.js"></script>
+<style>
+  .filter-bar { display:flex;gap:0.5rem;margin:1.5rem 0;flex-wrap:wrap;justify-content:center; }
+  .fbtn { font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid rgba(255,255,255,0.07);background:transparent;color:rgba(255,255,255,0.3);cursor:pointer;transition:all .2s; }
+  .fbtn:hover,.fbtn.active { color:var(--text-1);border-color:rgba(125,211,252,0.3);background:rgba(125,211,252,0.05); }
+
+  /* 7-Stack */
+  .stack-7 { margin:2rem 0;perspective:800px; }
+  .stack-level { position:relative;padding:0.6rem 1rem 0.6rem 3.5rem;margin-bottom:2px;border-radius:8px;min-height:2.8rem;display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem;transition:all .3s;
+    background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+    transform:rotateX(2deg);transform-origin:bottom center; }
+  .stack-level:hover { background:rgba(255,255,255,0.04);border-color:rgba(125,211,252,0.1); }
+  .stack-level .level-label { position:absolute;left:0.8rem;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.15);width:2rem;text-align:right; }
+  .stack-level.l7 { border-color:rgba(253,164,175,0.15);background:rgba(253,164,175,0.03); }
+  .stack-level.l7 .level-label { color:rgba(253,164,175,0.4); }
+  .stack-level.l6 { border-color:rgba(167,139,250,0.1);background:rgba(167,139,250,0.02); }
+  .stack-level.l5 { border-color:rgba(125,211,252,0.08); }
+  .stack-level.empty { opacity:0.4; }
+  .stack-level.empty::after { content:'—';font-size:0.6rem;color:rgba(255,255,255,0.1); }
+
+  .post-dot { display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.6rem;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);text-decoration:none;transition:all .2s;cursor:pointer; }
+  .post-dot:hover { background:rgba(125,211,252,0.08);border-color:rgba(125,211,252,0.2);transform:translateY(-1px); }
+  .post-dot .dot-circle { width:6px;height:6px;border-radius:50%;flex-shrink:0; }
+  .post-dot .dot-label { font-size:0.65rem;color:var(--text-2);white-space:nowrap; }
+  .post-dot:hover .dot-label { color:var(--text-1); }
+  .post-dot.hidden { display:none; }
+
+  .dot-paiab { background:#7dd3fc; }
+  .dot-sanctum { background:#a78bfa; }
+  .dot-cave { background:#5eead4; }
+  .dot-emergence { background:#fda4af; }
+
+  .graph-legend { position:absolute;bottom:0.8rem;left:1rem;display:flex;gap:1rem;font-size:0.55rem;color:rgba(255,255,255,0.25);z-index:10; }
+  .graph-legend span { display:flex;align-items:center;gap:3px; }
+  .graph-legend .lg { width:6px;height:6px;border-radius:50%;display:inline-block; }
+</style>
+
 <div id="isaac-site">
   <div class="site-header">
     <a href="../index.html" class="logo">Isaac — TWI</a>
@@ -15,84 +51,81 @@
   <article>
     <div class="post-tag">Blog</div>
     <h1>Writing</h1>
-    <p class="post-subtitle">Engineering disciplines, agent architecture, and what actually works.</p>
+    <p class="post-subtitle">27 frameworks for compound intelligence. Filter by facet. Stratified by complexity level.</p>
+
+    <!-- FILTER -->
+    <div class="filter-bar">
+      <button class="fbtn active" data-f="all">All</button>
+      <button class="fbtn" data-f="paiab">PAIAB</button>
+      <button class="fbtn" data-f="sanctum">SANCTUM</button>
+      <button class="fbtn" data-f="cave">CAVE</button>
+      <button class="fbtn" data-f="emergence">Emergence</button>
+    </div>
 
     <!-- FORCE GRAPH -->
-    <div id="fw-graph" style="width:100%;height:420px;border:1px solid rgba(255,255,255,0.07);border-radius:12px;margin:2rem 0;position:relative;overflow:hidden;">
-      <div style="position:absolute;bottom:0.8rem;left:1rem;display:flex;gap:1rem;font-size:0.6rem;color:rgba(255,255,255,0.3);z-index:10;">
-        <span style="display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#7dd3fc;display:inline-block;"></span>PAIAB</span>
-        <span style="display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#a78bfa;display:inline-block;"></span>SANCTUM</span>
-        <span style="display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#5eead4;display:inline-block;"></span>CAVE</span>
-        <span style="display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#fda4af;display:inline-block;"></span>Emergence</span>
+    <div id="fw-graph" style="width:100%;height:380px;border:1px solid rgba(255,255,255,0.07);border-radius:12px;position:relative;overflow:hidden;">
+      <div class="graph-legend">
+        <span><span class="lg" style="background:#7dd3fc"></span>PAIAB</span>
+        <span><span class="lg" style="background:#a78bfa"></span>SANCTUM</span>
+        <span><span class="lg" style="background:#5eead4"></span>CAVE</span>
+        <span><span class="lg" style="background:#fda4af"></span>Emergence</span>
       </div>
     </div>
 
-    <!-- FILTERS -->
-    <div id="filters" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-      <button class="filter-btn active" data-f="all" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid var(--glass-border);background:transparent;color:var(--text-2);cursor:pointer;">All</button>
-      <button class="filter-btn" data-f="paiab" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid var(--glass-border);background:transparent;color:var(--text-3);cursor:pointer;">PAIAB</button>
-      <button class="filter-btn" data-f="sanctum" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid var(--glass-border);background:transparent;color:var(--text-3);cursor:pointer;">SANCTUM</button>
-      <button class="filter-btn" data-f="cave" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid var(--glass-border);background:transparent;color:var(--text-3);cursor:pointer;">CAVE</button>
-      <button class="filter-btn" data-f="emergence" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid var(--glass-border);background:transparent;color:var(--text-3);cursor:pointer;">Emergence</button>
+    <!-- 7-STACK -->
+    <div class="stack-7">
+      <div class="stack-level l7">
+        <span class="level-label">L7</span>
+        <a href="seven-disciplines.html" class="post-dot" data-facet="emergence"><span class="dot-circle dot-emergence"></span><span class="dot-label">7 Disciplines</span></a>
+        <span style="font-size:0.5rem;color:rgba(253,164,175,0.3);margin-left:0.5rem;">emergence engineering — no posts yet</span>
+      </div>
+      <div class="stack-level l6">
+        <span class="level-label">L6</span>
+        <a href="hiel.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">HIEL</span></a>
+        <a href="helming.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Helming</span></a>
+        <a href="crowning.html" class="post-dot" data-facet="emergence"><span class="dot-circle dot-emergence"></span><span class="dot-label">Crowning</span></a>
+        <a href="holographic-work.html" class="post-dot" data-facet="emergence"><span class="dot-circle dot-emergence"></span><span class="dot-label">Holographic Work</span></a>
+      </div>
+      <div class="stack-level l5">
+        <span class="level-label">L5</span>
+        <a href="admissibility.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Admissibility</span></a>
+        <a href="halo.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">HALO</span></a>
+        <a href="calibration.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Calibration</span></a>
+        <a href="meta-cognitive-awareness.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Meta-Cognitive</span></a>
+        <a href="allegorization-compiler.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Allegorization</span></a>
+        <a href="docmagic-stack.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">DocMagic</span></a>
+      </div>
+      <div class="stack-level l4">
+        <span class="level-label">L4</span>
+        <a href="shell.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">SHELL</span></a>
+        <a href="interaction-loop.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Interaction Loop</span></a>
+        <a href="progressive-disclosure-harness.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Prog. Disclosure</span></a>
+        <a href="composition.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Composition</span></a>
+        <a href="soseeh.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">SOSEEH</span></a>
+        <a href="ok-stable-signal.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">OK Stable</span></a>
+        <a href="towering.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Towering</span></a>
+        <a href="seam-repair.html" class="post-dot" data-facet="paiab"><span class="dot-circle dot-paiab"></span><span class="dot-label">Seam Repair</span></a>
+        <a href="flow.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Flow</span></a>
+        <a href="blanket.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">The Blanket</span></a>
+        <a href="thermal-dynamics.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Thermal Dynamics</span></a>
+        <a href="mission-control.html" class="post-dot" data-facet="cave"><span class="dot-circle dot-cave"></span><span class="dot-label">Mission Control</span></a>
+      </div>
+      <div class="stack-level">
+        <span class="level-label">L3</span>
+        <a href="externalization.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Externalization</span></a>
+        <a href="reach.html" class="post-dot" data-facet="sanctum"><span class="dot-circle dot-sanctum"></span><span class="dot-label">Reach</span></a>
+      </div>
+      <div class="stack-level">
+        <span class="level-label">L2</span>
+        <a href="the-fair-game.html" class="post-dot" data-facet="cave"><span class="dot-circle dot-cave"></span><span class="dot-label">The Fair Game</span></a>
+        <a href="the-system-audit.html" class="post-dot" data-facet="cave"><span class="dot-circle dot-cave"></span><span class="dot-label">System Audit</span></a>
+      </div>
+      <div class="stack-level">
+        <span class="level-label">L1</span>
+        <span style="font-size:0.5rem;color:rgba(255,255,255,0.15);">beginner posts coming soon</span>
+      </div>
     </div>
 
-    <div id="blog-list" style="display:grid;gap:1.2rem;">
-
-      <a href="the-fair-game.html" class="blog-card" data-facet="cave"><h3>The Fair Game</h3><p>Six levels of economic participation, seven levels of complexity, and the punchline nobody in the AI agency world wants you to understand.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="holographic-work.html" class="blog-card" data-facet="emergence"><h3>Holographic Work</h3><p>Every piece contains the whole. One conversation produces skills, blogs, code, content, knowledge, business, autobiography, and rules — automatically.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="ok-stable-signal.html" class="blog-card" data-facet="paiab"><h3>OK Stable Signal: Stop Building on Hope</h3><p>Four properties. One discipline. Zero collapse.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="flow.html" class="blog-card" data-facet="sanctum"><h3>Flow: Why Effortless Execution Is an Engineering Problem</h3><p>Five structural conditions. Meet all five and hours vanish into progress.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="externalization.html" class="blog-card" data-facet="sanctum"><h3>Externalization: Your Brain Is Lossy Storage</h3><p>Your brain holds 4 things at once. Your systems can hold everything.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="crowning.html" class="blog-card" data-facet="emergence"><h3>Crowning: The Moment Your System Comes Alive</h3><p>The structure stops being something you maintain and starts being something that maintains you.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="calibration.html" class="blog-card" data-facet="sanctum"><h3>Calibration: Why Your Best Judgment Keeps Betraying You</h3><p>Fitting clicks are right 75% of the time. Desire clicks are right 20%.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="composition.html" class="blog-card" data-facet="paiab"><h3>Composition: Working Pieces Don't Make Working Wholes</h3><p>Five requirements for composition that actually holds.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="blanket.html" class="blog-card" data-facet="sanctum"><h3>The Blanket: Your System Needs a Membrane, Not a Wall</h3><p>The third option — a selective membrane that filters, selects, and learns.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="seam-repair.html" class="blog-card" data-facet="paiab"><h3>Seam Repair: What to Do When Alignment Breaks</h3><p>Seven-step protocol instead of a panic response.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="mission-control.html" class="blog-card" data-facet="cave"><h3>Mission Control: Three Questions That Kill Drift</h3><p>You lose alignment gradually, while being extremely busy doing the wrong thing.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="helming.html" class="blog-card" data-facet="sanctum"><h3>Helming: Why You Can't See What to Build Next</h3><p>You haven't finished the layer that gives you vision of the next one.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="shell.html" class="blog-card" data-facet="paiab"><h3>SHELL: Turn Any Toolkit Into a Game Your Agent Can Play</h3><p>Most AI agents fail not because they lack tools, but because nobody defined the rules of the game.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="interaction-loop.html" class="blog-card" data-facet="paiab"><h3>Why Your Systems Break When They Talk to Each Other</h3><p>The seven-element interaction loop that turns fragile handoffs into bulletproof coordination.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="meta-cognitive-awareness.html" class="blog-card" data-facet="sanctum"><h3>The Skill That Makes Every Other Skill Work</h3><p>Meta-cognitive awareness is the prerequisite your entire operating system depends on.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="hiel.html" class="blog-card" data-facet="paiab"><h3>HIEL: Your AI Is a Heat Engine</h3><p>The randomness in AI outputs is not a bug. It is energy.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="reach.html" class="blog-card" data-facet="sanctum"><h3>What Your "Distraction" Is Actually Doing</h3><p>Pre-conscious pattern assembly that looks like procrastination is actually your brain collecting analogies.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="allegorization-compiler.html" class="blog-card" data-facet="paiab"><h3>The Allegorization Compiler</h3><p>Forge the framework you need when nobody has invented it yet.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="progressive-disclosure-harness.html" class="blog-card" data-facet="paiab"><h3>The Progressive Disclosure Harness</h3><p>AI agents get worse the more tools you give them. The fix: staged reveals.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="thermal-dynamics.html" class="blog-card" data-facet="sanctum"><h3>Cognitive Thermal Dynamics</h3><p>Your brain overheats from unprocessed complexity the same way a CPU overheats.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="soseeh.html" class="blog-card" data-facet="paiab"><h3>SOSEEH: The 2-Minute Complexity Kill</h3><p>Four questions decompose any blob into solvable pieces.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="towering.html" class="blog-card" data-facet="paiab"><h3>Towering: Why Your Complexity Keeps Collapsing</h3><p>You have a foundation problem, not an intelligence problem.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="halo.html" class="blog-card" data-facet="paiab"><h3>HALO: Why Your AI Collaboration Keeps Falling Apart</h3><p>The invisible seam between your context and the machine's context.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="the-system-audit.html" class="blog-card" data-facet="cave"><h3>The 30-Day System Audit</h3><p>The right SOP to automate first is never the most painful one. It's the most leaky one.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="seven-disciplines.html" class="blog-card" data-facet="emergence"><h3>The 7 Engineering Disciplines for AI Agents</h3><p>The next three — Admissibility, Concentration, and Emergence — are where serious agent systems live.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="admissibility.html" class="blog-card" data-facet="paiab"><h3>Admissibility Engineering: The Missing Layer</h3><p>If the hidden edge is not represented anywhere, retrieval cannot retrieve it.</p><span class="read-link">Read &rarr;</span></a>
-
-      <a href="docmagic-stack.html" class="blog-card" data-facet="paiab"><h3>Where DocMagic Sits in the Stack</h3><p>An Admissibility Engineering tool, a Concentration Engineering support surface, and an Emergence Engineering repair loop.</p><span class="read-link">Read &rarr;</span></a>
-
-    </div>
   </article>
 
   <div class="site-footer" style="padding-bottom:4rem;">
@@ -102,19 +135,18 @@
 </div>
 
 <script>
-(function() {
-  // Force graph
-  var colors = { paiab:'#7dd3fc', sanctum:'#a78bfa', cave:'#5eead4', emergence:'#fda4af' };
-  var fws = [
+(function(){
+  var colors = {paiab:'#7dd3fc',sanctum:'#a78bfa',cave:'#5eead4',emergence:'#fda4af'};
+  var fws=[
     {id:'meta-cognitive',name:'Meta-Cognitive',facet:'sanctum',url:'meta-cognitive-awareness.html'},
     {id:'seven-disciplines',name:'7 Disciplines',facet:'emergence',url:'seven-disciplines.html'},
-    {id:'fair-game',name:'The Fair Game',facet:'cave',url:'the-fair-game.html'},
+    {id:'fair-game',name:'Fair Game',facet:'cave',url:'the-fair-game.html'},
     {id:'shell',name:'SHELL',facet:'paiab',url:'shell.html'},
     {id:'admissibility',name:'Admissibility',facet:'paiab',url:'admissibility.html'},
     {id:'hiel',name:'HIEL',facet:'paiab',url:'hiel.html'},
     {id:'halo',name:'HALO',facet:'paiab',url:'halo.html'},
     {id:'interaction-loop',name:'Interaction Loop',facet:'paiab',url:'interaction-loop.html'},
-    {id:'prog-disclosure',name:'Prog. Disclosure',facet:'paiab',url:'progressive-disclosure-harness.html'},
+    {id:'prog-disclosure',name:'Prog Disclosure',facet:'paiab',url:'progressive-disclosure-harness.html'},
     {id:'composition',name:'Composition',facet:'paiab',url:'composition.html'},
     {id:'soseeh',name:'SOSEEH',facet:'paiab',url:'soseeh.html'},
     {id:'allegorization',name:'Allegorization',facet:'paiab',url:'allegorization-compiler.html'},
@@ -122,19 +154,19 @@
     {id:'flow',name:'Flow',facet:'sanctum',url:'flow.html'},
     {id:'externalization',name:'Externalization',facet:'sanctum',url:'externalization.html'},
     {id:'calibration',name:'Calibration',facet:'sanctum',url:'calibration.html'},
-    {id:'blanket',name:'The Blanket',facet:'sanctum',url:'blanket.html'},
+    {id:'blanket',name:'Blanket',facet:'sanctum',url:'blanket.html'},
     {id:'reach',name:'Reach',facet:'sanctum',url:'reach.html'},
-    {id:'thermal',name:'Thermal Dynamics',facet:'sanctum',url:'thermal-dynamics.html'},
-    {id:'mission-control',name:'Mission Control',facet:'cave',url:'mission-control.html'},
-    {id:'system-audit',name:'System Audit',facet:'cave',url:'the-system-audit.html'},
+    {id:'thermal',name:'Thermal',facet:'sanctum',url:'thermal-dynamics.html'},
+    {id:'mission-control',name:'Mission Ctrl',facet:'cave',url:'mission-control.html'},
+    {id:'system-audit',name:'Sys Audit',facet:'cave',url:'the-system-audit.html'},
     {id:'towering',name:'Towering',facet:'paiab',url:'towering.html'},
-    {id:'ok-stable',name:'OK Stable Signal',facet:'paiab',url:'ok-stable-signal.html'},
+    {id:'ok-stable',name:'OK Stable',facet:'paiab',url:'ok-stable-signal.html'},
     {id:'seam-repair',name:'Seam Repair',facet:'paiab',url:'seam-repair.html'},
     {id:'helming',name:'Helming',facet:'sanctum',url:'helming.html'},
     {id:'crowning',name:'Crowning',facet:'emergence',url:'crowning.html'},
-    {id:'holographic',name:'Holographic Work',facet:'emergence',url:'holographic-work.html'}
+    {id:'holographic',name:'Holographic',facet:'emergence',url:'holographic-work.html'}
   ];
-  var deps = [
+  var deps=[
     ['meta-cognitive','calibration'],['meta-cognitive','externalization'],
     ['meta-cognitive','towering'],['meta-cognitive','flow'],
     ['meta-cognitive','blanket'],['meta-cognitive','soseeh'],
@@ -149,40 +181,46 @@
     ['seven-disciplines','fair-game'],['fair-game','system-audit'],
     ['holographic','crowning']
   ];
-  var nodes = fws.map(function(f){ return {id:f.id,name:f.name,facet:f.facet,url:f.url}; });
-  var links = deps.map(function(d){ return {source:d[0],target:d[1]}; });
+
+  var allNodes = fws.map(function(f){return{id:f.id,name:f.name,facet:f.facet,url:f.url};});
+  var allLinks = deps.map(function(d){return{source:d[0],target:d[1]};});
   var el = document.getElementById('fw-graph');
-  try {
-    var g = ForceGraph()(el)
-      .graphData({nodes:nodes,links:links})
-      .backgroundColor('transparent')
-      .linkColor(function(){return 'rgba(255,255,255,0.06)';})
+  var graph;
+
+  function buildGraph(filter) {
+    var nodes = filter==='all' ? allNodes : allNodes.filter(function(n){return n.facet===filter;});
+    var nodeIds = new Set(nodes.map(function(n){return n.id;}));
+    var links = allLinks.filter(function(l){return nodeIds.has(l.source)&&nodeIds.has(l.target)||(typeof l.source==='object'&&nodeIds.has(l.source.id)&&nodeIds.has(l.target.id));});
+    if(graph){graph.graphData({nodes:nodes.map(function(n){return Object.assign({},n);}),links:links.map(function(l){return{source:typeof l.source==='object'?l.source.id:l.source,target:typeof l.target==='object'?l.target.id:l.target};})});setTimeout(function(){graph.zoomToFit(400,30);},500);}
+  }
+
+  try{
+    graph=ForceGraph()(el).graphData({nodes:allNodes,links:allLinks})
+      .backgroundColor('transparent').linkColor(function(){return'rgba(255,255,255,0.06)';})
       .linkWidth(1).linkCurvature(0.15)
-      .nodeCanvasObject(function(node,ctx,gs){
-        var r = node.facet==='emergence'?10:6;
-        var c = colors[node.facet]||'#888';
-        ctx.beginPath();ctx.arc(node.x,node.y,r,0,2*Math.PI);ctx.fillStyle=c;ctx.fill();
-        var fs = Math.max(9/gs,3);
-        ctx.font=fs+'px Inter,sans-serif';ctx.textAlign='center';ctx.textBaseline='top';
-        ctx.fillStyle='rgba(148,163,184,0.8)';
-        ctx.fillText(node.name,node.x,node.y+r+2/gs);
-      })
-      .nodeCanvasObjectMode(function(){return 'replace';})
+      .nodeCanvasObject(function(n,ctx,gs){
+        var r=n.facet==='emergence'?10:6;var c=colors[n.facet]||'#888';
+        ctx.beginPath();ctx.arc(n.x,n.y,r,0,2*Math.PI);ctx.fillStyle=c;ctx.fill();
+        var fs=Math.max(9/gs,3);ctx.font=fs+'px Inter,sans-serif';
+        ctx.textAlign='center';ctx.textBaseline='top';ctx.fillStyle='rgba(148,163,184,0.8)';
+        ctx.fillText(n.name,n.x,n.y+r+2/gs);
+      }).nodeCanvasObjectMode(function(){return'replace';})
       .onNodeClick(function(n){if(n.url)window.location.href=n.url;})
       .cooldownTime(4000).d3AlphaDecay(0.02).d3VelocityDecay(0.3);
-    g.d3Force('charge').strength(-250);
-    g.d3Force('link').distance(70);
-    setTimeout(function(){g.zoomToFit(400,30);},3500);
-  } catch(e){ el.innerHTML='<p style="padding:2rem;color:#64748b;font-size:0.8rem;">Graph loading...</p>'; }
+    graph.d3Force('charge').strength(-250);
+    graph.d3Force('link').distance(70);
+    setTimeout(function(){graph.zoomToFit(400,30);},3500);
+  }catch(e){el.innerHTML='<p style="padding:2rem;color:#64748b;font-size:0.8rem;">Graph loading...</p>';}
 
-  // Filters
-  document.querySelectorAll('.filter-btn').forEach(function(btn){
+  // Filters — update BOTH graph and stack dots
+  document.querySelectorAll('.fbtn').forEach(function(btn){
     btn.addEventListener('click',function(){
-      document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');b.style.color='var(--text-3)';b.style.borderColor='var(--glass-border)';});
-      btn.classList.add('active');btn.style.color='var(--text-1)';btn.style.borderColor='rgba(125,211,252,0.3)';
+      document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
       var f=btn.dataset.f;
-      document.querySelectorAll('#blog-list .blog-card').forEach(function(c){
-        c.style.display=(f==='all'||c.dataset.facet===f)?'':'none';
+      buildGraph(f);
+      document.querySelectorAll('.post-dot[data-facet]').forEach(function(d){
+        d.classList.toggle('hidden',f!=='all'&&d.dataset.facet!==f);
       });
     });
   });
