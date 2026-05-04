@@ -49,13 +49,34 @@
     '.qual-small-btn{font-family:"JetBrains Mono","SF Mono",monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#000;background:linear-gradient(135deg,#7dd3fc,#a78bfa);padding:0.5rem 1rem;border-radius:8px;border:none;cursor:pointer;}';
   document.head.appendChild(style);
 
-  // ── Sticky bar (not on apply page) ──
-  if (!isApplyPage) {
+  // ── Page family detection ──
+  var p = location.pathname;
+  var family = 'survey'; // default: send to survey
+  if (p.indexOf('transform') !== -1 || p.indexOf('pricing') !== -1 || p.indexOf('phone-agent') !== -1) family = 'b2b';
+  else if (p.indexOf('join') !== -1 || p.indexOf('school') !== -1 || p.indexOf('free') !== -1 || p.indexOf('opera') !== -1 || p.indexOf('gnosys') !== -1) family = 'community';
+  else if (p.indexOf('/blog/') !== -1) {
+    // Blog posts: check which CTA category they have
+    var blogCta = document.querySelector('.blog-cta-transform');
+    family = blogCta ? 'b2b' : 'community';
+  }
+
+  var barConfig = {
+    b2b:       { text: 'AI automation for your business — guaranteed results in 30 days.', btn: 'Book a Call', action: 'qual' },
+    community: { text: 'Build compound intelligence. Join the revolution.', btn: 'Join Sanctuary Revolution', href: (p.indexOf('/blog/') !== -1 ? '../' : '') + 'join.html' },
+    survey:    { text: 'Not sure where to start? Take the survey.', btn: 'Find Your Path', href: (p.indexOf('/blog/') !== -1 ? '../' : '') + 'index.html' }
+  };
+  var cfg = barConfig[family];
+
+  // ── Sticky bar (not on apply/index/join pages) ──
+  var hideBar = isApplyPage || p.match(/\/(index\.html)?$/) || p.indexOf('join') !== -1;
+  if (!hideBar) {
     var bar = document.createElement('div');
     bar.className = 'sticky-cta-bar';
-    bar.innerHTML =
-      '<span class="sticky-cta-text">AI automation for your business — guaranteed results in 30 days.</span>' +
-      '<span class="sticky-cta-btn" data-qual-open>Book a Call</span>';
+    if (cfg.action === 'qual') {
+      bar.innerHTML = '<span class="sticky-cta-text">' + cfg.text + '</span><span class="sticky-cta-btn" data-qual-open>' + cfg.btn + '</span>';
+    } else {
+      bar.innerHTML = '<span class="sticky-cta-text">' + cfg.text + '</span><a href="' + cfg.href + '" class="sticky-cta-btn">' + cfg.btn + '</a>';
+    }
     document.body.appendChild(bar);
   }
 
