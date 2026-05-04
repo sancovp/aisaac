@@ -59,29 +59,38 @@
   <div class="router">
     <div class="router-tag">Welcome</div>
     <h1>What brings you <span>here?</span></h1>
-    <p class="router-sub">Three paths. Same engine. Pick yours.</p>
+    <p class="router-sub">Four paths. Same engine. Pick yours.</p>
 
-    <div class="cards" id="router-cards">
-      <a href="learn.html" class="card">
-        <div class="card-icon">&#x2726;</div>
-        <h2>I want to understand what's actually possible with AI.</h2>
-        <p>Frameworks, architecture, the 7-stack methodology. How compound AI systems work — and how to think about building them. Free content, community, depth.</p>
-        <div class="card-cta">Learn &rarr;</div>
-      </a>
+    <div class="cards" id="router-cards" style="grid-template-columns:repeat(2,1fr);">
 
-      <a href="build.html" class="card">
-        <div class="card-icon">&#x2692;</div>
-        <h2>I want to build AI-powered businesses myself.</h2>
-        <p>Jobworld is the business operating system. Voice agents, automations, dashboards, SOPs — everything your AI-powered business needs, in one platform.</p>
-        <div class="card-cta">Jobworld &rarr;</div>
+      <a href="opera.html" class="card">
+        <div class="card-icon">&#x2660;</div>
+        <h2>The Sanctuary System</h2>
+        <p>The full vision. Life architecture, compound intelligence, the myth that predicted the code. One install — your agent, your business, your knowledge, all compounding together.</p>
+        <div class="card-cta">Enter &rarr;</div>
       </a>
 
       <a href="#" class="card highlight" id="card-transform">
         <div class="card-icon">&#x26A1;</div>
-        <h2>I need AI running in my business now.</h2>
-        <p>We build your custom AI automation system. Every lead answered in 60 seconds. Every SOP running itself. Guaranteed results in 30 days or your money back.</p>
+        <h2>I need AI in my business now.</h2>
+        <p>We build your AI automation system. Every lead answered in 60 seconds. Every SOP running itself. Guaranteed results in 30 days.</p>
         <div class="card-cta">Get started &rarr;</div>
       </a>
+
+      <a href="school.html" class="card">
+        <div class="card-icon">&#x2697;</div>
+        <h2>I want to make money with AI.</h2>
+        <p>The meta-funnel. How AI businesses actually work, what agencies really sell, and how to build one that doesn't depend on information asymmetry. Dr Capitalism explains.</p>
+        <div class="card-cta">The School &rarr;</div>
+      </a>
+
+      <a href="free.html" class="card">
+        <div class="card-icon">&#x2692;</div>
+        <h2>I want to learn to build AI agents.</h2>
+        <p>Skills, harnesses, frameworks, OPERA. Free tools and open source software. Everything you need to start building compound AI systems yourself.</p>
+        <div class="card-cta">PAIAB &rarr;</div>
+      </a>
+
     </div>
 
     <!-- Qualification flow (appears when Transform card clicked) -->
@@ -174,9 +183,10 @@
   var backBtn = document.getElementById('flow-back');
   var answers = {};
 
-  // Transform card → start qualification flow
+  // Transform card → qualification for cold visitors, direct link for return visitors
   transformCard.addEventListener('click', function(e) {
     e.preventDefault();
+    try { if (localStorage.getItem('twi_qualify')) { location.href = 'transform.html'; return; } } catch(x) {}
     cards.classList.add('hidden');
     flow.classList.add('active');
     goFlowStep('0');
