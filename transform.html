@@ -12,40 +12,21 @@
     .tier { cursor: pointer; transition: all 0.2s; }
     .tier:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
 
-    /* Demo consent section */
-    #demo-consent { display: none; animation: dc-in 0.4s ease-out; }
-    #demo-consent.active { display: block; }
-    @keyframes dc-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    .dc-wrap { max-width: 560px; margin: 0 auto; text-align: center; }
-    .dc-selected { font-family: var(--mono); font-size: 0.7rem; color: var(--mercury-teal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }
-    .dc-q { font-weight: 600; font-size: 1.3rem; color: var(--text-1); margin-bottom: 0.6rem; }
-    .dc-sub { font-size: 0.85rem; color: var(--text-2); margin-bottom: 2rem; line-height: 1.7; }
-    .dc-options { display: flex; flex-direction: column; gap: 1rem; max-width: 420px; margin: 0 auto; }
-    .dc-opt { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-lg); padding: 1.2rem 1.5rem; text-decoration: none; color: var(--text-1); transition: all 0.2s; text-align: left; display: block; }
-    .dc-opt:hover { border-color: rgba(125,211,252,0.25); transform: translateY(-1px); }
-    .dc-opt h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
-    .dc-opt p { font-size: 0.8rem; color: var(--text-2); line-height: 1.6; margin: 0; }
-    .dc-opt.primary { border-color: rgba(125,211,252,0.15); background: rgba(125,211,252,0.04); }
-    .dc-opt .badge { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mercury-teal); margin-bottom: 0.4rem; display: block; }
-
-    /* Demo flow cascade */
-    #demo-flow { display: none; animation: dc-in 0.4s ease-out; }
-    #demo-flow.active { display: block; }
-    .df-wrap { max-width: 520px; margin: 0 auto; }
-    .df-step { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 1rem 1.3rem; margin-bottom: 0.8rem; position: relative; padding-left: 2.5rem; }
-    .df-step::before { content: attr(data-num); position: absolute; left: 1rem; top: 1rem; font-family: var(--mono); font-size: 0.65rem; color: var(--mercury-violet); }
-    .df-step h4 { font-size: 0.9rem; color: var(--text-1); margin-bottom: 0.2rem; }
-    .df-step p { font-size: 0.8rem; color: var(--text-2); line-height: 1.6; margin: 0; }
-    .df-step .placeholder { font-size: 0.65rem; color: var(--text-3); font-style: italic; margin-top: 0.3rem; }
-    .df-back { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); cursor: pointer; text-decoration: none; display: block; text-align: center; margin-bottom: 1.5rem; }
-    .df-back:hover { color: var(--text-1); }
-    .dc-nurture { margin-top: 2rem; text-align: center; }
-    .dc-nurture p { font-size: 0.8rem; color: var(--text-3); margin-bottom: 0.5rem; }
-    .dc-email-row { display: flex; gap: 0.5rem; justify-content: center; }
-    .dc-input { max-width: 240px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-sm); padding: 0.5rem 0.8rem; color: var(--text-1); font-size: 0.8rem; outline: none; font-family: var(--body); }
-    .dc-input:focus { border-color: var(--mercury-blue); }
-    .dc-input::placeholder { color: var(--text-3); }
-    .dc-sm-btn { font-family: var(--mono); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); padding: 0.5rem 0.8rem; border-radius: var(--r-sm); border: none; cursor: pointer; }
+    /* Big red demo modal */
+    .demo-modal { display:none; position:fixed; inset:0; z-index:10000; background:rgba(4,4,14,0.94); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
+    .demo-modal.open { display:flex; align-items:center; justify-content:center; animation: dm-in 0.2s ease-out; }
+    @keyframes dm-in { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+    .demo-modal-box { max-width:440px; width:100%; margin:2rem; text-align:center; }
+    .demo-modal-close { position:fixed; top:1.5rem; right:2rem; background:none; border:none; color:var(--text-3); font-size:2rem; cursor:pointer; z-index:10001; }
+    .demo-modal-close:hover { color:var(--text-1); }
+    .demo-modal-selected { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:1.5rem; }
+    .demo-modal-q { font-weight:700; font-size:1.6rem; color:var(--text-1); margin-bottom:0.8rem; }
+    .demo-modal-sub { font-size:0.85rem; color:var(--text-2); margin-bottom:2rem; line-height:1.6; }
+    .big-red { display:inline-block; font-family:var(--mono); font-size:1rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:linear-gradient(135deg, #ef4444, #dc2626); padding:1.2rem 3rem; border-radius:var(--r-md); text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; box-shadow:0 0 30px rgba(239,68,68,0.3), 0 4px 20px rgba(0,0,0,0.4); }
+    .big-red:hover { filter:brightness(1.15); transform:translateY(-2px); box-shadow:0 0 50px rgba(239,68,68,0.4), 0 8px 30px rgba(0,0,0,0.5); }
+    .demo-skip { font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none; display:block; margin-top:1.5rem; }
+    .demo-skip:hover { color:var(--text-2); }
+    .demo-note { font-size:0.65rem; color:var(--text-3); margin-top:1.5rem; font-style:italic; }
   </style>
 </head>
 <body>
@@ -220,75 +201,18 @@
     </div>
   </section>
 
-  <!-- DEMO CONSENT (hidden until offer clicked) -->
-  <section id="demo-consent">
-    <div class="dc-wrap">
-      <div class="dc-selected" id="dc-selected-offer"></div>
-      <div class="dc-q">Want a live demo?</div>
-      <p class="dc-sub">Our AI agent will show you exactly how this works for your business. It takes 5 minutes and there's zero obligation.</p>
-
-      <div class="dc-options">
-        <a href="#" class="dc-opt primary" id="dc-yes">
-          <span class="badge">Recommended</span>
-          <h4>Yes — show me a demo</h4>
-          <p>Talk to our AI agent right now. It knows your situation and will walk you through everything live.</p>
-        </a>
-        <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="dc-opt">
-          <h4>No — just book Isaac</h4>
-          <p>Skip the demo and schedule a free discovery call with Isaac directly.</p>
-        </a>
-      </div>
+  <!-- DEMO MODAL (pops up on any offer click) -->
+  <div class="demo-modal" id="demo-modal">
+    <button class="demo-modal-close" id="demo-modal-close">&times;</button>
+    <div class="demo-modal-box">
+      <div class="demo-modal-selected" id="demo-modal-selected"></div>
+      <div class="demo-modal-q">Want a live demo?</div>
+      <p class="demo-modal-sub">Our AI walks you through exactly what this looks like for your business. 5 minutes. Zero obligation.</p>
+      <button class="big-red" id="demo-yes">YES — SHOW ME</button>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="demo-skip">or just book Isaac directly &rarr;</a>
+      <p class="demo-note">[AI demo launching soon — book Isaac in the meantime]</p>
     </div>
-  </section>
-
-  <!-- DEMO FLOW CASCADE (shown after "yes" on demo consent) -->
-  <section id="demo-flow">
-    <div class="df-wrap">
-      <a class="df-back" id="df-back">&larr; Back</a>
-      <div class="tag" style="justify-content:center;">Demo flow</div>
-      <h2 style="text-align:center;font-size:1.3rem;margin-bottom:1.5rem;">Here's what happens next</h2>
-
-      <div class="df-step" data-num="1">
-        <h4>AI demo call</h4>
-        <p>Our agent walks you through the automation you selected, customized to your business. Live, interactive, 5 minutes.</p>
-        <p class="placeholder">[Vapi voice agent — launching soon]</p>
-      </div>
-
-      <div class="df-step" data-num="2">
-        <h4>If you like it — buy right there</h4>
-        <p>The agent can text you a secure purchase link. Complete the signup on your phone while we're talking. Done in 60 seconds.</p>
-        <p class="placeholder">[SMS + Stripe checkout — launching soon]</p>
-      </div>
-
-      <div class="df-step" data-num="3">
-        <h4>Want to think about it? Meet Isaac.</h4>
-        <p>The agent books a free discovery call with Isaac. He'll answer whatever the AI couldn't and give you a roadmap you keep regardless.</p>
-        <p class="placeholder">[Auto-scheduling via cal.com — launching soon]</p>
-      </div>
-
-      <div class="df-step" data-num="4">
-        <h4>Not ready for services? Learn instead.</h4>
-        <p>The agent can point you to the school — $997 cohort that teaches you to build this yourself. Or free blog content to start.</p>
-      </div>
-
-      <div class="df-step" data-num="5">
-        <h4>Just browsing? Stay in touch.</h4>
-        <p>We'll send you useful stuff. No spam. Unsubscribe anytime.</p>
-      </div>
-
-      <div class="dc-nurture">
-        <p>Want to stay in the loop?</p>
-        <div class="dc-email-row">
-          <input type="email" class="dc-input" id="dc-nurture-email" placeholder="your@email.com">
-          <button class="dc-sm-btn" id="dc-nurture-btn">Subscribe</button>
-        </div>
-      </div>
-
-      <p style="text-align:center;margin-top:2rem;">
-        <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="cta-big">Book Isaac Directly</a>
-      </p>
-    </div>
-  </section>
+  </div>
 
   <!-- GUARANTEE -->
   <section class="dark">
@@ -332,55 +256,35 @@
 
 <script>
 (function() {
-  var consent = document.getElementById('demo-consent');
-  var demoFlow = document.getElementById('demo-flow');
-  var selectedLabel = document.getElementById('dc-selected-offer');
-  var offersSection = document.getElementById('offers-section');
+  var modal = document.getElementById('demo-modal');
+  var label = document.getElementById('demo-modal-selected');
 
-  // Click any offer item, tier, or CTA with data-offer
+  function openDemo(offer) {
+    label.textContent = offer === 'general' ? '' : offer;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    try { localStorage.setItem('twi_selected_offer', offer); } catch(e) {}
+  }
+  function closeDemo() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Any offer/tier/CTA click → big red modal
   document.addEventListener('click', function(e) {
     var item = e.target.closest('[data-offer]');
-    if (!item) return;
-    e.preventDefault();
-
-    var offer = item.dataset.offer;
-    selectedLabel.textContent = offer === 'general' ? '' : 'Selected: ' + offer;
-
-    // Hide demo flow, show consent
-    demoFlow.classList.remove('active');
-    consent.classList.add('active');
-    consent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    try { localStorage.setItem('twi_selected_offer', offer); } catch(e) {}
+    if (item) { e.preventDefault(); openDemo(item.dataset.offer); }
   });
 
-  // "Yes — show me a demo"
-  document.getElementById('dc-yes').addEventListener('click', function(e) {
-    e.preventDefault();
-    consent.classList.remove('active');
-    demoFlow.classList.add('active');
-    demoFlow.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  document.getElementById('demo-modal-close').addEventListener('click', closeDemo);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeDemo(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDemo(); });
 
-  // Back from demo flow
-  document.getElementById('df-back').addEventListener('click', function(e) {
-    e.preventDefault();
-    demoFlow.classList.remove('active');
-    consent.classList.add('active');
-    consent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-
-  // Nurture email
-  document.getElementById('dc-nurture-btn').addEventListener('click', function() {
-    var input = document.getElementById('dc-nurture-email');
-    var email = input.value.trim();
-    if (!email || email.indexOf('@') === -1) { input.focus(); return; }
-    try { localStorage.setItem('twi_nurture_email', email); } catch(e) {}
-    input.value = '';
-    input.placeholder = "You're in — we'll be in touch.";
-    input.disabled = true;
-    this.disabled = true;
-    this.textContent = 'Done';
+  // Big red YES
+  document.getElementById('demo-yes').addEventListener('click', function() {
+    // TODO: wire to Vapi widget
+    alert('AI demo launching soon! Booking Isaac instead...');
+    window.location.href = 'https://cal.com/aisaac/ai-agents-for-your-business';
   });
 })();
 </script>
