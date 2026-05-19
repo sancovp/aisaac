@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Five Wisdoms — Dharma Concierge</title>
+<meta name="description" content="Mirror-like, equalizing, discriminating, all-accomplishing, dharmadhatu. The five Buddha families aren't a classification system — they're the structure of awakened mind, and they work the same way the paramitas do.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#000;--white:#f5f0e8;--muted:rgba(245,240,232,.55);--gold:#c4a265;--gold-deep:#8b6914;--font-display:'Instrument Serif',serif;--font-body:'Inter',sans-serif}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:var(--font-body);color:var(--white);background:var(--bg);-webkit-font-smoothing:antialiased}
+
+.liquid-glass{background:rgba(0,0,0,.35);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.06);position:relative;overflow:hidden}
+.liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.2px;background:linear-gradient(180deg,rgba(245,240,232,.25) 0%,rgba(245,240,232,.08) 20%,rgba(245,240,232,0) 40%,rgba(245,240,232,0) 60%,rgba(245,240,232,.08) 80%,rgba(245,240,232,.25) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.2}
+.grain svg{width:100%;height:100%;opacity:.06}
+
+.art-bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 60% 20%, rgba(20,20,40,.8) 0%, #000 70%)}
+.art-bg-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle, rgba(100,80,160,.1) 0%, transparent 70%);top:-100px;right:-100px;animation:drift 22s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font-display);font-style:italic;font-size:15px;color:rgba(245,240,232,.7);text-decoration:none;letter-spacing:.05em}
+.nav-back{font-size:11px;color:rgba(245,240,232,.35);text-decoration:none;letter-spacing:.2em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--gold)}
+
+.hero{position:relative;z-index:1;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 24px 80px}
+.hero-eyebrow{font-size:10px;color:var(--gold);letter-spacing:.4em;text-transform:uppercase;margin-bottom:20px;font-weight:600}
+.hero-title{font-family:var(--font-display);font-style:italic;font-size:clamp(2.4rem,6vw,4.8rem);color:var(--white);line-height:.92;letter-spacing:-.02em;max-width:800px;margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero-title em{color:var(--gold)}
+.hero-meta{display:flex;align-items:center;gap:20px;font-size:11px;color:rgba(245,240,232,.35);letter-spacing:.1em;text-transform:uppercase}
+.hero-meta-sep{opacity:.3}
+
+.scroll-content{position:relative;z-index:2}
+.article-wrap{max-width:720px;margin:0 auto;padding:0 24px 120px}
+
+.article-lede{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);color:rgba(245,240,232,.8);line-height:1.45;margin-bottom:56px;padding:40px;border-radius:24px}
+
+h2.section-head{font-family:var(--font-display);font-style:italic;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);line-height:1;letter-spacing:-.02em;margin:64px 0 24px}
+h2.section-head em{color:var(--gold)}
+
+.body-p{font-size:15px;color:rgba(245,240,232,.72);line-height:1.85;font-weight:300;margin-bottom:22px}
+.body-p strong{color:var(--white);font-weight:500}
+
+.pull-quote{border-left:2px solid var(--gold);padding:20px 28px;margin:40px 0;background:rgba(196,162,101,.04);border-radius:0 16px 16px 0}
+.pull-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.1rem,2vw,1.4rem);color:var(--white);line-height:1.4;margin:0}
+.pull-quote cite{display:block;font-size:10px;color:var(--gold);letter-spacing:.25em;text-transform:uppercase;margin-top:12px;font-style:normal}
+
+.teaching-box{border-radius:20px;padding:32px;margin:40px 0;background:rgba(0,0,0,.4);border:1px solid rgba(196,162,101,.12)}
+.teaching-box .label{font-size:10px;color:var(--gold);letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.teaching-box h3{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--white);margin-bottom:14px}
+.teaching-box p{font-size:13px;color:rgba(245,240,232,.6);line-height:1.8;font-weight:300;margin-bottom:12px}
+.teaching-box p:last-child{margin-bottom:0}
+
+.wisdom-stack{display:flex;flex-direction:column;gap:2px;margin:32px 0}
+.wisdom-row{display:grid;grid-template-columns:180px 1fr;gap:0;border-radius:0}
+.wisdom-row:first-child{border-radius:16px 16px 0 0}
+.wisdom-row:last-child{border-radius:0 0 16px 16px}
+.wisdom-name{padding:20px 24px;background:rgba(196,162,101,.12);font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center}
+.wisdom-desc{padding:20px 24px;background:rgba(0,0,0,.35);font-size:13px;color:rgba(245,240,232,.65);line-height:1.7;font-weight:300;display:flex;align-items:center}
+
+.cta-section{border-radius:28px;padding:48px 40px;margin-top:80px;text-align:center}
+.cta-section .label{font-size:10px;color:var(--gold);letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.cta-section h2{font-family:var(--font-display);font-style:italic;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);line-height:.95;margin-bottom:20px}
+.cta-section h2 em{color:var(--gold)}
+.cta-section p{font-size:14px;color:rgba(245,240,232,.6);line-height:1.8;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto}
+.btn-gold{background:var(--gold);color:var(--bg);padding:14px 32px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,162,101,.3)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid rgba(196,162,101,.3);padding:14px 32px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;transition:all .3s;margin-left:12px}
+.btn-outline:hover{background:rgba(196,162,101,.08)}
+
+footer{position:relative;z-index:2;padding:40px 24px;text-align:center;border-top:1px solid rgba(245,240,232,.05)}
+.footer-brand{font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--white);margin-bottom:12px}
+.footer-copy{color:rgba(245,240,232,.15);font-size:10px}
+
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav{padding:16px 20px}
+  .hero{min-height:60vh;padding:0 20px 60px}
+  .article-wrap{padding:0 20px 80px}
+  .article-lede{padding:28px 24px}
+  .cta-section{padding:36px 24px}
+  .btn-outline{margin-left:0;margin-top:10px}
+  .wisdom-row{grid-template-columns:1fr}
+  .wisdom-name{border-radius:0;padding:14px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+
+<div class="art-bg"><div class="art-bg-glow"></div></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Dharma Concierge</a>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Awakened Mind</div>
+  <h1 class="hero-title">The <em>Five Wisdoms</em></h1>
+  <div class="hero-meta">
+    <span>Isaac, Acharya</span>
+    <span class="hero-meta-sep">·</span>
+    <span>11 min read</span>
+    <span class="hero-meta-sep">·</span>
+    <span>Buddha Families</span>
+  </div>
+</section>
+
+<div class="scroll-content">
+<div class="article-wrap">
+
+  <div class="article-lede liquid-glass fade-in">
+    The five wisdoms are not five things you attain. They're five aspects of what your mind already is, seen clearly. The five poisons that destroy ordinary beings — the aggression, the ignorance, the passion, the pride, the envy — are the same five energies. The only question is which direction they're running.
+  </div>
+
+  <h2 class="section-head fade-in">The poison-to-wisdom<br>conversion is <em>not metaphor</em></h2>
+
+  <p class="body-p fade-in">Every system of Buddhist iconography worth taking seriously is making a precise technical claim: the afflictive emotions are not foreign invaders to be driven out. They're the wisdoms in disguise. This is stated most directly in Vajrayana, but it's in the Mahayana substructure — Shantideva's entire argument about patience is that aggression, when recognized, converts into clarity. The energy doesn't go away. It changes direction.</p>
+
+  <p class="body-p fade-in">What changes direction is not the emotion itself but your relationship to it. And that relationship is changed by one thing: recognition. You recognize what it actually is. The recognition is the conversion. This is not willpower. This is not suppression. This is not even transformation in the sense of one thing becoming another. It's more like the moment you recognize a face in what looked like random shadows — the face was always there, the shadows were always that arrangement, you just hadn't seen it yet. Once seen, it can't be unseen.</p>
+
+  <p class="body-p fade-in">The five Buddha families and their corresponding wisdoms are the map of that recognition. They tell you: here is what aggression looks like when it's seen clearly. Here is what ignorance looks like when the confusion lifts. Here is the precise quality of awareness that was hiding under each of the five poisons you've been treating as problems.</p>
+
+  <h2 class="section-head fade-in">The five families:<br>not a <em>classification system</em></h2>
+
+  <p class="body-p fade-in">People sometimes use the five Buddha families as a personality type test. Which family are you? Are you more Vajra or Padma? This is the pop-psychology reduction of a precise cosmological architecture, and it's not completely wrong — there's a reason it resonates — but it stops at the surface. The families aren't a description of personality types. They're a description of the structure of awakened mind, and that structure contains all five, always.</p>
+
+  <p class="body-p fade-in">Vairochana at the center with Dharmadatu Wisdom — the all-pervading spacious awareness that is the ground of all the others. Akshobhya in the east with Mirror-Like Wisdom — pure reflection, without distortion, without preference. Ratnasambhava in the south with Equalizing Wisdom — the equanimity that recognizes all phenomena as equally pure. Amitabha in the west with Discriminating Wisdom — the precision that distinguishes clearly without grasping. Amoghasiddhi in the north with All-Accomplishing Wisdom — spontaneous efficacious activity without effort.</p>
+
+  <div class="wisdom-stack fade-in">
+    <div class="wisdom-row">
+      <div class="wisdom-name">Dharmadhatu</div>
+      <div class="wisdom-desc">The wisdom of all-pervading space. Center. Vairochana. The ground in which all the others arise — not a separate wisdom but the nature of all five together. Ignorance converted.</div>
+    </div>
+    <div class="wisdom-row">
+      <div class="wisdom-name">Mirror-Like</div>
+      <div class="wisdom-desc">Reflects everything without distortion, without adding or subtracting. East. Akshobhya. Aggression converted — the same intense clarity that aggression distorts toward fixation, freed into pure reflection.</div>
+    </div>
+    <div class="wisdom-row">
+      <div class="wisdom-name">Equalizing</div>
+      <div class="wisdom-desc">Recognizes all phenomena as equally the display of the ground. South. Ratnasambhava. Pride converted — the feeling of richness and sufficiency that pride distorts into comparison, freed into genuine abundance.</div>
+    </div>
+    <div class="wisdom-row">
+      <div class="wisdom-name">Discriminating</div>
+      <div class="wisdom-desc">Sees each thing precisely as what it is. West. Amitabha. Passion converted — the magnetizing, discerning energy that passion distorts into grasping, freed into clear recognition.</div>
+    </div>
+    <div class="wisdom-row">
+      <div class="wisdom-name">All-Accomplishing</div>
+      <div class="wisdom-desc">Activity that fulfills its purpose without contrivance. North. Amoghasiddhi. Envy converted — the action-oriented, comparative energy of jealousy, freed into spontaneous efficacy.</div>
+    </div>
+  </div>
+
+  <h2 class="section-head fade-in">How they work through <em>meditation</em></h2>
+
+  <p class="body-p fade-in">Sit in meditation. What happens? The mind reflects whatever arises — this is mirror-like wisdom in embryo. You don't choose what arises. The breath, the sound, the sensation, the thought — they appear. Your job is to let them appear without distortion, without adding a commentary track, without subtracting what's inconvenient. This is Akshobhya's quality being cultivated in a body, on a cushion, with real material to work with.</p>
+
+  <p class="body-p fade-in">As the mind stabilizes, something else happens: you start to notice that one breath is not more or less valuable than another. One thought is not more worthy of attention than another. Each moment has the same weight. This is equalizing wisdom arising naturally from settled attention. It's not a philosophical position you adopt. It's what the mind actually sees when it's not frantically hierarchizing experience to manage anxiety.</p>
+
+  <p class="body-p fade-in">Then discriminating wisdom. This sounds paradoxical given what was just said — isn't equalizing wisdom about non-preference? But the two aren't in conflict. Equalizing wisdom recognizes equal purity. Discriminating wisdom sees each thing as distinctly itself. Both are true simultaneously. In meditation, this shows up as increasing precision — the mind that can hold its object with clarity, that can distinguish between subtle states without confusing them, that knows exactly what's happening without flattening everything into a blur of generic "presence."</p>
+
+  <div class="pull-quote fade-in">
+    <p>"From these, all other systems emanate as configurations. The workflows for deriving the divine formulas and geometry are the practices and mantras — to understand how they work, not to propagate them unnecessarily."</p>
+    <cite>— Mahajala teachings, on the Five Heruka Mandalas</cite>
+  </div>
+
+  <h2 class="section-head fade-in">The holographic principle<br><em>again</em></h2>
+
+  <p class="body-p fade-in">You should be noticing a pattern. The five wisdoms work the same way the six paramitas work. They're not five separate attainments. They're five faces of a single recognition. And when you have any one of them, you have all of them — because they're descriptions of what the liberated mind is, not components you assemble separately.</p>
+
+  <p class="body-p fade-in">The Central Deity Stack in the Mahajala system places Vairochana at the center not to elevate Dharmadhatu Wisdom above the others but to indicate that it's the nature of all five. The other four are the same space seen from the four directions. You can enter from any direction and you arrive at the same center. Different afflictions convert first in different practitioners. The Vajra-natured person might crack through aggression into mirror-like wisdom first. The Padma-natured person might crack through passion into discriminating wisdom first. The entry point differs. The destination is the same mandala.</p>
+
+  <div class="teaching-box fade-in">
+    <div class="label">Teaching</div>
+    <h3>The Akshobhyavajra detail</h3>
+    <p>In the Mahajala system, the central figure is described as Akshobhyavajra — which means the multi-armed form holding the symbols of the four other families. The practitioner is within the "womb realm" while identifying this way. This is precise. You're inside the mandala before you recognize it as a mandala. The arms holding the symbols of other families mean: this one contains all five. The recognition that you're already inside the whole structure — that's the empowerment. Not something added. Something seen.</p>
+    <p>The vajra suffix signals indestructibility. Mirror-like wisdom, once fully recognized, cannot be lost. There's no returning to the confusion that aggression was a problem to solve. You've seen what it is. That seeing doesn't reverse.</p>
+  </div>
+
+  <h2 class="section-head fade-in">What this means for<br>how you <em>practice</em></h2>
+
+  <p class="body-p fade-in">The practical implication is this: when a strong emotion arises in you — and this is the actual instruction, not just theory — your job is not to get rid of it. Your job is to look at it directly enough to see its nature. This is what vipassana is for in the context of the five wisdoms. Not body scanning. Not labeling. Looking directly at the energy of what's arising and recognizing it as the display of the ground.</p>
+
+  <p class="body-p fade-in">This only works on the basis of shamatha. You cannot do this with a destabilized mind. If you try to look directly at strong aggression without the capacity to remain stable, you'll just feed the aggression or suppress it — the two options of ordinary mind. The capacity to look directly at an emotion without following it or pushing it away requires precisely the equanimity that sustained meditation builds. This is why the path has an order, even though the wisdoms themselves are simultaneous.</p>
+
+  <p class="body-p fade-in">And this is why the five wisdoms and the five Buddha families aren't just a beautiful cosmological architecture to admire. They're a description of what you're cultivating in every meditation session — the capacity to be a clean mirror, to recognize equality, to discriminate without grasping, to act without contrivance, to rest in the space that is the ground of all of it. You're not becoming something new. You're recognizing what the mind has always been beneath the noise of its own confusion.</p>
+
+  <div class="cta-section liquid-glass fade-in">
+    <div class="label">Continue the Path</div>
+    <h2>Now the question becomes:<br><em>what is insight?</em></h2>
+    <p>The five wisdoms are what vipassana reveals. But vipassana isn't a technique you add on top of calm — it's a specific kind of recognition that only becomes possible when attention is stable. The next post is about what "insight" actually means, and why it's nothing like what most people think.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="index.html" class="btn-gold">Back to Dharma Concierge</a>
+      <a href="blog-vipassana.html" class="btn-outline">Continue → Vipassana</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <div class="footer-brand">Dharma Concierge</div>
+  <div class="footer-copy">&copy; 2026 Dharma Concierge &middot; Isaac, Acharya &middot; Changchub Drime Pema Wangchuk</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
