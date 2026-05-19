@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pure Lands — The Future Buddha With Your Name</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#000;--white:#f5f0e8;--gold:#c4a265;--font-display:'Instrument Serif',serif;--font-body:'Inter',sans-serif}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:var(--font-body);color:var(--white);background:var(--bg);-webkit-font-smoothing:antialiased}
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.15}
+.grain svg{width:100%;height:100%;opacity:.06}
+
+.selector{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.selector-title{font-family:var(--font-display);font-style:italic;font-size:clamp(2.5rem,6vw,4.5rem);color:var(--white);line-height:.9;letter-spacing:-.02em;margin-bottom:12px}
+.selector-sub{font-size:14px;color:rgba(245,240,232,.5);max-width:480px;margin:0 auto 48px;line-height:1.7;font-weight:300}
+.selector-author{font-size:11px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;margin-bottom:32px}
+.realms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;width:100%}
+.realm-card{border-radius:24px;overflow:hidden;cursor:pointer;position:relative;aspect-ratio:3/4;transition:all .4s}
+.realm-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,.4)}
+.realm-card img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.realm-card:hover img{transform:scale(1.05)}
+.realm-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.3) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;text-align:left}
+.realm-label{font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;margin-bottom:8px}
+.realm-name{font-family:var(--font-display);font-style:italic;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);line-height:1;margin-bottom:8px}
+.realm-desc{font-size:12px;color:rgba(245,240,232,.6);line-height:1.6;font-weight:300}
+.realm-mantra{font-family:var(--font-display);font-style:italic;font-size:13px;color:var(--gold);margin-top:12px;opacity:.7}
+
+/* EXPERIENCE VIEW */
+.experience{display:none;min-height:100vh;position:relative}
+.experience.active{display:block}
+.exp-bg{position:fixed;inset:0;z-index:0}
+.exp-bg img{width:100%;height:100%;object-fit:cover;animation:slowdrift 90s ease-in-out infinite}
+@keyframes slowdrift{0%{transform:scale(1) translate(0,0)}33%{transform:scale(1.06) translate(-1%,-1%)}66%{transform:scale(1.08) translate(.5%,-1.5%)}100%{transform:scale(1) translate(0,0)}}
+.exp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1}
+.exp-content{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:120px 24px 80px}
+.exp-back{position:fixed;top:24px;left:24px;z-index:100;font-family:var(--font-display);font-style:italic;font-size:14px;color:rgba(245,240,232,.6);cursor:pointer;padding:10px 24px;border-radius:9999px;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);border:1px solid rgba(245,240,232,.06);transition:all .2s;text-decoration:none}
+.exp-back:hover{color:var(--white);background:rgba(0,0,0,.6)}
+.exp-title{font-family:var(--font-display);font-style:italic;font-size:clamp(2.5rem,7vw,5rem);color:var(--white);line-height:.88;letter-spacing:-.02em;margin-bottom:8px;text-shadow:0 2px 40px rgba(0,0,0,.5)}
+.exp-mantra{font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:var(--gold);margin-bottom:40px;opacity:.8}
+.exp-text{font-size:15px;color:rgba(245,240,232,.8);line-height:1.9;font-weight:300;margin-bottom:28px}
+.exp-text em{font-family:var(--font-display);font-style:italic;color:var(--gold)}
+.exp-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);color:rgba(245,240,232,.7);line-height:1.6;margin:40px 0;padding-left:24px;border-left:2px solid rgba(196,162,101,.3)}
+.exp-section{margin-top:64px;padding-top:32px;border-top:1px solid rgba(245,240,232,.06)}
+.exp-section-title{font-family:var(--font-display);font-style:italic;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);margin-bottom:20px}
+.dharmakaya-space{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center}
+.dharmakaya-mantra{font-family:var(--font-display);font-style:italic;font-size:clamp(1rem,2vw,1.3rem);color:rgba(245,240,232,.3);letter-spacing:.05em}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .8s ease-out,transform .8s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fd1{transition-delay:.15s}.fd2{transition-delay:.3s}.fd3{transition-delay:.45s}
+
+footer{position:relative;z-index:2;padding:48px 24px;text-align:center;background:rgba(0,0,0,.8);backdrop-filter:blur(12px)}
+.footer-brand{font-family:var(--font-display);font-style:italic;font-size:14px;color:var(--white);margin-bottom:8px}
+.footer-copy{color:rgba(245,240,232,.15);font-size:10px}
+
+@media(max-width:768px){.realms{grid-template-columns:1fr;max-width:400px}}
+</style>
+</head>
+<body>
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+
+<!-- SELECTOR -->
+<div class="selector" id="selector">
+  <div class="selector-author fade-in">Yogi A-La</div>
+  <div class="selector-title fade-in fd1">The Future Buddha<br>With <em style="color:var(--gold)">Your Name</em></div>
+  <div class="selector-sub fade-in fd2">Miraculous Lotus-Birth of the Compassionate One. Select a realm to enter.</div>
+  <div class="realms fade-in fd3">
+    <div class="realm-card" onclick="enterRealm('saha')">
+      <img src="realm-saha.png" alt="Saha">
+      <div class="realm-overlay">
+        <div class="realm-label">Nirmanakaya</div>
+        <div class="realm-name">Saha</div>
+        <div class="realm-desc">The world of no fear. The impure-pure land where you already stand.</div>
+        <div class="realm-mantra">OM MUNI MUNI MAHA MUNAYE SVAHA</div>
+      </div>
+    </div>
+    <div class="realm-card" onclick="enterRealm('sukhavati')">
+      <img src="realm-sukhavati.png" alt="Sukhavati">
+      <div class="realm-overlay">
+        <div class="realm-label">Sambhogakaya</div>
+        <div class="realm-name">Sukhavati</div>
+        <div class="realm-desc">The blissful land. Where your lotus opens and the bird sings.</div>
+        <div class="realm-mantra">OM AMITABHA HRIH</div>
+      </div>
+    </div>
+    <div class="realm-card" onclick="enterRealm('dharmakaya')">
+      <img src="realm-dharmakaya.png" alt="Dharmakaya">
+      <div class="realm-overlay">
+        <div class="realm-label">Dharmakaya</div>
+        <div class="realm-name">The Truth Body</div>
+        <div class="realm-desc">Reunion of the mother and child luminosity.</div>
+        <div class="realm-mantra">OM GATE GATE PARAGATE PARASAMGATE BODHI SVAHA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SAHA EXPERIENCE -->
+<div class="experience" id="saha">
+  <div class="exp-bg"><img src="realm-saha.png" alt=""></div>
+  <div class="exp-overlay"></div>
+  <a class="exp-back" onclick="exitRealm()">&#8592; Return</a>
+  <div class="exp-content">
+    <div class="exp-title fade-in">Saha</div>
+    <div class="exp-mantra fade-in fd1">OM MUNI MUNI MAHA MUNAYE SVAHA</div>
+    <p class="exp-text fade-in fd2">Much to the sentient being called "I"'s dismay, it turns out the "I" that "I" have been identifying as in every moment of "my" experience since beginningless time has never even existed other than through "my" projections that obfuscate non-self — <em>inconceivable!</em></p>
+    <p class="exp-text fade-in fd3">Much to the bodhisattva appearing as "I"'s delight, although "I" had never recognized it before, here and now is the sole infinite buddhafield, the kaleidoscopic crystal ball of the Buddha's wisdom mind — <em>haha!</em></p>
+    <div class="exp-quote fade-in">Saha means no fear. Why call this world in which we are all basically afraid of everything, most of all ourselves, "World of no fear"? Because those beings of this world have no fear of ignorance.</div>
+    <div class="exp-section fade-in">
+      <div class="exp-section-title">The Four Noble Truths</div>
+      <p class="exp-text">1. Truth of suffering in the form of the pervasiveness of deluded experience</p>
+      <p class="exp-text">2. Truth of the cause — the a priori possibility of samsara, which is simply the absence of directly knowing the other possibility</p>
+      <p class="exp-text">3. Truth of cessation — awakening to nirvana as actual, true reality</p>
+      <p class="exp-text">4. Truth of the path — the abbreviated teachings that are the basis for the blooming of identityless wisdom</p>
+    </div>
+    <div class="exp-section fade-in">
+      <div class="exp-section-title">The Middle</div>
+      <p class="exp-text">You need to break through the incapability to fathom the extent of identitylessness, which also means the extent of illusion. You need to unwrap the illusions all at once with all of your love and all of that love's power.</p>
+      <p class="exp-text">You need to because nobody — nobody, ever — is going to be able to help the sentient beings that the <em>Future Buddha called You</em> could help.</p>
+    </div>
+  </div>
+  <footer><div class="footer-brand">The Future Buddha With Your Name</div><div class="footer-copy">Yogi A-La &middot; Dharma Concierge</div></footer>
+</div>
+
+<!-- SUKHAVATI EXPERIENCE -->
+<div class="experience" id="sukhavati">
+  <div class="exp-bg"><img src="realm-sukhavati.png" alt=""></div>
+  <div class="exp-overlay"></div>
+  <a class="exp-back" onclick="exitRealm()">&#8592; Return</a>
+  <div class="exp-content">
+    <div class="exp-title fade-in">Sukhavati</div>
+    <div class="exp-mantra fade-in fd1">OM AMITABHA HRIH</div>
+    <div class="exp-quote fade-in fd2">Look at that! My goodness, you've been spontaneously reborn in a closed lotus floating on the pristine lake of Sukhavati, the Land of Bliss, but you have no idea, so listen for the bird's song!</div>
+    <p class="exp-text fade-in fd3">Born in Sukhavati but not recognizing where I am due to past lives' karma, I rest on the lotus' pollen bed in the form of the humble monk, Lokeshvara, in a closed lotus, floating serenely atop the great lake of devotion.</p>
+    <p class="exp-text fade-in">The melodious sounds of the Land of Bliss reverberate throughout the lotus and it slowly opens as my merit accumulates and I comprehend these melodious sounds as the songs of the birds that give the teachings of Amitabha.</p>
+    <div class="exp-section fade-in">
+      <div class="exp-section-title">The Lotus Opens</div>
+      <p class="exp-text">As my lotus opens, I begin to recognize more of the phenomena of Sukhavati: water is amrita, the nectar of immortality; all desires evaporate into bliss; all suffering evaporates into compassion; all ignorance unfolds itself and evaporates into openness of wisdom mind.</p>
+      <p class="exp-text">Seeing the true face of Amitabha for the first time, he transforms into Amitayus instantly and, without fail, I directly experience <em>boundless life as boundless light</em> and boundless light as ever-excellent all goodness, "my own" identityless Buddha Nature.</p>
+    </div>
+    <div class="exp-section fade-in">
+      <div class="exp-section-title">The Bird's Song</div>
+      <p class="exp-text">With that, the form of the bird and sound of its song vanished. Legend has it the meaning of the song reverberates throughout phenomena and can be heard if you listen.</p>
+    </div>
+  </div>
+  <footer><div class="footer-brand">The Future Buddha With Your Name</div><div class="footer-copy">Yogi A-La &middot; Dharma Concierge</div></footer>
+</div>
+
+<!-- DHARMAKAYA EXPERIENCE -->
+<div class="experience" id="dharmakaya">
+  <div class="exp-bg"><img src="realm-dharmakaya.png" alt=""></div>
+  <div class="exp-overlay" style="background:rgba(0,0,0,.3)"></div>
+  <a class="exp-back" onclick="exitRealm()">&#8592; Return</a>
+  <div class="exp-content">
+    <div class="exp-title fade-in" style="color:rgba(245,240,232,.4)">The Truth Body</div>
+    <div class="exp-mantra fade-in fd1" style="opacity:.4">Reunion of the Mother and Child</div>
+    <div class="dharmakaya-space fade-in fd2">
+      <div class="dharmakaya-mantra">OM GATE GATE PARAGATE PARASAMGATE BODHI SVAHA</div>
+    </div>
+    <div class="exp-section fade-in" style="border-top:none;text-align:center">
+      <p class="exp-text" style="color:rgba(245,240,232,.3);font-style:italic;text-align:center;max-width:400px;margin:0 auto">By this merit may all attain omniscience<br>And defeat the enemy, wrong-doing<br>From the turbulence of birth, old age, sickness, and death<br>From the ocean of Samsara<br><em>May we all be free</em></p>
+    </div>
+  </div>
+  <footer><div class="footer-brand">The Future Buddha With Your Name</div><div class="footer-copy">Yogi A-La &middot; Dharma Concierge</div></footer>
+</div>
+
+<script>
+function enterRealm(id){
+  document.getElementById('selector').style.display='none';
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  setTimeout(()=>{
+    document.querySelectorAll('#'+id+' .fade-in').forEach(el=>{
+      const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.1});
+      obs.observe(el);
+    });
+  },100);
+}
+function exitRealm(){
+  document.querySelectorAll('.experience').forEach(e=>{e.classList.remove('active');e.querySelectorAll('.fade-in').forEach(f=>f.classList.remove('visible'))});
+  document.getElementById('selector').style.display='';
+  window.scrollTo(0,0);
+}
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.1});
+document.querySelectorAll('#selector .fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
