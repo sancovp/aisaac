@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Legend of the Great Stupa — Teaser</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#f5f0e8;font-family:'Inter',sans-serif;overflow:hidden;height:100vh;width:100vw}
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.15}
+.grain svg{width:100%;height:100%;opacity:.06}
+.player{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease-in-out}
+.slide.active{opacity:1}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kenburns 12s ease-in-out infinite alternate}
+.slide.title-card{display:flex;align-items:center;justify-content:center;text-align:center;padding:48px}
+.slide.title-card .title-content{max-width:700px}
+@keyframes kenburns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.1) translate(-1%,-1.5%)}}
+@keyframes kenburns2{0%{transform:scale(1.05) translate(1%,0)}100%{transform:scale(1.15) translate(-1.5%,-2%)}}
+@keyframes kenburns3{0%{transform:scale(1) translate(-1%,1%)}100%{transform:scale(1.12) translate(1.5%,-1%)}}
+.slide:nth-child(3) img{animation-name:kenburns2}
+.slide:nth-child(5) img{animation-name:kenburns3}
+.slide:nth-child(7) img{animation-name:kenburns2}
+.caption{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:40px 48px 60px;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.4) 60%,transparent 100%)}
+.caption-speaker{font-size:11px;color:rgba(196,162,101,.8);letter-spacing:.3em;text-transform:uppercase;margin-bottom:8px;font-weight:500}
+.caption-text{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.6rem);color:rgba(245,240,232,.9);line-height:1.6;max-width:700px}
+.title-text{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1rem,2vw,1.3rem);color:rgba(245,240,232,.6);line-height:1.8}
+.title-main{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(2.5rem,6vw,4.5rem);color:#f5f0e8;line-height:.92;letter-spacing:-.02em;margin-bottom:24px}
+.title-gold{color:#c4a265}
+.title-sub{font-size:clamp(.75rem,1.5vw,.95rem);color:rgba(245,240,232,.4);line-height:1.7;margin-top:24px;font-weight:300}
+.progress{position:fixed;bottom:0;left:0;height:2px;background:rgba(196,162,101,.5);z-index:100;transition:width linear}
+.controls{position:fixed;bottom:20px;right:24px;z-index:100;display:flex;gap:8px}
+.ctrl-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(245,240,232,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s}
+.ctrl-btn:hover{background:rgba(255,255,255,.12);color:#f5f0e8}
+.credits{font-size:10px;color:rgba(245,240,232,.25);margin-top:32px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+
+<div class="player" id="player">
+
+  <!-- 1. OPENING TITLE -->
+  <div class="slide title-card active" data-dur="10000">
+    <div class="title-content">
+      <div class="title-text" style="margin-bottom:32px">Emaho!</div>
+      <div class="title-text">Dharmakaya Amitabha, Boundless Light,<br>Sambhogakaya Mahakarunika, the Great Compassionate One,<br>Nirmanakaya Padmakara, the Lotus-Born —<br><span class="title-gold">Three kaya lineage gurus, to you I pay homage!</span></div>
+    </div>
+  </div>
+
+  <!-- 2. BOUDHANATH STUPA -->
+  <div class="slide" data-dur="10000">
+    <img src="scene-boudhanath.png" alt="">
+    <div class="caption">
+      <div class="caption-speaker">Narrator</div>
+      <div class="caption-text">This is the story of the Great Jarung Kashor Stupa, support for the dharmakaya, indivisible from the wisdom-mind of all Buddhas and bodhisattvas, in all the ten directions, past, present and still to come.</div>
+    </div>
+  </div>
+
+  <!-- 3. SAMYE MONASTERY -->
+  <div class="slide" data-dur="12000">
+    <img src="scene-samye.png" alt="">
+    <div class="caption">
+      <div class="caption-speaker">Title</div>
+      <div class="caption-text">Tibet, ~9th Century. The Great Monastery of Glorious Samye, the Unchanging, Spontaneously Accomplished. On the Tenth Day of the Monkey month, a grand empowerment was being conferred to the Dharma King and the twenty-five disciples.</div>
+    </div>
+  </div>
+
+  <!-- 4. GURU PADMASAMBHAVA -->
+  <div class="slide" data-dur="14000">
+    <img src="scene-guru.png" alt="">
+    <div class="caption">
+      <div class="caption-speaker">King Trisong Detsen</div>
+      <div class="caption-text">Most splendiferous Great Guru, lord of all mandalas and Buddha families, lantern of Dharma for suffering beings who have never seen the light of Buddha nature — as your radiance dispels the ignorance of sentient beings, I offer this perfect royal turquoise necklace named Radiant Lamp.</div>
+    </div>
+  </div>
+
+  <!-- 5. AVALOKITESHVARA -->
+  <div class="slide" data-dur="12000">
+    <img src="scene-avalokiteshvara.png" alt="">
+    <div class="caption">
+      <div class="caption-speaker">Mahaguru</div>
+      <div class="caption-text">Countless eons ago, the Bodhisattva Avalokitesvara made an aspiration in the presence of Amitabha — to liberate all beings from the swamps of cyclic existence. After rescuing countless wandering beings, he arose from meditation, thinking — "Now there's not a single sentient being left."</div>
+    </div>
+  </div>
+
+  <!-- 6. DIVINE GARDEN -->
+  <div class="slide" data-dur="10000">
+    <img src="scene-garden.png" alt="">
+    <div class="caption">
+      <div class="caption-speaker">Mahaguru</div>
+      <div class="caption-text">But Apurna transgressed the impeccable law of the Heaven of the Thirty-Three by stealing a divine flower. And so was cast down...</div>
+    </div>
+  </div>
+
+  <!-- 7. BARDO DESCENT -->
+  <div class="slide" data-dur="10000">
+    <img src="scene-bardo.png" alt="">
+    <div class="caption">
+      <div class="caption-speaker">Mahaguru</div>
+      <div class="caption-text">And she landed in the human realm.</div>
+    </div>
+  </div>
+
+  <!-- 8. CLOSING TITLE -->
+  <div class="slide title-card" data-dur="15000">
+    <div class="title-content">
+      <div class="title-main">The Legend of<br>the <span class="title-gold">Great Stupa</span></div>
+      <div class="title-text">Coming Soon With Your Support</div>
+      <div class="title-sub">Adapted for the screen by<br>Ngakchang Yeshe Namgyal Dorje Rinpoche<br>&amp; Changchub Trime Pema Wangchuk</div>
+      <div class="credits">Based on The Legend of the Great Stupa<br>by Guru Padmasambhava &amp; Wisdom Dakini Yeshe Tsogyal</div>
+      <a href="index.html" style="display:inline-block;margin-top:24px;background:#c4a265;color:#000;padding:12px 28px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;transition:all .3s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">Support This Project</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="progress" id="progress"></div>
+
+<div class="controls">
+  <button class="ctrl-btn" onclick="prev()" title="Previous">&#9664;</button>
+  <button class="ctrl-btn" id="playBtn" onclick="togglePlay()" title="Play/Pause">&#10074;&#10074;</button>
+  <button class="ctrl-btn" onclick="next()" title="Next">&#9654;</button>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const bar=document.getElementById('progress');
+const playBtn=document.getElementById('playBtn');
+let current=0,timer=null,playing=true,startTime=0;
+
+function show(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  slides[i].classList.add('active');
+  current=i;
+  startTime=Date.now();
+}
+
+function next(){
+  show((current+1)%slides.length);
+  if(playing)schedule();
+}
+
+function prev(){
+  show((current-1+slides.length)%slides.length);
+  if(playing)schedule();
+}
+
+function schedule(){
+  clearTimeout(timer);
+  const dur=parseInt(slides[current].dataset.dur)||10000;
+  timer=setTimeout(next,dur);
+}
+
+function togglePlay(){
+  playing=!playing;
+  playBtn.innerHTML=playing?'&#10074;&#10074;':'&#9654;';
+  if(playing)schedule();else clearTimeout(timer);
+}
+
+function updateBar(){
+  const dur=parseInt(slides[current].dataset.dur)||10000;
+  const elapsed=Date.now()-startTime;
+  const pct=Math.min(elapsed/dur*100,100);
+  bar.style.width=pct+'%';
+  requestAnimationFrame(updateBar);
+}
+
+show(0);
+schedule();
+updateBar();
+</script>
+</body>
+</html>
