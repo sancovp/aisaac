@@ -19,8 +19,9 @@ body{font-family:var(--font-body);color:var(--white);background:var(--bg);-webki
 
 /* === IMMERSIVE ART BACKGROUND — ALWAYS VISIBLE === */
 .art-bg{position:fixed;inset:0;z-index:0}
-.art-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .art-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ken-burns{animation:kenburns 120s ease-in-out infinite;transform-origin:center center}
+@keyframes kenburns{0%{transform:scale(1) translate(0,0)}25%{transform:scale(1.08) translate(-1%,-2%)}50%{transform:scale(1.12) translate(1%,-1%)}75%{transform:scale(1.06) translate(-0.5%,1%)}100%{transform:scale(1) translate(0,0)}}
 .art-parallax-sky{transform:translateZ(-2px) scale(3);transform-origin:center top}
 .art-parallax-mid{transform:translateZ(-1px) scale(2);transform-origin:center center}
 
@@ -90,9 +91,8 @@ footer{position:relative;z-index:2;padding:48px 24px;text-align:center;backgroun
 
 <!-- IMMERSIVE ART — ALWAYS BEHIND EVERYTHING -->
 <div class="art-bg">
-  <video id="artVideo" autoplay muted playsinline preload="auto" style="opacity:0"><source src="hero-video.mp4" type="video/mp4"></video>
-  <img src="immersive-hero.png" alt="" style="opacity:.85" id="artFallback">
-  <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);pointer-events:none"></div>
+  <img src="immersive-hero.png" alt="" class="ken-burns">
+  <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);pointer-events:none;z-index:1"></div>
 </div>
 
 <!-- FLOATING LOGO -->
@@ -231,18 +231,6 @@ const t=document.getElementById('heroTitle');
   t.appendChild(s)
 });
 
-// Video crossfade
-const v=document.getElementById('artVideo'),fb=document.getElementById('artFallback');
-let rafId=0;
-function fadeTo(el,target,dur){cancelAnimationFrame(rafId);const s=parseFloat(el.style.opacity)||0,st=performance.now();
-function step(n){const p=Math.min((n-st)/dur,1);el.style.opacity=s+(target-s)*p;if(p<1)rafId=requestAnimationFrame(step)}
-rafId=requestAnimationFrame(step)}
-if(v){
-  let fo=false;
-  v.addEventListener('loadeddata',()=>{v.style.opacity='0';v.play();fadeTo(v,1,800);fadeTo(fb,0,800)});
-  v.addEventListener('timeupdate',()=>{if(!fo&&v.duration-v.currentTime<=.6&&v.duration-v.currentTime>0){fo=true;fadeTo(v,0,500)}});
-  v.addEventListener('ended',()=>{v.style.opacity='0';setTimeout(()=>{v.currentTime=0;v.play();fo=false;fadeTo(v,1,500)},150)});
-}
 
 // Logo scroll
 window.addEventListener('scroll',()=>{document.getElementById('logo').classList.toggle('scrolled',window.scrollY>window.innerHeight*.5)});
