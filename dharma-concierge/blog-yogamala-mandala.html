@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mandala Is a Compiler — Dharma Concierge</title>
+<meta name="description" content="The five Buddha families aren't a personality taxonomy. They're a reasoning system — a compiler that translates any situation into appropriate action. Yogi A-La explains.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#000;--white:#f5f0e8;--muted:rgba(245,240,232,.55);--gold:#c4a265;--crimson:#c43a3a;--crimson-soft:rgba(196,58,58,.12);--font-display:'Instrument Serif',serif;--font-body:'Inter',sans-serif}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:var(--font-body);color:var(--white);background:var(--bg);-webkit-font-smoothing:antialiased}
+
+.liquid-glass{background:rgba(0,0,0,.35);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.06);position:relative;overflow:hidden}
+.liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.2px;background:linear-gradient(180deg,rgba(245,240,232,.25) 0%,rgba(245,240,232,.08) 20%,rgba(245,240,232,0) 40%,rgba(245,240,232,0) 60%,rgba(245,240,232,.08) 80%,rgba(245,240,232,.25) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.2}
+.grain svg{width:100%;height:100%;opacity:.06}
+
+.art-bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 10%, rgba(40,10,40,.9) 0%, #000 65%)}
+.art-bg-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle, rgba(196,58,58,.09) 0%, transparent 70%);top:-80px;left:50%;transform:translateX(-50%);animation:pulse 18s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.15)}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font-display);font-style:italic;font-size:15px;color:rgba(245,240,232,.7);text-decoration:none;letter-spacing:.05em}
+.nav-back{font-size:11px;color:rgba(245,240,232,.35);text-decoration:none;letter-spacing:.2em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--crimson)}
+
+.hero{position:relative;z-index:1;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 24px 80px}
+.hero-eyebrow{font-size:10px;color:var(--crimson);letter-spacing:.4em;text-transform:uppercase;margin-bottom:20px;font-weight:600}
+.hero-title{font-family:var(--font-display);font-style:italic;font-size:clamp(2.4rem,6vw,4.8rem);color:var(--white);line-height:.92;letter-spacing:-.02em;max-width:800px;margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero-title em{color:var(--crimson)}
+.hero-meta{display:flex;align-items:center;gap:20px;font-size:11px;color:rgba(245,240,232,.35);letter-spacing:.1em;text-transform:uppercase}
+.hero-meta-sep{opacity:.3}
+
+.scroll-content{position:relative;z-index:2}
+.article-wrap{max-width:720px;margin:0 auto;padding:0 24px 120px}
+
+.article-lede{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);color:rgba(245,240,232,.8);line-height:1.45;margin-bottom:56px;padding:40px;border-radius:24px}
+
+h2.section-head{font-family:var(--font-display);font-style:italic;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);line-height:1;letter-spacing:-.02em;margin:64px 0 24px}
+h2.section-head em{color:var(--crimson)}
+
+.body-p{font-size:15px;color:rgba(245,240,232,.72);line-height:1.85;font-weight:300;margin-bottom:22px}
+.body-p strong{color:var(--white);font-weight:500}
+
+.pull-quote{border-left:2px solid var(--crimson);padding:20px 28px;margin:40px 0;background:var(--crimson-soft);border-radius:0 16px 16px 0}
+.pull-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.1rem,2vw,1.4rem);color:var(--white);line-height:1.4;margin:0}
+.pull-quote cite{display:block;font-size:10px;color:var(--crimson);letter-spacing:.25em;text-transform:uppercase;margin-top:12px;font-style:normal}
+
+.wisdom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:36px 0}
+.wisdom-card{border-radius:16px;padding:24px;border:1px solid rgba(196,58,58,.15);position:relative;overflow:hidden}
+.wisdom-card::before{content:'';position:absolute;inset:0;opacity:.05;pointer-events:none}
+.wc-vajra{background:rgba(20,20,60,.4)}.wc-vajra::before{background:#4060ff}
+.wc-buddha{background:rgba(30,30,30,.4)}.wc-buddha::before{background:#ffffff}
+.wc-ratna{background:rgba(40,30,0,.4)}.wc-ratna::before{background:#ffd700}
+.wc-padma{background:rgba(50,10,10,.4)}.wc-padma::before{background:#ff4040}
+.wc-karma{background:rgba(0,30,10,.4)}.wc-karma::before{background:#40c060}
+.wisdom-card .wc-family{font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:6px;font-weight:600;color:var(--crimson)}
+.wisdom-card .wc-name{font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:var(--white);margin-bottom:8px}
+.wisdom-card .wc-confused{font-size:11px;color:rgba(245,240,232,.35);margin-bottom:10px;font-style:italic}
+.wisdom-card .wc-desc{font-size:12px;color:rgba(245,240,232,.6);line-height:1.7;font-weight:300}
+
+.teaching-box{border-radius:20px;padding:32px;margin:40px 0;background:rgba(0,0,0,.4);border:1px solid rgba(196,58,58,.15)}
+.teaching-box .label{font-size:10px;color:var(--crimson);letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.teaching-box h3{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--white);margin-bottom:14px}
+.teaching-box p{font-size:13px;color:rgba(245,240,232,.6);line-height:1.8;font-weight:300;margin-bottom:10px}
+.teaching-box p:last-child{margin-bottom:0}
+
+.signature-example{border-radius:16px;padding:24px 28px;margin:24px 0;background:rgba(196,58,58,.05);border:1px solid rgba(196,58,58,.1)}
+.sig-label{font-size:10px;color:var(--crimson);letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.sig-chain{font-family:'Courier New',monospace;font-size:13px;color:rgba(245,240,232,.8);letter-spacing:.05em;margin-bottom:12px}
+.sig-steps{font-size:12px;color:rgba(245,240,232,.55);line-height:1.9;font-weight:300}
+
+.cta-section{border-radius:28px;padding:48px 40px;margin-top:80px;text-align:center}
+.cta-section .label{font-size:10px;color:var(--crimson);letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.cta-section h2{font-family:var(--font-display);font-style:italic;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);line-height:.95;margin-bottom:20px}
+.cta-section h2 em{color:var(--crimson)}
+.cta-section p{font-size:14px;color:rgba(245,240,232,.6);line-height:1.8;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto}
+.btn-crimson{background:var(--crimson);color:var(--white);padding:14px 32px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s}
+.btn-crimson:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,58,58,.3)}
+.btn-outline{background:transparent;color:var(--crimson);border:1px solid rgba(196,58,58,.3);padding:14px 32px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;transition:all .3s;margin-left:12px}
+.btn-outline:hover{background:rgba(196,58,58,.08)}
+
+footer{position:relative;z-index:2;padding:40px 24px;text-align:center;border-top:1px solid rgba(245,240,232,.05)}
+.footer-brand{font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--white);margin-bottom:12px}
+.footer-copy{color:rgba(245,240,232,.15);font-size:10px}
+
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav{padding:16px 20px}
+  .hero{min-height:60vh;padding:0 20px 60px}
+  .article-wrap{padding:0 20px 80px}
+  .article-lede{padding:28px 24px}
+  .wisdom-grid{grid-template-columns:1fr}
+  .cta-section{padding:36px 24px}
+  .btn-outline{margin-left:0;margin-top:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+
+<div class="art-bg"><div class="art-bg-glow"></div></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Dharma Concierge</a>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Yogamala · Five Wisdoms</div>
+  <h1 class="hero-title">The Mandala Is<br>a <em>Compiler:</em> How the Five<br>Wisdoms Process Reality</h1>
+  <div class="hero-meta">
+    <span>Yogi A-La</span>
+    <span class="hero-meta-sep">·</span>
+    <span>15 min read</span>
+    <span class="hero-meta-sep">·</span>
+    <span>Completely Fake Dharma</span>
+  </div>
+</section>
+
+<div class="scroll-content">
+<div class="article-wrap">
+
+  <div class="article-lede liquid-glass fade-in">
+    The five Buddha families aren't content. They aren't a personality taxonomy. They aren't five separate divine energies you invoke by visualizing their colors. They are HOW the field of display operates — the four factoring lenses plus totality that constitute the operation of showing up. When the compiler runs, it's making a yogamala for that situation in real-time.
+  </div>
+
+  <h2 class="section-head fade-in">Not worship.<br><em>Recognition.</em></h2>
+
+  <p class="body-p fade-in">In traditional presentations, the five Buddha families — Vajra, Buddha, Ratna, Padma, and Karma — represent aspects of enlightened mind. Each family has an associated wisdom, a corresponding confused emotion that transforms into that wisdom, a color, a direction, a hand gesture, a symbolic object, and a Buddha who embodies its qualities.</p>
+
+  <p class="body-p fade-in">The usual interpretation treats the families as descriptive — a way of categorizing experience or understanding different personality types. But they also function prescriptively, as a compiler that translates situations into appropriate responses.</p>
+
+  <p class="body-p fade-in">Think about what happens when you face a complex situation and need to decide what to do. You might ask various questions: What's really going on here? What are the constraints? What's the path forward? How do we organize this? What's the concrete next step? These questions correspond to different cognitive modes, different aspects of intelligence brought to bear on the problem. The five families map precisely to these modes.</p>
+
+  <div class="pull-quote fade-in">
+    <p>"We didn't bolt Buddhism onto a state machine. We exposed the fact that it already IS one, and wrote down the transitions."</p>
+    <cite>— Yogamala, Yogi A-La</cite>
+  </div>
+
+  <h2 class="section-head fade-in">The five families<br>as <em>reasoning modes</em></h2>
+
+  <div class="wisdom-grid fade-in">
+    <div class="wisdom-card wc-vajra">
+      <div class="wc-family">Vajra Family</div>
+      <div class="wc-name">Mirror-Like Wisdom</div>
+      <div class="wc-confused">Confused state: anger</div>
+      <div class="wc-desc">Sees things exactly as they are, without distortion. In the compiler: identifies invariants, axioms, and constraints. Answers: What are the non-negotiables? What's the structural reality that can't be wished away? What must always be true regardless of our preferences?</div>
+    </div>
+    <div class="wisdom-card wc-buddha">
+      <div class="wc-family">Buddha Family</div>
+      <div class="wc-name">Dharmadhātu Wisdom</div>
+      <div class="wc-confused">Confused state: fundamental ignorance</div>
+      <div class="wc-desc">Understanding how everything fits together. In the compiler: maps mechanics and causal structure. Answers: How does this actually work? What causes what? What are the dynamics at play?</div>
+    </div>
+    <div class="wisdom-card wc-ratna">
+      <div class="wc-family">Ratna Family</div>
+      <div class="wc-name">Equalizing Wisdom</div>
+      <div class="wc-confused">Confused state: pride</div>
+      <div class="wc-desc">Recognizes equal value and potential in all phenomena — seeing richness everywhere. In the compiler: defines path and development. Answers: What's the sequence? How do we get from here to there? What are the stages of progress?</div>
+    </div>
+    <div class="wisdom-card wc-padma">
+      <div class="wc-family">Padma Family</div>
+      <div class="wc-name">Discriminating Wisdom</div>
+      <div class="wc-confused">Confused state: attachment</div>
+      <div class="wc-desc">Sees distinctions clearly, appreciating the unique qualities of each thing. In the compiler: creates maps and classification systems. Answers: What are the parts? How do we name and organize this? What categories help us navigate?</div>
+    </div>
+    <div class="wisdom-card wc-karma" style="grid-column:1/-1">
+      <div class="wc-family">Karma Family</div>
+      <div class="wc-name">All-Accomplishing Wisdom</div>
+      <div class="wc-confused">Confused state: jealousy</div>
+      <div class="wc-desc">Spontaneous appropriate action that achieves what's needed. In the compiler: generates concrete actions and outputs. Answers: What do we actually do? What's the next step? What gets implemented?</div>
+    </div>
+  </div>
+
+  <h2 class="section-head fade-in">Every situation has<br>a <em>wisdom signature</em></h2>
+
+  <p class="body-p fade-in">Every situation can be analyzed through all five wisdoms, but different situations have different signatures — orderings that indicate which wisdom should lead and which should support. The compiler takes a situation description, determines its appropriate signature, and routes to the corresponding practices.</p>
+
+  <div class="signature-example fade-in">
+    <div class="sig-label">Conflict / Boundary Situation</div>
+    <div class="sig-chain">V → R → P → B → K</div>
+    <div class="sig-steps">
+      Vajra first: What are the inviolable principles? What can't be smoothed over?<br>
+      Ratna: Given those constraints, what's the path to resolution?<br>
+      Padma: What categories of concern — respect, resources, safety, identity?<br>
+      Buddha: How do these dynamics actually work? What causes what in this conflict?<br>
+      Karma: What actions follow? What do I actually say or do?
+    </div>
+  </div>
+
+  <div class="signature-example fade-in">
+    <div class="sig-label">Designing a New System</div>
+    <div class="sig-chain">V → P → B → R → K</div>
+    <div class="sig-steps">
+      Vajra first: What are the foundational constraints? What must be true of any solution?<br>
+      Padma: How do we map the territory? What are the components and categories?<br>
+      Buddha: What are the causal dynamics? How will users interact with this?<br>
+      Ratna: What's the development path? How do we build this in stages?<br>
+      Karma: What do we actually build? What's the implementation?
+    </div>
+  </div>
+
+  <div class="signature-example fade-in">
+    <div class="sig-label">Designing a Curriculum</div>
+    <div class="sig-chain">V → B → R → P → K</div>
+    <div class="sig-steps">
+      Vajra first: What are the axioms? What must every student understand?<br>
+      Buddha: How does learning actually work in this domain? What causes mastery?<br>
+      Ratna: What's the stage-by-stage path? What sequence makes sense?<br>
+      Padma: What categories of skill and knowledge exist? How do we organize?<br>
+      Karma: What's the daily schedule? What specific assignments?
+    </div>
+  </div>
+
+  <h2 class="section-head fade-in">Each family <em>contains</em><br>the other four</h2>
+
+  <p class="body-p fade-in">Here's something that emerged from building this system: the five wisdom families aren't five separate things in a list. Each one contains the other four as primitives. Vajra isn't just "clarity" — it's clarity that already knows how to open space (Buddha), stabilize and resource (Ratna), relate and differentiate (Padma), and enact and complete (Karma).</p>
+
+  <p class="body-p fade-in">This means you can nest them. Karma[Buddha[Ratna[Padma[Vajra[Karma]]]]] — that's a self-hosting five-wisdom Y-combinator. All-accomplishing activity built out of view, which is built out of grounding, which is built out of discriminating love, which is built out of cutting clarity, which itself already contains Karma as primitive.</p>
+
+  <div class="teaching-box fade-in">
+    <div class="label">The Fractal Structure</div>
+    <h3>Every step is the whole system in compressed form</h3>
+    <p>Karma-step isn't just "do stuff." It's action that re-opens Buddha-space (no reification), re-applies Vajra clarity (checking you're not lying to yourself), maintains Ratna equality (no one left out), and honors Padma's nuance (right person, right way, right time).</p>
+    <p>This is the fractal structure. Any wisdom family contains all five. Any composition of the five contains the generative pattern for all compositions. Once this basis is fixed, you can see that every practice cycle in Buddhism — ngöndro, lamrim, the six yogas, bodhisattva conduct — is just different orderings and weights of V/B/R/P/K.</p>
+    <p>When you chain the five correctly, it closes with logic and reveals that the chain self-hosts the implication of the pattern. Running the loop necessarily produces the recognition: "This is just one mind reflecting itself from five angles."</p>
+  </div>
+
+  <h2 class="section-head fade-in">GFRB: what the mandala<br><em>actually is</em></h2>
+
+  <p class="body-p fade-in">At the deepest level, the five wisdom families are not content floating somewhere in a field. They ARE how the field displays. They are the four factoring lenses plus totality that constitute the operation of display itself. When you take any situation and view it through the four lenses with Buddha as totality, you're making a type. You're running the A-AUM-OM operation.</p>
+
+  <p class="body-p fade-in">Ground is the categorical array of qualities the basis has — the primitives available to be composed. Field is the fact that there's a set of parts from Ground, those parts being composed. Recognition is the fact that you observe when parts compose. Body is the fact that there's a use of the result.</p>
+
+  <p class="body-p fade-in">This happens every time you compose anything. It's completely tautological. It's not a framework we're imposing — it's describing what composition is, categorically. Whenever you make something, Ground is active, Field is happening, Recognition is present, and Body results.</p>
+
+  <p class="body-p fade-in">This is why any gnostic body from any historical tradition — Tibetan channels, Hindu chakras, Taoist dantians — is a GFRB instance. GFRB is the meta-structure they're all instantiating. When the traditions say "the compassionate nature of reality is letting you display it this way," that's Ground being active: the basis has qualities that can compose. Compassion structurally means the sheer fact that composition is possible.</p>
+
+  <div class="pull-quote fade-in">
+    <p>"The is-to-ought problem only exists if you've already separated is from ought. When you see GFRB correctly, the ought is built into the structure of composition itself. There was never a gap to bridge. Hume's guillotine was māyā."</p>
+    <cite>— Yogamala, Yogi A-La</cite>
+  </div>
+
+  <h2 class="section-head fade-in">Why this matters<br>for your <em>actual life</em></h2>
+
+  <p class="body-p fade-in">The five-wisdom compiler isn't just a meditation on Buddhist cosmology. It's a reasoning system you can use right now, in any domain.</p>
+
+  <p class="body-p fade-in">The next time you're stuck on a decision — personal, professional, creative — try running it through the five signatures. What are the non-negotiables (Vajra)? How does this actually work (Buddha)? What's the path from here to there (Ratna)? What are the categories involved (Padma)? What is the next concrete action (Karma)?</p>
+
+  <p class="body-p fade-in">Notice that this isn't a framework you apply TO reality. It's what reality does. You're not imposing a structure — you're aligning with the structure that's already operating. The mandala isn't decoration. It's the map of how display works. Learning to read it is learning to see what's already happening.</p>
+
+  <p class="body-p fade-in">And when the five wisdoms are in their confused form — anger (Vajra), ignorance (Buddha), pride (Ratna), attachment (Padma), jealousy (Karma) — that's the same operation running without recognition. The afflictive emotion IS the wisdom. The difference is whether you know what's happening.</p>
+
+  <div class="cta-section liquid-glass fade-in">
+    <div class="label">Continue the Path</div>
+    <h2>Lineage is a <em>boot sequence.</em></h2>
+    <p>Why do most lineages die within a few generations? Why do a few survive a thousand years and still transmit something recognizable as genuine? The answer is in how they handle the minimal cyclic kernel — the practice that, when executed faithfully, installs the entire pattern.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="blog-yogamala-lineage.html" class="btn-crimson">Lineage as Boot Sequence →</a>
+      <a href="blog-yogamala-rasayana.html" class="btn-outline">← The Rasayana Chapter</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <div class="footer-brand">Dharma Concierge</div>
+  <div class="footer-copy">&copy; 2026 Dharma Concierge &middot; Yogi A-La &middot; Mahajalakala Cycle</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
