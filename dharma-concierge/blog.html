@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Knowledge Lattice · Dharma Concierge</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+  .header-back {
+    font-size: 12px;
+    color: rgba(245,240,232,.4);
+    text-decoration: none;
+    letter-spacing: .1em;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+  .header-back:hover { color: #c4a265; }
+  .header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #f5f0e8;
+    line-height: .9;
+    letter-spacing: -.02em;
+    margin-bottom: 8px;
+  }
+  .header h1 em { color: #c4a265; }
+  .header p {
+    font-size: 13px;
+    color: rgba(245,240,232,.4);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  #app {
+    width: 100%;
+    max-width: 1200px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  #cv {
+    width: 100%;
+    height: 600px;
+    display: block;
+    cursor: grab;
+  }
+  #hud {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    font: 12px 'Inter', sans-serif;
+    color: rgba(245,240,232,.3);
+    pointer-events: none;
+    letter-spacing: .5px;
+    font-weight: 300;
+  }
+  #hud .value { color: rgba(245,240,232,.5); }
+  #tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(196,162,101,.2);
+    border-radius: 16px;
+    padding: 16px 20px;
+    max-width: 280px;
+    display: none;
+    z-index: 10;
+  }
+  #tooltip .tt-label {
+    font-size: 10px;
+    color: #c4a265;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  #tooltip .tt-title {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #f5f0e8;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  #tooltip .tt-desc {
+    font-size: 11px;
+    color: rgba(245,240,232,.5);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  #tooltip .tt-cta {
+    font-size: 10px;
+    color: #c4a265;
+    margin-top: 8px;
+    letter-spacing: .1em;
+  }
+  .grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.15}
+  .grain svg{width:100%;height:100%;opacity:.06}
+</style>
+</head>
+<body>
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+
+<div class="header">
+  <a href="index.html" class="header-back">&#8592; Dharma Concierge</a>
+  <h1>The <em>Path</em></h1>
+  <p>Each gem is a teaching. Hover to see, click to enter. The path flows from preliminary practices through the vajra mind. All teachings contain all others.</p>
+</div>
+
+<div id="app">
+  <canvas id="cv"></canvas>
+  <div id="hud">
+    <span id="nc" class="value">0</span> teachings · <span id="ec" class="value">0</span> connections
+  </div>
+  <div id="tooltip">
+    <div class="tt-label" id="ttLabel"></div>
+    <div class="tt-title" id="ttTitle"></div>
+    <div class="tt-desc" id="ttDesc"></div>
+    <div class="tt-cta">Click to enter →</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var POSTS = [
+    {nm:'Four Thoughts',label:'Step 1',desc:'The four contemplations that turn the mind toward dharma.',url:'blog-four-thoughts.html',c:[255,220,0],r:22},
+    {nm:'Four Noble Truths',label:'Step 2',desc:'The donut metaphor. The a priori circumstances we find ourselves in.',url:'blog-four-truths.html',c:[255,200,50],r:24},
+    {nm:'Bodhichitta',label:'Step 3',desc:'The only engine that matters. Without this, meditation is just sitting.',url:'blog-bodhichitta.html',c:[255,50,130],r:28},
+    {nm:'Six Paramitas',label:'Step 4',desc:'The six perfections. Each contains all others. Holographic.',url:'blog-paramitas.html',c:[190,50,255],r:24},
+    {nm:'Meditation Paramita',label:'Step 5',desc:'The holographic hub. Contains all paramitas. All paramitas contain it.',url:'blog-meditation-paramita.html',c:[50,120,255],r:26},
+    {nm:'Five Wisdoms',label:'Step 6',desc:'Mirror-like, equalizing, discriminating, all-accomplishing, dharmadhatu.',url:'blog-five-wisdoms.html',c:[0,220,200],r:24},
+    {nm:'Vipassana',label:'Step 7',desc:'What insight actually means. Not mindfulness — direct recognition.',url:'blog-vipassana.html',c:[100,255,30],r:24},
+    {nm:'Deity Yoga',label:'Step 8',desc:'The symmetries of the mandala. Not worship — recognition.',url:'blog-deity-yoga.html',c:[255,150,0],r:26},
+    {nm:'Why Meditation\nIs Fake',label:'Standalone',desc:'Why most meditation instruction is completely fake.',url:'blog-meditation.html',c:[255,40,40],r:20},
+    {nm:'Windhorse',label:'Standalone',desc:'What the Tibetans know about energy that you don\'t. Chulen.',url:'blog-windhorse.html',c:[255,180,100],r:18},
+    {nm:'Vimalakirti',label:'Standalone',desc:'The most advanced practitioner was an entrepreneur.',url:'blog-vimalakirti.html',c:[80,255,120],r:18},
+    {nm:'Pure Lands',label:'Experience',desc:'Saha, Sukhavati, Dharmakaya — immersive realm journeys.',url:'pure-lands.html',c:[220,80,220],r:30},
+    {nm:'Great Stupa',label:'Experience',desc:'Cinematic teaser — the Legend of the Great Stupa.',url:'great-stupa.html',c:[50,200,255],r:22},
+    {nm:'Teachings',label:'Library',desc:'Recitation videos, sangha prayers, dharma talks.',url:'teachings.html',c:[255,0,200],r:20},
+  ];
+  var EDGES = [
+    [0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],
+    [2,8],[7,9],[2,10],
+    [0,11],[7,11],[11,12],
+    [4,13],[5,13],
+    [8,4],[9,7],[10,3],
+  ];
+
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var el = cv.parentElement;
+  var tt = document.getElementById('tooltip');
+  var W, H, D = window.devicePixelRatio || 1;
+
+  function resize() {
+    var r = el.getBoundingClientRect();
+    W = r.width; H = 600;
+    cv.width = W * D; cv.height = H * D;
+    ctx.setTransform(D, 0, 0, D, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var mx = W/2, my = H/2, drag = null, dox = 0, doy = 0;
+  var hovNode = null;
+
+  el.addEventListener('mousemove', function(e){
+    var r = el.getBoundingClientRect();
+    mx = e.clientX - r.left; my = e.clientY - r.top;
+    if(drag){ drag.x = mx+dox; drag.y = my+doy; drag.vx=0; drag.vy=0; }
+    hovNode = null;
+    for(var i = ns.length-1; i >= 0; i--){
+      if(Math.hypot(ns[i].x-mx, ns[i].y-my) < ns[i].cr+6){ hovNode = ns[i]; break; }
+    }
+    if(hovNode){
+      cv.style.cursor = 'pointer';
+      tt.style.display = 'block';
+      var tx = hovNode.x + hovNode.cr + 16, ty = hovNode.y - 20;
+      if(tx + 280 > W) tx = hovNode.x - hovNode.cr - 296;
+      if(ty < 10) ty = 10;
+      tt.style.left = tx + 'px'; tt.style.top = ty + 'px';
+      document.getElementById('ttLabel').textContent = hovNode.label;
+      document.getElementById('ttTitle').textContent = hovNode.nm.replace('\n',' ');
+      document.getElementById('ttDesc').textContent = hovNode.desc;
+    } else {
+      cv.style.cursor = drag ? 'grabbing' : 'grab';
+      tt.style.display = 'none';
+    }
+  });
+  el.addEventListener('mousedown', function(e){
+    var r = el.getBoundingClientRect();
+    var px = e.clientX-r.left, py = e.clientY-r.top;
+    for(var i = ns.length-1; i >= 0; i--){
+      if(Math.hypot(ns[i].x-px, ns[i].y-py) < ns[i].cr+6){
+        drag = ns[i]; dox = ns[i].x-px; doy = ns[i].y-py;
+        cv.style.cursor = 'grabbing';
+        return;
+      }
+    }
+  });
+  el.addEventListener('mouseup', function(){
+    if(drag && !wasDragging && hovNode && hovNode.url){
+      window.location.href = hovNode.url;
+    }
+    drag = null; cv.style.cursor = 'grab';
+  });
+  var wasDragging = false;
+  el.addEventListener('mousemove', function(){
+    if(drag) wasDragging = true;
+  });
+  el.addEventListener('mousedown', function(){ wasDragging = false; });
+  el.addEventListener('mouseleave', function(){ drag = null; tt.style.display = 'none'; });
+
+  var ns = [], es = [];
+
+  // Create nodes in a path layout
+  for(var i = 0; i < POSTS.length; i++){
+    var p = POSTS[i];
+    var a, d;
+    if(i < 8){ // path nodes in a gentle arc
+      a = -Math.PI*0.7 + (Math.PI*1.4 / 7) * i;
+      d = Math.min(W,H) * 0.28;
+    } else { // standalone/experience nodes scattered
+      a = Math.random() * Math.PI * 2;
+      d = Math.min(W,H) * 0.15 + Math.random() * Math.min(W,H) * 0.15;
+    }
+    ns.push({
+      x: W/2 + Math.cos(a)*d + (Math.random()-.5)*40,
+      y: H/2 + Math.sin(a)*d + (Math.random()-.5)*40,
+      vx: 0, vy: 0,
+      tr: p.r, cr: 0,
+      c: p.c,
+      sides: i < 8 ? 6 : (Math.random()<.5 ? 5 : 7),
+      rot: Math.random() * Math.PI * 2,
+      nm: p.nm, label: p.label, desc: p.desc, url: p.url,
+      seed: Math.random() * 1000
+    });
+  }
+  for(var i = 0; i < EDGES.length; i++){
+    es.push({a: ns[EDGES[i][0]], b: ns[EDGES[i][1]], al: 0, pulse: 0});
+  }
+
+  function hud(){
+    document.getElementById('nc').textContent = ns.length;
+    document.getElementById('ec').textContent = es.length;
+  }
+  hud();
+
+  // Gem renderer (same as original)
+  function drawGem(x,y,r,nSides,col,rot){
+    if(r<2)return;
+    var crown=[],table=[];
+    for(var i=0;i<nSides;i++){
+      var a=Math.PI*2/nSides*i+rot;
+      crown.push({x:Math.cos(a)*r,y:Math.sin(a)*r});
+    }
+    var tR=r*0.4;
+    for(var i=0;i<nSides;i++){
+      var a=Math.PI*2/nSides*i+rot+Math.PI/nSides;
+      table.push({x:Math.cos(a)*tR,y:Math.sin(a)*tR});
+    }
+    var lAngle=Math.atan2(my-y,mx-x),lx=Math.cos(lAngle),ly=Math.sin(lAngle);
+    ctx.save();ctx.translate(x,y);
+    for(var i=0;i<nSides;i++){
+      var j=(i+1)%nSides;
+      var fmx=(crown[i].x+crown[j].x+table[i].x)/3,fmy=(crown[i].y+crown[j].y+table[i].y)/3;
+      var nl=Math.sqrt(fmx*fmx+fmy*fmy)||1;
+      var dot=fmx/nl*lx+fmy/nl*ly;
+      var lightness=0.35+0.5*((dot+1)/2);
+      var white=Math.max(0,dot)*60;
+      ctx.fillStyle='rgb('+Math.min(255,Math.floor(col[0]*lightness+white))+','+Math.min(255,Math.floor(col[1]*lightness+white))+','+Math.min(255,Math.floor(col[2]*lightness+white))+')';
+      ctx.beginPath();ctx.moveTo(crown[i].x,crown[i].y);ctx.lineTo(crown[j].x,crown[j].y);ctx.lineTo(table[i].x,table[i].y);ctx.closePath();ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,0.2)';ctx.lineWidth=0.4;ctx.stroke();
+    }
+    for(var i=0;i<nSides;i++){
+      var j=(i+1)%nSides;
+      var fmx=(table[i].x+table[j].x+crown[j].x)/3,fmy=(table[i].y+table[j].y+crown[j].y)/3;
+      var nl=Math.sqrt(fmx*fmx+fmy*fmy)||1;
+      var dot=fmx/nl*lx+fmy/nl*ly;
+      var lightness=0.25+0.4*((dot+1)/2);
+      var white=Math.max(0,dot)*40;
+      ctx.fillStyle='rgb('+Math.min(255,Math.floor(col[0]*lightness+white))+','+Math.min(255,Math.floor(col[1]*lightness+white))+','+Math.min(255,Math.floor(col[2]*lightness+white))+')';
+      ctx.beginPath();ctx.moveTo(table[i].x,table[i].y);ctx.lineTo(table[j].x,table[j].y);ctx.lineTo(crown[j].x,crown[j].y);ctx.closePath();ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,0.15)';ctx.lineWidth=0.3;ctx.stroke();
+    }
+    ctx.beginPath();ctx.moveTo(table[0].x,table[0].y);
+    for(var i=1;i<nSides;i++)ctx.lineTo(table[i].x,table[i].y);
+    ctx.closePath();
+    var tl=0.45+0.3*((lx*0.3+ly*-0.5+1)/2);
+    ctx.fillStyle='rgb('+Math.min(255,Math.floor(col[0]*tl+30))+','+Math.min(255,Math.floor(col[1]*tl+30))+','+Math.min(255,Math.floor(col[2]*tl+30))+')';
+    ctx.fill();
+    for(var i=0;i<nSides;i++){
+      var j=(i+1)%nSides;
+      var emx=(crown[i].x+crown[j].x)/2,emy=(crown[i].y+crown[j].y)/2;
+      var enl=Math.sqrt(emx*emx+emy*emy)||1;
+      var dot=emx/enl*lx+emy/enl*ly;
+      if(dot>0.15){
+        ctx.strokeStyle='rgba(255,255,255,'+((dot-0.15)/0.85*0.45)+')';ctx.lineWidth=1.2;
+        ctx.beginPath();ctx.moveTo(crown[i].x,crown[i].y);ctx.lineTo(crown[j].x,crown[j].y);ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
+  var lt=0;
+  function frame(ts){
+    var t=ts/1000,dt=Math.min(t-lt,0.05);lt=t;
+
+    for(var i=0;i<ns.length;i++){var n=ns[i];n.cr+=(n.tr-n.cr)*0.05;}
+    for(var i=0;i<es.length;i++){var e=es[i];e.al=Math.min(1,e.al+dt*1.2);e.pulse=Math.max(0,e.pulse-dt*1.2);}
+
+    // Physics
+    for(var i=0;i<ns.length;i++){
+      var n=ns[i];if(n===drag)continue;
+      for(var j=i+1;j<ns.length;j++){
+        var o=ns[j],dx=o.x-n.x,dy=o.y-n.y,dist=Math.sqrt(dx*dx+dy*dy)||1;
+        var minD=n.cr+o.cr+6;
+        if(dist<minD){var push=(minD-dist)*0.02,nx2=dx/dist,ny2=dy/dist;n.vx-=nx2*push;n.vy-=ny2*push;o.vx+=nx2*push;o.vy+=ny2*push;}
+      }
+      for(var k=0;k<es.length;k++){
+        var e=es[k],oi=null;if(e.a===n)oi=e.b;else if(e.b===n)oi=e.a;if(!oi)continue;
+        var dx=oi.x-n.x,dy=oi.y-n.y,dist=Math.sqrt(dx*dx+dy*dy)||1;
+        var ideal=n.cr+oi.cr+35,f=(dist-ideal)*0.0006;
+        n.vx+=dx/dist*f;n.vy+=dy/dist*f;
+      }
+      n.vx+=(W/2-n.x)*0.00006;n.vy+=(H/2-n.y)*0.00006;
+      n.vx*=0.96;n.vy*=0.96;n.x+=n.vx;n.y+=n.vy;
+      if(n.x<n.cr+5)n.x=n.cr+5;if(n.x>W-n.cr-5)n.x=W-n.cr-5;
+      if(n.y<n.cr+5)n.y=n.cr+5;if(n.y>H-n.cr-5)n.y=H-n.cr-5;
+    }
+
+    ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
+
+    // Blooms
+    for(var i=0;i<ns.length;i++){
+      var n=ns[i];if(n.cr<1)continue;
+      var isHov=hovNode===n;
+      var br=n.cr*(isHov?9:6);
+      var bg=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,br);
+      var a1=isHov?0.2:0.1;
+      bg.addColorStop(0,'rgba('+n.c[0]+','+n.c[1]+','+n.c[2]+','+a1+')');
+      bg.addColorStop(0.4,'rgba('+n.c[0]+','+n.c[1]+','+n.c[2]+','+(a1*0.3)+')');
+      bg.addColorStop(1,'rgba('+n.c[0]+','+n.c[1]+','+n.c[2]+',0)');
+      ctx.fillStyle=bg;ctx.beginPath();ctx.arc(n.x,n.y,br,0,Math.PI*2);ctx.fill();
+    }
+
+    // Edges
+    for(var k=0;k<es.length;k++){
+      var e=es[k],ea=e.al*0.15;
+      ctx.strokeStyle='rgba(245,240,232,'+ea+')';ctx.lineWidth=0.6;
+      ctx.beginPath();ctx.moveTo(e.a.x,e.a.y);ctx.lineTo(e.b.x,e.b.y);ctx.stroke();
+    }
+
+    // Gems
+    var sorted=ns.slice().sort(function(a,b){return b.cr-a.cr;});
+    for(var i=0;i<sorted.length;i++){
+      var n=sorted[i];
+      var scale=hovNode===n?1.15:1;
+      drawGem(n.x,n.y,n.cr*scale,n.sides,n.c,n.rot+t*0.04);
+    }
+
+    // Labels on path nodes
+    ctx.textAlign='center';
+    ctx.font='500 10px Inter, sans-serif';
+    for(var i=0;i<ns.length;i++){
+      var n=ns[i];
+      if(n.cr>10){
+        var isHov=hovNode===n;
+        ctx.fillStyle=isHov?'rgba(245,240,232,0.9)':'rgba(245,240,232,0.3)';
+        var lines=n.nm.split('\n');
+        for(var l=0;l<lines.length;l++){
+          ctx.fillText(lines[l],n.x,n.y+n.cr+12+l*12);
+        }
+      }
+    }
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
