@@ -21,13 +21,12 @@
     <p>L3 is context engineering. You give the agent knowledge.</p>
     <p>The methods all sound familiar: RAG, vector databases, "second brains," knowledge bases, embeddings, semantic search, skills. Karpathy popularized the "second brain" framing — an LLM with a wiki of your stuff bolted on. Every dev tool company shipped some version of this in 2024-2025.</p>
     <p>L3 works. An agent with a good retrieval layer outperforms a stateless agent by a wide margin. It knows your codebase, your docs, your past tickets. It stops asking you the same question twice.</p>
-    <p>But here's the gap nobody puts on the marketing page: <strong>context without structure is just a bigger prompt.</strong></p>
+    <p>But <strong>context without structure is just a bigger prompt.</strong></p>
     <p>You can dump 50 pages of SOPs into the context window. The agent will read them. And it'll still produce something that contradicts page 23, because reading is not the same as understanding compositionally. RAG retrieves words. RAG does not retrieve <em>structure</em>.</p>
 
     <blockquote>A second brain stores WHAT. A second mind imposes HOW. Most "AI memory" products ship the first and bill it as the second.</blockquote>
 
     <h2>Wiki vs Cognitive Architecture</h2>
-    <p>Here is the distinction that L3 hinges on.</p>
     <p>A <strong>wiki</strong> is a flat collection of documents. Each document is content. The agent retrieves a document by similarity (vector search) or by keyword. The document goes into the prompt. The agent reads. It hopes it understands.</p>
     <p>A <strong>cognitive architecture</strong> is a structured graph of concepts where every concept is typed, every relationship is explicit, and every retrieval respects the structure. The agent doesn't retrieve "the document that mentions X." It retrieves "the concept of X, what X is_a, what X is part_of, what X depends_on, and the active context X belongs to."</p>
     <p>The wiki gives you words. The cognitive architecture gives you a <em>shape</em>.</p>
