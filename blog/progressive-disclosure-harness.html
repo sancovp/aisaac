@@ -18,8 +18,8 @@
       <img src="diagrams/progressive-disclosure-harness.png" alt="Progressive Disclosure Harness diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
     </figure>
 
-    <h2>The Problem Nobody Talks About</h2>
-    <p>Ok so here's the thing about AI agents in production: they get <em>worse</em> the more capable you make them.</p>
+    <h2>More Tools, Worse Agent</h2>
+    <p>AI agents in production get <em>worse</em> the more capable you make them.</p>
     <p>Not a little worse. Catastrophically worse. You give the agent 20 integrations and 300 available tools, and it starts hallucinating tools that don't exist. It forgets the tool it called thirty seconds ago. Three steps into a ten-step workflow, it stops and asks "what should I do next?" — like a surgeon putting down the scalpel mid-operation to ask the nurse what organ they're working on.</p>
     <p>This is the context window problem, and almost nobody building AI agents is solving it correctly. They're solving it by making the context window bigger, or by fine-tuning the model harder, or by writing longer system prompts with more instructions.</p>
     <p>All of which makes the problem worse.</p>
@@ -157,7 +157,7 @@ Step 3: Call step_three(result)</pre>
     <!-- AI-IMAGE: Four stacked architectural layers shown as translucent floors - skill trigger (tiny), get_instructions (small), flight config (medium), meta-tool (large) - with an agent moving through them step by step -->
 
 <h2>The Deeper Pattern</h2>
-    <p>Here's what I realized building this over four months: harnesses don't create procedures. They <em>encode</em> procedures you already have.</p>
+    <p>Harnesses don't create procedures. They <em>encode</em> procedures you already have.</p>
     <p>Every time you correct an AI agent — "no, check the file first," "always validate before saving," "don't skip the tagging step" — you're expressing an implicit SOP. You have a procedure in your head. You just haven't written it down. The harness is the mechanism for writing it down in a way the agent can't ignore.</p>
     <p>Which means the hardest part isn't the code. The hardest part is noticing the pattern: "I keep saying this same thing." Once you notice that, the 5-line guard writes itself.</p>
     <p>And once you start noticing, you can't stop. Every repeated correction becomes a potential harness. Every "the agent always does this wrong" becomes a guard waiting to be written. The system compounds — each harness makes the next one easier to identify and build.</p>

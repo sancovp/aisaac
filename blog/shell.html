@@ -17,11 +17,11 @@
       <img src="diagrams/shell.png" alt="SHELL diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
     </figure>
 
-    <h2>The Problem Nobody Talks About</h2>
+    <h2>Tools Without Rules</h2>
     <p>Your team just gave the AI agent access to 30 tools. A knowledge graph. A code review system. A deployment pipeline. The agent has <em>everything it needs</em>.</p>
     <p>And it still drifts. Makes invalid moves. Forgets what it was doing. Calls tools in the wrong order. Exits at the wrong time. Never quite finishes.</p>
     <p>This is the most common failure mode in agent systems today. Not missing capability. <strong>Missing structure.</strong></p>
-    <p>Think about it this way: you would never hand someone a chess set and say "you have all the pieces, go win" without first explaining the rules, the board boundaries, and when the game is over. But that is exactly what most agent architectures do with tools.</p>
+    <p>You would never hand someone a chess set and say "you have all the pieces, go win" without first explaining the rules, the board boundaries, and when the game is over. But that is exactly what most agent architectures do with tools.</p>
 
     
 
@@ -95,7 +95,7 @@ Required: [what must exist first].
     <!-- AI-IMAGE: A compiled SHELL shown as a game board with four quadrants (pilot, vehicle, mission control, interaction loops) and an AI agent persona standing at center with clear rules displayed -->
 
 <h2>Shells Nest</h2>
-    <p>Here is where it gets powerful. Shells can contain shells.</p>
+    <p>Shells can contain shells.</p>
     <p>Imagine an agent operating in a "Framework Synthesis" shell &mdash; reading conversations, identifying patterns, structuring a document. Midway through, it needs to capture concepts in a knowledge graph. That triggers entry to a "Knowledge Graph" shell. The inner shell operates under its own rules, captures the concepts, exits with results. The outer shell picks up where it left off.</p>
     <p>This creates stack-like execution. Each level has its own rules, its own persona, its own boundary. The outermost shell exits back to the human with a complete result.</p>
     <p>This is not theoretical. This is how you build agent systems that handle complex, multi-step operations without losing the thread.</p>
