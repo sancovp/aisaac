@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musculoskeletal — HealthWorld</title>
+  <style>
+    .hw-back { font-size:0.75rem; color:var(--mercury-blue); text-decoration:none; display:inline-block; margin-bottom:1rem; }
+    .hw-back:hover { text-decoration:underline; }
+    .sig-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; }
+    .sig-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.2rem; }
+    .sig-card h4 { font-size:0.85rem; margin-bottom:0.3rem; }
+    .sig-card p { font-size:0.72rem; color:var(--text-2); line-height:1.6; }
+    .maint-table { width:100%; border-collapse:collapse; margin-top:1rem; font-size:0.8rem; }
+    .maint-table th { text-align:left; padding:0.6rem 0.8rem; border-bottom:1px solid var(--glass-border); color:var(--text-3); font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; }
+    .maint-table td { padding:0.6rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.03); color:var(--text-2); }
+    .route-box { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.5rem; margin-top:1.5rem; }
+    .route-box h4 { font-size:0.9rem; margin-bottom:0.5rem; }
+    .route-box p { font-size:0.75rem; color:var(--text-2); line-height:1.7; }
+    .stat-buffs { display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1rem; }
+    .stat-buff { background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.15); border-radius:var(--r-sm); padding:0.5rem 0.8rem; font-size:0.7rem; color:var(--mercury-teal); font-family:var(--mono); }
+    @media (max-width:600px) { .sig-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="../build.html">Jobworld</a>
+      <a href="./">HealthWorld</a>
+      <a href="../blog/">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <section style="padding-top:6rem;">
+    <a href="./" class="hw-back">&larr; All Departments</a>
+    <div style="max-width:56ch;">
+      <div class="tag">Department</div>
+      <h1><span style="font-size:1.5em;margin-right:0.3em;">🦴</span>Musculoskeletal</h1>
+      <p class="sub">The frame everything else hangs on. Neglect the structure and every other department suffers.</p>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="tag">Risk signals</div>
+    <h2>What to watch.</h2>
+    <p style="font-size:0.82rem;color:var(--text-2);max-width:56ch;">Back pain, joint stiffness, and mobility loss are not aging. They are maintenance failures that compound over decades.</p>
+    <div class="sig-grid">
+      <div class="sig-card"><h4>Morning stiffness</h4><p>Taking more than 15 minutes to loosen up. Joint lubrication or inflammation issue.</p></div>
+      <div class="sig-card"><h4>Posture drift</h4><p>Shoulders rounding, head forward. Desk work default. Structural load redistribution → pain.</p></div>
+      <div class="sig-card"><h4>Range of motion loss</h4><p>Can't touch toes, can't look over shoulder fully. Mobility declining = injury risk increasing.</p></div>
+      <div class="sig-card"><h4>Recurring pain patterns</h4><p>Same spot hurts repeatedly. Not random. There's a mechanical cause upstream.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="tag">Maintenance</div>
+    <h2>The floor.</h2>
+    <p style="font-size:0.82rem;color:var(--text-2);max-width:56ch;">This is not aspirational. This is the minimum viable maintenance schedule. Everything above this is upside.</p>
+    <table class="maint-table">
+      <thead><tr><th>Cadence</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Daily</td><td>5min mobility routine. Hip flexor stretch if desk worker. Hang from bar if possible.</td></tr>
+        <tr><td>Weekly</td><td>Strength training 2-3x. Compound movements. Protect bone density.</td></tr>
+        <tr><td>Monthly</td><td>Range of motion self-assessment. Compare to last month.</td></tr>
+        <tr><td>As needed</td><td>PT evaluation for any pain lasting >2 weeks.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="dark">
+    <div class="tag">Professional routing</div>
+    <h2>When to call the specialist.</h2>
+    <div class="route-box">
+      <h4>Orthopedist / Physical Therapist</h4>
+      <p><strong>Cadence:</strong> As needed (trigger-based)</p>
+      <p><strong>Trigger:</strong> Pain lasting >2 weeks, sudden loss of range of motion, injury, numbness/tingling</p>
+      <p>Go to PT first, not ortho. PT is cheaper, faster, and resolves 80% of musculoskeletal complaints without imaging or surgery.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="tag">Stat buffs</div>
+    <h2>What you gain.</h2>
+    <p style="font-size:0.82rem;color:var(--text-2);max-width:56ch;">Maintaining this department doesn't just prevent failure. It compounds into measurable gains.</p>
+    <div class="stat-buffs">
+      <span class="stat-buff">+Pain-free movement</span>
+      <span class="stat-buff">+Injury resistance</span>
+      <span class="stat-buff">+Bone density</span>
+      <span class="stat-buff">+Posture</span>
+      <span class="stat-buff">+Longevity of independence</span>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>Make this department green.</h2>
+    <p>Pick one signal. Make it visible. Track it for 30 days. That is the entire protocol.</p>
+    <a href="./" class="cta-big" style="margin-top:1.5rem;display:inline-block;text-decoration:none;">&larr; Back to Dashboard</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Selection pressure is not advice.</span>
+  </div>
+
+<script src="../sticky-cta.js"></script>
+</body>
+</html>

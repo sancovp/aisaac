@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dental Health — HealthWorld</title>
+  <style>
+    .hw-back { font-size:0.75rem; color:var(--mercury-blue); text-decoration:none; display:inline-block; margin-bottom:1rem; }
+    .hw-back:hover { text-decoration:underline; }
+    .sig-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; }
+    .sig-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.2rem; }
+    .sig-card h4 { font-size:0.85rem; margin-bottom:0.3rem; }
+    .sig-card p { font-size:0.72rem; color:var(--text-2); line-height:1.6; }
+    .maint-table { width:100%; border-collapse:collapse; margin-top:1rem; font-size:0.8rem; }
+    .maint-table th { text-align:left; padding:0.6rem 0.8rem; border-bottom:1px solid var(--glass-border); color:var(--text-3); font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; }
+    .maint-table td { padding:0.6rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.03); color:var(--text-2); }
+    .route-box { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.5rem; margin-top:1.5rem; }
+    .route-box h4 { font-size:0.9rem; margin-bottom:0.5rem; }
+    .route-box p { font-size:0.75rem; color:var(--text-2); line-height:1.7; }
+    .stat-buffs { display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1rem; }
+    .stat-buff { background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.15); border-radius:var(--r-sm); padding:0.5rem 0.8rem; font-size:0.7rem; color:var(--mercury-teal); font-family:var(--mono); }
+    @media (max-width:600px) { .sig-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="../build.html">Jobworld</a>
+      <a href="./">HealthWorld</a>
+      <a href="../blog/">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <section style="padding-top:6rem;">
+    <a href="./" class="hw-back">&larr; All Departments</a>
+    <div style="max-width:56ch;">
+      <div class="tag">Department</div>
+      <h1><span style="font-size:1.5em;margin-right:0.3em;">🦷</span>Dental Health</h1>
+      <p class="sub">Teeth, gums, jaw. The system that files the loudest complaints when ignored.</p>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="tag">Risk signals</div>
+    <h2>What to watch.</h2>
+    <p style="font-size:0.82rem;color:var(--text-2);max-width:56ch;">Dental problems announce themselves with pain. By the time pain arrives, the damage is structural. Watch the precursors.</p>
+    <div class="sig-grid">
+      <div class="sig-card"><h4>Bleeding gums</h4><p>Gums bleed when brushing or flossing. Early periodontal signal. Not normal. Never normal.</p></div>
+      <div class="sig-card"><h4>Jaw tension / grinding</h4><p>Bruxism. Waking up with sore jaw. Worn enamel. Stress manifesting as structural damage.</p></div>
+      <div class="sig-card"><h4>Sensitivity</h4><p>Hot/cold sensitivity increasing over time. Enamel erosion or cavity forming underneath.</p></div>
+      <div class="sig-card"><h4>Breath changes</h4><p>Persistent bad breath despite hygiene. Bacterial load or deeper infection signal.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="tag">Maintenance</div>
+    <h2>The floor.</h2>
+    <p style="font-size:0.82rem;color:var(--text-2);max-width:56ch;">This is not aspirational. This is the minimum viable maintenance schedule. Everything above this is upside.</p>
+    <table class="maint-table">
+      <thead><tr><th>Cadence</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Daily</td><td>Brush 2x, floss 1x. Non-negotiable baseline.</td></tr>
+        <tr><td>Weekly</td><td>Check gums for color/swelling. Tongue scrape.</td></tr>
+        <tr><td>6 months</td><td>Professional cleaning + exam. X-rays annually.</td></tr>
+        <tr><td>As needed</td><td>Night guard if grinding. Replace toothbrush every 3 months.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="dark">
+    <div class="tag">Professional routing</div>
+    <h2>When to call the specialist.</h2>
+    <div class="route-box">
+      <h4>Dentist + Periodontist (if gum issues)</h4>
+      <p><strong>Cadence:</strong> Every 6 months</p>
+      <p><strong>Trigger:</strong> Any bleeding, pain, sensitivity change, or visible damage</p>
+      <p>Dental is the easiest department to maintain and the most expensive to repair. A $200 cleaning prevents a $5,000 root canal.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="tag">Stat buffs</div>
+    <h2>What you gain.</h2>
+    <p style="font-size:0.82rem;color:var(--text-2);max-width:56ch;">Maintaining this department doesn't just prevent failure. It compounds into measurable gains.</p>
+    <div class="stat-buffs">
+      <span class="stat-buff">+Confidence</span>
+      <span class="stat-buff">+Pain-free eating</span>
+      <span class="stat-buff">+Cardiovascular protection</span>
+      <span class="stat-buff">+Sleep quality (no grinding)</span>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>Make this department green.</h2>
+    <p>Pick one signal. Make it visible. Track it for 30 days. That is the entire protocol.</p>
+    <a href="./" class="cta-big" style="margin-top:1.5rem;display:inline-block;text-decoration:none;">&larr; Back to Dashboard</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Selection pressure is not advice.</span>
+  </div>
+
+<script src="../sticky-cta.js"></script>
+</body>
+</html>

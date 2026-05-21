@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthWorld — TWI</title>
+  <style>
+    .hw-level-bar { display:flex; gap:2px; margin:2rem 0; }
+    .hw-level { flex:1; padding:0.8rem; text-align:center; font-size:0.65rem; font-family:var(--mono); letter-spacing:0.05em; border:1px solid var(--glass-border); transition:all .2s; }
+    .hw-level:first-child { border-radius:var(--r-md) 0 0 var(--r-md); }
+    .hw-level:last-child { border-radius:0 var(--r-md) var(--r-md) 0; }
+    .hw-level.active { background:rgba(94,234,212,0.08); border-color:rgba(94,234,212,0.3); color:var(--mercury-teal); }
+    .hw-level .lv-num { font-size:1.1rem; font-weight:600; display:block; margin-bottom:0.2rem; }
+    .dept-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:1rem; margin-top:2rem; }
+    .dept-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.3rem; transition:all .2s; text-decoration:none; color:var(--text-1); display:block; }
+    .dept-card:hover { border-color:rgba(125,211,252,0.2); transform:translateY(-2px); }
+    .dept-icon { font-size:1.8rem; margin-bottom:0.6rem; display:block; }
+    .dept-card h4 { font-size:0.9rem; margin-bottom:0.3rem; }
+    .dept-card p { font-size:0.72rem; color:var(--text-2); line-height:1.6; }
+    .dept-status { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:0.4rem; vertical-align:middle; }
+    .dept-status.unknown { background:var(--text-3); }
+    .dept-status.green { background:#22c55e; }
+    .dept-status.yellow { background:#eab308; }
+    .dept-status.red { background:#ef4444; }
+    .dept-meta { font-family:var(--mono); font-size:0.55rem; color:var(--text-3); letter-spacing:0.06em; text-transform:uppercase; margin-top:0.6rem; }
+    .how-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem; }
+    @media (max-width:600px) { .how-grid, .dept-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="../learn.html">Learn</a>
+      <a href="../build.html">Jobworld</a>
+      <a href="./">HealthWorld</a>
+      <a href="../blog/">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <section style="padding-top:6rem;">
+    <div style="max-width:56ch;">
+      <div class="tag">HealthWorld</div>
+      <h1>Your body is a company.<br><span>Run it like one.</span></h1>
+      <p class="sub">
+        Every body system is a department. Every department has signals, maintenance schedules, professional routing, and failure cascades. You already know how to run a business. Apply the same discipline to the machine you live inside.
+      </p>
+      <p class="sub" style="margin-top:0;color:var(--text-3);font-size:0.8rem;">
+        Selection pressure is not advice. Your body does not accept intentions, explanations, or future fantasies as treatment. It requires evidence.
+      </p>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="tag">Health level</div>
+    <h2>Where are you?</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);max-width:56ch;">Five levels. Most people oscillate between 1 and 2 for decades. The difference between levels is not knowledge. It is identity.</p>
+
+    <div class="hw-level-bar">
+      <div class="hw-level">
+        <span class="lv-num">L0</span>
+        Do nothing.<br>Die.
+      </div>
+      <div class="hw-level">
+        <span class="lv-num">L1</span>
+        Doctor every N.<br>Still die.
+      </div>
+      <div class="hw-level active">
+        <span class="lv-num">L2</span>
+        Do some stuff.<br>Probably live.
+      </div>
+      <div class="hw-level">
+        <span class="lv-num">L3</span>
+        Actual plan.<br>Stat buffs.
+      </div>
+      <div class="hw-level">
+        <span class="lv-num">L4</span>
+        Compounding.<br>Health sanctuary.
+      </div>
+    </div>
+    <p style="font-size:0.72rem;color:var(--text-3);margin-top:0.5rem;">L2 is where you admit the problem exists. L3 is where you have a plan you actually follow. L4 is where the system runs itself and you compound health like interest.</p>
+  </section>
+
+  <section>
+    <div class="tag">Departments</div>
+    <h2>14 body systems. Each one needs visibility, maintenance, and professional routing.</h2>
+
+    <div class="dept-grid">
+      <a href="dental.html" class="dept-card">
+        <span class="dept-icon">🦷</span>
+        <h4><span class="dept-status unknown"></span>Dental</h4>
+        <p>Teeth, gums, jaw. Grinding, decay, periodontal. The system that files the loudest complaints when ignored.</p>
+        <div class="dept-meta">Dentist &bull; 6mo cadence</div>
+      </a>
+
+      <a href="sleep.html" class="dept-card">
+        <span class="dept-icon">🌙</span>
+        <h4><span class="dept-status unknown"></span>Sleep &amp; Recovery</h4>
+        <p>Sleep quality, apnea, circadian rhythm. You cannot decide to be rested. The body decides.</p>
+        <div class="dept-meta">Sleep specialist &bull; Annual</div>
+      </a>
+
+      <a href="cardio.html" class="dept-card">
+        <span class="dept-icon">🫀</span>
+        <h4><span class="dept-status unknown"></span>Cardiovascular</h4>
+        <p>Heart, blood pressure, cholesterol, metabolic markers. The department that kills silently.</p>
+        <div class="dept-meta">Cardiologist &bull; Annual</div>
+      </a>
+
+      <a href="gut.html" class="dept-card">
+        <span class="dept-icon">🧬</span>
+        <h4><span class="dept-status unknown"></span>Gut &amp; Digestion</h4>
+        <p>Microbiome, digestion, food sensitivities, inflammation. Second brain. Treats complaints as data.</p>
+        <div class="dept-meta">Gastroenterologist &bull; As needed</div>
+      </a>
+
+      <a href="musculoskeletal.html" class="dept-card">
+        <span class="dept-icon">🦴</span>
+        <h4><span class="dept-status unknown"></span>Musculoskeletal</h4>
+        <p>Joints, back, posture, mobility, bone density. The frame everything else hangs on.</p>
+        <div class="dept-meta">Ortho / PT &bull; As needed</div>
+      </a>
+
+      <a href="mental.html" class="dept-card">
+        <span class="dept-icon">🧠</span>
+        <h4><span class="dept-status unknown"></span>Mental Health</h4>
+        <p>Anxiety, depression, cognitive function, stress load. The department that lies about its own metrics.</p>
+        <div class="dept-meta">Therapist / Psychiatrist &bull; Monthly</div>
+      </a>
+
+      <a href="skin.html" class="dept-card">
+        <span class="dept-icon">🛡️</span>
+        <h4><span class="dept-status unknown"></span>Skin &amp; Dermatology</h4>
+        <p>Skin, hair, nails. The boundary layer. External signals of internal state.</p>
+        <div class="dept-meta">Dermatologist &bull; Annual</div>
+      </a>
+
+      <a href="vision.html" class="dept-card">
+        <span class="dept-icon">👁️</span>
+        <h4><span class="dept-status unknown"></span>Vision &amp; Hearing</h4>
+        <p>Eyes, ears, sensory acuity. Degradation is slow enough to normalize. That is the danger.</p>
+        <div class="dept-meta">Optometrist / Audiologist &bull; Annual</div>
+      </a>
+
+      <a href="hormonal.html" class="dept-card">
+        <span class="dept-icon">⚗️</span>
+        <h4><span class="dept-status unknown"></span>Hormonal</h4>
+        <p>Endocrine, thyroid, testosterone, cortisol. The invisible CEO that controls everything else.</p>
+        <div class="dept-meta">Endocrinologist &bull; Annual bloodwork</div>
+      </a>
+
+      <a href="nutrition.html" class="dept-card">
+        <span class="dept-icon">🥗</span>
+        <h4><span class="dept-status unknown"></span>Diet &amp; Nutrition</h4>
+        <p>Macros, micros, hydration, vitamins, minerals. The supply chain. Every other department depends on this one.</p>
+        <div class="dept-meta">Nutritionist &bull; Quarterly review</div>
+      </a>
+
+      <a href="substance.html" class="dept-card">
+        <span class="dept-icon">💊</span>
+        <h4><span class="dept-status unknown"></span>Substance</h4>
+        <p>Alcohol, caffeine, nicotine, supplements, prescriptions. What goes in that isn't food. Track it or it tracks you.</p>
+        <div class="dept-meta">PCP &bull; Ongoing</div>
+      </a>
+
+      <a href="environment.html" class="dept-card">
+        <span class="dept-icon">🌍</span>
+        <h4><span class="dept-status unknown"></span>Environmental</h4>
+        <p>Air quality, ergonomics, toxin exposure, workspace setup. A standing desk is an environment patch, not a health identity.</p>
+        <div class="dept-meta">Self-audit &bull; Quarterly</div>
+      </a>
+
+      <a href="social.html" class="dept-card">
+        <span class="dept-icon">🤝</span>
+        <h4><span class="dept-status unknown"></span>Social &amp; Relationship</h4>
+        <p>Support network, social connection, isolation risk. Loneliness is a mortality factor. Not a feeling. A factor.</p>
+        <div class="dept-meta">Therapist &bull; As needed</div>
+      </a>
+
+      <a href="financial.html" class="dept-card">
+        <span class="dept-icon">💰</span>
+        <h4><span class="dept-status unknown"></span>Financial Health</h4>
+        <p>Assets, cashflow, debt, skill capital, income sources. Money stress is physiological stress. Same cortisol.</p>
+        <div class="dept-meta">Financial advisor &bull; Quarterly</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="tag">How it works</div>
+    <h2>Osmosis Jones your life.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);max-width:56ch;margin-bottom:0.5rem;">Each department gets four things. That is the entire system.</p>
+
+    <div class="how-grid">
+      <div class="menu-item">
+        <h3>Visibility</h3>
+        <p>What are the signals? What numbers should you know? You cannot manage what you cannot see. Most health failures start as invisible signals that got normalized.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Maintenance</h3>
+        <p>What do you do daily, weekly, monthly? Not aspirationally. Actually. The maintenance schedule is the floor. Everything above it is upside.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Professional Routing</h3>
+        <p>Which specialist handles this department? What triggers a visit? When is the cadence? Professional routing removes the "I should probably see someone" loop that never closes.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Identity Adoption</h3>
+        <p>Do you identify as someone who maintains this? A standing desk is environment. A person who tracks their posture is identity. The difference between L2 and L3 is identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="tag">Integration</div>
+    <h2>Same engine. Different world.</h2>
+    <div class="how-grid">
+      <div class="menu-item">
+        <h3>CAVE Automations</h3>
+        <p>Cron-driven health checks. Morning journal scores. Supplement reminders. Appointment booking triggers. The system runs while you live.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sanctuary Score</h3>
+        <p>Six dimensions scored daily. Health is one. HealthWorld is the zoom-in on that dimension — from one number to fourteen departments, each with its own resolution.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="tag">Start here</div>
+    <h2>Pick one department. Make it green.</h2>
+    <p>You do not need to fix everything. Pick the department that files the loudest complaint. Give it visibility, maintenance, routing, and identity. Then pick the next one.</p>
+    <a href="../join.html" class="cta-big" style="margin-top:2rem;display:inline-block;text-decoration:none;">Join Sanctuary Revolution</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Selection pressure is not advice.</span>
+  </div>
+
+<script src="../sticky-cta.js"></script>
+</body>
+</html>
