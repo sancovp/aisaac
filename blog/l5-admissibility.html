@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>L5: Admissibility</h1>
+    <p class="post-subtitle">Why your agent hallucinates and how to stop it.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l5-admissibility-loop.png" alt="Admissibility loop — agent, ontology, reality sensor in a validation triangle" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>The Reason Agents Lie</h2>
+    <p>Your agent hallucinates because its outputs are unconstrained strings. A field called <code>animal</code> can hold "Dog" or "cat" or "purple thunderclap" and nothing in the system checks. The schema says "string." Strings can be anything. So the agent says anything.</p>
+    <p>L4 harnesses bound the <em>shape</em> of the output. L5 bounds the <em>meaning</em>.</p>
+
+    <blockquote>Admissibility doesn't require proof. It requires being agreeable with the ontology.</blockquote>
+
+    <hr>
+
+    <h2>The Progression</h2>
+
+    <h3>Step 1 — Start with a schema</h3>
+    <p>You probably already have one. A Pydantic model. A JSON schema. Some fields with types.</p>
+<pre>{
+  "sanctuary_function": "string",
+  "domain": "string",
+  "level": "integer"
+}</pre>
+    <p>The type checker only knows "is this a string." It does not know what the string <em>means</em>.</p>
+
+    <h3>Step 2 — Break the keys into a semantic web</h3>
+    <p>Each key becomes a typed relationship. <code>sanctuary_function</code> becomes <code>has_sanctuary_function</code>. The value becomes a node — not a string. A node with a type. A type that lives in an ontology.</p>
+<pre>(Concept) -[has_sanctuary_function]-> (Sanctuary_Function)
+(Concept) -[has_domain]-> (Domain)
+(Concept) -[has_level]-> (Complexity_Level)</pre>
+    <p>Now the system can ask: <em>does the value match the expected type? Does the type exist in our ontology? Are the relationships well-formed?</em></p>
+
+    <h3>Step 3 — The KG IS the ontology</h3>
+    <p>This is the key move. The knowledge graph is not a database that <em>stores</em> the ontology. The KG <em>is</em> the ontology, structurally. Every node has a type. Every type has restrictions. Every edge resolves from primitive claims. Geometry solved.</p>
+
+    <hr>
+
+    <h2>The Architecture</h2>
+<pre>Agent ←→ Ontology ←→ Reality sensor
+
+  Agent       — proposes new facts/concepts
+  Ontology    — the typed graph of what's allowed
+  Reality     — code, files, observations, measurements
+  sensor</pre>
+    <p>Two layers of ontology:</p>
+    <ul>
+      <li><strong>Foundation ontology</strong> — invariant. The primitives. Never changes. Defines what a <em>thing</em> is, what a <em>relationship</em> is, how types compose.</li>
+      <li><strong>Accumulated ontology</strong> — grows as you learn. Domain-specific. Project-specific. Built from the foundation primitives.</li>
+    </ul>
+
+    <h2>YOUKNOW: The Validator</h2>
+    <p>YOUKNOW is our validator. Every concept that enters the system gets checked against the OWL ontology. If the shape doesn't match the type's restrictions, the concept is rejected — marked as SOUP (Semantically Open Unvalidated Proposition), not admitted as knowledge.</p>
+    <p>SOUP is the holding pen. Concepts in SOUP can be repaired — fill the missing fields, fix the relationships, re-submit. Or they stay in SOUP forever, never participating in inference.</p>
+
+    <h3>A real example</h3>
+    <p>An agent emits this entity chain:</p>
+<pre>🐛⛓️ Bug_Voice_Agent_Cant_Hear_Caller {
+  is_a=Bug,
+  desc="Caller's audio is silent in the transcript"
+}
++{part_of=Twi_Voice_Agent_Stack}
++{has_trigger=Inbound_Call_Lambda}
++{has_observed_behavior=Empty_Transcript_String}</pre>
+    <p>YOUKNOW checks: does <code>Bug</code> exist as a class? Yes. Does it require <code>part_of</code> a <code>Giint_Component</code>? Yes. Is <code>Twi_Voice_Agent_Stack</code> a <code>Giint_Component</code>? Check the graph. Yes. Are <code>has_trigger</code> and <code>has_observed_behavior</code> valid relationships for <code>Bug</code>? Check the OWL restrictions. Yes. All checks pass. Admitted as knowledge.</p>
+    <p>If <em>any</em> check fails, the concept hits SOUP and the validator returns a message telling the agent exactly what's missing. The agent reads the message, fixes the chain, re-emits. The system never admits a malformed claim.</p>
+
+    <hr>
+
+    <h2>Why This Is The Deep Path</h2>
+    <p>L4 makes the agent reliable. L5 makes the agent <em>incapable of lying</em>. Different category of guarantee.</p>
+    <p>L4 says: "the output will have the right shape."</p>
+    <p>L5 says: "the output will refer to real things, with real relationships, in a graph that the system can independently verify."</p>
+
+    <blockquote>The result: the agent cannot hallucinate because the geometry is solved.</blockquote>
+
+    <p>You give up something to get this. You give up speed. You give up the freedom to throw any string at the system. You commit to an ontology, which means you commit to <em>thinking about your domain hard enough to type it</em>. Most people won't do this. That's why most agents stay at L4.</p>
+
+    <h2>What This Unlocks</h2>
+    <p>Once admissibility is in place, the next two layers become possible:</p>
+    <ul>
+      <li><strong>L6 — Concentration:</strong> measure how well the agent uses the ontology, prevent drift over long runs.</li>
+      <li><strong>L7 — Emergence:</strong> meta-compile the program's language into the KG so the system self-evolves.</li>
+    </ul>
+    <p>Without L5, those don't work. You can't measure ontology usage if there's no ontology. You can't self-evolve a language that has no formal grounding. L5 is the gate.</p>
+
+    <h2>Where To See It Running</h2>
+    <p>YOUKNOW + CartON is the live admissibility stack. Every concept emitted in any of our agent sessions runs through YOUKNOW. The blog you're reading was written by an agent that has L5 enforced on every entity chain. The proof is the system.</p>
+
+    <div class="post-nav">
+      <a href="l4-harnesses.html">← L4: Harnesses</a>
+      <a href="l6-concentration.html">L6: Concentration →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Ready to build this yourself?</p>
+    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
+    <div class="blog-cta-actions">
+      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

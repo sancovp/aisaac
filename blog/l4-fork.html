@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>The Fork</h1>
+    <p class="post-subtitle">Why most people should stop at L4.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l4-fork.png" alt="A glowing path splitting into two roads at L4 — one leads to deployment and profit, the other leads upward toward admissibility" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>The Decision Nobody Tells You About</h2>
+    <p>At L4 the road splits. Most people don't know it splits. They keep walking and don't notice they chose a path.</p>
+    <p>The two paths look identical from L3. They look identical from inside L4. They diverge only in what you're going to need <em>next</em>, and what you're going to need next depends entirely on what your agent is doing for you.</p>
+
+    <blockquote>L1–L4 is where the money is. Most businesses should stop here. The rest of this post is about how to know if you're in the "most businesses" group or not.</blockquote>
+
+    <h2>Path A — Deploy And Profit</h2>
+    <p>You have a working harness around a competent agent with the right context. Your voice agent books appointments. Your chatbot answers FAQs. Your outreach agent personalizes cold emails. Your scheduling agent juggles a calendar.</p>
+    <p>It works. Your customers like it. You charge for it. You collect.</p>
+    <p>At Path A, your agent has <strong>string variance</strong>. You ask it for "the dog's breed" and sometimes you get "Golden Retriever" and sometimes you get "golden retriever" and sometimes you get "Golden Retriever (a kind of dog)". For most use cases this is fine. The booking gets booked. The email goes out. The customer is happy.</p>
+    <p>You don't need an ontology to book a haircut. You don't need a knowledge graph to send a follow-up email. You don't need admissibility logic for a chatbot that answers shipping questions.</p>
+    <p>If your agent's job is simple enough that occasional fuzziness is cheap to fix manually — <strong>stay on Path A</strong>. Ship it. Make money. Don't let me or anyone else talk you into building infrastructure you don't need.</p>
+
+    <h2>Path B — The Admissibility Path</h2>
+    <p>Now imagine your agent makes decisions that cost real money if wrong.</p>
+    <p>It approves loans. It diagnoses faults. It composes legal language. It writes medical documentation. It manages an inventory worth six figures. It runs a portfolio. It coordinates a fleet.</p>
+    <p>At Path B, "Golden Retriever" vs "golden retriever" is no longer a typo. It's two different keys in a graph. Two different rows in a database. Two different decisions downstream. The agent that confidently calls the wrong tool with confidently wrong arguments now costs you money every single time it does that.</p>
+    <p>You can't fix this with a longer prompt. You can't fix it with more examples. You can't fix it by adding another tool. You have to make the agent <em>prove</em> what it says — and to prove it, the outputs have to compose from validated parts. That's L5. That's admissibility.</p>
+    <p>And once you go to L5, you'll need L6 to keep it on the rails. And once you have L6, you'll start noticing the system can extend itself — that's L7.</p>
+
+    <h2>The Honest Heuristic</h2>
+    <p>Here's how to know which path you're on. Ask these three questions:</p>
+    <h3>1. What does a wrong answer cost?</h3>
+    <p>If a wrong answer costs an apology email — Path A. If a wrong answer costs five figures, a customer, a lawsuit, or a life — Path B.</p>
+    <h3>2. Does the system need to get better over time?</h3>
+    <p>If the agent's job is roughly the same every day forever — Path A. If the agent needs to learn, compound, get smarter from its own work — Path B.</p>
+    <h3>3. Does string variance break your pipeline?</h3>
+    <p>If "dog" and "Dog" and "canine" all work the same downstream — Path A. If those are three different rows in a table and your reports break when they don't match — Path B.</p>
+    <p>Two yeses and you're a Path B. Two nos and you're absolutely a Path A and any consultant trying to sell you ontology engineering is fleecing you.</p>
+
+    <h2>Why I'm Telling You This</h2>
+    <p>Most of the AI industry sells L1 and pretends it's L5. The pretense is the scam.</p>
+    <p>We sell every layer honestly. If your business is a Path A business, we'll build you a clean L4 voice agent and you'll never need to think about ontology or admissibility. You'll pay for the agent. It'll work. That's the engagement.</p>
+    <p>If your business needs Path B — if your agent is going to make real decisions about real money — we'll build you SOMA on top. Different stack. Different price. Different conversation.</p>
+    <p>Nobody else draws this line because everyone else is selling the same thing to everyone and pricing it like Path B.</p>
+
+    <h2>When To Stop</h2>
+    <p>L4 is a stable resting place. If you stop here intentionally, with a clean harness around a competent agent doing a simple job, <em>you have a real AI business</em>. You're not behind. You're done.</p>
+    <p>The mistake is climbing past L4 because you read a blog post and felt like you should. Don't. The infrastructure cost of L5+ is enormous. The agents at L5+ are slower, more expensive, harder to ship. You only pay that cost if the business case forces you.</p>
+    <p>Most don't. Be honest about which one you are.</p>
+
+    <div class="post-nav">
+      <a href="l7-emergence.html">← L7: Emergence</a>
+      <a href="sanctot-example.html">SANCTOT Example →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-transform">
+    <p class="blog-cta-label">Want this for your business?</p>
+    <p class="blog-cta-desc">We build AI systems that actually work &mdash; voice agents, automation, compound intelligence. Not prompt templates. Not chatbots.</p>
+    <div class="blog-cta-actions">
+      <a href="../transform.html" class="blog-cta-primary">See Services</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

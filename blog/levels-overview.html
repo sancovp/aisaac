@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>The 7 Levels of Agent Engineering</h1>
+    <p class="post-subtitle">Why most people stop at L2 and think they're at L5.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l1-l7-ladder.png" alt="The 7 levels of agent engineering as a glowing ladder with a fork at level 4" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>The Ladder Nobody Climbs</h2>
+    <p>There are seven levels of agent engineering. Almost nobody in the industry is past level two. Most of the people selling you "AI agents" at five-figure prices are working at L1.</p>
+    <p>This isn't a hot take. It's a complexity classification. Each level requires a discipline the previous level didn't need. You can't get to L5 by writing a longer prompt. You can't get to L6 by adding more tools. The levels are not a difficulty curve — they're <strong>different problems that look similar from the outside</strong>.</p>
+
+    <blockquote>The setup that agencies charge $5K-35K for is prompt engineering plus platform config. Ten minutes of actual work, wrapped in a white-label dashboard. That's L1 with a logo.</blockquote>
+
+    <h2>L1 — Prompts</h2>
+    <p>The monkey layer. You write text, the model produces text. Every AI agency on Earth is selling this and calling it something else. ChatGPT wrappers. Persona templates. "Custom GPTs." Vapi scripts.</p>
+    <p>What you're paying for is somebody who learned a few prompt patterns and a platform login. It is not engineering. It is typing.</p>
+
+    <h2>L2 — Tools</h2>
+    <p>The model can call functions. Function calling. MCP. Tool use. Now the agent can <em>do</em> things — query a database, send an email, hit an API.</p>
+    <p>This is where the marketing copy turns into "AI agents that take action." It sounds bigger than it is. At L2 you have a prompt that picks a tool and fills in arguments. The model is still just generating text — some of that text just happens to be a function name.</p>
+    <p>L2 is necessary. It is not sufficient. An L2 agent will confidently call the wrong tool with confidently wrong arguments. Because nothing in L1 or L2 makes it know what it's doing.</p>
+
+    <h2>L3 — Context</h2>
+    <p>Now the agent has knowledge. Wikis, RAG, skills, retrieval. The "second brain" everybody got excited about when Karpathy said it.</p>
+    <p>L3 is where the agent stops sounding generic. It knows your business, your patterns, your past decisions. It pulls the right document into the prompt at the right time.</p>
+    <p>But — and this is the part the second-brain crowd glosses over — context without structure is just a bigger prompt. The agent reads. It does not understand. We'll come back to this.</p>
+
+    <h2>L4 — Harnesses</h2>
+    <p>This is where engineering starts.</p>
+    <p>A harness is runtime control over what flows into and out of the agent. Hooks. Middleware. Workflow orchestration. Routing logic. Validators. The harness is the system <em>around</em> the agent that determines what it sees, what it can do, when it runs, and what happens to its output.</p>
+    <p>Skills are L3 content delivered through an L4 harness. MCP is L2 capability exposed through an L4 harness. The harness is what turns scattered capability into a system.</p>
+    <p><strong>L4 is where the fork happens.</strong></p>
+
+    <h3>The Fork: Path A vs Path B</h3>
+    <p>At L4, the road splits.</p>
+    <p><strong>Path A — Deploy and profit.</strong> You have a working harness around a competent agent with the right context. You ship it. You make money. Most agencies that <em>actually deliver value</em> live here. This is honest L4 work. It works.</p>
+    <p><strong>Path B — The admissibility path.</strong> You decide the agent isn't allowed to be wrong. Now you're going to L5, L6, L7. You're going to make the agent <em>prove</em> what it says.</p>
+    <p>Both paths are legitimate. Path A pays the bills. Path B is what we're building. Most people don't even know Path B exists.</p>
+
+    <h2>L5 — Admissibility</h2>
+    <p>The agent's outputs must compose from validated parts.</p>
+    <p>Schema keys become a semantic web. The semantic web becomes an ontology. The ontology becomes a constraint the agent literally cannot violate, because the structure of validated observations prevents the wrong composition from being admitted.</p>
+    <p>An L5 agent can't hallucinate the way an L4 agent can. Not because we added a "fact check" step. Because every claim has to chain back to validated observations through a composition of parts that each individually check out. If the chain doesn't close, the claim doesn't ship.</p>
+    <p>This is what we call <a href="admissibility-engineering.html" style="color:var(--mercury-blue);">admissibility engineering</a>. It's the discipline of making AI reason correctly, not just fluently.</p>
+
+    <h2>L6 — Concentration</h2>
+    <p>L5 controls what the agent says. L6 controls how the agent thinks.</p>
+    <p>In-context learning metrics. CoR (chain of reasoning) anti-drift. Traceback as self-reflection. Compound intelligence. The agent observes its own cognition, scores it, and corrects.</p>
+    <p>L6 is when the agent stops being a thing you operate and starts being a thing that monitors itself. The metrics aren't bolted on. They're <em>how it thinks</em>. Drift is detected and corrected in the same loop that produces the work.</p>
+    <p>This is where most engineers stop, if they ever get here. The infrastructure to do L6 properly does not exist as a product anywhere. You have to build it.</p>
+
+    <h2>L7 — Emergence Engineering</h2>
+    <p>The system builds itself.</p>
+    <p>A human plus AI team that knows how to build other human plus AI teams. Emergent building concatenation. New capabilities composed from existing ones at runtime. The system isn't being maintained. It's <em>extending</em>.</p>
+    <p>L7 is not a software pattern. <strong>L7 is a person.</strong> Specifically, a person who has internalized L1 through L6 well enough that the team they form with their AI infrastructure starts producing capability that wasn't designed in advance.</p>
+    <p>L7 cannot be sold as a product. It cannot be compiled. It is the operator at the top of the stack. Every agency you'll ever talk to is selling L1 and pretending it's L7. We're the only people I know of openly discussing what L7 actually is.</p>
+
+    <h2>The Honest Map</h2>
+    <p>So where is the industry?</p>
+    <ul>
+      <li><strong>99% of "AI agencies":</strong> L1, sometimes L2. Charging L7 prices for prompt templates.</li>
+      <li><strong>Serious engineering teams:</strong> L4 Path A. Real harnesses, real value, honest work.</li>
+      <li><strong>Research labs:</strong> Partial L5, scattered L6. Mostly in papers, not products.</li>
+      <li><strong>SOMA / GNOSYS / SANCREV (us):</strong> Full L5 implemented, L6 in production, L7 is the operator.</li>
+    </ul>
+    <p>If you're paying $5K, $10K, $35K for "AI" and what you got was prompts and a dashboard — you got L1 dressed as L5. That's not your fault. The vocabulary doesn't exist outside this site.</p>
+    <p>Now you have the vocabulary. Next post: what L1 and L2 actually are, and why most people stop there.</p>
+
+    <div class="post-nav">
+      <span></span>
+      <a href="l1-l2-prompts-tools.html">L1-L2: Prompts and Tools →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">The Sanctuary Revolution community is where builders learn L1-L7 together. Open source tools, weekly sessions, and a path from where you are to where you want to be.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Start Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

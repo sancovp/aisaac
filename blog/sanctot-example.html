@@ -1,0 +1,166 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>SANCTOT: A Complete L5 Example</h1>
+    <p class="post-subtitle">From "dad always has snacks" to a working ontology compiler.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/sanctot-pipeline.png" alt="A 7-stage pipeline transforming an ordinary human situation into a structured sanctuary algebra" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>One Sentence Is Not A Specification</h2>
+    <p>Everyone says "L5 means the agent reasons against an ontology." Cool. What does that actually <em>look like</em>?</p>
+    <p>Here is a working L5 system, end to end. It is small enough to read in one sitting. The source is open. The pipeline is exactly seven typed stages. The output is a knowledge graph fragment, not a paragraph.</p>
+
+    <blockquote>An L5 system's output is not prose. It is typed structure that composes with other typed structure. The structure IS the constraint that prevents hallucination.</blockquote>
+
+    <h2>The Origin: Dad Always Has Snacks</h2>
+    <p>My dad always has snacks. If you go on a walk with him, a granola bar appears. If you visit, there's cheese. If you're upset, there's something with chocolate in it.</p>
+    <p>I asked: <em>why does my dad always have snacks?</em></p>
+    <p>The shallow answer is "he's a thoughtful guy." The deep answer is that "dad has snacks" is a <strong>sanctuary meme</strong> — a primitive survival operation wearing a costume of ordinary domesticity. A surplus-bearing protector anticipates dependent bodily dysregulation before distress collapses exploration. Translation: dad carries snacks so I never get hungry enough to stop playing. Without that, children stop exploring.</p>
+    <p>The primitive: <code>carried_surplus_buffer</code>. The function: <code>provisions(agent, dependents, buffer_resource)</code>. The promise: "surplus is for you." The ritual: maintaining the buffer.</p>
+    <p>If I can resolve <em>dad has snacks</em> into that structure, I can resolve <em>any</em> ordinary human thing into structure. That's SANCTOT.</p>
+
+    <h2>The Seven-Step Chain</h2>
+    <p>SANCTOT is a compiler. Input: any ordinary human thing. Output: a typed 7-stage sanctuary algebra. Here's the actual system prompt, lifted directly from <code>sanctot_mcp/utils.py</code>:</p>
+    <pre>You are the Sanctuary Compiler. You take any ordinary human thing
+and resolve it into sanctuary algebra.
+
+Every human behavior is a sanctuary operation — maintaining, building,
+repairing, or transferring protected space. Your job is to reveal
+what was always there.
+
+For any input, produce a JSON object with EXACTLY these fields:
+
+{
+  "sanc_meme_name": "short_snake_case_slug — funny, memorable, meme-grade",
+  "ordinary_human_thing": "restate the input clearly in one sentence",
+  "primitive_survival_substrate": "what survival/coherence function is
+      actually happening? Be RAZOR SPECIFIC in biological/social
+      primitive terms.",
+  "sanctuary_maintenance_function": "what protected field is being
+      maintained, repaired, or violated? Who is protected? What is
+      the buffer?",
+  "rite_role_transition": {
+    "from_role": "what the being currently is",
+    "to_role": "what the being must become",
+    "transition_logic": "how the transition works",
+    "failure_mode": "what breaks if the transition fails — name the
+        CASCADE specifically"
+  },
+  "algebra": "the symbolic chain: A → B → C → D",
+  "when_misconfigured": "what this BECOMES when badly configured",
+  "when_reconfigured": "what this BECOMES when properly configured",
+  "promise_structure": "what must be kept across time",
+  "ritual_comedy_form": "how humans encode this without saying the
+      terrifying part",
+  "agent_action": "one concrete thing to build, record, teach, protect,
+      or change",
+  "universal_pattern": "deepest universalizable pattern name",
+  "relates_to": ["list of other sanctuary memes this connects to"]
+}</pre>
+
+    <p>The fields aren't decoration. Each field corresponds to a <strong>typed concept in the knowledge graph</strong>. The output is a SancTot dataclass:</p>
+
+    <pre>@dataclass
+class SancTot:
+    sanc_meme_name: str
+    ordinary_human_thing: str
+    primitive_survival_substrate: str
+    sanctuary_maintenance_function: str
+    rite_role_transition: RiteRoleTransition
+    algebra: str
+    when_misconfigured: str
+    when_reconfigured: str
+    promise_structure: str
+    ritual_comedy_form: str
+    agent_action: str
+    universal_pattern: str
+    relates_to: list[str] = field(default_factory=list)</pre>
+
+    <h2>From Dataclass To Graph</h2>
+    <p>This is where it stops being JSON and starts being L5. The <code>SancTotAlgebraicForm.from_sanctot()</code> classmethod converts the resolved dataclass into a chain of typed concepts with typed relationships:</p>
+
+    <pre>chain = [
+    {"step": "primitive_substrate",
+     "concept": f"Sanctuary_Primitive_{s.sanc_meme_name}",
+     "is_a": "Sanctuary_Primitive",
+     "content": s.primitive_survival_substrate},
+    {"step": "sanctuary_function",
+     "concept": f"Sanctuary_Function_{s.sanc_meme_name}",
+     "is_a": "Sanctuary_Function",
+     "content": s.sanctuary_maintenance_function,
+     "depends_on": f"Sanctuary_Primitive_{s.sanc_meme_name}"},
+    {"step": "role_transition",
+     "concept": f"Sanctuary_Transition_{s.sanc_meme_name}",
+     "is_a": "Sanctuary_Transition",
+     "depends_on": f"Sanctuary_Function_{s.sanc_meme_name}"},
+    {"step": "promise_structure",
+     "concept": f"Sanctuary_Promise_{s.sanc_meme_name}",
+     "is_a": "Sanctuary_Promise",
+     "depends_on": f"Sanctuary_Transition_{s.sanc_meme_name}"},
+    {"step": "ritual_form",
+     "concept": f"Sanctuary_Ritual_{s.sanc_meme_name}",
+     "is_a": "Sanctuary_Ritual",
+     "depends_on": f"Sanctuary_Promise_{s.sanc_meme_name}"},
+    {"step": "agent_action",
+     "concept": f"Sanctuary_Action_{s.sanc_meme_name}",
+     "is_a": "Sanctuary_Action",
+     "depends_on": f"Sanctuary_Ritual_{s.sanc_meme_name}"},
+    {"step": "universal_pattern",
+     "concept": f"Sanctuary_Pattern_{s.universal_pattern}",
+     "is_a": "Sanctuary_Universal_Pattern"},
+]</pre>
+
+    <p>Every resolution produces seven concepts. Each concept has a type (<code>is_a</code>) and a dependency (<code>depends_on</code>). The chain composes. The chain commits to the knowledge graph. The next resolution can <em>reference</em> the concepts produced by this one through the <code>relates_to</code> field.</p>
+    <p>This is L5. The output is not text. The output is structured nodes with typed edges that must validly compose to be admitted.</p>
+
+    <h2>SANCocrates: Multi-Meme Extraction</h2>
+    <p>The L5 primitive is <code>resolve()</code> — one meme in, one chain out. But humans don't speak in single memes. A rant about your job contains a dozen sanctuary operations layered on top of each other.</p>
+    <p>SANCocrates is the agent persona that wraps the SANCTOT primitive. You give it a paragraph of ordinary human grumbling. It identifies N sanctuary memes inside the paragraph. Then it calls <code>sanctuary_resolve()</code> once per meme.</p>
+    <p>Same compiler. Different orchestration layer. The compiler stays small and typed. The orchestration handles the messiness.</p>
+    <p>This is the L4/L5 boundary made concrete. SANCTOT itself (the compiler) is L5 — it produces typed structure with deduction chains. SANCocrates (the persona around it) is L4 — it's a harness that picks when to call the L5 primitive.</p>
+
+    <h2>Why This Is The L5 Example</h2>
+    <p>Three things have to be true for something to count as L5:</p>
+    <ol>
+      <li><strong>The output is typed structure, not prose.</strong> SANCTOT produces seven typed concepts with typed relationships. The output is a graph fragment.</li>
+      <li><strong>The structure composes.</strong> Each concept depends_on the previous one. The chain forms a closure or it doesn't. If it doesn't, the resolution failed — the agent literally cannot produce a half-resolved chain that looks complete.</li>
+      <li><strong>The graph extends across runs.</strong> Each <code>relates_to</code> link connects to memes produced by prior resolutions. The knowledge graph compounds. The 100th resolution is not the same as the first — it has access to 99 prior resolutions to reference.</li>
+    </ol>
+
+    <h2>Where The Code Lives</h2>
+    <p>SANCTOT is open source. The compiler is about 200 lines of Python. The complete source — <code>resolve()</code>, <code>SancTot</code>, <code>SancTotAlgebraicForm</code>, the CartON queue writer — is at <code>sanctot_mcp/utils.py</code>. You can read it in ten minutes. You can fork it. You can replace the LLM call with your own model. You can swap the ontology for your domain.</p>
+    <p>This is what L5 looks like at small scale. It's not exotic. It's not even hard, once you've seen one. The hard part was deciding the output had to be typed structure instead of prose — and that decision is the same decision at any scale.</p>
+    <p>Build that, and you have L5. Everything past it is more of the same idea, with more constraints.</p>
+
+    <div class="post-nav">
+      <a href="l4-fork.html">← The Fork</a>
+      <a href="levels-overview.html">The 7 Levels →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Ready to build this yourself?</p>
+    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
+    <div class="blog-cta-actions">
+      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

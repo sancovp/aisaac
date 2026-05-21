@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>L1-L2: Prompts and Tools</h1>
+    <p class="post-subtitle">The floor everyone thinks is the ceiling.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l1-l2-prompt-tool-loop.png" alt="Simple prompt and tool loop between user, AI, and an external tool" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>L1 — The Monkey Layer</h2>
+    <p>L1 is prompt engineering. You write text to an LLM. It writes text back. That's the entire game.</p>
+    <p>Every "AI agency" you've heard of operates here. The "custom GPT" people. The Vapi voice agent resellers. The GoHighLevel white-labelers. The "AI consultant" who charges $5,000 for a "discovery workshop" and then sells you $1,500/month for a chatbot.</p>
+    <p>What you're actually buying:</p>
+    <ul>
+      <li>A system prompt somebody wrote in an afternoon.</li>
+      <li>A SaaS subscription (Vapi, Retell, Synthflow, etc.) marked up 4-10x.</li>
+      <li>A GoHighLevel dashboard with their logo on it.</li>
+      <li>An onboarding call where they ask you the same questions you already answered on the intake form.</li>
+    </ul>
+    <p>The work, when you watch somebody actually do it, is about ten minutes. Maybe an hour if they care. Then it's the dashboard for the next twelve months.</p>
+
+    <blockquote>The brand IS the product for them. Nobody in the AI agency space has proprietary voice AI. They're all reselling the same three platforms with different fonts.</blockquote>
+
+    <h2>What Prompt Engineering Actually Is</h2>
+    <p>L1 is not nothing. A well-written prompt outperforms a badly-written prompt by a huge margin. The skill is real. The problem is that the skill is small.</p>
+    <p>A good L1 practitioner knows:</p>
+    <ul>
+      <li>How to structure a system prompt so the model stays on task.</li>
+      <li>How to use examples (few-shot) to lock in output format.</li>
+      <li>How to prevent the model from refusing reasonable requests.</li>
+      <li>How to keep responses short or long as needed.</li>
+      <li>Which model handles which kind of input best.</li>
+    </ul>
+    <p>This is honest L1. It is worth maybe a few hundred dollars of setup per use case. It is not worth $35,000.</p>
+
+    <h2>L2 — Tools</h2>
+    <p>L2 is when the model gets to call functions. The mechanism has different names depending on the platform — function calling, tool use, MCP — but underneath it's the same thing: the model generates structured output, the runtime parses it as a function call, executes the function, and feeds the result back.</p>
+    <p>Here's the canonical loop, stripped of marketing language:</p>
+    <pre>user: "What's the weather in Tokyo?"
+model: { "tool": "get_weather", "args": { "city": "Tokyo" } }
+runtime: get_weather("Tokyo") → "18°C, light rain"
+model: "It's 18°C and lightly raining in Tokyo right now."</pre>
+    <p>That's L2. The model picks a tool. The runtime runs it. The model uses the result. Repeat for arbitrary capability.</p>
+    <p>MCP is L2's spec — a clean way to expose tools to any model. It's a great spec. It is also <strong>just plumbing</strong>. MCP at L2 means "I can call an API." It doesn't make the agent smart. It doesn't make the agent right. It makes the agent <em>reachable</em>.</p>
+
+    <h2>Why MCP Doesn't Become Powerful Until L4</h2>
+    <p>This is the part people miss.</p>
+    <p>MCP by itself is a doorway. The model can now talk to your CRM, your calendar, your database. That's capability. Capability is not intelligence.</p>
+    <p>An L2 agent with MCP will:</p>
+    <ul>
+      <li>Call the wrong tool with confidently wrong arguments.</li>
+      <li>Skip the tool call entirely and hallucinate the result.</li>
+      <li>Call the right tool, get a result, and then narrate something that contradicts the result.</li>
+      <li>Burn through your API quota chasing a goal that doesn't make sense.</li>
+    </ul>
+    <p>MCP only becomes powerful when you wrap it in <strong>L4 harnesses</strong> — when the runtime can decide <em>which</em> tools the agent gets, <em>when</em> it gets them, <em>what</em> happens to the results, and <em>how</em> the agent's reasoning gets validated before it acts. The tool layer without the harness layer is a child with a chainsaw.</p>
+
+    <blockquote>L2 alone is "the AI can call an API." L4 around L2 is "the AI calls the right API at the right time with the right arguments and the system catches it when it doesn't." Same tools. Different universe.</blockquote>
+
+    <h2>What L1 + L2 Agencies Are Actually Selling</h2>
+    <p>Strip the branding off and you get this:</p>
+    <pre>SYSTEM PROMPT (L1):
+  "You are a helpful AI assistant for {business_name}.
+   When customers ask about hours, say {hours}.
+   When they want to book, use the booking tool."
+
+TOOLS (L2):
+  - book_appointment(name, email, date)
+  - check_availability(date)
+  - send_sms(phone, message)</pre>
+    <p>That's it. That's the $5K-35K product. A system prompt, three tools wired to Calendly and Twilio, deployed on Vapi or Retell, fronted by a GoHighLevel dashboard, branded with your logo.</p>
+    <p>The setup takes ten minutes if the agency knows what they're doing. The pricing reflects the brand, not the work.</p>
+
+    <h2>None of This Is a Scam</h2>
+    <p>L1 and L2 work. For a lot of small businesses, an L1+L2 voice agent is a real upgrade — it answers calls 24/7, books appointments, qualifies leads. The thing it replaces is "nobody picks up the phone after 5pm." The thing it replaces costs them sales.</p>
+    <p>The problem isn't that L1 and L2 don't deliver value. The problem is:</p>
+    <ol>
+      <li><strong>The price is detached from the work.</strong> You're paying for the brand, not the build.</li>
+      <li><strong>It doesn't go anywhere.</strong> L1 and L2 don't compound. You can't iterate to L5 from an L1 deployment because the abstractions are wrong.</li>
+      <li><strong>The agent is permanently stupid.</strong> Without L3 context, L4 harness, L5 admissibility, it'll hallucinate, miscall tools, and lose customer trust in ways you'll only notice after it's already cost you.</li>
+    </ol>
+
+    <h2>Where to Go From Here</h2>
+    <p>If you need a voice agent or chatbot <em>right now</em> and you don't want to build, hire an L1+L2 agency. Negotiate the price down by 80%. They'll still make money.</p>
+    <p>If you're building something that needs to actually <em>know</em> what it's doing — keep going. L3 is next. That's where the agent starts getting a brain.</p>
+
+    <div class="post-nav">
+      <a href="levels-overview.html">← The 7 Levels</a>
+      <a href="l3-context.html">L3: Context Engineering →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-transform">
+    <p class="blog-cta-label">Want this for your business?</p>
+    <p class="blog-cta-desc">We build AI systems that actually work &mdash; voice agents, automation, compound intelligence. Not prompt templates. Not chatbots.</p>
+    <div class="blog-cta-actions">
+      <a href="../transform.html" class="blog-cta-primary">See Services</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

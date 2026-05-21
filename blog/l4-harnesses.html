@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>L4: Harnesses</h1>
+    <p class="post-subtitle">Runtime control over your agent's mind.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l4-harness-flow.png" alt="Harness flow diagram — gates filtering information between user and AI" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>This Is Where Things Get Real</h2>
+    <p>L1 was prompts. L2 added tools. L3 gave the agent skills and a wiki it could read. L4 is where you stop asking the agent nicely and start <em>controlling what it sees, when, and how.</em></p>
+    <p>A harness controls what information flows TO the agent and FROM the agent at runtime. Not at design time. Not in the system prompt. At runtime, on every turn, programmatically.</p>
+
+    <blockquote>The harness is not a safety net. It's the rails. Without rails, the agent freestyles. Freestyle is fine for demos. Rails are for production.</blockquote>
+
+    <hr>
+
+    <h2>MCPs At L2 vs MCPs At L4</h2>
+    <p>An MCP at L2 says: "the agent can call this API." That's a capability. That's L2.</p>
+    <p>An MCP at L4 says: "before the agent calls this, run a pre-check. After the agent calls this, transform the output. If the output drifts from the schema, reject it and re-prompt." That's a <em>harness</em>. Same MCP. Different layer.</p>
+    <p>The wrapper around the tool IS the harness. The tool itself is just plumbing.</p>
+
+    <h2>The Components</h2>
+
+    <h3>Hooks</h3>
+    <p>A hook fires at a fixed point in the runtime. <code>PreToolUse</code> fires BEFORE the agent's tool call lands. <code>Stop</code> fires AFTER the agent says "I'm done." Hooks see the state. Hooks can mutate the state. Hooks can block.</p>
+    <p>Use them to enforce things the agent has no incentive to enforce on itself:</p>
+<pre>PreToolUse:
+  - Did the agent read the file before editing it?
+  - Is this tool allowed in the current context?
+  - Does the payload match the schema?
+
+Stop:
+  - Did the agent emit the required entity chain?
+  - Did the agent close the loop on what it promised?
+  - Is there a structural proof of completion?</pre>
+
+    <h3>CoR Templates</h3>
+    <p>CoR is Chain of Reasoning. A CoR template has slots — blanks the LLM <em>must</em> fill on every turn. Filling them forces the model to connect what it knows to what it's doing right now.</p>
+<pre>"Now I understand {{concept}} applies to {{task}}
+ because {{connection}}."</pre>
+    <p>A static sentence with no blanks activates nothing. The blanks are the mechanism. The template constrains the geometry of the response without dictating the content.</p>
+
+    <h3>Flight Configs</h3>
+    <p>A flight config is a replayable, step-by-step state machine that guides the agent through a long task. It's a recipe with checkpoints. Each step says: load this context, run this tool, validate this output, then advance.</p>
+    <p>The agent doesn't get to skip ahead. It doesn't get to forget step 3. The flight remembers.</p>
+
+    <hr>
+
+    <h2>SANCTOT: A Worked Example</h2>
+    <p>SANCTOT is a 7-step resolution chain that FORCES a specific geometry on the agent's output:</p>
+<pre>1. primitive   — what is the irreducible thing?
+2. function    — what does it do?
+3. transition  — what changes when it acts?
+4. promise     — what does it commit to?
+5. failure     — what happens if the promise breaks?
+6. ritual      — what's the repeatable pattern that holds it?
+7. action      — what's the next concrete step?</pre>
+    <p>An agent without SANCTOT will skip "failure" because failures are uncomfortable. It will skip "ritual" because rituals feel redundant. It will collapse "promise" into "function" because they sound similar.</p>
+    <p>An agent <em>with</em> SANCTOT can't skip any of them. The harness enforces the shape. Every output has all seven slots, in order. The agent fills them. The harness verifies.</p>
+
+    <blockquote>The harness doesn't make the agent smarter. It makes the agent <em>structured</em>. Structure is what compounds.</blockquote>
+
+    <hr>
+
+    <h2>The Fork In The Road</h2>
+    <p>L4 is the fork. After L4 you have two paths:</p>
+
+    <h3>Path A — Deploy and profit</h3>
+    <p>Your agent is reliable enough. It handles the cases you care about. The variance in its outputs is bounded by the harness. Ship it. Bill clients. This is where most AI businesses live. It's a real place. It works.</p>
+
+    <h3>Path B — Admissibility</h3>
+    <p>You're not satisfied with "reliable enough." You want the agent to <em>provably not hallucinate</em> at all, ever, on the domain you care about. You want the system to <em>know what it knows</em> and refuse to fabricate the rest.</p>
+    <p>That's L5. That's the deep path. That's the next post.</p>
+
+    <hr>
+
+    <h2>What This Looks Like In Practice</h2>
+    <p>Our harness stack is open. Hooks are Python scripts in <code>~/.claude/hooks/</code>. CoR templates are skill files. Flight configs are versioned, replayable, queryable. The whole thing is in <a href="../opera.html" style="color:var(--amber);">SANCREV OPERA</a>.</p>
+    <p>The reason we can ship reliable AI businesses for clients in days instead of months is because the harness layer is already built. We're not writing it from scratch every time. The agent inherits a harness with thousands of hours of structural engineering already baked in.</p>
+
+    <div class="post-nav">
+      <a href="l3-context.html">← L3: Context</a>
+      <a href="l5-admissibility.html">L5: Admissibility →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Ready to build this yourself?</p>
+    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
+    <div class="blog-cta-actions">
+      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

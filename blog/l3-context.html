@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>L3: Context Engineering</h1>
+    <p class="post-subtitle">Second brain, not second mind.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l3-wiki-vs-skills.png" alt="Comparison of a flat wiki versus a structured skill tree" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>The Bigger Prompt Problem</h2>
+    <p>L3 is context engineering. You give the agent knowledge.</p>
+    <p>The methods all sound familiar: RAG, vector databases, "second brains," knowledge bases, embeddings, semantic search, skills. Karpathy popularized the "second brain" framing — an LLM with a wiki of your stuff bolted on. Every dev tool company shipped some version of this in 2024-2025.</p>
+    <p>L3 works. An agent with a good retrieval layer outperforms a stateless agent by a wide margin. It knows your codebase, your docs, your past tickets. It stops asking you the same question twice.</p>
+    <p>But here's the gap nobody puts on the marketing page: <strong>context without structure is just a bigger prompt.</strong></p>
+    <p>You can dump 50 pages of SOPs into the context window. The agent will read them. And it'll still produce something that contradicts page 23, because reading is not the same as understanding compositionally. RAG retrieves words. RAG does not retrieve <em>structure</em>.</p>
+
+    <blockquote>A second brain stores WHAT. A second mind imposes HOW. Most "AI memory" products ship the first and bill it as the second.</blockquote>
+
+    <h2>Wiki vs Cognitive Architecture</h2>
+    <p>Here is the distinction that L3 hinges on.</p>
+    <p>A <strong>wiki</strong> is a flat collection of documents. Each document is content. The agent retrieves a document by similarity (vector search) or by keyword. The document goes into the prompt. The agent reads. It hopes it understands.</p>
+    <p>A <strong>cognitive architecture</strong> is a structured graph of concepts where every concept is typed, every relationship is explicit, and every retrieval respects the structure. The agent doesn't retrieve "the document that mentions X." It retrieves "the concept of X, what X is_a, what X is part_of, what X depends_on, and the active context X belongs to."</p>
+    <p>The wiki gives you words. The cognitive architecture gives you a <em>shape</em>.</p>
+    <p>Our cognitive architecture is called CartON. It's a Neo4j + ChromaDB hybrid. Concepts are typed nodes. Relationships are typed edges. Every concept must declare what it <em>is</em>, what it's <em>part of</em>, what it <em>instantiates</em>. Floating concepts get rejected. The structure isn't decoration — the structure is the difference between an agent that quotes your docs and an agent that <em>thinks in your domain</em>.</p>
+
+    <h2>Skills: The Active Context Pattern</h2>
+    <p>The most useful L3 abstraction we've found is the <strong>skill</strong>.</p>
+    <p>A skill is a package: a SKILL.md file with a what/when description, optional reference docs, optional scripts, optional templates. The agent's runtime decides when each skill applies. When it applies, it loads. When it doesn't, it stays out of the way.</p>
+    <p>Our skill system has three categories. The category isn't decorative — it determines how the skill behaves at runtime:</p>
+    <pre>understand: PURE CONTEXT.
+  Loads knowledge. No action implied.
+  "Understand X" means "remember X for the rest of this conversation."
+
+preflight: CONTEXT + WORKFLOW POINTER.
+  Loads knowledge, then directs the agent to a specific flight config.
+  "Preflight Y" means "you're about to do Y, here's what you need to know first."
+
+single_turn_process: CONTEXT + IMMEDIATE ACTION.
+  Loads knowledge AND does the thing in one turn.
+  "Run Z" means "here's what Z is and here's the result of doing Z, now."</pre>
+    <p>This distinction is what separates a skill system from a wiki. A wiki tells you what something is. A skill tells the agent <em>what to do with the fact that this thing is relevant right now</em>.</p>
+
+    <h2>Why Most "AI Memory" Products Fail</h2>
+    <p>Almost every "give your AI memory" SaaS in the market right now is a wiki dressed as a cognitive architecture. They store conversation history, they embed it, they retrieve by similarity. That's it. That's the whole product.</p>
+    <p>The failure modes you hit at scale:</p>
+    <ul>
+      <li><strong>Conflicting memories.</strong> The agent remembers a fact from January and a contradictory fact from March. It retrieves both. It picks one at random. There's no structure to resolve the conflict.</li>
+      <li><strong>Stale context.</strong> A retrieved memory references a process that's since changed. The agent doesn't know the memory is stale because there's no concept of "this depends on a thing that has versions."</li>
+      <li><strong>Hallucinated coherence.</strong> The agent stitches together five unrelated memories into a confident narrative that never actually happened. No structural validation, no defense.</li>
+      <li><strong>Capability collapse.</strong> The agent retrieves five docs that each say "do X." It doesn't know X has subtypes, that this case is a different subtype, that the docs apply differently. It picks one and runs.</li>
+    </ul>
+    <p>You can't fix these with better embeddings. You fix them by upgrading from "store text" to "store typed concepts with typed relationships and retrieve through structure." That's L3 done right. That's the distance from second brain to second mind.</p>
+
+    <h2>What L3 Done Right Looks Like</h2>
+    <p>An agent operating at full L3:</p>
+    <ul>
+      <li>Loads a domain-specific cognitive architecture at the start of each task.</li>
+      <li>Activates only the skills relevant to the current intent.</li>
+      <li>Retrieves concepts by structure, not just by similarity — "what is this <em>part of</em>?" not just "what looks like this?"</li>
+      <li>Respects type and hierarchy when it composes a response.</li>
+      <li>Knows what it doesn't know, because missing concepts in the graph are explicit, not absent.</li>
+    </ul>
+    <p>This is still not L5. The agent at L3 can still be wrong — it can still compose validated parts into an invalid claim. That's what L5 fixes. But L3 done right is the floor of "the agent has a brain that's actually shaped like the domain it's working in."</p>
+
+    <blockquote>RAG is reading. Skills are knowing what to do with what you read. Admissibility (L5) is being right about it. They are not the same problem.</blockquote>
+
+    <h2>The L3 Ceiling</h2>
+    <p>Even a perfect L3 agent — perfect ontology, perfect retrieval, perfect skill packaging — will still hallucinate. It will still compose a wrong claim from individually-correct parts. Because L3 controls what the agent <em>has</em>, not what the agent <em>says</em>.</p>
+    <p>The next floor up is harnesses. L4 is the runtime around the agent that decides what flows in and what flows out — the layer that turns scattered L3 knowledge into a system that <em>acts</em>. We'll cover that next.</p>
+
+    <div class="post-nav">
+      <a href="l1-l2-prompts-tools.html">← L1-L2: Prompts and Tools</a>
+      <a href="l4-harnesses.html">L4: Harnesses →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Ready to build this yourself?</p>
+    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
+    <div class="blog-cta-actions">
+      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>

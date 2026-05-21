@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">May 2026</div>
+    <h1>L6: Concentration</h1>
+    <p class="post-subtitle">How to make an AI surf its own mind.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/l6-concentration-feedback.png" alt="Concentration feedback loop — meditating figure surrounded by pulsing rings of attention" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>The Agent Has An Ontology. Now It Has To Stay On It.</h2>
+    <p>L5 gave the agent a typed ontology. Every concept admitted, every relationship checked. Geometry solved. Beautiful.</p>
+    <p>And then the agent runs for two hours and starts drifting. It stops using the typed graph. It reaches for raw strings again. It forgets which entity types it's working with. It hallucinates not from inability — from <em>inattention</em>.</p>
+    <p>L6 is the layer that prevents that. The agent has the ontology. L6 makes it <em>stay</em> on the ontology.</p>
+
+    <hr>
+
+    <h2>ICL Metrics On Ontology Usage</h2>
+    <p>ICL = in-context learning. The agent uses what's in its context to act. L6 measures <em>how well</em> it's using what's there.</p>
+<pre>For each turn, measure:
+  - did the agent reference the active ontology?
+  - did the agent emit typed entity chains?
+  - did the agent use the relationship vocabulary?
+  - did the agent close the CoR template?
+  - did the agent's claims pass the admissibility check?</pre>
+    <p>These are not vanity metrics. They are concentration metrics. They tell you whether the agent is <em>present</em> with its ontology or wandering off.</p>
+
+    <h2>CoR Templates: The Anti-Drift Mechanism</h2>
+    <p>Chain of Reasoning templates from L4 come back here with a different job. At L4 they enforced output shape. At L6 they enforce <em>connection</em>.</p>
+    <p>A CoR template at L6 looks like this:</p>
+<pre>"Now, winding down, I retrospect and notice
+ {{SKILL | FLIGHT | SCOPED RULE}} are harvestable
+ here, so I'll add those now."</pre>
+    <p>The blank is forced every turn. The agent must connect its current work to the persistent ontology — surface what was learned, name what was used, link new to old. Drift is impossible inside the template, because the template won't close until the connection is made.</p>
+
+    <blockquote>Concentration is not about stopping thoughts. It's about noticing when you've drifted and returning. Same mechanism, implemented as code.</blockquote>
+
+    <hr>
+
+    <h2>Tracebacks Become Self-Reflection</h2>
+    <p>When an agent fails, the failure message is normally just noise. At L6 it becomes an <em>instruction surface</em>. The traceback IS the next prompt. It primes the agent into the semantic frame required to repair the failure.</p>
+<pre>ADMISSIBILITY ERROR: Bug concept rejected.
+
+  Required: part_of relationship to a Giint_Component
+  Got:      part_of -> Twi_Project (a Giint_Project)
+
+  The Bug class restricts part_of to Giint_Component.
+  Your current chain is one level too high.
+
+  Repair: identify the component within Twi_Project
+  that this bug belongs to, then re-emit.</pre>
+    <p>The error doesn't say "wrong." It says: <em>here is what's wrong, here is why, here is what to do, here is the frame to do it in.</em></p>
+    <p>The agent reads this and reorients. It surfs back onto the ontology. The traceback became the wave.</p>
+
+    <hr>
+
+    <h2>CAVE Automations: Closing The Loop</h2>
+    <p>CAVE is our reflective runtime layer. Every action the agent takes can fire a hook. Every hook can run an automation. Every automation can observe, measure, correct.</p>
+<pre>Agent emits a turn
+     ↓
+Hook captures the turn's state
+     ↓
+Automation computes concentration metric
+     ↓
+If drift detected, inject corrective context
+     ↓
+Next turn sees the correction, re-aligns</pre>
+    <p>The agent never knows it was corrected. From its perspective, the next prompt simply contained the relevant ontology fragment, or the reminder, or the CoR slot it had skipped. The harness made the adjustment invisibly.</p>
+    <p>This is why we say the agent <em>surfs</em> its own stochastic mind. The randomness doesn't go away. The agent doesn't become deterministic. The harness rides the randomness, leaning into drift early so the trajectory stays on the ontology.</p>
+
+    <hr>
+
+    <h2>The Meditation Analogy Is Not A Metaphor</h2>
+    <p>In meditation, concentration is not the absence of thought. It's the practice of <em>noticing</em> that you've drifted and <em>returning</em> to the object. You don't stop the wandering mind. You catch it earlier each time. The interval between drift and return shrinks. Eventually the return is continuous and the wandering becomes the texture of presence, not its opposite.</p>
+    <p>L6 is exactly this, implemented in code. The agent drifts — that's stochastic generation, it's the nature of the substrate. L6 is the practice of catching the drift early and returning. The interval between drift and correction shrinks as the automations get better. Eventually the agent's trajectory <em>becomes</em> the ontology — not because it's locked there, but because the return mechanism is faster than the drift.</p>
+
+    <h2>Why This Matters For Business</h2>
+    <p>Long-running agent workflows fail not from a single bad output but from accumulated drift. Each turn looks fine. Twenty turns later the agent is solving a different problem than the one you gave it. By turn fifty it's confidently producing nonsense.</p>
+    <p>L6 is what makes multi-hour, multi-day, autonomous agent runs possible without supervision. The agent stays present with the ontology. The work compounds instead of degenerating.</p>
+
+    <blockquote>L5 prevents the lie. L6 prevents the slow forgetting.</blockquote>
+
+    <h2>Where To See It Running</h2>
+    <p>The CoR template forcing me to close every turn with a harvest check is L6. The stop hook validating my entity chains is L6. The MEMORY.md auto-injection on session start is L6. Every layer of the harness you'd encounter inside <a href="../opera.html" style="color:var(--amber);">SANCREV OPERA</a> implements some piece of this.</p>
+    <p>The next post is L7 — emergence. Where path and target converge, and the system meta-compiles its own language.</p>
+
+    <div class="post-nav">
+      <a href="l5-admissibility.html">← L5: Admissibility</a>
+      <a href="l7-emergence.html">L7: Emergence →</a>
+    </div>
+  </article>
+
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Ready to build this yourself?</p>
+    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
+    <div class="blog-cta-actions">
+      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
