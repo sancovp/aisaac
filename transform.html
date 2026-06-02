@@ -64,7 +64,27 @@
       I won't build anything on this call. I won't design your custom system. I will give you the thinking so you can decide: do it yourself, or hire me to do it.
     </p>
     <a href="#" class="cta-big" data-offer="1-hour">Book 1 Hour</a>
-    <p style="font-size:0.75rem;color:var(--text-3);margin-top:1rem;">$X · 55 minutes · Zoom · Recording included</p>
+    <p style="font-size:0.75rem;color:var(--text-3);margin-top:1rem;">$149 · 55 minutes · Zoom · Recording included</p>
+  </section>
+
+  <!-- HIGH CONVERTING $10K WEBSITES (B2B entry point) -->
+  <section class="dark">
+    <div class="tag">B2B · Start here</div>
+    <h2>High Converting $10k Websites.</h2>
+    <p class="sub" style="max-width:56ch;">
+      A custom-designed, copy-optimized, SEO-built website that would have cost you $10,000 before AI. Now it's $149/mo, fully managed. We design it, write it, ship it, and you can request changes whenever you want.
+    </p>
+    <p class="sub" style="max-width:56ch;">
+      Heavy usage of change requests (major redesigns, full copy rewrites, new feature builds) may incur extra charges depending on scope. Day-to-day tweaks, copy edits, and small additions are included.
+    </p>
+    <a href="#" class="cta-big" data-offer="website">Get Your Website</a>
+    <p style="font-size:0.75rem;color:var(--text-3);margin-top:1rem;">$149/mo managed · Custom design · Copy + SEO · Change requests included</p>
+
+    <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--glass-border);">
+      <p style="font-size:0.85rem;color:var(--text-2);max-width:56ch;">
+        <strong style="color:var(--text-1);">This is the foundation.</strong> Everything below runs on top of a website that actually converts. Blog generator, phone agent, lead gen, custom automations, SOMA — they all assume you have a destination. The website is the destination.
+      </p>
+    </div>
   </section>
 
   <!-- VIDEO / VSL -->
@@ -280,6 +300,7 @@
 
   var b2bLink = 'https://cal.com/aisaac/ai-agents-for-your-business';
   var oneHourLink = 'https://cal.com/aisaac/paid-session';
+  var websiteLink = 'https://cal.com/aisaac/website';
 
   function openDemo(offer) {
     label.textContent = offer === 'general' ? '' : offer;
@@ -288,8 +309,15 @@
       modalSub.textContent = '55 minutes. Zoom. Recording included. I will not design your build on this call — I will give you the frameworks to decide whether to do it yourself or hire me.';
       modalYes.textContent = 'BOOK THE HOUR';
       modalYes.dataset.link = oneHourLink;
-      modalSkip.href = b2bLink;
-      modalSkip.textContent = 'or book a B2B discovery call instead →';
+      modalSkip.href = websiteLink;
+      modalSkip.textContent = 'or get a $10k website for $149/mo instead →';
+    } else if (offer === 'website') {
+      modalQ.textContent = 'Get your $10k website';
+      modalSub.textContent = '$149/mo managed. Custom design, copy + SEO, change requests included. We design it, write it, ship it. You own it. Tell us about your business and we will start the build.';
+      modalYes.textContent = 'START MY WEBSITE';
+      modalYes.dataset.link = websiteLink;
+      modalSkip.href = oneHourLink;
+      modalSkip.textContent = 'or just talk to Isaac for an hour instead →';
     } else {
       modalQ.textContent = 'Want a live demo?';
       modalSub.textContent = 'Our AI walks you through exactly what this looks like for your business. 5 minutes. Zero obligation.';
