@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercer & Sons Plumbing — Master Plumbers. Answered at 2AM.</title>
+  <meta name="description" content="Master plumbers. Family owned. 24/7 emergency response in Cobb County. Water heaters, drain cleaning, sewer line, leak detection, repiping. Call (770) 555-0118.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100' rx='20'/%3E%3Cpath d='M30 25 L30 50 Q30 65 45 65 L45 75 L55 75 L55 65 Q70 65 70 50 L70 25' fill='none' stroke='%23c2823c' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050608;
+      --bg-2: #0a0c10;
+      --bg-card: rgba(255, 255, 255, 0.025);
+      --white: #fff;
+      --white-50: rgba(255, 255, 255, 0.5);
+      --white-70: rgba(255, 255, 255, 0.7);
+      --white-85: rgba(255, 255, 255, 0.85);
+      --copper: #c2823c;
+      --copper-bright: #e89b4a;
+      --copper-dim: rgba(194, 130, 60, 0.15);
+      --copper-glow: rgba(232, 155, 74, 0.4);
+      --navy: #0c1829;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white-85);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .display { font-family: 'Instrument Serif', serif; font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; }
+    .italic { font-style: italic; }
+    .muted { color: var(--white-50); }
+    a { color: inherit; text-decoration: none; }
+
+    /* GRAIN */
+    .grain {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* LIQUID GLASS */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.02);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .liquid-glass-strong {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(40px) saturate(160%);
+      -webkit-backdrop-filter: blur(40px) saturate(160%);
+      border: 1px solid rgba(232, 155, 74, 0.25);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 0 60px rgba(232, 155, 74, 0.2);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(5, 6, 8, 0.85);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .nav-brand {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+    .nav-brand span { color: var(--copper); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--white-70);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      padding: 0.6rem 1.2rem;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #000;
+      background: linear-gradient(135deg, var(--copper-bright), var(--copper));
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    @media (max-width: 768px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .hero-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35;
+      filter: contrast(1.1) saturate(0.85);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(5,6,8,0.95) 0%, rgba(5,6,8,0.55) 35%, rgba(5,6,8,0.85) 70%, rgba(5,6,8,1) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2; max-width: 900px;
+    }
+    .kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--copper-bright);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(10px);
+      animation: blurIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero h1 em {
+      color: var(--copper);
+      font-style: italic;
+    }
+    .hero h1 .word:nth-child(1) { animation-delay: 0.1s; }
+    .hero h1 .word:nth-child(2) { animation-delay: 0.2s; }
+    .hero h1 .word:nth-child(3) { animation-delay: 0.3s; }
+    .hero h1 .word:nth-child(4) { animation-delay: 0.4s; }
+    .hero h1 .word:nth-child(5) { animation-delay: 0.5s; }
+    .hero h1 .word:nth-child(6) { animation-delay: 0.6s; }
+    .hero h1 .word:nth-child(7) { animation-delay: 0.7s; }
+    .hero h1 .word:nth-child(8) { animation-delay: 0.8s; }
+    .hero h1 .word:nth-child(9) { animation-delay: 0.9s; }
+    @keyframes blurIn {
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      color: var(--white-70);
+      font-weight: 300;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+    .hero-cta-row {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .btn-primary {
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #000;
+      background: linear-gradient(135deg, var(--copper-bright), var(--copper));
+      box-shadow: 0 0 40px var(--copper-glow), 0 8px 30px rgba(0,0,0,0.5);
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); box-shadow: 0 0 60px var(--copper-glow), 0 12px 40px rgba(0,0,0,0.6); }
+    .btn-secondary {
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.04); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 3; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--white-50); display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0; animation: fadeUp 0.8s 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(180deg, var(--copper), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.3; transform: scaleY(0.5); } 50% { opacity: 1; transform: scaleY(1); } }
+
+    /* SECTIONS */
+    section { position: relative; padding: 8rem 2rem; }
+    section.dark { background: var(--bg-2); }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .section-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--copper-bright); margin-bottom: 1.2rem;
+    }
+    .section-h { font-size: clamp(2rem, 4.5vw, 3.5rem); margin-bottom: 1.5rem; }
+    .section-sub { font-size: 1rem; color: var(--white-70); max-width: 600px; font-weight: 300; line-height: 1.7; margin-bottom: 3rem; }
+
+    /* TRUST BAR */
+    .trust-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin: 4rem 0;
+    }
+    .trust-item {
+      padding: 1.2rem 1.5rem;
+      border-radius: 14px;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .trust-num { font-size: 1.8rem; color: var(--white); font-style: italic; }
+    .trust-label { font-size: 0.7rem; color: var(--white-50); letter-spacing: 0.1em; text-transform: uppercase; }
+    @media (max-width: 768px) { .trust-bar { grid-template-columns: repeat(2, 1fr); } }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .service-card {
+      padding: 2.2rem 1.8rem;
+      border-radius: 16px;
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--copper-bright), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(232, 155, 74, 0.2); }
+    .service-icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(232, 155, 74, 0.3);
+      border-radius: 10px;
+      color: var(--copper-bright);
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .service-card h3 {
+      font-size: 1.4rem; margin-bottom: 0.6rem;
+    }
+    .service-card p { font-size: 0.85rem; color: var(--white-70); line-height: 1.6; font-weight: 300; }
+    .service-card .prevent { font-size: 0.7rem; color: var(--copper-bright); margin-top: 1rem; letter-spacing: 0.05em; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* EMERGENCY SECTION */
+    .emergency {
+      position: relative; min-height: 80vh; display: flex; align-items: center;
+      overflow: hidden; padding: 6rem 2rem;
+    }
+    .emergency-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.4;
+    }
+    .emergency-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(5,6,8,0.95) 0%, rgba(5,6,8,0.7) 50%, rgba(5,6,8,0.4) 100%);
+    }
+    .emergency-content { position: relative; z-index: 2; max-width: 600px; }
+    .emergency h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 1.2rem; }
+    .emergency p { font-size: 1.05rem; color: var(--white-70); margin-bottom: 2rem; font-weight: 300; line-height: 1.7; }
+    .emergency .badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 0.9rem; border-radius: 100px;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper-bright); margin-bottom: 1.5rem;
+      border: 1px solid rgba(232, 155, 74, 0.3);
+    }
+    .emergency .badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--copper-bright);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+    .review-card { padding: 1.8rem; border-radius: 16px; }
+    .review-stars { color: var(--copper-bright); margin-bottom: 0.8rem; font-size: 0.9rem; letter-spacing: 0.05em; }
+    .review-text { font-size: 0.95rem; color: var(--white-85); line-height: 1.6; margin-bottom: 1.2rem; font-weight: 300; font-style: italic; }
+    .review-author { font-size: 0.75rem; color: var(--white-50); }
+    .review-author strong { color: var(--white); font-weight: 600; display: block; margin-bottom: 0.2rem; }
+    .review-author .platform { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.6rem; font-weight: 700; margin-top: 0.4rem; letter-spacing: 0.08em; }
+    .badge-google { background: rgba(66, 133, 244, 0.15); color: #4285f4; }
+    .badge-angi { background: rgba(46, 139, 87, 0.15); color: #2e8b57; }
+    .badge-ha { background: rgba(255, 120, 0, 0.15); color: #e66a00; }
+    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+    /* CTA */
+    .final-cta { text-align: center; padding: 10rem 2rem; }
+    .final-cta h2 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
+    .final-cta p { color: var(--white-70); max-width: 540px; margin: 0 auto 2.5rem; font-weight: 300; font-size: 1.05rem; }
+
+    /* FOOTER */
+    footer { background: var(--bg-2); padding: 4rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1280px; margin: 0 auto; }
+    .footer-col h4 { font-size: 0.75rem; color: var(--white-50); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 600; }
+    .footer-col a, .footer-col p { display: block; font-size: 0.85rem; color: var(--white-70); margin-bottom: 0.5rem; transition: color 0.2s; font-weight: 300; }
+    .footer-col a:hover { color: var(--copper-bright); }
+    .footer-brand p { font-size: 0.85rem; color: var(--white-50); margin-top: 0.8rem; line-height: 1.6; max-width: 280px; }
+    .footer-bottom { max-width: 1280px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--white-50); flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom a { color: var(--copper-bright); }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ICON SQUARE for services */
+    .icon-sq { width: 28px; height: 28px; }
+
+    /* KICKER DIVIDER */
+    .kicker-line {
+      width: 40px; height: 1px;
+      background: var(--copper);
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- GRAIN OVERLAY -->
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">Mercer <span>&</span> Sons</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#emergency">24/7</a>
+    <a href="#reviews">Reviews</a>
+    <a href="tel:+17705550118" class="nav-cta">Call (770) 555-0118</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="cinematic-plumbing-hero.png" alt="" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="kicker">// Master Plumbers · Est. 1987 · Cobb County, GA</div>
+    <h1>
+      <span class="word">Hate</span> <span class="word">the</span> <span class="word">pipe</span> <span class="word">burst</span> <span class="word">at</span> <span class="word"><em>2AM?</em></span><br>
+      <span class="word">You</span> <span class="word">haven't</span> <span class="word">met</span> <span class="word">us.</span>
+    </h1>
+    <p class="hero-sub">Family-owned master plumbers. One call. One truck. One craftsman who knows every pipe in the county because he's been working them for thirty-eight years.</p>
+    <div class="hero-cta-row">
+      <a href="tel:+17705550118" class="btn-primary">Call now — answered 24/7</a>
+      <a href="#services" class="btn-secondary">See what we do</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="dark" style="padding: 4rem 2rem;">
+  <div class="container">
+    <div class="trust-bar">
+      <div class="trust-item liquid-glass">
+        <div>
+          <div class="trust-num">38</div>
+          <div class="trust-label">Years in business</div>
+        </div>
+      </div>
+      <div class="trust-item liquid-glass">
+        <div>
+          <div class="trust-num">2AM</div>
+          <div class="trust-label">We answer</div>
+        </div>
+      </div>
+      <div class="trust-item liquid-glass">
+        <div>
+          <div class="trust-num">MP</div>
+          <div class="trust-label">Master Plumber #01847</div>
+        </div>
+      </div>
+      <div class="trust-item liquid-glass">
+        <div>
+          <div class="trust-num">5.0</div>
+          <div class="trust-label">★★★★★ 287 reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-tag reveal"><span class="kicker-line"></span>// Services</div>
+    <h2 class="section-h reveal reveal-delay-1">What we <em class="italic">stop</em> from going wrong.</h2>
+    <p class="section-sub reveal reveal-delay-2">Every job is what it <em>prevents</em>. Water damage. Sewage in the basement. A water heater that floods the garage at midnight. We don't just fix things — we make sure the worst-case scenario never happens.</p>
+    <div class="services-grid">
+      <div class="service-card liquid-glass reveal">
+        <div class="service-icon">01</div>
+        <h3>Water Heaters</h3>
+        <p>Tank, tankless, hybrid heat pump. Repair, replace, maintain. We work on all makes and models, no warranty games.</p>
+        <div class="prevent">→ Prevents: Cold showers, flooded garages, $8K water damage</div>
+      </div>
+      <div class="service-card liquid-glass reveal reveal-delay-1">
+        <div class="service-icon">02</div>
+        <h3>Drain &amp; Sewer</h3>
+        <p>Snaking, hydro jetting, camera inspection. We find the blockage, we clear it, we show you the before/after on video.</p>
+        <div class="prevent">→ Prevents: Backed-up drains, sewage in the basement, yard excavation</div>
+      </div>
+      <div class="service-card liquid-glass reveal reveal-delay-2">
+        <div class="service-icon">03</div>
+        <h3>Leak Detection</h3>
+        <p>Slab leaks, supply line tracing, mystery water bills. Acoustic + thermal imaging. Surgical repair, not demo.</p>
+        <div class="prevent">→ Prevents: Foundation damage, mold, $20K+ water bills</div>
+      </div>
+      <div class="service-card liquid-glass reveal">
+        <div class="service-icon">04</div>
+        <h3>Whole-Home Repipe</h3>
+        <p>Copper, PEX, polybutylene replacement. We replace aging supply lines before they fail — on your timeline, not the pipe's.</p>
+        <div class="prevent">→ Prevents: Pipe bursts, low pressure, water contamination</div>
+      </div>
+      <div class="service-card liquid-glass reveal reveal-delay-1">
+        <div class="service-icon">05</div>
+        <h3>Gas Lines</h3>
+        <p>New gas line installation, leak repair, appliance hookups. CSST-certified. Pressure tested, documented, permitted.</p>
+        <div class="prevent">→ Prevents: Gas leaks, CO poisoning, fire</div>
+      </div>
+      <div class="service-card liquid-glass reveal reveal-delay-2">
+        <div class="service-icon">06</div>
+        <h3>Commercial</h3>
+        <p>Backflow testing, grease line maintenance, RPZ certification. Restaurants, offices, multi-family. Scheduled service contracts.</p>
+        <div class="prevent">→ Prevents: Health code violations, water contamination, business interruption</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency" class="emergency">
+  <img class="emergency-img" src="plumbing-emergency.png" alt="" />
+  <div class="emergency-overlay"></div>
+  <div class="container">
+    <div class="emergency-content">
+      <div class="badge">Live · 24/7 dispatch</div>
+      <h2>Pipe burst at <em class="italic">2AM</em>?<br>We're already in the truck.</h2>
+      <p>One call. No answering service. No callback in 30 minutes. Master plumber pickup. Cobb County and surrounding areas. Average on-site time under 60 minutes — because we live here too.</p>
+      <div class="hero-cta-row" style="animation: none; opacity: 1; transform: none;">
+        <a href="tel:+17705550118" class="btn-primary">Call (770) 555-0118</a>
+        <a href="#reviews" class="btn-secondary">Read what happened last time</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS / CRAFTSMANSHIP -->
+<section class="dark">
+  <div class="container">
+    <div class="section-tag reveal"><span class="kicker-line"></span>// Why us</div>
+    <h2 class="section-h reveal reveal-delay-1">A craftsman, not a <em class="italic">handyman</em>.</h2>
+    <p class="section-sub reveal reveal-delay-2">My dad started this business in 1987. I'm a master plumber. We don't subcontract. We don't bait-and-switch. When you call, the person who picks up is the person who shows up.</p>
+    <div style="margin-top:3rem; display:grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;" class="reveal">
+      <div class="liquid-glass" style="padding: 1.5rem; text-align:center;">
+        <div style="font-family:'Instrument Serif',serif; font-size: 1.5rem; font-style:italic;">Family</div>
+        <div style="font-size:0.7rem; color: var(--white-50); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase;">Owned since 1987</div>
+      </div>
+      <div class="liquid-glass" style="padding: 1.5rem; text-align:center;">
+        <div style="font-family:'Instrument Serif',serif; font-size: 1.5rem; font-style:italic;">Master</div>
+        <div style="font-size:0.7rem; color: var(--white-50); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase;">Licensed, bonded, insured</div>
+      </div>
+      <div class="liquid-glass" style="padding: 1.5rem; text-align:center;">
+        <div style="font-family:'Instrument Serif',serif; font-size: 1.5rem; font-style:italic;">$50</div>
+        <div style="font-size:0.7rem; color: var(--white-50); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase;">Service call (waived with work)</div>
+      </div>
+      <div class="liquid-glass" style="padding: 1.5rem; text-align:center;">
+        <div style="font-family:'Instrument Serif',serif; font-size: 1.5rem; font-style:italic;">No</div>
+        <div style="font-size:0.7rem; color: var(--white-50); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase;">Subcontracting. Ever.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-tag reveal"><span class="kicker-line"></span>// Reviews</div>
+    <h2 class="section-h reveal reveal-delay-1">What <em class="italic">actually</em> happened.</h2>
+    <p class="section-sub reveal reveal-delay-2">Real customers. Real emergencies. Real reviews — copied from Google, Angi, and HomeAdvisor.</p>
+    <div class="reviews-grid">
+      <div class="review-card liquid-glass reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Had a slab leak at 11pm on a Sunday. Mercer answered on the second ring. He was at my house in 35 minutes. Fixed the leak in two hours. No drama, no upsell. Just the fix."</p>
+        <div class="review-author">
+          <strong>Sarah K.</strong>
+          Acworth, GA
+          <span class="platform badge-google">Google</span>
+        </div>
+      </div>
+      <div class="review-card liquid-glass reveal reveal-delay-1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've used three plumbers in this county. Mercer is the only one who actually showed me what was wrong with the camera before quoting. The other two just wanted to replace everything. He saved me $4,000."</p>
+        <div class="review-author">
+          <strong>Michael T.</strong>
+          Marietta, GA
+          <span class="platform badge-angi">Angi</span>
+        </div>
+      </div>
+      <div class="review-card liquid-glass reveal reveal-delay-2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Replaced our entire water heater on a Saturday morning. He brought the right part on the first visit. Cleaned up after. Explained everything. This is how it should work."</p>
+        <div class="review-author">
+          <strong>Denise R.</strong>
+          Kennesaw, GA
+          <span class="platform badge-ha">HomeAdvisor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-tag">// Call now</div>
+  <h2>Call <em class="italic">(770) 555-0118</em>.<br>We'll be there before the damage is.</h2>
+  <p>One call. No answering service. No callback queue. Master plumber on the line, master plumber in the truck.</p>
+  <a href="tel:+17705550118" class="btn-primary" style="font-size: 1rem; padding: 1.2rem 3rem;">Call now · 24/7</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col footer-brand">
+      <a href="#" class="nav-brand">Mercer <span>&</span> Sons</a>
+      <p>Family-owned master plumbers. Cobb County and surrounding areas since 1987. Licensed, bonded, insured. Master Plumber License #MP-01847.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Water Heaters</a>
+      <a href="#services">Drain &amp; Sewer</a>
+      <a href="#services">Leak Detection</a>
+      <a href="#services">Whole-Home Repipe</a>
+      <a href="#services">Gas Lines</a>
+      <a href="#services">Commercial</a>
+    </div>
+    <div class="footer-col">
+      <h4>Service Area</h4>
+      <p>Acworth</p>
+      <p>Marietta</p>
+      <p>Kennesaw</p>
+      <p>Woodstock</p>
+      <p>Smyrna</p>
+      <p>Cobb County</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+17705550118">(770) 555-0118</a>
+      <p>Master Plumber #MP-01847</p>
+      <p>GA State License #MP-01847</p>
+      <p>Bonded · Insured</p>
+      <p>38 years in business</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Mercer &amp; Sons Plumbing. Family owned since 1987.</span>
+    <span>Built by <a href="#">TWI Web Studio</a> · $250/mo</span>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Nav scroll darken
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+  // Reveal on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
