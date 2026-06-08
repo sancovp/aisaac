@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptWorld — build Claude-Code software by talking to it</title>
+  <style>
+    .pw-hero { min-height: 88vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 3rem; }
+    .pw-hero .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 1.5rem; }
+    .pw-hero h1 { font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet), var(--mercury-chrome)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; max-width: 18ch; }
+    .pw-hero .sub { font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--text-2); max-width: 52ch; line-height: 1.7; margin: 0 auto 2.5rem; }
+    .pw-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .pw-cta { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); padding: 0.9rem 2.2rem; border-radius: var(--r-sm); text-decoration: none; transition: all 0.3s; border: none; }
+    .pw-cta:hover { filter: brightness(1.2); transform: translateY(-2px); }
+    .pw-cta.ghost { background: transparent; color: var(--text-1); border: 1px solid rgba(255,255,255,0.12); }
+    .pw-cta.ghost:hover { border-color: var(--mercury-blue); }
+    .pw-ladder { font-family: var(--mono); font-size: clamp(0.65rem, 1.6vw, 0.85rem); color: var(--text-2); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.2rem 1.6rem; margin: 2.5rem auto 0; display: inline-block; line-height: 2; }
+    .pw-ladder b { color: var(--mercury-blue); }
+    .pw-ladder .fold { color: var(--mercury-violet); }
+    section.pw { max-width: 1040px; margin: 0 auto; padding: 5rem 2rem; }
+    section.pw h2 { font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.2rem); letter-spacing: -0.03em; margin-bottom: 1rem; text-align: center; }
+    section.pw .lede { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; max-width: 60ch; margin: 0 auto 3rem; text-align: center; }
+    .pw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .pw-craft { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.4rem; transition: all 0.2s; }
+    .pw-craft:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+    .pw-craft .k { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mercury-blue); }
+    .pw-craft h3 { font-size: 1rem; margin: 0.5rem 0 0.5rem; color: var(--text-1); }
+    .pw-craft p { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; }
+    .pw-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .pw-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.4rem 1.6rem; }
+    .pw-step .n { font-family: var(--mono); font-size: 0.7rem; color: var(--mercury-violet); letter-spacing: 0.1em; }
+    .pw-step h3 { font-size: 1rem; margin: 0.4rem 0 0.5rem; }
+    .pw-step p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
+    .pw-code { font-family: var(--mono); font-size: 0.8rem; color: var(--text-2); background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.4rem 1.6rem; line-height: 1.9; overflow-x: auto; max-width: 640px; margin: 0 auto; }
+    .pw-code .c { color: var(--text-3); }
+    .pw-code .g { color: var(--mercury-teal); }
+    .pw-mark { text-align: center; font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); margin-top: 2rem; }
+    .pw-final { text-align: center; padding: 6rem 2rem; }
+    @media (max-width: 760px) { .pw-grid, .pw-steps { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="transform.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a href="https://github.com/sancovp/sanctuary-revolution-alpha" class="nav-cta">GitHub</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="pw-hero">
+    <div class="eyebrow">PromptWorld</div>
+    <h1>Build Claude-Code software by talking to it.</h1>
+    <p class="sub">
+      One agent — the Engineer-CEO — and seven specialist builders. You describe what you want; they
+      compile the actual Claude Code components: skills, MCP servers, prompts, harnesses, teams,
+      workflows, and whole operating systems. It runs as one web app: a chat, a live file workbench,
+      and dashboards.
+    </p>
+    <div class="pw-cta-row">
+      <a href="https://github.com/sancovp/sanctuary-revolution-alpha" class="pw-cta">Get it on GitHub</a>
+      <a href="#how" class="pw-cta ghost">How it works</a>
+    </div>
+    <div class="pw-ladder">
+      <b>component</b> &rarr; <b>AIOS</b> &rarr; <b>framework</b> &rarr; <span class="fold">fold&nbsp;into&nbsp;the&nbsp;nomicon</span> &rarr; <b>app</b>
+    </div>
+  </section>
+
+  <!-- THE INNOVATION: the nomicon -->
+  <section class="pw" id="nomicon">
+    <h2>The innovation: an app that knows how it was built</h2>
+    <p class="lede">
+      PromptWorld is built over a <strong>nomicon</strong> — a documentation-and-development operating
+      system (doc-mirror) that every agent in the app carries. So PromptWorld can <strong>inspect its
+      own structure</strong> and explain, as a living example, exactly how an app like it is made. The
+      nomicon folds on itself: the thing that builds components is itself a component you can read.
+    </p>
+    <div class="pw-steps">
+      <div class="pw-step">
+        <div class="n">THE WORLD MODULE</div>
+        <h3>A guild that builds</h3>
+        <p>The Engineer-CEO plus seven specialist AIOS directories — one per component type. Each
+        specialist is itself a directory that codes an agent, and works only in its own workspace.</p>
+      </div>
+      <div class="pw-step">
+        <div class="n">THE NOMICON LADDER</div>
+        <h3>Component to app, foldable</h3>
+        <p>The rungs <em>component &rarr; AIOS &rarr; framework &rarr; fold &rarr; app</em> exist as real
+        skills and CLIs every agent loads. Ask the CEO "how were you built?" and it reads its own dirs to
+        show you.</p>
+      </div>
+    </div>
+    <p class="pw-mark">PromptWorld is one <code>*World</code> (like JobWorld, HealthWorld) — a CAVE-fork resemblance, a way of doing this. It self-inspects; it does not (yet) compile other Worlds.</p>
+  </section>
+
+  <!-- THE SEVEN CRAFTS -->
+  <section class="pw" id="crafts">
+    <h2>Seven crafts, seven masters</h2>
+    <p class="lede">The Claude Code component ladder, smallest to largest. The CEO builds any of them
+    itself or routes the work to the master who owns that craft.</p>
+    <div class="pw-grid">
+      <div class="pw-craft"><div class="k">skill</div><h3>Skillwright</h3><p>A packaged capability — a lean SKILL.md plus resources the agent equips.</p></div>
+      <div class="pw-craft"><div class="k">mcp</div><h3>Toolwright</h3><p>An MCP server — real executable tools an agent calls (FastMCP).</p></div>
+      <div class="pw-craft"><div class="k">prompt</div><h3>Promptwright</h3><p>A prompt / persona — a "guy" that puts an LLM in a role.</p></div>
+      <div class="pw-craft"><div class="k">harness</div><h3>Harnesswright</h3><p>A harness — sequenced typed outputs across a turn, on a dependency DAG.</p></div>
+      <div class="pw-craft"><div class="k">team</div><h3>Teamwright</h3><p>A team of subagents coordinating on a shared task list.</p></div>
+      <div class="pw-craft"><div class="k">workflow</div><h3>Flowwright</h3><p>A deterministic script that fans work out to subagents in phases.</p></div>
+      <div class="pw-craft"><div class="k">operating_system</div><h3>Systemwright</h3><p>An AI OS — a directory plus a core loop that makes an agent govern itself.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS / QUICKSTART -->
+  <section class="pw" id="how">
+    <h2>Run it</h2>
+    <p class="lede">PromptWorld ships as a Docker image. Build it, boot it with your provider key, open it.</p>
+    <div class="pw-code">
+<span class="c"># build the image (stages the app + the doc-mirror plugin + cave + sdna)</span><br>
+bash deploy/build.sh <span class="g">build</span><br>
+<br>
+<span class="c"># boot on :3858 with the model key the agents run on</span><br>
+export MINIMAX_API_KEY=...<br>
+bash deploy/build.sh <span class="g">boot</span> 3858<br>
+<br>
+<span class="c"># open http://localhost:3858 — chat, workbench, dashboards</span>
+    </div>
+    <p class="pw-mark">Every agent loads the doc-mirror plugin — in the SDK turns and in the embedded terminal alike.</p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="pw-final">
+    <h2 style="font-weight:600;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-0.03em;margin-bottom:1rem;">An app that builds apps — and can read itself.</h2>
+    <p style="font-size:0.95rem;color:var(--text-2);max-width:48ch;margin:0 auto 2rem;line-height:1.7;">Open source. Build skills, tools, agents, and operating systems by talking to one engineer.</p>
+    <a href="https://github.com/sancovp/sanctuary-revolution-alpha" class="pw-cta">Get PromptWorld on GitHub</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Compile software. Read how it was made.</span>
+  </div>
+
+</body>
+</html>
