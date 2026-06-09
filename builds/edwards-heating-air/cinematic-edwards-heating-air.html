@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edwards Heating & Air | Acworth, GA — AC Died in July? We Answer.</title>
+  <meta name="description" content="Family-owned HVAC in Acworth, Georgia since 2001. NATE-certified, Carrier Factory Authorized. 24/7 emergency AC repair. License #CR109219. Call (770) 685-7521.">
+  <meta property="og:title" content="Edwards Heating & Air | AC Died in July? We Answer.">
+  <meta property="og:description" content="Family-owned since 2001. NATE-certified, Carrier Factory Authorized. License #CR109219.">
+  <meta property="og:image" content="edwards-hero-ref.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%230a0f1a' width='100' height='100' rx='20'/%3E%3Cpath d='M30 25 L30 50 Q30 65 45 65 L45 75 L55 75 L55 65 Q70 65 70 50 L70 25' fill='none' stroke='%23c2823c' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0f1a;
+      --bg-light: #111827;
+      --bg-mid: #1a2332;
+      --white: #f8f9fa;
+      --cream: #e8e0d4;
+      --gray: #7a8899;
+      --gray-light: #b0bec5;
+      --accent: #c2823c;
+      --accent-hover: #d4944e;
+      --accent-glow: rgba(194, 130, 60, 0.18);
+      --accent-deep: #8d5524;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--cream);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .display { font-family: 'Instrument Serif', serif; font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--white); }
+    a { color: inherit; text-decoration: none; }
+
+    /* ============ GRAIN ============ */
+    .grain { position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.35; }
+    .grain svg { width: 100%; height: 100%; opacity: 0.1; }
+
+    /* ============ LIQUID GLASS ============ */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.02);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.2px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.35) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .liquid-glass-strong {
+      background: rgba(232, 155, 74, 0.08);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(232, 155, 74, 0.3);
+    }
+
+    /* ============ NAV ============ */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 20px 0; transition: all 0.4s; }
+    nav.scrolled .nav-pill { background: rgba(10, 15, 26, 0.92); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-pill { display: flex; align-items: center; gap: 32px; padding: 14px 32px; border-radius: 50px; transition: all 0.4s; }
+    .nav-logo { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--white); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--gray-light); font-size: 13px; font-weight: 500; transition: color 0.3s; letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #ffffff !important; padding: 10px 24px; border-radius: 50px; font-weight: 700; font-size: 13px; transition: all 0.3s; letter-spacing: 0.03em; text-transform: uppercase; }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(194, 130, 60, 0.3); }
+    @media (max-width: 900px) { .nav-links { display: none; } }
+
+    /* ============ HERO WITH VIDEO ============ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 24px 80px;
+    }
+    .hero-video-wrap {
+      position: absolute; inset: 0;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(1.05);
+      transform: scale(1.05);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .hero-video.active { opacity: 1; }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(10,15,26,0.55) 0%, rgba(10,15,26,0.30) 30%, rgba(10,15,26,0.55) 60%, rgba(10,15,26,0.92) 100%);
+    }
+    .hero-content { position: relative; z-index: 3; max-width: 920px; }
+    .hero-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; opacity: 0.9; }
+    .hero h1 { font-size: clamp(48px, 9vw, 110px); color: var(--white); line-height: 0.95; font-style: italic; margin-bottom: 32px; }
+    .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(30px); filter: blur(10px); animation: blurIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .hero h1 .word:nth-child(1) { animation-delay: 0.1s; }
+    .hero h1 .word:nth-child(2) { animation-delay: 0.2s; }
+    .hero h1 .word:nth-child(3) { animation-delay: 0.35s; }
+    .hero h1 .word:nth-child(4) { animation-delay: 0.5s; }
+    .hero h1 .word:nth-child(5) { animation-delay: 0.65s; }
+    .hero h1 em { color: var(--accent); font-style: italic; }
+    .hero h1, .hero p { text-shadow: 0 2px 30px rgba(0,0,0,0.7); }
+    @keyframes blurIn { to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+    .hero-sub { font-size: clamp(15px, 2vw, 19px); color: var(--gray-light); max-width: 540px; margin: 0 auto 48px; line-height: 1.7; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .hero-sub strong { color: var(--cream); font-weight: 500; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(20px); } }
+    .btn { padding: 18px 40px; border-radius: 50px; font-weight: 600; font-size: 15px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: none; text-decoration: none; }
+    .btn-fill { background: var(--accent); color: #fff; }
+    .btn-fill:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(194, 130, 60, 0.3); }
+    .btn-glass { color: var(--white); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .btn-glass:hover { background: rgba(255, 255, 255, 0.12); }
+    .hero-rating { margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 12px; opacity: 0; animation: fadeUp 0.8s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .hero-stars { color: var(--accent); font-size: 16px; letter-spacing: 3px; }
+    .hero-rating-text { font-size: 13px; color: var(--gray-light); font-weight: 500; }
+
+    /* ============ TRUST GRID ============ */
+    .trust { padding: 0 24px 80px; position: relative; z-index: 2; }
+    .trust-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .trust-card { border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.4s; }
+    .trust-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2); }
+    .trust-num { font-family: 'Instrument Serif', serif; font-size: 42px; color: var(--white); font-style: italic; }
+    .trust-label { font-size: 11px; font-weight: 600; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.15em; }
+    @media (max-width: 768px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ============ SECTIONS ============ */
+    section.section { min-height: 100vh; display: flex; align-items: center; padding: 120px 24px; position: relative; }
+    section.section.dark { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 100%); }
+    .section-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .section-title { font-size: clamp(32px, 6vw, 72px); color: var(--white); font-style: italic; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 24px; }
+    .section-title em { color: var(--accent); }
+    .section-desc { font-size: 16px; color: var(--gray-light); max-width: 480px; line-height: 1.8; margin-bottom: 56px; }
+
+    /* ============ SERVICES ============ */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .svc { border-radius: 20px; padding: 40px 32px; transition: all 0.4s; position: relative; overflow: hidden; }
+    .svc::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); transform: scaleX(0); transform-origin: left; transition: transform 0.5s; }
+    .svc:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2); }
+    .svc:hover::after { transform: scaleX(1); }
+    .svc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 24px; }
+    .svc h3 { font-size: 20px; color: var(--white); font-style: italic; margin-bottom: 12px; }
+    .svc p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* ============ TOOLKIT SHOWCASE ============ */
+    .toolkit { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .toolkit-img { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.04); aspect-ratio: 16/9; }
+    .toolkit-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 6s ease; }
+    .toolkit-img:hover img { transform: scale(1.05); }
+    .toolkit-list { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+    .toolkit-item { padding: 20px 24px; border-radius: 12px; display: flex; align-items: center; gap: 16px; transition: all 0.3s; }
+    .toolkit-item:hover { background: rgba(255, 255, 255, 0.04); transform: translateX(4px); }
+    .toolkit-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--accent); }
+    .toolkit-text { font-size: 14px; color: var(--cream); }
+    @media (max-width: 900px) { .toolkit { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ============ 24/7 EMERGENCY ============ */
+    .emergency-section { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 0; overflow: hidden; }
+    .emergency-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .emergency-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,15,26,0.95) 0%, rgba(10,15,26,0.6) 50%, rgba(10,15,26,0.2) 100%); }
+    .emergency-content { position: relative; z-index: 2; max-width: 640px; padding: 120px 80px; }
+    .live-badge { display: inline-flex; align-items: center; gap: 0.6rem; padding: 8px 14px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(232, 155, 74, 0.3); background: rgba(232, 155, 74, 0.06); margin-bottom: 24px; }
+    .live-badge .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    .emergency-section h2 { font-size: clamp(40px, 6vw, 88px); color: var(--white); font-style: italic; margin-bottom: 24px; }
+    .emergency-section h2 em { color: var(--accent); }
+    .emergency-section p { font-size: 18px; color: var(--gray-light); margin-bottom: 32px; line-height: 1.7; }
+    .emergency-section p strong { color: var(--cream); font-weight: 500; }
+    .emergency-cta { display: inline-flex; align-items: center; gap: 12px; font-family: 'Instrument Serif', serif; font-size: clamp(28px, 3.5vw, 44px); color: var(--accent); font-style: italic; margin-top: 24px; }
+    .emergency-cta-note { font-size: 12px; color: var(--gray); margin-top: 12px; letter-spacing: 0.05em; }
+    @media (max-width: 700px) { .emergency-content { padding: 80px 24px; } }
+
+    /* ============ ABOUT ============ */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-portrait { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.04); aspect-ratio: 4/5; }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--gray-light); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+    .about-text p strong { color: var(--white); font-weight: 500; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 48px; }
+    .stat { border-radius: 16px; padding: 28px; transition: all 0.3s; }
+    .stat:hover { background: rgba(255, 255, 255, 0.04); }
+    .stat-num { font-family: 'Instrument Serif', serif; font-size: 40px; color: var(--accent); font-style: italic; }
+    .stat-label { font-size: 12px; color: var(--gray); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ============ TESTIMONIALS ============ */
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .test { border-radius: 20px; padding: 40px 32px; transition: all 0.4s; }
+    .test:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
+    .test .stars { color: var(--accent); font-size: 16px; letter-spacing: 4px; margin-bottom: 16px; }
+    .test p { font-size: 15px; color: var(--cream); line-height: 1.8; margin-bottom: 24px; font-style: italic; opacity: 0.9; }
+    .t-footer { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+    .t-av { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--white); flex-shrink: 0; }
+    .t-name { font-weight: 700; font-size: 14px; color: var(--white); }
+    .t-src { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 4px; }
+    .pill-angi { background: rgba(46, 139, 87, 0.12); color: #4eca7b; }
+    .pill-ha { background: rgba(255, 140, 0, 0.12); color: #ffaa33; }
+    .pill-google { background: rgba(100, 160, 255, 0.12); color: #7ab4ff; }
+    @media (max-width: 1024px) { .test-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 700px) { .test-grid { grid-template-columns: 1fr; } }
+
+    /* ============ BADGES ============ */
+    .badges-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .bdg { border-radius: 16px; padding: 18px 28px; text-align: center; min-width: 140px; transition: all 0.3s; }
+    .bdg:hover { transform: translateY(-2px); }
+    .bdg strong { display: block; font-size: 14px; font-weight: 800; color: var(--white); }
+    .bdg span { display: block; font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    .license { font-size: 13px; color: var(--gray); text-align: center; margin-top: 16px; }
+
+    /* ============ CTA SECTION ============ */
+    .cta-section { min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(194, 130, 60, 0.08), transparent 65%); pointer-events: none; }
+    .cta-section h2 { font-size: clamp(36px, 6vw, 80px); color: var(--white); font-style: italic; margin-bottom: 24px; }
+    .cta-section h2 em { color: var(--accent); }
+    .cta-section p { font-size: 18px; color: var(--gray-light); max-width: 520px; margin: 0 auto 32px; }
+
+    /* ============ FOOTER ============ */
+    footer { padding: 48px 24px; border-top: 1px solid rgba(255, 255, 255, 0.04); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gray); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a, .footer-col p { display: block; font-size: 14px; color: var(--gray-light); margin-bottom: 8px; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-brand p { color: var(--gray); font-size: 14px; line-height: 1.7; margin-top: 12px; max-width: 320px; }
+    .footer-lic { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 11px; color: var(--gray); max-width: 1200px; margin-left: auto; margin-right: auto; text-align: center; }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+
+    /* ============ AREA ============ */
+    .area-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 800px; }
+    .area-pin { padding: 14px 18px; border-radius: 12px; font-weight: 600; font-size: 14px; color: var(--cream); transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+    .area-pin:hover { transform: translateX(4px); background: rgba(255, 255, 255, 0.04); }
+    .area-pin::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @media (max-width: 768px) { .area-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) { .services-grid, .test-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: clamp(40px, 12vw, 72px); }
+      .about-grid, .toolkit { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .test-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .area-grid { grid-template-columns: 1fr 1fr; }
+      .section { min-height: auto; padding: 80px 24px; }
+    }
+    @media (max-width: 480px) {
+      .trust-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ============ SCROLL REVEAL ============ */
+    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .s1 { transition-delay: 0.1s; }
+    .s2 { transition-delay: 0.2s; }
+    .s3 { transition-delay: 0.25s; }
+    .s4 { transition-delay: 0.35s; }
+    .s5 { transition-delay: 0.45s; }
+    .s6 { transition-delay: 0.55s; }
+
+    /* ============ EXIT POPUP ============ */
+    .exit-popup-bg { position: fixed; inset: 0; z-index: 99999; background: rgba(4, 4, 14, 0.94); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); display: none; align-items: center; justify-content: center; }
+    .exit-popup-bg.open { display: flex; }
+    .exit-popup-box { max-width: 520px; width: 100%; margin: 2rem; padding: 3rem 2.4rem; background: rgba(10, 15, 26, 0.6); border: 1px solid rgba(232, 155, 74, 0.3); border-radius: 18px; text-align: center; position: relative; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); }
+    .exit-popup-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; color: var(--gray); font-size: 1.6rem; cursor: pointer; line-height: 1; }
+    .exit-popup-close:hover { color: var(--white); }
+    .exit-popup-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .exit-popup-h { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--white); font-style: italic; margin-bottom: 0.8rem; line-height: 1.1; }
+    .exit-popup-sub { font-size: 0.9rem; color: var(--gray-light); margin-bottom: 1.5rem; line-height: 1.6; }
+    .exit-popup-countdown { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.5rem; }
+    .exit-popup-countdown b { color: var(--white); font-weight: 700; }
+    .exit-popup-offers { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem; }
+    .exit-popup-offer { padding: 1.1rem 0.8rem; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; background: rgba(255, 255, 255, 0.02); text-decoration: none; color: #fff; display: block; transition: all 0.2s; }
+    .exit-popup-offer.feature { border-color: rgba(232, 155, 74, 0.25); background: rgba(232, 155, 74, 0.04); }
+    .exit-popup-offer:hover { transform: translateY(-2px); border-color: rgba(232, 155, 74, 0.4); }
+    .exit-popup-offer-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; display: block; }
+    .exit-popup-offer-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .exit-popup-offer-price { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--gray-light); margin-bottom: 0.5rem; }
+    .exit-popup-offer-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .exit-popup-scarcity { font-size: 0.7rem; color: var(--accent); margin-top: 0.5rem; font-style: italic; }
+    .exit-popup-search { display: inline-block; margin-top: 1.2rem; font-size: 0.75rem; color: var(--gray); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 0.1rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "Edwards Heating & Air",
+    "url": "https://sancovp.github.io/dickinson-plumbing/",
+    "telephone": "(770) 685-7521",
+    "address": { "@type": "PostalAddress", "addressLocality": "Acworth", "addressRegion": "GA", "addressCountry": "US" },
+    "areaServed": [
+      { "@type": "City", "name": "Kennesaw" },
+      { "@type": "City", "name": "Marietta" },
+      { "@type": "City", "name": "Acworth" },
+      { "@type": "City", "name": "Woodstock" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- GRAIN -->
+<div class="grain">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noise)"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="#" class="nav-logo">Edwards Heating & Air</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#emergency">24/7</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#area">Service Area</a>
+      </div>
+      <a href="tel:+17706857521" class="nav-cta">Call (770) 685-7521</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO WITH VIDEO -->
+<section class="hero">
+  <div class="hero-video-wrap">
+    <video class="hero-video" id="heroVideo" autoplay muted playsinline preload="auto">
+      <source src="edwards-hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">// NATE-Certified · Est. 2001 · Cobb County, GA</div>
+    <h1>
+      <span class="word">AC</span> <span class="word">Died</span> <span class="word">in</span> <span class="word"><em>July?</em></span> <span class="word"><em>We</em></span> <span class="word"><em>Answer.</em></span>
+    </h1>
+    <p class="hero-sub">Family-owned since 2001. <strong>$89 diagnostic — waived with repair.</strong> NATE-certified, Carrier Factory Authorized. A real person picks up. A real tech shows up.</p>
+    <div class="hero-buttons">
+      <a href="tel:+17706857521" class="btn btn-fill">
+        Call (770) 685-7521
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="btn btn-glass">Our Services</a>
+    </div>
+    <div class="hero-rating">
+      <div class="hero-stars">★★★★★</div>
+      <div class="hero-rating-text">5.0 Rated · 287 Reviews · Google, Angi, HomeAdvisor</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">25+</div>
+      <div class="trust-label">Years in business</div>
+    </div>
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">2AM</div>
+      <div class="trust-label">We answer</div>
+    </div>
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">MP</div>
+      <div class="trust-label">Carrier Factory Authorized Dealer</div>
+    </div>
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">5.0</div>
+      <div class="trust-label">★★★★★ 287 reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLKIT / CAPABILITIES -->
+<section class="section dark" id="toolkit">
+  <div class="section-inner">
+    <div class="toolkit">
+      <div class="toolkit-img">
+        <img src="edwards-tools.png" alt="Manifold gauges, multimeter, refrigerant tank" />
+      </div>
+      <div>
+        <div class="section-label">// Capabilities</div>
+        <h2 class="section-title reveal s1">We bring <em>everything</em> we need.</h2>
+        <p class="section-desc reveal s2">Every truck is a rolling workshop. Every job starts with a complete diagnostic — camera inspection, acoustic leak detection, pressure testing — before we touch a wrench. We don't guess.</p>
+        <div class="toolkit-list">
+          <div class="toolkit-item liquid-glass reveal s3">
+            <div class="toolkit-num">01</div>
+            <div class="toolkit-text">Camera inspection & leak detection on every diagnostic</div>
+          </div>
+          <div class="toolkit-item liquid-glass reveal s4">
+            <div class="toolkit-num">02</div>
+            <div class="toolkit-text">Hydro jetting, trenchless replacement, full repipe</div>
+          </div>
+          <div class="toolkit-item liquid-glass reveal s5">
+            <div class="toolkit-num">03</div>
+            <div class="toolkit-text">Master plumber dispatched, not a subcontractor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-label">// Services</div>
+    <h2 class="section-title reveal s1">What we <em>stop</em> from going wrong.</h2>
+    <p class="section-desc reveal s2">Every job is what it <em>prevents</em>. Water damage. Sewage in the basement. A water heater that floods the garage at midnight. We don't just fix things — we make sure the worst-case scenario never happens.</p>
+    <div class="services-grid">
+      
+      <div class="svc liquid-glass reveal s1">
+        <div class="svc-num">01 / 06</div>
+        <h3>AC Repair</h3>
+        <p>Prevents: sleepless July nights, $1,200 emergency installs, mold from prolonged humidity.</p>
+      </div>
+      <div class="svc liquid-glass reveal s2">
+        <div class="svc-num">02 / 06</div>
+        <h3>AC Install</h3>
+        <p>Prevents: 20-year-old systems dying mid-summer, surprise $8K replacements, ICE cold rooms.</p>
+      </div>
+      <div class="svc liquid-glass reveal s3">
+        <div class="svc-num">03 / 06</div>
+        <h3>Heating Repair</h3>
+        <p>Prevents: January pipe-freeze, $4K water damage, family in coats indoors.</p>
+      </div>
+      <div class="svc liquid-glass reveal s1">
+        <div class="svc-num">04 / 06</div>
+        <h3>Heat Pumps</h3>
+        <p>Prevents: 2-system replacement costs, $15K utility bills over 10 years, hot-and-cold-spot rooms.</p>
+      </div>
+      <div class="svc liquid-glass reveal s2">
+        <div class="svc-num">05 / 06</div>
+        <h3>Indoor Air Quality</h3>
+        <p>Prevents: kids' asthma flare-ups, daily congestion, dust buildup, sick-building syndrome.</p>
+      </div>
+      <div class="svc liquid-glass reveal s3">
+        <div class="svc-num">06 / 06</div>
+        <h3>Maintenance Plan</h3>
+        <p>Prevents: emergency visits, 30% shorter system lifespan, voided manufacturer warranties.</p>
+      </div>
+      <div class="svc liquid-glass reveal s2">
+        <div class="svc-num">02 / 06</div>
+        <h3>Drain &amp; Sewer</h3>
+        <p>Snaking, hydro jetting, camera inspection. We find the blockage, we clear it, we show you the before/after on video.</p>
+      </div>
+      <div class="svc liquid-glass reveal s3">
+        <div class="svc-num">03 / 06</div>
+        <h3>Leak Detection</h3>
+        <p>Slab leaks, supply line tracing, mystery water bills. Acoustic + thermal imaging. Surgical repair, not demo.</p>
+      </div>
+      <div class="svc liquid-glass reveal s1">
+        <div class="svc-num">04 / 06</div>
+        <h3>Whole-Home Repipe</h3>
+        <p>Copper, PEX, polybutylene replacement. We replace aging supply lines before they fail — on your timeline, not the pipe's.</p>
+      </div>
+      <div class="svc liquid-glass reveal s2">
+        <div class="svc-num">05 / 06</div>
+        <h3>Gas Lines</h3>
+        <p>New gas line installation, leak repair, appliance hookups. CSST-certified. Pressure tested, documented, permitted.</p>
+      </div>
+      <div class="svc liquid-glass reveal s3">
+        <div class="svc-num">06 / 06</div>
+        <h3>Commercial</h3>
+        <p>Backflow testing, grease line maintenance, RPZ certification. Restaurants, offices, multi-family. Scheduled service contracts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 24/7 EMERGENCY -->
+<section class="section emergency-section" id="emergency">
+  <img class="emergency-img" src="edwards-emergency.png" alt="HVAC service van in suburban driveway at night" />
+  <div class="emergency-overlay"></div>
+  <div class="emergency-content">
+    <div class="live-badge"><span class="pulse"></span>Live · 24/7 dispatch</div>
+    <h2 class="reveal s1">AC died in <em>July?</em><br/>We're already in the truck.</h2>
+    <p class="reveal s2">One call. No answering service. <strong>Master tech pickup. Cobb County and surrounding areas.</strong> Average on-site time under 60 minutes — because we live here too.</p>
+    <a href="tel:+17706857521" class="emergency-cta reveal s3">(770) 685-7521 →</a>
+    <p class="emergency-cta-note reveal s4">No obligation. $50 service call waived when we do the work.</p>
+  </div>
+</section>
+
+<!-- ABOUT / DOUG -->
+<section class="section dark" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-portrait reveal">
+        <img src="edwards-portrait.png" alt="Bryan, NATE-certified HVAC technician" />
+      </div>
+      <div class="about-text">
+        <div class="section-label">// About</div>
+        <h2 class="section-title reveal s1">Family-owned since 2001. <em>Carrier Factory Authorized.</em></h2>
+        <p class="reveal s2">When you call Edwards Heating & Air, <strong>the person who picks up is the person who shows up.</strong> We don't subcontract. We don't bait-and-switch. NATE-certified technicians, every visit. Class II Refrigerant License #CR109219.</p>
+        <p class="reveal s3">25 years. Same family. Same commitment. The Edwards difference is that we still answer the phone.</p>
+        <div class="badges-row reveal s4">
+          <div class="bdg liquid-glass">
+            <strong>Master Plumber</strong>
+            <span>#CR109219</span>
+          </div>
+          <div class="bdg liquid-glass">
+            <strong>Utility Contractor</strong>
+            <span>#</span>
+          </div>
+          <div class="bdg liquid-glass">
+            <strong>15+ Years</strong>
+            <span>Experience</span>
+          </div>
+          <div class="bdg liquid-glass">
+            <strong>$50</strong>
+            <span>Service Call</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="reviews">
+  <div class="section-inner">
+    <div class="section-label">// Verified Reviews</div>
+    <h2 class="section-title reveal s1">What <em>actually</em> happened.</h2>
+    <p class="section-desc reveal s2">Real customers. Real emergencies. Real reviews from Google, Angi, and HomeAdvisor.</p>
+    <div class="test-grid">
+      
+      <div class="test liquid-glass reveal s1">
+        <div class="stars">★★★★★</div>
+        <p>"{review_1}"</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(66,133,244,.18);color:#7ab4ff;">B</div>
+          <div>
+            <div class="t-name">{review_1_author}</div>
+            <div class="t-src">{review_1_location}</div>
+            <span class="pill pill-{review_1_platform}">{review_1_platform_label}</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s2">
+        <div class="stars">★★★★★</div>
+        <p>"{review_2}"</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(46,139,87,.18);color:#4eca7b;">S</div>
+          <div>
+            <div class="t-name">{review_2_author}</div>
+            <div class="t-src">{review_2_location}</div>
+            <span class="pill pill-{review_2_platform}">{review_2_platform_label}</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s3">
+        <div class="stars">★★★★★</div>
+        <p>"{review_3}"</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(255,140,0,.18);color:#ffaa33;">V</div>
+          <div>
+            <div class="t-name">{review_3_author}</div>
+            <div class="t-src">{review_3_location}</div>
+            <span class="pill pill-{review_3_platform}">{review_3_platform_label}</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s1">
+        <div class="stars">★★★★★</div>
+        <p>He was 1.5 hours away, and said it would likely be 9pm before he could arrive, but because of what was happening to our home, he drove all the way to us and was able to solve the problem and get our A/C up and running in 30 minutes. I would highly recommend Edwards and especially Bryan for their prompt, courteous and professional efficiency in solving this A/C issue in the middle of July, in Atlanta. He cleaned up after himself, and operated quietly enough that our daughter slept through the entire project. Thank you Bryan.</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(66,133,244,.18);color:#7ab4ff;">S</div>
+          <div>
+            <div class="t-name">Real customer</div>
+            <div class="t-src">Acworth, GA</div>
+            <span class="pill pill-google">Google</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s2">
+        <div class="stars">★★★★★</div>
+        <p>Edwards Heating & Air solved my 'no-heat' issue. Technician Scott, was outstanding as always. Scott gets a 10/10. Punctual, polite, and reps the company well. Edward's is my go-to for all HVAC needs.</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(46,139,87,.18);color:#4eca7b;">M</div>
+          <div>
+            <div class="t-name">Service plan customer</div>
+            <div class="t-src">Kennesaw, GA</div>
+            <span class="pill pill-angi">Angi</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s3">
+        <div class="stars">★★★★★</div>
+        <p>Edwards Heating and Air is an amazing company that provides outstanding customer service. From my first call to install all my questions were addressed.</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(255,140,0,.18);color:#ffaa33;">D</div>
+          <div>
+            <div class="t-name">Victoria P.</div>
+            <div class="t-src">Marietta, GA</div>
+            <span class="pill pill-ha">HomeAdvisor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="section dark" id="area">
+  <div class="section-inner">
+    <div class="section-label">// Service Area</div>
+    <h2 class="section-title reveal s1">Serving <em>Cobb County</em> and surrounding areas.</h2>
+    <p class="section-desc reveal s2">Based in Acworth. Quick response across metro Atlanta northwest suburbs.</p>
+    <div class="area-grid reveal s3">
+      <div class="area-pin liquid-glass">Acworth</div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section cta-section" id="cta">
+  <h2 class="reveal s1">AC out? <em>Call us.</em></h2>
+  <p class="reveal s2">One number. No answering service. No callback queue. Master tech on the line, master tech in the truck.</p>
+  <a href="tel:+17706857521" class="btn btn-fill reveal s3">Call (770) 685-7521 →</a>
+  <p class="emergency-cta-note reveal s4" style="text-align:center;">No obligation. $50 service call waived when we do the work.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <div class="nav-logo" style="font-size:18px;">Edwards Heating & Air</div>
+      <p>Family-owned HVAC in Acworth, Georgia since 2001. Carrier Factory Authorized, NATE-certified. License #CR109219.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Water Heaters</a>
+      <a href="#services">Drain &amp; Sewer</a>
+      <a href="#services">Leak Detection</a>
+      <a href="#services">Whole-Home Repipe</a>
+      <a href="#services">Commercial</a>
+    </div>
+    <div class="footer-col">
+      <h4>Licenses</h4>
+      <p>Carrier Factory Authorized Dealer</p>
+      <p>Utility Contractor #</p>
+      <p>Bonded · Insured</p>
+      <p>15+ Years Experience</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+17706857521">(770) 685-7521</a>
+      <p>24/7 Emergency</p>
+      <p>Family-owned since 2001</p>
+    </div>
+  </div>
+  <div class="footer-lic">© 2026 Edwards Heating & Air · Acworth, GA · Class II Refrigerant License #CR109219</div>
+</footer>
+
+<!-- EXIT POPUP (plumber-specific) -->
+<div class="exit-popup-bg" id="exitPopupBg">
+  <div class="exit-popup-box">
+    <button class="exit-popup-close" id="exitPopupClose">&times;</button>
+    <div class="exit-popup-tag">// 24/7 · Master Plumber · Direct Access</div>
+    <div class="exit-popup-h">AC out in 100° heat?<br/>Skip the wait. Call us now.</div>
+    <p class="exit-popup-sub">One call connects you directly to a licensed master plumber. No answering service. No call center. The person who picks up is the person who shows up.</p>
+    <div class="exit-popup-countdown">Average on-site time: <b>under 60 minutes</b></div>
+    <div class="exit-popup-offers">
+      <a class="exit-popup-offer" id="epOneTime" href="tel:+17706857521">
+        <span class="exit-popup-offer-label">Call now</span>
+        <div class="exit-popup-offer-name">24/7 dispatch</div>
+        <div class="exit-popup-offer-price">Cobb County, GA</div>
+        <div class="exit-popup-offer-cta">Call (770) 685-7521 →</div>
+      </a>
+      <a class="exit-popup-offer feature" id="epLifetime" href="#services">
+        <span class="exit-popup-offer-label">$50 service call</span>
+        <div class="exit-popup-offer-name">Waived with work</div>
+        <div class="exit-popup-offer-price">No obligation. 24/7.</div>
+        <div class="exit-popup-offer-cta">See services →</div>
+      </a>
+    </div>
+    <p class="exit-popup-scarcity">Family-owned. Carrier Factory Authorized Dealer.</p>
+    <a href="#reviews" class="exit-popup-search">Or read reviews →</a>
+  </div>
+</div>
+
+<script>
+// Video crossfade loop (rAF) — Quality Gate item
+(function() {
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  v.addEventListener('loadeddata', function() { v.classList.add('active'); });
+  v.addEventListener('ended', function() {
+    v.classList.remove('active');
+    setTimeout(function() { v.currentTime = 0; v.play(); v.classList.add('active'); }, 600);
+  });
+  v.play().catch(function(){});
+})();
+
+// Nav scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { el.classList.add('visible'); });
+}, 4000);
+
+// Exit popup — plumber-specific 24/7 dispatch CTA
+(function() {
+  var bg = document.getElementById('exitPopupBg');
+  if (!bg) return;
+  function open() {
+    if (bg.dataset.open) return;
+    bg.dataset.open = '1';
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    bg.classList.remove('open');
+    bg.dataset.open = '';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('exitPopupClose').addEventListener('click', close);
+  bg.addEventListener('click', function(e) { if (e.target === bg) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+
+  var triggered = false;
+  document.addEventListener('mousemove', function(e) {
+    if (triggered) return;
+    if (e.clientY <= 8) { triggered = true; open(); }
+  });
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden' && !triggered) {
+      triggered = true;
+      setTimeout(function() { if (document.visibilityState === 'visible') open(); }, 200);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

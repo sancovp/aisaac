@@ -1,0 +1,60 @@
+{
+  "prospect_name": "Edwards Heating & Air",
+  "slug": "edwards-heating-air",
+  "city": "Acworth",
+  "city_state_short": "Acworth, GA",
+  "state": "GA",
+  "county": "Cobb County",
+  "niche": "hvac",
+  "archetype": "emergency",
+  "phone": "770-685-7521",
+  "phone_formatted": "(770) 685-7521",
+  "phone_link": "+17706857521",
+  "address": "4200 Industrial Center Ln NW, Suite #105, Acworth, GA 30101",
+  "license_master": "CR109219",
+  "license_master_label": "Class II Refrigerant License #CR109219",
+  "license_utility": "",
+  "founded_year": "2001",
+  "current_year": "2026",
+  "years_in_business_display": "25+",
+  "owner_or_key_techs": ["Bryan", "Scott", "Billy Carter"],
+  "hero_pain_moment": "2AM",
+  "hero_pain_moment_label": "We answer",
+  "trust_signals": [
+    "Carrier Factory Authorized Dealer",
+    "NATE-certified technicians",
+    "BBB Accredited since 2010",
+    "25+ years in business",
+    "Class II Refrigerant License #CR109219"
+  ],
+  "service_area": [
+    "Acworth", "Alpharetta", "Cartersville", "Kennesaw",
+    "Marietta", "Smyrna", "Woodstock"
+  ],
+  "service_area_blurb": "Quick response across metro Atlanta northwest suburbs.",
+  "top_reviews": [
+    {
+      "text": "He was 1.5 hours away, and said it would likely be 9pm before he could arrive, but because of what was happening to our home, he drove all the way to us and was able to solve the problem and get our A/C up and running in 30 minutes. I would highly recommend Edwards and especially Bryan for their prompt, courteous and professional efficiency in solving this A/C issue in the middle of July, in Atlanta. He cleaned up after himself, and operated quietly enough that our daughter slept through the entire project. Thank you Bryan.",
+      "author": "Real customer",
+      "location": "Acworth, GA",
+      "platform": "google",
+      "platform_label": "Google"
+    },
+    {
+      "text": "Edwards Heating & Air solved my 'no-heat' issue. Technician Scott, was outstanding as always. Scott gets a 10/10. Punctual, polite, and reps the company well. Edward's is my go-to for all HVAC needs.",
+      "author": "Service plan customer",
+      "location": "Kennesaw, GA",
+      "platform": "angi",
+      "platform_label": "Angi"
+    },
+    {
+      "text": "Edwards Heating and Air is an amazing company that provides outstanding customer service. From my first call to install all my questions were addressed.",
+      "author": "Victoria P.",
+      "location": "Marietta, GA",
+      "platform": "ha",
+      "platform_label": "HomeAdvisor"
+    }
+  ],
+  "voice_quote": "He was 1.5 hours away... thank you Bryan",
+  "brand_color_hex": "#1a3a5c"
+}
