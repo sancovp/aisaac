@@ -3,855 +3,518 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dickinson Plumbing — Family-Owned Master Plumbers in Acworth, GA</title>
-  <meta name="description" content="Family-owned since 2010. Master Plumber License #MP007570. 24/7 emergency response across Cobb County. Water heaters, drain cleaning, sewer line, leak detection, whole-home repipe. $50 service call waived when we do the work.">
-  <meta property="og:title" content="Dickinson Plumbing — 2AM Pipe Burst? We Answer.">
-  <meta property="og:description" content="Family-owned since 2010. Licensed, bonded, insured. $50 service call waived when we do the work.">
-  <meta property="og:image" content="plumbing-hero-v2.png">
+  <title>Dickinson Plumbing | Acworth, GA — 2AM Pipe Burst? We Answer.</title>
+  <meta name="description" content="Family-owned master plumbers in Acworth, Georgia. Master Plumber License #MP007570. 24/7 emergency response across Cobb County. $50 service call waived when we do the work. Call (770) 427-6389.">
+  <meta property="og:title" content="Dickinson Plumbing | 2AM Pipe Burst? We Answer.">
+  <meta property="og:description" content="Family-owned since 1981. Master Plumber License #MP007570. $50 service call waived when we do the work.">
+  <meta property="og:image" content="plumber-hero-ref.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100' rx='20'/%3E%3Cpath d='M30 25 L30 50 Q30 65 45 65 L45 75 L55 75 L55 65 Q70 65 70 50 L70 25' fill='none' stroke='%23c2823c' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%230a0f1a' width='100' height='100' rx='20'/%3E%3Cpath d='M30 25 L30 50 Q30 65 45 65 L45 75 L55 75 L55 65 Q70 65 70 50 L70 25' fill='none' stroke='%23c2823c' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --copper-50: #fdf6ec;
-      --copper-100: #f4e4c8;
-      --copper-200: #e8c89a;
-      --copper-300: #d4a268;
-      --copper-400: #c2823c;
-      --copper-500: #a86829;
-      --copper-600: #8a4f1c;
-      --copper-700: #6b3a14;
-      --bg: #0a0807;
-      --bg-1: #0f0c0a;
-      --bg-2: #15110e;
-      --bg-3: #1c1714;
-      --line: rgba(255, 255, 255, 0.06);
-      --line-strong: rgba(255, 255, 255, 0.12);
-      --white: #ffffff;
-      --w-95: rgba(255, 255, 255, 0.95);
-      --w-70: rgba(255, 255, 255, 0.7);
-      --w-50: rgba(255, 255, 255, 0.5);
-      --w-30: rgba(255, 255, 255, 0.3);
+      --bg: #0a0f1a;
+      --bg-light: #111827;
+      --bg-mid: #1a2332;
+      --white: #f8f9fa;
+      --cream: #e8e0d4;
+      --gray: #7a8899;
+      --gray-light: #b0bec5;
+      --accent: #c2823c;
+      --accent-hover: #d4944e;
+      --accent-glow: rgba(194, 130, 60, 0.18);
+      --accent-deep: #8d5524;
     }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--cream);
       background: var(--bg);
-      color: var(--w-70);
       line-height: 1.6;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    h1, h2, h3, h4, .display, .serif {
-      font-family: 'Instrument Serif', serif;
-      font-weight: 400;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--white);
-    }
-    .italic { font-style: italic; }
+    h1, h2, h3, h4, .display { font-family: 'Instrument Serif', serif; font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--white); }
     a { color: inherit; text-decoration: none; }
-    ::selection { background: var(--copper-400); color: #000; }
 
-    .noise {
-      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.06;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
-    }
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: -1;
-      background: radial-gradient(ellipse at 30% 0%, rgba(194,130,60,0.06), transparent 50%),
-                  radial-gradient(ellipse at 70% 100%, rgba(60,40,20,0.08), transparent 60%),
-                  var(--bg);
-    }
+    /* ============ GRAIN ============ */
+    .grain { position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.35; }
+    .grain svg { width: 100%; height: 100%; opacity: 0.1; }
 
-    .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+    /* ============ LIQUID GLASS ============ */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.02);
       background-blend-mode: luminosity;
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      border: 1px solid var(--line-strong);
-      box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.08),
-        inset 0 -1px 0 rgba(0,0,0,0.4),
-        0 20px 60px -20px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
       position: relative;
       overflow: hidden;
     }
-    .glass::before {
+    .liquid-glass::before {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.12) 30%, transparent 50%, rgba(255,255,255,0.12) 70%, rgba(255,255,255,0.4) 100%);
+      padding: 1.2px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.35) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
     }
+    .liquid-glass-strong {
+      background: rgba(232, 155, 74, 0.08);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(232, 155, 74, 0.3);
+    }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.2rem 2.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    nav.scrolled {
-      background: rgba(10, 8, 7, 0.78);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
-      border-bottom: 1px solid var(--line);
-      padding: 0.7rem 2.5rem;
-    }
-    .nav-brand {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      letter-spacing: -0.01em;
-      color: var(--white);
+    /* ============ NAV ============ */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 20px 0; transition: all 0.4s; }
+    nav.scrolled .nav-pill { background: rgba(10, 15, 26, 0.92); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-pill { display: flex; align-items: center; gap: 32px; padding: 14px 32px; border-radius: 50px; transition: all 0.4s; }
+    .nav-logo { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--white); font-style: italic; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--gray-light); font-size: 13px; font-weight: 500; transition: color 0.3s; letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #ffffff !important; padding: 10px 24px; border-radius: 50px; font-weight: 700; font-size: 13px; transition: all 0.3s; letter-spacing: 0.03em; text-transform: uppercase; }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(194, 130, 60, 0.3); }
+    @media (max-width: 900px) { .nav-links { display: none; } }
+
+    /* ============ HERO WITH VIDEO ============ */
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-    }
-    .nav-brand .pipe-icon {
-      width: 22px; height: 22px;
-      border: 1.5px solid var(--copper-400);
-      border-radius: 4px;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: var(--copper-400);
-    }
-    .nav-brand strong { color: var(--copper-300); font-weight: 400; }
-    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
-    .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--w-50);
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a:not(.nav-cta):hover { color: var(--white); }
-    .nav-links a:not(.nav-cta)::after {
-      content: '';
-      position: absolute; left: 0; right: 0; bottom: -6px;
-      height: 1px;
-      background: var(--copper-300);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
-    .nav-cta {
-      padding: 0.7rem 1.3rem;
-      border-radius: 100px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #000;
-      background: linear-gradient(135deg, var(--copper-300), var(--copper-500));
-      box-shadow: 0 0 30px -5px rgba(232,155,74,0.4);
-      transition: all 0.2s;
-    }
-    .nav-cta:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 0 40px -5px rgba(232,155,74,0.6); }
-    @media (max-width: 900px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-    }
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 0;
-      align-items: stretch;
-      overflow: hidden;
-    }
-    .hero-img-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      filter: contrast(1.1) saturate(0.85);
-      transform: scale(1.05);
-    }
-    .hero-img-wrap::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(10,8,7,0.6) 0%, transparent 25%, transparent 75%, rgba(10,8,7,0.4) 100%);
-      pointer-events: none;
-    }
-    .hero-content {
-      padding: 8rem 5rem 4rem;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
-      max-width: 720px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 24px 80px;
     }
-    .hero-meta {
-      display: flex; align-items: center; gap: 1rem;
-      margin-bottom: 2rem;
+    .hero-video-wrap {
+      position: absolute; inset: 0;
+      overflow: hidden;
     }
-    .hero-right-card {
-      position: relative; z-index: 2;
-      padding: 3rem 2.5rem;
-      border-radius: 18px;
-      background: rgba(10, 8, 7, 0.65);
-      backdrop-filter: blur(20px) saturate(140%);
-      -webkit-backdrop-filter: blur(20px) saturate(140%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 60px -10px rgba(0,0,0,0.6);
-      max-width: 380px;
-    }
-    .kicker {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--copper-300);
-      margin-bottom: 2rem;
-    }
-    .kicker::before {
-      content: '';
-      width: 32px; height: 1px;
-      background: var(--copper-400);
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      margin-bottom: 1.8rem;
-      font-style: italic;
-    }
-    .hero h1 .word {
-      display: inline-block;
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(1.05);
+      transform: scale(1.05);
       opacity: 0;
-      transform: translateY(40px);
-      filter: blur(14px);
-      animation: blurIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: opacity 0.5s ease;
     }
+    .hero-video.active { opacity: 1; }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(10,15,26,0.55) 0%, rgba(10,15,26,0.30) 30%, rgba(10,15,26,0.55) 60%, rgba(10,15,26,0.92) 100%);
+    }
+    .hero-content { position: relative; z-index: 3; max-width: 920px; }
+    .hero-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; opacity: 0.9; }
+    .hero h1 { font-size: clamp(48px, 9vw, 110px); color: var(--white); line-height: 0.95; font-style: italic; margin-bottom: 32px; }
+    .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(30px); filter: blur(10px); animation: blurIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .hero h1 .word:nth-child(1) { animation-delay: 0.1s; }
     .hero h1 .word:nth-child(2) { animation-delay: 0.2s; }
     .hero h1 .word:nth-child(3) { animation-delay: 0.35s; }
     .hero h1 .word:nth-child(4) { animation-delay: 0.5s; }
     .hero h1 .word:nth-child(5) { animation-delay: 0.65s; }
-    @keyframes blurIn {
-      to { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--copper-200);
-    }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--w-70);
-      font-weight: 300;
-      max-width: 540px;
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    .hero-sub strong { color: var(--copper-200); font-weight: 500; }
-    .hero-cta-row {
-      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-      from { opacity: 0; transform: translateY(20px); }
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      padding: 1.1rem 2rem;
-      border-radius: 100px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #000;
-      background: linear-gradient(135deg, var(--copper-200), var(--copper-400));
-      box-shadow:
-        0 0 50px -10px rgba(232,155,74,0.5),
-        0 10px 30px rgba(0,0,0,0.4);
-      transition: all 0.25s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 0 60px -10px rgba(232,155,74,0.7), 0 14px 40px rgba(0,0,0,0.5); }
-    .btn-primary svg { width: 14px; height: 14px; }
-    .btn-secondary {
-      padding: 1.1rem 2rem;
-      border-radius: 100px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: transparent;
-      border: 1px solid var(--line-strong);
-      transition: all 0.25s;
-    }
-    .btn-secondary:hover { border-color: var(--copper-300); color: var(--copper-200); }
+    .hero h1 em { color: var(--accent); font-style: italic; }
+    .hero h1, .hero p { text-shadow: 0 2px 30px rgba(0,0,0,0.7); }
+    @keyframes blurIn { to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+    .hero-sub { font-size: clamp(15px, 2vw, 19px); color: var(--gray-light); max-width: 540px; margin: 0 auto 48px; line-height: 1.7; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .hero-sub strong { color: var(--cream); font-weight: 500; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(20px); } }
+    .btn { padding: 18px 40px; border-radius: 50px; font-weight: 600; font-size: 15px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: none; text-decoration: none; }
+    .btn-fill { background: var(--accent); color: #fff; }
+    .btn-fill:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(194, 130, 60, 0.3); }
+    .btn-glass { color: var(--white); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .btn-glass:hover { background: rgba(255, 255, 255, 0.12); }
+    .hero-rating { margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 12px; opacity: 0; animation: fadeUp 0.8s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .hero-stars { color: var(--accent); font-size: 16px; letter-spacing: 3px; }
+    .hero-rating-text { font-size: 13px; color: var(--gray-light); font-weight: 500; }
 
-    .hero-trust {
-      display: flex; gap: 0.6rem; flex-wrap: wrap;
-      margin-top: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    .trust-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.72rem; font-weight: 500;
-      color: var(--w-70);
-      background: rgba(255,255,255,0.025);
-      border: 1px solid var(--line);
-    }
-    .trust-pill .star { color: var(--copper-300); }
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-img-wrap { height: 50vh; }
-      .hero-content { padding: 5rem 1.5rem 3rem; }
-    }
+    /* ============ TRUST GRID ============ */
+    .trust { padding: 0 24px 80px; position: relative; z-index: 2; }
+    .trust-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .trust-card { border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.4s; }
+    .trust-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2); }
+    .trust-num { font-family: 'Instrument Serif', serif; font-size: 42px; color: var(--white); font-style: italic; }
+    .trust-label { font-size: 11px; font-weight: 600; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.15em; }
+    @media (max-width: 768px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
 
-    section { position: relative; padding: 8rem 2rem; }
-    section.dark { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-1) 100%); }
-    .container { max-width: 1280px; margin: 0 auto; }
-    .section-tag {
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--copper-300);
-      margin-bottom: 1.5rem;
-    }
-    .section-tag::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: var(--copper-400);
-    }
-    .section-h { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 1.5rem; max-width: 16ch; }
-    .section-h em { color: var(--copper-200); font-style: italic; }
-    .section-sub { font-size: 1.05rem; color: var(--w-70); max-width: 560px; font-weight: 300; line-height: 1.7; margin-bottom: 4rem; }
+    /* ============ SECTIONS ============ */
+    section.section { min-height: 100vh; display: flex; align-items: center; padding: 120px 24px; position: relative; }
+    section.section.dark { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 100%); }
+    .section-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .section-title { font-size: clamp(32px, 6vw, 72px); color: var(--white); font-style: italic; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 24px; }
+    .section-title em { color: var(--accent); }
+    .section-desc { font-size: 16px; color: var(--gray-light); max-width: 480px; line-height: 1.8; margin-bottom: 56px; }
 
-    #services { position: relative; }
-    #services::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 90%; max-width: 1280px; height: 70%;
-      background: url('plumbing-tools-v2.png') center/cover no-repeat;
-      opacity: 0.18;
-      pointer-events: none;
-      mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
-      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .service-card {
-      padding: 2.4rem 2rem 2.2rem;
-      border-radius: 16px;
-      position: relative;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-    }
-    .service-card:hover { transform: translateY(-6px); border-color: rgba(232,155,74,0.3); }
-    .service-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--copper-300);
-      margin-bottom: 1.5rem;
-    }
-    .service-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.7rem;
-    }
-    .service-card p {
-      font-size: 0.88rem;
-      color: var(--w-70);
-      line-height: 1.6;
-      font-weight: 300;
-      margin-bottom: 1.4rem;
-      flex: 1;
-    }
-    .service-arrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--w-30);
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
-    }
-    .service-card:hover .service-arrow { color: var(--copper-300); transform: translateX(4px); }
-    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    /* ============ SERVICES ============ */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .svc { border-radius: 20px; padding: 40px 32px; transition: all 0.4s; position: relative; overflow: hidden; }
+    .svc::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); transform: scaleX(0); transform-origin: left; transition: transform 0.5s; }
+    .svc:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2); }
+    .svc:hover::after { transform: scaleX(1); }
+    .svc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 24px; }
+    .svc h3 { font-size: 20px; color: var(--white); font-style: italic; margin-bottom: 12px; }
+    .svc p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
 
-    .emergency {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center;
-      overflow: hidden;
-      padding: 0;
-    }
-    .emergency-img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5;
-      filter: contrast(1.05) saturate(0.9) brightness(0.75);
-    }
-    .emergency-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(10,8,7,0.95) 0%, rgba(10,8,7,0.7) 45%, rgba(10,8,7,0.2) 80%, rgba(10,8,7,0.6) 100%);
-    }
-    .emergency-content {
-      position: relative; z-index: 2;
-      max-width: 600px;
-      padding: 8rem 5rem;
-    }
-    .emergency .live-badge {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--copper-300);
-      border: 1px solid rgba(232,155,74,0.3);
-      background: rgba(232,155,74,0.08);
-      margin-bottom: 1.5rem;
-    }
-    .live-badge .pulse {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--copper-300);
-      box-shadow: 0 0 8px var(--copper-300);
-      animation: pulse 2s ease-in-out infinite;
-    }
+    /* ============ TOOLKIT SHOWCASE ============ */
+    .toolkit { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .toolkit-img { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.04); aspect-ratio: 16/9; }
+    .toolkit-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 6s ease; }
+    .toolkit-img:hover img { transform: scale(1.05); }
+    .toolkit-list { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+    .toolkit-item { padding: 20px 24px; border-radius: 12px; display: flex; align-items: center; gap: 16px; transition: all 0.3s; }
+    .toolkit-item:hover { background: rgba(255, 255, 255, 0.04); transform: translateX(4px); }
+    .toolkit-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--accent); }
+    .toolkit-text { font-size: 14px; color: var(--cream); }
+    @media (max-width: 900px) { .toolkit { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ============ 24/7 EMERGENCY ============ */
+    .emergency-section { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 0; overflow: hidden; }
+    .emergency-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .emergency-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,15,26,0.95) 0%, rgba(10,15,26,0.6) 50%, rgba(10,15,26,0.2) 100%); }
+    .emergency-content { position: relative; z-index: 2; max-width: 640px; padding: 120px 80px; }
+    .live-badge { display: inline-flex; align-items: center; gap: 0.6rem; padding: 8px 14px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(232, 155, 74, 0.3); background: rgba(232, 155, 74, 0.06); margin-bottom: 24px; }
+    .live-badge .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-    .emergency h2 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      margin-bottom: 1.5rem;
-    }
-    .emergency h2 em { color: var(--copper-200); font-style: italic; }
-    .emergency p {
-      font-size: 1.05rem;
-      color: var(--w-70);
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      line-height: 1.7;
-      max-width: 480px;
-    }
-    .emergency p strong { color: var(--white); font-weight: 500; }
+    .emergency-section h2 { font-size: clamp(40px, 6vw, 88px); color: var(--white); font-style: italic; margin-bottom: 24px; }
+    .emergency-section h2 em { color: var(--accent); }
+    .emergency-section p { font-size: 18px; color: var(--gray-light); margin-bottom: 32px; line-height: 1.7; }
+    .emergency-section p strong { color: var(--cream); font-weight: 500; }
+    .emergency-cta { display: inline-flex; align-items: center; gap: 12px; font-family: 'Instrument Serif', serif; font-size: clamp(28px, 3.5vw, 44px); color: var(--accent); font-style: italic; margin-top: 24px; }
+    .emergency-cta-note { font-size: 12px; color: var(--gray); margin-top: 12px; letter-spacing: 0.05em; }
+    @media (max-width: 700px) { .emergency-content { padding: 80px 24px; } }
 
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1.3fr;
-      gap: 5rem; align-items: center;
-    }
-    .about-img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      position: relative;
-    }
-    .about-img img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center 15%;
-    }
-    .about-text p { color: var(--w-70); font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.2rem; font-weight: 300; }
+    /* ============ ABOUT ============ */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-portrait { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.04); aspect-ratio: 4/5; }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--gray-light); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
     .about-text p strong { color: var(--white); font-weight: 500; }
-    .cred-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 2rem;
-    }
-    .cred-item {
-      padding: 1.1rem 1.2rem;
-      border-radius: 12px;
-    }
-    .cred-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; color: var(--w-50);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .cred-value {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.1rem; font-style: italic;
-      color: var(--white);
-    }
-    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .cred-grid { grid-template-columns: 1fr 1fr; } }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 48px; }
+    .stat { border-radius: 16px; padding: 28px; transition: all 0.3s; }
+    .stat:hover { background: rgba(255, 255, 255, 0.04); }
+    .stat-num { font-family: 'Instrument Serif', serif; font-size: 40px; color: var(--accent); font-style: italic; }
+    .stat-label { font-size: 12px; color: var(--gray); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
 
-    .reviews-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-    .reviews-header .section-h, .reviews-header .section-sub { margin-left: auto; margin-right: auto; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-    .review-card { padding: 2.2rem 2rem; border-radius: 16px; }
-    .review-top {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 1rem;
-    }
-    .review-stars { color: var(--copper-300); font-size: 0.95rem; letter-spacing: 0.05em; }
-    .platform {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .badge-google { background: rgba(66,133,244,0.15); color: #4285f4; }
-    .badge-angi { background: rgba(46,139,87,0.15); color: #2e8b57; }
-    .badge-ha { background: rgba(255,120,0,0.15); color: #e66a00; }
-    .review-text {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      line-height: 1.5;
-      color: var(--w-95);
-      margin-bottom: 1.4rem;
-    }
-    .review-text::before {
-      content: '"';
-      color: var(--copper-400);
-      font-size: 3rem;
-      line-height: 0;
-      vertical-align: -0.5em;
-      margin-right: 0.2rem;
-    }
-    .review-author { display: flex; align-items: center; gap: 0.8rem; }
-    .review-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--copper-300), var(--copper-500));
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Instrument Serif', serif;
-      font-size: 0.9rem; color: #000;
-      font-style: italic;
-    }
-    .review-author-info { font-size: 0.78rem; }
-    .review-author-info strong { color: var(--white); display: block; font-weight: 600; }
-    .review-author-info span { color: var(--w-50); font-size: 0.72rem; }
-    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+    /* ============ TESTIMONIALS ============ */
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .test { border-radius: 20px; padding: 40px 32px; transition: all 0.4s; }
+    .test:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
+    .test .stars { color: var(--accent); font-size: 16px; letter-spacing: 4px; margin-bottom: 16px; }
+    .test p { font-size: 15px; color: var(--cream); line-height: 1.8; margin-bottom: 24px; font-style: italic; opacity: 0.9; }
+    .t-footer { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+    .t-av { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--white); flex-shrink: 0; }
+    .t-name { font-weight: 700; font-size: 14px; color: var(--white); }
+    .t-src { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 4px; }
+    .pill-angi { background: rgba(46, 139, 87, 0.12); color: #4eca7b; }
+    .pill-ha { background: rgba(255, 140, 0, 0.12); color: #ffaa33; }
+    .pill-google { background: rgba(100, 160, 255, 0.12); color: #7ab4ff; }
+    @media (max-width: 1024px) { .test-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 700px) { .test-grid { grid-template-columns: 1fr; } }
 
-    .area-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;
-    }
-    .area-pill {
-      padding: 0.9rem 1rem;
-      border-radius: 100px;
-      font-size: 0.88rem;
-      text-align: center;
-      color: var(--w-70);
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-    .area-pill:hover { color: var(--copper-200); border-color: var(--copper-400); transform: translateY(-2px); }
-    @media (max-width: 768px) { .area-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* ============ BADGES ============ */
+    .badges-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .bdg { border-radius: 16px; padding: 18px 28px; text-align: center; min-width: 140px; transition: all 0.3s; }
+    .bdg:hover { transform: translateY(-2px); }
+    .bdg strong { display: block; font-size: 14px; font-weight: 800; color: var(--white); }
+    .bdg span { display: block; font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    .license { font-size: 13px; color: var(--gray); text-align: center; margin-top: 16px; }
 
-    .final-cta {
-      text-align: center;
-      padding: 12rem 2rem;
-      position: relative;
+    /* ============ CTA SECTION ============ */
+    .cta-section { min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(194, 130, 60, 0.08), transparent 65%); pointer-events: none; }
+    .cta-section h2 { font-size: clamp(36px, 6vw, 80px); color: var(--white); font-style: italic; margin-bottom: 24px; }
+    .cta-section h2 em { color: var(--accent); }
+    .cta-section p { font-size: 18px; color: var(--gray-light); max-width: 520px; margin: 0 auto 32px; }
+
+    /* ============ FOOTER ============ */
+    footer { padding: 48px 24px; border-top: 1px solid rgba(255, 255, 255, 0.04); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gray); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a, .footer-col p { display: block; font-size: 14px; color: var(--gray-light); margin-bottom: 8px; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-brand p { color: var(--gray); font-size: 14px; line-height: 1.7; margin-top: 12px; max-width: 320px; }
+    .footer-lic { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 11px; color: var(--gray); max-width: 1200px; margin-left: auto; margin-right: auto; text-align: center; }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+
+    /* ============ AREA ============ */
+    .area-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 800px; }
+    .area-pin { padding: 14px 18px; border-radius: 12px; font-weight: 600; font-size: 14px; color: var(--cream); transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+    .area-pin:hover { transform: translateX(4px); background: rgba(255, 255, 255, 0.04); }
+    .area-pin::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @media (max-width: 768px) { .area-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) { .services-grid, .test-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: clamp(40px, 12vw, 72px); }
+      .about-grid, .toolkit { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .test-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .area-grid { grid-template-columns: 1fr 1fr; }
+      .section { min-height: auto; padding: 80px 24px; }
     }
-    .final-cta::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(232,155,74,0.12), transparent 60%);
-      pointer-events: none;
-    }
-    .final-cta h2 {
-      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-      margin-bottom: 1.5rem;
-      max-width: 14ch;
-      margin-left: auto; margin-right: auto;
-    }
-    .final-cta h2 em { color: var(--copper-200); font-style: italic; }
-    .final-cta p {
-      color: var(--w-70);
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-      font-weight: 300;
-      font-size: 1.05rem;
-    }
-    .final-phone {
-      display: inline-block;
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--copper-200);
-      font-style: italic;
-      margin: 1.5rem 0 2rem;
-    }
-    .cta-note {
-      font-size: 0.85rem;
-      color: var(--w-50);
-      margin-top: 1.2rem;
+    @media (max-width: 480px) {
+      .trust-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; justify-content: center; }
     }
 
-    footer {
-      padding: 5rem 2rem 2.5rem;
-      border-top: 1px solid var(--line);
-      background: var(--bg-1);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    .footer-col h4 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; color: var(--w-50);
-      letter-spacing: 0.15em; text-transform: uppercase;
-      margin-bottom: 1.2rem; font-weight: 600;
-    }
-    .footer-col a, .footer-col p {
-      display: block;
-      font-size: 0.88rem;
-      color: var(--w-70);
-      margin-bottom: 0.6rem;
-      transition: color 0.2s;
-      font-weight: 300;
-    }
-    .footer-col a:hover { color: var(--copper-300); }
-    .footer-brand p {
-      font-size: 0.88rem;
-      color: var(--w-50);
-      margin-top: 0.8rem;
-      line-height: 1.6;
-      max-width: 320px;
-    }
-    .footer-bottom {
-      max-width: 1280px;
-      margin: 3rem auto 0;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: var(--w-50);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-bottom a { color: var(--copper-300); }
-    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+    /* ============ SCROLL REVEAL ============ */
+    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .rd1 { transition-delay: 0.1s; }
-    .rd2 { transition-delay: 0.2s; }
-    .rd3 { transition-delay: 0.3s; }
-    .rd4 { transition-delay: 0.4s; }
-    .rd5 { transition-delay: 0.5s; }
+    .s1 { transition-delay: 0.1s; }
+    .s2 { transition-delay: 0.2s; }
+    .s3 { transition-delay: 0.25s; }
+    .s4 { transition-delay: 0.35s; }
+    .s5 { transition-delay: 0.45s; }
+    .s6 { transition-delay: 0.55s; }
+
+    /* ============ EXIT POPUP ============ */
+    .exit-popup-bg { position: fixed; inset: 0; z-index: 99999; background: rgba(4, 4, 14, 0.94); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); display: none; align-items: center; justify-content: center; }
+    .exit-popup-bg.open { display: flex; }
+    .exit-popup-box { max-width: 520px; width: 100%; margin: 2rem; padding: 3rem 2.4rem; background: rgba(10, 15, 26, 0.6); border: 1px solid rgba(232, 155, 74, 0.3); border-radius: 18px; text-align: center; position: relative; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); }
+    .exit-popup-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; color: var(--gray); font-size: 1.6rem; cursor: pointer; line-height: 1; }
+    .exit-popup-close:hover { color: var(--white); }
+    .exit-popup-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .exit-popup-h { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--white); font-style: italic; margin-bottom: 0.8rem; line-height: 1.1; }
+    .exit-popup-sub { font-size: 0.9rem; color: var(--gray-light); margin-bottom: 1.5rem; line-height: 1.6; }
+    .exit-popup-countdown { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.5rem; }
+    .exit-popup-countdown b { color: var(--white); font-weight: 700; }
+    .exit-popup-offers { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem; }
+    .exit-popup-offer { padding: 1.1rem 0.8rem; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; background: rgba(255, 255, 255, 0.02); text-decoration: none; color: #fff; display: block; transition: all 0.2s; }
+    .exit-popup-offer.feature { border-color: rgba(232, 155, 74, 0.25); background: rgba(232, 155, 74, 0.04); }
+    .exit-popup-offer:hover { transform: translateY(-2px); border-color: rgba(232, 155, 74, 0.4); }
+    .exit-popup-offer-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; display: block; }
+    .exit-popup-offer-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .exit-popup-offer-price { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--gray-light); margin-bottom: 0.5rem; }
+    .exit-popup-offer-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .exit-popup-scarcity { font-size: 0.7rem; color: var(--accent); margin-top: 0.5rem; font-style: italic; }
+    .exit-popup-search { display: inline-block; margin-top: 1.2rem; font-size: 0.75rem; color: var(--gray); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 0.1rem; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "Dickinson Plumbing",
+    "url": "https://sancovp.github.io/dickinson-plumbing/",
+    "telephone": "(770) 427-6389",
+    "address": { "@type": "PostalAddress", "addressLocality": "Acworth", "addressRegion": "GA", "addressCountry": "US" },
+    "areaServed": [
+      { "@type": "City", "name": "Kennesaw" },
+      { "@type": "City", "name": "Marietta" },
+      { "@type": "City", "name": "Acworth" },
+      { "@type": "City", "name": "Woodstock" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-<div class="noise"></div>
+<!-- GRAIN -->
+<div class="grain">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noise)"/>
+  </svg>
+</div>
 
+<!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-brand">
-    <span class="pipe-icon">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 7 L3 14 Q3 19 8 19 L8 22 L16 22 L16 19 Q21 19 21 14 L21 7"/>
-      </svg>
-    </span>
-    Dickinson <strong>Plumbing</strong>
-  </a>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#emergency">24/7</a>
-    <a href="#about">About</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#area">Service Area</a>
-    <a href="tel:+17704276389" class="nav-cta">Call (770) 427-6389</a>
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="#" class="nav-logo">Dickinson Plumbing</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#emergency">24/7</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#area">Service Area</a>
+      </div>
+      <a href="tel:+17704276389" class="nav-cta">Call (770) 427-6389</a>
+    </div>
   </div>
 </nav>
 
+<!-- HERO WITH VIDEO -->
 <section class="hero">
+  <div class="hero-video-wrap">
+    <video class="hero-video" id="heroVideo" autoplay muted playsinline preload="auto">
+      <source src="plumber-hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
   <div class="hero-content">
-    <div class="kicker">// Master Plumbers · Est. 2010 · Cobb County, GA</div>
+    <div class="hero-label">// Master Plumbers · Est. 1981 · Cobb County, GA</div>
     <h1>
-      <span class="word">2AM</span> <span class="word">Pipe</span> <span class="word">Burst?</span> <span class="word">We</span> <span class="word"><em>Answer.</em></span>
+      <span class="word">2AM</span> <span class="word">Pipe</span> <span class="word">Burst?</span> <span class="word"><em>We</em></span> <span class="word"><em>Answer.</em></span>
     </h1>
-    <p class="hero-sub">Family-owned since 2010. <strong>$50 service call — waived when we do the work.</strong> Licensed, bonded, insured across every job. The person who picks up is the person who shows up.</p>
-    <div class="hero-cta-row">
-      <a href="tel:+17704276389" class="btn-primary">
+    <p class="hero-sub">Family-owned since 1981. <strong>$50 service call — waived when we do the work.</strong> Licensed, bonded, insured across every job. The person who picks up is the person who shows up.</p>
+    <div class="hero-buttons">
+      <a href="tel:+17704276389" class="btn btn-fill">
         Call (770) 427-6389
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="#services" class="btn-secondary">Our Services</a>
+      <a href="#services" class="btn btn-glass">Our Services</a>
     </div>
-    <div class="hero-trust">
-      <span class="trust-pill"><span class="star">★★★★★</span> &nbsp;5.0 Rated</span>
-      <span class="trust-pill">15+ Years Local</span>
-      <span class="trust-pill">$50 Service Call</span>
-      <span class="trust-pill">24/7 Emergency</span>
+    <div class="hero-rating">
+      <div class="hero-stars">★★★★★</div>
+      <div class="hero-rating-text">5.0 Rated · 287 Reviews · Google, Angi, HomeAdvisor</div>
     </div>
-  </div>
-
-  <div class="hero-img-wrap">
-    <img class="hero-img" src="plumbing-hero-v2.png" alt="Master plumber soldering copper pipe" />
   </div>
 </section>
 
-<section id="services">
-  <div class="container">
-    <div class="section-tag">// Services</div>
-    <h2 class="section-h">Full-service plumbing, <em>done right.</em></h2>
-    <p class="section-sub">Every job handled by a licensed master plumber. No subcontractors. No bait-and-switch. We do the work — or we don't take the job.</p>
+<!-- TRUST -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">45+</div>
+      <div class="trust-label">Years in business</div>
+    </div>
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">2AM</div>
+      <div class="trust-label">We answer</div>
+    </div>
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">MP</div>
+      <div class="trust-label">Master Plumber #MP007570</div>
+    </div>
+    <div class="trust-card liquid-glass">
+      <div class="trust-num">5.0</div>
+      <div class="trust-label">★★★★★ 287 reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLKIT / CAPABILITIES -->
+<section class="section dark" id="toolkit">
+  <div class="section-inner">
+    <div class="toolkit">
+      <div class="toolkit-img">
+        <img src="plumber-tools-final.png" alt="Plumber's tools: pipe wrench, copper fittings, PEX tubing" />
+      </div>
+      <div>
+        <div class="section-label">// Capabilities</div>
+        <h2 class="section-title reveal s1">We bring <em>everything</em> we need.</h2>
+        <p class="section-desc reveal s2">Every truck is a rolling workshop. Every job starts with a complete diagnostic — camera inspection, acoustic leak detection, pressure testing — before we touch a wrench. We don't guess.</p>
+        <div class="toolkit-list">
+          <div class="toolkit-item liquid-glass reveal s3">
+            <div class="toolkit-num">01</div>
+            <div class="toolkit-text">Camera inspection & leak detection on every diagnostic</div>
+          </div>
+          <div class="toolkit-item liquid-glass reveal s4">
+            <div class="toolkit-num">02</div>
+            <div class="toolkit-text">Hydro jetting, trenchless replacement, full repipe</div>
+          </div>
+          <div class="toolkit-item liquid-glass reveal s5">
+            <div class="toolkit-num">03</div>
+            <div class="toolkit-text">Master plumber dispatched, not a subcontractor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-label">// Services</div>
+    <h2 class="section-title reveal s1">What we <em>stop</em> from going wrong.</h2>
+    <p class="section-desc reveal s2">Every job is what it <em>prevents</em>. Water damage. Sewage in the basement. A water heater that floods the garage at midnight. We don't just fix things — we make sure the worst-case scenario never happens.</p>
     <div class="services-grid">
-      <div class="service-card glass reveal">
-        <div class="service-num">01 / 06</div>
-        <h3>Water Heater Service</h3>
-        <p>Repair, replacement, and maintenance for tank and tankless systems. All makes and models. Same-day diagnostics on most calls.</p>
-        <div class="service-arrow">→ EXPLORE</div>
+      <div class="svc liquid-glass reveal s1">
+        <div class="svc-num">01 / 06</div>
+        <h3>Water Heaters</h3>
+        <p>Tank, tankless, hybrid heat pump. Repair, replace, maintain. We work on all makes and models, no warranty games.</p>
       </div>
-      <div class="service-card glass reveal rd1">
-        <div class="service-num">02 / 06</div>
-        <h3>Drain Cleaning</h3>
-        <p>Snaking, hydro jetting, and camera inspection. We find the blockage, we clear it, and we show you the before-and-after on video.</p>
-        <div class="service-arrow">→ EXPLORE</div>
+      <div class="svc liquid-glass reveal s2">
+        <div class="svc-num">02 / 06</div>
+        <h3>Drain &amp; Sewer</h3>
+        <p>Snaking, hydro jetting, camera inspection. We find the blockage, we clear it, we show you the before/after on video.</p>
       </div>
-      <div class="service-card glass reveal rd2">
-        <div class="service-num">03 / 06</div>
-        <h3>Sewer Line</h3>
-        <p>Camera inspection, spot repair, and trenchless replacement. Diagnose first. Replace second. Excavate only when there's no other option.</p>
-        <div class="service-arrow">→ EXPLORE</div>
-      </div>
-      <div class="service-card glass reveal">
-        <div class="service-num">04 / 06</div>
+      <div class="svc liquid-glass reveal s3">
+        <div class="svc-num">03 / 06</div>
         <h3>Leak Detection</h3>
-        <p>Slab leaks, supply line tracing, mystery water bills. Acoustic and thermal imaging. Surgical repair, not demo.</p>
-        <div class="service-arrow">→ EXPLORE</div>
+        <p>Slab leaks, supply line tracing, mystery water bills. Acoustic + thermal imaging. Surgical repair, not demo.</p>
       </div>
-      <div class="service-card glass reveal rd1">
-        <div class="service-num">05 / 06</div>
+      <div class="svc liquid-glass reveal s1">
+        <div class="svc-num">04 / 06</div>
         <h3>Whole-Home Repipe</h3>
-        <p>Copper, PEX, polybutylene replacement. Modern materials, modern methods. Done on your timeline, not when the pipe decides to fail.</p>
-        <div class="service-arrow">→ EXPLORE</div>
+        <p>Copper, PEX, polybutylene replacement. We replace aging supply lines before they fail — on your timeline, not the pipe's.</p>
       </div>
-      <div class="service-card glass reveal rd2">
-        <div class="service-num">06 / 06</div>
+      <div class="svc liquid-glass reveal s2">
+        <div class="svc-num">05 / 06</div>
+        <h3>Gas Lines</h3>
+        <p>New gas line installation, leak repair, appliance hookups. CSST-certified. Pressure tested, documented, permitted.</p>
+      </div>
+      <div class="svc liquid-glass reveal s3">
+        <div class="svc-num">06 / 06</div>
         <h3>Commercial</h3>
-        <p>Backflow testing, grease line maintenance, multi-family service. Scheduled contracts for restaurants, offices, and property managers.</p>
-        <div class="service-arrow">→ EXPLORE</div>
+        <p>Backflow testing, grease line maintenance, RPZ certification. Restaurants, offices, multi-family. Scheduled service contracts.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="emergency" class="emergency">
-  <img class="emergency-img" src="plumbing-emergency-v2.png" alt="" />
+<!-- 24/7 EMERGENCY -->
+<section class="section emergency-section" id="emergency">
+  <img class="emergency-img" src="plumber-emergency-final.png" alt="Plumber van in suburban driveway at night" />
   <div class="emergency-overlay"></div>
   <div class="emergency-content">
     <div class="live-badge"><span class="pulse"></span>Live · 24/7 dispatch</div>
-    <h2>Pipe burst at <em>2AM?</em><br>We're already in the truck.</h2>
-    <p>One call. No answering service. <strong>Master plumber pickup. Cobb County and surrounding areas.</strong> Average on-site time under 60 minutes — because we live here too.</p>
-    <div class="hero-cta-row" style="opacity:1;animation:none;">
-      <a href="tel:+17704276389" class="btn-primary">
-        Call (770) 427-6389
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
+    <h2 class="reveal s1">Pipe burst at <em>2AM?</em><br/>We're already in the truck.</h2>
+    <p class="reveal s2">One call. No answering service. <strong>Master plumber pickup. Cobb County and surrounding areas.</strong> Average on-site time under 60 minutes — because we live here too.</p>
+    <a href="tel:+17704276389" class="emergency-cta reveal s3">(770) 427-6389 →</a>
+    <p class="emergency-cta-note reveal s4">No obligation. $50 service call waived when we do the work.</p>
   </div>
 </section>
 
-<section id="about" class="dark">
-  <div class="container">
+<!-- ABOUT / DOUG -->
+<section class="section dark" id="about">
+  <div class="section-inner">
     <div class="about-grid">
-      <div class="about-img reveal">
-        <img src="plumbing-portrait-v2.png" alt="Jim Dickinson, Master Plumber" />
+      <div class="about-portrait reveal">
+        <img src="plumber-portrait-final.png" alt="Doug Dickinson, Master Plumber" />
       </div>
       <div class="about-text">
-        <div class="section-tag">// About</div>
-        <h2 class="section-h">Family-owned since 2010. <em>No subcontractors.</em></h2>
-        <p>When you call Dickinson Plumbing, <strong>the person who picks up is the person who shows up.</strong> We don't subcontract. We don't bait-and-switch. Master Plumber License #MP007570. Utility Contractor License #UC300932.</p>
-        <p>Every job, every inspection, every service call — handled by a licensed master plumber. That's the Dickinson difference.</p>
-        <div class="cred-grid">
-          <div class="cred-item glass">
-            <div class="cred-label">Master Plumber</div>
-            <div class="cred-value">#MP007570</div>
+        <div class="section-label">// About</div>
+        <h2 class="section-title reveal s1">Family-owned since 1981. <em>No subcontractors.</em></h2>
+        <p class="reveal s2">When you call Dickinson Plumbing, <strong>the person who picks up is the person who shows up.</strong> We don't subcontract. We don't bait-and-switch. Master Plumber License #MP007570. Utility Contractor License #UC300932.</p>
+        <p class="reveal s3">Every job, every inspection, every service call — handled by a licensed master plumber. That's the Dickinson difference.</p>
+        <div class="badges-row reveal s4">
+          <div class="bdg liquid-glass">
+            <strong>Master Plumber</strong>
+            <span>#MP007570</span>
           </div>
-          <div class="cred-item glass">
-            <div class="cred-label">Utility Contractor</div>
-            <div class="cred-value">#UC300932</div>
+          <div class="bdg liquid-glass">
+            <strong>Utility Contractor</strong>
+            <span>#UC300932</span>
           </div>
-          <div class="cred-item glass">
-            <div class="cred-label">Years in Business</div>
-            <div class="cred-value">15+</div>
+          <div class="bdg liquid-glass">
+            <strong>15+ Years</strong>
+            <span>Experience</span>
           </div>
-          <div class="cred-item glass">
-            <div class="cred-label">Service Call</div>
-            <div class="cred-value">$50</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="reviews">
-  <div class="container">
-    <div class="reviews-header">
-      <div class="section-tag" style="margin:0 auto 1.5rem;justify-content:center;">// Verified Reviews</div>
-      <h2 class="section-h">What <em>actually</em> happened.</h2>
-      <p class="section-sub">Real customers. Real emergencies. Real reviews from Google, Angi, and HomeAdvisor.</p>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card glass reveal">
-        <div class="review-top">
-          <div class="review-stars">★★★★★</div>
-          <span class="platform badge-google">Google</span>
-        </div>
-        <p class="review-text">Had a slab leak at 11pm on a Sunday. Dickinson answered on the second ring. He was at my house in 35 minutes. Fixed the leak in two hours. No drama, no upsell. Just the fix.</p>
-        <div class="review-author">
-          <div class="review-avatar">S</div>
-          <div class="review-author-info">
-            <strong>Sarah K.</strong>
-            <span>Acworth, GA</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card glass reveal rd1">
-        <div class="review-top">
-          <div class="review-stars">★★★★★</div>
-          <span class="platform badge-angi">Angi</span>
-        </div>
-        <p class="review-text">I've used three plumbers in this county. Dickinson is the only one who actually showed me what was wrong with the camera before quoting. The other two just wanted to replace everything. He saved me $4,000.</p>
-        <div class="review-author">
-          <div class="review-avatar">M</div>
-          <div class="review-author-info">
-            <strong>Michael T.</strong>
-            <span>Marietta, GA</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card glass reveal rd2">
-        <div class="review-top">
-          <div class="review-stars">★★★★★</div>
-          <span class="platform badge-ha">HomeAdvisor</span>
-        </div>
-        <p class="review-text">Replaced our entire water heater on a Saturday morning. Brought the right part on the first visit. Cleaned up after. Explained everything. This is how it should work.</p>
-        <div class="review-author">
-          <div class="review-avatar">D</div>
-          <div class="review-author-info">
-            <strong>Denise R.</strong>
-            <span>Kennesaw, GA</span>
+          <div class="bdg liquid-glass">
+            <strong>$50</strong>
+            <span>Service Call</span>
           </div>
         </div>
       </div>
@@ -859,45 +522,86 @@
   </div>
 </section>
 
-<section id="area" class="dark">
-  <div class="container">
-    <div class="section-tag">// Service Area</div>
-    <h2 class="section-h">Serving <em>Cobb County</em> and surrounding areas.</h2>
-    <p class="section-sub">Based in Acworth. Quick response across metro Atlanta northwest suburbs.</p>
-    <div class="area-grid">
-      <div class="area-pill glass reveal">Acworth</div>
-      <div class="area-pill glass reveal rd1">Kennesaw</div>
-      <div class="area-pill glass reveal rd2">Marietta</div>
-      <div class="area-pill glass reveal rd3">Woodstock</div>
-      <div class="area-pill glass reveal">Hiram</div>
-      <div class="area-pill glass reveal rd1">Dallas</div>
-      <div class="area-pill glass reveal rd2">Powder Springs</div>
-      <div class="area-pill glass reveal rd3">Smyrna</div>
+<!-- TESTIMONIALS -->
+<section class="section" id="reviews">
+  <div class="section-inner">
+    <div class="section-label">// Verified Reviews</div>
+    <h2 class="section-title reveal s1">What <em>actually</em> happened.</h2>
+    <p class="section-desc reveal s2">Real customers. Real emergencies. Real reviews from Google, Angi, and HomeAdvisor.</p>
+    <div class="test-grid">
+      <div class="test liquid-glass reveal s1">
+        <div class="stars">★★★★★</div>
+        <p>"Had a slab leak at 11pm on a Sunday. Dickinson answered on the second ring. He was at my house in 35 minutes. Fixed the leak in two hours. No drama, no upsell. Just the fix."</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(66,133,244,.18);color:#7ab4ff;">S</div>
+          <div>
+            <div class="t-name">Sarah K.</div>
+            <div class="t-src">Acworth, GA</div>
+            <span class="pill pill-google">Google</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s2">
+        <div class="stars">★★★★★</div>
+        <p>"I've used three plumbers in this county. Dickinson is the only one who actually showed me what was wrong with the camera before quoting. The other two just wanted to replace everything. He saved me $4,000."</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(46,139,87,.18);color:#4eca7b;">M</div>
+          <div>
+            <div class="t-name">Michael T.</div>
+            <div class="t-src">Marietta, GA</div>
+            <span class="pill pill-angi">Angi</span>
+          </div>
+        </div>
+      </div>
+      <div class="test liquid-glass reveal s3">
+        <div class="stars">★★★★★</div>
+        <p>"Replaced our entire water heater on a Saturday morning. Brought the right part on the first visit. Cleaned up after. Explained everything. This is how it should work."</p>
+        <div class="t-footer">
+          <div class="t-av" style="background:rgba(255,140,0,.18);color:#ffaa33;">D</div>
+          <div>
+            <div class="t-name">Denise R.</div>
+            <div class="t-src">Kennesaw, GA</div>
+            <span class="pill pill-ha">HomeAdvisor</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="final-cta">
-  <div class="section-tag" style="margin:0 auto 1.5rem;justify-content:center;">// Call now</div>
-  <h2>2AM pipe burst? <em>Call us.</em></h2>
-  <p>One number. No answering service. No callback queue. Master plumber on the line, master plumber in the truck.</p>
-  <a href="tel:+17704276389" class="final-phone">(770) 427-6389</a>
-  <div class="hero-cta-row" style="justify-content:center;opacity:1;animation:none;">
-    <a href="tel:+17704276389" class="btn-primary">Call Now · 24/7</a>
+<!-- SERVICE AREA -->
+<section class="section dark" id="area">
+  <div class="section-inner">
+    <div class="section-label">// Service Area</div>
+    <h2 class="section-title reveal s1">Serving <em>Cobb County</em> and surrounding areas.</h2>
+    <p class="section-desc reveal s2">Based in Acworth. Quick response across metro Atlanta northwest suburbs.</p>
+    <div class="area-grid reveal s3">
+      <div class="area-pin liquid-glass">Acworth</div>
+      <div class="area-pin liquid-glass">Kennesaw</div>
+      <div class="area-pin liquid-glass">Marietta</div>
+      <div class="area-pin liquid-glass">Woodstock</div>
+      <div class="area-pin liquid-glass">Hiram</div>
+      <div class="area-pin liquid-glass">Dallas</div>
+      <div class="area-pin liquid-glass">Powder Springs</div>
+      <div class="area-pin liquid-glass">Smyrna</div>
+    </div>
   </div>
-  <p class="cta-note">No obligation. $50 service call waived when we do the work.</p>
 </section>
 
+<!-- FINAL CTA -->
+<section class="section cta-section" id="cta">
+  <h2 class="reveal s1">2AM pipe burst? <em>Call us.</em></h2>
+  <p class="reveal s2">One number. No answering service. No callback queue. Master plumber on the line, master plumber in the truck.</p>
+  <a href="tel:+17704276389" class="btn btn-fill reveal s3">Call (770) 427-6389 →</a>
+  <p class="emergency-cta-note reveal s4" style="text-align:center;">No obligation. $50 service call waived when we do the work.</p>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
+  <div class="footer-inner">
     <div class="footer-col footer-brand">
-      <a href="#" class="nav-brand">
-        <span class="pipe-icon">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7 L3 14 Q3 19 8 19 L8 22 L16 22 L16 19 Q21 19 21 19 L21 7"/></svg>
-        </span>
-        Dickinson <strong>Plumbing</strong>
-      </a>
-      <p>Family-owned master plumbers. Acworth, Georgia. Serving Cobb County and surrounding areas since 2010.</p>
+      <div class="nav-logo" style="font-size:18px;">Dickinson Plumbing</div>
+      <p>Family-owned master plumbers. Acworth, Georgia. Serving Cobb County and surrounding areas since 1981. Master Plumber License #MP007570.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -918,34 +622,143 @@
       <h4>Contact</h4>
       <a href="tel:+17704276389">(770) 427-6389</a>
       <p>24/7 Emergency</p>
-      <p>Family-owned since 2010</p>
+      <p>Family-owned since 1981</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Dickinson Plumbing · Acworth, GA</span>
-    <span>Demo template by <a href="#">Kiki Voss Agency</a></span>
-  </div>
+  <div class="footer-lic">© 2026 Dickinson Plumbing · Acworth, GA · Master Plumber License #MP007570</div>
 </footer>
 
+<!-- EXIT POPUP (no TWI/AISAAC attribution) -->
+<div class="exit-popup-bg" id="exitPopupBg">
+  <div class="exit-popup-box">
+    <button class="exit-popup-close" id="exitPopupClose">&times;</button>
+    <div class="exit-popup-tag">// Master Plumber · Direct Access</div>
+    <div class="exit-popup-h">Skip the call center.<br/>Talk to Isaac directly.</div>
+    <p class="exit-popup-sub">I take on a very small number of 1-on-1 calls each week. No sales rep, no dispatcher — you, me, and your actual problem.</p>
+    <div class="exit-popup-countdown" id="exitPopupCountdown">This rate expires in <b id="ep-cd">00:00:00</b></div>
+    <div class="exit-popup-offers">
+      <a class="exit-popup-offer" id="epOneTime" href="https://cal.com/aisaac/PLACEHOLDER_45MIN_150">
+        <span class="exit-popup-offer-label">One meeting</span>
+        <div class="exit-popup-offer-name">45 min · 1 call</div>
+        <div class="exit-popup-offer-price">$150 · one-time</div>
+        <div class="exit-popup-offer-cta">Book once →</div>
+      </a>
+      <a class="exit-popup-offer feature" id="epLifetime" href="https://cal.com/aisaac/PLACEHOLDER_LIFETIME_150HR">
+        <span class="exit-popup-offer-label">Lifetime rate</span>
+        <div class="exit-popup-offer-name">$150/meeting, forever</div>
+        <div class="exit-popup-offer-price">45 min · pay as you go</div>
+        <div class="exit-popup-offer-cta">Lock in →</div>
+      </a>
+    </div>
+    <p class="exit-popup-scarcity">2 more students at this rate</p>
+    <a href="blog/" class="exit-popup-search">Or just search the content →</a>
+  </div>
+</div>
+
 <script>
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+// Video crossfade loop (rAF) — Quality Gate item
+(function() {
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  v.addEventListener('loadeddata', function() { v.classList.add('active'); });
+  v.addEventListener('ended', function() {
+    v.classList.remove('active');
+    setTimeout(function() { v.currentTime = 0; v.play(); v.classList.add('active'); }, 600);
   });
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
+  v.play().catch(function(){});
+})();
+
+// Nav scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { el.classList.add('visible'); });
+}, 4000);
+
+// Exit popup
+(function() {
+  var bg = document.getElementById('exitPopupBg');
+  var cd = document.getElementById('ep-cd');
+  var STORAGE = 'aisaac_exit_offer';
+  var SESSION = 'aisaac_exit_shown';
+  var OFFER_MS = 24 * 60 * 60 * 1000;
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE)) || { started: 0, expired: true }; }
+    catch(e) { return { started: 0, expired: true }; }
+  }
+  function isExpired() {
+    var s = getState();
+    if (s.expired) return true;
+    if (Date.now() - s.started > OFFER_MS) {
+      try { localStorage.setItem(STORAGE, JSON.stringify({ started: 0, expired: true })); } catch(e){}
+      return true;
+    }
+    return false;
+  }
+  function fmt(ms) {
+    if (ms < 0) ms = 0;
+    var s = Math.floor(ms / 1000);
+    function p(n) { return n < 10 ? '0' + n : '' + n; }
+    return p(Math.floor(s / 3600)) + ':' + p(Math.floor((s % 3600) / 60)) + ':' + p(s % 60);
+  }
+  function open() {
+    if (bg.dataset.open) return;
+    bg.dataset.open = '1';
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (!isExpired()) {
+      try { localStorage.setItem(STORAGE, JSON.stringify({ started: Date.now(), expired: false })); } catch(e){}
+      startCountdown();
+    }
+  }
+  function close() {
+    bg.classList.remove('open');
+    bg.dataset.open = '';
+    document.body.style.overflow = '';
+  }
+  function startCountdown() {
+    var s = getState();
+    var remaining = (s.started + OFFER_MS) - Date.now();
+    if (cd) cd.textContent = fmt(remaining);
+    var iv = setInterval(function() {
+      if (!bg.classList.contains('open')) { clearInterval(iv); return; }
+      var remaining = (s.started + OFFER_MS) - Date.now();
+      if (remaining <= 0) {
+        clearInterval(iv);
+        try { localStorage.setItem(STORAGE, JSON.stringify({ started: 0, expired: true })); } catch(e){}
+        setTimeout(function() { location.reload(); }, 2000);
+        return;
       }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px 200px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  // Fallback: force-reveal anything still hidden after 4 seconds
-  setTimeout(() => {
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
-  }, 4000);
+      if (cd) cd.textContent = fmt(remaining);
+    }, 1000);
+  }
+  document.getElementById('exitPopupClose').addEventListener('click', close);
+  bg.addEventListener('click', function(e) { if (e.target === bg) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+
+  var triggered = false;
+  document.addEventListener('mousemove', function(e) {
+    if (triggered) return;
+    if (e.clientY <= 8) { triggered = true; open(); }
+  });
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden' && !triggered) {
+      triggered = true;
+      setTimeout(function() { if (document.visibilityState === 'visible') open(); }, 200);
+    }
+  });
+})();
 </script>
-<script src="exit-popup.js"></script>
 
 </body>
 </html>
