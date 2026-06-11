@@ -38,6 +38,7 @@ Every blog post maps to a **facet** (PAIAB/SANCTUM/CAVE/STARSYSTEM), a **complex
 | 26 | Admissibility | PAIAB | L5 | AI Engineering | build | More context ≠ admissible context |
 | 27 | DocMagic Stack | PAIAB | L5-L6 | AI Engineering | build | Where tools sit in the stack |
 | 28 | Single Biggest Trick | PAIAB | L5 | AI Engineering | build | The vocabulary gap is the real bottleneck, not the model |
+| 29 | Single Biggest Trick Walkthrough (Part 3) | PAIAB | L5 | AI Engineering | build | A worked example of the trick as production code (CybernetiCircus) |
 
 ## Facet Distribution
 
