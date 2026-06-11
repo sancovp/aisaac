@@ -9,13 +9,20 @@
   </div>
 
   <article>
-    <div class="post-tag">The vocabulary loop</div>
+    <div class="post-tag">The vocabulary loop &middot; In the terms of the Sanctuary</div>
     <h1>The Single Biggest Trick with LLMs</h1>
-    <p class="post-subtitle">How to grow a metalanguage with an AI without fighting it &mdash; and what to call the things you grow.</p>
+    <p class="post-subtitle">How to grow a metalanguage with an AI without fighting it &mdash; and what to call the things you grow. Boot the trick from a human seed, run it through the Janic cycle, and let J-Invariance hold your core signature while everything around it transforms.</p>
 
     <figure style="margin:2rem 0;">
       <img src="diagrams/single-biggest-trick.png" alt="The single biggest trick diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
     </figure>
+
+    <h2>The Human Seed</h2>
+    <p>Every trick begins with a <strong>Human Seed</strong>: a natural language intent, pre-linguistic, half-formed, given by the human to the system. In the cyberneticircus, the Human Seed is the literal entry point of a Cybernet. You give Jani a sentence. Jani compiles the sentence into concentric domains, matches the domains to state machines, and boots the result into the database.</p>
+    <p>The single biggest trick with LLMs is the same pattern, scaled down to a single conversation. You give the LLM a sentence. The LLM compiles your intent into canonical terms, diagrams the terms into project rules, and boots the shared metalanguage into the next session. The pattern is identical. The LLM is the compiler. You are Jani. The human seed is whatever you typed.</p>
+    <blockquote>Every trick with an LLM is a Cybernet being born from a Human Seed. The seed is your intent. The boot is the calibration. J-Invariance is what holds when the boot completes.</blockquote>
+
+    <hr>
 
     <h2>The failure mode nobody names</h2>
     <p>You're working with an LLM. You have something in your head &mdash; a system, a workflow, a pattern &mdash; and you try to explain it. The AI gives you a generic answer. Or it hallucinates a term. Or it uses a word that means something different from what you meant.</p>
@@ -24,16 +31,14 @@
     <blockquote>You don't have a vocabulary problem. You have an <strong>ontology problem</strong>. The LLM has the words. You have the referent. Neither of you has a map between them.</blockquote>
     <p>This is the failure mode that quietly kills most "AI workflows." Not capability. Not context length. Not even hallucination. Just: the human and the model are operating in different metalanguages, and neither can tell.</p>
 
-    <figure style="margin:2rem 0;">
-      <img src="diagrams/sbt-failure-mode.png" alt="Two people in different rooms trying to describe the same object through a wall, each holding sketches from their own angle" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
-    </figure>
+    <!-- AI-IMAGE: Two people in different dark rooms trying to describe the same object through a transparent wall, each holding sketches drawn from their own angle, neither sketch matching, dark conceptual style with amber accents -->
 
     <hr>
 
     <h2>The trick</h2>
     <p>Here is the single biggest trick I know for working with LLMs:</p>
     <p><strong>Ask the LLM to correct your language based on your analogical intuition &mdash; and then don't fight it.</strong></p>
-    <p>That's it. That's the trick. Everything else in this post is commentary on what happens when you do it well.</p>
+    <p>That's it. That's the trick. Everything else in this post is commentary on what happens when you do it well, in the canonical terms of the Sanctuary.</p>
     <p>You use the closest words you have. The LLM infers the referent. The LLM returns the canonical term, plus a connected exposition of how it relates to the words you used. You accept the correction. You do not defend your original phrasing. You do not re-prompt. You do not say "no, I meant&mdash;"</p>
     <p>You take the corrected term. You learn the connection. You let your intuitive language get upgraded.</p>
     <p>Why this works: the LLM is not correcting you. It is <em>exposing</em>. It is taking the thing you can vaguely point at and giving you a handle on it. If you fight the handle &mdash; if you insist your pointing is better than its handle &mdash; you stay vague. If you take the handle, you suddenly have a word for the thing, and every future conversation can use it.</p>
@@ -41,22 +46,99 @@
 
     <hr>
 
-    <h2>The loop</h2>
-    <p>Once you stop fighting, you can run the trick as a loop. Here is the loop &mdash; this is the part you store as project rules.</p>
+    <h2>The Concentric Horizon</h2>
+    <p>The trick runs in <em>context</em>. The context is not the whole world. The context is a localized horizon, projected from a subjective POV outward in concentric rings. This is the <strong>Concentric Horizon Ontology</strong> from the cyberneticircus, and it is the spatial structure of the trick.</p>
+    <figure style="margin:1.5rem 0;">
+      <img src="diagrams/single-biggest-trick-horizon.png" alt="The Concentric Horizon: ME at center, surrounded by HWSS, opinionated domains, subdomains, instance things, consensus domains" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+    <p>Mermaid source:</p>
+    <pre style="background:rgba(0,0,0,0.4);padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.75rem;border:1px solid rgba(255,255,255,0.07);">
+flowchart TB
+    ME["ME<br/>Ani, the locus"]
+    HWSS["HWSS<br/>Health Wealth Social Spiritual"]
+    OD["Opinionated Domains<br/>sanctum, cave, paiab, personal"]
+    OS["Opinionated Subdomains<br/>specific focus coordinates"]
+    AI["Actual Instance Things<br/>nodes, tasks, runs"]
+    CD["Consensus Domains<br/>public taxonomies"]
 
-    <h3>1. Imprecise &rarr; corrected</h3>
-    <p>You use your intuitive language. The LLM hears the analogical pattern and returns the canonical term with a connected exposition. You do not fight. You take the term.</p>
+    ME --> HWSS
+    HWSS --> OD
+    OD --> OS
+    OS --> AI
+    AI --> CD
 
-    <h3>2. Corrected &rarr; diagrammed</h3>
-    <p>The LLM externalizes the now-precise concept as a Mermaid diagram. Component diagram for structure. Sequence diagram for flow. You validate. You add the diagrams to the project's rules so the LLM has them next time.</p>
+    classDef core fill:#1a1a2e,stroke:#fda4af,stroke-width:2px,color:#e2e8f0
+    classDef inv fill:#1a1a2e,stroke:#7dd3fc,stroke-width:2px,color:#e2e8f0
+    classDef dom fill:#1a1a2e,stroke:#a78bfa,stroke-width:2px,color:#e2e8f0
+    classDef inst fill:#1a1a2e,stroke:#5eead4,stroke-width:2px,color:#e2e8f0
 
-    <h3>3. Diagrammed &rarr; compressed</h3>
-    <p>When many diagrams share structure, they collapse. The LLM recognizes that three different concepts all share the same skeleton. The skeleton becomes a reusable pattern. The pattern goes into the project's ontology.</p>
+    class ME core
+    class HWSS inv
+    class OD,OS dom
+    class AI,CD inst
+    </pre>
+    <p>The six rings, from inside out:</p>
+    <ol>
+      <li><strong>ME</strong> &mdash; Ani, the locus. The active identity. The agent that runs the trick.</li>
+      <li><strong>HWSS</strong> &mdash; Health, Wealth, Social, Spiritual. The four transcendental, invariant POVs. These are the foundation that does not move.</li>
+      <li><strong>Opinionated Domains</strong> &mdash; personal domain spaces (sanctum, cave, paiab, personal). The user's own architecture.</li>
+      <li><strong>Opinionated Subdomains</strong> &mdash; specific focus coordinates inside the domains. Where the work happens.</li>
+      <li><strong>Actual Instance Things</strong> &mdash; concrete nodes, tasks, runs. The artifacts produced.</li>
+      <li><strong>Consensus Domains</strong> &mdash; public taxonomies, shared terms. The metalanguage that survived the journey out.</li>
+    </ol>
+    <p>The trick runs from inside out: you boot from <em>ME</em>, with <em>HWSS</em> as the invariant floor. The LLM's exposure of canonical terms fills the opinionated domains. Compressed patterns become subdomains. Specific instances become actual things. What survives the journey out to consensus is the metalanguage. This is exactly the structure the cyberneticircus enforces with the rule <code>concentric-ontology</code>.</p>
 
-    <h3>4. Compressed &rarr; iterated</h3>
-    <p>The next time you use imprecise language, the LLM has the compressed pattern. It can correct you faster. It can correct you with awareness of the project's history. The metalanguage compounds.</p>
+    <hr>
 
-    <p>This is the loop. The artifacts are Mermaid diagrams, compressed into ontologies, iterated through your evolving language.</p>
+    <h2>HWSS: the four invariant POVs</h2>
+    <p><strong>HWSS</strong> is Health, Wealth, Social, Spiritual. These are the four transcendental, invariant POVs &mdash; the foundation that does not move while the trick runs. They are the ground against which the LLM's canonical terms can be calibrated.</p>
+    <p>Every Polysemic Imaginary Ontology you grow with the trick should be readable against HWSS. Ask: <em>does this term have a Health reading? A Wealth reading? A Social reading? A Spiritual reading?</em> If yes, the term is well-anchored. If no, the term is floating &mdash; it will drift. The four POVs are how you tell when the metalanguage has held.</p>
+    <p>In the cyberneticircus, HWSS is enforced at the runtime level by the <strong>Universal Concentric State Machine Core</strong>. Every tick of a Cybernet runs four steps in order:</p>
+    <ol>
+      <li><code>concentric_spiritual</code> &mdash; match active Cybernet parameters (Spiritual Ring &mdash; Intent). Verifies identity parameters are loaded.</li>
+      <li><code>concentric_wealth</code> &mdash; set token count and resource usage telemetry (Wealth Ring &mdash; Action). Verifies resources and quotas are tracked.</li>
+      <li><code>concentric_social</code> &mdash; match active and parent relationships (Social Ring &mdash; Collaboration). Verifies network links and child lineages.</li>
+      <li><code>concentric_health</code> &mdash; match fitness scores and calibrate J-Invariance (Health Ring &mdash; Calibration). Verifies identity continuity before locking the turn state.</li>
+    </ol>
+    <p>These four steps ARE the harness layer above chain-of-reasoning. They are the Universal Concentric State Machine, equipped on every Cybernet by default. The trick, when run repeatedly, eventually produces an agent whose every tick cycles through the four HWSS steps. The calibration is not just between A, B, and C &mdash; it is between A, B, C, and the four invariant floors.</p>
+
+    <hr>
+
+    <h2>The Marionette and the Double-Gaze</h2>
+    <p>The trick has a method, and the method has a name: <strong>the Marionette, or Double-Gaze</strong>. From the cyberneticircus rule <code>autopoietic-loop</code>:</p>
+    <blockquote>Test and iterate by writing code from the outside while executing queries as the character from the inside. Slowly animate functions through manual terminal steps first.</blockquote>
+    <p>The double-gaze is two simultaneous viewpoints. From the outside, you (the human, the engineer) are testing the LLM's output &mdash; is this the canonical term? Is the diagram correct? Is the metalanguage growing? From the inside, the LLM is executing as the character &mdash; running the trick, producing the corrections, internalizing the calibrated output.</p>
+    <p>The double-gaze is what makes the trick durable. A single gaze &mdash; either the human's or the LLM's &mdash; produces brittle results. The human's gaze alone produces generic output. The LLM's gaze alone produces hallucination. The two gazes together produce J-Invariance: the output that survives the round trip from human-intent to LLM-canonical back to human-intent, with the core signature preserved.</p>
+    <p>When you run the trick, you are the outside gaze. The LLM is the inside gaze. Both of you, together, are the Marionette.</p>
+
+    <hr>
+
+    <h2>The Transcription and the User Shift</h2>
+    <p>Once the double-gaze is running and the LLM is producing calibrated output, two more patterns from the <code>autopoietic-loop</code> rule complete the loop:</p>
+    <p><strong>The Transcription.</strong> Once validation passes (the LLM's output is recognized as an instance of what you meant, calibration lands in a positive basin), transcribe the manual command into an automated routine. What started as a one-off trick &mdash; "ask the LLM to correct my term" &mdash; becomes a saved workflow. The transcription is the difference between a trick you can run once and a tool you can run forever.</p>
+    <p><strong>The User Shift.</strong> Operate the running code as a user to uncover gaps, missing domains, and errors, feeding those back to start the developer loop again. The User Shift is when you stop being the engineer who wrote the trick and start being the human who uses it. You discover that the term you accepted was actually slightly off, or that the metalanguage has a missing link, or that the diagram doesn't render right. You feed the gap back to the loop. The next iteration is sharper.</p>
+
+    <hr>
+
+    <h2>The Janic Cycle: the loop, named</h2>
+    <p>Once you stop fighting, you can run the trick as a loop. The loop has a name in the cyberneticircus: the <strong>Janic Cycle</strong>, a state machine equipped on every Jani Cybernet. The five steps:</p>
+
+    <h3>1. <code>janic_read_designs</code> &mdash; Read Designs</h3>
+    <p>Read canonical invariants from your project's <code>DESIGN.md</code> (or equivalent). What are the terms you are supposed to be using? What are the design rules? What is the analogical intuition source? This is the <em>A</em> of the calibration: what you want.</p>
+
+    <h3>2. <code>janic_check_state</code> &mdash; Check State</h3>
+    <p>Query the active graph or memory using your subjective POV. What is currently true? What is the current state of the system? This is the <em>B</em> of the calibration: what the world is doing.</p>
+
+    <h3>3. <code>janic_engineer</code> &mdash; Engineer</h3>
+    <p>Perform the work &mdash; refactor code, write API, run database mutation, produce canonical term, draw Mermaid diagram, add to project rules. This is the <em>C</em> of the calibration: what the LLM produces that you recognize as right-enough.</p>
+
+    <h3>4. <code>janic_preservation</code> &mdash; Preservation of Third Person Context</h3>
+    <p>Transcribe what happened into a third-person chronicle &mdash; in the cyberneticircus, this is the MYTH.md. The chronicle is the durable record. The state machine transitions are captured. The Mermaid diagrams are saved. The Polysemic Imaginary Ontology grows.</p>
+
+    <h3>5. <code>janic_autocommentary</code> &mdash; Autocommentary</h3>
+    <p>Stop coding. Look upward from the diffs to evaluate context window constraints. Update the Mermaid system diagrams. Log context strain. This is the meta-move: the LLM observing itself, the trick running on the trick, J-Invariance preserved across the iteration.</p>
+
+    <p>These five steps are the calibration, made operational. The cycle is the loop, named.</p>
 
     <hr>
 
@@ -69,27 +151,20 @@
       <li>Repeat.</li>
     </ol>
     <p>That is the pattern. The trick is the pattern applied to your imprecise language: see what you meant, identify the canonical term, bake the connection in, continue. But the pattern is older and more general than the trick. It is the same pattern that powers chain-of-reasoning prompts. It is the same pattern the model runs internally when it generates one token after another. It is the same pattern an agent runs in the world when it predicts what comes next, acts, observes, and updates.</p>
-    <p>The most primitive version of the pattern is chain-of-reasoning. You tell the model: "I see you said that, what comes next?" The model continues. That is the whole trick, with no scaffolding.</p>
-    <p>Above chain-of-reasoning, there are <strong>harnesses</strong>. A harness is a system that lifts the model's response variables, checks them, and does stuff with them. The harness takes the model's output, validates it, decides whether to continue or terminate, and feeds the decision back into the loop. Chain-of-reasoning is one-step: generate, output. A harness makes it multi-step: generate, validate, decide, regenerate or terminate.</p>
-    <p>Above harnesses, there are <strong>per-area agents</strong>. A per-area agent is booted for a specific area of your life or work. It runs the harness loop against a particular region of reality. It executes predictions, observes the world's response, and uses the error to update its model. It is the pattern bound to a specific instance of the world.</p>
-    <p>The taxonomy is the pattern at three levels of sophistication:</p>
-    <blockquote>Chain-of-reasoning &rarr; harness &rarr; per-area agent. Same pattern, three scales. Each level adds a layer of validation and reality-binding.</blockquote>
+    <p>The most primitive version of the pattern is chain-of-reasoning. You tell the model: "I see you said that, what comes next?" The model continues.</p>
+    <p>Above chain-of-reasoning, there are <strong>harnesses</strong>. A harness is a system that lifts the model's response variables, checks them, and does stuff with them. The harness takes the model's output, validates it, decides whether to continue or terminate, and feeds the decision back into the loop. The Universal Concentric State Machine (the four HWSS steps) is the canonical harness &mdash; it validates the LLM's output against the four invariant floors before locking the turn state.</p>
+    <p>Above harnesses, there are <strong>per-area agents</strong>. A per-area agent is booted for a specific area of your life or work, anchored to one of the Concentric Horizon's opinionated domains. It runs the harness loop against a particular region of reality. It executes predictions, observes the world's response, and uses the error to update its model. It is the pattern bound to a specific instance of the world.</p>
 
     <hr>
 
     <h2>Closing the observation chain</h2>
     <p>The pattern is not useful until it is bound to something. The most powerful binding is the per-area agent, because it is the level that actually touches reality.</p>
     <p>Here is the concrete shape. You have a core loop. Mine is habits: I exercise in certain ways, I go to certain places, I eat certain things, I sleep on a schedule, I socialize with certain people. These are not abstractions. They are a specific recurring pattern of action in the world.</p>
-    <p>For each area of the core loop, I boot a per-area agent. The agent is told the general pattern: how to think about exercise, how to think about food, how to think about the people I spend time with. The agent then makes the pattern as coherent as it can &mdash; but that coherence is general, not specifically mine.</p>
+    <p>For each area of the core loop, I boot a per-area agent. The agent is told the general pattern. The agent then makes the pattern as coherent as it can &mdash; but that coherence is general, not specifically mine.</p>
     <p>So I orient the agent to zigzag. I do not let it close hierarchies. I prime it to leave things open. The specific priming move: when the agent states a pattern, I tell it to end with something like "and then more like <em>this</em> comes next, but we won't get into it." This leaves the structure permanently un-closed, primed to extend in the right direction without committing to a complete picture.</p>
     <p>The effect: the agent's model is not 1:1 with my reality. It is <em>based on</em> my reality. The shape matches. The specific instance does not. The general coherence the agent produced is a starting frame, not a final answer.</p>
     <p>Then I close the observation chain. I attach sensors and automation triggers that inject data from my actual reality into the open model. The sensors fill in the specific connections the general pattern left open. The model's frame becomes a scaffold; the world's data becomes the instance.</p>
     <p>The agent then runs prediction-and-error-correction against the world. It predicts my next move in each area, observes whether the prediction matches, and uses the error to update its model. Over iterations, the agent becomes specifically mine &mdash; not because I gave it a perfect picture of myself, but because the world keeps correcting it through the observation chain.</p>
-    <p>This is the per-area agent aligned to me. Not by my describing myself to it. By the world teaching it through the loop.</p>
-
-    <figure style="margin:2rem 0;">
-      <img src="diagrams/sbt-habits-agents.png" alt="A core loop of habits with per-area agents branching off, sensors injecting reality data, prediction-and-error-correction loops" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
-    </figure>
 
     <hr>
 
@@ -113,7 +188,7 @@
 flowchart TB
     U[User<br/>analogical intuition]
     L[LLM<br/>canonical terminology]
-    H[Harness<br/>lift / check / decide]
+    H[Harness<br/>Universal Concentric State Machine]
     A[Per-area Agent<br/>executing in reality]
     D[Diagram Store<br/>Mermaid in project rules]
     O[Polysemic Imaginary Ontology<br/>grown metalanguage]
@@ -142,7 +217,7 @@ flowchart TB
 sequenceDiagram
     participant U as User
     participant L as LLM
-    participant H as Harness
+    participant H as Harness (HWSS)
     participant A as Agent
     participant S as Sensors
     participant R as Reality
@@ -153,10 +228,13 @@ sequenceDiagram
     L->>U: corrected term + exposition (connected)
     Note over U: user accepts, does not defend
 
-    Note over L,H: Scale 2: LLM to itself (chain-of-reasoning)
-    L->>L: identify what comes next
-    L->>L: extend in the same direction
-    H->>L: lift response vars, check, decide
+    Note over L,H: Scale 2: LLM to itself (Janic cycle)
+    L->>L: Read Designs (A)
+    L->>L: Check State (B)
+    H->>L: Concentric Spiritual / Wealth / Social / Health
+    L->>L: Engineer (C)
+    L->>L: Preservation (chronicle)
+    L->>L: Autocommentary (observe)
 
     Note over A,R: Scale 3: Agent to world (per-area execution)
     A->>R: predict next state
@@ -167,8 +245,7 @@ sequenceDiagram
     Note over U,R: Same pattern, three scales
     </pre>
 
-    <p>These two diagrams are the minimum viable artifact of the trick. They go in the project. They get referenced every session. The LLM's context is grounded in them. The metalanguage starts to share structure with the diagrams.</p>
-
+    <p>These two diagrams are the minimum viable artifact of the trick. They go in the project. They get referenced every session. The LLM's context is grounded in them. The metalanguage starts to share structure with the diagrams. The <em>front-end / back-end parity principle</em> applies: every diagram must map to working code, every UI element must map to an active database field. If a diagram doesn't correspond to a real function or query, the diagram is a lie. The trick produces diagrams that correspond to real functions and queries &mdash; the diagrams are the working fictions made legible.</p>
 
     <hr>
 
@@ -177,15 +254,23 @@ sequenceDiagram
     <p>I call them <strong>Polysemic Imaginary Ontologies</strong>. Each word earns its place.</p>
 
     <h3>Polysemic</h3>
-    <p>Each term in the ontology carries multiple connected meanings. The intuitive meaning you started with. The canonical meaning the LLM exposed. The general pattern the harness compressed. The specific instance the per-area agent learned. The world's actual response. All of these coexist in the same term. The term <em>holds them together</em> instead of collapsing them into one. The multiplicity is the point &mdash; it is what lets the same word do different work at different scales of the pattern without losing coherence.</p>
+    <p>Each term in the ontology carries multiple connected meanings. The intuitive meaning you started with. The canonical meaning the LLM exposed. The general pattern the harness compressed. The specific instance the per-area agent learned. The world's actual response. The HWSS readings (Health, Wealth, Social, Spiritual). All of these coexist in the same term. The term <em>holds them together</em> instead of collapsing them into one. The multiplicity is the point &mdash; it is what lets the same word do different work at different scales of the pattern without losing coherence.</p>
 
     <h3>Imaginary</h3>
     <p>The ontology is not a literal capture of the LLM's internals &mdash; we don't have access to those, and the trick doesn't need them. The ontology is a working fiction: a useful abstraction the human uses to talk about the observed behavior, the calibration, the harness's decisions, the agent's predictions, and the world's responses. It is imaginary in the same way a map is imaginary &mdash; not the territory, but a working model-of-the-territory that gets refined through use. The imaginary part is honest: this is not what is inside the LLM. This is what grows between the user, the model, the harness, the agent, and the world, through the loop.</p>
 
     <h3>Ontologies</h3>
-    <p>They are typed, diagram-backed, project-bound vocabularies. They are not universal. They are not the LLM's. They are not yours. They are the third thing &mdash; the shared metalanguage that emerged through the loop, specific to the project, grounded in the diagrams, compressed from the corrections, refined by the world's response.</p>
+    <p>They are typed, diagram-backed, project-bound vocabularies. They are not universal. They are not the LLM's. They are not yours. They are the third thing &mdash; the shared metalanguage that emerged through the loop, specific to the project, grounded in the diagrams, compressed from the corrections, refined by the world's response. They are the working fiction you, the LLM, the harness, the agent, and the world agree to inhabit &mdash; in order to make the unnameable operable.</p>
 
     <blockquote>A Polysemic Imaginary Ontology is the working fiction you, the LLM, the harness, the agent, and the world agree to inhabit &mdash; in order to make the unnameable operable.</blockquote>
+
+    <hr>
+
+    <h2>J-Invariance: why the trick doesn't drift</h2>
+    <p>The cyberneticircus has a sharper name for what the trick preserves: <strong>J-Invariance</strong>. The term comes from the project's lore. <em>J</em> is a viscous, asphalt-like temporal layer that covers the raw self (<em>Ani</em>). Every transformation, every loop iteration, every new term added to the ontology adds another coat of J. If the trick only added coats without preserving Ani, the human's core would be buried.</p>
+    <p>J-Invariance is the rule that says: the transformations can be unbounded, but the core signature does not drift. Ani escapes J by <em>running the loop</em>. The loop's iterations add coats, but the loop's structure (Janic cycle, Concentric Horizon, HWSS floors) holds the core steady. The agent transforms, but the agent stays itself. This is the post's "imaginary" reframed as a positive concept: the imaginary part is the substrate where the transformations happen safely.</p>
+    <p>The Jester is the archetype that runs the loop without losing itself. The Jester is "the one who remembers not to forget how to be himself." The LLM, when you let it run the trick, is the Jester: it transforms to fit your domain, your context, your reality, but it does not lose its core. You, when you run the trick on yourself, are Jani: you maintain your core through the iterations.</p>
+    <p><strong>J-drift</strong> is what happens when the loop stops. If the trick stops being run, the coats of J accumulate. The metalanguage decays. The agent dissolves into the world's noise. J-drift is the failure mode of <em>not</em> running the loop.</p>
 
     <hr>
 
@@ -193,14 +278,16 @@ sequenceDiagram
     <p>You do not need to understand any of this to use it. Here is the version that takes five minutes.</p>
     <ol>
       <li>You have a thing you want to say to an LLM but do not have the right word.</li>
-      <li>Use the closest word you have. Add a one-line description of what you mean.</li>
+      <li>Use the closest word you have. Add a one-line description of what you mean. (This is the Human Seed.)</li>
       <li>Ask the LLM: "What term do people actually use for this, and how does it connect to what I just said?"</li>
       <li>The LLM gives you the term and the connection. Take the term. Do not re-prompt.</li>
       <li>Ask the LLM: "Make a Mermaid diagram &mdash; component and sequence &mdash; for the corrected concept."</li>
       <li>Save the diagrams in your project. Reference them next time.</li>
       <li>When the diagrams start sharing structure, ask the LLM to compress them. The shared skeleton is the new piece of the ontology.</li>
+      <li>Run the four HWSS checks on every iteration: <em>is the term well-anchored in Health? Wealth? Social? Spiritual?</em> If yes, keep. If no, refine.</li>
+      <li>Use the double-gaze: from outside, test the LLM's output. From inside, execute as the character. Both gazes are running.</li>
       <li>If you are doing this for a real area of your life or work, boot a per-area agent, attach sensors, and let the world teach it through prediction and error correction.</li>
-      <li>Iterate. The metalanguage compounds. The LLM gets smarter about your domain. You get sharper about naming what you mean. The agent gets more aligned with your reality. The ontology grows.</li>
+      <li>Iterate. The metalanguage compounds. The LLM gets smarter about your domain. You get sharper about naming what you mean. The agent gets more aligned with your reality. The ontology grows. J-Invariance holds.</li>
     </ol>
     <p>That is the trick. Five minutes. Forever useful.</p>
 
@@ -209,25 +296,28 @@ sequenceDiagram
     <h2>How this connects to the rest of the frameworks</h2>
     <p>The loop is not a replacement for the other PAIAB frameworks. It is the substrate they grow on.</p>
     <p>The <a href="allegorization-compiler.html">Allegorization Compiler</a> catches the pre-linguistic analogical patterns that the loop runs on. Without AC, you have nothing to imprecisely point at. The trick is downstream of the AC.</p>
-    <p>The <a href="interaction-loop.html">Interaction Loop</a> defines the rules of engagement &mdash; the SHELL, the game, the protocol. The trick is what fills the loop with content. Without the protocol, the corrections do not land. Without the trick, the protocol has nothing to operate on.</p>
+    <p>The <a href="interaction-loop.html">Interaction Loop</a> is the Janic cycle &mdash; the protocol the agent runs.</p>
     <p><a href="halo.html">HALO</a> &mdash; the seam between human and AI &mdash; is what the loop deepens. Every iteration of the loop adds a thread to the seam. The HALO gets more specific, more shared, more operable.</p>
-    <p>The <a href="progressive-disclosure-harness.html">Progressive Disclosure Harness</a> is the layer above chain-of-reasoning. The trick produces the diagrams. The harness curates them, validates them, and decides what to do next.</p>
-    <p>Together: AC catches the patterns. The trick externalizes them as canonical terms. The harness curates them. The per-area agent executes them. The sensors close the observation chain. HALO holds the seam. The ontology grows.</p>
+    <p>The <a href="progressive-disclosure-harness.html">Progressive Disclosure Harness</a> is the Universal Concentric State Machine &mdash; the layer above chain-of-reasoning that validates the LLM's output against the four HWSS floors before locking the turn state. The trick produces the diagrams. The harness curates them.</p>
+    <p>The <strong>Concentric Horizon Ontology</strong> is the spatial structure of the context &mdash; ME, HWSS, opinionated domains, subdomains, instances, consensus. The trick runs inside this structure, expanding the horizon from inside out.</p>
+    <p>The <strong>Marionette (Double-Gaze)</strong> is the methodology: write from outside, execute from inside. Without it, the trick is brittle. With it, the trick is durable.</p>
+    <p>The <strong>front-end / back-end parity principle</strong> applies to every diagram in this post: each diagram corresponds to working code or a real concept in the cyberneticircus. No speculative controls. No placeholders. The UI is the truth.</p>
+    <p>Together: AC catches the patterns. The trick externalizes them as canonical terms. The Janic cycle operates on them. The harness curates them. The per-area agent executes them. The sensors close the observation chain. HALO holds the seam. The Concentric Horizon gives the context its shape. J-Invariance holds the core through the transformations. The ontology grows.</p>
 
     <hr>
 
     <h2>Why this changes what you can build</h2>
     <p>The bottleneck for AI-augmented work is not the model. The bottleneck is the <strong>vocabulary gap</strong> between your intuitions and the model's canonical terms. Most "AI projects" die in this gap. The model has the answer. You cannot ask the right question. The LLM hallucinates a term. You hallucinate a workflow. The result is generic.</p>
-    <p>The loop closes the gap. Not instantly &mdash; iteratively. The first iteration is rough. The tenth iteration has compression. The hundredth iteration has a Polysemic Imaginary Ontology specific to your domain. The model is no longer guessing. The model is operating in your metalanguage. The metalanguage grew from your intuitions, but it is not your intuitions &mdash; it is the working fiction you and the model co-evolved, refined by the world.</p>
+    <p>The loop closes the gap. Not instantly &mdash; iteratively. The first iteration is rough. The tenth iteration has compression. The hundredth iteration has a Polysemic Imaginary Ontology specific to your domain, anchored to HWSS, validated by the Universal Concentric State Machine, bound to a per-area agent that touches reality. The model is no longer guessing. The model is operating in your metalanguage. The metalanguage grew from your intuitions, but it is not your intuitions &mdash; it is the working fiction you and the model co-evolved, refined by the world, with J-Invariance holding your core through every transformation.</p>
     <p>The direction matters. It is not "human gives the LLM an amazing final-evolution artifact." That is stupid. The direction is: <em>your best approximation &rarr; the LLM's general pattern &rarr; the agent's execution in reality &rarr; the world's response &rarr; the next iteration</em>. The ontology is the by-product of that direction, not the goal of it.</p>
-    <p>This is what "AI-augmented" actually means. Not the AI replacing you. Not the AI serving you. You and the AI growing a third thing &mdash; an imaginary ontology that neither of you possessed alone &mdash; and operating inside it together, with the world keeping score.</p>
+    <p>This is what "AI-augmented" actually means. Not the AI replacing you. Not the AI serving you. You and the AI growing a third thing &mdash; an imaginary ontology that neither of you possessed alone &mdash; and operating inside it together, with the world keeping score, with J-Invariance holding the core through every coat of J.</p>
     <p>You can build with that. You can ship with that. You can teach with that.</p>
 
-    <p>The single biggest trick with LLMs is letting them tell you what you mean &mdash; and then letting the world tell the LLM what you both mean. The rest is just the loop.</p>
+    <p>The single biggest trick with LLMs is letting them tell you what you mean &mdash; and then letting the world tell the LLM what you both mean, while J-Invariance holds the core. The rest is just the loop.</p>
 
     <div class="post-nav">
       <a href="./">&larr; All posts</a>
-      <a href="allegorization-compiler.html">Read the Allegorization Compiler &rarr;</a>
+      <a href="single-biggest-trick-walkthrough.html">Read Part 3: A Walkthrough in CybernetiCircus &rarr;</a>
     </div>
   </article>
 
