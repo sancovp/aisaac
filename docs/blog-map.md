@@ -37,6 +37,7 @@ Every blog post maps to a **facet** (PAIAB/SANCTUM/CAVE/STARSYSTEM), a **complex
 | 25 | Seven Disciplines | Meta | L1-L7 | AI Engineering | build | There are 7 levels, not 4 |
 | 26 | Admissibility | PAIAB | L5 | AI Engineering | build | More context ≠ admissible context |
 | 27 | DocMagic Stack | PAIAB | L5-L6 | AI Engineering | build | Where tools sit in the stack |
+| 28 | Single Biggest Trick | PAIAB | L5 | AI Engineering | build | The vocabulary gap is the real bottleneck, not the model |
 
 ## Facet Distribution
 

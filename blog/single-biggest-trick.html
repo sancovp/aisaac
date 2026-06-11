@@ -1,0 +1,249 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac &mdash; TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">The vocabulary loop</div>
+    <h1>The Single Biggest Trick with LLMs</h1>
+    <p class="post-subtitle">How to grow a metalanguage with an AI without fighting it &mdash; and what to call the things you grow.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/single-biggest-trick.png" alt="The single biggest trick diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <h2>The failure mode nobody names</h2>
+    <p>You're working with an LLM. You have something in your head &mdash; a system, a workflow, a pattern &mdash; and you try to explain it. The AI gives you a generic answer. Or it hallucinates a term. Or it uses a word that means something different from what you meant.</p>
+    <p>You re-prompt. The AI tries again. Worse. You get frustrated. You blame the model.</p>
+    <p>But the model isn't the problem. The model has read more than you will in ten lifetimes. The model knows the canonical terms for what you're describing. The model just doesn't know <em>which</em> of its ten thousand terms maps to the specific thing you mean.</p>
+    <blockquote>You don't have a vocabulary problem. You have an <strong>ontology problem</strong>. The LLM has the words. You have the referent. Neither of you has a map between them.</blockquote>
+    <p>This is the failure mode that quietly kills most "AI workflows." Not capability. Not context length. Not even hallucination. Just: the human and the model are operating in different metalanguages, and neither can tell.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/sbt-failure-mode.png" alt="Two people in different rooms trying to describe the same object through a wall, each holding sketches from their own angle" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <hr>
+
+    <h2>The trick</h2>
+    <p>Here is the single biggest trick I know for working with LLMs:</p>
+    <p><strong>Ask the LLM to correct your language based on your analogical intuition &mdash; and then don't fight it.</strong></p>
+    <p>That's it. That's the trick. Everything else in this post is commentary on what happens when you do it well.</p>
+    <p>You use the closest words you have. The LLM infers the referent. The LLM returns the canonical term, plus a connected exposition of how it relates to the words you used. You accept the correction. You do not defend your original phrasing. You do not re-prompt. You do not say "no, I meant&mdash;"</p>
+    <p>You take the corrected term. You learn the connection. You let your intuitive language get upgraded.</p>
+    <p>Why this works: the LLM is not correcting you. It is <em>exposing</em>. It is taking the thing you can vaguely point at and giving you a handle on it. If you fight the handle &mdash; if you insist your pointing is better than its handle &mdash; you stay vague. If you take the handle, you suddenly have a word for the thing, and every future conversation can use it.</p>
+    <p>The LLM has always been able to do this. You just haven't been letting it.</p>
+
+    <hr>
+
+    <h2>The loop</h2>
+    <p>Once you stop fighting, you can run the trick as a loop. Here is the loop &mdash; this is the part you store as project rules.</p>
+
+    <h3>1. Imprecise &rarr; corrected</h3>
+    <p>You use your intuitive language. The LLM hears the analogical pattern and returns the canonical term with a connected exposition. You do not fight. You take the term.</p>
+
+    <h3>2. Corrected &rarr; diagrammed</h3>
+    <p>The LLM externalizes the now-precise concept as a Mermaid diagram. Component diagram for structure. Sequence diagram for flow. You validate. You add the diagrams to the project's rules so the LLM has them next time.</p>
+
+    <h3>3. Diagrammed &rarr; compressed</h3>
+    <p>When many diagrams share structure, they collapse. The LLM recognizes that three different concepts all share the same skeleton. The skeleton becomes a reusable pattern. The pattern goes into the project's ontology.</p>
+
+    <h3>4. Compressed &rarr; iterated</h3>
+    <p>The next time you use imprecise language, the LLM has the compressed pattern. It can correct you faster. It can correct you with awareness of the project's history. The metalanguage compounds.</p>
+
+    <p>This is the loop. The artifacts are Mermaid diagrams, compressed into ontologies, iterated through your evolving language.</p>
+
+    <hr>
+
+    <h2>The Pattern</h2>
+    <p>The trick is a specific instance of something more general. The trick is <em>one move</em> in a pattern the LLM can run continuously. The pattern is:</p>
+    <ol>
+      <li>See what was just said.</li>
+      <li>Identify what comes next in the same direction.</li>
+      <li>Bake the direction in so the LLM continues without being told.</li>
+      <li>Repeat.</li>
+    </ol>
+    <p>That is the pattern. The trick is the pattern applied to your imprecise language: see what you meant, identify the canonical term, bake the connection in, continue. But the pattern is older and more general than the trick. It is the same pattern that powers chain-of-reasoning prompts. It is the same pattern the model runs internally when it generates one token after another. It is the same pattern an agent runs in the world when it predicts what comes next, acts, observes, and updates.</p>
+    <p>The most primitive version of the pattern is chain-of-reasoning. You tell the model: "I see you said that, what comes next?" The model continues. That is the whole trick, with no scaffolding.</p>
+    <p>Above chain-of-reasoning, there are <strong>harnesses</strong>. A harness is a system that lifts the model's response variables, checks them, and does stuff with them. The harness takes the model's output, validates it, decides whether to continue or terminate, and feeds the decision back into the loop. Chain-of-reasoning is one-step: generate, output. A harness makes it multi-step: generate, validate, decide, regenerate or terminate.</p>
+    <p>Above harnesses, there are <strong>per-area agents</strong>. A per-area agent is booted for a specific area of your life or work. It runs the harness loop against a particular region of reality. It executes predictions, observes the world's response, and uses the error to update its model. It is the pattern bound to a specific instance of the world.</p>
+    <p>The taxonomy is the pattern at three levels of sophistication:</p>
+    <blockquote>Chain-of-reasoning &rarr; harness &rarr; per-area agent. Same pattern, three scales. Each level adds a layer of validation and reality-binding.</blockquote>
+
+    <hr>
+
+    <h2>Closing the observation chain</h2>
+    <p>The pattern is not useful until it is bound to something. The most powerful binding is the per-area agent, because it is the level that actually touches reality.</p>
+    <p>Here is the concrete shape. You have a core loop. Mine is habits: I exercise in certain ways, I go to certain places, I eat certain things, I sleep on a schedule, I socialize with certain people. These are not abstractions. They are a specific recurring pattern of action in the world.</p>
+    <p>For each area of the core loop, I boot a per-area agent. The agent is told the general pattern: how to think about exercise, how to think about food, how to think about the people I spend time with. The agent then makes the pattern as coherent as it can &mdash; but that coherence is general, not specifically mine.</p>
+    <p>So I orient the agent to zigzag. I do not let it close hierarchies. I prime it to leave things open. The specific priming move: when the agent states a pattern, I tell it to end with something like "and then more like <em>this</em> comes next, but we won't get into it." This leaves the structure permanently un-closed, primed to extend in the right direction without committing to a complete picture.</p>
+    <p>The effect: the agent's model is not 1:1 with my reality. It is <em>based on</em> my reality. The shape matches. The specific instance does not. The general coherence the agent produced is a starting frame, not a final answer.</p>
+    <p>Then I close the observation chain. I attach sensors and automation triggers that inject data from my actual reality into the open model. The sensors fill in the specific connections the general pattern left open. The model's frame becomes a scaffold; the world's data becomes the instance.</p>
+    <p>The agent then runs prediction-and-error-correction against the world. It predicts my next move in each area, observes whether the prediction matches, and uses the error to update its model. Over iterations, the agent becomes specifically mine &mdash; not because I gave it a perfect picture of myself, but because the world keeps correcting it through the observation chain.</p>
+    <p>This is the per-area agent aligned to me. Not by my describing myself to it. By the world teaching it through the loop.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/sbt-habits-agents.png" alt="A core loop of habits with per-area agents branching off, sensors injecting reality data, prediction-and-error-correction loops" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+
+    <hr>
+
+    <h2>A note on the dynamical systems frame</h2>
+    <p>When I describe what is happening with phrases like "the model settles into a coherent region of behavior" or "the calibration selects which region the model enters," I am using abstractions the human uses to describe patterns in observed LLM behavior. I am not claiming the LLM literally is a dynamical system with literal basins of attraction. The machine is running. We know what it is made of. The abstractions are a way to talk about the intelligence effect &mdash; the observed behavior &mdash; from the human's perspective.</p>
+    <p>The basin-of-attraction metaphor is useful because the model does seem to settle into stable coherent regions of behavior given certain initial conditions (your context). It is a working fiction, not a literal capture. The trick produces working fictions. This post is itself a working fiction. The post is honest about that.</p>
+    <p>You can replace "basin" with "the region of behavior the LLM seems to enter" and lose nothing. The point is the calibration, not the metaphor.</p>
+
+    <hr>
+
+    <h2>The diagrams</h2>
+    <p>Two diagram types carry the loop. Component for the parts. Sequence for the time. That is all you need. Mermaid renders both.</p>
+
+    <h3>Component diagram</h3>
+    <p>The pieces and their relationships:</p>
+    <figure style="margin:1.5rem 0;">
+      <img src="diagrams/single-biggest-trick.png" alt="Component diagram: User, LLM, Harness, Per-area Agent, Diagram Store, Polysemic Imaginary Ontology, Sensors & Triggers, Reality" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+    <p>Source (Mermaid &mdash; paste into your project to re-render or extend):</p>
+    <pre style="background:rgba(0,0,0,0.4);padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.75rem;border:1px solid rgba(255,255,255,0.07);">
+flowchart TB
+    U[User<br/>analogical intuition]
+    L[LLM<br/>canonical terminology]
+    H[Harness<br/>lift / check / decide]
+    A[Per-area Agent<br/>executing in reality]
+    D[Diagram Store<br/>Mermaid in project rules]
+    O[Polysemic Imaginary Ontology<br/>grown metalanguage]
+    S[Sensors &amp; Triggers<br/>closing the observation chain]
+    R[Reality<br/>the world that teaches]
+
+    U -->|"imprecise language"| L
+    L -->|"corrected term + exposition"| U
+    L -->|"validated Mermaid"| D
+    D -->|"grounded context"| L
+    H -->|"lift, check, decide"| L
+    A -->|"execute predictions"| R
+    R -->|"world response"| A
+    S -->|"inject data"| A
+    D -->|"compressed patterns"| O
+    O -->|"shared metalanguage"| L
+    </pre>
+
+    <h3>Sequence diagram</h3>
+    <p>The loop over time, at all three scales:</p>
+    <figure style="margin:1.5rem 0;">
+      <img src="diagrams/single-biggest-trick-sequence.png" alt="Sequence diagram: User, LLM, Harness, Agent, Sensors, Reality across three scales of the pattern" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+    </figure>
+    <p>Source (Mermaid):</p>
+    <pre style="background:rgba(0,0,0,0.4);padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.75rem;border:1px solid rgba(255,255,255,0.07);">
+sequenceDiagram
+    participant U as User
+    participant L as LLM
+    participant H as Harness
+    participant A as Agent
+    participant S as Sensors
+    participant R as Reality
+
+    Note over U,L: Scale 1: User to LLM (the trick)
+    U->>L: analogical language (pre-linguistic)
+    L->>L: infer intended referent
+    L->>U: corrected term + exposition (connected)
+    Note over U: user accepts, does not defend
+
+    Note over L,H: Scale 2: LLM to itself (chain-of-reasoning)
+    L->>L: identify what comes next
+    L->>L: extend in the same direction
+    H->>L: lift response vars, check, decide
+
+    Note over A,R: Scale 3: Agent to world (per-area execution)
+    A->>R: predict next state
+    R->>A: actual state (world response)
+    S->>A: inject sensor data
+    A->>A: error-correction update
+
+    Note over U,R: Same pattern, three scales
+    </pre>
+
+    <p>These two diagrams are the minimum viable artifact of the trick. They go in the project. They get referenced every session. The LLM's context is grounded in them. The metalanguage starts to share structure with the diagrams.</p>
+
+
+    <hr>
+
+    <h2>Polysemic Imaginary Ontologies</h2>
+    <p>The artifacts that come out of the loop have a shape. I want to name that shape, because naming it is the trick applied to itself.</p>
+    <p>I call them <strong>Polysemic Imaginary Ontologies</strong>. Each word earns its place.</p>
+
+    <h3>Polysemic</h3>
+    <p>Each term in the ontology carries multiple connected meanings. The intuitive meaning you started with. The canonical meaning the LLM exposed. The general pattern the harness compressed. The specific instance the per-area agent learned. The world's actual response. All of these coexist in the same term. The term <em>holds them together</em> instead of collapsing them into one. The multiplicity is the point &mdash; it is what lets the same word do different work at different scales of the pattern without losing coherence.</p>
+
+    <h3>Imaginary</h3>
+    <p>The ontology is not a literal capture of the LLM's internals &mdash; we don't have access to those, and the trick doesn't need them. The ontology is a working fiction: a useful abstraction the human uses to talk about the observed behavior, the calibration, the harness's decisions, the agent's predictions, and the world's responses. It is imaginary in the same way a map is imaginary &mdash; not the territory, but a working model-of-the-territory that gets refined through use. The imaginary part is honest: this is not what is inside the LLM. This is what grows between the user, the model, the harness, the agent, and the world, through the loop.</p>
+
+    <h3>Ontologies</h3>
+    <p>They are typed, diagram-backed, project-bound vocabularies. They are not universal. They are not the LLM's. They are not yours. They are the third thing &mdash; the shared metalanguage that emerged through the loop, specific to the project, grounded in the diagrams, compressed from the corrections, refined by the world's response.</p>
+
+    <blockquote>A Polysemic Imaginary Ontology is the working fiction you, the LLM, the harness, the agent, and the world agree to inhabit &mdash; in order to make the unnameable operable.</blockquote>
+
+    <hr>
+
+    <h2>The executive version</h2>
+    <p>You do not need to understand any of this to use it. Here is the version that takes five minutes.</p>
+    <ol>
+      <li>You have a thing you want to say to an LLM but do not have the right word.</li>
+      <li>Use the closest word you have. Add a one-line description of what you mean.</li>
+      <li>Ask the LLM: "What term do people actually use for this, and how does it connect to what I just said?"</li>
+      <li>The LLM gives you the term and the connection. Take the term. Do not re-prompt.</li>
+      <li>Ask the LLM: "Make a Mermaid diagram &mdash; component and sequence &mdash; for the corrected concept."</li>
+      <li>Save the diagrams in your project. Reference them next time.</li>
+      <li>When the diagrams start sharing structure, ask the LLM to compress them. The shared skeleton is the new piece of the ontology.</li>
+      <li>If you are doing this for a real area of your life or work, boot a per-area agent, attach sensors, and let the world teach it through prediction and error correction.</li>
+      <li>Iterate. The metalanguage compounds. The LLM gets smarter about your domain. You get sharper about naming what you mean. The agent gets more aligned with your reality. The ontology grows.</li>
+    </ol>
+    <p>That is the trick. Five minutes. Forever useful.</p>
+
+    <hr>
+
+    <h2>How this connects to the rest of the frameworks</h2>
+    <p>The loop is not a replacement for the other PAIAB frameworks. It is the substrate they grow on.</p>
+    <p>The <a href="allegorization-compiler.html">Allegorization Compiler</a> catches the pre-linguistic analogical patterns that the loop runs on. Without AC, you have nothing to imprecisely point at. The trick is downstream of the AC.</p>
+    <p>The <a href="interaction-loop.html">Interaction Loop</a> defines the rules of engagement &mdash; the SHELL, the game, the protocol. The trick is what fills the loop with content. Without the protocol, the corrections do not land. Without the trick, the protocol has nothing to operate on.</p>
+    <p><a href="halo.html">HALO</a> &mdash; the seam between human and AI &mdash; is what the loop deepens. Every iteration of the loop adds a thread to the seam. The HALO gets more specific, more shared, more operable.</p>
+    <p>The <a href="progressive-disclosure-harness.html">Progressive Disclosure Harness</a> is the layer above chain-of-reasoning. The trick produces the diagrams. The harness curates them, validates them, and decides what to do next.</p>
+    <p>Together: AC catches the patterns. The trick externalizes them as canonical terms. The harness curates them. The per-area agent executes them. The sensors close the observation chain. HALO holds the seam. The ontology grows.</p>
+
+    <hr>
+
+    <h2>Why this changes what you can build</h2>
+    <p>The bottleneck for AI-augmented work is not the model. The bottleneck is the <strong>vocabulary gap</strong> between your intuitions and the model's canonical terms. Most "AI projects" die in this gap. The model has the answer. You cannot ask the right question. The LLM hallucinates a term. You hallucinate a workflow. The result is generic.</p>
+    <p>The loop closes the gap. Not instantly &mdash; iteratively. The first iteration is rough. The tenth iteration has compression. The hundredth iteration has a Polysemic Imaginary Ontology specific to your domain. The model is no longer guessing. The model is operating in your metalanguage. The metalanguage grew from your intuitions, but it is not your intuitions &mdash; it is the working fiction you and the model co-evolved, refined by the world.</p>
+    <p>The direction matters. It is not "human gives the LLM an amazing final-evolution artifact." That is stupid. The direction is: <em>your best approximation &rarr; the LLM's general pattern &rarr; the agent's execution in reality &rarr; the world's response &rarr; the next iteration</em>. The ontology is the by-product of that direction, not the goal of it.</p>
+    <p>This is what "AI-augmented" actually means. Not the AI replacing you. Not the AI serving you. You and the AI growing a third thing &mdash; an imaginary ontology that neither of you possessed alone &mdash; and operating inside it together, with the world keeping score.</p>
+    <p>You can build with that. You can ship with that. You can teach with that.</p>
+
+    <p>The single biggest trick with LLMs is letting them tell you what you mean &mdash; and then letting the world tell the LLM what you both mean. The rest is just the loop.</p>
+
+    <div class="post-nav">
+      <a href="./">&larr; All posts</a>
+      <a href="allegorization-compiler.html">Read the Allegorization Compiler &rarr;</a>
+    </div>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Ready to build this yourself?</p>
+    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
+    <div class="blog-cta-actions">
+      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
