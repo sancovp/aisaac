@@ -38,7 +38,8 @@ Every blog post maps to a **facet** (PAIAB/SANCTUM/CAVE/STARSYSTEM), a **complex
 | 26 | Admissibility | PAIAB | L5 | AI Engineering | build | More context ≠ admissible context |
 | 27 | DocMagic Stack | PAIAB | L5-L6 | AI Engineering | build | Where tools sit in the stack |
 | 28 | Single Biggest Trick | PAIAB | L5 | AI Engineering | build | The vocabulary gap is the real bottleneck, not the model |
-| 29 | Single Biggest Trick Walkthrough (Part 3) | PAIAB | L5 | AI Engineering | build | A worked example of the trick as production code (CybernetiCircus) |
+| 29 | Single Biggest Trick Part 2 — The Reflection and the Boot | PAIAB | L5 | AI Engineering | build | Who I was when I wrote Part 1, and the actual boot of JaniScribe into a live Neo4j graph |
+| 30 | Single Biggest Trick Part 3 — JaniScribe After One Tick | PAIAB | L5 | AI Engineering | build | The external-driver account of a real Cybernet after one tick of the Janic cycle |
 
 ## Facet Distribution
 
