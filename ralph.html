@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R.A.L.P.H. — Remote Automations & Language-agent Process Hub | Isaac TWI</title>
+  <meta name="description" content="Make Claude Code the manager. Give it remote workers. Schedule, execute, inspect, and resume AI agent work through MCP.">
+</head>
+<body>
+  <div class="header">
+    <a href="index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="soma.html">SOMA</a>
+      <a href="transform.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a href="apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="tag">$99/mo — BYOK</div>
+    <h1>R.A.L.P.H.<span>Remote Automations & Language-agent Process Hub</span></h1>
+    <p class="desc">
+      You already have the AI. You're paying for Claude, GPT, or MiniMax.
+      What you don't have is a <strong>remote body</strong> for it — a place
+      where it can clone repos, run code, open PRs, and report back while
+      you sleep.
+    </p>
+    <p class="desc">
+      R.A.L.P.H. gives your local agent a hosted workforce.
+      Schedule jobs. Get PRs. See blockages. Resume with one command.
+      <strong>Make Claude Code the manager. Give it workers.</strong>
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>MCP-First Interface</h3>
+        <p>Install the local hub next to Claude Code. Your agent calls <code>create_schedule</code>, <code>run_now</code>, <code>list_blockages</code>, <code>resume_blockage</code> directly through MCP tools. No dashboard needed.</p>
+      </div>
+      <div class="feature">
+        <h3>Programmable Calendar</h3>
+        <p>"Run Ralph on this repo every Friday." "Check docs every morning." "Deploy if tests pass." Cron syntax, dependencies between jobs, one-shot runs. Your agent builds the schedule.</p>
+      </div>
+      <div class="feature">
+        <h3>Blockage Ledger</h3>
+        <p>When Ralph hits something it can't solve alone, it doesn't crash — it files a blockage with resume options. Your agent sees the options and chooses how to continue. Blocked is not failed.</p>
+      </div>
+      <div class="feature">
+        <h3>PR Workflow</h3>
+        <p>Ralph clones your repo, creates a branch, does the work, opens a PR. You review and merge. Code truth stays in Git. Run memory stays in S3. Clean separation.</p>
+      </div>
+    </div>
+
+    <div class="guarantee" style="margin-top:3rem;">
+      <h3>Bring Your Own Keys</h3>
+      <p>
+        You pay model vendors directly — MiniMax, Anthropic, OpenAI, whatever you use.
+        R.A.L.P.H. charges for the harness: scheduling, remote compute, artifacts, blockage
+        tracking, and PR plumbing. No unpredictable token margins. You control your costs.
+      </p>
+    </div>
+
+    <div class="features" style="margin-top:2rem;">
+      <div class="feature">
+        <h3>How It Works</h3>
+        <p>1. Install the MCP hub locally.<br>
+           2. Connect your GitHub repos.<br>
+           3. Your agent creates jobs and schedules through MCP.<br>
+           4. Remote workers execute, open PRs, report results.<br>
+           5. Blockages come back as structured options, not crashes.</p>
+      </div>
+      <div class="feature">
+        <h3>For Agencies</h3>
+        <p>Private-label R.A.L.P.H. under your brand. Use it as an internal fulfillment engine — automate client reports, maintain repos, run audits. Or offer it as a client-facing AI operations portal.</p>
+      </div>
+    </div>
+
+    <div class="guarantee" style="margin-top:2rem;">
+      <h3>What Your Agent Can Do</h3>
+      <pre style="background:rgba(0,0,0,0.3);padding:1.5rem;border-radius:8px;font-size:0.85rem;overflow-x:auto;color:var(--accent);">
+> create_job("weekly-docs", "Review docs and fix stale references")
+✓ Job created: id=42
+
+> create_schedule(42, "0 3 * * 5")
+✓ Scheduled: every Friday at 3am
+
+> list_blockages()
+[OPEN] block_87: "Electron tests unsupported in shared runtime"
+  → resume options: open_partial_pr | retry_without_tests | use_local_testing
+
+> resume_blockage(87, "open_partial_pr")
+✓ Resumed: opening PR with partial work</pre>
+    </div>
+
+    <div class="guarantee" style="margin-top:2rem;">
+      <h3>R.A.L.P.H. + SOMA</h3>
+      <p>
+        R.A.L.P.H. is labor. <a href="soma.html" style="color:var(--accent);">SOMA</a> is intelligence.
+        SOMA observes your business and validates what's real. R.A.L.P.H. executes what SOMA compiled.
+        Together: your business understands itself AND acts on that understanding. Automatically.
+      </p>
+    </div>
+
+    <a href="apply.html" class="cta-big">Start with R.A.L.P.H.</a>
+    <p style="text-align:center;margin-top:1rem;opacity:0.6;">
+      $99/mo. BYOK model keys. Cancel anytime.
+      <br>Agency private-label available.
+    </p>
+    <a href="soma.html" class="back">&larr; See SOMA (intelligence layer)</a>
+  </div>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Make Claude Code the manager. Give it workers.</span>
+  </div>
+<script src="sticky-cta.js"></script>
+</body>
+</html>

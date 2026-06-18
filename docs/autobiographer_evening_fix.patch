@@ -1,0 +1,73 @@
+diff --git a/application/cave/cave/core/sanctum_automations.py b/application/cave/cave/core/sanctum_automations.py
+index 18e27ad..5a7a13f 100644
+--- a/application/cave/cave/core/sanctum_automations.py
++++ b/application/cave/cave/core/sanctum_automations.py
+@@ -467,10 +467,18 @@ def _route_trigger(ritual_name: str) -> None:
+                 )
+ 
+         try:
++            # D1 FIX (investigation #5): carry the ritual's DECLARED mode so the agent
++            # fires in the right mode (e.g. night-journal → journal_evening). The
++            # /agents/{name}/message route applies it via set_mode before processing.
++            # Without this the persistent autobiographer_journal stays in its boot mode
++            # (journal_morning) and the evening journal fires as morning.
++            payload = {"content": content, "source": "sanctum", "priority": 8}
++            if "mode" in trigger:
++                payload["mode"] = trigger["mode"]
+             # TRIGGERS: CAVE/sancrev:8080/agents/{agent_name}/message via HTTP POST
+             httpx.post(
+                 f"http://localhost:8080/agents/{agent_name}/message",
+-                json={"content": content, "source": "sanctum", "priority": 8},
++                json=payload,
+                 timeout=5,
+             )
+             logger.info("Ritual trigger routed: %s → %s", ritual_name, agent_name)
+diff --git a/application/sanctuary-revolution/sanctuary_revolution/agents/journal_agent.py b/application/sanctuary-revolution/sanctuary_revolution/agents/journal_agent.py
+index 70c5838..437abe5 100644
+--- a/application/sanctuary-revolution/sanctuary_revolution/agents/journal_agent.py
++++ b/application/sanctuary-revolution/sanctuary_revolution/agents/journal_agent.py
+@@ -101,6 +101,14 @@ class JournalAgent(ChatAgent):
+                     from heaven_base.docs.examples.heaven_callbacks import BackgroundEventCapture, CompositeCallback
+                     from conductor.event_broadcaster import EventBroadcaster, ConductorDiscordChannel
+ 
++                    # D2 FIX (investigation #5): rebuild the system prompt on EVERY fire so the
++                    # CURRENT mode (set by the ritual trigger via set_mode just before this fire)
++                    # and the CURRENT sanctuary scores / missing-days are reflected. Without this,
++                    # the prompt is frozen at boot (journal_morning) and the evening journal fires
++                    # in morning mode (entry_type='opening' instead of 'closing'). This also
++                    # refreshes the otherwise boot-frozen scores/missing-days blocks.
++                    journal_ref._agent_config.system_prompt = journal_ref._build_system_prompt()
++
+                     agent_kwargs = dict(
+                         config=journal_ref._agent_config,
+                         unified_chat=UnifiedChat(),
+diff --git a/application/sanctuary-revolution/sanctuary_revolution/harness/server/sancrev_routes.py b/application/sanctuary-revolution/sanctuary_revolution/harness/server/sancrev_routes.py
+index 0a56308..e8a631c 100644
+--- a/application/sanctuary-revolution/sanctuary_revolution/harness/server/sancrev_routes.py
++++ b/application/sanctuary-revolution/sanctuary_revolution/harness/server/sancrev_routes.py
+@@ -1516,7 +1516,9 @@ class SancrevExtension:
+             The agent's check_inbox() processes it via its DI'd runtime.
+             Response delivered through agent's broadcast channels.
+ 
+-            Body: {"content": "message text", "source": "frontend", "priority": 0}
++            Body: {"content": "message text", "source": "frontend", "priority": 0, "mode": "journal_evening"}
++            "mode" is optional — when present and the agent supports set_mode (JournalAgent),
++            the agent is switched to that mode BEFORE processing (D1 fix, investigation #5).
+             """
+             agent = ext.cave.cave_agents.get(agent_name)
+             if not agent:
+@@ -1531,6 +1533,14 @@ class SancrevExtension:
+             if not content:
+                 return {"error": "Message content is required"}
+ 
++            # D1 FIX (investigation #5): optional per-fire mode switch. Ritual triggers
++            # (e.g. night-journal) carry the agent's intended mode in the body; apply it
++            # BEFORE check_inbox so the agent rebuilds its system prompt in that mode.
++            # Guarded — only mode-capable agents (JournalAgent) have set_mode.
++            mode = body.get("mode")
++            if mode and hasattr(agent, "set_mode"):
++                agent.set_mode(mode)
++
+             from cave.core.agent import UserPromptMessage, IngressType
+             msg = UserPromptMessage(
+                 content=content,

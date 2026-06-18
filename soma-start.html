@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start SOMA — Plans & Pricing | Isaac TWI</title>
+  <meta name="description" content="Talk about your work. SOMA learns, validates, and automates. From $17/mo for individuals to full enterprise deployment.">
+  <style>
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .plan { background: rgba(255,255,255,0.03); border: 1px solid rgba(232,161,32,0.15); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; }
+    .plan.featured { border-color: var(--accent); box-shadow: 0 0 30px rgba(232,161,32,0.1); }
+    .plan .plan-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+    .plan h3 { font-size: 1.3rem; margin: 0 0 0.5rem; }
+    .plan .price { font-size: 2.2rem; font-weight: 700; color: var(--accent); }
+    .plan .price span { font-size: 0.9rem; font-weight: 400; opacity: 0.6; }
+    .plan .plan-desc { opacity: 0.7; font-size: 0.9rem; margin: 1rem 0; line-height: 1.5; }
+    .plan ul { list-style: none; padding: 0; margin: 1rem 0; flex-grow: 1; }
+    .plan ul li { padding: 0.4rem 0; font-size: 0.85rem; opacity: 0.8; }
+    .plan ul li::before { content: "→ "; color: var(--accent); }
+    .plan .plan-cta { display: block; text-align: center; padding: 0.8rem 1.5rem; background: var(--accent); color: #000; font-weight: 600; border-radius: 6px; text-decoration: none; margin-top: 1rem; transition: opacity 0.2s; }
+    .plan .plan-cta:hover { opacity: 0.85; }
+    .plan .plan-cta.outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+    .enterprise-course { background: rgba(232,161,32,0.05); border: 1px solid rgba(232,161,32,0.2); border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+    .enterprise-course h3 { color: var(--accent); }
+    .domain-shards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .shard { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 1rem; text-align: center; font-size: 0.85rem; }
+    .shard strong { display: block; margin-bottom: 0.3rem; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="soma.html">What is SOMA?</a>
+      <a href="blog/">Blog</a>
+      <a href="apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="tag">Start Now</div>
+    <h1>SOMA Plans<span>Intelligence that acts. Pick your level.</span></h1>
+    <p class="desc">
+      Your business can forget about scaling if growth doesn't even exist.
+      To grow, you need to know what you're doing. To know what you're doing,
+      you need to <strong>observe it, steer it, transform it</strong> —
+      and then scale when you know you have the configuration that lets you multiply.
+    </p>
+    <p class="desc">
+      SOMA is the system that does this. Your team talks about their work.
+      SOMA learns, validates what's real, and progressively automates what's proven.
+      Start at any tier — upgrade when you outgrow it.
+    </p>
+
+    <div class="pricing-grid">
+
+      <div class="plan">
+        <div class="plan-tag">For Individuals</div>
+        <h3>Personal</h3>
+        <div class="price">$17<span>/mo</span></div>
+        <p class="plan-desc">Your personal AI that actually learns your work. Chat about what you do — it remembers, validates, and starts handling the repetitive parts.</p>
+        <ul>
+          <li>Unlimited observations via chat</li>
+          <li>Personal knowledge graph</li>
+          <li>Basic automation suggestions</li>
+          <li>Works through any messaging channel</li>
+          <li>Your data stays yours</li>
+        </ul>
+        <a href="#" class="plan-cta">Start Personal</a>
+      </div>
+
+      <div class="plan featured">
+        <div class="plan-tag">Most Popular</div>
+        <h3>Pro</h3>
+        <div class="price">$99<span>/mo</span></div>
+        <p class="plan-desc">Full automation power. SOMA compiles your validated processes into running automations on a programmable calendar. Your work runs itself.</p>
+        <ul>
+          <li>Everything in Personal</li>
+          <li>Progressive automation compilation</li>
+          <li>Programmable calendar (schedule any automation)</li>
+          <li>Multiple work domains</li>
+          <li>Process validation with gap detection</li>
+          <li>Automation blockage monitoring</li>
+        </ul>
+        <a href="#" class="plan-cta">Start Pro</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-tag">For Teams</div>
+        <h3>Business</h3>
+        <div class="price">$499<span>/mo</span></div>
+        <p class="plan-desc">Your whole team observes. SOMA builds a shared validated model of how your organization actually operates — and automates across roles.</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Up to 25 team members</li>
+          <li>Shared organizational ontology</li>
+          <li>Cross-role process discovery</li>
+          <li>Admin dashboard</li>
+          <li>Team automation coordination</li>
+          <li>Compliance audit trail</li>
+        </ul>
+        <a href="#" class="plan-cta">Start Business</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-tag">Full Deployment</div>
+        <h3>Enterprise</h3>
+        <div class="price">$2,500<span>/mo</span></div>
+        <p class="plan-desc">Custom domain ontology. Unlimited workers. API access. Includes Isaac's prerecorded deployment course — your implementation lead watches it once, your entire org is onboarded.</p>
+        <ul>
+          <li>Everything in Business</li>
+          <li>Unlimited team members</li>
+          <li>Custom domain ontology (your industry, pre-trained)</li>
+          <li>Full API access</li>
+          <li>Prerecorded deployment course by Isaac</li>
+          <li>Priority support</li>
+          <li>Custom integrations (ERP, CRM, Slack, etc.)</li>
+          <li>Formal compliance reporting</li>
+        </ul>
+        <a href="#" class="plan-cta">Start Enterprise</a>
+      </div>
+
+      <div class="plan featured" style="border-color:rgba(232,161,32,0.8);grid-column:1/-1;">
+        <div class="plan-tag">VIP — Isaac Personally</div>
+        <h3>AI Transformation Partnership</h3>
+        <div class="price">Custom<span> — by inquiry</span></div>
+        <p class="plan-desc">Isaac personally transforms your business with AI. He onboards your team to SOMA, architects your domain ontology, develops your automations alongside you, and stays until the system runs itself. You graduate to self-serve Enterprise when ready — at a fraction of what you paid for the partnership. This is how the biggest deployments start.</p>
+        <ul style="columns:2;column-gap:2rem;">
+          <li>Everything in Enterprise</li>
+          <li>Isaac builds your automations with you</li>
+          <li>Custom domain ontology architected from scratch</li>
+          <li>Live strategy sessions (2x/month)</li>
+          <li>Direct access to the person who built SOMA</li>
+          <li>Hands-on onboarding for your entire team</li>
+          <li>Graduate to self-serve Enterprise when ready</li>
+          <li>The partnership IS the onboarding</li>
+        </ul>
+        <a href="apply.html" class="plan-cta">Inquire About Partnership</a>
+      </div>
+
+    </div>
+
+    <div class="enterprise-course">
+      <h3>Enterprise Deployment Course — Included Free</h3>
+      <p>
+        Every Enterprise subscription includes Isaac's prerecorded deployment course.
+        Your implementation lead watches the course, follows the steps, and your
+        entire organization is live on SOMA — usually within a week.
+        No consultants. No 6-month implementation. One person watches the course,
+        the system handles the rest.
+      </p>
+      <p style="opacity:0.6;font-size:0.85rem;margin-top:1rem;">
+        The course covers: domain ontology setup, worker onboarding, observation patterns
+        that accelerate automation, calendar configuration, compliance features, and
+        how to read SOMA's validation reports. Built by the person who built SOMA.
+      </p>
+    </div>
+
+    <div class="guarantee" style="margin-top:2rem;">
+      <h3>Domain-Specialized Editions</h3>
+      <p>
+        SOMA gets smarter as more people in your industry use it.
+        Opted-in observations from thousands of professionals build
+        pre-trained domain knowledge. When you start, the system
+        already knows your field.
+      </p>
+      <div class="domain-shards">
+        <div class="shard"><strong>Accounting</strong>Invoicing, reconciliation, compliance</div>
+        <div class="shard"><strong>Legal</strong>Case management, client intake, billing</div>
+        <div class="shard"><strong>Healthcare Ops</strong>Scheduling, patient flow, admin</div>
+        <div class="shard"><strong>Construction</strong>Project management, safety, bidding</div>
+        <div class="shard"><strong>Logistics</strong>Dispatch, routing, warehouse ops</div>
+        <div class="shard"><strong>Restaurants</strong>Ordering, inventory, scheduling</div>
+      </div>
+      <p style="opacity:0.5;font-size:0.8rem;text-align:center;">
+        Domain editions available at Pro tier and above. More domains launching continuously.
+      </p>
+    </div>
+
+    <div class="guarantee" style="margin-top:3rem;">
+      <h3>FAQ</h3>
+      <p><strong>What channels can I use to observe?</strong><br>
+      Any messaging platform — iMessage, Discord, Slack, WhatsApp, the SOMA mobile app, or direct API. The system meets you where you already communicate.</p>
+      <p style="margin-top:1rem;"><strong>How long until I see automations?</strong><br>
+      Basic pattern recognition starts within days. Full process automation typically compiles within 2-4 weeks of consistent observation. Domain-specialized editions accelerate this significantly.</p>
+      <p style="margin-top:1rem;"><strong>Is my data private?</strong><br>
+      Your observations are yours. Domain improvement from opted-in data is anonymized and aggregated — individual processes are never shared. Enterprise tier includes on-premise deployment options.</p>
+      <p style="margin-top:1rem;"><strong>Can I cancel anytime?</strong><br>
+      Yes. Monthly billing, cancel anytime. Your knowledge graph exports with you.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Intelligence that acts. Not dashboards that stare.</span>
+  </div>
+<script src="sticky-cta.js"></script>
+</body>
+</html>

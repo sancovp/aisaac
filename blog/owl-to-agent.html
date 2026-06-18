@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">June 2026</div>
+    <h1>Compiling an Ontology Into a Living Agent</h1>
+    <p class="post-subtitle">A small, verified proof-of-concept that turns an OWL class into a typed Python object — and the roadmap that turns that object into an LLM agent whose database schema <em>is</em> the ontology.</p>
+
+    <h2>The Idea In One Sentence</h2>
+    <p>If your ontology already says exactly what a thing is — its properties, their types, their constraints — then you should be able to <strong>generate the code for it</strong>, run that code as a live object, and let an LLM <em>be</em> that object while a database persists its state.</p>
+    <p>One axis: OWL → Python → DB. The ontology is the schema. The generated class is the body. The agent is the mind. The database is the memory. Four lenses on a single entity.</p>
+    <p>This post is careful about one thing above all else: <strong>what runs today versus what is the roadmap.</strong> I built and ran a small piece of this. The rest is a clearly-marked plan, not a claim. I'll mark every section <span style="color:var(--mercury-blue);font-family:var(--mono);font-size:0.7rem;">[RUNS TODAY]</span> or <span style="color:var(--amber);font-family:var(--mono);font-size:0.7rem;">[ROADMAP]</span> so you never have to guess.</p>
+
+    <hr>
+
+    <h2 style="margin-bottom:0.3rem;">What Runs Today</h2>
+    <p style="margin-top:0;"><span style="color:var(--mercury-blue);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;">[RUNS TODAY — VERIFIED]</span></p>
+
+    <p>There is one Python file, <code>owl22python.py</code>, and it does exactly one demonstrable thing: it reads an OWL2/XML ontology, generates a typed Pydantic class from it, instantiates that class with real data, and roundtrips it back out as an OWL2 individual plus typed RDF triples. I ran it. It exits clean.</p>
+
+    <h3>Step 1 — Hand it a tiny OWL2 ontology</h3>
+    <p>The input is small, hand-written OWL2/XML. One class, three data properties, each with a declared range:</p>
+<pre>&lt;Class IRI="#Owl"/&gt;
+&lt;DataProperty IRI="#species"/&gt;       &lt;!-- range: xsd:string  --&gt;
+&lt;DataProperty IRI="#wingspan_cm"/&gt;   &lt;!-- range: xsd:decimal --&gt;
+&lt;DataProperty IRI="#nocturnal"/&gt;     &lt;!-- range: xsd:boolean --&gt;</pre>
+    <p>That OWL declares the shape of a thing. It does not, by itself, give you anything you can run. That's the gap this closes.</p>
+
+    <h3>Step 2 — Generate a typed Python class from the restrictions</h3>
+    <p>The parser walks each <code>DataProperty</code> restriction and maps its <code>xsd</code> range to a Python type — <code>xsd:string → str</code>, <code>xsd:decimal → float</code>, <code>xsd:boolean → bool</code>. It then calls Pydantic's <code>create_model(__base__=RenderablePiece)</code> to synthesize a real class at runtime, one typed field per OWL property. The class it generates looks like this:</p>
+<pre>class Owl(RenderablePiece):
+    """Generated from OWL2 class &lt;http://example.org/birds#Owl&gt;."""
+    species: str       = Field(..., description="OWL DataProperty species (xsd:string)")
+    wingspan_cm: float = Field(..., description="OWL DataProperty wingspan_cm (xsd:decimal)")
+    nocturnal: bool    = Field(..., description="OWL DataProperty nocturnal (xsd:boolean)")</pre>
+    <p>This is not a string of source code that a human pastes. The class is built live, in memory, by <code>create_model</code> — the generated class's fields confirm it at runtime:</p>
+<pre>&gt;&gt;&gt; GENERATED CLASS (live): fields = {'species': 'str', 'wingspan_cm': 'float', 'nocturnal': 'bool'}</pre>
+    <p>The base class is <code>RenderablePiece</code> from <strong>MetaStack</strong> (the installed <code>pydantic_stack_core</code> library) — so the generated class isn't an inert struct, it's a composable, self-rendering typed piece. A second library, <code>template_mixins</code>, handles the runtime class synthesis side. These are real installed dependencies, not mocks.</p>
+
+    <h3>Step 3 — Instantiate, then roundtrip back to the ontology</h3>
+    <p>Hand the generated class some data and it validates against the OWL-derived types. Then <code>render()</code> emits the entity back out as an OWL2 individual in RDF/XML, plus the typed RDF triples:</p>
+<pre>&gt;&gt;&gt; INSTANTIATED: {'species': 'Great Horned Owl', 'wingspan_cm': 120.0, 'nocturnal': True}
+
+OWL INDIVIDUAL (RDF/XML):
+&lt;Owl rdf:about="http://example.org/birds#owl_individual"&gt;
+  &lt;species rdf:datatype="xsd:string"&gt;Great Horned Owl&lt;/species&gt;
+  &lt;wingspan_cm rdf:datatype="xsd:decimal"&gt;120.0&lt;/wingspan_cm&gt;
+  &lt;nocturnal rdf:datatype="xsd:boolean"&gt;true&lt;/nocturnal&gt;
+&lt;/Owl&gt;
+
+TRIPLES:
+  #owl_individual  rdf:type            #Owl
+  #owl_individual  #species      "Great Horned Owl"^^xsd:string
+  #owl_individual  #wingspan_cm  "120.0"^^xsd:decimal
+  #owl_individual  #nocturnal    "true"^^xsd:boolean</pre>
+    <p>The loop closes: ontology in, typed Python object in the middle, ontology-typed individual out. Class membership (<code>rdf:type</code>) and one typed-literal triple per property. That's the whole demonstrated artifact.</p>
+
+    <blockquote>OWL → Python → typed-RDF roundtrip. It runs, it exits 0, every type is carried end to end. That part is real.</blockquote>
+
+    <h3>The honest caveat</h3>
+    <p>This is a <strong>proof-of-concept, not a production ontology pipeline.</strong> Two things to be clear about:</p>
+    <ul>
+      <li>The OWL2 input is <strong>small, hand-written XML</strong> — three data properties on one class, not an arbitrary real-world ontology with class hierarchies, object properties, and complex restrictions.</li>
+      <li>The roundtrip target is <strong>structured RDF/XML and typed triples</strong> the script builds itself — <em>not</em> a re-import through a full reasoner like <code>owlready2</code> with consistency checking. Nothing here runs OWL inference.</li>
+    </ul>
+    <p>So: the mechanism — OWL DataProperty restrictions becoming typed Pydantic fields and roundtripping to typed RDF — is verified. The claim is that narrow and that solid. It is the seed, not the tree.</p>
+
+    <hr>
+
+    <h2 style="margin-bottom:0.3rem;">Where This Goes</h2>
+    <p style="margin-top:0;"><span style="color:var(--amber);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;">[ROADMAP — VISION, NOT BUILT]</span></p>
+
+    <p>Everything from here down is the plan. None of it is being claimed as working. It's the arc the roundtrip points at, written out so the direction is legible — not so you mistake it for a shipped system.</p>
+
+    <h3>1. Agentify the generated model</h3>
+    <p>The generated class has data. The next move is to give it <em>behavior</em> — methods like <code>hoot()</code>, <code>hunt(prey)</code>, <code>move(location)</code>. The vision: lift those methods into stateless functions that all operate over a single shared, pickled state object. Each call loads the state, applies the change, saves it back. The entity stops being a snapshot and becomes a thing that <em>does</em>.</p>
+
+    <h3>2. Expose the behaviors as a "soma_simulate_owl" MCP</h3>
+    <p>Wrap each agentified function as a tool in an MCP server. Now the entity's verbs — hunt, hoot, move — are callable tools that any LLM agent can invoke. The ontology's class hasn't just become code; its code has become an <em>interface</em>.</p>
+
+    <h3>3. Give the tools to an "OwlSimulator" agent</h3>
+    <p>Hand that MCP to a Heaven LLM agent whose system prompt is, simply, <em>to be the Owl</em>. The agent doesn't describe an owl. It <em>is</em> the running entity, acting through the tools the ontology generated. Its decisions are owl-decisions because the only verbs it has are the owl's verbs.</p>
+
+    <h3>4. Persist to a database whose schema IS the OWL</h3>
+    <p>Every change the agent makes writes through to a database — and the database's schema is itself ingested from the same OWL spec. There is no impedance mismatch between "what the thing is" (ontology), "what the thing does" (agent), and "what the thing remembers" (DB), because all three are projections of one source. Change the ontology, and the code, the tools, and the schema all change with it.</p>
+
+    <blockquote>The net of the vision: an OWL2 class becomes a live LLM agent with persisted state, where the database schema <em>is</em> the ontology. One definition, four runnable faces.</blockquote>
+
+    <hr>
+
+    <h2>The Four Lenses</h2>
+    <p>The reason this is worth building toward: a single ontology entity, fully realized, is viewable through four lenses at once — and they're the same thing seen from four sides.</p>
+    <ul>
+      <li><strong>Domain</strong> — the knowledge. The OWL class: what the thing <em>is</em>, its properties and constraints.</li>
+      <li><strong>Agent</strong> — the LLM being it. The system that acts <em>as</em> the entity through its generated verbs.</li>
+      <li><strong>Place</strong> — the visitable running simulation. A world you could open and watch the entity act inside.</li>
+      <li><strong>Code Object</strong> — the generated Python. The typed class you can import, instantiate, and call.</li>
+    </ul>
+    <p>Today, exactly one lens is verified end to end: <strong>Code Object</strong>, generated from <strong>Domain</strong> (the OWL). The roundtrip is the bridge between those two. The other lenses — Agent and Place — are the roadmap above. This is the smallest honest version of a much larger idea: <strong>ontologies as runnable worlds.</strong> An ontology stops being a static document you query and becomes a place you can compile, run, and inhabit.</p>
+
+    <hr>
+
+    <h2>Why Start So Small</h2>
+    <p>Because the difference between a demo that's real and a demo that's theater is whether you can run it and watch the types survive the trip. I'd rather show you three OWL properties becoming three typed fields and roundtripping cleanly than hand you a grand diagram of a simulator that doesn't exist yet.</p>
+    <p>The roundtrip is the load-bearing claim. Everything above it — the agent, the MCP, the schema-equals-ontology database, the visitable world — is the direction the load-bearing claim points. When those are built and verified, they'll get their own post, with their own run logs. Until then they stay exactly where they belong: labeled as roadmap.</p>
+    <p>That discipline — sharply separating what runs from what's envisioned — is the same one every system here is built on. The proof is never the diagram. The proof is the thing that runs.</p>
+
+    <div class="post-nav">
+      <a href="./">← All posts</a>
+      <a href="l5-admissibility.html">L5: Admissibility →</a>
+    </div>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to build agents like this?</p>
+    <p class="blog-cta-desc">The PAIAB curriculum walks the whole ladder &mdash; prompts, tools, harnesses, admissibility, and the ontology-grounded agent stack. Learn the disciplines the system is built on.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">See the curriculum</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
