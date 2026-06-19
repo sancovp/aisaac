@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">June 2026</div>
+    <h1>Flat vs Tree</h1>
+    <p class="post-subtitle">I wrote a paper about a bug hiding in every AI "skills" folder. The structure your agent needs is already there — the interface just ships it flat. Here's the gist, so you can talk about it without reading twelve pages.</p>
+
+    <p>A while back I wrote about <a href="progressive-disclosure-harness.html">the Progressive Disclosure Harness</a> — the observation that AI agents get <em>worse</em> the more tools you give them, and that the fix is to show the agent only what it needs for the current step instead of all 300 tools at once.</p>
+    <p>That post was the hack. This is the theory. I finally wrote it up properly as a working paper — <strong>"Flat versus Tree: Why Agent Skills Need a Graph"</strong> — and it turns out the thing everyone's been calling a token-budget problem is actually a <em>shape</em> problem. Same bug, much deeper root.</p>
+
+    <p>Here's the whole thing in five sentences:</p>
+
+    <blockquote>Skills are <strong>shipped flat</strong> — a folder of self-contained packages. But skills are <strong>used relationally</strong> — to apply one correctly, a model has to know how it sits among the others. That relational structure is <strong>latent</strong>: it's a fact about the skills, not about how they're stored. A flat list throws it away, so the model re-derives it on every single task. Making that structure explicit — a tree, or in general a graph — is the fix, and it's cheap.</blockquote>
+
+    <h2>The move everyone made</h2>
+    <p>The field migrated from MCP (wire up tools, expose all their schemas) to "skills" (folders of procedural knowledge, loaded on demand), and the stated reason was tokens. Anthropic's own number: loading tools on demand cut usage from 150,000 tokens to 2,000 — a 98.7% saving. Real number. Hard to argue with.</p>
+    <p>But the token comparison is the wrong axis. Per unit, a JSON schema and a skill are about the same size — a schema is a docstring, a skill wraps comparable code. What actually changed is the <em>loading model</em>: every schema upfront versus a tree you descend on demand. That's <code>O(#tools)</code> versus <code>O(depth)</code>. The migration didn't fix the shape. It moved a flat representation to a <em>different</em> flat representation.</p>
+
+    <figure style="margin:2rem 0;">
+      <img src="diagrams/flat-vs-tree.png" alt="Upfront context cost: flat O(number of tools) versus tree O(depth). The flat line climbs linearly; the tree line stays nearly flat. Anthropic's measured points — 150,000 tokens upfront, 2,000 on demand — sit on the curve." style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+      <figcaption style="font-size:0.7rem;color:var(--text-3);margin-top:0.5rem;">Flat cost grows with the number of tools. Tree cost grows with depth. Below a handful of tools the flat load is trivially cheaper — which is exactly why small toolsets feel fine and the tax goes unnoticed. Past the crossover, the flat line explodes while the tree barely moves.</figcaption>
+    </figure>
+
+    <h2>The punchline I couldn't stop laughing at</h2>
+    <p>They named the feature <strong>"progressive disclosure."</strong></p>
+    <p>Progressive disclosure means you reveal structure as you descend into it — a tree discloses at every node, not just the root. And skills <em>do</em> disclose progressively <em>inside</em> a single skill: frontmatter, then body, then referenced files. Three levels down.</p>
+    <p>But a skill cannot cause <em>another</em> skill to be disclosed. There's no first-class edge from one skill to a more specific one. So at the scale where disclosure was the whole point — a library of hundreds of skills — what actually shipped is a <strong>star</strong>: one center, depth-one leaves, no descent. A set of stars with no edges between them is a flat forest.</p>
+
+    <blockquote>The feature was named for the tree and shipped as a star. Progressive disclosure that can't disclose across the library it lives in isn't closed under composition — it can't apply its own principle to itself.</blockquote>
+
+    <p>And this isn't one vendor's quirk anymore. The skill format went out as an open standard and got adopted across the major agent platforms. The standard nailed down the <em>unit</em> — the skill package — and left the <em>graph over units</em> unspecified. The node is standardized; the edge is not. So everyone who builds on it inherits the same missing layer, and ends up rebuilding it by hand as harness code — the exact "stop programming your agents" thing the skills move was supposed to retire.</p>
+
+    <h2>The fix is boring, which is the point</h2>
+    <p>You don't need a research breakthrough. You need the missing level: take the flat folder and make its latent tree explicit, so the agent <em>navigates</em> the structure instead of reassembling it from scratch every turn.</p>
+    <p>That's what <a href="https://github.com/sancovp/skilltree">skilltree</a> does (MIT, open source). <code>skilltree map</code> renders a flat skills folder as a coordinate-addressed, navigable tree — <code>0 → 0.2 → 0.2.1</code> — where descending injects only the node you need. <code>skilltree search</code> gives you zero-dependency retrieval scoped to any subtree. The machinery is commodity. The contribution isn't an algorithm — it's <em>handing the model the structure it can't construct for itself, at zero configuration.</em></p>
+
+    <p>One honest caveat, which is in the paper too: this is <strong>substrate-correction, not a benchmark flex</strong>. I'm not claiming trees beat flat lists on some leaderboard. I'm claiming the disciplined folder approach good engineers already reach for is approximating a graph by hand — and that you should get that graph for free, from the structure, instead of paying for it in inference and supervision every run. Expect results <em>of that kind</em>: the same thing you'd do carefully by hand, carried by the substrate.</p>
+
+    <h2>Go read it (or don't)</h2>
+    <p>The whole argument — the crossover model, the open-standard gap, the ICM case study where a flat folder workflow breaks the moment the human steps out, and where this all points (a graph substrate, not a folder) — is in the paper:</p>
+    <ul>
+      <li><strong>Paper:</strong> <a href="https://github.com/sancovp/skilltree/blob/master/papers/flat-vs-tree.md">Flat versus Tree: Why Agent Skills Need a Graph</a></li>
+      <li><strong>The tool:</strong> <a href="https://github.com/sancovp/skilltree">github.com/sancovp/skilltree</a> (MIT)</li>
+    </ul>
+    <p>But you don't have to read it to use the idea. The idea is one line: <em>the structure is already there — stop shipping it flat.</em></p>
+
+  </article>
+</div>
