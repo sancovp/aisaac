@@ -5,7 +5,10 @@ from google.genai import types
 from PIL import Image as PILImage
 from io import BytesIO
 
-os.environ['GOOGLE_API_KEY'] = 'AIzaSyAysoV-cN0CK9etZ-Ddy1kFzZB3kIpm4WU'
+# SECURITY (2026-07-06): the hardcoded key that lived here was committed to this
+# PUBLIC repo (5740fafe) and must be treated as BURNED — rotate it in the Google
+# console. The script now requires the key from the environment, never inline.
+assert os.environ.get('GOOGLE_API_KEY'), 'set GOOGLE_API_KEY in the environment'
 client = genai.Client(api_key=os.environ['GOOGLE_API_KEY'])
 
 ref_prompt = """Photorealistic cinematic photograph of a master plumber in a clean blue work shirt standing in front of his white service van in a bright suburban driveway in Acworth, Georgia at golden hour. He holds a chrome pipe wrench casually at his side and smiles confidently. The house behind has warm window light. The driveway is clean concrete. The scene is well-lit, NOT dark, NOT moody - the lighting should feel like a successful local business owner at the end of a good day. Photorealistic, no AI-glow, natural skin, no smoothing. Shot on 50mm lens, golden hour warmth, residential exterior."""
