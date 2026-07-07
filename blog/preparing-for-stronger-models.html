@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">June 2026</div>
+    <h1>Preparing for a Stronger Model</h1>
+    <p class="post-subtitle">Everyone is waiting for the next model — something like <em>Fable</em>. We're not waiting. We're building the chair it sits in, so that the moment it lands it can run as long as possible and as cheaply as possible.</p>
+
+    <h2>The Wrong Way to Wait</h2>
+    <p>The default posture toward a stronger model is to <em>wait for it</em>. Hold the hard problems until the model is smart enough to solve them in one shot. Treat the next release as the thing that finally makes your system work.</p>
+    <p>That's backwards. A stronger model is not a bottleneck remover dropped into a vacuum — it's a better <strong>occupant</strong> for a structure that already exists. If the structure is bad, a smarter model just loses the plot faster and more expensively. If the structure is good, the smarter model inherits every gain the structure already encodes — for free, the day it arrives.</p>
+    <p>So the question we've been working on isn't "what will the next model do?" It's: <strong>what scaffold do we hand a stronger model so it runs indefinitely and efficiently the instant it shows up?</strong></p>
+
+    <blockquote>You don't prepare for a stronger model by waiting for it. You prepare by building the architecture it will inhabit.</blockquote>
+
+    <h2>1. Make the Architecture Legible</h2>
+    <p>Most of the recent work has been unglamorous on purpose: writing down the theory and the intended designs of our architectures with no gaps. Not for humans to admire — for the model to <em>read and never get lost inside</em>.</p>
+    <p>A model's biggest failure mode on long work is almost never raw intelligence. It's <strong>losing the plot</strong>: forgetting what the whole was for, drifting off the design, re-deciding settled questions, running out of context mid-thought. The fix is not a smarter model. The fix is an architecture so clearly specified that the plot is recoverable from the structure itself at any moment.</p>
+    <p>When the design is fully legible, the model always knows exactly what has to be done next, why, and how it fits the whole. That legibility is what lets it <em>continue as long as possible</em> — because there's no point where the thread is unrecoverable.</p>
+
+    <h2>2. A Worker That Always Continues</h2>
+    <p>The second piece is making today's model — Claude Opus 4.8 — <strong>reliably re-contextualize and continue work indefinitely</strong>. Not "complete a task." Continue. Pick the thread back up, every time, without a human re-explaining where things stood.</p>
+    <p>This is the difference between a model that does a brilliant thing once and a model that holds a long project across many sessions. The first is a demo. The second is a worker. We've been concentrating on the second: an orchestrator that knows precisely what the architecture requires, paired with an execution loop that always re-grounds itself and keeps going.</p>
+    <p>The payoff compounds with model strength. A reliable continuer running today's model is useful. The same loop running a stronger model is the same machine with a sharper mind in the seat — no rebuild required.</p>
+
+    <h2>3. Stratify the Intelligence</h2>
+    <p>The third piece is the one that makes the whole thing cheap. Inside Opus 4.8, we've been working on how to make it <strong>contextualize cheaper workers</strong> — models like MiniMax M3 — and hand them the actual making.</p>
+    <p>This doubly stratifies the intelligence:</p>
+    <ul>
+      <li><strong>The expensive mind directs.</strong> The strong model spends the fewest tokens it can. Its job is oversight — <em>is the architecture correct? is the plot intact? is this the right next move?</em> It is the most capable thing in the system, so you spend it on judgment, not on typing.</li>
+      <li><strong>The cheap hands build.</strong> Models that are smart enough <em>under clear direction</em> — MiniMax M3 among them — do the bulk of the construction. They don't need to hold the whole design. They need a well-specified next move, which the orchestrator gives them.</li>
+    </ul>
+    <p>The orchestrator oversees everything to keep the architecture correct while burning the absolute minimum of its own (expensive) tokens. The work itself flows down to the layer that can do it for a fraction of the cost. You get the strong model's judgment over the cheap models' labor.</p>
+
+    <blockquote>The strong model is too valuable to spend on typing. Spend it on being right about the structure; let cheaper models do the building under its direction.</blockquote>
+
+    <h2>Why This Is Model-Readiness</h2>
+    <p>Put the three together and you have a system that is <em>ready</em> for a stronger model rather than dependent on one:</p>
+    <ul>
+      <li>A <strong>legible architecture</strong> the model can read and never lose its place in.</li>
+      <li>A <strong>reliable worker</strong> that always re-contextualizes and continues, so long work doesn't fall apart.</li>
+      <li>A <strong>stratified stack</strong> where the strongest model directs and the cheapest capable models build.</li>
+    </ul>
+    <p>When something like Fable lands, it doesn't trigger a rebuild. It drops into the orchestrator seat. The scaffold is unchanged; the quality of oversight jumps. Everything the architecture already encodes — the legibility, the continuation, the cost stratification — is inherited the same day, and the new model simply makes better calls inside it.</p>
+    <p>That's the bet: the gains from a stronger model are mostly captured by the structure you put it in, not by the model alone. So you build the structure now. You make the design legible, you make the worker continue, you push the labor down to where it's cheap — and when the stronger model arrives, it walks into a chair that was built for it.</p>
+    <p>You don't wait for the model. You build what it sits in.</p>
+
+    <div class="post-nav">
+      <a href="./">← All posts</a>
+      <a href="flat-vs-tree.html">Flat vs Tree →</a>
+    </div>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to build systems that are ready for the next model?</p>
+    <p class="blog-cta-desc">The PAIAB curriculum walks the whole ladder &mdash; prompts, tools, harnesses, and the orchestration patterns that let one strong model direct a fleet of cheaper ones. Learn the disciplines the system is built on.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">See the curriculum</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac — TWI</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
