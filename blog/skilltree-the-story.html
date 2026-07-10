@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>skilltree — the story</h1>
+    <p class="post-subtitle">My skills all loaded at once every turn — so I stopped loading the pile and learned to walk it one layer at a time.</p>
+
+    <h2>Where I was</h2>
+    <p>I was watching my skill library grow past a hundred skills, and the platform auto-loads <code>.claude/skills</code> one layer deep — so every skill landed in context every single turn. At a handful of skills that is fine; at a hundred it is <em>melt</em>: the whole pile lands in context every turn, and tool selection degrades as the set grows. The substrate ships the nodes and forbids the edge.</p>
+    <h2>The wall</h2>
+    <p>I identified the real blocker when I looked at what the platform actually allows: a <code>.claude</code> nested inside another <code>.claude</code> never loads, and a skill's description can point at another skill but cannot cause that deeper skill to be <em>injected</em>. There is no first-class skill-to-skill edge. 'Progressive disclosure' was named for a tree but shipped as a star — one center, depth-one leaves, no descent — and a set of stars with no connecting edges is a flat forest, exactly at the scale where disclosure was the point.</p>
+    <h2>The turn</h2>
+    <p>I finally stopped fighting the substrate and used the only three levers it leaves open. Placement: each node is a plain directory carrying its own one-skill <code>.claude/</code>, so the path <em>is</em> the coordinate (<code>0</code> -&gt; <code>0.1</code> -&gt; <code>0.1.1</code>). The inert-nested-<code>.claude</code> boundary: only the top layer auto-loads, so deeper nodes stay out of context until entered. And breadcrumbs: each node's <code>SKILL.md</code> ends with a summary of its subtree plus an explicit instruction to <strong>Read</strong> its children — because in this runtime the Read tool injects that layer while a shell <code>cat</code> injects nothing. I built the CLI around it — <code>discover</code>, <code>cohere</code>, <code>emit</code>/<code>unemit</code>, <code>map</code>, <code>search</code>, <code>fold</code>, <code>project</code>, <code>validate</code>, <code>watch</code>.</p>
+    <h2>Where I am now</h2>
+    <p>And now I load one layer and <em>walk</em>; I never load the pile. The v1 tree ships: the Read-breadcrumb descent, the front-half self-coherence loop, the decoherence watch. It keeps itself coherent — <code>discover</code> reconstructs the tree from reality, <code>cohere</code> reports drift, <code>emit</code> tree-ifies a flat forest losslessly (journaling every move) and <code>unemit</code> reverses it byte-for-byte. The load mechanic was <em>verified against the live runtime, not asserted</em>, and the whole thing is held by a passing suite (70 tests as of v0.3.0).</p>
+    <h2>The boon — what transfers</h2>
+    <p>The transferable reframe is this: the relational structure a model needs to use its skills correctly <em>already exists</em> in the library — it is a fact about the skills, not about how they are stored — and a flat list discards it, forcing the model to reconstruct it on every task. When you expose an object in a shape that violates its natural structure, everyone downstream spends inference, tokens, tool calls, and harness code recovering the structure the interface destroyed. So front-load the structure, not the corpus.</p>
+    <h2>See it</h2>
+    <p>A demo points skilltree at a flat folder of skills and shows: <code>discover</code> reconstructing the on-disk tree; <code>cohere</code> flagging it as a bare forest; <code>emit --root-forest</code> tree-ifying it in place (each skill directory moved whole, every move journaled); walking it one layer at a time by Reading a child's <code>SKILL.md</code>; <code>search --scope 0.1</code> ranking only within a coordinate subtree; and <code>unemit</code> restoring the original flat forest byte-for-byte.</p>
+    <h2>Why this matters</h2>
+    <p>These tools are not products, they are infrastructure: a population of builders stands on the platform's defaults, so a default that mis-shapes context is not one team's cost but a levy paid across every project, continuously. And the skill format is no longer one vendor's default — it has been released as an open standard and adopted across major agent platforms, so the gap it leaves is shared at the reach of the standard.</p>
+    <h2>Take action</h2>
+    <p>Point skilltree at your OWN flat <code>.claude/skills</code> (or any folder of skills): run <code>cohere</code> to see the drift, <code>emit --root-forest</code> to tree-ify it in place (reversible with <code>unemit</code>), and then descend it one layer at a time instead of loading the whole pile. <code>map</code> renders any flat folder as one coordinate-addressed index and <code>search</code> retrieves over it — so the structure your skills already have becomes something you navigate instead of reassemble.</p>
+    <h2>Links</h2>
+    <ul>
+    <li>Get the plugin: https://pypi.org/project/agent-skilltree/</li>
+    <li>The code: https://github.com/sancovp/skilltree</li>
+    </ul>
+    <h2>Chapter links</h2>
+    <ul>
+    <li>Deep dive — how it works: ./blog2.md</li>
+    <li>Get the plugin: https://pypi.org/project/agent-skilltree/</li>
+    <li>Skill — skilltree CLI: https://pypi.org/project/agent-skilltree/</li>
+    </ul>
+    <blockquote>
+    <p><strong>Install the plugin and run it yourself: https://pypi.org/project/agent-skilltree/</strong></p>
+    </blockquote>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
