@@ -1,0 +1,227 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>skilltree — How It Works (Deep Dive)</h1>
+    <p class="post-subtitle"></p>
+
+    <blockquote>
+    <p>The story of why this exists is in Blog 1: <a href="./blog1.md">The narrative — why this exists</a>.
+    This post is the mechanics only — assembled from skilltree's own impl docs (the
+    <code>README.md</code>, and the two papers <code>papers/skilltree-paper.md</code> and <code>papers/flat-vs-tree.md</code>).
+    It states what the system IS, not what it might become.</p>
+    </blockquote>
+    <h2>The architecture</h2>
+    <p>skilltree imposes a <strong>coordinate-addressed tree</strong> on the flat <code>.claude/skills</code> substrate
+    using the only three levers the platform leaves open <em>(source: README, "Turn a flat folder…"
+    intro)</em>:</p>
+    <ol>
+    <li><strong>placement</strong> — each node is a plain directory carrying its own one-skill <code>.claude/</code>; the
+       path <em>is</em> the coordinate (<code>0</code> -&gt; <code>0.1</code> -&gt; <code>0.1.1</code>);</li>
+    <li><strong>the inert-nested-<code>.claude</code> boundary</strong> — only the top layer auto-loads, so deeper nodes
+       stay out of context until entered;</li>
+    <li><strong>breadcrumbs</strong> — each node's <code>SKILL.md</code> ends with an index summary of its subtree and
+       explicit instructions to <strong>Read</strong> its children.</li>
+    </ol>
+    <p>The construction emulates the two things a graph would supply natively <em>(source:
+    <code>papers/skilltree-paper.md</code> §2, "coordinate as identity, breadcrumb as edge")</em>:</p>
+    <ul>
+    <li><strong>Identity</strong> is a hierarchical coordinate. The root is <code>0</code>; its children are <code>0.1</code>, <code>0.2</code>,
+      …; their children <code>0.1.1</code>, and so on. Coordinates are assigned by a single pass over the
+      directory tree (<code>assign_coords</code>), the one canonical source of the scheme — every other
+      module reads it rather than re-deriving it.</li>
+    <li><strong>Edges</strong> are breadcrumbs. Each non-leaf node's body carries, for every child, a line of the
+      exact form:</li>
+    </ul>
+    <pre><code>- 0.1-A (cor): Read `…/domain/A/.claude/skills/0.1-A/SKILL.md`
+    </code></pre>
+    <p>The breadcrumb names the child's coordinate and the single operation that loads it. A
+    coordinate stands in for node identity; a breadcrumb stands in for a directed edge.</p>
+    <p><strong>Retrieval that survives flattening</strong> <em>(source: <code>papers/skilltree-paper.md</code> §4)</em> recovers what
+    a flat list of leaves loses. Each non-leaf node's body carries an <em>index summary</em> composed from
+    its subtree's own vocabulary, so a query about a descendant still retrieves the branch that
+    leads to it. A retrieval index (SQLite FTS5 / BM25) ranks nodes by relevance, and because every
+    node carries its coordinate, the same index can restrict a query to a coordinate subtree — the
+    coordinate is simultaneously the address and the search scope. One engine, one <code>--scope</code> flag.</p>
+    <h2>How it runs</h2>
+    <p>The runtime cycle is <strong>descent by reading</strong> <em>(source: README, "The load mechanism it exploits
+    (verified against the runtime)"; corroborated by <code>papers/skilltree-paper.md</code> §6)</em>. Exactly one
+    node — the root — auto-loads; every other node loads only when its breadcrumb is followed.
+    Entering a node loads exactly its layer — its own content plus the breadcrumbs to its children —
+    and nothing below it. You load one layer and <em>walk</em>; you never load the pile.</p>
+    <p>The three runtime facts this depends on, verified directly against the tested Claude Code
+    runtime and observed as a state-change in the live skill manifest (not asserted) <em>(source:
+    <code>papers/skilltree-paper.md</code> §6, reproduced verbatim)</em>:</p>
+    <table>
+    <thead>
+    <tr>
+    <th>Observation</th>
+    <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>A <code>.claude/skills</code> nested <em>below</em> the directory in scope</td>
+    <td><strong>not</strong> auto-loaded</td>
+    </tr>
+    <tr>
+    <td>Reading a file in a directory with the <code>Read</code> tool</td>
+    <td>injects <em>that directory's</em> layer, one level; ancestors load, descendants do not</td>
+    </tr>
+    <tr>
+    <td>A shell <code>cat</code> of the <em>same</em> file</td>
+    <td>injects <strong>nothing</strong></td>
+    </tr>
+    </tbody>
+    </table>
+    <p>The third row is a correctness condition on the emulation: the breadcrumb must invoke the
+    <code>Read</code> <em>tool</em>, not a byte read, or the edge silently fails to load and is therefore not an edge.</p>
+    <p>Because the platform will not maintain a structure it never shipped, skilltree maintains its own
+    coherence with a four-operation loop <em>(source: README, "Self-management (it keeps itself
+    coherent)"; <code>papers/skilltree-paper.md</code> §5)</em>:</p>
+    <ul>
+    <li><strong><code>discover</code></strong> reconstructs the on-disk tree from reality alone, independent of any manifest.</li>
+    <li><strong><code>cohere</code></strong> reports the drift between that reality and the engineered shape — a bare
+      (unrooted) forest, a stale breadcrumb, a coordinate that no longer matches, a skill dropped in
+      flat.</li>
+    <li><strong><code>emit</code></strong> re-coheres in place; given a flat forest it <em>tree-ifies</em> it, moving each skill
+      directory whole (all files preserved, symlinks de-symlinked) and <strong>journaling every move</strong>, so</li>
+    <li><strong><code>unemit</code></strong> restores the prior state byte-for-byte.</li>
+    </ul>
+    <p>A scheduled check (<code>skilltree watch &lt;root&gt;</code>) writes its verdict into a single managed rule, so a
+    decohered tree announces itself in every subsequent session.</p>
+    <h2>Where things live</h2>
+    <p>The file geometry, on disk and in source.</p>
+    <p>A tree on the filesystem looks like this <em>(source: README, "How a tree looks on disk",
+    reproduced verbatim)</em>:</p>
+    <pre><code>domain/.claude/skills/0-domain/SKILL.md          # root menu — the only node that auto-loads
+    domain/A/.claude/skills/0.1-A/SKILL.md            # child A   — loaded only when Read
+    domain/A/A1/.claude/skills/0.1.1-A1/SKILL.md      # grandchild — one level deeper
+    domain/B/.claude/skills/0.2-B/SKILL.md
+    </code></pre>
+    <p>The root menu's generated body carries the index summary and the descend block <em>(source:
+    <code>papers/flat-vs-tree.md</code> Appendix A.1, reproduced verbatim)</em>:</p>
+    <pre><code>## Index summary
+    [0] domain — a sc index node; opens to 2 branch(es): A (cor), B (ac). Reachable below: A, A1, A2, B.
+
+    ## Descend — the next layer (2)
+    Only this layer is loaded now. To descend, use the Read tool on a child below — that injects
+    the child's layer. A shell `cat` reads the bytes but loads nothing; you must use the Read tool:
+
+    - 0.1-A (cor): Read `…/domain/A/.claude/skills/0.1-A/SKILL.md`
+    - 0.2-B (ac): Read `…/domain/B/.claude/skills/0.2-B/SKILL.md`
+    </code></pre>
+    <p>The implementing source, by <code>path:line</code> <em>(source: <code>papers/flat-vs-tree.md</code> Appendix A and
+    <code>papers/skilltree-paper.md</code>)</em>:</p>
+    <ul>
+    <li><code>src/skilltree/model.py:70</code> — <code>assign_coords</code> (the one canonical coordinate pass);
+      <code>compose_summary</code> (the internal-node index summary).</li>
+    <li><code>src/skilltree/materialize.py:36</code> — <code>_write_node</code>, the breadcrumb emitter; the <code>Read</code>
+      breadcrumb format is fixed at <code>:25</code> (<code>_CRUMB</code>).</li>
+    <li><code>src/skilltree/validate.py:60</code> — the gate that requires a resolvable <code>Read</code> breadcrumb for
+      every child.</li>
+    <li><code>src/skilltree/cohere.py</code> — <code>discover:117</code>, <code>cohere:152</code>, <code>emit:261</code>, <code>unemit:339</code>; the
+      scheduled check <code>write_notifications:430</code> / <code>watch:448</code>.</li>
+    </ul>
+    <p>The one CLI exposes the whole toolkit — <code>skilltree &lt;command&gt; …</code> <em>(source: README, "Subcommands",
+    reproduced verbatim)</em>:</p>
+    <table>
+    <thead>
+    <tr>
+    <th>Command</th>
+    <th>What it does</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>tree &lt;root&gt;</code></td>
+    <td>show the coordinate tree on disk (every node by its <code>&lt;coord&gt;-&lt;name&gt;</code> address)</td>
+    </tr>
+    <tr>
+    <td><code>map &lt;folder&gt; [--write]</code></td>
+    <td>render a flat folder into <strong>one</strong> coordinate-addressed <code>CLAUDE.md</code> (Folder Map + addressable Index + branch summaries) — progressive disclosure over a flat pile</td>
+    </tr>
+    <tr>
+    <td><code>search &lt;folder&gt; &lt;query&gt; [--scope &lt;coord&gt;]</code></td>
+    <td>FTS5/BM25 over <strong>any</strong> folder; <code>--scope</code> restricts to a coordinate subtree when the folder carries skilltree coordinates (a plain folder = coordinate-free search)</td>
+    </tr>
+    <tr>
+    <td><code>fold &lt;framework_dir&gt; --into &lt;node&gt; --tree &lt;root&gt;</code></td>
+    <td><strong>bind</strong> a framework (its skill dir) into a volume node's <code>## Frameworks</code> tome table — idempotent, one row per framework; the manifest is the source of truth and the node's SKILL.md is regenerated from it</td>
+    </tr>
+    <tr>
+    <td><code>project &lt;root&gt; &lt;target&gt; [--policy flat\|progressive] [--link absolute\|relative] [--node N]</code></td>
+    <td><strong>deploy</strong> a tree into a skills dir as symlinks: <code>progressive</code> surfaces root + first-layer branches; <code>flat</code> projects a volume's tome rows + holder so every held framework auto-discovers top-level</td>
+    </tr>
+    <tr>
+    <td><code>cohere &lt;root&gt;</code></td>
+    <td>report drift between the on-disk tree and its coherent shape</td>
+    </tr>
+    <tr>
+    <td><code>emit &lt;root&gt; [--root-forest]</code></td>
+    <td>re-cohere in place; <code>--root-forest</code> tree-ifies a bare forest (lossless, journaled)</td>
+    </tr>
+    <tr>
+    <td><code>unemit &lt;root&gt;</code></td>
+    <td>reverse the last <code>emit</code>, byte-for-byte</td>
+    </tr>
+    <tr>
+    <td><code>discover</code> · <code>validate</code> · <code>build</code> · <code>notify</code> · <code>watch</code></td>
+    <td>read a tree · gate breadcrumb-resolvability · materialize from a manifest · write the notification rule · run the decoherence cron</td>
+    </tr>
+    </tbody>
+    </table>
+    <h2>The invariants</h2>
+    <p>The rules and gates the system holds itself to <em>(source: <code>papers/skilltree-paper.md</code> §6 and
+    README, "Self-management" + the v0.3.0 changelog)</em>:</p>
+    <ul>
+    <li><strong>Breadcrumb-resolvability gate.</strong> Every non-leaf node must carry a <code>Read</code> breadcrumb for each
+      child, and every breadcrumb path must resolve to a real file (<code>validate.py:60</code>). An edge the
+      reader cannot follow is not an edge.</li>
+    <li><strong>Read, not <code>cat</code>.</strong> The descend instruction is fixed to the <code>Read</code> tool (<code>_CRUMB</code>,
+      <code>materialize.py:25</code>); a byte read injects nothing, so descent through <code>cat</code> silently fails.</li>
+    <li><strong>Lossless emit/unemit.</strong> <code>emit</code> moves each skill directory whole (no body-only re-render, no
+      <code>rmtree</code>) and journals every move; <code>unemit</code> restores the prior state byte-for-byte.</li>
+    <li><strong>One canonical coordinate source.</strong> <code>assign_coords</code> is the single pass that assigns the
+      scheme; every other module reads it rather than re-deriving it.</li>
+    <li><strong>Tome-table round-trip</strong> (v0.3.0). Manifest <code>frameworks</code> rows must appear in the generated
+      <code>## Frameworks</code> table, every row's target must resolve, and undeclared table rows warn; <code>fold</code>
+      is idempotent (one row per framework) and the node's SKILL.md is regenerated from the manifest,
+      so a folded table can never be wiped or drift.</li>
+    </ul>
+    <p><em>Read the story first, then the mechanics: <a href="./blog1.md">Blog 1 — the narrative</a>.</em></p>
+    <h2>Chapter links</h2>
+    <ul>
+    <li>The story — why this exists: ./blog1.md</li>
+    <li>Get the plugin: https://pypi.org/project/agent-skilltree/</li>
+    </ul>
+    <blockquote>
+    <p><strong>Read the story, then install: https://pypi.org/project/agent-skilltree/</strong></p>
+    </blockquote>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
