@@ -111,12 +111,21 @@ B2B clients: included in $200/mo upkeep
 - Funnel depth IS initiation depth. Each level of the value ladder is a deeper level of the language world.
 - Every image installs a belief or overcomes an objection.
 
-## Auto-Content Pipeline (not yet wired)
+## Auto-Content Pipeline (WIRED 2026-07-10 via cave-unicorn)
 
-CartON concepts → JourneyBlog AIDA fractal template → rendered HTML → blog.
-- **Template**: `cave_discord_fork/templates.py` → `JourneyBlog` — AIDA within AIDA
-- **Renderer**: `cave_discord_fork/renderers.py`
-- **Target**: `blog/` — must match blog-style.css + include category CTA
+The live pipe: CartON `Blog_Request` node (status done, output_path = blog md)
+→ `cave_unicorn.publish.fire_site_publish` (a cave CronAutomation, nightly
+02:37 after the 02:00 blog organ) → post rendered in the site skeleton at
+`blog/{slug}.html` + index card inserted/updated → git commit/push (Pages
+deploys) → node flipped `site_published`/`site_url` → Discord announce via
+cave_discord (`discord_announce` in unicorn config).
+- **Module**: monorepo `application/cave-unicorn` (`cave-unicorn` CLI = the setup interface)
+- **Blog md contract**: first `# ` line = title; first `*...*`/`**...**` line = subtitle hook
+- **Target**: `blog/` — matches blog-style.css; posts carry the blog-cta-learn block
+- **First live publishes**: skilltree-the-story, skilltree-how-it-works-deep-dive,
+  the-thread-never-breaks-doc-mirror (all rendered live 2026-07-10)
+- (The earlier JourneyBlog AIDA template plan in `cave_discord_fork/templates.py`
+  remains available as a richer template lane; the shipped v1 renders plain blog md.)
 
 ## Design Docs (in `docs/`)
 
