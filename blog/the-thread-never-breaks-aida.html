@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>The Thread Never Breaks</h1>
+    <p class="post-subtitle">Every time my Claude Code context window filled up, I lost the thread and I mean completely: what I was building, what was left, whether I was making progress, all of it, gone.</p>
+
+    <h2>The Hook</h2>
+    <p>Every time my Claude Code context window filled up, I lost the thread and I mean completely: what I was building, what was left, whether I was making progress, all of it, gone.</p>
+    <p>Not just forgetting what I did forgetting whether the docs and code even agreed. That is a different kind of lost.</p>
+    <p>What if your AI session could pick up exactly where it left off, with docs that re-derived themselves from code the moment the code changed, a vision backlog that showed you what was left, and a cursor that never went stale? That is what I built.</p>
+    <p>Here is what the failure looked like from the inside, what the fix is, and why the fix is structural not a matter of discipline.</p>
+    <h2>What This Is About</h2>
+    <p>Doc-mirror is a file-based, self-documenting, loop-driven Claude Code system. Four layers enforce their own discipline so the system cannot drift.</p>
+    <p>The key enforcement layer is the generator: a closure test that runs on every commit, verifying that every file maps 1:1 to a docs/mirror/ document. If the bijection fails, the commit does not pass. The moment you make it impossible for docs to be out of sync, they are always in sync.</p>
+    <p>You get a system that re-derives its own documentation, maintains its own state, and keeps a vision backlog that is always honest. No hand edits, no drift, no archaeology.</p>
+    <p>Let me walk through how it works and why it works.</p>
+    <h2>My Journey With This</h2>
+    <p>I was deep in the doc-mirror system when I noticed something wrong. The system was journaling everything correctly, every line true. But the visible timestamp on the docmirror-cursor had been frozen for days.</p>
+    <p>The cursor is the agent pinned state pointer: what repo, what phase, what module. Every journal entry was updating it. But the visible updated field was stale while last_journal moved forward with every entry. The agent was looking at a stale pointer and trusting it was current. Every line knew the truth. The display never updated.</p>
+    <p>That gap between what the system actually held and what it showed me was the moment I understood what was actually wrong. The tool meant to track context was silently losing it. And the fix was not better discipline. The fix was a closure test.</p>
+    <p>Here is what I built and how it works.</p>
+    <h2>The Core Insight</h2>
+    <p>The core insight: drift is not a personality flaw. It is a structural failure of the enforcement layer.</p>
+    <p>The moment documentation is written by hand, it begins to lie. The moment context is not graphed, it cannot be queried. The moment the state pointer is not written by the dominant activity, it goes stale. The fix is not discipline. The fix is the closure test: make it impossible for docs to be out of sync, and they will always be in sync. Doc-mirror has four enforcement layers. The environment layer strips ~/.claude to the minimum two safety hooks and twelve rules. No baggage, no drift surface. The generator layer holds the doc-mirror skill with its binding law and closure test: every file maps 1:1 to a docs/mirror/ document, and the bijection is verified on every change. The geometry layer organizes everything as a nested six-file structure: six context files at the root, doc-mirror at the leaves, doc-mirror never in its own system dir. The work-loop layer runs every turn via a brainhook that re-injects the loop prompt plus the live cursor leg.</p>
+    <p>The control loop is the discipline that makes it real. Every module change triggers a re-derivation of its doc(m), a git commit of the delta, and a closure test. The vision(m) file holds what is wanted. The doc(m) holds what is built. The gap between them is always visible and always honest. The cursor is a graph-derived state pointer that never goes stale because the journal writes it on every entry.</p>
+    <p>The closure test runs on every commit. The git log is the lineage of every decision.</p>
+    <h2>Let Me Show You</h2>
+    <p>Let me show you what this looks like in practice.</p>
+    <p>Initialize a new codebase with docmirror-init. Make a code change. Run the agent again. The doc(m) is re-derived automatically, no hand edits. The git log shows the commit message assembled from the realized vision entries. The vision diff shows the closed gap. The cursor is fresh. You watch it happen.</p>
+    <p>Seeing the docs regenerate themselves from code, the vision close its own gap, and the cursor stay current is what makes the structural fix concrete.</p>
+    <p>If you want to see it live, install the doc-mirror plugin and run it on any codebase.</p>
+    <h2>Let's Talk About This</h2>
+    <p>What would your AI-assisted workflow look like if it could not lose its own state?</p>
+    <p>Most people who hit the context-loss wall stop. They conclude the AI forgot again. But that failure is structural not inevitable. It is a documentation and state-layer discipline problem, and it is solvable.</p>
+    <p>The reader who recognizes the feeling the moment they compact and see an empty room has just encountered the problem doc-mirror solves. That recognition is where the connection starts.</p>
+    <p>What is the state pointer in your current workflow? Is it written by the dominant activity or is it hand-cranked?</p>
+    <h2>Take Action</h2>
+    <p>Any AI-assisted practice that spans more than one session needs its own doc-mirror.</p>
+    <p>If your AI produces files, those files need a doc that stays in sync. If your AI makes decisions, those decisions need a journal that is navigable. If your AI has state, that state needs a cursor that is always current.</p>
+    <p>The pattern is universal. Build it once. Every session is a continuation not a restart.</p>
+    <p>Install the doc-mirror plugin from the link below. Share this with someone who keeps losing the thread.</p>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
