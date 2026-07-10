@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>The Thread Never Breaks — doc-mirror</h1>
+    <p class="post-subtitle">*Every time my Claude Code context window filled up, I lost the thread — and I mean completely: what I was building, what was left, whether I was making progress, all of it, gone.*</p>
+
+    <h2>The Story</h2>
+    <p>I had been using Claude Code for months, and every session felt the same. My context window would fill. I would compact. The machine would rehydrate — and I would be standing in an empty room. No memory of what I had just built. No record of what was left to do. No way to know if the code and the docs were even speaking to each other.</p>
+    <p>I was writing documentation by hand. The moment code changed — a renamed function, a new module — the doc was already lying. By the next session it was archaeology. I could not trust a single thing I had written.</p>
+    <p>The journal I kept was a flat chronological log. Entries piled up. The machine could not navigate them, could not know what was settled and what was still open. Every compaction felt like starting over. Every restart meant asking the same questions again, burning context on what had already been decided.</p>
+    <p>I was journaling heavily and thought the journal was solving the problem — when I noticed the cursor had drifted.</p>
+    <p>The docmirror-cursor is the agent's pinned state pointer: what repo it is in, what phase it is in, what module it is focused on. Every journal entry was written to it — the agent knew the true state on every line. But the cursor's visible <code>updated</code> field was frozen for days. It showed a stale timestamp while <code>last_journal</code> moved forward with every entry. The agent was looking at a stale pointer and believing it was current.</p>
+    <p>That was when I understood what was actually wrong: the tool designed to track context was silently losing it. Every line knew the truth. The display never updated. The system was accumulating work in a memory it could not reference.</p>
+    <p>I built doc-mirror: a file-based, self-documenting, loop-driven Claude Code system with a closure test that keeps docs and code in permanent bijection.</p>
+    <p>The system has four layers. The environment layer strips ~/.claude to the minimum — two safety hooks, twelve rules, a minimal CLAUDE.md. No baggage, no drift surface. The generator layer holds the doc-mirror skill with its binding law and closure test: every file maps 1:1 to a docs/mirror/ document, and the bijection is verified on every change. The geometry layer organizes everything as a nested six-file structure: six context files at the root, doc-mirror at the leaves, doc-mirror never in its own system dir. The work-loop layer runs every turn via a brainhook that re-injects the loop prompt plus the live cursor leg.</p>
+    <p>The control loop is the discipline that makes it real: every module change triggers a re-derivation of its doc(m), a git commit of the delta, and a closure test. The vision(m) file holds what is wanted; the doc(m) holds what is built. The gap between them is always visible and always honest. The cursor is a graph-derived state pointer that never goes stale because journal writes it on every entry.</p>
+    <p>**Now when I start a session, I pick up exactly where I left off. The docs/mirror/ files are current — they were re-derived from code the moment code changed, automatically, with no hand edits. The vision backlog shows me what is left to build. The journal is a graph I can query: where am I, what is open, what has settled, what crossed repos. The cursor is fresh. The state machine is legible.</p>
+    <p>The closure test runs on every commit. The git log is the lineage of every decision. The agent knows what it has done, what it is doing, and what remains. Progress is not a feeling — it is a diff.**</p>
+    <h2>The Key Insight</h2>
+    <p>A self-documenting system must enforce its own discipline. The moment documentation is written by hand, it begins to lie. The moment context is not graphed, it cannot be queried. The moment the state pointer is not written by the dominant activity, it goes stale. Drift is not a personality flaw — it is a structural failure of the enforcement layer. The fix is not discipline. The fix is the closure test: make it impossible for docs to be out of sync, and they will always be in sync.</p>
+    <h2>Demo</h2>
+    <p>Let me show you what this looks like in practice.</p>
+    <p><em>[Initialize a new codebase with doc-mirror (docmirror-init). Make a code change. Run the agent again. Show: doc(m) re-derived automatically, git log shows the commit message derived from realized vision entries, vision diff shows the closed gap, cursor is fresh, no hand edits needed anywhere.]</em></p>
+    <h2>Why This Matters</h2>
+    <p>The moment an AI-assisted workflow cannot remember what it has done, the practitioner becomes the system's memory — managing the tool instead of doing the work. Most people who hit this wall stop. The belief that 'the AI forgot again' is a fundamental limitation of AI is actually a failure of the documentation and state-layer discipline.</p>
+    <p>Doc-mirror proves the failure is structural, not inevitable. The closure test, the cursor-coupling, the graph-derived navigation — these are not customizations for a specific workflow. They are the mechanism that makes any persistent AI workflow actually persistent. Without them, you are always starting from zero.</p>
+    <h2>Take Action</h2>
+    <p>Any AI-assisted practice that spans more than one session needs its own doc-mirror. Not as a feature — as a structural necessity. If your AI produces files, those files need a doc that stays in sync. If your AI makes decisions, those decisions need a journal that is navigable. If your AI has state, that state needs a cursor that is always current. The pattern is universal: enforce the closure test, write the cursor on every action, derive documentation from code, and never hand-edit what the system generates. Build that discipline once, and every session is a continuation — not a restart.</p>
+    <hr />
+    <p>🔌 Plugin: https://github.com/sancovp/doc-mirror</p>
+    <p>If this helped, share it with someone who needs it.</p>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
