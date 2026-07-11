@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>The Distribution Pipeline</h1>
+    <p class="post-subtitle">You can spend a year perfecting the content organ, but if there is no last-mile distribution layer, nobody ever reads it — and you have built a ghost that nobody can see.</p>
+
+    <h2>Where I was</h2>
+    <p>Before cave-unicorn, the nightly blog organ wrote perfect markdown into an output directory — and that was where the story ended. There was no socials pipeline, no images pipeline, and no path from the output directory to the live site. Reaching sancovp.github.io/aisaac meant manual HTML conversion, hand-editing the post skeleton, committing to GitHub, and pushing — every single time. The pipeline produced content but never delivered it.</p>
+    <h2>The wall</h2>
+    <p>I identified the problem the night the first automated blog came off the organ: the markdown was perfect, the post was ready — and there was no path from the output directory to the live site. Every other organ worked. This one ended at a wall. The content existed. Nobody could see it. The distribution layer was missing entirely, and without it, the entire nightly pipeline was a private performance no audience would ever attend.</p>
+    <h2>The turn</h2>
+    <p>I finally built cave-unicorn: the UNICORN distribution module of the SANCREV SDK, designed as a first-class organ that connects every other organ's output to the live GitHub Pages site. Three organs wired in sequence — site publish, socials pack, and images — each running as a CAVE CronAutomation on the Heart tick. The site organ renders blog markdown into HTML, inserts the index card, commits and pushes to GitHub, and fires the Discord announcement. The socials organ reads the live post, generates twitter, LinkedIn and Discord copy plus image prompts, and enforces the framework-first gate so nothing ships without the deep-dive and plugin links. The images organ renders the three PNGs from the prompts. Everything runs unattended, every night, from done Blog_Request nodes — no human in the loop.</p>
+    <p><strong>The first piece of content flowed all the way through in one night: the doc-mirror blog went from a Blog_Request node with status done to a live post on sancovp.github.io/aisaac/blog, announced in the Discord coglog channel via the new cave-discord library, packed into social posts with image prompts, and rendered as PNGs — all hands-free. The nightly automation now runs at 02:37 (site publish), 03:07 (socials pack), and 03:37 (images), every night. The pipeline is real. The audience can find it.</strong></p>
+    <h2>The boon</h2>
+    <p>The bottleneck was never the content — it was the last mile. Build the distribution organ and everything else you have built becomes real. Treat the connection to the reader as a first-class organ, not an afterthought, and the whole pipeline activates. The journey from an idea in a journal to a post a stranger can read becomes automated — the content still has to be good, but now it actually gets delivered.</p>
+    <p>A pipeline that produces content but never delivers it is a pipeline that produces nothing. The distribution layer is what makes the content real in the world rather than just real in the machine. Without it, every organ upstream is building in a closed room. The moment the last mile opens, the whole system has an audience — and a system with an audience is a system that can grow, learn, and compound.</p>
+    <p>If you are building any system of content-producing organs — whether for documentation, research, marketing, or education — ask yourself: where does the output actually reach a person? If the answer involves manual steps or a human in the loop, build the distribution organ. It is the bridge from private output to public value. Treat it with the same care as the organs that produce the content, and your pipeline becomes a publication.</p>
+    <p>So if you are building a system of content-producing organs and experiencing the gap between what your pipeline produces and what your readers actually see — cave-unicorn is the distribution layer that closes that last mile. It lives as a first-class CAVE organ, runs on the Heart tick every night, and turns your nightly output into live posts, social posts, and images without a human in the loop. You can see the full framework — the organ instructions for your agents — in the SkillTome at the cave-unicorn volume. You can read the code and see the whole thing on GitHub. And you can build this entire distribution pipeline in under a day using the cave-unicorn CLI and the SANCREV SDK.</p>
+    <p><strong>Start here: https://github.com/sancovp/cave-unicorn</strong></p>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
+<script src="../newsletter.js"></script>
