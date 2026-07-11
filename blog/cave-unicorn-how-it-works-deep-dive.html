@@ -1,0 +1,193 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../frameworks.html" class="nav-link">Frameworks</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>cave-unicorn — How It Works (Deep Dive)</h1>
+    <p class="post-subtitle">Every mechanism in the distribution pipeline — the nightly organs, the framework-first gate, the state machine on the graph — grounded in the source.</p>
+
+    <blockquote>
+    <p>The story of why this exists: https://sancovp.github.io/aisaac/blog/cave-unicorn-the-story.html</p>
+    </blockquote>
+    <p>This article explains what the <code>cave-unicorn</code> module actually does, mechanically, when you run it. Everything here comes from the module's own source code — the functions, the contracts, the CLI commands, and the state machine the system drives. If you want to evaluate whether to build or adapt this for your own system, this is the reference.</p>
+    <hr />
+    <h2>The architecture</h2>
+    <p>The <code>cave-unicorn</code> module sits at the end of a content pipeline. Its job is to take a finished blog post and push it: onto the live website, into a social media pack, and then rendered as images. It does this through three independent <strong>CronAutomation organs</strong> that fire on a nightly schedule.</p>
+    <p>The module is structured as a Python package called <code>cave_unicorn</code> (pip-installable). Its internal components:</p>
+    <table>
+    <thead>
+    <tr>
+    <th>File</th>
+    <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>config.py</code></td>
+    <td>Reads and writes the <code>unicorn_config.json</code> file — the persistent settings the module publishes against (site root path, git remote, default tags, etc.)</td>
+    </tr>
+    <tr>
+    <td><code>site.py</code></td>
+    <td>The core render-and-publish logic: converts blog markdown to a full HTML post, inserts an index card, commits to git, optionally pushes</td>
+    </tr>
+    <tr>
+    <td><code>publish.py</code></td>
+    <td><code>fire_site_publish</code> — the CronAutomation code pointer. Two modes: direct (one file) or scan (CartON Blog_Request nodes done but not site-published)</td>
+    </tr>
+    <tr>
+    <td><code>socials.py</code></td>
+    <td><code>fire_socials_pack</code> — second CronAutomation. Reads site-published blogs, runs a heaven/minimax agent to write Twitter/LinkedIn/Discord posts and image prompts, renders the suite deterministically</td>
+    </tr>
+    <tr>
+    <td><code>images.py</code></td>
+    <td><code>fire_socials_images</code> — third CronAutomation. Runs a <code>claude -p</code> excalidraw agent to render hero, social-share, and thumbnail PNGs from the socials pack</td>
+    </tr>
+    <tr>
+    <td><code>announce.py</code></td>
+    <td>Posts a Discord announcement after a pushed publish, via the <code>cave_discord</code> library (import-if-present)</td>
+    </tr>
+    <tr>
+    <td><code>dispatch.py</code></td>
+    <td>Dispatches the heaven/minimax agent used by the socials pack leg</td>
+    </tr>
+    <tr>
+    <td><code>journey_suite.py</code></td>
+    <td>Deterministic render engine: takes a filled <code>journey_core.json</code> + <code>journey_blog.json</code> and emits <code>blog-aida.md</code> + <code>pack.md</code></td>
+    </tr>
+    <tr>
+    <td><code>cave_seam.py</code></td>
+    <td>CAVE integration layer — emits or registers the CronAutomation schema. Never imports cave at module level</td>
+    </tr>
+    <tr>
+    <td><code>cli.py</code></td>
+    <td>The v1 setup interface: <code>init</code>, <code>show</code>, <code>set</code>, <code>publish</code>, <code>pending</code>, <code>publish-pending</code>, <code>enable-automation</code>, and a few more</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>The CAVE layer law (stated in <code>cave_seam.py</code>): <code>cave_unicorn</code> is <strong>L9</strong> (a library). CAVE (L7) consumes it, never the reverse. The module never imports <code>cave</code> at module level; it registers via <code>register_with_cave(cave_agent)</code> or <code>emit_schema()</code> to write the automation JSON into the hot-reload directory.</p>
+    <hr />
+    <h2>How it runs</h2>
+    <p>The system runs as three CronAutomations on a nightly schedule:</p>
+    <pre><code>02:00 — blog organ writes Blog_Request nodes with status=done
+             (blog markdown at output_path)
+             ↓
+    02:37 — cave_unicorn.publish.fire_site_publish (scan mode)
+             Blog_Request nodes {status: done, no site_published}
+             → render markdown → write {blog_dir}/{slug}.html
+             → insert card into {blog_dir}/index.html
+             → git add/commit → (push=true) git pull --rebase --autostash + push
+             → flip site_published + site_url + site_published_at on the node
+             → announce to Discord
+             ↓
+    03:07 — cave_unicorn.socials.fire_socials_pack (scan mode)
+             site_published nodes with no socials_packed
+             → framework-first gate: skip if sibling journey_core.json
+               lacks deep_dive_url and plugin_url (mark framework_missing, retry later)
+             → dispatch heaven/minimax agent: fills journey_core.json +
+               journey_blog.json + image-prompts.md
+             → enforce canonical journey_core.json (fill-once: module overwrites
+               any agent-written copy with the canonical version)
+             → render_suite: deterministic blog-aida.md + pack.md
+             → flip socials_packed + socials_pack_path on the node
+             ↓
+    03:37 — cave_unicorn.images.fire_socials_images (scan mode)
+             socials_packed nodes with no images_rendered
+             → run claude -p agent interpreting pack image-prompts.md as excalidraw
+               diagrams, render with the Playwright script, verify PNGs exist
+             → flip images_rendered + images_dir on the node
+             ↓
+    Ready-to-post queue: {socials_queue}/{slug}/pack.md + images/
+    </code></pre>
+    <p>Every automation has the <strong>never-raises contract</strong>: failures are captured in the return dict and on the CartON node, never thrown. This is because they run on the Heart tick — a crash would silently stop the pipeline.</p>
+    <p>Each automation also runs in <strong>direct mode</strong>: pass <code>md_path</code> or <code>pack_path</code> as a kwarg and it processes one file without touching CartON. This is the CLI path and the escape hatch for manual intervention.</p>
+    <hr />
+    <h2>Where things live</h2>
+    <p>The public repo at <code>github.com/sancovp/cave-unicorn</code> has this structure (repo-relative paths):</p>
+    <pre><code>cave-unicorn/
+    ├── README.md                          ← module overview
+    ├── pyproject.toml                    ← package metadata
+    ├── cave_unicorn/                     ← the main package
+    │   ├── __init__.py
+    │   ├── __main__.py                   ← python3 -m cave_unicorn entrypoint
+    │   ├── cli.py                        ← all CLI commands
+    │   ├── config.py                     ← unicorn_config.json read/write
+    │   ├── site.py                       ← render_post, insert_card, publish_file
+    │   ├── publish.py                    ← fire_site_publish (automation entry)
+    │   ├── socials.py                    ← fire_socials_pack (automation entry)
+    │   ├── images.py                     ← fire_socials_images (automation entry)
+    │   ├── announce.py                   ← Discord announce after push
+    │   ├── dispatch.py                   ← heaven/minimax agent dispatch
+    │   ├── journey_suite.py              ← deterministic suite renderer
+    │   └── cave_seam.py                  ← CAVE automation registration
+    └── tests/
+        └── test_unicorn.py               ← 52 unit tests (render, split, index, config, seam, CLI)
+    </code></pre>
+    <blockquote>
+    <p><strong>Note on paths:</strong> Container-internal absolute paths in the source (e.g., default config values, environment variable defaults) are generalized to logical module paths in this article. The actual defaults reference container-internal directories.</p>
+    </blockquote>
+    <p>The <code>unicorn_config.json</code> file (created by <code>cave-unicorn init</code>) holds the target site settings. Its keys: <code>site_root</code>, <code>blog_dir</code>, <code>site_base_url</code>, <code>remote</code>, <code>branch</code>, <code>push</code>, <code>default_tags</code>, <code>discord_announce</code>, <code>discord_channel</code>.</p>
+    <hr />
+    <h2>The state machine</h2>
+    <p>Each blog post is tracked as a <strong>CartON Wiki node</strong> (a <code>Blog_Request</code> concept). The system drives it through a series of states by setting properties on the node:</p>
+    <pre><code>status: done               (set by the blog organ — the input condition)
+        ↓ [fire_site_publish scan]
+    site_published: true       ← blog is on the live site
+    site_url: &lt;URL&gt;           ← the live post URL
+    site_published_at: &lt;ISO&gt;   ← timestamp
+        ↓ [fire_socials_pack scan — gated]
+    framework_missing: true     ← set when sibling journey_core lacks deep_dive_url/plugin_url
+                                 (blocks dispatch; cleared when the links are wired in later)
+        ↓ [pack_one succeeds]
+    socials_packed: true
+    socials_pack_path: &lt;path&gt;   ← path to pack.md in the socials queue
+    socials_packed_at: &lt;ISO&gt;
+        ↓ [fire_socials_images scan]
+    images_rendered: true
+    images_dir: &lt;path&gt;         ← path to the images/ directory (hero.png, social-share.png, thumbnail.png)
+    images_rendered_at: &lt;ISO&gt;
+    </code></pre>
+    <p>Error states are written to the same nodes rather than raised:
+    - <code>site_publish_error</code> — written by <code>fire_site_publish</code> when a publish fails
+    - <code>socials_pack_error</code> — written by <code>fire_socials_pack</code> when a pack fails
+    - <code>images_error</code> — written by <code>fire_socials_images</code> when rendering fails</p>
+    <p>The three automation scanners skip nodes that already have their output property set. A failed node will be retried on the next nightly scan once the error is resolved.</p>
+    <hr />
+    <h2>The invariants</h2>
+    <p>These are the hard rules the module enforces in code — not suggestions.</p>
+    <p><strong>Never-raises contract.</strong> Every <code>fire_*</code> automation catches exceptions and writes error strings to the CartON node's error property. A failure never crashes the Heart tick or blocks the rest of the queue.</p>
+    <p><strong>Fail-loud git.</strong> <code>publish_file</code> in <code>site.py</code> runs git commands via <code>_git()</code>, which raises <code>RuntimeError</code> loudly if any git command fails. There are no silent fallbacks; a failed <code>add/commit/pull/push</code> surfaces immediately and is written to <code>site_publish_error</code> on the node.</p>
+    <p><strong>Framework-first gate in socials.</strong> <code>fire_socials_pack</code> reads the sibling <code>journey_core.json</code> file next to the blog markdown. If neither <code>deep_dive_url</code> nor <code>plugin_url</code> is present, the node is marked <code>framework_missing: true</code> and skipped. This prevents packing a blog whose CTA/demo links point nowhere. The gate is cleared automatically on a subsequent scan once those fields are populated by the chapter pipeline.</p>
+    <p><strong>Canonical core enforced on disk.</strong> When a canonical <code>journey_core.json</code> already exists on disk (from a prior fill), the socials pack's <code>_enforce_canonical_core</code> function overwrites whatever the heaven/minimax agent wrote with the canonical content before the suite renderer runs. The agent's output is used for its self-correction loop only; the module is the authority on the canonical JSON. This prevents a repeated bug where the agent retyped the core from memory and corrupted nine fields.</p>
+    <p><strong>Blog markdown contract.</strong> <code>site.py</code>'s <code>split_front</code> function parses the blog markdown with two hard rules: the first <code>#</code> heading line is the title, and the first non-empty block wrapped in <code>*...*</code> or <code>**...**</code> is the hook/subtitle. Everything else is the body. A markdown file without a <code>#</code> title heading raises <code>ValueError</code> immediately — it cannot silently publish as untitled.</p>
+    <p><strong>Idempotent index card insertion.</strong> <code>insert_card</code> in <code>site.py</code> handles re-publish semantics: if a card with the same <code>href</code> already exists, it replaces the old card in place (status <code>"updated"</code>) without bumping the post count. An identical card returns unchanged (<code>"already_indexed"</code>). A newly inserted card goes to the top of the card grid and the count is incremented.</p>
+    <p><strong>Layer law.</strong> <code>cave_unicorn</code> never imports <code>cave</code> at module level. The CAVE seam is accessed through <code>cave_seam.register_with_cave(cave_agent)</code> (live agent path) or <code>cave_seam.emit_schema()</code> (writes automation JSON to the hot-reload directory for the Heart tick to pick up). Both paths are non-blocking — if cave is absent, <code>register_with_cave</code> returns <code>False</code> and <code>emit_schema</code> writes the JSON file directly.</p>
+    <p><strong>Import-if-present throughout.</strong> <code>cave_discord</code> (for Discord announces), <code>carton_mcp</code> (for CartON access), and <code>heaven_framework</code> (for the heaven/minimax dispatch) are all imported lazily inside functions. If any is absent, the module logs the error and continues with a degraded but non-crashing result.</p>
+    <hr />
+    <p><em>Source for this article: <code>cave_unicorn</code> module source — <code>README.md</code>, <code>site.py</code>, <code>publish.py</code>, <code>socials.py</code>, <code>images.py</code>, <code>cave_seam.py</code>, <code>cli.py</code>, <code>config.py</code>, <code>announce.py</code>, <code>dispatch.py</code>, <code>journey_suite.py</code>, and the 52-test suite at <code>tests/test_unicorn.py</code>. No doc(m) exists for this module; all mechanical truth lives in the source.</em></p>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-learn">
+    <p class="blog-cta-label">Want to go deeper?</p>
+    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
+    <div class="blog-cta-actions">
+      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
+<script src="../newsletter.js"></script>
