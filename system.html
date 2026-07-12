@@ -7,10 +7,9 @@
   <title>The System — how it all connects | Isaac TWI</title>
   <style>
     .map-hero { padding: 5rem 5rem 2rem; }
-    .map-hero .sub { max-width: 60ch; }
+    .map-hero .sub { max-width: 62ch; }
     .mapwrap { padding: 1rem 5rem 5rem; max-width: 1100px; }
 
-    /* band scaffolding */
     .band { position: relative; margin: 0 auto; }
     .band-label {
       font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -18,6 +17,7 @@
       display: flex; align-items: center; gap: 1rem; justify-content: center;
     }
     .band-label::before, .band-label::after { content: ''; height: 1px; width: 3rem; background: var(--glass-border); }
+    .band-sub { text-align: center; font-size: 0.82rem; color: var(--text-3); margin: -0.6rem auto 1.4rem; max-width: 52ch; line-height: 1.6; }
 
     .flow { text-align: center; color: var(--text-3); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; padding: 1.6rem 0; }
     .flow .v { font-size: 1.3rem; color: var(--mercury-violet); display: block; line-height: 1; margin-top: 0.4rem; }
@@ -33,27 +33,28 @@
     @keyframes yh { 50% { opacity: 0.35; } }
     .youhere-row { text-align: center; margin-bottom: 1.2rem; }
 
-    /* the five doors */
-    .doors { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
-    .door {
+    /* card grids (doors + worlds) */
+    .grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 860px; margin: 0 auto; }
+    .node {
       background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md);
       padding: 1.2rem; display: block; transition: all 0.3s; position: relative; overflow: hidden;
     }
-    .door:hover { border-color: rgba(125,211,252,0.25); transform: translateY(-2px); background: rgba(125,211,252,0.03); }
-    .door .who { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-teal); margin-bottom: 0.6rem; }
-    .door h4 { font-weight: 600; font-size: 0.9rem; line-height: 1.25; margin-bottom: 0.5rem; color: var(--text-1); }
-    .door p { font-size: 0.72rem; line-height: 1.55; color: var(--text-3); }
-    .door .go { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.7rem; display: block; }
+    .node:hover { border-color: rgba(125,211,252,0.25); transform: translateY(-2px); background: rgba(125,211,252,0.03); }
+    .node .who { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-teal); margin-bottom: 0.6rem; }
+    .node h4 { font-weight: 600; font-size: 0.92rem; line-height: 1.25; margin-bottom: 0.5rem; color: var(--text-1); }
+    .node p { font-size: 0.72rem; line-height: 1.55; color: var(--text-3); }
+    .node .go { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.7rem; display: block; }
+    .node.coming { opacity: 0.5; }
+    .node .soon { position: absolute; top: 0.9rem; right: 0.9rem; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
 
-    /* the core engine */
+    /* the engine core */
     .core { max-width: 760px; margin: 0 auto; }
-    .core-node {
-      display: flex; align-items: stretch; border: 1px solid var(--glass-border); border-radius: var(--r-md);
-      margin-bottom: 0.8rem; background: var(--glass-bg); overflow: hidden; transition: all 0.3s;
-    }
+    .core-node { display: flex; align-items: stretch; border: 1px solid var(--glass-border); border-radius: var(--r-md); margin-bottom: 0.8rem; background: var(--glass-bg); overflow: hidden; transition: all 0.3s; }
     .core-node:hover { border-color: rgba(125,211,252,0.2); }
-    .core-node .bar { width: 4px; flex-shrink: 0; background: linear-gradient(180deg, var(--mercury-blue), var(--mercury-violet)); }
+    .core-node .bar { width: 4px; flex-shrink: 0; }
     .core-node.free .bar { background: linear-gradient(180deg, var(--mercury-teal), var(--mercury-blue)); }
+    .core-node.build .bar { background: linear-gradient(180deg, var(--mercury-blue), var(--mercury-violet)); }
     .core-node.sell .bar { background: linear-gradient(180deg, var(--amber), var(--mercury-rose)); }
     .core-node .body { padding: 1.1rem 1.5rem; flex: 1; }
     .core-node .ki { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.35rem; }
@@ -73,22 +74,24 @@
     .loop .step b { color: var(--mercury-blue); font-weight: 600; }
     .loop .sep { color: var(--mercury-violet); font-family: var(--mono); font-size: 0.85rem; }
     .loop-return { text-align: center; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--mercury-violet); margin-top: 1rem; }
-    .loop-note { text-align: center; font-size: 0.82rem; color: var(--text-2); line-height: 1.7; max-width: 58ch; margin: 1.2rem auto 0; }
+    .loop-note { text-align: center; font-size: 0.82rem; color: var(--text-2); line-height: 1.7; max-width: 60ch; margin: 1.2rem auto 0; }
     .loop-note b { color: var(--text-1); }
 
     /* the climb */
-    .climb { max-width: 620px; margin: 0 auto; }
+    .climb { max-width: 660px; margin: 0 auto; }
     .rung { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1.2rem; border: 1px solid var(--glass-border); border-radius: var(--r-sm); margin-bottom: 0.6rem; background: var(--glass-bg); }
+    .rung.paywall { border-color: rgba(251,191,36,0.28); background: rgba(251,191,36,0.04); }
     .rung .n { font-family: var(--mono); font-size: 0.7rem; color: var(--mercury-blue); flex-shrink: 0; width: 1.5rem; }
+    .rung.paywall .n { color: var(--amber); }
     .rung .t { font-weight: 600; font-size: 0.88rem; flex-shrink: 0; }
     .rung .d { font-size: 0.76rem; color: var(--text-3); margin-left: auto; text-align: right; }
 
     @media (max-width: 900px) {
       .map-hero, .mapwrap { padding-left: 2rem; padding-right: 2rem; }
-      .doors { grid-template-columns: 1fr 1fr; }
+      .grid5, .grid4 { grid-template-columns: 1fr 1fr; }
       .rung .d { display: none; }
     }
-    @media (max-width: 520px) { .doors { grid-template-columns: 1fr; } }
+    @media (max-width: 520px) { .grid5, .grid4 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -107,8 +110,8 @@
   <!-- HERO -->
   <div class="map-hero">
     <div class="tag">The whole system</div>
-    <h1>One engine. Five doors.<br>A loop that compounds.</h1>
-    <p class="sub">Most of what you'll see here looks like separate products — a course, an agency, an open-source repo, a book. It isn't. It's <strong>one system</strong> you can enter through whichever door matches what you want, and everything you touch feeds everything else. This is the map. <strong>You're standing at the doors.</strong></p>
+    <h1>One engine.<br>Many worlds. A loop that compounds.</h1>
+    <p class="sub">This looks like a dozen separate products — a course, an agency, an open-source engine, a book. It isn't. It's <strong>one engine</strong> that builds you a self-running "world" for whatever you're doing — your business, your build, your health — and everything it produces feeds everything else. This is the map. <strong>You're standing at the doors.</strong></p>
   </div>
 
   <div class="mapwrap">
@@ -117,32 +120,32 @@
     <div class="band">
       <div class="band-label">How you got here</div>
       <div class="youhere-row"><span class="youhere"><span class="dot"></span>You are here</span></div>
-      <div class="doors">
-        <a href="transform.html" class="door">
+      <div class="grid5">
+        <a href="transform.html" class="node">
           <div class="who">Business owner</div>
           <h4>"Get AI into my business."</h4>
           <p>You have a company and want it running with AI — done for you.</p>
           <span class="go">Services →</span>
         </a>
-        <a href="school.html" class="door">
+        <a href="school.html" class="node">
           <div class="who">Entrepreneur</div>
           <h4>"Make money with AI."</h4>
           <p>You want to run an AI-powered business of your own.</p>
           <span class="go">The School →</span>
         </a>
-        <a href="free.html" class="door">
+        <a href="free.html" class="node">
           <div class="who">Builder</div>
           <h4>"Build AI agents."</h4>
-          <p>You want the tools, skills, and open-source engine.</p>
+          <p>You want the tools and the open engine to build on.</p>
           <span class="go">Free tools →</span>
         </a>
-        <a href="sanctuary-system.html" class="door">
+        <a href="sanctuary-system.html" class="node">
           <div class="who">Seeker</div>
           <h4>"Show me the whole vision."</h4>
-          <p>You're here for the deeper idea — the system behind it all.</p>
+          <p>You're here for the deeper idea behind all of it.</p>
           <span class="go">The vision →</span>
         </a>
-        <a href="level10.html" class="door">
+        <a href="level10.html" class="node">
           <div class="who">Curious about Isaac</div>
           <h4>"Who built this?"</h4>
           <p>The story of how one person built the whole machine.</p>
@@ -151,45 +154,80 @@
       </div>
     </div>
 
-    <div class="flow">every door leads to the same place<span class="v">▼</span></div>
+    <div class="flow">every door opens the same engine<span class="v">▼</span></div>
 
-    <!-- BAND 2: THE ONE SYSTEM / ENGINE -->
+    <!-- BAND 2: THE ENGINE -->
     <div class="band">
-      <div class="band-label">The one system underneath — SANCREV</div>
+      <div class="band-label">The one engine underneath</div>
+      <div class="band-sub">Every product on this site runs on the same three things. This is the part nobody else has.</div>
       <div class="core">
-        <div class="core-node free">
+        <a href="opera.html" class="core-node free" style="text-decoration:none;">
           <div class="bar"></div>
           <div class="body">
             <div class="ki">Free · open source · the lead magnet</div>
             <h3>SANCREV OPERA</h3>
-            <p>The open engine every door hands you — the CAVE agent runtime, the knowledge graph, the frameworks. <b>The map, given away on purpose.</b></p>
+            <p>The open engine every door hands you — the agent runtime everything is built on. <b>The map, given away on purpose.</b></p>
           </div>
-          <div class="tagr">give the map away</div>
-        </div>
-        <div class="core-node build">
+          <div class="tagr">give the map away →</div>
+        </a>
+        <a href="gnosys.html" class="core-node build" style="text-decoration:none;">
           <div class="bar"></div>
           <div class="body">
-            <div class="ki">Commercial product · runs on OPERA</div>
-            <h3>Jobworld</h3>
-            <p>The engine crystallized into a business you own — a CEO agent running self-grading departments on your own Claude Code. <b>The done base, sold.</b></p>
+            <div class="ki">The agent that operates it</div>
+            <h3>GNOSYS</h3>
+            <p>One agent that wears a different "hat" for each world — it builds, runs, and improves the operation for you. <b>The worker.</b></p>
           </div>
-          <div class="tagr">sell the done base</div>
-        </div>
-        <div class="core-node sell">
+          <div class="tagr">meet the agent →</div>
+        </a>
+        <a href="soma.html" class="core-node sell" style="text-decoration:none;">
           <div class="bar"></div>
           <div class="body">
-            <div class="ki">The teaching · 27+ frameworks · the dharma</div>
-            <h3>The Sanctuary System</h3>
-            <p>The frameworks, the myth, and the philosophy that explain how to <b>instantiate</b> what the engine makes possible — the operational language you can't get from the free layer alone.</p>
+            <div class="ki">The moat · sold as a service</div>
+            <h3>SOMA</h3>
+            <p>The layer that checks the work is actually right before it counts — the reason the output holds up. <b>The engine, rented — never the source.</b></p>
           </div>
-          <div class="tagr">the language to build</div>
+          <div class="tagr">the premium tier →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="flow">the engine builds you a world for your domain<span class="v">▼</span></div>
+
+    <!-- BAND 3: THE WORLDS -->
+    <div class="band">
+      <div class="band-label">The worlds — one per domain</div>
+      <div class="band-sub">Same engine, different jobs. Kept separate on purpose — you turn on the one you need, not a bundle you don't.</div>
+      <div class="grid4">
+        <a href="promptworld.html" class="node">
+          <div class="who">Build</div>
+          <h4>PromptWorld</h4>
+          <p>Build Claude-Code software just by talking to it. Your engineering department.</p>
+          <span class="go">Enter →</span>
+        </a>
+        <a href="build.html" class="node">
+          <div class="who">Business</div>
+          <h4>Jobworld</h4>
+          <p>A CEO agent running self-grading departments — your business, running itself.</p>
+          <span class="go">Enter →</span>
+        </a>
+        <div class="node coming">
+          <span class="soon">soon</span>
+          <div class="who">Health</div>
+          <h4>HealthWorld</h4>
+          <p>A Jobworld for your body — your health, run like an operation.</p>
+        </div>
+        <div class="node coming">
+          <span class="soon">soon</span>
+          <div class="who">Play</div>
+          <h4>GameWorld</h4>
+          <p>An economic game with an AI game-master. A genuinely different pattern.</p>
         </div>
       </div>
     </div>
 
     <div class="flow">and the whole thing runs on one cycle<span class="v">▼</span></div>
 
-    <!-- BAND 3: THE COMPOUNDING LOOP -->
+    <!-- BAND 4: THE COMPOUNDING LOOP -->
     <div class="band">
       <div class="band-label">Why it's called Compound Intelligence</div>
       <div class="loopband">
@@ -202,9 +240,9 @@
           <span class="sep">→</span>
           <span class="step">the content <b>is the proof</b></span>
           <span class="sep">→</span>
-          <span class="step">people <b>arrive</b> &amp; use OPERA</span>
+          <span class="step">people <b>arrive</b> &amp; use the engine</span>
           <span class="sep">→</span>
-          <span class="step">the engine <b>compounds</b></span>
+          <span class="step">it <b>compounds</b></span>
         </div>
         <div class="loop-return">⟲ &nbsp; which produces more work, more proof, more people — forever</div>
         <p class="loop-note">This is the part competitors can't copy: <b>the marketing isn't separate from the product — the product produces the marketing.</b> This site, its content, this very map were built by the system it's selling. The proof isn't a testimonial. The proof is that it exists.</p>
@@ -213,14 +251,14 @@
 
     <div class="flow">and once you're in, you climb<span class="v">▼</span></div>
 
-    <!-- BAND 4: THE CLIMB -->
+    <!-- BAND 5: THE CLIMB -->
     <div class="band">
-      <div class="band-label">Where every door leads</div>
+      <div class="band-label">How you go from free to all-in</div>
       <div class="climb">
-        <div class="rung"><span class="n">01</span><span class="t">Free</span><span class="d">OPERA + the tools — take the map</span></div>
-        <div class="rung"><span class="n">02</span><span class="t">Community</span><span class="d">the frameworks, the room, Jobworld included</span></div>
-        <div class="rung"><span class="n">03</span><span class="t">Cohort / Build</span><span class="d">we stand your business up with you</span></div>
-        <div class="rung"><span class="n">04</span><span class="t">The full system</span><span class="d">the deep architecture — SOMA-class</span></div>
+        <div class="rung"><span class="n">01</span><span class="t">Free</span><span class="d">the open engine + the patterns — take the map</span></div>
+        <div class="rung"><span class="n">02</span><span class="t">Community</span><span class="d">the worlds, the frameworks, and Isaac's guidance</span></div>
+        <div class="rung paywall"><span class="n">03</span><span class="t">Built with you</span><span class="d">we stand your world up — the engine, as a service</span></div>
+        <div class="rung"><span class="n">04</span><span class="t">The full system</span><span class="d">SANCREV — every world, composed into one</span></div>
       </div>
     </div>
 
@@ -230,13 +268,13 @@
   <section class="final-cta">
     <div class="tag">Pick your door</div>
     <h2>Now you can see the whole board.</h2>
-    <p>You know where you're standing and where it leads. Start wherever fits — every path is the same system.</p>
+    <p>You know where you're standing, what the engine is, and where it leads. Start wherever fits — every path is the same system.</p>
     <a href="index.html" class="cta-big" style="margin-top:2rem;">Choose where to start</a>
   </section>
 
   <div class="footer">
     <span>&copy; 2026 Isaac &mdash; TWI</span>
-    <span style="color:rgba(167,139,250,0.5);font-style:italic;">One system. Built by itself. The map is the proof.</span>
+    <span style="color:rgba(167,139,250,0.5);font-style:italic;">One engine. Built by itself. The map is the proof.</span>
   </div>
 
 <script src="sticky-cta.js"></script>
