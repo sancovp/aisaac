@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANCREV — the whole system, as one | Isaac TWI</title>
+  <style>
+    .stack-real { margin-top: 2rem; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--glass-border); }
+    .sr-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--glass-border); background: var(--glass-bg); transition: background 0.2s; text-decoration: none; }
+    .sr-row:last-child { border-bottom: none; }
+    .sr-row:hover { background: rgba(125,211,252,0.04); }
+    .sr-name { flex: 1; padding: 1.1rem 1.5rem; }
+    .sr-name h4 { font-weight: 600; font-size: 0.95rem; color: var(--text-1); margin-bottom: 0.15rem; }
+    .sr-name p { font-size: 0.72rem; color: var(--text-3); }
+    .sr-price { width: 190px; flex-shrink: 0; padding: 1.1rem 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; border-left: 1px solid var(--glass-border); }
+    .sr-price .amt { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .sr-price .sold { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-top: 0.2rem; }
+    .sr-total { display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 1.5rem; background: rgba(125,211,252,0.05); border-top: 1px solid rgba(125,211,252,0.15); }
+    .sr-total .lbl { font-size: 0.9rem; color: var(--text-1); font-weight: 600; }
+    .sr-total .amt { font-family: var(--mono); font-weight: 700; font-size: 1.2rem; color: var(--mercury-teal); }
+    .apex-line { margin-top: 1.5rem; padding: 2rem; border: 1px solid rgba(167,139,250,0.28); border-radius: var(--r-lg); background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(125,211,252,0.03)); text-align: center; }
+    .apex-line .k { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mercury-violet); margin-bottom: 0.6rem; }
+    .apex-line .v { font-weight: 700; font-size: 1.4rem; color: var(--text-1); margin-bottom: 0.5rem; }
+    .apex-line p { font-size: 0.82rem; color: var(--text-2); max-width: 52ch; margin: 0 auto 1.4rem; line-height: 1.7; }
+    @media (max-width: 700px) { .sr-row { flex-direction: column; } .sr-price { width: 100%; align-items: flex-start; border-left: none; border-top: 1px solid var(--glass-border); } }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="transform.html">Services</a>
+      <a href="system.html">The System</a>
+      <a href="apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="padding-top:6rem;">
+    <div style="max-width:60ch;">
+      <div class="tag">SANCREV — the apex</div>
+      <h1>The whole system.<br>As one thing.</h1>
+      <p class="sub">
+        Every other page here sells one door — a website, a voice agent, a business that runs
+        itself, a coding department. <strong>SANCREV is all of them, composed, on one engine.</strong>
+        You don't have to start here. But this is where the doors lead.
+      </p>
+      <a href="system.html" class="cta-secondary">See the whole map first &rarr;</a>
+    </div>
+  </section>
+
+  <!-- THE LITERAL VALUE STACK -->
+  <section class="dark">
+    <div class="tag">The stack — real prices, not "value"</div>
+    <h2>We don't tell you what it's worth. We show you what it costs everywhere else.</h2>
+    <p class="sub" style="max-width:60ch;">
+      Each of these is a real product you can buy on its own page, right now, at the price shown.
+      SANCREV is every one of them — running on the same engine, talking to each other.
+    </p>
+
+    <div class="stack-real">
+      <a href="transform.html" class="sr-row">
+        <div class="sr-name"><h4>High-converting website</h4><p>Custom, copy + SEO, built + hosted + managed</p></div>
+        <div class="sr-price"><span class="amt">$149/mo</span><span class="sold">sold on /services</span></div>
+      </a>
+      <a href="phone-agent.html" class="sr-row">
+        <div class="sr-name"><h4>AI phone agent</h4><p>Answers, qualifies, follows up — never misses a call</p></div>
+        <div class="sr-price"><span class="amt">setup + mo</span><span class="sold">sold on /phone-agent</span></div>
+      </a>
+      <a href="build.html" class="sr-row">
+        <div class="sr-name"><h4>Jobworld — your business, run by agents</h4><p>A CEO agent + self-grading departments + live dashboard</p></div>
+        <div class="sr-price"><span class="amt">install + mo</span><span class="sold">sold on /jobworld</span></div>
+      </a>
+      <a href="promptworld.html" class="sr-row">
+        <div class="sr-name"><h4>PromptWorld — an engineering department</h4><p>Build software by talking to it</p></div>
+        <div class="sr-price"><span class="amt">from free</span><span class="sold">sold on /promptworld</span></div>
+      </a>
+      <a href="ralph.html" class="sr-row">
+        <div class="sr-name"><h4>R.A.L.P.H. — agent dev workforce</h4><p>Remote automations, your own keys</p></div>
+        <div class="sr-price"><span class="amt">$99/mo</span><span class="sold">sold on /ralph</span></div>
+      </a>
+      <a href="soma.html" class="sr-row">
+        <div class="sr-name"><h4>SOMA — the logic layer</h4><p>Checks the AI's work against your rules before it acts</p></div>
+        <div class="sr-price"><span class="amt">$499&ndash;2,500/mo</span><span class="sold">sold on /soma</span></div>
+      </a>
+      <a href="transform.html" class="sr-row">
+        <div class="sr-name"><h4>Custom automation retainer</h4><p>An AI CTO on staff would run ~$180k/yr</p></div>
+        <div class="sr-price"><span class="amt">$1,000/mo</span><span class="sold">sold on /services</span></div>
+      </a>
+      <div class="sr-total">
+        <span class="lbl">Bought piecemeal, monthly alone</span>
+        <span class="amt">$1,700+/mo</span>
+      </div>
+    </div>
+
+    <div class="apex-line">
+      <div class="k">And the part that isn't for sale anywhere else</div>
+      <div class="v">The engine that makes them one system.</div>
+      <p>
+        OPERA, SOMA, and the knowledge-graph engine underneath — nobody is going to build the
+        equivalent into a wiki for your business. That's the moat, and it only exists as SANCREV.
+        The apex isn't a price on a page — it's a conversation.
+      </p>
+      <a href="apply.html" class="cta-big">Book the SANCREV call</a>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE (public components, de-lored) -->
+  <section>
+    <div class="tag">What's actually under it</div>
+    <h2>One engine. Many worlds. Open where it counts.</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><h3>The open engine</h3><p>SANCREV OPERA — the agent runtime. Free and inspectable on GitHub.</p></div>
+      <div class="menu-item"><h3>The validator (SOMA)</h3><p>A logic layer that checks work against your rules before it counts. The reason output holds up.</p></div>
+      <div class="menu-item"><h3>Graph-native memory</h3><p>Agents act from a knowledge graph (open-source as carton-mcp), not a flat prompt — so they compound.</p></div>
+      <div class="menu-item"><h3>An agent that builds agents</h3><p>chaincompiler: departments compile themselves from a spec, and the company grows its own team.</p></div>
+      <div class="menu-item"><h3>Teams that evolve</h3><p>cave-teams runs departments as a simulation that grades and improves itself over rounds.</p></div>
+      <div class="menu-item"><h3>Embodiment (in progress)</h3><p>A 3D world (WOOM) heading to WebXR on wearables — the place you'll one day walk into your operation.</p></div>
+    </div>
+  </section>
+
+  <!-- RECEIPTS -->
+  <section class="dark">
+    <div class="tag">Receipts, not testimonials</div>
+    <h2>It's real because it's public.</h2>
+    <p class="sub" style="max-width:60ch;">
+      The engine ships as open source under
+      <a href="https://github.com/sancovp" style="color:var(--mercury-blue);">github.com/sancovp</a> —
+      heaven-framework, chaincompiler, carton-mcp, skilltree, all installable today. There's a real
+      website we built at <a href="cinematic-plumbing.html" style="color:var(--mercury-blue);">Dickinson Plumbing</a>,
+      and open research notes behind the architecture. The proof isn't that we say it works. It's that you can run it.
+    </p>
+  </section>
+
+  <!-- HONEST EDGE -->
+  <section class="honest">
+    <div class="tag">Straight terms</div>
+    <h2>What you're buying, honestly.</h2>
+    <p>
+      Each door above ships and runs today. The full composition — every world auto-wiring into one,
+      the embodied XR nexus where your work lives — is the frontier we're building, in the open, on the
+      engine that's already here. You're buying the system that exists plus the roadmap it's on, from the
+      person building it. No income promises. No "fully autonomous." A real company, and the real machine under it.
+    </p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="tag">Two ways in</div>
+    <h2>Start with one door, or take the whole house.</h2>
+    <p>Not ready for all of it? Every product above stands alone — <a href="system.html" style="color:var(--mercury-blue);">pick a door on the map</a>. Ready for the system? Book the call.</p>
+    <a href="apply.html" class="cta-big" style="margin-top:2rem;">Book the SANCREV call</a>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:rgba(167,139,250,0.5);font-style:italic;">One engine. Every world. The stack is real because you can buy the parts.</span>
+  </div>
+
+<script src="sticky-cta.js"></script>
+<script src="exit-popup.js"></script>
+</body>
+</html>
