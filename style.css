@@ -349,6 +349,23 @@ section { padding: 5rem; }
   font-size: 0.7rem; color: var(--text-3);
 }
 
+/* ── Receipts strip (proof-of-work — receipts, not testimonials) ── */
+.receipts { padding: 5rem; }
+.receipts .receipts-lede { font-size: 0.9rem; color: var(--text-2); max-width: 58ch; line-height: 1.8; margin-bottom: 0.5rem; }
+.receipts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.receipt { display: block; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 1.5rem; transition: all 0.3s; }
+.receipt:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+.receipt-k { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-teal); margin-bottom: 0.6rem; }
+.receipt h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.receipt p { font-size: 0.78rem; line-height: 1.65; color: var(--text-2); }
+.receipt p b { color: var(--text-1); font-weight: 600; }
+.receipt-go { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.8rem; display: block; }
+
+/* ── "part of the system" map link (frame unity) ── */
+.system-link { text-align: center; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; margin: 0; padding: 2rem 1.5rem; }
+.system-link a { color: var(--mercury-violet); transition: color 0.2s; }
+.system-link a:hover { color: var(--text-1); }
+
 /* ── Router (index) ── */
 .router { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; }
 .router h1 { text-align: center; }
@@ -369,4 +386,6 @@ section { padding: 5rem; }
   .final-cta { padding: 4rem 2rem; }
   .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
   .header { padding: 1rem 1.5rem; }
+  .receipts { padding: 3rem 2rem; }
+  .receipts-grid { grid-template-columns: 1fr; }
 }
