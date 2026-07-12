@@ -11,167 +11,176 @@
 
   <article>
     <div class="post-tag">July 2026</div>
-    <h1>cave-unicorn — How It Works (Deep Dive)</h1>
-    <p class="post-subtitle">Every mechanism in the distribution pipeline — the nightly organs, the framework-first gate, the state machine on the graph — grounded in the source.</p>
+    <h1>cave-unicorn — Where It Fits</h1>
+    <p class="post-subtitle">The last-mile organ that closes the gap between content the machine produces and readers the machine reaches.</p>
 
     <blockquote>
-    <p>The story of why this exists: https://sancovp.github.io/aisaac/blog/cave-unicorn-the-story.html</p>
+    <p>The journey of this framework: <a href="cave-unicorn-the-story.html">the story</a></p>
     </blockquote>
-    <p>This article explains what the <code>cave-unicorn</code> module actually does, mechanically, when you run it. Everything here comes from the module's own source code — the functions, the contracts, the CLI commands, and the state machine the system drives. If you want to evaluate whether to build or adapt this for your own system, this is the reference.</p>
     <hr />
-    <h2>The architecture</h2>
-    <p>The <code>cave-unicorn</code> module sits at the end of a content pipeline. Its job is to take a finished blog post and push it: onto the live website, into a social media pack, and then rendered as images. It does this through three independent <strong>CronAutomation organs</strong> that fire on a nightly schedule.</p>
-    <p>The module is structured as a Python package called <code>cave_unicorn</code> (pip-installable). Its internal components:</p>
+    <h2>The system it lives in</h2>
+    <p>cave-unicorn is the <strong>distribution layer</strong> of the SANCREV SDK — an L9 cave-auxiliary library (same layer law as <code>cave-discord</code>) that runs <strong>inside the CAVE runtime</strong> as CronAutomation organs. To understand where it sits, start with the full tower:</p>
+    <pre><code>┌─────────────────────────────────────────────────────────────┐
+    │  L0  LAMAI            — the acting whole: VEC chain + economy loop               │
+    │  L1  NEXUS             — parks, Rangers, wizards, signup                         │
+    │  L2  SANCREV OPERA     — the operated interface: spaces, ledger-room, iframes     │
+    │                    ─── SOVEREIGNTY BOUNDARY (up = strings, down = commands) ───   │
+    │  L3  WORLD             — Matrix engine + WOOM SDK                                 │
+    │  L4  WORK SPINE        — GIINT/TK → missions → goldenize → GEAR → VEC facts     │
+    │  L5  SUBSTRATE         — CartON · dragonbones · treeshell · SOMA · CB            │
+    │  L6  HEAVEN            — agent framework (constitutes agents)                     │
+    │  L7  CAVE              — agent runtime: HTTP services, organs, automations        │
+    │  L8  CODING AGENT      — commodity slot: Claude Code / OM / opencode              │
+    │  L9  SANCREV SDK       — libraries that build sancrev: cave-discord,              │
+    │                           cave-unicorn (here), paia-builder, sanctum             │
+    └─────────────────────────────────────────────────────────────┘
+                        │
+                        │  cave-unicorn's organs
+                        │  (L9 library code) run as
+                        ▼  CronAutomations on L7 CAVE Heart tick
+                     ┌───────────────────────────────────────┐
+                     │  GITHUB PAGES (aisaac site)          │
+                     │  blog/ · frameworks.html · apply.html │
+                     └───────────────────────────────────────┘
+    </code></pre>
+    <p>cave-unicorn is <strong>L9 code</strong>: it is a library that SANCREV coders use to build distribution functionality. Its three CronAutomation organs — <code>fire_site_publish</code>, <code>fire_socials_pack</code>, <code>fire_socials_images</code> — live inside <strong>L7 CAVE</strong> (the runtime that virtualizes the coding-agent slot), registered via the hot-reload automations dir the Heart tick reads. L7 consumes L9; cave-unicorn never imports CAVE back. The seam is <code>cave_seam.py</code>.</p>
+    <hr />
+    <h2>What flows through it</h2>
+    <p>The pipeline is a <strong>three-stage organ chain</strong>, each firing on the nightly Heart tick, driven by property flags on CartON <code>Wiki</code> nodes:</p>
+    <pre><code>02:00  Blog organ (cave.core.publishing.blog_organ_nightly)
+           → produces Blog_Request {status: done, output_path: X.md}
+                  ↓
+    02:37  fire_site_publish  [unicorn_site_publish CronAutomation]
+           → renders X.md → blog/{slug}.html  (post skeleton + markdown → HTML)
+           → inserts an idempotent card into blog/index.html
+           → git add / commit / (push if configured)
+           → flips {site_published: true, site_url, site_published_at}
+           → fires Discord announce (cave_discord)
+                  ↓
+    03:07  fire_socials_pack  [unicorn_socials_pack CronAutomation]
+           → scans {site_published: true, no socials_packed yet}
+           → FRAMEWORK-FIRST GATE: skips if sibling journey_core.json lacks deep_dive_url
+           → dispatches heaven/MiniMax agent → fills journey_core.json + journey_blog.json
+           → module enforces canonical core (overwrites agent-written JSON with authority)
+           → deterministic render: twitter thread · LinkedIn post · Discord copy · image prompts
+           → flips {socials_packed: true, socials_pack_path}
+                  ↓
+    03:37  fire_socials_images  [unicorn_socials_images CronAutomation]
+           → reads {socials_packed: true, no images_rendered yet}
+           → dispatches claude -p agent → excalidraw rendering of hero.png / social-share.png / thumbnail.png
+           → verifies PNG artifacts exist
+           → flips {images_rendered: true, images_dir}
+                  ↓
+           ready-to-post queue: {socials_queue}/{slug}/pack.md + images/
+           (I post manually from the queue for now; direct Twitter/LinkedIn API posting is planned)
+    </code></pre>
+    <p><strong>What arrives at cave-unicorn</strong>: Blog_Request nodes in CartON with <code>status: done</code> and an <code>output_path</code> pointing to a markdown file. The blog markdown contract: first <code>#</code> heading = title; first <code>*...*</code> paragraph = hook/subtitle; the rest is body.</p>
+    <p><strong>What leaves cave-unicorn</strong>: A live HTML post on GitHub Pages (<code>{site_base_url}/blog/{slug}.html</code>), an updated blog index card with bumped count, a pushed git commit, a Discord announcement, a socials pack in the queue directory, and rendered PNG images — each stage updating the CartON node so the next stage knows what to pick up.</p>
+    <p><strong>The never-raises contract</strong>: every <code>fire_*</code> function catches exceptions and writes them to the CartON node rather than raising. The Heart tick never crashes on a bad node.</p>
+    <hr />
+    <h2>What it unlocks</h2>
+    <p><strong>The last-mile is closed.</strong> Before cave-unicorn, the nightly blog organ wrote perfect markdown every night at 02:00 — and that was where the story ended. There was no path from the output directory to a live URL. Reaching <code>sancovp.github.io/aisaac/blog</code> meant manual HTML conversion, hand-editing the post skeleton, committing to GitHub, and pushing. Every single time.</p>
+    <p>Three things become possible now that the distribution pipeline exists:</p>
+    <p><strong>The machine has an audience.</strong> Content that exists in the machine arrives at a reader screen every night without a human in the loop. The system can now say something and mean it — because someone might be listening. This changes what gets built, because now you know someone is watching.</p>
+    <p><strong>The content organ and the business organ are the same machine.</strong> UNICORN is described in the CAVE architecture doc as "the business game of CAVE" — whether the business side works. The blog organ produces; cave-unicorn delivers; the socials organ amplifies. These are three views of one process, not three separate manual workflows.</p>
+    <p><strong>The framework chapter pipeline gates correctly.</strong> The framework-first gate (<code>_framework_ready</code>) prevents the socials organ from packing a blog whose CTA/demo sections have no real links to point at. A journey whose sibling <code>journey_core.json</code> lacks <code>deep_dive_url</code> and <code>plugin_url</code> is held at the socials leg and retried the next night — once the chapter step has wired those links. The pipeline enforces its own completeness contract.</p>
+    <hr />
+    <h2>Run it inside your own system</h2>
+    <p>cave-unicorn is the <strong>reference implementation</strong> of the distribution pipeline organ. Install it and wire it into your CAVE setup.</p>
+    <h3>Install</h3>
+    <pre><code class="language-bash">pip install cave-unicorn
+    </code></pre>
+    <p>Or from source:</p>
+    <pre><code class="language-bash">pip install --no-deps /path/to/cave-unicorn
+    </code></pre>
+    <h3>The CLI verbs</h3>
+    <pre><code class="language-bash"># 0. Set up config (creates unicorn_config.json in the data dir)
+    cave-unicorn init
+
+    # View current config
+    cave-unicorn show
+
+    # Set a config value (JSON types accepted: true, 3, [&quot;a&quot;,&quot;b&quot;])
+    cave-unicorn set push true
+
+    # Publish one blog file directly (no CartON scan)
+    cave-unicorn publish path/to/blog1.md --tags &quot;tool-eng context-eng&quot; --no-push
+
+    # Rewrite internal links so chapter bundles point to live posts
+    cave-unicorn publish path/to/blog2.md \
+      --link &quot;cave-unicorn-the-story.html=cave-unicorn-how-it-works-deep-dive.html&quot;
+
+    # List done-but-unpublished Blog_Request nodes
+    cave-unicorn pending
+
+    # Publish all pending blogs
+    cave-unicorn publish-pending --push
+
+    # Emit the CronAutomation schemas into the hot-reload dir (site + socials + images)
+    cave-unicorn enable-automation --which all --push
+
+    # Check what is waiting for socials
+    cave-unicorn socials-pending
+
+    # Generate socials packs (scan mode or direct)
+    cave-unicorn pack-socials --md-path path/to/blog.md --live-url &quot;https://...&quot;
+
+    # Render images for a pack
+    cave-unicorn render-images --pack-path socials_queue/my-slug/
+    </code></pre>
+    <h3>Config shape</h3>
+    <p>The <code>init</code> command creates a config file with these keys:</p>
+    <pre><code class="language-json">{
+      &quot;site_root&quot;: &quot;/path/to/aisaac-checkout&quot;,
+      &quot;blog_dir&quot;: &quot;blog&quot;,
+      &quot;site_base_url&quot;: &quot;https://sancovp.github.io/aisaac&quot;,
+      &quot;default_tags&quot;: [&quot;framework&quot;],
+      &quot;push&quot;: false,
+      &quot;remote&quot;: &quot;origin&quot;,
+      &quot;branch&quot;: &quot;main&quot;
+    }
+    </code></pre>
+    <h3>The three organs as CronAutomations</h3>
+    <p>When you run <code>cave-unicorn enable-automation --which all</code>, three schemas land in the hot-reload automations dir. CAVE's Heart tick reads them and fires each on its schedule:</p>
     <table>
     <thead>
     <tr>
-    <th>File</th>
-    <th>Role</th>
+    <th>Organ</th>
+    <th>Schedule</th>
+    <th>What it does</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-    <td><code>config.py</code></td>
-    <td>Reads and writes the <code>unicorn_config.json</code> file — the persistent settings the module publishes against (site root path, git remote, default tags, etc.)</td>
+    <td><code>unicorn_site_publish</code></td>
+    <td><code>37 2 * * *</code> (02:37)</td>
+    <td>Blog_Request done → live post + index card + push</td>
     </tr>
     <tr>
-    <td><code>site.py</code></td>
-    <td>The core render-and-publish logic: converts blog markdown to a full HTML post, inserts an index card, commits to git, optionally pushes</td>
+    <td><code>unicorn_socials_pack</code></td>
+    <td><code>7 3 * * *</code> (03:07)</td>
+    <td>live blog → social posts + image prompts</td>
     </tr>
     <tr>
-    <td><code>publish.py</code></td>
-    <td><code>fire_site_publish</code> — the CronAutomation code pointer. Two modes: direct (one file) or scan (CartON Blog_Request nodes done but not site-published)</td>
-    </tr>
-    <tr>
-    <td><code>socials.py</code></td>
-    <td><code>fire_socials_pack</code> — second CronAutomation. Reads site-published blogs, runs a heaven/minimax agent to write Twitter/LinkedIn/Discord posts and image prompts, renders the suite deterministically</td>
-    </tr>
-    <tr>
-    <td><code>images.py</code></td>
-    <td><code>fire_socials_images</code> — third CronAutomation. Runs a <code>claude -p</code> excalidraw agent to render hero, social-share, and thumbnail PNGs from the socials pack</td>
-    </tr>
-    <tr>
-    <td><code>announce.py</code></td>
-    <td>Posts a Discord announcement after a pushed publish, via the <code>cave_discord</code> library (import-if-present)</td>
-    </tr>
-    <tr>
-    <td><code>dispatch.py</code></td>
-    <td>Dispatches the heaven/minimax agent used by the socials pack leg</td>
-    </tr>
-    <tr>
-    <td><code>journey_suite.py</code></td>
-    <td>Deterministic render engine: takes a filled <code>journey_core.json</code> + <code>journey_blog.json</code> and emits <code>blog-aida.md</code> + <code>pack.md</code></td>
-    </tr>
-    <tr>
-    <td><code>cave_seam.py</code></td>
-    <td>CAVE integration layer — emits or registers the CronAutomation schema. Never imports cave at module level</td>
-    </tr>
-    <tr>
-    <td><code>cli.py</code></td>
-    <td>The v1 setup interface: <code>init</code>, <code>show</code>, <code>set</code>, <code>publish</code>, <code>pending</code>, <code>publish-pending</code>, <code>enable-automation</code>, and a few more</td>
+    <td><code>unicorn_socials_images</code></td>
+    <td><code>37 3 * * *</code> (03:37)</td>
+    <td>pack → hero / social-share / thumbnail PNGs</td>
     </tr>
     </tbody>
     </table>
-    <p>The CAVE layer law (stated in <code>cave_seam.py</code>): <code>cave_unicorn</code> is <strong>L9</strong> (a library). CAVE (L7) consumes it, never the reverse. The module never imports <code>cave</code> at module level; it registers via <code>register_with_cave(cave_agent)</code> or <code>emit_schema()</code> to write the automation JSON into the hot-reload directory.</p>
-    <hr />
-    <h2>How it runs</h2>
-    <p>The system runs as three CronAutomations on a nightly schedule:</p>
-    <pre><code>02:00 — blog organ writes Blog_Request nodes with status=done
-             (blog markdown at output_path)
-             ↓
-    02:37 — cave_unicorn.publish.fire_site_publish (scan mode)
-             Blog_Request nodes {status: done, no site_published}
-             → render markdown → write {blog_dir}/{slug}.html
-             → insert card into {blog_dir}/index.html
-             → git add/commit → (push=true) git pull --rebase --autostash + push
-             → flip site_published + site_url + site_published_at on the node
-             → announce to Discord
-             ↓
-    03:07 — cave_unicorn.socials.fire_socials_pack (scan mode)
-             site_published nodes with no socials_packed
-             → framework-first gate: skip if sibling journey_core.json
-               lacks deep_dive_url and plugin_url (mark framework_missing, retry later)
-             → dispatch heaven/minimax agent: fills journey_core.json +
-               journey_blog.json + image-prompts.md
-             → enforce canonical journey_core.json (fill-once: module overwrites
-               any agent-written copy with the canonical version)
-             → render_suite: deterministic blog-aida.md + pack.md
-             → flip socials_packed + socials_pack_path on the node
-             ↓
-    03:37 — cave_unicorn.images.fire_socials_images (scan mode)
-             socials_packed nodes with no images_rendered
-             → run claude -p agent interpreting pack image-prompts.md as excalidraw
-               diagrams, render with the Playwright script, verify PNGs exist
-             → flip images_rendered + images_dir on the node
-             ↓
-    Ready-to-post queue: {socials_queue}/{slug}/pack.md + images/
+    <h3>Connect to your CAVE agent directly (programmatic)</h3>
+    <pre><code class="language-python">from cave_unicorn import cave_seam
+
+    # Register on a live CAVEAgent (the sancrev boot path)
+    cave_seam.register_with_cave(cave_agent)
+
+    # Or emit the schema straight to the hot-reload dir
+    cave_seam.emit_schema()  # site publish
+    cave_seam.emit_spec(cave_seam.build_socials_pack_automation())
+    cave_seam.emit_spec(cave_seam.build_socials_images_automation())
     </code></pre>
-    <p>Every automation has the <strong>never-raises contract</strong>: failures are captured in the return dict and on the CartON node, never thrown. This is because they run on the Heart tick — a crash would silently stop the pipeline.</p>
-    <p>Each automation also runs in <strong>direct mode</strong>: pass <code>md_path</code> or <code>pack_path</code> as a kwarg and it processes one file without touching CartON. This is the CLI path and the escape hatch for manual intervention.</p>
     <hr />
-    <h2>Where things live</h2>
-    <p>The public repo at <code>github.com/sancovp/cave-unicorn</code> has this structure (repo-relative paths):</p>
-    <pre><code>cave-unicorn/
-    ├── README.md                          ← module overview
-    ├── pyproject.toml                    ← package metadata
-    ├── cave_unicorn/                     ← the main package
-    │   ├── __init__.py
-    │   ├── __main__.py                   ← python3 -m cave_unicorn entrypoint
-    │   ├── cli.py                        ← all CLI commands
-    │   ├── config.py                     ← unicorn_config.json read/write
-    │   ├── site.py                       ← render_post, insert_card, publish_file
-    │   ├── publish.py                    ← fire_site_publish (automation entry)
-    │   ├── socials.py                    ← fire_socials_pack (automation entry)
-    │   ├── images.py                     ← fire_socials_images (automation entry)
-    │   ├── announce.py                   ← Discord announce after push
-    │   ├── dispatch.py                   ← heaven/minimax agent dispatch
-    │   ├── journey_suite.py              ← deterministic suite renderer
-    │   └── cave_seam.py                  ← CAVE automation registration
-    └── tests/
-        └── test_unicorn.py               ← 52 unit tests (render, split, index, config, seam, CLI)
-    </code></pre>
-    <blockquote>
-    <p><strong>Note on paths:</strong> Container-internal absolute paths in the source (e.g., default config values, environment variable defaults) are generalized to logical module paths in this article. The actual defaults reference container-internal directories.</p>
-    </blockquote>
-    <p>The <code>unicorn_config.json</code> file (created by <code>cave-unicorn init</code>) holds the target site settings. Its keys: <code>site_root</code>, <code>blog_dir</code>, <code>site_base_url</code>, <code>remote</code>, <code>branch</code>, <code>push</code>, <code>default_tags</code>, <code>discord_announce</code>, <code>discord_channel</code>.</p>
-    <hr />
-    <h2>The state machine</h2>
-    <p>Each blog post is tracked as a <strong>CartON Wiki node</strong> (a <code>Blog_Request</code> concept). The system drives it through a series of states by setting properties on the node:</p>
-    <pre><code>status: done               (set by the blog organ — the input condition)
-        ↓ [fire_site_publish scan]
-    site_published: true       ← blog is on the live site
-    site_url: &lt;URL&gt;           ← the live post URL
-    site_published_at: &lt;ISO&gt;   ← timestamp
-        ↓ [fire_socials_pack scan — gated]
-    framework_missing: true     ← set when sibling journey_core lacks deep_dive_url/plugin_url
-                                 (blocks dispatch; cleared when the links are wired in later)
-        ↓ [pack_one succeeds]
-    socials_packed: true
-    socials_pack_path: &lt;path&gt;   ← path to pack.md in the socials queue
-    socials_packed_at: &lt;ISO&gt;
-        ↓ [fire_socials_images scan]
-    images_rendered: true
-    images_dir: &lt;path&gt;         ← path to the images/ directory (hero.png, social-share.png, thumbnail.png)
-    images_rendered_at: &lt;ISO&gt;
-    </code></pre>
-    <p>Error states are written to the same nodes rather than raised:
-    - <code>site_publish_error</code> — written by <code>fire_site_publish</code> when a publish fails
-    - <code>socials_pack_error</code> — written by <code>fire_socials_pack</code> when a pack fails
-    - <code>images_error</code> — written by <code>fire_socials_images</code> when rendering fails</p>
-    <p>The three automation scanners skip nodes that already have their output property set. A failed node will be retried on the next nightly scan once the error is resolved.</p>
-    <hr />
-    <h2>The invariants</h2>
-    <p>These are the hard rules the module enforces in code — not suggestions.</p>
-    <p><strong>Never-raises contract.</strong> Every <code>fire_*</code> automation catches exceptions and writes error strings to the CartON node's error property. A failure never crashes the Heart tick or blocks the rest of the queue.</p>
-    <p><strong>Fail-loud git.</strong> <code>publish_file</code> in <code>site.py</code> runs git commands via <code>_git()</code>, which raises <code>RuntimeError</code> loudly if any git command fails. There are no silent fallbacks; a failed <code>add/commit/pull/push</code> surfaces immediately and is written to <code>site_publish_error</code> on the node.</p>
-    <p><strong>Framework-first gate in socials.</strong> <code>fire_socials_pack</code> reads the sibling <code>journey_core.json</code> file next to the blog markdown. If neither <code>deep_dive_url</code> nor <code>plugin_url</code> is present, the node is marked <code>framework_missing: true</code> and skipped. This prevents packing a blog whose CTA/demo links point nowhere. The gate is cleared automatically on a subsequent scan once those fields are populated by the chapter pipeline.</p>
-    <p><strong>Canonical core enforced on disk.</strong> When a canonical <code>journey_core.json</code> already exists on disk (from a prior fill), the socials pack's <code>_enforce_canonical_core</code> function overwrites whatever the heaven/minimax agent wrote with the canonical content before the suite renderer runs. The agent's output is used for its self-correction loop only; the module is the authority on the canonical JSON. This prevents a repeated bug where the agent retyped the core from memory and corrupted nine fields.</p>
-    <p><strong>Blog markdown contract.</strong> <code>site.py</code>'s <code>split_front</code> function parses the blog markdown with two hard rules: the first <code>#</code> heading line is the title, and the first non-empty block wrapped in <code>*...*</code> or <code>**...**</code> is the hook/subtitle. Everything else is the body. A markdown file without a <code>#</code> title heading raises <code>ValueError</code> immediately — it cannot silently publish as untitled.</p>
-    <p><strong>Idempotent index card insertion.</strong> <code>insert_card</code> in <code>site.py</code> handles re-publish semantics: if a card with the same <code>href</code> already exists, it replaces the old card in place (status <code>"updated"</code>) without bumping the post count. An identical card returns unchanged (<code>"already_indexed"</code>). A newly inserted card goes to the top of the card grid and the count is incremented.</p>
-    <p><strong>Layer law.</strong> <code>cave_unicorn</code> never imports <code>cave</code> at module level. The CAVE seam is accessed through <code>cave_seam.register_with_cave(cave_agent)</code> (live agent path) or <code>cave_seam.emit_schema()</code> (writes automation JSON to the hot-reload directory for the Heart tick to pick up). Both paths are non-blocking — if cave is absent, <code>register_with_cave</code> returns <code>False</code> and <code>emit_schema</code> writes the JSON file directly.</p>
-    <p><strong>Import-if-present throughout.</strong> <code>cave_discord</code> (for Discord announces), <code>carton_mcp</code> (for CartON access), and <code>heaven_framework</code> (for the heaven/minimax dispatch) are all imported lazily inside functions. If any is absent, the module logs the error and continues with a degraded but non-crashing result.</p>
-    <hr />
-    <p><em>Source for this article: <code>cave_unicorn</code> module source — <code>README.md</code>, <code>site.py</code>, <code>publish.py</code>, <code>socials.py</code>, <code>images.py</code>, <code>cave_seam.py</code>, <code>cli.py</code>, <code>config.py</code>, <code>announce.py</code>, <code>dispatch.py</code>, <code>journey_suite.py</code>, and the 52-test suite at <code>tests/test_unicorn.py</code>. No doc(m) exists for this module; all mechanical truth lives in the source.</em></p>
+    <p><em>cave-unicorn public repo: <a href="https://github.com/sancovp/cave-unicorn">github.com/sancovp/cave-unicorn</a></em></p>
   </article>
 
   <!-- Blog CTA -->
