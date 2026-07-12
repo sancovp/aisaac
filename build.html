@@ -147,6 +147,10 @@
   .offer h2{margin-bottom:10px} .offer .price{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:22px 0}
   .offer .p{background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:16px 24px;min-width:190px}
   .offer .p .k{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)} .offer .p .v{font:800 20px var(--sys);margin-top:5px}
+  .offer .guar{margin:24px auto 0;max-width:560px;background:var(--good-dim);border:1px solid rgba(74,222,128,.4);border-radius:14px;padding:18px 20px;text-align:left;display:flex;gap:14px;align-items:flex-start}
+  .offer .guar .sh{color:var(--good);font:700 20px var(--sys);line-height:1.2;flex:none}
+  .offer .guar h3{font:700 16px var(--sys);margin:0 0 6px;color:var(--txt)} .offer .guar p{font:14px/1.6 var(--sys);margin:0;color:var(--dim)}
+  .offer .scar{margin:16px auto 0;font:12px var(--mono);letter-spacing:.03em;color:var(--amber);max-width:520px}
   .finale{text-align:center;padding:86px 24px 40px}
   .finale h2{max-width:640px;margin:0 auto 16px} .finale p.big{margin:0 auto 30px}
   footer{border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--faint);font:12px var(--mono)}
@@ -288,14 +292,22 @@
 
   <section class="sec" id="cta">
     <div class="offer">
-      <div class="eyebrow" style="color:var(--amber)">get started</div>
-      <h2>Get your AI company stood up.</h2>
-      <p class="big" style="margin:0 auto;color:var(--dim)">On a 15-minute call we run a live stand-up on <em>your</em> business — and if it fits, we build yours. It runs on your Claude Code.</p>
+      <div class="eyebrow" style="color:var(--amber)">the 15-minute stand-up</div>
+      <h2>Get your AI company stood up — live, on the call.</h2>
+      <p class="big" style="margin:0 auto;color:var(--dim)">A minute ago you didn't read a pitch — you <em>ran</em> one. On a 15-minute call we do exactly that on <em>your</em> business: stand up a real company on your own Claude Code while you watch. If it fits, you keep it running.</p>
       <div class="price">
         <div class="p"><div class="k">Install</div><div class="v">one-time setup</div></div>
         <div class="p"><div class="k">Then</div><div class="v">monthly hosting + updates</div></div>
       </div>
-      <div class="row"><a class="btn main" href="apply.html">Book the 15-minute stand-up</a></div>
+      <div class="guar">
+        <span class="sh">✓</span>
+        <div>
+          <h3>Leave the call with a company running — or the setup's free.</h3>
+          <p>We build it with you, live. If you don't walk away with a working company on your own Claude Code, you pay nothing for setup. The engine is open source and it runs on <b>your</b> account — never routed through ours.</p>
+        </div>
+      </div>
+      <div class="row" style="margin-top:22px"><a class="btn main" href="apply.html">Book the 15-minute stand-up</a></div>
+      <div class="scar">We build each one by hand — only a handful of stand-up calls open each week.</div>
       <p style="margin:18px auto 0;font:14px/1.6 var(--sys);color:var(--faint);max-width:520px">Prefer to run it yourself? A free base is on <a href="https://github.com/sancovp/sanctuary-revolution-alpha" style="color:var(--blue);text-decoration:none">GitHub</a> — or get the full build included with the <a href="join.html" style="color:var(--blue);text-decoration:none">community</a>.</p>
     </div>
   </section>
