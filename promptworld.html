@@ -68,18 +68,18 @@
       <a href="#how" class="pw-cta ghost">How it works</a>
     </div>
     <div class="pw-ladder">
-      <b>component</b> &rarr; <b>AIOS</b> &rarr; <b>framework</b> &rarr; <span class="fold">fold&nbsp;into&nbsp;the&nbsp;nomicon</span> &rarr; <b>app</b>
+      <b>component</b> &rarr; <b>AIOS</b> &rarr; <b>framework</b> &rarr; <span class="fold">fold&nbsp;into&nbsp;the&nbsp;skill&nbsp;library</span> &rarr; <b>app</b>
     </div>
   </section>
 
-  <!-- THE INNOVATION: the nomicon -->
-  <section class="pw" id="nomicon">
+  <!-- THE INNOVATION: the skill library -->
+  <section class="pw" id="skill-library">
     <h2>The innovation: an app that knows how it was built</h2>
     <p class="lede">
-      PromptWorld is built over a <strong>nomicon</strong> — a documentation-and-development operating
-      system (doc-mirror) that every agent in the app carries. So PromptWorld can <strong>inspect its
+      PromptWorld is built over a <strong>skill library</strong> — a documentation-and-development operating
+      system that every agent in the app carries. So PromptWorld can <strong>inspect its
       own structure</strong> and explain, as a living example, exactly how an app like it is made. The
-      nomicon folds on itself: the thing that builds components is itself a component you can read.
+      skill library folds on itself: the thing that builds components is itself a component you can read.
     </p>
     <div class="pw-steps">
       <div class="pw-step">
@@ -89,7 +89,7 @@
         specialist is itself a directory that codes an agent, and works only in its own workspace.</p>
       </div>
       <div class="pw-step">
-        <div class="n">THE NOMICON LADDER</div>
+        <div class="n">THE SKILL-LIBRARY LADDER</div>
         <h3>Component to app, foldable</h3>
         <p>The rungs <em>component &rarr; AIOS &rarr; framework &rarr; fold &rarr; app</em> exist as real
         skills and CLIs every agent loads. Ask the CEO "how were you built?" and it reads its own dirs to
@@ -120,16 +120,15 @@
     <h2>Run it</h2>
     <p class="lede">PromptWorld ships as a Docker image. Build it, boot it with your provider key, open it.</p>
     <div class="pw-code">
-<span class="c"># build the image (stages the app + the doc-mirror plugin + cave + sdna)</span><br>
+<span class="c"># build the image (stages the app and its plugins + cave)</span><br>
 bash deploy/build.sh <span class="g">build</span><br>
 <br>
-<span class="c"># boot on :3858 with the model key the agents run on</span><br>
-export MINIMAX_API_KEY=...<br>
+<span class="c"># boot on :3858 with your model provider key set in the environment</span><br>
 bash deploy/build.sh <span class="g">boot</span> 3858<br>
 <br>
 <span class="c"># open http://localhost:3858 — chat, workbench, dashboards</span>
     </div>
-    <p class="pw-mark">Every agent loads the doc-mirror plugin — in the SDK turns and in the embedded terminal alike.</p>
+    <p class="pw-mark">Every agent loads the same documentation plugin — in the SDK turns and in the embedded terminal alike.</p>
   </section>
 
   <!-- FINAL CTA -->
