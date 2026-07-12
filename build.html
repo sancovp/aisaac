@@ -1,204 +1,472 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobworld — TWI</title>
-  <style>
-    .buy-modal { display:none; position:fixed; inset:0; z-index:10000; background:rgba(4,4,14,0.92); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); animation:buy-in .25s ease-out; }
-    .buy-modal.open { display:flex; align-items:center; justify-content:center; }
-    @keyframes buy-in { from{opacity:0} to{opacity:1} }
-    .buy-box { max-width:440px; width:100%; margin:2rem; padding:2.5rem; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-lg); position:relative; }
-    .buy-close { position:absolute; top:1rem; right:1.2rem; background:none; border:none; color:var(--text-3); font-size:1.5rem; cursor:pointer; }
-    .buy-close:hover { color:var(--text-1); }
-    .buy-box h3 { font-size:1.15rem; margin-bottom:0.5rem; }
-    .buy-box p { font-size:0.85rem; color:var(--text-2); line-height:1.7; margin-bottom:1rem; }
-    .buy-opt { display:block; width:100%; text-align:left; padding:1rem 1.2rem; margin-bottom:0.8rem; background:rgba(255,255,255,0.025); border:1px solid var(--glass-border); border-radius:var(--r-md); text-decoration:none; color:var(--text-1); transition:all .2s; }
-    .buy-opt:hover { border-color:rgba(125,211,252,0.25); transform:translateY(-1px); }
-    .buy-opt.primary { border-color:rgba(125,211,252,0.12); background:rgba(125,211,252,0.04); }
-    .buy-opt .bo-badge { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:0.3rem; display:block; }
-    .buy-opt h4 { font-size:0.95rem; margin-bottom:0.2rem; }
-    .buy-opt p { font-size:0.75rem; color:var(--text-2); margin:0; }
-    .template-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:2rem; }
-    .template-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--r-md); padding:1.3rem; transition:all .2s; }
-    .template-card:hover { border-color:rgba(125,211,252,0.2); transform:translateY(-1px); }
-    .template-card h4 { font-size:0.9rem; margin-bottom:0.3rem; }
-    .template-card p { font-size:0.75rem; color:var(--text-2); line-height:1.6; }
-    .template-card .tc-tag { font-family:var(--mono); font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:0.5rem; display:block; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jobworld — put your business on autopilot | Isaac TWI</title>
+<style>
+  :root{
+    --ink:#0A0D12; --surface:#12161E; --surface2:#161C26; --line:#232B38; --line2:#2E3949;
+    --txt:#E9EDF4; --dim:#93A2B8; --faint:#59637A;
+    --amber:#F5B84A; --amber-hi:#FFCE6B; --amber-dim:rgba(245,184,74,.13);
+    --good:#4ADE80; --good-dim:rgba(74,222,128,.12); --bad:#F87171; --blue:#7DBEFF;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sys:system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--txt);font:16px/1.65 var(--sys)}
+  button{font:inherit;cursor:pointer}
+  a{color:inherit}
+  #bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.85}
+
+  /* top bar */
+  #bar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:14px;padding:0 20px;
+       font:12px var(--mono);color:var(--faint);z-index:60;border-bottom:1px solid rgba(35,43,56,.6);
+       background:rgba(10,13,18,.78);backdrop-filter:blur(8px)}
+  #bar .logo{color:var(--amber);letter-spacing:.22em;font-weight:700;font-size:13px;text-decoration:none}
+  #phase{flex:1;color:var(--dim)}
+  #bar .navlink{color:var(--dim);text-decoration:none;font:13px var(--sys)}
+  #bar .navlink:hover{color:var(--amber)}
+  #bar .navcta{background:var(--amber);color:#141008;border:none;border-radius:8px;padding:7px 15px;font:700 12px var(--sys);text-decoration:none;display:inline-block}
+  #bar .navcta:hover{background:var(--amber-hi)}
+  @media(max-width:620px){#bar .navlink{display:none}#phase{font-size:11px}}
+
+  /* ===== HERO (the interactive hook) ===== */
+  #hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+  .layer{position:absolute;inset:52px 0 0 0;z-index:2;display:none}
+  .layer.on{display:block}
+  #ask.on{display:flex;align-items:center;justify-content:center;padding:5vh 26px}
+  #play.on{display:grid;grid-template-rows:1fr auto}
+  #heroCTA.on{display:flex;align-items:center;justify-content:center;padding:6vh 26px}
+
+  .askbox{width:min(680px,92%)}
+  .q{font:15px var(--mono);color:var(--amber);min-height:24px;white-space:pre-wrap}
+  .q .caret{display:inline-block;width:9px;height:18px;background:var(--amber);vertical-align:-3px;animation:blink 1s steps(1) infinite;margin-left:2px}
+  @keyframes blink{50%{opacity:0}}
+  .askin{width:100%;margin-top:18px;background:transparent;border:0;border-bottom:1px solid var(--line2);
+         color:var(--txt);font:clamp(19px,3.2vw,28px)/1.35 var(--serif);padding:8px 2px;outline:none}
+  .askin:focus{border-bottom-color:var(--amber)}
+  .subrow{margin-top:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font:12px var(--mono);color:var(--faint)}
+  .subrow kbd{border:1px solid var(--line2);border-radius:4px;padding:1px 6px;color:var(--dim)}
+  .idk{background:none;border:1px dashed var(--line2);color:var(--dim);border-radius:8px;padding:6px 13px;font:12px var(--mono)}
+  .idk:hover{border-color:var(--amber);color:var(--amber)}
+  .egs{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+  .eg{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 13px;font:12px var(--sys);color:var(--dim)}
+  .eg:hover{border-color:var(--amber);color:var(--amber)}
+
+  #stagewrap{position:relative;overflow:hidden}
+  #floor{position:absolute;left:0;right:0;bottom:24px;display:flex;justify-content:center;align-items:flex-end;gap:34px;padding:0 20px;flex-wrap:wrap}
+  .agent{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transform:translateY(14px) scale(.9);
+         transition:opacity .5s,transform .5s cubic-bezier(.2,1.5,.4,1)}
+  .agent.in{opacity:1;transform:none} .agent.dim{opacity:.4}
+  .agent .lab{font:11px var(--mono);letter-spacing:.03em;color:var(--faint);text-transform:uppercase}
+  .agent.ceo .lab{color:var(--amber-hi)}
+  .spr .hd,.spr .bd{fill:var(--surface2);stroke:var(--line2);stroke-width:1.7;transition:stroke .3s}
+  .spr .eye{fill:var(--faint);transition:fill .3s} .spr .sh{fill:rgba(0,0,0,.45)}
+  .agent.ceo .spr .hd,.agent.ceo .spr .bd{stroke:var(--amber-hi)} .agent.ceo .spr .eye{fill:var(--amber-hi)}
+  .agent.act .spr .hd,.agent.act .spr .bd{stroke:var(--amber)} .agent.act .spr .eye{fill:var(--amber)}
+  .agent.act .spr{animation:bob .8s ease-in-out infinite} .agent.think .spr{animation:bob 1.5s ease-in-out infinite}
+  .agent.fail .spr .hd,.agent.fail .spr .bd{stroke:var(--bad)} .agent.fail .spr .eye{fill:var(--bad)} .agent.fail .spr{animation:shake .38s 2}
+  .agent.pass .spr .hd,.agent.pass .spr .bd{stroke:var(--good)} .agent.pass .spr .eye{fill:var(--good)}
+  @keyframes bob{50%{transform:translateY(-7px)}} @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .bubble{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--surface2);
+          border:1px solid var(--line2);border-radius:12px;padding:9px 14px;font:14px/1.35 var(--sys);color:var(--txt);white-space:nowrap;
+          max-width:280px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+  .bubble.on{opacity:1;transform:translateX(-50%)}
+  .bubble::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--line2)}
+  .agent.ceo .bubble{border-color:rgba(245,184,74,.5)} .agent.ceo .bubble::after{border-top-color:rgba(245,184,74,.5)}
+  .agent.fail .bubble{border-color:rgba(248,113,113,.5)} .agent.fail .bubble::after{border-top-color:rgba(248,113,113,.5)}
+  .agent.pass .bubble{border-color:rgba(74,222,128,.5)} .agent.pass .bubble::after{border-top-color:rgba(74,222,128,.5)}
+  #props{position:absolute;top:26px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px}
+  .prop{opacity:0;transform:translateY(-8px);transition:opacity .45s,transform .45s;max-width:min(560px,92%);width:100%}
+  .prop.on{opacity:1;transform:none}
+  .chiprow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .chip{font:12px var(--sys);border:1px solid var(--line2);border-radius:8px;padding:6px 12px;background:var(--surface);color:var(--dim);opacity:0;transform:translateY(5px);transition:all .3s}
+  .chip.on{opacity:1;transform:none}
+  .chip .t{font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-left:8px;padding:1px 6px;border-radius:4px}
+  .chip .t.auto{color:var(--good);background:var(--good-dim)} .chip .t.human{color:var(--blue)} .chip .t.ext{color:var(--amber)}
+  .verdict{display:flex;gap:14px;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:12px 18px;position:relative}
+  .verdict.pop{animation:vglow 2s ease-out} @keyframes vglow{0%,100%{box-shadow:0 0 0 rgba(245,184,74,0)}35%{box-shadow:0 0 34px rgba(245,184,74,.34)}}
+  .verdict .big{font:700 30px var(--sys);color:var(--good);font-variant-numeric:tabular-nums}
+  .verdict .vt{font:13px/1.4 var(--sys);color:var(--dim);text-align:left} .verdict .vt b{color:var(--txt)}
+  .glint{position:absolute;font-size:15px;color:var(--amber-hi);opacity:0;pointer-events:none;text-shadow:0 0 9px rgba(245,184,74,.75)}
+  .glint.go{animation:twinkle 2s ease-in-out} @keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}18%{opacity:1;transform:scale(1.15)}42%{opacity:.35}66%{opacity:1;transform:scale(1)}}
+  .dashp{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .mcard{background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:12px 16px;min-width:120px;text-align:center}
+  .mcard .k{font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)} .mcard .v{font:700 24px var(--sys);margin-top:4px;font-variant-numeric:tabular-nums}
+  .sopp{background:var(--surface);border:1px solid rgba(245,184,74,.4);border-radius:12px;padding:14px 18px;text-align:center}
+  .sopp .badge{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)} .sopp .nm{font:600 17px var(--sys);margin-top:6px} .sopp .sub{font:12px var(--sys);color:var(--good);margin-top:6px}
+  #caption{padding:18px 26px 24px;text-align:center;min-height:88px;display:flex;align-items:center;justify-content:center}
+  #captiontext{font:clamp(17px,2.5vw,23px)/1.5 var(--serif);color:var(--txt);max-width:720px;opacity:0;transition:opacity .4s;text-wrap:balance}
+  #captiontext.on{opacity:1} #captiontext b{color:var(--amber-hi)}
+
+  /* hero CTA (end of the play) */
+  .heroend{max-width:680px;text-align:center}
+  .heroend h1{font:800 clamp(30px,6vw,52px)/1.03 var(--sys);letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
+  .heroend h1 .g{background:linear-gradient(90deg,#7dd3fc,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .heroend p{font:clamp(17px,2.4vw,21px)/1.55 var(--sys);color:var(--dim);margin:0 auto 30px;max-width:560px}
+  .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .btn{text-decoration:none;border-radius:11px;padding:15px 26px;font:700 15px var(--sys);display:inline-block}
+  .btn.main{background:var(--amber);color:#141008} .btn.main:hover{background:var(--amber-hi)}
+  .btn.ghost{border:1px solid var(--line2);color:var(--txt)} .btn.ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .scrollcue{margin-top:34px;font:12px var(--mono);color:var(--faint);letter-spacing:.08em}
+  .scrollcue a{color:var(--faint);text-decoration:none} .scrollcue a:hover{color:var(--amber)}
+
+  /* ===== FUNNEL (the actual sell) ===== */
+  main{position:relative;z-index:1;background:var(--ink)}
+  section.sec{max-width:920px;margin:0 auto;padding:82px 24px;border-top:1px solid var(--line)}
+  .eyebrow{font:11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+  h2{font:800 clamp(26px,4.4vw,40px)/1.08 var(--sys);letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
+  .sec p.big{font:clamp(18px,2.5vw,22px)/1.6 var(--sys);color:var(--dim);max-width:640px}
+  .sec p.big b{color:var(--txt);font-weight:600}
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+  @media(max-width:760px){.steps3{grid-template-columns:1fr}}
+  .stepc{background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:22px}
+  .stepc .n{font:700 13px var(--mono);color:var(--amber);letter-spacing:.1em}
+  .stepc h3{font:700 18px var(--sys);margin:10px 0 8px} .stepc p{margin:0;color:var(--dim);font-size:15px}
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+  @media(max-width:760px){.feats{grid-template-columns:1fr}}
+  .feat{background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:20px 22px}
+  .feat h3{font:700 17px var(--sys);margin:0 0 7px} .feat p{margin:0;color:var(--dim);font-size:14.5px}
+  .feat.hl{border-color:rgba(245,184,74,.4)}
+  .tpls{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+  @media(max-width:760px){.tpls{grid-template-columns:1fr}}
+  .tpl{background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:20px 22px;position:relative}
+  .tpl h3{font:700 16px var(--sys);margin:0 0 7px} .tpl p{margin:0;color:var(--dim);font-size:14px}
+  .tpl.soon{opacity:.62} .tpl .tag2{position:absolute;top:14px;right:14px;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+  .getlist{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-direction:column;gap:12px;max-width:640px}
+  .getlist li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--dim)}
+  .getlist li b{color:var(--txt);font-weight:600} .getlist .ck{color:var(--good);flex:none;font-weight:700}
+  .faq{margin-top:26px;display:flex;flex-direction:column;gap:2px;max-width:720px}
+  details{border-top:1px solid var(--line);padding:16px 2px} details summary{font:600 17px var(--sys);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  details summary::-webkit-details-marker{display:none} details summary::after{content:"+";color:var(--amber);font-weight:700}
+  details[open] summary::after{content:"–"} details p{color:var(--dim);margin:12px 0 0;font-size:15.5px;max-width:640px}
+  .offer{background:linear-gradient(180deg,rgba(245,184,74,.06),transparent);border:1px solid rgba(245,184,74,.3);border-radius:18px;padding:34px;text-align:center;margin-top:8px}
+  .offer h2{margin-bottom:10px} .offer .price{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:22px 0}
+  .offer .p{background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:16px 24px;min-width:190px}
+  .offer .p .k{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)} .offer .p .v{font:800 20px var(--sys);margin-top:5px}
+  .finale{text-align:center;padding:86px 24px 40px}
+  .finale h2{max-width:640px;margin:0 auto 16px} .finale p.big{margin:0 auto 30px}
+  footer{border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--faint);font:12px var(--mono)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto}}
+</style>
 </head>
 <body>
 
-  <div class="header">
-    <a href="index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="learn.html">Learn</a>
-      <a href="build.html">Jobworld</a>
-      <a href="transform.html">Services</a>
-      <a href="blog/">Blog</a>
-      <a href="apply.html" class="nav-cta">Book a Call</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div id="bar">
+  <a class="logo" href="index.html">ISAAC · JOBWORLD</a>
+  <span id="phase">an AI company you can watch work</span>
+  <a class="navlink" href="transform.html">Services</a>
+  <a class="navlink" href="learn.html">Learn</a>
+  <a class="navlink" href="blog/">Blog</a>
+  <a class="navcta" href="apply.html">Book a call</a>
+</div>
+
+<!-- ================= HERO: the interactive hook ================= -->
+<div id="hero">
+  <!-- ASK -->
+  <div class="layer on" id="ask">
+    <div class="askbox">
+      <div class="q" id="askq"><span class="caret"></span></div>
+      <input class="askin" id="askin" autocomplete="off" spellcheck="false" hidden aria-label="The one thing your business needs done repeatedly">
+      <div class="subrow" id="asksub" hidden>
+        <span><kbd>Enter</kbd> to watch it get done</span>
+        <button class="idk" onclick="start('Book qualified sales calls',true)">not sure yet →</button>
+      </div>
+      <div class="egs" id="egs" hidden></div>
     </div>
   </div>
-
-  <!-- HERO -->
-  <section style="padding-top:6rem;">
-    <div style="max-width:56ch;">
-      <div class="tag">Jobworld</div>
-      <h1>Your business factory.<br><span>Compile. Deploy. Run.</span></h1>
-      <p class="sub">
-        Customize Jobworld to reflect your business — or load a templated, proven autonomous business model and start a new one. Each template is a complete AI-operated business you own.
-      </p>
-      <p class="sub" style="margin-top:0;">
-        Claude Code compatible. Powered by <a href="opera.html" style="color:var(--mercury-blue);">SANCREV OPERA</a> (open source engine). Jobworld is the commercial product that runs on it.
-      </p>
-      <button class="cta-big" id="buy-btn">Get Jobworld</button>
-    </div>
-  </section>
-
-  <!-- TEMPLATES -->
-  <section class="dark">
-    <div class="tag">Business templates</div>
-    <h2>Load a proven model. Start running.</h2>
-    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;max-width:56ch;">Each template is a pre-configured autonomous business. Voice agents, content machines, lead gen — deployed and running. You own it. You keep it.</p>
-
-    <div class="template-grid">
-      <div class="template-card">
-        <span class="tc-tag">Template</span>
-        <h4>Voice Agent Business</h4>
-        <p>Vapi voice agent + lead gen + closer script + follow-up automation. The first business most people should start.</p>
-      </div>
-      <div class="template-card">
-        <span class="tc-tag">Template</span>
-        <h4>Content Agency</h4>
-        <p>Content machine + social posting + client management. Produce 400 pieces/week for multiple clients.</p>
-      </div>
-      <div class="template-card">
-        <span class="tc-tag">Template</span>
-        <h4>Lead Gen Agency</h4>
-        <p>Hyperpersonalized cold outreach + social scraping + qualification. Find and warm prospects at scale.</p>
-      </div>
-      <div class="template-card">
-        <span class="tc-tag">Template</span>
-        <h4>Ad Agency</h4>
-        <p>Ad copy generation + Creatify video ads + pixel tracking + angle testing. Run campaigns that optimize themselves.</p>
-      </div>
-      <div class="template-card">
-        <span class="tc-tag">Coming</span>
-        <h4>Course Platform</h4>
-        <p>Claude Code config that IS the course. Students learn by talking to it while it builds their business.</p>
-      </div>
-      <div class="template-card">
-        <span class="tc-tag">Coming</span>
-        <h4>Custom Template</h4>
-        <p>Describe your business model. Jobworld compiles it into agents, automations, and dashboards.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT'S INSIDE -->
-  <section>
-    <div class="tag">What you get</div>
-    <h2>Everything a company needs. No employees required.</h2>
-
-    <div class="menu-grid">
-      <div class="menu-item">
-        <h3>Agent Departments</h3>
-        <p>Content, Growth, Revenue, Research, Engineering. Each agent knows its job and executes without babysitting.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Self-Interpreting Skills</h3>
-        <p>27+ frameworks baked in. The system understands its own business model and can explain, adapt, and improve itself.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Automation Library</h3>
-        <p>Lead response, content pipelines, follow-ups, scheduling. Pre-built automations you deploy in minutes.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Natural Language Control</h3>
-        <p>Tell the system what you want in plain English. It adjusts. No configuration screens.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Self-Monitoring</h3>
-        <p>The system tracks its own metrics. Detects when things aren't working. Adjusts. A system that watches itself.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Daily Reviews</h3>
-        <p>Morning briefing from your business. What happened, what's due, what needs your attention. Respond and it acts.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ARCHITECTURE -->
-  <section class="dark">
-    <div class="tag">Under the hood</div>
-    <h2>Open engine. Commercial product.</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;">
-      <div class="menu-item">
-        <h3>SANCREV OPERA</h3>
-        <p>The open source engine. CAVE agent runtime, CartON knowledge graph, STARSYSTEM evolution. Inspect it. Fork it.</p>
-        <a href="opera.html" style="color:var(--mercury-blue);font-size:0.75rem;text-decoration:none;margin-top:0.5rem;display:block;">Learn more &rarr;</a>
-      </div>
-      <div class="menu-item">
-        <h3>GNOSYS</h3>
-        <p>A Personal AI Infrastructure Agent (PAIA) that runs its own business on Jobworld. It builds skills, produces content, manages operations, and teaches you how to make your own. The first AI that has its own funnel — for humans and other agents.</p>
-        <a href="gnosys.html" style="color:var(--mercury-blue);font-size:0.75rem;text-decoration:none;margin-top:0.5rem;display:block;">Meet GNOSYS &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="final-cta">
-    <div class="tag">Start here</div>
-    <h2>Your business factory is ready.</h2>
-    <p>Load a template or customize your own. Every template is a proven, autonomous business model.</p>
-    <button class="cta-big" style="margin-top:2rem;" id="buy-btn-2">Get Jobworld</button>
-  </section>
-
-  <div class="footer">
-    <span>&copy; 2026 Isaac &mdash; TWI</span>
-    <span style="color:var(--text-3);font-style:italic;">Compile a business. Own it forever.</span>
+  <!-- PLAY -->
+  <div class="layer" id="play">
+    <div id="stagewrap"><div id="props"></div><div id="floor"></div></div>
+    <div id="caption"><div id="captiontext"></div></div>
   </div>
-
-  <!-- BUY POPUP -->
-  <div class="buy-modal" id="buy-modal">
-    <div class="buy-box">
-      <button class="buy-close" id="buy-close">&times;</button>
-      <h3>Get Jobworld</h3>
-      <p>Jobworld Premium includes all templates, all frameworks, self-interpreting skills, and daily reviews.</p>
-
-      <a href="join.html" class="buy-opt primary">
-        <span class="bo-badge">Recommended</span>
-        <h4>Join the community</h4>
-        <p>Jobworld Premium is included free with your TWI community membership on Patreon. Plus all frameworks, Discord access, and updates.</p>
-      </a>
-
-      <a href="#" class="buy-opt" id="buy-onetime">
-        <h4>One-time purchase</h4>
-        <p>Get Jobworld Premium without a subscription. Full price, yours forever, no community access.</p>
-      </a>
-
-      <p style="font-size:0.7rem;color:var(--text-3);margin-top:1rem;text-align:center;">
-        Free version available on <a href="https://github.com/sancovp/sanctuary-revolution-alpha" style="color:var(--mercury-blue);text-decoration:none;">GitHub</a> — basic features, no templates.
-      </p>
+  <!-- HERO CTA (confident close of the hook) -->
+  <div class="layer" id="heroCTA">
+    <div class="heroend">
+      <h1 id="heroh1">That job just ran <span class="g">without you.</span></h1>
+      <p id="herosub">A CEO agent broke it down, hired a team, did the work, and checked it — start to finish. Now imagine your whole back office running like that, on autopilot.</p>
+      <div class="row">
+        <a class="btn main" href="apply.html">Book the 15-min stand-up</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <div class="scrollcue"><a href="#problem">keep scrolling ↓</a></div>
     </div>
   </div>
+</div>
+
+<!-- ================= FUNNEL: the sell ================= -->
+<main>
+
+  <section class="sec" id="problem">
+    <div class="eyebrow">the problem</div>
+    <h2>You're the bottleneck — and you already know it.</h2>
+    <p class="big">Every job your business repeats still routes through <b>you</b>. The follow-ups.
+      The content. The onboarding. Chasing the invoice. The nagging "did we actually do that?"
+      You didn't start a business to be its operations department — but here you are, and the work
+      that should run itself still waits on you.</p>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">the shift</div>
+    <h2>What if the repetitive half of your business just… ran?</h2>
+    <p class="big">Not a chatbot you have to babysit. A <b>team</b> that never sleeps, never forgets,
+      and checks its own work before it calls anything done. You stop doing the work and start
+      approving it — on the handful of things that actually need you.</p>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="eyebrow">how it works</div>
+    <h2>Minutes, not months. Three steps.</h2>
+    <div class="steps3">
+      <div class="stepc"><div class="n">01</div><h3>Tell it what you do</h3><p>One sentence about your business and the job you want handled. That's the whole brief.</p></div>
+      <div class="stepc"><div class="n">02</div><h3>It builds your company</h3><p>A CEO agent stands up — and hires the exact departments the job needs. You watched this happen up top.</p></div>
+      <div class="stepc"><div class="n">03</div><h3>It runs — and sharpens</h3><p>The team does the work, catches its own mistakes, and saves the recipe so every cycle is faster and better.</p></div>
+    </div>
+    <p class="big" style="margin-top:26px">All of it on <b>your own Claude Code</b>. No new AI bills. No API keys. No engineers to hire.</p>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">why it's different</div>
+    <h2>This isn't ChatGPT with extra steps.</h2>
+    <div class="feats">
+      <div class="feat hl"><h3>A whole company, not a bot</h3><p>A CEO that delegates and reviews; departments that each own their lane. Work gets coordinated, not crammed into one chat window.</p></div>
+      <div class="feat hl"><h3>Work that checks itself</h3><p>Every task is graded and fixed before it counts as done. That's why the output actually holds up instead of quietly going wrong.</p></div>
+      <div class="feat"><h3>It compounds</h3><p>Each run saves how it was done. Month two costs less effort than month one — the opposite of hiring.</p></div>
+      <div class="feat"><h3>It's yours</h3><p>Runs on your Claude Code account, with your data and your control. Nothing routed through us.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">start from a template</div>
+    <h2>The companies people stand up first.</h2>
+    <p class="big">Pick a starting point and tailor it to your business — or describe your own in a sentence and it compiles the departments to match.</p>
+    <div class="tpls">
+      <div class="tpl"><h3>Voice-agent business</h3><p>A voice agent that answers, qualifies, and follows up — with the lead-gen and closer scripts around it.</p></div>
+      <div class="tpl"><h3>Content agency</h3><p>A content machine plus social posting and client management — produce for several clients at once.</p></div>
+      <div class="tpl"><h3>Lead-gen agency</h3><p>Hyper-personalized outreach, list scraping, and qualification — find and warm prospects at scale.</p></div>
+      <div class="tpl"><h3>Ad agency</h3><p>Ad-copy generation, video ads, tracking, and angle testing — campaigns that tune themselves.</p></div>
+      <div class="tpl soon"><span class="tag2">soon</span><h3>Course platform</h3><p>A setup that <em>is</em> the course — students learn by talking to it while it builds their business.</p></div>
+      <div class="tpl soon"><span class="tag2">soon</span><h3>Your own model</h3><p>Describe how your business works; it compiles the agents, automations, and dashboards for it.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">what you get</div>
+    <h2>Here's what we stand up for you.</h2>
+    <ul class="getlist">
+      <li><span class="ck">✓</span><span><b>Your compiled AI company</b> — CEO plus the departments your work actually needs, tuned to your business.</span></li>
+      <li><span class="ck">✓</span><span><b>Self-checking departments</b> that grade and improve their own output every cycle.</span></li>
+      <li><span class="ck">✓</span><span><b>A live business dashboard</b> — pipeline, revenue, the numbers that matter — updating itself, no spreadsheet.</span></li>
+      <li><span class="ck">✓</span><span><b>Hosted and kept up to date.</b> You don't maintain anything. It just keeps running.</span></li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">who it's for</div>
+    <h2>Operators who know it's time.</h2>
+    <p class="big">You've got a business, or the money to start one. You know AI is the moment and you're
+      not waiting until 2027. You don't want to become an engineer — you want the thing that makes money,
+      <b>turned on</b>. If that's you, this was built for you.</p>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">straight answers</div>
+    <h2>The questions you're already asking.</h2>
+    <div class="faq">
+      <details><summary>Isn't this just ChatGPT with a workflow?</summary><p>No. It's a coordinated company that does multi-step work and checks itself — not a single chat you have to steer and re-steer. You approve outcomes; you don't operate it turn by turn.</p></details>
+      <details><summary>Do I need to be technical?</summary><p>No. If you can describe your business in a sentence, you can run it. It lives inside Claude Code and we set the whole thing up for you.</p></details>
+      <details><summary>What about the tools I already use?</summary><p>Your specific integrations plug in on top of the base — that's the layer we build with you once the company is standing. The base gets you running first.</p></details>
+      <details><summary>Is my data safe?</summary><p>It runs on your own Claude Code account. Your work stays yours — we don't route it through our servers.</p></details>
+      <details><summary>What can't it do yet?</summary><p>We'll be straight: it's early. It's not one-click self-serve yet — today we stand yours up on a call and host it. No magic buttons, no income promises. What you get is a real, working base you build your edge on top of.</p></details>
+    </div>
+  </section>
+
+  <section class="sec" id="cta">
+    <div class="offer">
+      <div class="eyebrow" style="color:var(--amber)">get started</div>
+      <h2>Get your AI company stood up.</h2>
+      <p class="big" style="margin:0 auto;color:var(--dim)">On a 15-minute call we run a live stand-up on <em>your</em> business — and if it fits, we build yours. It runs on your Claude Code.</p>
+      <div class="price">
+        <div class="p"><div class="k">Install</div><div class="v">one-time setup</div></div>
+        <div class="p"><div class="k">Then</div><div class="v">monthly hosting + updates</div></div>
+      </div>
+      <div class="row"><a class="btn main" href="apply.html">Book the 15-minute stand-up</a></div>
+      <p style="margin:18px auto 0;font:14px/1.6 var(--sys);color:var(--faint);max-width:520px">Prefer to run it yourself? A free base is on <a href="https://github.com/sancovp/sanctuary-revolution-alpha" style="color:var(--blue);text-decoration:none">GitHub</a> — or get the full build included with the <a href="join.html" style="color:var(--blue);text-decoration:none">community</a>.</p>
+    </div>
+  </section>
+
+  <section class="finale">
+    <h2>You could build this yourself. We're already shipping it.</h2>
+    <p class="big">The patterns are free — take them, honestly. But while you're building the base,
+      we're out ahead of you building it for a living. Start with ours and spend your time on the
+      business, not the plumbing.</p>
+    <div class="row">
+      <a class="btn main" href="apply.html">Book the call</a>
+      <a class="btn ghost" href="free.html">Take the patterns free</a>
+    </div>
+  </section>
+
+  <footer>Runs on your own Claude Code · No income claims — a real company, honestly built · JOBWORLD</footer>
+</main>
 
 <script>
-(function() {
-  var modal = document.getElementById('buy-modal');
-  function openBuy() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeBuy() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+"use strict";
+const $=id=>document.getElementById(id);
+const REDUCED=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait=ms=>new Promise(r=>setTimeout(r,REDUCED?Math.min(ms,60):ms));
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function prng(seed){let s=(seed||1)%2147483647;if(s<=0)s+=2147483646;return()=>((s=Math.imul(s,16807)%2147483647)&0x7fffffff)/2147483647}
+let R=prng(7), SKIP=false;
+const HOLD=2000;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cap=s=>s?s[0].toUpperCase()+s.slice(1):s;
 
-  document.getElementById('buy-btn').addEventListener('click', openBuy);
-  document.getElementById('buy-btn-2').addEventListener('click', openBuy);
-  document.getElementById('buy-close').addEventListener('click', closeBuy);
-  modal.addEventListener('click', function(e) { if (e.target === modal) closeBuy(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeBuy(); });
+const S={label:"",verb:"do",obj:"the work",idk:false,dept:"delivery",team:["researcher","doer","shipper"],metric:"Jobs completed",metricUnit:""};
+const EGS=["Book qualified sales calls","Follow up with every lead","Publish daily content","Onboard new clients","Chase unpaid invoices"];
+function parseTask(s){
+  S.label=s.trim().replace(/\.$/,"");const m=S.label.match(/^(\w+)\s+(.*)$/);
+  S.verb=(m?m[1]:"do").toLowerCase();S.obj=m?m[2]:S.label;R=prng(hash(S.label));
+  const t=S.label.toLowerCase();
+  if(/lead|sale|call|meeting|book|deal|demo|prospect|outreach/.test(t)){S.dept="sales";S.team=["scout","writer","closer"];S.metric="Meetings booked";S.metricUnit="";}
+  else if(/content|post|publish|video|social|blog/.test(t)){S.dept="content";S.team=["researcher","writer","publisher"];S.metric="Pieces shipped";S.metricUnit="";}
+  else if(/invoice|payment|collect|chase|billing/.test(t)){S.dept="finance";S.team=["tracker","chaser"];S.metric="Cash collected";S.metricUnit="$";}
+  else if(/onboard|client|support|ticket|success/.test(t)){S.dept="client success";S.team=["intake","delivery","success"];S.metric="Clients onboarded";S.metricUnit="";}
+  else {S.dept="operations";S.team=["researcher","doer","shipper"];S.metric="Jobs completed";S.metricUnit="";}
+}
+function sprite(){return `<svg class="spr" viewBox="0 0 44 52" width="58" height="68" aria-hidden="true">
+  <ellipse class="sh" cx="22" cy="50" rx="13" ry="2.6"/>
+  <line x1="22" y1="3" x2="22" y2="10" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="2.5" r="2.4" fill="currentColor"/>
+  <rect class="hd" x="8" y="10" width="28" height="20" rx="7"/>
+  <circle class="eye" cx="17" cy="20" r="2.7"/><circle class="eye" cx="27" cy="20" r="2.7"/>
+  <rect class="bd" x="11" y="31" width="22" height="16" rx="5"/>
+  <rect x="18" y="35.5" width="8" height="4" rx="2" fill="currentColor"/></svg>`}
+
+let CEO=null, TEAM=[];
+function addAgent(role,isCEO){
+  const el=document.createElement("div");el.className="agent"+(isCEO?" ceo":"");el.style.color=isCEO?"var(--amber-hi)":"var(--amber)";
+  el.innerHTML=`<div class="bubble"></div>${sprite()}<div class="lab">${esc(role)}</div>`;
+  $("floor").appendChild(el);requestAnimationFrame(()=>el.classList.add("in"));return el;
+}
+function stateOnly(agents,el,cls){agents.forEach(a=>a.classList.remove("act","think","fail","pass","dim"));if(el)el.classList.add(cls||"act")}
+async function say(el,text,ms=2000){const b=el.querySelector(".bubble");b.textContent=text;b.classList.add("on");await wait(ms);b.classList.remove("on");await wait(180);}
+function caption(text){const c=$("captiontext");c.classList.remove("on");setTimeout(()=>{c.innerHTML=text;c.classList.add("on")},220);}
+function prop(html){const p=document.createElement("div");p.className="prop";p.innerHTML=html;$("props").appendChild(p);requestAnimationFrame(()=>p.classList.add("on"));return p;}
+function clearProps(){$("props").innerHTML=""}
+function sparkle(el){const P=[["-12px","-12px"],["-12px","calc(100% - 4px)"],["calc(100% - 4px)","-12px"],["calc(100% - 4px)","calc(100% - 4px)"],["-16px","50%"],["calc(100% + 2px)","50%"]];
+  P.forEach((p,i)=>{const g=document.createElement("span");g.className="glint";g.textContent=i%2?"✧":"✦";g.style.top=p[0];g.style.left=p[1];g.style.animationDelay=(i*.11)+"s";el.appendChild(g);requestAnimationFrame(()=>g.classList.add("go"));setTimeout(()=>g.remove(),2400);});}
+
+function layer(id){["ask","play","heroCTA"].forEach(l=>$(l).classList.remove("on"));$(id).classList.add("on");}
+function phase(t){$("phase").textContent=t}
+
+async function typeAsk(){
+  const q="What's the one thing your business needs done — over and over?";const el=$("askq");
+  for(let i=0;i<=q.length;i++){el.innerHTML=q.slice(0,i)+'<span class="caret"></span>';await wait(24)}
+  $("askin").hidden=false;$("asksub").hidden=false;$("egs").hidden=false;
+  $("egs").innerHTML=EGS.map(e=>`<button class="eg">${e}</button>`).join("");
+  document.querySelectorAll(".eg").forEach(b=>b.onclick=()=>start(b.textContent,false));
+  $("askin").focus();
+}
+$("askin").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.value.trim().length>2)start(e.target.value,false)});
+function start(task,idk){parseTask(task);S.idk=idk;layer("play");FIELD.target=.85;play();}
+
+async function play(){
+  const F=$("floor");F.innerHTML="";$("props").innerHTML="";TEAM=[];
+  phase("your CEO");CEO=addAgent("CEO",true);
+  caption(S.idk?"Not sure which task to start with? Your CEO figures that out from the work itself."
+               :'This is your <b>CEO</b> — an AI that runs the work. You told it what you need done:');
+  await wait(1600);CEO.classList.add("act");
+  caption('First it looks at <b>"'+esc(S.label)+'"</b> and decides how much can run without you.');
+  await say(CEO,"Let me break this down.");await wait(1200);
+
+  phase("can it run without you?");
+  caption("It splits the job into steps and marks which an agent can own — and which stay your call.");
+  const steps=[["Gather what's needed","auto"],[cap(S.verb)+" "+S.obj,"auto"],["Record every result","ext"],["Follow up","auto"],["Approve anything risky","human"]];
+  prop('<div class="chiprow" id="chips"></div>');
+  for(let i=0;i<steps.length;i++){const [d,tag]=steps[i];const lbl=tag==="auto"?"agent":tag==="ext"?"logged":"you";
+    const c=document.createElement("span");c.className="chip";c.innerHTML=esc(d)+`<span class="t ${tag}">${lbl}</span>`;$("chips").appendChild(c);await wait(340);c.classList.add("on");await wait(240);}
+  await wait(450);
+  const v=prop('<div class="verdict"><span class="big">80%</span><span class="vt"><b>4 of 5 steps run themselves.</b><br>One stays your call — on purpose.</span></div>');
+  await wait(150);v.firstChild.classList.add("pop");sparkle(v.firstChild);
+  await say(CEO,"Most of it runs itself. Let's go.");await wait(HOLD);
+
+  phase("it hires the team");clearProps();
+  caption("So it hires a small team — exactly the roles this job needs.");
+  await say(CEO,"I'll build the team to own this.");
+  for(const role of S.team){TEAM.push(addAgent(role,false));await wait(520);}
+  caption("Each teammate owns one part of the work.");await wait(HOLD);
+
+  phase("the team works — and checks itself");
+  const doer=TEAM[0],checker=TEAM[Math.min(1,TEAM.length-1)],fixer=TEAM[TEAM.length-1];
+  caption("Here's the part that matters: they <b>do the work — then grade their own work</b> before it counts.");
+  await wait(1400);
+  stateOnly([CEO,...TEAM],doer,"act");TEAM.forEach(a=>{if(a!==doer)a.classList.add("dim")});CEO.classList.add("dim");
+  await say(doer,"On it — first pass done.");
+  stateOnly([CEO,...TEAM],checker,"act");await say(checker,"Checking it…",1200);
+  checker.classList.remove("act");checker.classList.add("fail");
+  caption("The checker won't wave it through.");
+  await say(checker,"Not good enough. No proof.");
+  stateOnly([CEO,...TEAM],fixer,"think");
+  caption("So it <b>fixes how the work is done</b> — so the mistake can't come back.");
+  await say(fixer,"I'll fix our method, not just redo it.");
+  stateOnly([CEO,...TEAM],doer,"act");await say(doer,"Redone — now with proof.");
+  [CEO,...TEAM].forEach(a=>{a.classList.remove("dim","act","think","fail");a.classList.add("pass")});
+  await say(checker,"Now it's good. ✓");
+  const done=3+Math.floor(R()*5);await say(CEO,"Reviewed and approved. Done.");
+  caption("Nothing counts as done until it's checked. That's why the work holds up.");await wait(HOLD);
+
+  phase("the numbers update themselves");
+  [CEO,...TEAM].forEach(a=>a.classList.remove("pass","act","think","fail","dim"));CEO.classList.add("act");
+  caption("The results land on your dashboard automatically — no spreadsheet, no data entry.");
+  const total=S.metricUnit==="$"?done*(400+Math.floor(R()*700)):done;const disp=S.metricUnit==="$"?"$"+total.toLocaleString():String(total);
+  prop('<div class="dashp">'+
+    `<div class="mcard"><div class="k">${esc(S.metric)}</div><div class="v" id="m1">${S.metricUnit==="$"?"$0":"0"}</div></div>`+
+    `<div class="mcard"><div class="k">Cost / result</div><div class="v">$${3+Math.floor(R()*7)}</div></div>`+
+    `<div class="mcard"><div class="k">Passed check</div><div class="v">${82+Math.floor(R()*15)}%</div></div></div>`);
+  const m=$("m1");let cv=0;const stepms=Math.max(70,Math.min(200,1300/Math.max(1,done)));
+  const iv=setInterval(()=>{cv++;m.textContent=S.metricUnit==="$"?"$"+Math.round(total*cv/done).toLocaleString():String(cv);if(cv>=done){m.textContent=disp;clearInterval(iv)}},stepms);
+  await say(CEO,"Logged automatically. You just watch the numbers.");await wait(HOLD);
+
+  phase("it remembers how");clearProps();
+  caption("And it keeps the recipe — so next time starts here, and every run gets cheaper.");
+  prop(`<div class="sopp"><span class="badge">saved how-to</span><div class="nm">${esc(cap(S.label))}</div><div class="sub">✓ reusable — the next run is faster</div></div>`);
+  await say(CEO,"Saved how we do this. Next time's quicker.");await wait(HOLD);
+
+  if(!SKIP)toHeroCTA();
+}
+function toHeroCTA(){
+  FIELD.target=.5;phase("see how it works ↓");
+  $("heroh1").innerHTML = S.idk ? 'That\'s how it decides <span class="g">what to run.</span>'
+                                : 'That job just ran <span class="g">without you.</span>';
+  $("herosub").textContent = "A CEO agent broke it down, hired a team, did the work and checked it — start to finish. Now imagine the repetitive half of your business running like that.";
+  layer("heroCTA");
+}
+function toTurn(){toHeroCTA()} /* skip button */
+$("phase"); // noop ref
+
+/* ambient agent-field */
+const FIELD=(function(){
+  const c=$("bg"),x=c.getContext("2d");let W,H,cur=.22,tgt=.22,nodes=[],sig=[];
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;const N=Math.max(24,Math.min(60,Math.floor(W*H/28000)));nodes=[];
+    for(let i=0;i<N;i++)nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.26,vy:(Math.random()-.5)*.26,ph:Math.random()*6.28})}
+  addEventListener("resize",resize);resize();
+  function frame(t){cur+=(tgt-cur)*.03;x.clearRect(0,0,W,H);const sp=.35+cur*1.2,linkD=84+cur*68;
+    for(const n of nodes){n.x+=n.vx*sp;n.y+=n.vy*sp;if(n.x<-20)n.x=W+20;if(n.x>W+20)n.x=-20;if(n.y<-20)n.y=H+20;if(n.y>H+20)n.y=-20}
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<linkD){x.strokeStyle="rgba(245,184,74,"+((1-d/linkD)*(.04+cur*.13)).toFixed(3)+")";x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+    for(const n of nodes){const p=.5+.5*Math.sin(t*.001+n.ph);x.fillStyle="rgba(245,184,74,"+(.08+cur*.28*p).toFixed(3)+")";x.beginPath();x.arc(n.x,n.y,1+p*1.1*(.4+cur),0,6.28);x.fill()}
+    if(cur>.6&&nodes.length>2&&Math.random()<cur*.045)sig.push({a:nodes[(Math.random()*nodes.length)|0],b:nodes[(Math.random()*nodes.length)|0],t:0});
+    sig=sig.filter(s=>s.t<1);for(const s of sig){s.t+=.022;const px=s.a.x+(s.b.x-s.a.x)*s.t,py=s.a.y+(s.b.y-s.a.y)*s.t;x.fillStyle="rgba(255,206,107,"+((1-s.t)*.5).toFixed(3)+")";x.beginPath();x.arc(px,py,1.8,0,6.28);x.fill()}
+    if(!REDUCED)requestAnimationFrame(frame)}
+  if(REDUCED)frame(0);else requestAnimationFrame(frame);
+  return {set target(v){tgt=v},get target(){return tgt}};
 })();
-</script>
 
-<script src="sticky-cta.js"></script>
-<script src="exit-popup.js"></script>
+typeAsk();
+</script>
 </body>
 </html>
