@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compositional alignment — SSRI</title>
+  <link rel="icon" type="image/png" href="assets/mark.png">
+  <meta name="description" content="Research area: compositional alignment — alignment as a property of composition, enforced at the joints between parts, never presumed inside any component.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site">
+  <a href="index.html" class="wordmark"><img class="mark" src="assets/mark.png" alt="">SSRI</a>
+  <a href="papers/index.html">Papers</a>
+  <a href="tools.html">Tools</a>
+  <a href="demos/index.html">Demos</a>
+  <a href="about.html">About</a>
+</nav>
+<div class="page">
+
+<h1>Research area: compositional alignment</h1>
+<p class="status-note"><span class="mono">Established July 2026 · program statement · oversight manuscript in preparation</span></p>
+
+<p>The prevailing plan for safe advanced AI is, implicitly, <em>monolithic</em>: train one very
+capable system and arrange for alignment to live inside it — in the weights, in the training
+objective, in the constitution it was tuned on. This research area develops the alternative
+this program's systems work keeps arriving at:</p>
+
+<blockquote>
+<p><strong>Alignment is a property of composition, not of components. Trust is enforced at the
+joints — the gates, verifications, and acceptance authorities <em>between</em> parts — and is
+never assumed to reside inside any single part. Not the models, and not the humans either.</strong></p>
+</blockquote>
+
+<p>On this view a trustworthy autonomous system is <em>assembled</em>, the way a safe bridge is
+assembled from members none of which is individually a bridge: the safety case lives in the
+verified connections. The consequences are what make it a research program rather than a
+slogan.</p>
+
+<h2>Four consequences</h2>
+
+<ol class="beams">
+  <li>
+    <strong>Model-agnostic by construction.</strong> If safety was never a property of the
+    model, the protocol composes with any model — including untrusted ones, including future
+    ones. The systems built under this program treat every component, model or human, as a
+    party whose work is accepted by an authority external to it.
+  </li>
+  <li>
+    <strong>Trust is earned per-domain, witnessed, reversible — and never transferred.</strong>
+    An agent's autonomy is a portfolio of graded, per-domain permissions, each earned by a
+    record of externally verified work in that domain, each revocable. Competence demonstrated
+    in one domain confers nothing in another. Self-assessment is structurally capped: a
+    component's own verdict on its own work can at most <em>escalate</em> for review — it can
+    never accept.
+  </li>
+  <li>
+    <strong>Failures are preserved, not hidden.</strong> Every acceptance and rejection is
+    recorded as a first-class artifact. The record of failures — kept, examined, and folded
+    into the next configuration — is the foundation the system's reliability stands on, and
+    the corpus from which acceptance authority can later be safely delegated.
+  </li>
+  <li>
+    <strong>Composition is itself gated.</strong> Parts join into larger systems only through
+    explicit acceptance events; a composite built from unverified parts is treated as a type
+    error, not as a risk to be managed downstream.
+  </li>
+</ol>
+
+<h2>The mechanism inventory</h2>
+
+<p>Each element of the protocol is stated with its honest status — running, implemented, or
+in preparation. Nothing below is claimed beyond its receipt.</p>
+
+<table>
+<thead><tr><th>protocol element</th><th>status</th></tr></thead>
+<tbody>
+<tr><td><strong>Graded oversight as handler substitution</strong> — under what conditions the external acceptance authority over an agent's work can be progressively and reversibly delegated while remaining accountable</td><td>the oversight manuscript, in preparation (<a href="papers/index.html">papers</a>)</td></tr>
+<tr><td><strong>Acceptance records with self-assessment capped at escalation</strong> — verdict schema and recorders under which no component accepts its own work</td><td>implemented with a passing test suite; standalone release forthcoming</td></tr>
+<tr><td><strong>External verification of generated claims</strong> — logic-engine certification of produced content, with a public worked example run end to end</td><td>running; the worked example is published (<a href="../blog/gas-httyd.html">the film, proved like a theorem</a>)</td></tr>
+<tr><td><strong>Self-enforcing harness boundaries</strong> — the harness track: boundaries the agent holds while working, with the environment enforcing what the framing describes</td><td>design complete, experiment pending (<a href="contemplative.html">contemplative systems</a>)</td></tr>
+<tr><td><strong>Substrate structure</strong> — the context an agent runs on, shaped so that navigation and disclosure are inspectable</td><td>published; running code (<a href="papers/flat-vs-tree.html">Paper&nbsp;1</a>, <a href="tools.html">tools</a>)</td></tr>
+</tbody>
+</table>
+
+<h2>Prior art</h2>
+
+<p>The oldest sustained treatment of the problem this area studies — how a powerful
+intelligence comes to be trusted — is not in the machine-learning literature. Contemplative
+traditions maintained working protocols for exactly this: capability conferred in witnessed,
+graded stages; attainment certified externally, never self-certified; transmission carrying
+provenance; the whole apparatus revocable. The <a href="contemplative.html">contemplative-systems
+research area</a> studies those structures as engineering material; this area is where their
+load-bearing pattern — trust as a composition protocol — is stated for autonomous systems
+generally.</p>
+
+<h2>Scope note</h2>
+
+<p>This page is a program statement, and its claims ladder is deliberate: the joint-level
+mechanisms above are running or implemented as stated; the composition of verified parts into
+larger verified systems is design work in progress; and the limit case — highly capable systems
+assembled under this protocol — is stated as the program's direction, not as a result. The
+program's discipline is that the second and third rungs are never described in the grammar of
+the first.</p>
+
+<footer class="site">
+  Isaac Wostrel-Rubin · ORCID <a href="https://orcid.org/0009-0003-0219-0506">0009-0003-0219-0506</a> · <a href="mailto:isaacwrubin@gmail.com">isaacwrubin@gmail.com</a> · <a href="https://github.com/sancovp">github.com/sancovp</a>
+</footer>
+
+</div>
+</body>
+</html>
