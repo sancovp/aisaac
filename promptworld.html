@@ -8,31 +8,31 @@
   <style>
     .pw-hero { min-height: 88vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 3rem; }
     .pw-hero .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 1.5rem; }
-    .pw-hero h1 { font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet), var(--mercury-chrome)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; max-width: 18ch; }
+    .pw-hero h1 { font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 1.5rem; color: var(--ink); max-width: 18ch; }
     .pw-hero .sub { font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--text-2); max-width: 52ch; line-height: 1.7; margin: 0 auto 2.5rem; }
     .pw-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .pw-cta { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); padding: 0.9rem 2.2rem; border-radius: var(--r-sm); text-decoration: none; transition: all 0.3s; border: none; }
+    .pw-cta { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.9rem 2.2rem; border-radius: var(--r-sm); text-decoration: none; transition: all 0.3s; border: none; }
     .pw-cta:hover { filter: brightness(1.2); transform: translateY(-2px); }
-    .pw-cta.ghost { background: transparent; color: var(--text-1); border: 1px solid rgba(255,255,255,0.12); }
+    .pw-cta.ghost { background: transparent; color: var(--text-1); border: 1px solid rgba(29,26,21,0.14); }
     .pw-cta.ghost:hover { border-color: var(--mercury-blue); }
-    .pw-ladder { font-family: var(--mono); font-size: clamp(0.65rem, 1.6vw, 0.85rem); color: var(--text-2); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.2rem 1.6rem; margin: 2.5rem auto 0; display: inline-block; line-height: 2; }
+    .pw-ladder { font-family: var(--mono); font-size: clamp(0.65rem, 1.6vw, 0.85rem); color: var(--text-2); background: #FFFFFF; border: 1px solid rgba(29,26,21,0.14); border-radius: var(--r-md); padding: 1.2rem 1.6rem; margin: 2.5rem auto 0; display: inline-block; line-height: 2; }
     .pw-ladder b { color: var(--mercury-blue); }
     .pw-ladder .fold { color: var(--mercury-violet); }
     section.pw { max-width: 1040px; margin: 0 auto; padding: 5rem 2rem; }
-    section.pw h2 { font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.2rem); letter-spacing: -0.03em; margin-bottom: 1rem; text-align: center; }
+    section.pw h2 { font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.2rem); letter-spacing: -0.012em; margin-bottom: 1rem; text-align: center; }
     section.pw .lede { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; max-width: 60ch; margin: 0 auto 3rem; text-align: center; }
     .pw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .pw-craft { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.4rem; transition: all 0.2s; }
-    .pw-craft:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+    .pw-craft { background: #FFFFFF; border: 1px solid rgba(29,26,21,0.14); border-radius: var(--r-md); padding: 1.4rem; transition: all 0.2s; }
+    .pw-craft:hover { border-color: rgba(178,63,15,0.2); transform: translateY(-2px); }
     .pw-craft .k { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mercury-blue); }
     .pw-craft h3 { font-size: 1rem; margin: 0.5rem 0 0.5rem; color: var(--text-1); }
     .pw-craft p { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; }
     .pw-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .pw-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.4rem 1.6rem; }
+    .pw-step { background: #FFFFFF; border: 1px solid rgba(29,26,21,0.14); border-radius: var(--r-md); padding: 1.4rem 1.6rem; }
     .pw-step .n { font-family: var(--mono); font-size: 0.7rem; color: var(--mercury-violet); letter-spacing: 0.1em; }
     .pw-step h3 { font-size: 1rem; margin: 0.4rem 0 0.5rem; }
     .pw-step p { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; }
-    .pw-code { font-family: var(--mono); font-size: 0.8rem; color: var(--text-2); background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 1.4rem 1.6rem; line-height: 1.9; overflow-x: auto; max-width: 640px; margin: 0 auto; }
+    .pw-code { font-family: var(--mono); font-size: 0.8rem; color: var(--text-2); background: rgba(29,26,21,0.08); border: 1px solid rgba(29,26,21,0.14); border-radius: var(--r-md); padding: 1.4rem 1.6rem; line-height: 1.9; overflow-x: auto; max-width: 640px; margin: 0 auto; }
     .pw-code .c { color: var(--text-3); }
     .pw-code .g { color: var(--mercury-teal); }
     .pw-mark { text-align: center; font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); margin-top: 2rem; }
@@ -160,7 +160,7 @@ bash deploy/build.sh <span class="g">boot</span> 3858<br>
 
   <!-- FINAL CTA -->
   <section class="pw-final">
-    <h2 style="font-weight:600;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-0.03em;margin-bottom:1rem;">An app that builds apps — and can read itself.</h2>
+    <h2 style="font-weight:600;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing: -0.012em;margin-bottom:1rem;">An app that builds apps — and can read itself.</h2>
     <p style="font-size:0.95rem;color:var(--text-2);max-width:48ch;margin:0 auto 2rem;line-height:1.7;">Open source. Build skills, tools, agents, and operating systems by talking to one engineer.</p>
     <p style="font-size:0.82rem;color:var(--text-3);max-width:52ch;margin:0 auto 2rem;line-height:1.7;"><strong style="color:var(--text-2);">The guarantee:</strong> ship a working tool in your first session — or bring it to a <a href="apply.html" style="color:var(--mercury-blue);">build call</a> and we'll stand it up with you.</p>
     <a href="https://github.com/sancovp/sanctuary-revolution-alpha" class="pw-cta">Get PromptWorld on GitHub</a>

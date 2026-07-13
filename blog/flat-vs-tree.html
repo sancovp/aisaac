@@ -26,7 +26,7 @@
     <p>But the token comparison is the wrong axis. Per unit, a JSON schema and a skill are about the same size — a schema is a docstring, a skill wraps comparable code. What actually changed is the <em>loading model</em>: every schema upfront versus a tree you descend on demand. That's <code>O(#tools)</code> versus <code>O(depth)</code>. The migration didn't fix the shape. It moved a flat representation to a <em>different</em> flat representation.</p>
 
     <figure style="margin:2rem 0;">
-      <img src="diagrams/flat-vs-tree.png" alt="Upfront context cost: flat O(number of tools) versus tree O(depth). The flat line climbs linearly; the tree line stays nearly flat. Anthropic's measured points — 150,000 tokens upfront, 2,000 on demand — sit on the curve." style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+      <img src="diagrams/flat-vs-tree.png" alt="Upfront context cost: flat O(number of tools) versus tree O(depth). The flat line climbs linearly; the tree line stays nearly flat. Anthropic's measured points — 150,000 tokens upfront, 2,000 on demand — sit on the curve." style="width:100%;border-radius:12px;border:1px solid rgba(29,26,21,0.14);">
       <figcaption style="font-size:0.7rem;color:var(--text-3);margin-top:0.5rem;">Flat cost grows with the number of tools. Tree cost grows with depth. Below a handful of tools the flat load is trivially cheaper — which is exactly why small toolsets feel fine and the tax goes unnoticed. Past the crossover, the flat line explodes while the tree barely moves.</figcaption>
     </figure>
 

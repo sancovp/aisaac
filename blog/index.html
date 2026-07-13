@@ -1,19 +1,19 @@
 <link rel="stylesheet" href="blog-style.css">
 <style>
-  .search-bar { width:100%;padding:0.7rem 1rem;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:8px;color:var(--text-1);font-size:0.85rem;outline:none;font-family:var(--body);margin-bottom:1rem; }
+  .search-bar { width:100%;padding:0.7rem 1rem;background:#FFFFFF;border:1px solid rgba(29,26,21,0.14);border-radius:8px;color:var(--text-1);font-size:0.85rem;outline:none;font-family:var(--body);margin-bottom:1rem; }
   .search-bar:focus { border-color:var(--mercury-blue); }
   .search-bar::placeholder { color:var(--text-3); }
   .tag-bar { display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem; }
-  .tag-btn { font-family:var(--mono);font-size:0.55rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:20px;border:1px solid rgba(255,255,255,0.07);background:transparent;color:var(--text-3);cursor:pointer;transition:all .15s; }
-  .tag-btn:hover { color:var(--text-2);border-color:rgba(255,255,255,0.15); }
-  .tag-btn.active { color:var(--text-1);border-color:var(--mercury-blue);background:rgba(125,211,252,0.06); }
+  .tag-btn { font-family:var(--mono);font-size:0.55rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:20px;border:1px solid rgba(29,26,21,0.14);background:transparent;color:var(--text-3);cursor:pointer;transition:all .15s; }
+  .tag-btn:hover { color:var(--text-2);border-color:rgba(29,26,21,0.14); }
+  .tag-btn.active { color:var(--text-1);border-color:var(--mercury-blue);background:rgba(178,63,15,0.06); }
   .blog-card .card-tags { display:flex;gap:0.3rem;margin-top:0.6rem; }
-  .card-tag { font-family:var(--mono);font-size:0.5rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.15rem 0.4rem;border-radius:10px;border:1px solid rgba(255,255,255,0.06); }
-  .card-tag.t-paiab { color:#7dd3fc;border-color:rgba(125,211,252,0.15); }
-  .card-tag.t-sanctum { color:#a78bfa;border-color:rgba(167,139,250,0.15); }
-  .card-tag.t-cave { color:#5eead4;border-color:rgba(94,234,212,0.15); }
-  .card-tag.t-emergence { color:#fda4af;border-color:rgba(253,164,175,0.15); }
-  .card-tag.t-level { color:var(--text-3);border-color:rgba(255,255,255,0.08); }
+  .card-tag { font-family:var(--mono);font-size:0.5rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.15rem 0.4rem;border-radius:10px;border:1px solid rgba(29,26,21,0.14); }
+  .card-tag.t-paiab { color:#B23F0F;border-color:rgba(178,63,15,0.15); }
+  .card-tag.t-sanctum { color:#B23F0F;border-color:rgba(178,63,15,0.15); }
+  .card-tag.t-cave { color:#B23F0F;border-color:rgba(178,63,15,0.15); }
+  .card-tag.t-emergence { color:#B23F0F;border-color:rgba(178,63,15,0.15); }
+  .card-tag.t-level { color:var(--text-3);border-color:rgba(29,26,21,0.14); }
   .blog-card.hidden { display:none; }
   .result-count { font-size:0.7rem;color:var(--text-3);margin-bottom:1rem; }
 </style>
@@ -38,13 +38,13 @@
 
     <div class="tag-bar">
       <button class="tag-btn active" data-tag="all">All</button>
-      <span style="width:1px;background:rgba(255,255,255,0.07);margin:0 0.2rem;"></span>
+      <span style="width:1px;background:rgba(29,26,21,0.14);margin:0 0.2rem;"></span>
       <button class="tag-btn" data-tag="paiab">PAIAB</button>
       <button class="tag-btn" data-tag="sanctum">SANCTUM</button>
       <button class="tag-btn" data-tag="cave">CAVE</button>
       <button class="tag-btn" data-tag="unicorn">UNICORN</button>
       <button class="tag-btn" data-tag="meditation">Meditation</button>
-      <span style="width:1px;background:rgba(255,255,255,0.07);margin:0 0.2rem;"></span>
+      <span style="width:1px;background:rgba(29,26,21,0.14);margin:0 0.2rem;"></span>
       <button class="tag-btn" data-tag="tool-eng">Tool Engineering</button>
       <button class="tag-btn" data-tag="context-eng">Context Engineering</button>
       <button class="tag-btn" data-tag="harness-eng">Harness Engineering</button>

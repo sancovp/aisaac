@@ -23,28 +23,28 @@
 
     var overlay = document.createElement("div");
     overlay.style.cssText =
-      "position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;" +
+      "position:fixed;inset:0;background:rgba(29,26,21,.4);z-index:9999;" +
       "display:flex;align-items:center;justify-content:center;padding:16px;";
 
     var card = document.createElement("div");
     card.style.cssText =
-      "max-width:420px;width:100%;background:#16181d;color:#e8e6e3;" +
-      "border:1px solid #333;border-radius:12px;padding:28px;" +
-      "font-family:inherit;box-shadow:0 12px 48px rgba(0,0,0,.5);";
+      "max-width:420px;width:100%;background:#FFFFFF;color:#1D1A15;" +
+      "border:1px solid rgba(29,26,21,0.14);border-radius:6px;padding:28px;" +
+      "font-family:inherit;box-shadow:0 12px 40px rgba(29,26,21,.12);";
     card.innerHTML =
       '<h3 style="margin:0 0 10px;font-size:1.25rem;">Before you leave &mdash;</h3>' +
-      '<p style="margin:0 0 16px;line-height:1.5;color:#b8b5b0;">Want to be on the ' +
-      "<strong style=\"color:#e8b44f;\">changelog newsletter</strong>? It updates you on all the " +
+      '<p style="margin:0 0 16px;line-height:1.5;color:#5D564A;">Want to be on the ' +
+      "<strong style=\"color:#B23F0F;\">changelog newsletter</strong>? It updates you on all the " +
       "advancements of my projects and research &mdash; before everything else.</p>" +
       '<form style="display:flex;gap:8px;flex-wrap:wrap;">' +
       '<input type="email" required placeholder="you@example.com" ' +
       'style="flex:1;min-width:180px;padding:10px 12px;border-radius:8px;' +
-      'border:1px solid #444;background:#0e1013;color:#e8e6e3;font-size:.95rem;">' +
+      'border:1px solid rgba(29,26,21,0.2);background:#FAF7F1;color:#1D1A15;font-size:.95rem;">' +
       '<button type="submit" style="padding:10px 18px;border-radius:8px;border:none;' +
-      'background:#e8b44f;color:#16181d;font-weight:600;cursor:pointer;">Subscribe</button>' +
+      'background:#1D1A15;color:#FAF7F1;font-weight:600;cursor:pointer;">Subscribe</button>' +
       "</form>" +
       '<button type="button" data-dismiss style="margin-top:12px;background:none;border:none;' +
-      'color:#777;cursor:pointer;font-size:.85rem;padding:0;">No thanks</button>';
+      'color:#877F6F;cursor:pointer;font-size:.85rem;padding:0;">No thanks</button>';
 
     overlay.appendChild(card);
     document.body.appendChild(overlay);

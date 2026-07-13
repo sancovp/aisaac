@@ -7,13 +7,13 @@
   <title>AI Transformation — Isaac TWI</title>
   <style>
     .menu-item { cursor: pointer; transition: all 0.2s; }
-    .menu-item:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+    .menu-item:hover { border-color: rgba(178,63,15,0.2); transform: translateY(-2px); }
     .menu-item .item-cta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.8rem; display: block; }
     .tier { cursor: pointer; transition: all 0.2s; }
-    .tier:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+    .tier:hover { border-color: rgba(178,63,15,0.2); transform: translateY(-2px); }
 
     /* Big red demo modal */
-    .demo-modal { display:none; position:fixed; inset:0; z-index:10000; background:rgba(4,4,14,0.94); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
+    .demo-modal { display:none; position:fixed; inset:0; z-index:10000; background:rgba(250,247,241,0.96); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
     .demo-modal.open { display:flex; align-items:center; justify-content:center; animation: dm-in 0.2s ease-out; }
     @keyframes dm-in { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
     .demo-modal-box { max-width:440px; width:100%; margin:2rem; text-align:center; }
@@ -22,8 +22,8 @@
     .demo-modal-selected { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:1.5rem; }
     .demo-modal-q { font-weight:700; font-size:1.6rem; color:var(--text-1); margin-bottom:0.8rem; }
     .demo-modal-sub { font-size:0.85rem; color:var(--text-2); margin-bottom:2rem; line-height:1.6; }
-    .big-red { display:inline-block; font-family:var(--mono); font-size:1rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:linear-gradient(135deg, #ef4444, #dc2626); padding:1.2rem 3rem; border-radius:var(--r-md); text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; box-shadow:0 0 30px rgba(239,68,68,0.3), 0 4px 20px rgba(0,0,0,0.4); }
-    .big-red:hover { filter:brightness(1.15); transform:translateY(-2px); box-shadow:0 0 50px rgba(239,68,68,0.4), 0 8px 30px rgba(0,0,0,0.5); }
+    .big-red { display:inline-block; font-family:var(--mono); font-size:1rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:var(--accent); padding:1.2rem 3rem; border-radius:var(--r-md); text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; box-shadow:0 0 30px rgba(178,63,15,0.3), 0 4px 20px rgba(29,26,21,0.08); }
+    .big-red:hover { filter:brightness(1.15); transform:translateY(-2px); box-shadow:0 0 50px rgba(178,63,15,0.4), 0 8px 30px rgba(29,26,21,0.08); }
     .demo-skip { font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none; display:block; margin-top:1.5rem; }
     .demo-skip:hover { color:var(--text-2); }
     .demo-note { font-size:0.65rem; color:var(--text-3); margin-top:1.5rem; font-style:italic; }

@@ -9,7 +9,7 @@
     .apply-wrap { max-width: 560px; margin: 0 auto; padding: 6rem 2rem 4rem; min-height: 80vh; }
     .apply-tag { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
     .apply-tag::before { content: ''; width: 2rem; height: 1px; background: var(--mercury-blue); }
-    .apply-h { font-weight: 700; font-size: 1.8rem; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.8rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .apply-h { font-family: var(--serif); font-weight: 600; font-size: 1.9rem; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.8rem; color: var(--ink); }
     .apply-sub { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; margin-bottom: 2.5rem; }
     .apply-step { display: none; }
     .apply-step.active { display: block; animation: step-in 0.3s ease-out; }
@@ -20,8 +20,8 @@
       background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md);
       padding: 1rem 1.5rem; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; color: var(--text-2);
     }
-    .apply-opt:hover { border-color: rgba(125,211,252,0.25); color: var(--text-1); transform: translateY(-1px); }
-    .apply-opt.selected { border-color: var(--mercury-blue); color: var(--text-1); background: rgba(125,211,252,0.06); }
+    .apply-opt:hover { border-color: rgba(178,63,15,0.25); color: var(--text-1); transform: translateY(-1px); }
+    .apply-opt.selected { border-color: var(--mercury-blue); color: var(--text-1); background: rgba(178,63,15,0.06); }
     .apply-input {
       width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md);
       padding: 0.8rem 1.2rem; color: var(--text-1); font-family: var(--body); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
@@ -30,7 +30,7 @@
     .apply-input::placeholder { color: var(--text-3); }
     .apply-next {
       margin-top: 2rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
+      color: var(--paper); background: var(--ink);
       padding: 0.6rem 1.8rem; border-radius: var(--r-sm); border: none; cursor: pointer; transition: all 0.3s;
     }
     .apply-next:hover { filter: brightness(1.2); transform: translateY(-1px); }
