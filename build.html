@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/mark-tile.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jobworld — put your business on autopilot | Isaac TWI</title>
 <meta name="description" content="Type the one job you're sick of doing — and watch an AI company do it in front of you. A CEO agent hires a team, does the work, and checks it. Runs on your own Claude Code.">
@@ -45,7 +46,8 @@
   #bar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:14px;padding:0 20px;
        font:12px var(--mono);color:var(--faint);z-index:60;border-bottom:1px solid var(--line);
        background:rgba(250,247,241,.92);backdrop-filter:blur(8px)}
-  #bar .logo{color:var(--txt);letter-spacing:.18em;font-weight:700;font-size:13px;text-decoration:none}
+  #bar .logo{color:var(--txt);letter-spacing:.18em;font-weight:700;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:9px}
+  #bar .logo-mark{width:22px;height:22px;border-radius:5px;display:block}
   #phase{flex:1;color:var(--dim)}
   #bar .navlink{color:var(--dim);text-decoration:none;font:13px var(--sys)}
   #bar .navlink:hover{color:var(--amber)}
@@ -185,7 +187,7 @@
 <body>
 
 <div id="bar">
-  <a class="logo" href="index.html">ISAAC · JOBWORLD</a>
+  <a class="logo" href="index.html"><img src="assets/mark-tile.png" class="logo-mark" alt="" width="24" height="24">ISAAC · JOBWORLD</a>
   <span id="phase">an AI company you can watch work</span>
   <a class="navlink" href="transform.html">Services</a>
   <a class="navlink" href="learn.html">Learn</a>

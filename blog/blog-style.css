@@ -64,7 +64,9 @@
   font-family: var(--serif);
   font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em; text-decoration: none;
   color: var(--ink);
+  display: inline-flex; align-items: center; gap: 0.6rem;
 }
+#isaac-site .logo-mark { width: 24px; height: 24px; border-radius: 6px; display: block; flex-shrink: 0; }
 #isaac-site .nav-links { display: flex; gap: 1.8rem; align-items: center; }
 #isaac-site .nav-link, #isaac-site .site-header a:not(.logo):not(.nav-cta) {
   font-size: 0.85rem; color: var(--ink-2); text-decoration: none; transition: color 0.2s;
