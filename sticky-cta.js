@@ -22,7 +22,7 @@
     '.qual-close:hover{color:#1D1A15;}' +
     '.qual-progress{display:flex;gap:0.5rem;margin-bottom:2rem;}' +
     '.qual-dot{width:2rem;height:3px;border-radius:2px;background:rgba(29,26,21,0.12);transition:background .3s;}' +
-    '.qual-dot.done{background:#B23F0F;}' +
+    '.qual-dot.done{background:#1E5A78;}' +
     '.qual-dot.current{background:#1D1A15;}' +
     '.qual-step{display:none;animation:qual-step-in .3s ease-out;}' +
     '.qual-step.active{display:block;}' +
@@ -31,20 +31,20 @@
     '.qual-opts{display:flex;flex-direction:column;gap:0.7rem;}' +
     '.qual-opt{background:#FAF7F1;border:1px solid rgba(29,26,21,0.14);border-radius:4px;padding:0.9rem 1.3rem;cursor:pointer;font-size:0.9rem;color:#5D564A;transition:border-color .15s,color .15s;}' +
     '.qual-opt:hover{border-color:rgba(29,26,21,0.4);color:#1D1A15;}' +
-    '.qual-opt.selected{border-color:#B23F0F;color:#1D1A15;background:rgba(178,63,15,0.06);}' +
+    '.qual-opt.selected{border-color:#1E5A78;color:#1D1A15;background:rgba(30,90,120,0.06);}' +
     '.qual-result{padding:1.5rem;background:#FAF7F1;border:1px solid rgba(29,26,21,0.14);border-radius:4px;margin-top:1rem;}' +
     '.qual-result h3{font-size:1.05rem;color:#1D1A15;margin-bottom:0.6rem;}' +
     '.qual-result p{font-size:0.85rem;color:#5D564A;line-height:1.7;margin-bottom:0.8rem;}' +
     '.qual-cta{display:inline-block;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:0.85rem;font-weight:600;color:#FAF7F1;background:#1D1A15;padding:0.6rem 1.5rem;border-radius:4px;text-decoration:none;transition:background .2s;margin-top:0.5rem;}' +
     '.qual-cta:hover{background:#000;}' +
-    '.qual-alt{font-size:0.8rem;color:#B23F0F;text-decoration:none;margin-left:1rem;border-bottom:1px solid rgba(178,63,15,0.3);}' +
-    '.qual-alt:hover{color:#8C300A;}' +
+    '.qual-alt{font-size:0.8rem;color:#1E5A78;text-decoration:none;margin-left:1rem;border-bottom:1px solid rgba(30,90,120,0.3);}' +
+    '.qual-alt:hover{color:#153F55;}' +
     '.qual-escape{margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(29,26,21,0.08);font-size:0.75rem;color:#877F6F;}' +
-    '.qual-escape a{color:#B23F0F;text-decoration:none;}' +
-    '.qual-escape a:hover{color:#8C300A;}' +
+    '.qual-escape a{color:#1E5A78;text-decoration:none;}' +
+    '.qual-escape a:hover{color:#153F55;}' +
     '.qual-email-row{display:flex;gap:0.5rem;margin-top:0.5rem;}' +
     '.qual-input{flex:1;max-width:260px;background:#FFFFFF;border:1px solid rgba(29,26,21,0.2);border-radius:4px;padding:0.6rem 1rem;color:#1D1A15;font-size:0.85rem;outline:none;}' +
-    '.qual-input:focus{border-color:#B23F0F;}' +
+    '.qual-input:focus{border-color:#1E5A78;}' +
     '.qual-input::placeholder{color:#877F6F;}' +
     '.qual-small-btn{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:0.75rem;font-weight:600;color:#FAF7F1;background:#1D1A15;padding:0.5rem 1rem;border-radius:4px;border:none;cursor:pointer;}';
   document.head.appendChild(style);
@@ -143,7 +143,7 @@
           '<h3>See it in action:</h3>' +
           '<p>Our AI agent will walk you through exactly what we\'d build for your business — live, right now. No obligation.</p>' +
           '<a href="#" class="qual-cta" data-demo-call>Get a Demo</a>' +
-          '<p style="font-size:0.7rem;color:#877F6F;margin-top:1rem;">[AI demo launching soon — book a discovery call in the meantime.]<br><a href="https://cal.com/aisaac/ai-agents-for-your-business" style="color:#B23F0F;font-size:0.75rem;">Book discovery call →</a></p>' +
+          '<p style="font-size:0.7rem;color:#877F6F;margin-top:1rem;">[AI demo launching soon — book a discovery call in the meantime.]<br><a href="https://cal.com/aisaac/ai-agents-for-your-business" style="color:#1E5A78;font-size:0.75rem;">Book discovery call →</a></p>' +
         '</div>' +
         '<p style="text-align:center;margin-top:1.5rem;"><a href="transform.html" class="qual-alt" style="margin:0;font-size:0.75rem;">Show me more first →</a></p>' +
       '</div>' +

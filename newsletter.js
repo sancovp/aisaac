@@ -34,7 +34,7 @@
     card.innerHTML =
       '<h3 style="margin:0 0 10px;font-size:1.25rem;">Before you leave &mdash;</h3>' +
       '<p style="margin:0 0 16px;line-height:1.5;color:#5D564A;">Want to be on the ' +
-      "<strong style=\"color:#B23F0F;\">changelog newsletter</strong>? It updates you on all the " +
+      "<strong style=\"color:#1E5A78;\">changelog newsletter</strong>? It updates you on all the " +
       "advancements of my projects and research &mdash; before everything else.</p>" +
       '<form style="display:flex;gap:8px;flex-wrap:wrap;">' +
       '<input type="email" required placeholder="you@example.com" ' +
