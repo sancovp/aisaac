@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jobworld — put your business on autopilot | Isaac TWI</title>
+<meta name="description" content="Type the one job you're sick of doing — and watch an AI company do it in front of you. A CEO agent hires a team, does the work, and checks it. Runs on your own Claude Code.">
+<meta property="og:title" content="Jobworld — put your business on autopilot">
+<meta property="og:description" content="Type the one job you're sick of doing — and watch an AI company do it in front of you. Runs on your own Claude Code.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/build.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jobworld — put your business on autopilot">
+<meta name="twitter:description" content="Watch an AI company do your work in front of you — then keep it.">
+
 <style>
   :root{
     --ink:#0A0D12; --surface:#12161E; --surface2:#161C26; --line:#232B38; --line2:#2E3949;
@@ -42,6 +51,11 @@
   #heroCTA.on{display:flex;align-items:center;justify-content:center;padding:6vh 26px}
 
   .askbox{width:min(680px,92%)}
+  .askhead{margin:0 0 26px}
+  .askhead .eyebrow0{font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+  .askhead h1{font:800 clamp(28px,5.2vw,44px)/1.06 var(--sys);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+  .askhead h1 .g{background:linear-gradient(90deg,#7dd3fc,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .askhead p{font:clamp(15px,2vw,17px)/1.55 var(--sys);color:var(--dim);margin:0;max-width:56ch}
   .q{font:15px var(--mono);color:var(--amber);min-height:24px;white-space:pre-wrap}
   .q .caret{display:inline-block;width:9px;height:18px;background:var(--amber);vertical-align:-3px;animation:blink 1s steps(1) infinite;margin-left:2px}
   @keyframes blink{50%{opacity:0}}
@@ -175,11 +189,17 @@
   <!-- ASK -->
   <div class="layer on" id="ask">
     <div class="askbox">
+      <div class="askhead">
+        <div class="eyebrow0">Jobworld</div>
+        <h1>Put your business <span class="g">on autopilot.</span></h1>
+        <p>An AI company — a CEO agent that hires a team, does the work, and checks it — running on your own Claude Code. Don't take our word for it: <b style="color:var(--txt)">watch it work.</b></p>
+      </div>
       <div class="q" id="askq"><span class="caret"></span></div>
       <input class="askin" id="askin" autocomplete="off" spellcheck="false" hidden aria-label="The one thing your business needs done repeatedly">
       <div class="subrow" id="asksub" hidden>
         <span><kbd>Enter</kbd> to watch it get done</span>
         <button class="idk" onclick="start('Book qualified sales calls',true)">not sure yet →</button>
+        <a href="#problem" style="color:var(--faint);text-decoration:none;margin-left:auto">skip the demo — read instead ↓</a>
       </div>
       <div class="egs" id="egs" hidden></div>
     </div>
@@ -290,6 +310,30 @@
     </div>
   </section>
 
+  <section class="sec" id="receipts">
+    <div class="eyebrow">receipts, not testimonials</div>
+    <h2>Don't take my word for it — take the code.</h2>
+    <p class="big">The proof isn't a testimonial or a logo wall. It's public: the engine is open source, the demo is a real site, and the notes are out in the open.</p>
+    <div class="feats">
+      <a class="feat hl" href="https://github.com/sancovp" style="text-decoration:none">
+        <h3>The engine, on GitHub &rarr;</h3>
+        <p>Installable and public: heaven-framework, chaincompiler, carton-mcp, skilltree. Read it, run it, fork it.</p>
+      </a>
+      <a class="feat" href="cinematic-plumbing.html" style="text-decoration:none">
+        <h3>A real site we built &rarr;</h3>
+        <p>Dickinson Plumbing — a working, converting site produced by the system. Not a mockup.</p>
+      </a>
+      <a class="feat" href="blog/" style="text-decoration:none">
+        <h3>The notes, in the open &rarr;</h3>
+        <p>The frameworks and notes behind the work — published as we go, not locked in a deck.</p>
+      </a>
+      <a class="feat" href="system.html" style="text-decoration:none">
+        <h3>Part of the system &rarr;</h3>
+        <p>Jobworld is one world in a larger map. See how every piece connects.</p>
+      </a>
+    </div>
+  </section>
+
   <section class="sec" id="cta">
     <div class="offer">
       <div class="eyebrow" style="color:var(--amber)">the 15-minute stand-up</div>
@@ -299,6 +343,7 @@
         <div class="p"><div class="k">Install</div><div class="v">one-time setup</div></div>
         <div class="p"><div class="k">Then</div><div class="v">monthly hosting + updates</div></div>
       </div>
+      <p style="margin:14px auto 0;font:14px/1.6 var(--sys);color:var(--dim);max-width:480px">For scale: an ops hire runs $4–6k/mo. This is a one-time install plus a monthly that's a fraction of one hire — and it doesn't quit.</p>
       <div class="guar">
         <span class="sh">✓</span>
         <div>
@@ -321,6 +366,7 @@
       <a class="btn main" href="apply.html">Book the call</a>
       <a class="btn ghost" href="free.html">Take the patterns free</a>
     </div>
+    <div class="scrollcue" style="margin-top:28px"><a href="sancrev.html">Jobworld is one department of the whole system — see SANCREV ↑</a></div>
   </section>
 
   <footer>Runs on your own Claude Code · No income claims — a real company, honestly built · JOBWORLD</footer>
