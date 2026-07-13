@@ -1,0 +1,169 @@
+<link rel="stylesheet" href="blog-style.css">
+<div id="isaac-site">
+  <div class="site-header">
+    <a href="../index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="./" class="nav-link">Blog</a>
+      <a href="../apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <article>
+    <div class="post-tag">July 2026</div>
+    <h1>We Turned How to Train Your Dragon Into a Theorem</h1>
+    <p class="post-subtitle">GAS is a proving engine: you write a story down as a formal theory, and a checker certifies it level by level — theme, argument, scenes, individual dialogue lines. This is the worked example: the actual HTTYD corpus, the actual proof reports, and the marketing funnel that falls out the other side.</p>
+
+    <figure style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+      <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mercury-violet);margin-bottom:1rem;">The certification ladder</div>
+      <div style="display:grid;gap:0.4rem;font-family:var(--mono);font-size:0.75rem;">
+        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-blue);min-width:6.5rem;">depth 1–4</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-blue),transparent 25%);"></span><span style="color:var(--text-2);">story spine — theme, thesis, grand argument, tropes</span></div>
+        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-blue);min-width:6.5rem;">depth 5+</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-blue),transparent 45%);"></span><span style="color:var(--text-2);">scenes instantiate premises</span></div>
+        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-teal);min-width:6.5rem;">depth 14+</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-teal),transparent 70%);"></span><span style="color:var(--text-2);">individual dialogue lines carry proof targets</span></div>
+        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-violet);min-width:6.5rem;">depth 37</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-violet),transparent 95%);"></span><span style="color:var(--text-2);">the deepest obligations in the shipped corpus</span></div>
+      </div>
+      <figcaption style="font-size:0.7rem;color:var(--text-3);margin-top:1rem;">Each depth is a set of proof obligations. A story element is only <em>certified</em> at a depth once the checker can prove the obligations at that depth from the story's own web.</figcaption>
+    </figure>
+
+    <p><strong>Everything quoted below is real.</strong> Every excerpt on this page is copied verbatim from the engine's shipped worked corpus — the theory files and the saved proof reports that ship with GAS. Nothing is mocked up, no screenshots, no invented output. Where the corpus is still a work-in-progress, it says so, and so do we.</p>
+
+    <h2>Why How to Train Your Dragon</h2>
+    <p>Screenwriting tools use HTTYD as a teaching example for a reason: its structure is famously clean. A hero whose difference is read as unfitness. A private truth that becomes public proof. A society that reorganizes around what it used to reject. If a story engine can't say something precise about HTTYD, it can't say anything precise at all.</p>
+    <p>Most story software stops at labels: "this is the midpoint," "this is the dark night of the soul." GAS goes the other way. It treats the story as a <strong>theory</strong> — a set of claims with logical dependencies — and then tries to <em>prove</em> it.</p>
+
+    <h2>What a Story Looks Like as a Theory</h2>
+    <p>The HTTYD kernel in the corpus is 570 entities and about 4,400 facts. At the top sits the theme — not a keyword, but a sentence with a required logical shape:</p>
+    <pre><code>kv(httyd_theme, gloss, belonging_is_redefined_by_proved_difference).
+kv(httyd_theme, in_order_to, truly_belong_to_the_tribe).
+kv(httyd_theme, learn_to_truly, accept_and_publicly_prove_the_value_of_difference).
+
+kv(httyd_thesis, claim, the_difference_that_marks_the_hero_as_unfit_becomes_the_value_that_reorganizes_the_society_once_it_is_publicly_proved).
+edge(httyd_thesis, about, httyd_theme).
+
+edge(httyd_grand_argument, thesis, httyd_thesis).
+edge(httyd_grand_argument, proves, httyd_theme).</code></pre>
+    <p>The grand argument decomposes into four sub-arguments, each arguing the thesis:</p>
+    <pre><code>edge(arg_false_belonging_by_conformity_fails, part_of, httyd_grand_argument).
+edge(arg_difference_reveals_a_truer_reading, part_of, httyd_grand_argument).
+edge(arg_private_truth_without_public_proof_fails_socially, part_of, httyd_grand_argument).
+edge(arg_public_proof_of_difference_redefines_belonging, part_of, httyd_grand_argument).</code></pre>
+    <p>And the whole thing grounds out in the actual film. The kernel carries 53 scenes, 110 events, 85 dialogue entities, and 138 script action lines, each pinned to runtime timestamps and transcript anchors:</p>
+    <pre><code>slot(httyd, runtime_section, rt01_berk_raid_failed_public_belonging).
+kv(rt01_berk_raid_failed_public_belonging, runtime_start, '00:00:32').
+kv(rt01_berk_raid_failed_public_belonging, runtime_end, '00:07:14').
+kv(rt01_berk_raid_failed_public_belonging, transcript_anchor_start, 'This is Berk').
+kv(rt01_berk_raid_failed_public_belonging, transcript_anchor_end, 'I hit a Night Fury').</code></pre>
+    <p>Down at the bottom, individual lines of dialogue are entities that <em>assert</em> things the argument needs:</p>
+    <pre><code>kv(d_s1_most_people_would_leave, scene, s1b_hiccup_attempts_public_belonging_and_fails).
+kv(d_s1_most_people_would_leave, speaker, hiccup).
+kv(d_s1_most_people_would_leave, text, 'Most people would leave. Not us. We''re Vikings. We have stubbornness issues.').
+edge(d_s1_most_people_would_leave, asserts, s1_hiccup_performs_sameness_to_earn_belonging).
+edge(d_s1_most_people_would_leave, sourced_from, sl_01_178_int_blacksmith_stall_continuous).</code></pre>
+    <p>That one line — "We have stubbornness issues" — is on the record as evidence for a specific claim in the first sub-argument: Hiccup performing sameness to earn belonging. Every claim in the theory has to earn its place like that, all the way down to the screenplay surface.</p>
+
+    <blockquote>A story stops being a vibe and becomes a theory the moment every claim in it can be asked: proved by what, exactly?</blockquote>
+
+    <h2>The Prover: Climbing the Ladder, Round by Round</h2>
+    <p>Writing the theory is half the product. The other half is the checker. You submit a theory packet, run a check, and get back a report: what certified, at what depth, and — more importantly — what is still <strong>blocked</strong>, with a named gap and a repair hint.</p>
+    <p>The corpus ships with the engine's own bootstrap run: 114 saved report files across 57 proof rounds. (Honest label: that ladder run certifies the engine's small seed story — an original thriller sketch — because it's the run that grew the checker itself. The HTTYD kernel is the full-scale theory written to the same contract, and its own header notes the deeper semantic web is still being tightened. Real corpus, no varnish.)</p>
+    <p>Round 0 submits a naive story — a theme label, a scene, a trope — and the checker refuses it. This is the actual report:</p>
+    <pre><code>"status": "blocked",
+"local_errors": [
+  {
+    "code": "missing_grand_argument_theme_chain",
+    "current_depth": 1,
+    "required_depth": 4,
+    "impact": "compile_blocker",
+    "message": "Grand-argument candidate trust_grand_argument must bind
+                the story thesis and prove the story theme sentence.",
+    "repair_hints": [
+      "Add slot(trust_fall, thesis, thesis_x), edge(thesis_x, about, theme_x),
+       edge(trust_grand_argument, thesis, thesis_x), and
+       edge(trust_grand_argument, proves, theme_x)."
+    ]
+  }, ...</code></pre>
+    <p>Note what the gap message is doing. It isn't "syntax error." It's a <em>story</em> criticism, stated as a proof obligation: you claimed there's a grand argument, but nothing binds it to a thesis, and no thesis is about your theme. The repair hint names the exact missing facts.</p>
+    <p>Round 1's patch is those exact facts — five lines:</p>
+    <pre><code>slot(trust_fall, thesis, thesis_trust).
+edge(thesis_trust, about, trust).
+edge(trust_grand_argument, thesis, thesis_trust).
+edge(trust_grand_argument, proves, trust).
+kv(thesis_trust, claim, vulnerability_before_certainty).</code></pre>
+    <p>And the gap closes — the round 1 report drops <code>missing_grand_argument_theme_chain</code> and surfaces the next, deeper obligation (<code>missing_grand_argument_argument_web</code>: fine, you have a thesis, now where are the arguments?). By round 3 the report reads <code>"status": "compiled"</code> with the theme, grand argument, and trope all certified at depth 4. That's the loop: the checker names the hole, the author fills it, the floor rises.</p>
+    <p>Then the ladder keeps going, and the obligations get more interesting:</p>
+    <ul>
+      <li><strong>Round 3:</strong> compiled — 13 certifications, story spine certified at depth 4.</li>
+      <li><strong>Round 24:</strong> compiled — 80 certifications; whole scenes certified at depth 5 because they provably instantiate premises of the argument.</li>
+      <li><strong>Round 56:</strong> compiled — 171 certifications; individual dialogue lines certified at depth 14. The patch corpus climbs on to depth-37 obligations.</li>
+    </ul>
+    <p>By the deep rounds, the checker is making craft-level objections. This is a real gap message from round 55:</p>
+    <pre><code>"code": "illegible_setup_payoff",
+"message": "Setup target burn_ferrymaster_route is paid off structurally,
+            but the payoff never becomes openly legible to the audience
+            in the payoff scene."</code></pre>
+    <p>Read that twice. The machine is saying: <em>your setup pays off on paper, but the audience will never see it.</em> That is a note a good script editor gives — except it's generated from a proof gap, it's reproducible, and it comes with the exact scene it's pointing at.</p>
+
+    <h2>What Comes Back Out: The Funnel Inside the Story</h2>
+    <p>Here's the part that surprises people. Once a story is a proof web, other things can be <em>derived</em> from it — and the HTTYD kernel already carries one: a marketing surface, read structurally off the same argument. The corpus states its own scope honestly, so we'll quote that first:</p>
+    <pre><code>% HTTYD can also be read as a self-help / transformation funnel from Hiccup's POV:
+% a mentor tells the story of how rejected difference became a method, a guild,
+% and a set of stage-specific swords. This remains a structural marketing read,
+% not a claim that Prolog can author the actual copy or offer language.
+
+slot(httyd, offer, hiccup_difference_method).
+slot(httyd, avatar, misread_difference_avatar).</code></pre>
+    <p>The four story invariants — the load-bearing beats the proof established — each <em>produce</em> a funnel property, and the chain terminates in a funnel type:</p>
+    <pre><code>edge(forge_rejection_ordinary_world_invariant, produces, false_belonging_is_costly).
+edge(hidden_cove_method_discovery_invariant, produces, attunement_becomes_method).
+edge(public_battle_proof_invariant, produces, difference_can_win_in_public).
+edge(new_berk_identity_return_invariant, produces, upgraded_belonging_identity).
+
+edge(false_belonging_is_costly, produces, problem_identification).
+edge(attunement_becomes_method, produces, method_legibility).
+edge(difference_can_win_in_public, produces, trustable_transformation).
+edge(upgraded_belonging_identity, produces, identity_commitment).
+
+edge(problem_identification, produces, funnel_type(self_help_transformation)).</code></pre>
+    <p>The story's beliefs map to marketing beliefs, one for one:</p>
+    <pre><code>kv(my_difference_is_being_misread, realizes_marketing_belief, this_is_my_problem).
+kv(there_is_a_way_to_turn_difference_into_alliance, realizes_marketing_belief, there_is_a_guided_path).
+kv(the_new_way_can_work_in_public, realizes_marketing_belief, transformation_is_possible_for_me).
+kv(i_can_build_a_new_kind_of_belonging, realizes_marketing_belief, i_can_become_the_kind_of_person_who_does_this).</code></pre>
+    <p>And the kernel enumerates the concrete assets that funnel would need — each one anchored to a proved story beat: <code>forge_rejection_story</code>, <code>night_fury_mercy_origin_story</code>, <code>hidden_cove_method_map</code>, <code>astrid_conversion_case_study</code>, <code>red_death_public_proof_panel</code>, <code>new_berk_future_identity_letter</code>, <code>join_new_berk_cta</code>.</p>
+    <p>This bridge isn't ad hoc. The corpus carries a library of classic marketing frameworks encoded as theory in the same language, so the checker can hold marketing surfaces to obligations the same way it holds scenes. Two real entries:</p>
+    <pre><code>kv(epiphany_bridge_variant, framework_signature,
+    [ story_step(new_world), story_step(old_world),
+      story_step(offer_as_result), story_step(the_bridge) ]).
+
+kv(funnel_type_selection_variant, framework_signature,
+    [ funnel_type(book), funnel_type(lead_squeeze), funnel_type(reverse),
+      funnel_type(summit), funnel_type(survey) ]).</code></pre>
+    <p>So the round trip is: story in as theory → certified up the ladder → story, funnel, and marketing artifacts read back out of the proved structure. The same argument that makes the movie land is the argument your funnel makes — and once it's formal, you can check both against it.</p>
+
+    <h2>Who This Is For</h2>
+    <p>If you write stories: this is coverage that never gets tired, never bluffs, and shows its work. A gap report tells you <em>which</em> scene fails <em>which</em> premise, and what fact would fix it.</p>
+    <p>If you build offers and funnels: your funnel already implies a story. GAS makes that story explicit, proves whether it holds together, and hands back the belief map and asset list the structure actually supports — instead of copy written against vibes.</p>
+    <p>And if you're evaluating us: this page is the audit. The corpus files and proof reports quoted here ship with the engine. Ask us to walk you through them live.</p>
+
+    <div class="post-nav">
+      <a href="admissibility.html">&larr; Admissibility Engineering</a>
+      <a href="levels-overview.html">The 7 Levels of Agent Engineering &rarr;</a>
+    </div>
+  </article>
+
+  <!-- Blog CTA -->
+  <div class="blog-cta blog-cta-build">
+    <p class="blog-cta-label">Want your story — or your funnel — proved like this?</p>
+    <p class="blog-cta-desc">GAS is the proving engine behind this worked example: stories in as theories, certified up the ladder, story and marketing artifacts back out.</p>
+    <div class="blog-cta-actions">
+      <a href="../pricing.html" class="blog-cta-primary">See pricing</a>
+      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
+    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
+  </div>
+</div>
+<script src="../sticky-cta.js"></script>
+<script src="../newsletter.js"></script>
