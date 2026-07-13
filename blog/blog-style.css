@@ -194,6 +194,12 @@
 #isaac-site .blog-card p { font-size: 0.86rem; line-height: 1.55; color: var(--ink-2); max-width: 72ch; }
 #isaac-site .blog-card .read-link { display: none; }
 
+/* Related posts (quiet, hairline) */
+#isaac-site .related-posts { border-top: 1px solid var(--line); margin-top: 3.5rem; padding-top: 1.4rem; }
+#isaac-site .related-posts .related-k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+#isaac-site .related-posts a { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.0rem; color: var(--ink); text-decoration: none; border-bottom: none; padding: 0.3rem 0; }
+#isaac-site .related-posts a:hover { color: var(--accent-deep); }
+
 /* Blog CTA */
 #isaac-site .blog-cta {
   margin: 0 auto 2rem; max-width: 720px; padding: 2rem 2.2rem;
