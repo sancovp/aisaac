@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flat versus tree, hands on — SSRI</title>
+<meta name="description" content="Interactive demo: the same 50 skills loaded flat versus descended as a coordinate-addressed tree, with the context cost counted live.">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* Demo-local styles, same token sheet. Motion here is the page's one
+   deliberate element (opacity/transform only, .25s). */
+.task {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.7rem 0.95rem;
+  margin: 0 0 1.1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.task strong { font-weight: 650; }
+.task button {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  background: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.task button:hover { color: var(--ink); }
+
+.panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+@media (max-width: 760px) { .panes { grid-template-columns: 1fr; } }
+
+.pane {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-width: 0;
+}
+.pane header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.pane header h2 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+.meter {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.meter .n { font-weight: 700; }
+.pane .paneNote {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  padding: 0.5rem 0.9rem 0;
+  margin: 0;
+}
+.paneBody { padding: 0.6rem 0.9rem 0.9rem; }
+
+/* left: the flat pile */
+.pile {
+  max-height: 26rem;
+  overflow-y: auto;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 0.4rem;
+}
+.card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--sans);
+  background: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.6rem;
+  margin: 0 0 0.35rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.card:hover { background: rgba(22,21,18,0.03); }
+.card .sname { font-family: var(--mono); font-size: 0.78rem; font-weight: 700; display: block; }
+.card .sdesc { font-size: 0.76rem; color: var(--ink-2); display: block; line-height: 1.4; }
+.card.selected {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+}
+
+/* right: the tree */
+.crumbs {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--ink-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 0.35rem 0.6rem;
+  margin: 0 0 0.55rem;
+  min-height: 1.5em;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.crumbs .coord { color: var(--accent); }
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+.tree ul { padding-left: 1.1rem; border-left: 1px solid var(--hairline); margin-left: 0.45rem; }
+.tree li { margin: 0.25rem 0; }
+.node {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  background: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 0.32rem 0.55rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.node:hover { background: rgba(22,21,18,0.03); }
+.node .coord { color: var(--ink-3); margin-right: 0.45em; }
+.node .act { color: var(--ink-2); font-size: 0.72rem; float: right; }
+.node.entered {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+}
+.node.entered .coord { color: var(--accent); }
+.node .leafdesc {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+  margin-top: 0.15rem;
+}
+.kids { display: none; }
+.kids.open { display: block; animation: rise 0.25s ease; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* the running caption */
+.caption {
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  border: 1px solid var(--hairline);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.6rem 0.9rem;
+  margin: 1.1rem 0 0;
+}
+.caption .nums { font-family: var(--mono); font-size: 0.78rem; display: block; margin-top: 0.25rem; color: var(--ink-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .kids.open { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="page wide">
+
+<nav class="site">
+  <a href="../index.html" class="wordmark">SSRI</a>
+  <a href="../papers/index.html">Papers</a>
+  <a href="../tools.html">Tools</a>
+  <a href="index.html" class="here">Demos</a>
+  <a href="../about.html">About</a>
+</nav>
+
+<h1>Flat versus tree, hands on</h1>
+<p class="meta">Interactive demo · illustrates Paper 1 §4, §6, and Appendix A</p>
+<p class="byline">The same 50 skills, twice. Left: the shipped default — a flat library, every skill's cost charged before you look at any of them. Right: the same skills as a coordinate-addressed tree — you pay per node you enter, and only for the path you walk.</p>
+
+<div class="task">
+  <span><strong>The task (both panes):</strong> find and load the ONE skill for: &ldquo;clean a CSV export.&rdquo;</span>
+  <button id="reset" type="button">Reset</button>
+</div>
+
+<div class="panes">
+
+  <section class="pane" aria-labelledby="flatTitle">
+    <header>
+      <h2 id="flatTitle">Flat — the shipped default</h2>
+      <span class="meter" aria-live="polite">context: <span class="n" id="flatCost">7,500</span> tokens</span>
+    </header>
+    <p class="paneNote">All 50 skills × ~150 tokens each were loaded the moment this pane existed. Scroll, scan, click the one you think is right — the meter was paid up front either way.</p>
+    <div class="paneBody">
+      <div class="pile" id="pile" role="list"></div>
+      <p class="paneNote" id="flatMsg" aria-live="polite" style="padding:0.5rem 0 0;"></p>
+    </div>
+  </section>
+
+  <section class="pane" aria-labelledby="treeTitle">
+    <header>
+      <h2 id="treeTitle">Tree — descend on demand</h2>
+      <span class="meter" aria-live="polite">context: <span class="n" id="treeCost">150</span> tokens</span>
+    </header>
+    <p class="paneNote">Only the root index is loaded (~150 tokens). Click a node to &ldquo;Read&rdquo; it: that injects its layer — its children appear, the breadcrumb grows, the meter counts the node you entered. Nothing you don't enter is ever loaded.</p>
+    <div class="paneBody">
+      <div class="crumbs" id="crumbs" aria-live="polite"></div>
+      <ul class="tree" id="tree"></ul>
+      <p class="paneNote" id="treeMsg" aria-live="polite" style="padding:0.5rem 0 0;"></p>
+    </div>
+  </section>
+
+</div>
+
+<p class="caption" aria-live="polite">
+  Flat paid for all 50 before you looked; the tree paid for the path you walked.
+  <span class="nums" id="capNums">flat: 7,500 tokens (50 skills, up front) · tree: 150 tokens (1 node entered)</span>
+</p>
+
+<h2>What the meters are counting</h2>
+
+<p>Flat exposure costs <code>O(#tools)</code>: every definition is in context before
+the first request, so the bill grows linearly with the size of the library
+whether or not a skill is ever used. Descent costs <code>O(depth)</code>: one node's
+layer per level walked, bounded by the depth of the tree rather than the size of
+the library. Reaching <code>csv-cleaner</code> here takes four nodes
+(<code>0&nbsp;→&nbsp;0.1&nbsp;data&nbsp;→&nbsp;0.1.1&nbsp;tabular&nbsp;→&nbsp;csv-cleaner</code>)
+≈ 600 tokens, against 7,500 paid up front on the left. The argument and its
+calibration against the platform's own published measurement are in
+<a href="../papers/flat-vs-tree.html#s4">Paper&nbsp;1, §4</a> and
+<a href="../papers/flat-vs-tree.html#figure1">Figure&nbsp;1</a>; why a depth-one skill
+library is a flat forest is <a href="../papers/flat-vs-tree.html#s6">§6</a>.</p>
+
+<p class="byline">Honest note: the token numbers here are illustrative of the loading
+<em>model</em> (a uniform ~150 tokens per node), not measurements. The real mechanics —
+coordinates standing in for identity, breadcrumbs for edges, and the
+platform-verified load semantics (the Read tool injects one layer; a shell
+<code>cat</code> injects nothing) — are documented in the paper's
+<a href="../papers/flat-vs-tree.html#a2">Appendix&nbsp;A.2</a>.</p>
+
+<footer class="site">
+  Isaac Wostrel-Rubin · ORCID <a href="https://orcid.org/0009-0003-0219-0506">0009-0003-0219-0506</a> · <a href="mailto:isaacwrubin@gmail.com">isaacwrubin@gmail.com</a> · <a href="https://github.com/sancovp">github.com/sancovp</a>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var TOKENS_PER_NODE = 150;
+  var TARGET = "csv-cleaner";
+
+  // The 50 skills (props — plausibly generic), keyed by name.
+  var DESC = {
+    "csv-cleaner": "Normalize a messy CSV export: trim whitespace, fix encodings, coerce types, drop empty rows.",
+    "csv-splitter": "Split an oversized CSV into batched files by row count or by a grouping column.",
+    "excel-importer": "Pull tabular data out of .xlsx workbooks, including merged cells and multi-sheet layouts.",
+    "parquet-inspector": "Summarize a Parquet file's schema, row groups, and column statistics without loading it whole.",
+    "log-parser": "Extract structured fields from free-form application logs using common timestamp and level patterns.",
+    "regex-builder": "Compose and test a regular expression stepwise against sample inputs before committing it.",
+    "markdown-formatter": "Reflow and normalize Markdown: heading levels, list markers, table alignment, line width.",
+    "sql-migrator": "Write forward and rollback SQL migration pairs from a described schema change.",
+    "schema-differ": "Diff two database schemas and report added, removed, and changed columns and indexes.",
+    "db-seeder": "Generate consistent seed data for a schema, respecting foreign keys and uniqueness constraints.",
+    "dockerfile-writer": "Draft a minimal multi-stage Dockerfile for a project from its language and entrypoint.",
+    "compose-checker": "Validate a docker-compose file: ports, volumes, dependency order, and env var references.",
+    "image-slimmer": "Reduce a container image's size: layer audit, base-image swap, build cache hygiene.",
+    "deploy-checklist": "Run the pre-deploy gate: tests green, migrations applied, config diffed, rollback path named.",
+    "changelog-writer": "Assemble a changelog entry from merged commits, grouped by feature, fix, and breaking change.",
+    "version-bumper": "Choose and apply the right semver bump from the change set, updating manifests consistently.",
+    "rollback-planner": "Write the rollback plan for a release: trigger conditions, steps, data reversibility notes.",
+    "terraform-linter": "Review Terraform for drift risks: unpinned providers, implicit dependencies, state hazards.",
+    "dns-checker": "Verify DNS records for a domain: A/AAAA, CNAME chains, MX, TXT, and TTL sanity.",
+    "cert-renewer": "Check TLS certificate expiry across hosts and stage the renewal steps for each.",
+    "test-scaffolder": "Generate a test file skeleton for a module: cases from public functions, fixtures stubbed.",
+    "lint-fixer": "Apply the project's lint rules and resolve violations without changing behavior.",
+    "type-annotator": "Add type annotations to untyped functions, inferring from call sites and defaults.",
+    "dead-code-finder": "Locate unreferenced functions, unused imports, and unreachable branches for safe removal.",
+    "function-splitter": "Break an oversized function into named steps with explicit inputs and outputs.",
+    "import-organizer": "Sort and group imports per the project convention, removing duplicates and unused entries.",
+    "rename-safe": "Rename a symbol across the codebase, catching string references and serialized names.",
+    "docstring-writer": "Write docstrings for undocumented functions: purpose, parameters, returns, raised errors.",
+    "readme-updater": "Refresh a README against the current code: install steps, usage examples, flag tables.",
+    "api-doc-gen": "Produce endpoint documentation from route definitions: methods, params, response shapes.",
+    "alert-tuner": "Review alert rules for noise: thresholds, durations, and routing against recent incident history.",
+    "uptime-checker": "Define health checks for a service: endpoints, expected codes, timeout and retry policy.",
+    "log-tailer": "Build the filtered live view of a service's logs for an investigation: patterns, exclusions.",
+    "incident-timeline": "Reconstruct an incident timeline from alerts, deploys, and chat records, with gaps flagged.",
+    "postmortem-writer": "Draft a blameless postmortem: impact, contributing causes, and tracked follow-ups.",
+    "oncall-handoff": "Write the on-call handoff note: open incidents, watch items, and pending mitigations.",
+    "backup-scheduler": "Define a backup schedule and retention tiers for a datastore, with restore points named.",
+    "restore-tester": "Exercise a restore from backup into an isolated target and verify integrity checks pass.",
+    "retention-pruner": "Apply retention policy to stored artifacts and snapshots, reporting what would be deleted.",
+    "disk-auditor": "Find what is eating disk: largest paths, growth rates, and safe-to-clear candidates.",
+    "email-drafter": "Draft a plain, purposeful email from a bullet brief: one ask, right register, no filler.",
+    "followup-scheduler": "Plan the follow-up cadence for an unanswered thread and draft each touch in advance.",
+    "inbox-triager": "Sort an inbox backlog into act, delegate, archive — with a one-line reason per message.",
+    "weekly-report": "Compile the week's status from task and event records: done, slipped, blocked, next.",
+    "metrics-summary": "Summarize a metrics window in prose: movements, likely causes, and what to watch.",
+    "slide-outliner": "Turn a document into a slide outline: one claim per slide, evidence noted beneath.",
+    "agenda-builder": "Build a meeting agenda from open threads: decisions needed, owners, timeboxes.",
+    "minutes-taker": "Structure raw meeting notes into minutes: decisions, action items, owners, dates.",
+    "action-tracker": "Extract action items from notes and threads into a tracked list with owners and due dates.",
+    "calendar-blocker": "Plan focus blocks around existing commitments and draft the calendar entries."
+  };
+
+  // The same 50 skills, 3 levels deep. Leaves reference DESC keys.
+  var TREE = {
+    name: "library", coord: "0", kids: [
+      { name: "data", kids: [
+        { name: "tabular",   kids: ["csv-cleaner", "csv-splitter", "excel-importer", "parquet-inspector"] },
+        { name: "text",      kids: ["log-parser", "regex-builder", "markdown-formatter"] },
+        { name: "databases", kids: ["sql-migrator", "schema-differ", "db-seeder"] }
+      ]},
+      { name: "deploy", kids: [
+        { name: "containers", kids: ["dockerfile-writer", "compose-checker", "image-slimmer"] },
+        { name: "release",    kids: ["deploy-checklist", "changelog-writer", "version-bumper", "rollback-planner"] },
+        { name: "infra",      kids: ["terraform-linter", "dns-checker", "cert-renewer"] }
+      ]},
+      { name: "code", kids: [
+        { name: "quality",  kids: ["test-scaffolder", "lint-fixer", "type-annotator", "dead-code-finder"] },
+        { name: "refactor", kids: ["function-splitter", "import-organizer", "rename-safe"] },
+        { name: "docs",     kids: ["docstring-writer", "readme-updater", "api-doc-gen"] }
+      ]},
+      { name: "ops", kids: [
+        { name: "monitoring", kids: ["alert-tuner", "uptime-checker", "log-tailer"] },
+        { name: "incidents",  kids: ["incident-timeline", "postmortem-writer", "oncall-handoff"] },
+        { name: "backups",    kids: ["backup-scheduler", "restore-tester", "retention-pruner", "disk-auditor"] }
+      ]},
+      { name: "comms", kids: [
+        { name: "email",    kids: ["email-drafter", "followup-scheduler", "inbox-triager"] },
+        { name: "reports",  kids: ["weekly-report", "metrics-summary", "slide-outliner"] },
+        { name: "meetings", kids: ["agenda-builder", "minutes-taker", "action-tracker", "calendar-blocker"] }
+      ]}
+    ]
+  };
+
+  // ---- assign coordinates + collect leaves in tree order ----
+  var LEAVES = [];
+  (function walk(node, coord) {
+    node.coord = coord;
+    if (typeof node.kids[0] === "string") {
+      node.kids = node.kids.map(function (leafName, k) {
+        var leaf = { name: leafName, coord: coord + "." + (k + 1), kids: null };
+        LEAVES.push(leaf);
+        return leaf;
+      });
+    } else {
+      node.kids.forEach(function (kid, i) { walk(kid, coord + "." + (i + 1)); });
+    }
+  })(TREE, "0");
+
+  var fmt = function (n) { return n.toLocaleString("en-US"); };
+
+  // ================= LEFT: the flat pile =================
+  var FLAT_TOTAL = LEAVES.length * TOKENS_PER_NODE; // 50 x 150 = 7,500 — paid up front
+  var pile = document.getElementById("pile");
+  var flatMsg = document.getElementById("flatMsg");
+  var flatSelected = null;
+
+  // deterministic permutation (stride 17, offset 23; gcd(17,50)=1) so the
+  // target is buried mid-pile, same order every load.
+  var order = [];
+  for (var i = 0; i < LEAVES.length; i++) order.push(LEAVES[(i * 17 + 23) % LEAVES.length]);
+
+  function buildPile() {
+    pile.innerHTML = "";
+    order.forEach(function (leaf) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "card";
+      b.setAttribute("role", "listitem");
+      b.innerHTML = '<span class="sname"></span><span class="sdesc"></span>';
+      b.querySelector(".sname").textContent = leaf.name;
+      b.querySelector(".sdesc").textContent = DESC[leaf.name];
+      b.addEventListener("click", function () {
+        if (flatSelected) flatSelected.classList.remove("selected");
+        flatSelected = b;
+        b.classList.add("selected");
+        // The meter does NOT move: flat charged for everything already.
+        flatMsg.textContent = (leaf.name === TARGET)
+          ? "Found it. Note the meter: it didn't move — all 7,500 tokens were charged before you started looking."
+          : "“" + leaf.name + "” isn't it — keep scanning. (The meter doesn't care either way; it was paid up front.)";
+      });
+      pile.appendChild(b);
+    });
+  }
+
+  // ================= RIGHT: the tree =================
+  var treeRoot = document.getElementById("tree");
+  var treeCostEl = document.getElementById("treeCost");
+  var flatCostEl = document.getElementById("flatCost");
+  var crumbsEl = document.getElementById("crumbs");
+  var treeMsg = document.getElementById("treeMsg");
+  var capNums = document.getElementById("capNums");
+  var entered;          // Set of coords whose layer is loaded
+  var parentOf = {};    // coord -> node, for breadcrumbs
+  var byCoord = {};
+
+  (function index(node, parent) {
+    byCoord[node.coord] = node;
+    if (parent) parentOf[node.coord] = parent;
+    if (node.kids) node.kids.forEach(function (k) { index(k, node); });
+  })(TREE, null);
+
+  function pathTo(node) {
+    var parts = [];
+    var cur = node;
+    while (cur) { parts.unshift(cur); cur = parentOf[cur.coord]; }
+    return parts;
+  }
+
+  function updateMeters() {
+    var cost = entered.size * TOKENS_PER_NODE;
+    treeCostEl.textContent = fmt(cost);
+    flatCostEl.textContent = fmt(FLAT_TOTAL);
+    capNums.textContent = "flat: " + fmt(FLAT_TOTAL) + " tokens (" + LEAVES.length +
+      " skills, up front) · tree: " + fmt(cost) + " tokens (" + entered.size +
+      " node" + (entered.size === 1 ? "" : "s") + " entered)";
+  }
+
+  function updateCrumbs(node) {
+    crumbsEl.innerHTML = "";
+    pathTo(node).forEach(function (n, i) {
+      if (i > 0) crumbsEl.appendChild(document.createTextNode(" → "));
+      var c = document.createElement("span");
+      c.className = "coord";
+      c.textContent = n.coord;
+      crumbsEl.appendChild(c);
+      crumbsEl.appendChild(document.createTextNode(" " + n.name));
+    });
+  }
+
+  function enterNode(node, btn, kidsUl) {
+    var firstTime = !entered.has(node.coord);
+    if (firstTime) entered.add(node.coord);
+    btn.classList.add("entered");
+    btn.setAttribute("aria-pressed", "true");
+    if (kidsUl) {
+      kidsUl.classList.add("open");
+      btn.setAttribute("aria-expanded", "true");
+      btn.querySelector(".act").textContent = "loaded";
+    } else {
+      btn.querySelector(".act").textContent = "loaded";
+      var d = btn.querySelector(".leafdesc");
+      if (d) d.textContent = DESC[node.name];
+    }
+    updateMeters();
+    updateCrumbs(node);
+    if (firstTime) {
+      if (node.name === TARGET) {
+        treeMsg.textContent = "csv-cleaner loaded: " + entered.size + " nodes entered ≈ " +
+          fmt(entered.size * TOKENS_PER_NODE) + " tokens" +
+          (entered.size === 4 ? " — the direct path" : " (a direct path costs 4 ≈ 600)") +
+          ". The flat pane paid " + fmt(FLAT_TOTAL) + " before you looked.";
+      } else if (node.kids) {
+        treeMsg.textContent = "Read " + node.coord + " " + node.name +
+          ": one layer injected (+" + TOKENS_PER_NODE + "). Its children are now readable; everything unentered stays unloaded.";
+      } else {
+        treeMsg.textContent = "“" + node.name + "” loaded (+" + TOKENS_PER_NODE +
+          ") — not the one. Wrong turns cost one node each, never the whole library.";
+      }
+    }
+  }
+
+  function buildNode(node) {
+    var li = document.createElement("li");
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "node";
+    btn.setAttribute("aria-pressed", "false");
+    var label = node.kids
+      ? node.name + " (" + (node.coord === "0" ? LEAVES.length + " skills below" : "opens to " + node.kids.length) + ")"
+      : node.name;
+    btn.innerHTML = '<span class="coord"></span><span class="nname"></span><span class="act">Read →</span>' +
+      (node.kids ? "" : '<span class="leafdesc"></span>');
+    btn.querySelector(".coord").textContent = node.coord;
+    btn.querySelector(".nname").textContent = label;
+    li.appendChild(btn);
+    var kidsUl = null;
+    if (node.kids) {
+      btn.setAttribute("aria-expanded", "false");
+      kidsUl = document.createElement("ul");
+      kidsUl.className = "kids";
+      node.kids.forEach(function (k) { kidsUl.appendChild(buildNode(k)); });
+      li.appendChild(kidsUl);
+    }
+    btn.addEventListener("click", function () { enterNode(node, btn, kidsUl); });
+    return li;
+  }
+
+  function buildTree() {
+    treeRoot.innerHTML = "";
+    entered = new Set();
+    var rootLi = buildNode(TREE);
+    treeRoot.appendChild(rootLi);
+    // The root index auto-loads (the only node that does) — like the real tool.
+    enterNode(TREE, rootLi.querySelector(".node"), rootLi.querySelector(".kids"));
+    treeMsg.textContent = "The root index is loaded (" + TOKENS_PER_NODE +
+      " tokens). Its five branches are visible but unloaded — Read one to descend.";
+  }
+
+  // ================= reset + boot =================
+  function resetAll() {
+    flatSelected = null;
+    flatMsg.textContent = "";
+    buildPile();
+    buildTree();
+  }
+  document.getElementById("reset").addEventListener("click", resetAll);
+  resetAll();
+})();
+</script>
+</body>
+</html>

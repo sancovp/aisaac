@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tools — SSRI</title>
+<meta name="description" content="Small, dependency-free tools from the SSRI substrate program, each fixing one exact structural gap.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+<nav class="site">
+  <a href="index.html" class="wordmark">SSRI</a>
+  <a href="papers/index.html">Papers</a>
+  <a href="tools.html" class="here">Tools</a>
+  <a href="demos/index.html">Demos</a>
+  <a href="about.html">About</a>
+</nav>
+
+<h1>Tools</h1>
+<p class="byline">Each tool is small, installs in one command, and closes one structural gap the papers identify. Availability is stated literally for each.</p>
+
+<h2>Released repositories</h2>
+
+<ul class="tools">
+  <li>
+    <span class="tname"><a href="https://github.com/sancovp/skilltree">skilltree</a></span>
+    <span class="tmeta"> · MIT · PyPI: <code>agent-skilltree</code></span>
+    <p>A coordinate-addressed, navigable, self-maintaining tree over a flat skill directory: <code>tree</code>/<code>map</code>/<code>search</code> plus the <code>discover</code>/<code>cohere</code>/<code>emit</code>/<code>unemit</code> coherence loop. The working backing for Paper&nbsp;1's correction (v0.2.0, 62 tests passing).</p>
+  </li>
+  <li>
+    <span class="tname"><a href="https://github.com/sancovp/heaven-tree-repl">heaven-tree-repl</a></span>
+    <span class="tmeta"> · MIT · public August 2025</span>
+    <p>An executable tree surface for a language model—typed nodes navigated by descent, runnable at the leaves, exposable over MCP. Noted for the dated precedence only: it was public in August 2025, roughly two months before agent skills shipped and before on-demand loading was advocated over upfront schemas.</p>
+  </li>
+  <li>
+    <span class="tname"><a href="https://github.com/sancovp/graph-skills-experimental">graph-skills-experimental</a></span>
+    <span class="tmeta"> · MIT · pure stdlib</span>
+    <p>The graph-native form in minimal, runnable shape: skills as hypergraph nodes; typed edges (<code>specializes</code>/<code>delegates_to</code>/<code>must_follow</code>/<code>contains</code>) as state transitions that inject context; <code>chart()</code> derives tree-projections on demand. A runnable existence proof, not a production substrate.</p>
+  </li>
+</ul>
+
+<h2>Seedlings</h2>
+<p class="byline">Released via the research monorepo; standalone releases forthcoming. All MIT, stdlib-only, one-command install.</p>
+
+<ul class="tools">
+  <li>
+    <span class="tname">corcc</span>
+    <p>Write a reasoning persona you can actually check. One command, zero deps: define a persona as an ordered list of moves with cue-phrases, then gauge any transcript against it—did the prose perform the moves in order, or scramble them.</p>
+  </li>
+  <li>
+    <span class="tname">accc</span>
+    <p>Turn a one-line attention-chain into a reusable attention-directing block. Compiles <code>[problem] =&gt; [constraints] =&gt; [options] =&gt; |decision|</code> into the prompt block you actually inject.</p>
+  </li>
+  <li>
+    <span class="tname">agentpack</span>
+    <p>Bundle skills + a persona into a droppable agent—one command. A folder of skills and a one-line persona become a self-contained, installable package with the skills mapped and coordinate-addressable.</p>
+  </li>
+  <li>
+    <span class="tname">skillmap</span>
+    <p>Coordinate-addressed mapping for skill folders; released via the research monorepo; standalone release forthcoming.</p>
+  </li>
+  <li>
+    <span class="tname">skillsearch</span>
+    <p>Coordinate-scoped BM25 search over a coordinate-mapped skill tree. <code>--scope 0.2</code> ranks only within that branch and below: the coordinate is the address and the search region.</p>
+  </li>
+  <li>
+    <span class="tname">flowmine</span>
+    <p>Recover the human steering flow from a conversation arc: extract the sequence of human inputs from session transcripts, clean it, and turn it into a reusable move-pattern plus a flow-vs-aside map.</p>
+  </li>
+  <li>
+    <span class="tname">foldersearch</span>
+    <p>Zero-config full-text search over any folder. One command. No vector DB, no model, no dependencies—SQLite FTS5 / BM25, stdlib only.</p>
+  </li>
+</ul>
+
+<footer class="site">
+  Isaac Wostrel-Rubin · ORCID <a href="https://orcid.org/0009-0003-0219-0506">0009-0003-0219-0506</a> · <a href="mailto:isaacwrubin@gmail.com">isaacwrubin@gmail.com</a> · <a href="https://github.com/sancovp">github.com/sancovp</a>
+</footer>
+
+</div>
+</body>
+</html>

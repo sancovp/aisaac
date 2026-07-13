@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papers — SSRI</title>
+<meta name="description" content="The SSRI research program: the substrate trilogy, two method notes, and the formal and oversight tracks.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="page">
+
+<nav class="site">
+  <a href="../index.html" class="wordmark">SSRI</a>
+  <a href="index.html" class="here">Papers</a>
+  <a href="../tools.html">Tools</a>
+  <a href="../demos/index.html">Demos</a>
+  <a href="../about.html">About</a>
+</nav>
+
+<h1>The research program</h1>
+<p class="byline">One trilogy on agent context substrates, two method notes, and two further tracks. Statuses below are literal: only Paper&nbsp;1 is published here; everything else is stated at exactly the stage it is at.</p>
+
+<h2>The trilogy: substrate structure for agent skill libraries</h2>
+
+<div class="pub">
+  <span class="tag">substrate</span><span class="title"><a href="flat-vs-tree.html">Flat versus Tree: Why Agent Skills Need a Graph</a></span><br>
+  <span class="status">2026-06–07 · Paper 1 · working paper — published here · not peer-reviewed</span>
+  <p>Skills are shipped flat—a directory of self-contained packages—while they are used relationally: to apply one correctly a model must place it among the others. That relational structure is latent in the library, and a flat list discards it, forcing the model to reconstruct it on every task. The paper develops the structural argument (agent operation as a flow over the structure of its context), documents the cost of the flat default, and demonstrates the filesystem-level correction. The claim is substrate-correction, not agent-performance; the corresponding agent-task benchmark is specified as future work, not claimed. Working paper, June–July 2026.</p>
+</div>
+
+<div class="pub">
+  <span class="tag">substrate</span><span class="title">Coordinate-Addressed Skill Trees: Progressive Disclosure on a Flat Filesystem</span><br>
+  <span class="status">Paper 2 · companion paper — written, in preparation</span>
+  <p>The construction paper. It specifies and implements a coordinate-addressed tree over an ordinary skill directory, on a substrate (the filesystem, as exposed to a coding agent) that provides no first-class edges. The tree emulates the two things a graph would supply natively: identity, via a hierarchical coordinate (<code>0.2.1</code>) assigned to every node, and edges, via breadcrumbs—instructions, embedded in each node, to load a specific child through the one operation that actually injects it into the model's context. Around this: retrieval that survives the flattening (internal nodes carry a summary of their subtree) and a self-coherence loop (<code>discover</code>/<code>cohere</code>/<code>emit</code>/<code>unemit</code>) that reconstructs, audits, repairs, and losslessly reverts the on-disk structure. Implemented as one MIT-licensed tool (<a href="https://github.com/sancovp/skilltree">skilltree</a>) with a passing test suite.</p>
+</div>
+
+<div class="pub">
+  <span class="tag">substrate</span><span class="title">Why Skill Libraries Need a Graph: Shared Operational Primitives, State Transitions, and the Hypergraph of Tree-Options</span><br>
+  <span class="status">Paper 3 · seeded — argument outlined, manuscript not yet drafted</span>
+  <p>The generalization: why a tree is not enough. Skill libraries require graph structure because operational primitives participate in multiple workflows; a shared operational primitive cannot be faithfully represented by a single-parent skill tree without duplication or artificial ownership. A typed hyperedge represents the primitive once and makes it reachable from every workflow that requires it: trees are deployable projections, hyperedges preserve shared operational reality. The runnable existence proof is <a href="https://github.com/sancovp/graph-skills-experimental">graph-skills-experimental</a> (MIT, pure stdlib): skills as hypergraph nodes, typed edges as context-injecting state transitions, <code>chart()</code> deriving tree-options, and a lift of the Paper&nbsp;2 coordinate tree as the degenerate case.</p>
+</div>
+
+<h2>Method notes</h2>
+
+<div class="pub">
+  <span class="tag">method</span><span class="title">Coordinate-Addressed Progressive Disclosure for Agent Skill Hierarchies</span><br>
+  <span class="status">Note — written; standalone release forthcoming</span>
+  <p>A minimal, deterministic method for the missing hierarchy: assign every node in a skill folder a hierarchical coordinate, render a navigable map (tree, addressable index, branch summaries), and let the agent open a branch and descend to the coordinate it needs. Approximately 90 lines, one command, zero dependencies, non-destructive. The note's own stated scope: the construction and addressing are exact; the retrieval improvement over load-all is the expected, literature-supported direction but is asserted, not benchmarked—a measurement to run, not a result to claim.</p>
+</div>
+
+<div class="pub">
+  <span class="tag">method</span><span class="title">State Machines on the Tree: Fixing the Groundhog-Day Problem</span><br>
+  <span class="status">Note — written; standalone release forthcoming</span>
+  <p>Spatial structure answers "where is the skill?"; it does not answer "where am I in the work?" This note adds the missing temporal structure with a dependency-free state machine over the coordinate tree: a persisted current position plus a descent call stack, so the agent resumes instead of restarting—across turns and across sessions. Verified end-to-end at the level of the mechanism (state survives the process); the task-completion improvement over stateless re-reading is asserted as the expected direction, not benchmarked.</p>
+</div>
+
+<h2>Further tracks</h2>
+
+<div class="pub">
+  <span class="tag">formal</span><span class="title">Formal notes: the Scott-domain proof set</span><br>
+  <span class="status">Internal research notes — releases forthcoming</span>
+  <p>A set of formal notes on the order-theoretic semantics underlying the substrate program.</p>
+</div>
+
+<div class="pub">
+  <span class="tag">oversight</span><span class="title">Oversight theory: graded autonomy as handler substitution</span><br>
+  <span class="status">Manuscript in preparation</span>
+  <p>A treatment of graded oversight for autonomous agent systems—under what conditions, and by what mechanism, the external acceptance authority over an agent's work can be progressively substituted while remaining accountable.</p>
+</div>
+
+<footer class="site">
+  Isaac Wostrel-Rubin · ORCID <a href="https://orcid.org/0009-0003-0219-0506">0009-0003-0219-0506</a> · <a href="mailto:isaacwrubin@gmail.com">isaacwrubin@gmail.com</a> · <a href="https://github.com/sancovp">github.com/sancovp</a>
+</footer>
+
+</div>
+</body>
+</html>

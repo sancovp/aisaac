@@ -1,0 +1,293 @@
+/* SSRI — Sanctuary System Research Institute
+   Design per the invariance sheet: warm ground, near-black warm ink, ONE
+   rationed accent (electric cobalt), serif body / sans structure / mono meta,
+   66ch measure, 950px media, 4px radius, 9%-ink hairlines, .2–.35s
+   opacity/transform motion only. No webfonts, no build step. */
+
+:root {
+  --ground: #f8f7f3;
+  --surface: #ffffff;
+  --ink: #161512;
+  --ink-2: #5f5c55;
+  --ink-3: #a5a29a;
+  --hairline: rgba(22, 21, 18, 0.09);
+  --accent: #1f3bff;
+  --accent-wash: rgba(31, 59, 255, 0.06);
+  --serif: "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --measure: 66ch;
+  --media-max: 950px;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 17px; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--serif);
+  line-height: 1.62;
+}
+
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.2rem 1.25rem 4rem;
+}
+.page.wide { max-width: var(--media-max); }
+
+/* --- navigation: wordmark + four links, hairline bottom --- */
+nav.site {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 0.75rem;
+  margin-bottom: 2.6rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+nav.site a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+nav.site a:hover { color: var(--ink); }
+nav.site a.here {
+  color: var(--accent);   /* the current-nav marker: an accent-budget item */
+}
+nav.site a.wordmark, nav.site .inst {
+  color: var(--ink);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  margin-right: 0.4rem;
+}
+
+/* --- headings: sans carries structure; sentence case --- */
+h1, h2, h3 {
+  font-family: var(--sans);
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 1.65rem; margin: 0 0 0.5rem; }
+h2 { font-size: 1.14rem; margin: 2.5rem 0 0.8rem; }
+h3 { font-size: 0.98rem; margin: 1.8rem 0 0.6rem; }
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(31, 59, 255, 0.35);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s ease;
+}
+a:hover { text-decoration-color: var(--accent); }
+
+/* --- meta / dates: mono; descriptive bylines: quiet sans --- */
+.byline {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  margin-bottom: 0.4rem;
+}
+.meta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  margin-bottom: 0.4rem;
+}
+.paper-head {
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.8rem;
+}
+.status-note {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.5rem 0.8rem;
+  margin: 0.9rem 0 0;
+}
+
+/* --- abstract --- */
+.abstract {
+  font-size: 0.95rem;
+  margin: 0 0 1.4rem;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--hairline);
+}
+
+/* --- lists --- */
+ul, ol { margin: 0 0 1rem; padding-left: 1.6rem; }
+li { margin-bottom: 0.45rem; }
+
+/* the four claims: numbered, receipts demoted */
+ol.beams > li { margin-bottom: 1.05rem; }
+ol.beams .receipt {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin-top: 0.2rem;
+}
+
+/* --- the demo callout (index): one bordered pointer, still --- */
+.demo-callout {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  border: 1px solid var(--hairline);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.65rem 0.9rem;
+  margin: 1.4rem 0;
+}
+
+/* --- code --- */
+code {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  background: rgba(22, 21, 18, 0.05);
+  padding: 0.08em 0.3em;
+  border-radius: var(--radius);
+}
+pre {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin: 0 0 1rem;
+}
+pre code { background: none; padding: 0; font-size: 1em; }
+
+/* --- tables: hairline rules --- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+}
+th, td {
+  border: 1px solid var(--hairline);
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  font-weight: 650;
+  border-bottom: 1px solid var(--accent);  /* the table rule: accent-budget item */
+  background: var(--surface);
+}
+.tablewrap { overflow-x: auto; margin: 0 0 1rem; }
+
+/* --- figures --- */
+figure { margin: 1.6rem 0; }
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+figcaption {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin-top: 0.6rem;
+  line-height: 1.5;
+}
+
+/* --- blockquotes (program notes, provenance) --- */
+blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 1.1rem;
+  border-left: 2px solid var(--hairline);
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+
+/* --- footnotes / endnotes --- */
+sup.fn { font-size: 0.72em; line-height: 0; }
+sup.fn a { text-decoration: none; }
+section.endnotes, section.bibliography {
+  font-size: 0.85rem;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.2rem;
+  margin-top: 2.5rem;
+}
+section.endnotes ol { padding-left: 1.8rem; }
+section.endnotes li { margin-bottom: 0.7rem; }
+section.bibliography ul { list-style: none; padding-left: 1.4rem; }
+section.bibliography li { text-indent: -1.4rem; margin-bottom: 0.5rem; }
+a.backref { text-decoration: none; margin-left: 0.25rem; }
+
+/* --- publications / index entries: dense text list --- */
+.pub {
+  margin-bottom: 1.35rem;
+  padding-bottom: 1.05rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.pub:last-child { border-bottom: none; }
+.pub .title { font-weight: bold; }
+.pub .status {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+.pub .tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);          /* the small category tag: accent-budget item */
+  border: 1px solid rgba(31, 59, 255, 0.25);
+  border-radius: var(--radius);
+  padding: 0 0.35em;
+  margin-right: 0.5em;
+}
+.pub p { font-size: 0.92rem; margin: 0.4rem 0 0; }
+
+/* --- tools grid --- */
+.tools { list-style: none; padding: 0; }
+.tools li {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+}
+.tools .tname { font-family: var(--sans); font-weight: 650; }
+.tools .tmeta { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-2); }
+.tools p { font-size: 0.92rem; margin: 0.35rem 0 0; }
+
+/* --- footer: end credits --- */
+footer.site {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+footer.site a { color: var(--ink-2); }
+
+hr { border: none; border-top: 1px solid var(--hairline); margin: 2rem 0; }
+
+/* --- motion discipline --- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

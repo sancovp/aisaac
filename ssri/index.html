@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSRI — Sanctuary System Research Institute</title>
+<meta name="description" content="Independent research on agent context substrates and graded-oversight systems for autonomous AI work.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+<nav class="site">
+  <a href="index.html" class="wordmark">SSRI</a>
+  <a href="papers/index.html">Papers</a>
+  <a href="tools.html">Tools</a>
+  <a href="demos/index.html">Demos</a>
+  <a href="about.html">About</a>
+</nav>
+
+<h1>Sanctuary System Research Institute</h1>
+<p class="byline">Independent research on agent context substrates and graded-oversight systems for autonomous AI work.</p>
+
+<p>The current program studies one question: what structure does a tool-using
+agent need its context to have, and what does it cost when the prevailing
+substrate withholds that structure? The findings so far are stated in four
+claims, each carrying its receipt.</p>
+
+<p class="demo-callout">Interactive: <a href="demos/skilltree.html">experience the substrate difference</a> — the same 50 skills loaded flat versus descended as a tree, with the context cost counted live.</p>
+
+<h2>The four claims</h2>
+
+<ol class="beams">
+  <li>
+    <strong>Agent operation is graph-shaped; the prevailing substrate is flat.</strong>
+    An agent in operation is a flow through context-states: nodes are states,
+    edges are admissible transitions, and the space the agent moves through is
+    precisely the structure of its context. A flat substrate withholds that
+    structure, so the agent must reconstruct it at every step. Token counts are
+    the symptom, not the problem: fifty tools loaded upfront is not a token
+    problem but a structure problem. Reified far enough, the structure is not a
+    tool the agent consults but what the agent runs as — stated as the
+    program's organizing conjecture, not a proven result. Optional corroboration,
+    kept deliberately out of the foundation: mechanistic work on in-context
+    learning identifies edge-shaped attention machinery (induction heads;
+    Olsson, Elhage et&nbsp;al. 2022), and models are separately documented to degrade
+    when relevant content is buried among irrelevant content ("Lost in the
+    Middle"). Both are treated as corroboration of the structural claim, never
+    as its basis.
+    <span class="receipt">Receipt: <a href="papers/flat-vs-tree.html">Paper&nbsp;1</a>, §1 and Figure&nbsp;1; the demotion of the mechanistic point is explicit in §1.1.</span>
+  </li>
+  <li>
+    <strong>MCP tools and agent skills shipped flat; the fix is a tree on either side.</strong>
+    A flat tool surface (every schema loaded upfront) and a flat skill library
+    (a directory of self-contained packages) are the same bug. A tree descended
+    on demand loads <code>O(depth)</code> rather than <code>O(#tools)</code>; the
+    "MCP versus skills" token debate compares two flat representations and asks
+    which is cheaper, which is the wrong axis — the answer on both sides is to
+    impose a tree.
+    <span class="receipt">Receipt: <a href="papers/flat-vs-tree.html">Paper&nbsp;1</a>, §4 and Figure&nbsp;1, calibrated against the platform's own published measurement (150,000 tokens upfront vs. 2,000 on demand).</span>
+  </li>
+  <li>
+    <strong>"Progressive disclosure" does not apply to itself.</strong>
+    Skills disclose progressively <em>within</em> a package — frontmatter, body,
+    referenced files — but a skill cannot cause a deeper skill to be injected,
+    so disclosure stops at depth one and a library of skills remains a flat
+    forest exactly at the scale where disclosure was the point. The correction
+    is the missing level itself: a coordinate-addressed, navigable, self-maintaining
+    tree over the skill library.
+    <span class="receipt">Receipt: <a href="https://github.com/sancovp/skilltree">github.com/sancovp/skilltree</a> (MIT, v0.2.0, 62 tests passing); <a href="papers/flat-vs-tree.html">Paper&nbsp;1</a>, §6, §8, and Appendix&nbsp;A, including the runtime load-semantics observations.</span>
+  </li>
+  <li>
+    <strong>This is tractable now, and was not before.</strong>
+    Hierarchical agents that select a minimal toolkit are no longer exotic to
+    build. Two conditions delayed the correction — models were not previously
+    reliable enough at instruction-following and tool use to drive their own
+    navigation of a tree, and the tools were built flat, which is a default,
+    not a law. Both conditions have lifted; the remaining distance is
+    inexpensive to close.
+    <span class="receipt">Receipt: <a href="papers/flat-vs-tree.html">Paper&nbsp;1</a>, §10; running code at <a href="https://github.com/sancovp/skilltree">skilltree</a> and <a href="https://github.com/sancovp/graph-skills-experimental">graph-skills-experimental</a>.</span>
+  </li>
+</ol>
+
+<h2>The frame</h2>
+
+<p>No intent is claimed anywhere in this program, and none is required — the
+shape of the failure is identical whether it was chosen or merely shipped
+quickly. These tools are infrastructure: a population of builders stands on
+the platform's defaults, so a default that mis-shapes context is not one
+team's cost but a levy paid across every project built on top, continuously.
+The program closes on a demand rather than a complaint: a single tree that
+self-manages, and an agent that can navigate it.</p>
+
+<h2>Publications</h2>
+
+<ul>
+  <li><a href="papers/flat-vs-tree.html">Flat versus Tree: Why Agent Skills Need a Graph</a> — working paper, June–July 2026. Published here; not peer-reviewed.</li>
+  <li>Coordinate-Addressed Skill Trees: Progressive Disclosure on a Flat Filesystem — companion paper; written, in preparation.</li>
+  <li>Why Skill Libraries Need a Graph: Shared Operational Primitives, State Transitions, and the Hypergraph of Tree-Options — seeded; argument outlined, manuscript not yet drafted.</li>
+  <li><a href="papers/index.html">The full program →</a> (the trilogy, two method notes, and the formal and oversight tracks)</li>
+</ul>
+
+<footer class="site">
+  Isaac Wostrel-Rubin · ORCID <a href="https://orcid.org/0009-0003-0219-0506">0009-0003-0219-0506</a> · <a href="mailto:isaacwrubin@gmail.com">isaacwrubin@gmail.com</a> · <a href="https://github.com/sancovp">github.com/sancovp</a>
+</footer>
+
+</div>
+</body>
+</html>
