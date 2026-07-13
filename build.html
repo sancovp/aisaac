@@ -26,13 +26,13 @@
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sys:system-ui,-apple-system,"Segoe UI",sans-serif;
   }
-  /* the dark stage — the demo runs under stage light */
+  /* the dark stage — the demo runs under the mark's own light (icon tile + cyan glow) */
   #hero{
-    --ink:#14110B; --surface:#1E1A12; --surface2:#252015; --line:#2E2817; --line2:#453B22;
-    --txt:#F2EBDD; --dim:#B0A68F; --faint:#8A8168;
-    --amber:#F5B84A; --amber-hi:#FFCE6B; --amber-dim:rgba(245,184,74,.13);
-    --good:#4ADE80; --good-dim:rgba(74,222,128,.12); --bad:#F87171; --blue:#7DBEFF;
-    --btn-bg:#F5B84A; --btn-tx:#141008;
+    --ink:#050712; --surface:#0D1120; --surface2:#121A2E; --line:#1B2438; --line2:#2B3A56;
+    --txt:#E5EDF7; --dim:#93A7BD; --faint:#5E7189;
+    --amber:#7DD9E8; --amber-hi:#A9F0FA; --amber-dim:rgba(125,217,232,.13);
+    --good:#4ADE80; --good-dim:rgba(74,222,128,.12); --bad:#F87171; --blue:#9CB8EF;
+    --btn-bg:#7DD9E8; --btn-tx:#06222A;
     background:var(--ink);
   }
   *{box-sizing:border-box}
@@ -103,7 +103,7 @@
           max-width:280px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
   .bubble.on{opacity:1;transform:translateX(-50%)}
   .bubble::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--line2)}
-  .agent.ceo .bubble{border-color:rgba(245,184,74,.5)} .agent.ceo .bubble::after{border-top-color:rgba(245,184,74,.5)}
+  .agent.ceo .bubble{border-color:rgba(125,217,232,.5)} .agent.ceo .bubble::after{border-top-color:rgba(125,217,232,.5)}
   .agent.fail .bubble{border-color:rgba(248,113,113,.5)} .agent.fail .bubble::after{border-top-color:rgba(248,113,113,.5)}
   .agent.pass .bubble{border-color:rgba(74,222,128,.5)} .agent.pass .bubble::after{border-top-color:rgba(74,222,128,.5)}
   #props{position:absolute;top:26px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px}
@@ -115,15 +115,15 @@
   .chip .t{font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-left:8px;padding:1px 6px;border-radius:4px}
   .chip .t.auto{color:var(--good);background:var(--good-dim)} .chip .t.human{color:var(--blue)} .chip .t.ext{color:var(--amber)}
   .verdict{display:flex;gap:14px;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:12px 18px;position:relative}
-  .verdict.pop{animation:vglow 2s ease-out} @keyframes vglow{0%,100%{box-shadow:0 0 0 rgba(245,184,74,0)}35%{box-shadow:0 0 34px rgba(245,184,74,.34)}}
+  .verdict.pop{animation:vglow 2s ease-out} @keyframes vglow{0%,100%{box-shadow:0 0 0 rgba(125,217,232,0)}35%{box-shadow:0 0 34px rgba(125,217,232,.34)}}
   .verdict .big{font:700 30px var(--sys);color:var(--good);font-variant-numeric:tabular-nums}
   .verdict .vt{font:13px/1.4 var(--sys);color:var(--dim);text-align:left} .verdict .vt b{color:var(--txt)}
-  .glint{position:absolute;font-size:15px;color:var(--amber-hi);opacity:0;pointer-events:none;text-shadow:0 0 9px rgba(245,184,74,.75)}
+  .glint{position:absolute;font-size:15px;color:var(--amber-hi);opacity:0;pointer-events:none;text-shadow:0 0 9px rgba(125,217,232,.75)}
   .glint.go{animation:twinkle 2s ease-in-out} @keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}18%{opacity:1;transform:scale(1.15)}42%{opacity:.35}66%{opacity:1;transform:scale(1)}}
   .dashp{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .mcard{background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:12px 16px;min-width:120px;text-align:center}
   .mcard .k{font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)} .mcard .v{font:700 24px var(--sys);margin-top:4px;font-variant-numeric:tabular-nums}
-  .sopp{background:var(--surface);border:1px solid rgba(245,184,74,.4);border-radius:12px;padding:14px 18px;text-align:center}
+  .sopp{background:var(--surface);border:1px solid rgba(125,217,232,.4);border-radius:12px;padding:14px 18px;text-align:center}
   .sopp .badge{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)} .sopp .nm{font:600 17px var(--sys);margin-top:6px} .sopp .sub{font:12px var(--sys);color:var(--good);margin-top:6px}
   #caption{padding:18px 26px 24px;text-align:center;min-height:88px;display:flex;align-items:center;justify-content:center}
   #captiontext{font:clamp(17px,2.5vw,23px)/1.5 var(--serif);color:var(--txt);max-width:720px;opacity:0;transition:opacity .4s;text-wrap:balance}
@@ -527,10 +527,10 @@ const FIELD=(function(){
   function frame(t){cur+=(tgt-cur)*.03;x.clearRect(0,0,W,H);const sp=.35+cur*1.2,linkD=84+cur*68;
     for(const n of nodes){n.x+=n.vx*sp;n.y+=n.vy*sp;if(n.x<-20)n.x=W+20;if(n.x>W+20)n.x=-20;if(n.y<-20)n.y=H+20;if(n.y>H+20)n.y=-20}
     for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);
-      if(d<linkD){x.strokeStyle="rgba(245,184,74,"+((1-d/linkD)*(.04+cur*.13)).toFixed(3)+")";x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
-    for(const n of nodes){const p=.5+.5*Math.sin(t*.001+n.ph);x.fillStyle="rgba(245,184,74,"+(.08+cur*.28*p).toFixed(3)+")";x.beginPath();x.arc(n.x,n.y,1+p*1.1*(.4+cur),0,6.28);x.fill()}
+      if(d<linkD){x.strokeStyle="rgba(125,217,232,"+((1-d/linkD)*(.04+cur*.13)).toFixed(3)+")";x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+    for(const n of nodes){const p=.5+.5*Math.sin(t*.001+n.ph);x.fillStyle="rgba(125,217,232,"+(.08+cur*.28*p).toFixed(3)+")";x.beginPath();x.arc(n.x,n.y,1+p*1.1*(.4+cur),0,6.28);x.fill()}
     if(cur>.6&&nodes.length>2&&Math.random()<cur*.045)sig.push({a:nodes[(Math.random()*nodes.length)|0],b:nodes[(Math.random()*nodes.length)|0],t:0});
-    sig=sig.filter(s=>s.t<1);for(const s of sig){s.t+=.022;const px=s.a.x+(s.b.x-s.a.x)*s.t,py=s.a.y+(s.b.y-s.a.y)*s.t;x.fillStyle="rgba(255,206,107,"+((1-s.t)*.5).toFixed(3)+")";x.beginPath();x.arc(px,py,1.8,0,6.28);x.fill()}
+    sig=sig.filter(s=>s.t<1);for(const s of sig){s.t+=.022;const px=s.a.x+(s.b.x-s.a.x)*s.t,py=s.a.y+(s.b.y-s.a.y)*s.t;x.fillStyle="rgba(169,240,250,"+((1-s.t)*.5).toFixed(3)+")";x.beginPath();x.arc(px,py,1.8,0,6.28);x.fill()}
     if(!REDUCED)requestAnimationFrame(frame)}
   if(REDUCED)frame(0);else requestAnimationFrame(frame);
   return {set target(v){tgt=v},get target(){return tgt}};
