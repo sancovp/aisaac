@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Explainer Lab — aisaac</title>
+<style>
+  @font-face { font-family:'Inter'; src:url('fonts/Inter-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Inter'; src:url('fonts/Inter-Medium.woff2') format('woff2'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Inter'; src:url('fonts/Inter-SemiBold.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Inter'; src:url('fonts/Inter-Bold.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Inter'; src:url('fonts/Inter-ExtraBold.woff2') format('woff2'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Inter'; src:url('fonts/Inter-Black.woff2') format('woff2'); font-weight:900; font-style:normal; font-display:swap; }
+
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:#0a0e14; color:#f4f6fb;
+    font-family:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    min-height:100vh;
+  }
+  .wrap { max-width:1080px; margin:0 auto; padding:48px 24px 96px; }
+  .eyebrow { color:#e8b437; font-weight:800; font-size:12px; letter-spacing:4px; text-transform:uppercase; }
+  h1 { font-weight:900; font-size:clamp(26px,4vw,40px); margin:10px 0 14px; line-height:1.15; }
+  .lede { color:#8b93a7; font-size:16px; line-height:1.65; max-width:760px; margin-bottom:36px; }
+  .lede strong { color:#f4f6fb; font-weight:600; }
+  .lab-btn {
+    background:#0f1520; color:#f4f6fb; border:1px solid rgba(255,255,255,0.12);
+    font:600 14px 'Inter', system-ui, sans-serif; padding:9px 18px; border-radius:8px; cursor:pointer;
+  }
+  .lab-btn:hover { border-color:#e8b437; color:#e8b437; }
+  .foot { color:#8b93a7; font-size:13px; line-height:1.7; margin-top:48px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; }
+  .foot a { color:#4fd1a5; text-decoration:none; }
+  .foot a:hover { text-decoration:underline; }
+  noscript p { color:#e8574f; margin:24px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">aisaac · explainer lab</div>
+  <h1>The 7 Levels of AI Agent Engineering — the hook, live</h1>
+  <p class="lede">
+    This is not a video file. The diagram backdrop is the <strong>actual explainer
+    engine running in your browser</strong> — the same Remotion composition we render
+    videos from, playing its shot list live. The ink presenter is the character pass,
+    overlaid with real transparency and slaved to the same clock, so he stands in front
+    of the moving diagram exactly as in the rendered film. Press play; click a sentence
+    below to jump to its beat.
+  </p>
+
+  <noscript><p>This lab page needs JavaScript — it runs the explainer engine in your browser.</p></noscript>
+  <div id="explainer-root"></div>
+
+  <p class="foot">
+    A lab page — unlisted, unpolished on purpose. The excerpt is the hook segment of
+    <a href="../blog/levels-overview.html">The 7 Levels of AI Agent Engineering</a>
+    (seven sentences, 43 seconds). Everything on this page is a committed static file:
+    one JS bundle (the engine + its shot list), one alpha-VP9 webm (the presenter),
+    one mp3 (the narration). The presenter overlay needs a VP9-alpha browser
+    (Chrome, Edge, Firefox); everything else runs anywhere.
+  </p>
+</div>
+
+<script>
+  // The engine resolves its media through remotion's staticFile(); point its
+  // static base at this page's own directory so the mp3 ships as a repo file
+  // and resolves under any deployment prefix (GitHub Pages project path, a
+  // custom domain, or file://).
+  window.remotion_staticBase = new URL('.', location.href).pathname.replace(/\/+$/, '');
+</script>
+<script src="explainer.bundle.js"></script>
+</body>
+</html>
