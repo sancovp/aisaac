@@ -14,15 +14,12 @@ BASE="${ENGINE_BASE:-$HOME/video_aios/studio/base}"
 STICK="${ENGINE_STICK:-$HOME/video_aios/studio/stick}"
 ESBUILD="$BASE/node_modules/.bin/esbuild"
 
-# Backdrop: 'remotion' is aliased to the shim (Audio -> null; no media files),
-# which re-exports the real module via 'remotion-original'.
+# Backdrop. The composition's <Audio> stays real (PLAY mode narration); the
+# page sets window.remotion_staticBase so the mp3 resolves relative to lab/.
 NODE_PATH="$BASE/node_modules" "$ESBUILD" entry.tsx \
   --bundle --minify --format=iife --target=es2019 --jsx=automatic \
   --define:process.env.NODE_ENV='"production"' \
   --alias:@engine="$BASE/src/base" \
-  --alias:remotion-original="$BASE/node_modules/remotion" \
-  --alias:remotion/no-react="$BASE/node_modules/remotion/dist/esm/no-react.mjs" \
-  --alias:remotion=./remotion-shim.ts \
   --outfile=../explainer.bundle.js
 
 # Presenter: everything resolves from the stick checkout (React 18 tree).

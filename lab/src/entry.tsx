@@ -12,8 +12,12 @@
  * the scroll sections (one authored source, three surfaces: film, page, spec);
  * the real lines are exported on the API for scrub.js to render.
  *
- * 'remotion' is aliased to remotion-shim.ts at build time (Audio → null:
- * no media files on this page). Build: ./build.sh.
+ * PLAY mode support: the composition's own <Audio> stays real — the page sets
+ * window.remotion_staticBase to its directory so the segment's narration mp3
+ * (lab/audio/…) resolves under any deployment prefix. While scrubbing the
+ * player is paused, so the audio never sounds; scrub.js's play toggle calls
+ * play()/pause() here for normal timed playback with the voice.
+ * Build: ./build.sh.
  */
 import React, { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -45,6 +49,9 @@ export interface BackdropAPI {
   duration: number;
   beats: { start: number; frames: number; line: string; eyebrow?: string }[];
   setFrame: (f: number) => void;
+  play: () => void;
+  pause: () => void;
+  on: (event: 'frameupdate' | 'ended' | 'play' | 'pause', cb: (frame: number) => void) => void;
 }
 
 const App: React.FC = () => {
@@ -66,6 +73,20 @@ const App: React.FC = () => {
         if (clamped === lastFrame.current) return;
         lastFrame.current = clamped;
         playerRef.current?.seekTo(clamped);
+      },
+      play: () => playerRef.current?.play(),
+      pause: () => playerRef.current?.pause(),
+      on: (event, cb) => {
+        const p = playerRef.current;
+        if (!p) return;
+        if (event === 'frameupdate') {
+          p.addEventListener('frameupdate', ((e: { detail: { frame: number } }) => {
+            lastFrame.current = e.detail.frame;
+            cb(e.detail.frame);
+          }) as never);
+        } else {
+          p.addEventListener(event, (() => cb(lastFrame.current)) as never);
+        }
       },
     };
     (window as unknown as { AisaacBackdrop?: BackdropAPI }).AisaacBackdrop = api;
