@@ -14,60 +14,114 @@
   @font-face { font-family:'Inter'; src:url('fonts/Inter-Black.woff2') format('woff2'); font-weight:900; font-style:normal; font-display:swap; }
 
   * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:auto; }
   body {
     background:#0a0e14; color:#f4f6fb;
     font-family:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    min-height:100vh;
   }
-  .wrap { max-width:1080px; margin:0 auto; padding:48px 24px 96px; }
+  .wrap { max-width:1080px; margin:0 auto; padding:48px 24px; }
   .eyebrow { color:#e8b437; font-weight:800; font-size:12px; letter-spacing:4px; text-transform:uppercase; }
   h1 { font-weight:900; font-size:clamp(26px,4vw,40px); margin:10px 0 14px; line-height:1.15; }
-  .lede { color:#8b93a7; font-size:16px; line-height:1.65; max-width:760px; margin-bottom:36px; }
+  .lede { color:#8b93a7; font-size:16px; line-height:1.65; max-width:760px; }
   .lede strong { color:#f4f6fb; font-weight:600; }
-  .lab-btn {
-    background:#0f1520; color:#f4f6fb; border:1px solid rgba(255,255,255,0.12);
-    font:600 14px 'Inter', system-ui, sans-serif; padding:9px 18px; border-radius:8px; cursor:pointer;
+
+  /* ---- the scroll world: sticky stage + tall scroll range ---- */
+  #scrub-world { position:relative; }
+  #stage { position:sticky; top:0; height:100vh; overflow:hidden; }
+  /* the 16:9 film frame, centered; bg matches the composition field so the
+     letterbox is seamless */
+  #stagebox {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:min(100vw, calc(100vh * 16 / 9)); aspect-ratio:16/9;
   }
-  .lab-btn:hover { border-color:#e8b437; color:#e8b437; }
-  .foot { color:#8b93a7; font-size:13px; line-height:1.7; margin-top:48px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; }
+  #backdrop-root, #presenter-root { position:absolute; inset:0; pointer-events:none; }
+  #presenter-root { z-index:10; }
+
+  /* copy cards live in the film's caption column (right side), DOM-real */
+  #copylayer { position:absolute; inset:0; z-index:20; pointer-events:none; }
+  .copy-card {
+    position:absolute; right:5%; top:50%; width:min(36%, 560px);
+    opacity:0; transform:translateY(-50%);
+    will-change:opacity, transform; pointer-events:none;
+  }
+  .copy-card__num { display:block; color:#8b93a7; font-weight:600; font-size:12px; letter-spacing:2px; margin-bottom:14px; }
+  .copy-card__eyebrow { display:block; color:#e8b437; font-weight:800; font-size:clamp(11px,1.2vw,15px); letter-spacing:4px; text-transform:uppercase; margin-bottom:12px; }
+  .copy-card__line { color:#f4f6fb; font-weight:700; font-size:clamp(17px,2vw,29px); line-height:1.32; }
+
+  /* route dots (scroll-world pattern) */
+  #route {
+    position:absolute; left:18px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:14px; z-index:30;
+  }
+  .route-dot { background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; padding:4px; }
+  .route-dot i { display:block; width:8px; height:8px; border-radius:50%; background:#2a3242; transition:background 160ms, transform 160ms; }
+  .route-dot.is-active i { background:#e8b437; transform:scale(1.5); }
+  .route-dot span { color:#8b93a7; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:0; transition:opacity 160ms; }
+  .route-dot:hover span, .route-dot.is-active span { opacity:1; }
+
+  #scroll-hint {
+    position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
+    color:#8b93a7; font-size:12px; letter-spacing:3px; text-transform:uppercase; z-index:30;
+  }
+  #scroll-hint i { display:block; width:1px; height:26px; margin:8px auto 0; background:linear-gradient(#e8b437, transparent); }
+
+  .foot { color:#8b93a7; font-size:13px; line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; }
   .foot a { color:#4fd1a5; text-decoration:none; }
   .foot a:hover { text-decoration:underline; }
   noscript p { color:#e8574f; margin:24px 0; }
+
+  @media (max-width:860px) {
+    #route { display:none; }
+    .copy-card { right:6%; width:70%; top:auto; bottom:12%; transform:none; }
+    .copy-card__line { font-size:16px; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<header class="wrap">
   <div class="eyebrow">aisaac · explainer lab</div>
-  <h1>The 7 Levels of AI Agent Engineering — the hook, live</h1>
+  <h1>Scroll through the 7-Levels hook — the engine, live</h1>
   <p class="lede">
-    This is not a video file. The diagram backdrop is the <strong>actual explainer
-    engine running in your browser</strong> — the same Remotion composition we render
-    videos from, playing its shot list live. The ink presenter is the character pass,
-    overlaid with real transparency and slaved to the same clock, so he stands in front
-    of the moving diagram exactly as in the rendered film. Press play; click a sentence
-    below to jump to its beat.
+    Nothing on this page is a video file. The diagram is the <strong>actual explainer
+    engine running in your browser</strong> — the same Remotion composition our films
+    render from, playing its shot list live. The ink presenter is the character engine,
+    a live WebGL rig on a transparent canvas layered over the diagram at film
+    coordinates. <strong>Your scroll is the clock</strong>: scroll down and you scrub
+    through the explanation sentence by sentence, at your own pace, forward or backward.
   </p>
+</header>
 
-  <noscript><p>This lab page needs JavaScript — it runs the explainer engine in your browser.</p></noscript>
-  <div id="explainer-root"></div>
+<noscript><p class="wrap">This lab page needs JavaScript — it runs the explainer engine in your browser.</p></noscript>
 
-  <p class="foot">
-    A lab page — unlisted, unpolished on purpose. The excerpt is the hook segment of
-    <a href="../blog/levels-overview.html">The 7 Levels of AI Agent Engineering</a>
-    (seven sentences, 43 seconds). Everything on this page is a committed static file:
-    one JS bundle (the engine + its shot list), one alpha-VP9 webm (the presenter),
-    one mp3 (the narration). The presenter overlay needs a VP9-alpha browser
-    (Chrome, Edge, Firefox); everything else runs anywhere.
-  </p>
+<div id="scrub-world">
+  <div id="stage">
+    <div id="stagebox">
+      <div id="backdrop-root"></div>
+      <div id="presenter-root"></div>
+      <div id="copylayer"></div>
+    </div>
+    <div id="route"></div>
+    <div id="scroll-hint">scroll to explain<i></i></div>
+  </div>
 </div>
 
-<script>
-  // The engine resolves its media through remotion's staticFile(); point its
-  // static base at this page's own directory so the mp3 ships as a repo file
-  // and resolves under any deployment prefix (GitHub Pages project path, a
-  // custom domain, or file://).
-  window.remotion_staticBase = new URL('.', location.href).pathname.replace(/\/+$/, '');
-</script>
+<footer class="wrap">
+  <p class="foot">
+    A lab page — unlisted, unpolished on purpose. The excerpt is the hook of
+    <a href="../blog/levels-overview.html">The 7 Levels of AI Agent Engineering</a>
+    (seven sentences, 1299 frames). Two static bundles, each carrying its own React:
+    the diagram engine (React 19) and the stickman engine (React 18 + three.js —
+    its reconciler doesn't run under 19 yet). One scroll clock drives both through
+    the same frame counter; the captions you're reading are DOM text from the same
+    shot-list source the film uses. Scroll mechanics adapted from
+    <a href="https://github.com/oso95/scroll-world">oso95/scroll-world</a> (MIT).
+    No media files, no external requests.
+  </p>
+</footer>
+
 <script src="explainer.bundle.js"></script>
+<script src="explainer.presenter.bundle.js"></script>
+<script src="scrub.js"></script>
 </body>
 </html>
