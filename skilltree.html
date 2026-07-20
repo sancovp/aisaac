@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SkillTree: give your agent a navigable geometry. Past ~15 skills every agent drowns in its own toolbox. A free, open pattern — coordinate-addressed skill directories with progressive disclosure.">
+  <title>SkillTree — give your agent a navigable geometry | Isaac TWI</title>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="transform.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a href="free.html" class="nav-cta">Get the Pattern — Free</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="padding-top:6rem;">
+    <div style="max-width:60ch;">
+      <div class="tag">SkillTree · A free pattern</div>
+      <h1>Your agent isn't dumb. <span>Its geometry is disorganized.</span></h1>
+      <p class="sub">Past about fifteen skills, every agent starts to drown in its own toolbox. It's not a reasoning failure — it's a shape failure. Give the skills a navigable geometry and the drowning stops. That geometry has a name, a package, and it's free.</p>
+      <a href="#pattern" class="cta-big" style="margin-top:1.5rem;">See the pattern &rarr;</a>
+    </div>
+  </section>
+
+  <!-- THE FELT PROBLEM -->
+  <section class="dark">
+    <div class="tag">The felt problem</div>
+    <h2>A flat pile of skills is a context bomb.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;margin-bottom:1.5rem;">
+      When every skill sits in one flat list, the agent has to hold the whole list in its head to pick one. Ten skills is fine. Fifty is a wall of names it half-remembers. The pile lands in context all at once — and the more you add, the more the model has to read before it can even start.
+    </p>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;">
+      You've seen the failure mode: context overload, then the <em>wrong</em> selection, then a confident execution of the wrong thing. The agent isn't confused about your goal — it's confused about which tool answers it, because you handed it a heap and asked it to find the needle every single turn.
+    </p>
+  </section>
+
+  <!-- THE PATTERN, HONESTLY GIVEN -->
+  <section id="pattern">
+    <div class="tag">The pattern</div>
+    <h2>Give the toolbox a coordinate system.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;margin-bottom:2rem;">
+      SkillTree is a tree of skill-directories instead of a flat pile. Skills get coordinate-addressed — a place in the tree, not just a name in a list — and the agent reads them by progressive disclosure: it loads the index, sees the branches, and drills into exactly one. No spoilers, no wall.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+      <div style="background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--r-lg);padding:2rem;">
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Progressive disclosure</h3>
+        <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;">Load the index first. See branches, not fifty full skill bodies. Drill one branch when the task actually calls for it. The agent reads what it needs and nothing else.</p>
+      </div>
+      <div style="background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--r-lg);padding:2rem;">
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Coordinate-addressed</h3>
+        <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;">Every skill has a location in the tree, not just a name. The agent navigates <em>to</em> a capability the way you navigate a filesystem — geometry it can reason about instead of a list it has to memorize.</p>
+      </div>
+      <div style="background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--r-lg);padding:2rem;">
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Scoped search</h3>
+        <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;">Search inside a branch instead of across the whole pile. The agent narrows to a subtree first, so lookups stay small even as the total skill count grows.</p>
+      </div>
+      <div style="background:var(--glass-bg);border:1px solid rgba(125,211,252,0.35);border-radius:var(--r-lg);padding:2rem;">
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">O(depth), not O(#tools)</h3>
+        <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;">This is an <strong style="color:var(--text-1);">architectural</strong> claim, not a benchmark: to reach a skill the agent traverses the depth of the tree, not the width of the whole toolbox. Add a hundred more skills to other branches and the path to any one skill doesn't get longer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE AND OPEN -->
+  <section class="dark">
+    <div class="tag">Free and open</div>
+    <h2>It's a package. Install it. Use it.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;margin-bottom:1.5rem;">
+      SkillTree isn't a pitch with a paywall behind it — it's open source. The <code style="color:var(--text-1);">skilltree</code> package is public. Read it, run it, fork it, wire it into your own agent today. Nothing on this page is gated.
+    </p>
+    <a href="https://github.com/sancovp/skilltree" class="cta-big">github.com/sancovp/skilltree &rarr;</a>
+    <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;max-width:56ch;margin-top:1.5rem;">
+      Genuinely: if all you ever do is take the pattern and give your agent a better geometry, that's a win and you owe nothing. The pattern is the gift.
+    </p>
+  </section>
+
+  <!-- THE HONEST CLOSE -->
+  <section>
+    <div class="tag">Then, if you want more</div>
+    <h2>Get the pattern first. Feel the effect. Then two doors.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;margin-bottom:2rem;">
+      Once your agent stops drowning, you'll feel where the ceiling moves next — bigger trees, shared skill libraries, the whole autonomous-org shape around them. If you want the finished version instead of building every branch yourself, there are two ways in:
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+      <div style="background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--r-lg);padding:2rem;">
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Door one · The finished setups</h3>
+        <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;margin-bottom:1.2rem;">The pre-built trees, the courses that show how to structure them, and the community that maintains them. Skip the branch-by-branch and start from a working geometry.</p>
+        <a href="join.html" class="cta-big">Join the community &rarr;</a>
+      </div>
+      <div style="background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--r-lg);padding:2rem;">
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Door two · Co-build it with me</h3>
+        <p style="font-size:0.8rem;color:var(--text-2);line-height:1.7;margin-bottom:1.2rem;">If the tree you need is the backbone of a real system, we build it together — your skills, your coordinates, standing up in your agent. Start from the free tier and see where it goes.</p>
+        <a href="free.html" class="cta-big">Start free &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- META-HONESTY -->
+  <section class="dark">
+    <div class="tag">Full disclosure</div>
+    <h2>Yes, the free pattern is also the doorway.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);line-height:1.8;max-width:56ch;">
+      The pattern is free because it works better as a gift than as bait — you can take it and never come back, and that's a fine outcome. The doors are there for the people who feel the effect and want the rest of the geometry built with them. Honest either way.
+    </p>
+  </section>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Give the toolbox a shape it can navigate.</span>
+  </div>
+
+<script src="sticky-cta.js"></script>
+<script src="exit-popup.js"></script>
+</body>
+</html>
