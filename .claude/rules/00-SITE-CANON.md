@@ -43,6 +43,16 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## Decision log (rulings that bind edits; newest first)
 
+- 2026-08-07 (later): **THE PRODUCT-LANDING RULING (Isaac): the site's main job is to
+  be an AWESOME LANDING PAGE for cave-teams and dark-factory.** The engineer descent
+  ends at dark-factory's README (which literally ends in a clone command — the door's
+  original promise, now cashable). Source-map addition: **build.html ← dark-factory
+  README (github.com/sancovp/dark-factory) + cave-teams README — reuse THEIR copy;
+  they are the best zero-lore public text in the ecosystem; do not paraphrase over
+  them.** dark-factory's one-liner is wave-answer-grade: "no human is in the loop;
+  what stops it shipping garbage is three independent gates ending in a controlled
+  experiment."
+
 - 2026-08-07 (late): **THE RATCHET LAW OF NAVIGATION (Isaac, verbatim): "fundamentally
   a funnel is a series of ratcheted options such that the avatar can't figure out how
   to do anything except sanctioned moves."** Consequences: top-left/brand button →
