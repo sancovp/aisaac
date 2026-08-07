@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Build Claude-Code software by talking to it — Isaac</title>
-<meta name="description" content="One engineer agent and seven specialists compile the real components — skills, tools, prompts, harnesses, teams. Open source; the install is three lines.">
+<title>This repository maintains and improves itself — Isaac</title>
+<meta name="description" content="A team of AI agents convenes inside a game, works out what this repo needs, builds the change, and ships it through CI/CD. No human is in the loop.">
 <link rel="canonical" href="https://sancovp.github.io/aisaac/build.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Build Claude-Code software by talking to it — Isaac">
-<meta property="og:description" content="One engineer agent and seven specialists compile the real components — skills, tools, prompts, harnesses, teams. Open source; the install is three lines.">
+<meta property="og:title" content="This repository maintains and improves itself — Isaac">
+<meta property="og:description" content="A team of AI agents convenes inside a game, works out what this repo needs, builds the change, and ships it through CI/CD. No human is in the loop.">
 <meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/build.png">
 <meta property="og:url" content="https://sancovp.github.io/aisaac/build.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,13 +17,29 @@
 </head>
 <body data-depth="1">
 <!-- ══════════════════════════════════════════════════════════════════════
-     TYPE 3 — RUNG.  Rung 03: run your work inside one.
-     Block order: B0 · B1 · B2 · B3 · B5 · B4 · B8 · B7 · B6 · B9 · B10
-     Laws: ONE <h1>. ONE .cta-primary (B9 uses the .cta-big alias).
-           No @media, no hex, no page-local <style>. Renders with JS off.
-     Built from: promptworld.html (light rewrite, de-lored per spec §3.1).
-     The 3-line quickstart is PROMOTED into B3 — a runnable install command
-     is the strongest receipt this product has.
+     TYPE 3 — RUNG.  Rung 03: run your work inside one.  THE FLAGSHIP.
+
+     THE PRODUCT-LANDING RULING (Isaac, 2026-08-07, 00-SITE-CANON decision
+     log): the site's main job is to be an awesome landing page for
+     cave-teams and dark-factory, and THIS page is where they land. Every
+     product sentence below is VERBATIM (or a verbatim fragment) from the
+     two canonical sources the ruling names:
+       · ~/repo/dark-factory/README.md   (github.com/sancovp/dark-factory)
+       · ~/repo/cave-teams/README.md     (github.com/sancovp/cave-teams)
+     Do not paraphrase over them — their text is the best zero-lore public
+     text in the ecosystem. The gates diagram is the repo's own docs/gates.svg,
+     copied into assets/ with attribution (exhibits keep their own look).
+
+     The engineer descent TERMINATES at github.com/sancovp/dark-factory —
+     whose README literally ends in a clone command; the same clone command
+     ships in B3 below, which is what lets index.html's engineer card promise
+     "a clone command" again.
+
+     Block order: B0 · B1 · B2 · B3 · B5(cycle) · B5b(gates) · B5c(cave-teams)
+     · B4 · B8 · B7 · B6 · B9 · B10.  Laws: ONE <h1>, ONE .cta-primary
+     (B9 uses the .cta-big alias). No @media, no hex, no page-local <style>.
+     OFFERS UNCHANGED: B8's price (Free), its anchor, the guarantee and the
+     rung-4 fineprint are carried over from the previous build.html verbatim.
      ══════════════════════════════════════════════════════════════════════ -->
 
 <a class="skip-link" href="#main">Skip to content</a>
@@ -44,117 +60,143 @@
 
 <main id="main">
 
-  <!-- ══ B2 CLAIM ═══════════════════════════════════════════════════════ -->
+  <!-- ══ B2 CLAIM — dark-factory's own first line, verbatim. ═════════════ -->
   <section class="claim">
     <div class="wrap">
       <p class="eyebrow">Rung 03 &mdash; run your work inside one</p>
-      <h1>Build Claude-Code software <span>by talking to it.</span></h1>
-      <p class="lede">One engineer agent and seven specialist builders. You describe what you want; they compile the real components &mdash; skills, tools, prompts, harnesses, teams, workflows. It is open source and the whole install is three lines.</p>
-      <a class="cta-primary" href="https://github.com/sancovp">Get it on GitHub &rarr;</a>
+      <h1>This repository <span>maintains and improves itself.</span></h1>
+      <p class="lede"><strong>dark-factory:</strong> on a schedule &mdash; or whenever an issue is filed &mdash; a team of AI agents convenes inside a game, works out what this repo needs, builds the change, and ships it through CI/CD. No human is in the loop. What stops it shipping garbage is not trust in the AI: it&rsquo;s three independent gates, ending in a controlled experiment.</p>
+      <a class="cta-primary" href="https://github.com/sancovp/dark-factory">Get it on GitHub &rarr;</a>
     </div>
   </section>
 
-  <!-- ══ B3 ARTIFACT — the runnable install, promoted ═══════════════════ -->
+  <!-- ══ B3 ARTIFACT — the clone command, verbatim from the README's §6.
+       A runnable install command is the strongest receipt a product has. ══ -->
   <section class="flush-top">
     <div class="wrap">
       <figure class="artifact">
         <div class="artifact-frame">
-          <pre class="artifact-code"><code># build the image (stages the app, its plugins and the agent runtime)
-bash deploy/build.sh build
+          <pre class="artifact-code"><code>git clone https://github.com/sancovp/dark-factory &amp;&amp; cd dark-factory
+pip install -r requirements.txt          # cave-teams (pinned) + heaven-framework
 
-# boot on :3858 with your model provider key in the environment
-bash deploy/build.sh boot 3858
+# keyless sanity check — the whole stack imports and composes
+python -c "from factory import run_cycle; print('composes')"
 
-# open http://localhost:3858 — chat, live file workbench, dashboards</code></pre>
+# one full cycle, locally (the worlds are AI-driven — needs a MiniMax key)
+MINIMAX_API_KEY=…  HEAVEN_DATA_DIR=/tmp/heaven-data  python -m factory.run_cycle</code></pre>
         </div>
-        <!-- REPO-URL: the repository these commands live in is currently named
-             with canon vocabulary, which trips law L3 on a rung page. Linking
-             the org until the repo is renamed or an exception is ruled.
-             One sed for the integrator; the commands themselves are correct. -->
-        <figcaption class="artifact-prov">Copied straight out of the repository&rsquo;s own deploy script &mdash; this is the entire install, not an abridged version written for a landing page. It runs as a container on your machine against your own provider key. <a href="https://github.com/sancovp">Find it on github.com/sancovp &rarr;</a></figcaption>
+        <figcaption class="artifact-prov">Copied straight out of the repository&rsquo;s own README &mdash; this is the entire install, not an abridged version written for a landing page. To make your own self-maintaining repo: fork it, add the MiniMax key secret, allow Actions to create PRs, and open an issue to convene the dev system &mdash; or wait for the cron. <a href="https://github.com/sancovp/dark-factory">github.com/sancovp/dark-factory &rarr;</a></figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ══ B5 MECHANISM — the three steps ════════════════════════════════ -->
+  <!-- ══ B5 MECHANISM — one cycle, end to end. The seven step titles and
+       every sentence under them are verbatim (or verbatim fragments) from
+       README §2. ══ -->
   <section class="mechanism dark">
     <div class="wrap">
       <p class="eyebrow">How it works</p>
-      <h2>You describe it. A guild builds it. It shows its work.</h2>
+      <h2>What happens in one cycle, end to end.</h2>
+      <p class="lede">A cycle fires from the daily cron, a manual dispatch, or automatically when a GitHub Issue is opened. The agents play <strong>World of Skillcraft</strong> &mdash; they craft skills (real files), test them, and sell them to each other on a trade board; a deity referees. Why a <em>game</em>? Because the market and the deity create selection pressure &mdash; the game manufactures honest signals about which skills matter.</p>
       <div class="steps">
         <div class="step">
+          <div class="step-num">00</div>
+          <h3>The live world plays</h3>
+          <p>A WoS world boots on the current package and the agents just play. The result is telemetry: that number &mdash; the economy&rsquo;s <strong>throughput</strong> &mdash; is the fitness of the current version of this repo.</p>
+        </div>
+        <div class="step">
           <div class="step-num">01</div>
-          <h3>You describe it</h3>
-          <p>Plain language, in a chat. There is no spec format to learn and no config file to fill in before you are allowed to start.</p>
+          <h3>The dev-world convenes</h3>
+          <p>They craft candidate skills, test them, argue about them via the market, and buy the ones they believe in. The skill economy is the R&amp;D lab.</p>
         </div>
         <div class="step">
           <div class="step-num">02</div>
-          <h3>A guild builds it</h3>
-          <p>The engineer agent builds it directly, or routes the job to the specialist who owns that craft. Each specialist works only inside its own directory, so the work stays separable and reviewable.</p>
+          <h3>The skill is applied</h3>
+          <p>The factory picks the skill a peer actually bought (the market&rsquo;s vote &mdash; self-praise is worth nothing) and the buyer executes its procedure against a checkout of the repo. The diff that falls out is the proposed change.</p>
         </div>
         <div class="step">
           <div class="step-num">03</div>
-          <h3>It shows its work</h3>
-          <p>Ask how it was built and it reads its own directories back to you. The answer is generated from the real structure on disk, not from a description someone typed in about the structure.</p>
+          <h3>The gate</h3>
+          <p>Three mechanical checks, no opinions. Failure at the gate = the change dies, the cause is logged, and it becomes the signal for the next cycle.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>The race</h3>
+          <p>Two live worlds boot, identical in every way except one: treatment on the patched package, control on the current one. A controlled experiment &mdash; an A/B test with one variable &mdash; so the comparison is <em>causal</em>. Replicated, decided by strict majority.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <h3>Ship or receipt</h3>
+          <p>Strict win &rarr; it merges its own PR. Tie or loss &rarr; the PR is closed with the verdict as a comment. Merged PRs are proven improvements; closed PRs are the graveyard of plausible ideas that didn&rsquo;t survive measurement.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">06</div>
+          <h3>The deity&rsquo;s retrospective</h3>
+          <p>The lessons distil into the standing rulebook, injected into every future briefing. Skills accumulate in the loadout; <em>lessons accumulate in the rules</em> &mdash; the way they develop improves, not just what they&rsquo;ve developed.</p>
         </div>
       </div>
-      <p class="fineprint">It runs on your machine against <strong>your own provider key</strong>. No account, no email capture, no waitlist &mdash; and nothing routed through us.</p>
     </div>
   </section>
 
-  <!-- ══ B5b MECHANISM — the seven crafts ══════════════════════════════ -->
+  <!-- ══ B5b MECHANISM — the trust argument. Heading, table rows, and the
+       design-bet line verbatim from README §3; the diagram is the repo's
+       own docs/gates.svg (assets copy, attributed in-file). ══ -->
   <section class="mechanism">
     <div class="wrap">
-      <p class="eyebrow">The seven crafts</p>
-      <h2>Seven component types, seven masters.</h2>
-      <p class="lede">The component ladder, smallest to largest. This is the actual set of things Claude Code software is built out of &mdash; the engineer builds any of them itself, or hands the work to the master who owns that craft.</p>
+      <p class="eyebrow">The part that replaces human review</p>
+      <h2>Why three gates.</h2>
+      <p class="lede">Each gate kills a different failure mode. None of the three gates is anyone&rsquo;s opinion of their own work.</p>
+      <figure class="fig">
+        <img src="assets/dark-factory-gates.svg" alt="Three gates in sequence: the market (a peer must pay gold — kills self-assessed value), the fresh-model test (a blank instance must follow the skill from text alone — kills context-dependence and forged records), and the replicated race (the live world with the change must out-produce the one without — kills plausible-but-useless changes). What falls through becomes receipts." width="1120" height="330">
+        <figcaption class="fig-cap">The repository&rsquo;s own diagram, unaltered &mdash; docs/gates.svg from <a href="https://github.com/sancovp/dark-factory">sancovp/dark-factory</a>.</figcaption>
+      </figure>
       <div class="stack">
         <div class="stack-item">
           <div class="stack-bar"></div>
-          <div class="stack-num">skill</div>
-          <div class="stack-content"><h4>Skillwright</h4><p>A packaged capability &mdash; a lean instruction file plus the resources an agent equips along with it.</p></div>
+          <div class="stack-num">The market</div>
+          <div class="stack-content"><div><h4>A peer paid gold</h4><p>Kills: skills nobody actually wants &mdash; self-assessed value.</p></div></div>
         </div>
         <div class="stack-item">
           <div class="stack-bar"></div>
-          <div class="stack-num">mcp</div>
-          <div class="stack-content"><h4>Toolwright</h4><p>A tool server &mdash; real executable tools an agent can call, with typed inputs and outputs.</p></div>
+          <div class="stack-num">The fresh-model test</div>
+          <div class="stack-content"><div><h4>A blank instance must follow the skill from its text alone</h4><p>Kills: skills that only &ldquo;work&rdquo; with their author&rsquo;s context in the room &mdash; and forged test records, since the factory mints its own.</p></div></div>
         </div>
         <div class="stack-item">
           <div class="stack-bar"></div>
-          <div class="stack-num">prompt</div>
-          <div class="stack-content"><h4>Promptwright</h4><p>A prompt or persona &mdash; the thing that puts a model into a role and holds it there.</p></div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-bar"></div>
-          <div class="stack-num">harness</div>
-          <div class="stack-content"><h4>Harnesswright</h4><p>A harness &mdash; sequenced typed outputs across a turn, ordered on a dependency graph.</p></div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-bar"></div>
-          <div class="stack-num">team</div>
-          <div class="stack-content"><h4>Teamwright</h4><p>A team of subagents coordinating against a shared task list.</p></div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-bar"></div>
-          <div class="stack-num">workflow</div>
-          <div class="stack-content"><h4>Flowwright</h4><p>A deterministic script that fans work out to subagents in phases.</p></div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-bar"></div>
-          <div class="stack-num">system</div>
-          <div class="stack-content"><h4>Systemwright</h4><p>A whole operating system &mdash; a directory plus a core loop that makes an agent govern itself.</p></div>
+          <div class="stack-num">The replicated race</div>
+          <div class="stack-content"><div><h4>The live world with the change must out-produce the one without</h4><p>Kills: changes that are plausible, well-argued, and useless &mdash; or harmful. The AI that proposed the change can be <em>confidently wrong</em>; the experiment doesn&rsquo;t care.</p></div></div>
         </div>
       </div>
+      <p class="fineprint">The design bet, in one line: <strong>you don&rsquo;t need the proposer to be right &mdash; you need the selection structure to be sound.</strong></p>
     </div>
   </section>
 
-  <!-- ══ B5c MECHANISM — the self-inspection claim, with its falsifier ══ -->
+  <!-- ══ B5c MECHANISM — cave-teams, the library underneath. Every product
+       sentence verbatim from the cave-teams README + dark-factory §1. ══ -->
   <section class="mechanism dark">
     <div class="wrap">
-      <p class="eyebrow">The part that is unusual</p>
-      <h2>An app that knows how it was built.</h2>
-      <p class="lede">It is built over a documentation-and-development system that every agent inside it carries. So it can inspect its own structure and explain, as a living example, exactly how an app like it is made. The thing that builds components is itself a component you can open and read.</p>
-      <p class="fineprint">This is the one claim on the page you can falsify in about a minute: install it, ask it how it was built, and check the answer against the directories on your own disk. If the answer were written in rather than read out, that check would fail &mdash; which is the point of naming the test here rather than hoping you skip it.</p>
+      <p class="eyebrow">The stack running all of this</p>
+      <h2>cave-teams: programmable, leader-driven agent teams.</h2>
+      <p class="lede"><strong>cave-teams</strong> provides the world as a composable object (<strong>SkillcraftWorld</strong> &mdash; the WoS economy ported rule-for-rule from the original game, every guard intact) plus the race machinery (<strong>racetrack</strong>, <strong>Championship</strong>). <strong>heaven-framework</strong> provides the agents themselves &mdash; AI processes with Bash and file-editing tools, so when an agent &ldquo;crafts a skill&rdquo; a real file appears on disk. Both install with pip; the whole thing runs inside GitHub Actions.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <p>The task arrives as a file in the team&rsquo;s session dir; the leader checks it.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <p>The leader &mdash; <em>an intelligent autonomous dovetail</em> &mdash; writes a message to a teammate (often just <em>&ldquo;read {path}&rdquo;</em>).</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <p>cave-teams does <strong>not</strong> blindly run the next thing. It checks the message against the guardrails; if it&rsquo;s wrong, it re-prompts the leader with the error &mdash; and the LLM <strong>fixes itself</strong>. If it&rsquo;s right, it delivers it; the teammate runs; the leader is alerted.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <p>The leader decides the next message, or ends the run and returns a report.</p>
+        </div>
+      </div>
+      <p class="fineprint">Compose teammates with a tiny algebra &mdash; seq, par, gate, choice &mdash; and <strong>a team is a teammate</strong> (the closure law). Topologies are also configs and classes. <em>pip install cave-teams</em> pulls cave-harness (the CAVE runtime) + pydantic. MIT.</p>
     </div>
   </section>
 
@@ -163,37 +205,39 @@ bash deploy/build.sh boot 3858
     <div class="wrap">
       <p class="eyebrow">Receipts, not testimonials</p>
       <h2>Don&rsquo;t take my word for it &mdash; take the code.</h2>
-      <p class="receipts-lede">This is the easiest rung on the ladder to check, because you can simply run it. The code is public, the install is three lines, and the app describes its own construction on the first session.</p>
+      <p class="receipts-lede">This is the easiest rung on the ladder to check, because you can simply run it. Both repos are public and MIT, the install is a clone command, and the factory&rsquo;s whole verdict history ships in the repo.</p>
       <div class="receipts-grid">
-        <a class="receipt" href="https://github.com/sancovp">
-          <div class="receipt-k">Open source</div>
-          <h3>The engine, on GitHub</h3>
-          <p>Installable and public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. Read it, run it, fork it.</p>
-          <span class="receipt-go">github.com/sancovp &rarr;</span>
+        <a class="receipt" href="https://github.com/sancovp/dark-factory">
+          <div class="receipt-k">The flagship</div>
+          <h3>dark-factory</h3>
+          <p>The self-maintaining repository. The agents, economy, deity, gates, and race are all library code; this repo is just a world plus a schedule.</p>
+          <span class="receipt-go">github.com/sancovp/dark-factory &rarr;</span>
         </a>
-        <a class="receipt" href="#price">
-          <div class="receipt-k">Runnable now</div>
-          <h3>The whole install, in three lines</h3>
-          <p>Not a demo request and not a waitlist. Build the image, boot it on a port, open the browser. The commands are at the top of this page.</p>
-          <span class="receipt-go">Read the quickstart &rarr;</span>
+        <a class="receipt" href="https://github.com/sancovp/cave-teams">
+          <div class="receipt-k">The library</div>
+          <h3>cave-teams</h3>
+          <p>Programmable, leader-driven agent teams on CAVE. Each team makes an ephemeral CAVE server that hosts the agents, runs them, and serves the flow, then tears it down.</p>
+          <span class="receipt-go">github.com/sancovp/cave-teams &rarr;</span>
+        </a>
+        <a class="receipt" href="https://github.com/sancovp/dark-factory/blob/main/LINEAGE.json">
+          <div class="receipt-k">The record</div>
+          <h3>Every verdict ever rendered</h3>
+          <p>The repo&rsquo;s history is the permanent record, and LINEAGE.json is the machine-readable log of every verdict &mdash; ships and reverts alike.</p>
+          <span class="receipt-go">Open LINEAGE.json &rarr;</span>
         </a>
         <a class="receipt" href="watch.html">
           <div class="receipt-k">Running now</div>
           <h3>The engine, live in your browser</h3>
-          <p>The same runtime these components are built for, drawing its own explainer while you scroll. No install needed to look at it.</p>
+          <p>The same ecosystem&rsquo;s explainer engine, drawing its own explanation while you scroll. No install needed to look at it.</p>
           <span class="receipt-go">Watch it run &rarr;</span>
-        </a>
-        <a class="receipt" href="notes/">
-          <div class="receipt-k">Open notes</div>
-          <h3>The field notes, as written</h3>
-          <p>The patterns underneath these components, published as they were worked out rather than packaged afterwards into a deck.</p>
-          <span class="receipt-go">Read the notes &rarr;</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ══ B8 PRICE ══════════════════════════════════════════════════════ -->
+  <!-- ══ B8 PRICE — carried over from the previous build.html: price,
+       anchor, guarantee and rung-4 fineprint VERBATIM (offers frozen).
+       The inclusion list now names the two products in their own words. ══ -->
   <section class="dark" id="price">
     <div class="wrap">
       <p class="eyebrow">What it costs</p>
@@ -203,9 +247,9 @@ bash deploy/build.sh boot 3858
         <p class="price">Free<span class="period">&middot; open source</span></p>
 
         <ul>
-          <li>The engineer agent and all seven specialist builders</li>
-          <li>The web app &mdash; chat, live file workbench, dashboards</li>
-          <li>The documentation system every agent carries, which is the part that lets it read itself</li>
+          <li>dark-factory &mdash; the self-maintaining repository: the agents, economy, deity, gates, and race, plus the kill switch</li>
+          <li>cave-teams &mdash; the team library underneath; pip install cave-teams</li>
+          <li>The golden set &mdash; shipped, experiment-proven skills, equippable by any Claude Code session</li>
           <li>It runs on your machine against your own provider key; nothing is routed through us</li>
           <li>No account, no email capture, no waitlist, no usage tier</li>
         </ul>
@@ -220,14 +264,15 @@ bash deploy/build.sh boot 3858
     </div>
   </section>
 
-  <!-- ══ B7 HONEST — mandatory on every RUNG ═══════════════════════════ -->
+  <!-- ══ B7 HONEST — mandatory on every RUNG. Every hard fact verbatim
+       from the READMEs (containment, kill switch, noise, keys). ══ -->
   <section class="honest">
     <div class="wrap">
       <p class="eyebrow">Straight terms</p>
       <h2>What you&rsquo;re buying, honestly.</h2>
-      <p><strong>Nothing &mdash; which makes this the easy one to be straight about.</strong> The trade is your time, not your money. It ships as a container and it needs a provider key, so you have to be comfortable running one and setting an environment variable. If you are not, that is fine; this rung is simply not the one for you yet, and <a href="run.html">rung 4</a> exists precisely because not everyone wants to be the person running it.</p>
-      <p><strong>What it can&rsquo;t do yet.</strong> It inspects and extends itself, and it compiles components well. It does <em>not</em> yet compile other whole systems from scratch &mdash; the self-inspection is real, the fully general compiler is not there. It also assumes Claude Code specifically: this is not a provider-agnostic build tool and it is not trying to become one.</p>
-      <p><strong>The specialists are narrow on purpose.</strong> Each one is good at its own craft and only its own craft. Work that spans several of them still goes better when you know roughly what you want. It is an engineering department, not a wish granter, and the difference shows up on the ambiguous jobs rather than the clear ones.</p>
+      <p><strong>Nothing &mdash; which makes this the easy one to be straight about.</strong> The trade is your time, not your money. The worlds are AI-driven &mdash; running a cycle needs a MiniMax key in the environment, and the autonomous loop runs inside GitHub Actions. If you are not comfortable with that, this rung is simply not the one for you yet, and <a href="run.html">rung 4</a> exists precisely because not everyone wants to be the person running it.</p>
+      <p><strong>The factory is contained, not trusted.</strong> It can write world/, .claude/skills/, and LINEAGE.json &mdash; nothing else. It cannot modify its own code or workflow. And FACTORY_ON is the kill switch: delete that file and autonomous cycles stop.</p>
+      <p><strong>The worlds are noisy, and the design says so out loud.</strong> Because AI-driven worlds are noisy, the race is replicated and decided by strict majority. A tie never ships &mdash; change has a cost, and a coin-flip is not evidence. The verdict history, including every closed PR, is public in the repo; read it before you trust it.</p>
     </div>
   </section>
 
@@ -246,13 +291,14 @@ bash deploy/build.sh boot 3858
     </div>
   </section>
 
-  <!-- ══ B9 CTA — one link, one destination (repeats B2's ask) ═════════ -->
+  <!-- ══ B9 CTA — one link, one destination (repeats B2's ask). The h2 is
+       the README's own design-bet line. ══ -->
   <section class="final-cta">
     <div class="wrap">
       <p class="eyebrow">Install it</p>
-      <h2>An app that builds apps &mdash; and can read itself.</h2>
-      <p>Open source. Build skills, tools, agents and whole systems by talking to one engineer.</p>
-      <a class="cta-big" href="https://github.com/sancovp">Get it on GitHub &rarr;</a>
+      <h2>You don&rsquo;t need the proposer to be right &mdash; you need the selection structure to be sound.</h2>
+      <p>The agents, economy, deity, gates, and race are all library code; this repo is just a world plus a schedule. Fork it and open an issue.</p>
+      <a class="cta-big" href="https://github.com/sancovp/dark-factory">Get it on GitHub &rarr;</a>
     </div>
   </section>
 
