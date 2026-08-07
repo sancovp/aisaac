@@ -43,6 +43,13 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## Decision log (rulings that bind edits; newest first)
 
+- 2026-08-07 (late): **THE RATCHET LAW OF NAVIGATION (Isaac, verbatim): "fundamentally
+  a funnel is a series of ratcheted options such that the avatar can't figure out how
+  to do anything except sanctioned moves."** Consequences: top-left/brand button →
+  isaac.html (the hub); index.html = ENTRYPOINT ONLY, one-way — no nav routes back to
+  it after first pass (browser-back only); every page's visible exits ARE its
+  sanctioned moves — nav is a grammar, design each page's exit set deliberately.
+
 - 2026-08-07: hero site FIRST (Isaac: the site is about him + what he thinks, funnel
   downstream) · offers frozen · funnel category = simulations-and-world-loops ·
   h1 policy: the scoreboard line returns only when a scoreboard page is published.
