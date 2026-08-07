@@ -1,164 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing — Isaac TWI</title>
-  <style>
-    @media print { body { background: #fff; color: #111; } .header, .footer, .sticky-cta-bar { display: none; } .price-sheet { color: #111; } .price-sheet h1 { -webkit-text-fill-color: #111; background: none; } .price-sheet .tier { background: #f8f8f8; border-color: #ddd; } .price-sheet .tier-price { color: #111; } .price-sheet ul li { color: #333; } }
-    .price-sheet { max-width: 720px; margin: 0 auto; padding: 6rem 2rem 4rem; }
-    .price-sheet h1 { font-size: 2rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .price-sheet .sub { font-size: 0.85rem; color: var(--text-2); margin-bottom: 2.5rem; }
-    .price-sheet .tier { margin-bottom: 1.5rem; padding: 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-lg); }
-    .price-sheet .tier.highlight { border-color: rgba(125,211,252,0.2); }
-    .price-sheet .tier-name { font-weight: 600; font-size: 1.1rem; color: var(--text-1); }
-    .price-sheet .tier-price { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--mercury-blue); margin: 0.3rem 0 0.8rem; }
-    .price-sheet .tier-price .period { font-size: 0.7rem; font-weight: 400; color: var(--text-3); }
-    .price-sheet ul { margin: 0 0 0 1.2rem; font-size: 0.85rem; color: var(--text-2); line-height: 1.8; }
-    .price-sheet ul li::marker { color: var(--mercury-blue); }
-    .price-sheet .tier-note { font-size: 0.75rem; color: var(--text-3); margin-top: 0.8rem; font-style: italic; }
-    .price-sheet .section-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-violet); margin: 2.5rem 0 1rem; }
-    .price-sheet .fine { font-size: 0.75rem; color: var(--text-3); margin-top: 2rem; line-height: 1.7; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing — Isaac TWI</title>
+<link rel="canonical" href="https://sancovp.github.io/aisaac/pricing.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pricing — Isaac TWI">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/pricing.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-depth="1">
+<!-- ══════════════════════════════════════════════════════════════════════
+     PRICING — THE FROZEN OFFER SURFACE (RULE 00 law 1).
 
-  <div class="header">
-    <a href="index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="learn.html">Learn</a>
-      <a href="build.html">Jobworld</a>
-      <a href="transform.html">Services</a>
-      <a href="blog/">Blog</a>
+     EVERY VISIBLE WORD AND NUMBER on this page is carried over VERBATIM
+     from the main-attested sheet. The 2026-08-07 visual pass changed the
+     PRESENTATION ONLY: the old-site markup (a page-local <style>, inline
+     style= attributes, the legacy .header nav, sticky-cta.js/exit-popup.js
+     script tags pointing at files that do not exist on this branch) was
+     reskinned onto _templates/ + style.css (.tier-sheet / .tier / .anchor /
+     .tier-note — all tokens). Content edits here remain Isaac-only.
+
+     DELIBERATELY ABSENT: any .cta-primary. The sheet has never carried a
+     paid CTA and adding one would be an offer edit, not a style edit.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a href="isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="watch.html">Watch</a>
+    <a href="learn.html">Learn</a>
+    <a href="build.html">Build</a>
+    <a href="run.html">Run</a>
+    <a href="notes/">Notes</a>
+    <a href="pricing.html" class="nav-cta" aria-current="page">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="claim">
+    <div class="wrap">
+      <h1>Pricing</h1>
+      <p class="lede">Everything I offer, what it costs, and how it works. No hidden fees.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="price-sheet">
-    <h1>Pricing</h1>
-    <p class="sub">Everything I offer, what it costs, and how it works. No hidden fees.</p>
+  <section class="flush-top">
+    <div class="wrap">
+      <div class="tier-sheet">
 
-    <div class="section-label">Services</div>
+        <p class="eyebrow">Services</p>
 
-    <div class="tier highlight">
-      <div class="tier-name">Retainer — Your AI CTO</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">An AI CTO on staff runs ~$180K/yr. This is $1,000/mo.</div>
-      <div class="tier-price">$1,000<span class="period">/mo</span></div>
-      <ul>
-        <li>2x 55-minute strategy sessions per month</li>
-        <li>AI transformation roadmap — we plan and implement together</li>
-        <li>Voice agent included free (just $200/mo usage with retainer)</li>
-        <li>SANCREV OPERA + Jobworld — yours to keep</li>
-        <li>Unused meetings bank up to 6 months</li>
-        <li>Direct access to Isaac</li>
-      </ul>
-      <div class="tier-note">Limited spots. First month: $1,200 ($1,000 retainer + $200 voice agent usage).</div>
+        <div class="tier highlight">
+          <div class="tier-name">Retainer — Your AI CTO</div>
+          <p class="anchor">An AI CTO on staff runs ~$180K/yr. This is $1,000/mo.</p>
+          <div class="tier-price">$1,000<span class="period">/mo</span></div>
+          <ul>
+            <li>2x 55-minute strategy sessions per month</li>
+            <li>AI transformation roadmap — we plan and implement together</li>
+            <li>Voice agent included free (just $200/mo usage with retainer)</li>
+            <li>SANCREV OPERA + Jobworld — yours to keep</li>
+            <li>Unused meetings bank up to 6 months</li>
+            <li>Direct access to Isaac</li>
+          </ul>
+          <div class="tier-note">Limited spots. First month: $1,200 ($1,000 retainer + $200 voice agent usage).</div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-name">Pre-built Automations</div>
+          <p class="anchor">Hiring a person for any one of these jobs costs far more than $200/mo.</p>
+          <div class="tier-price">$2,000+ <span class="period">one-time</span> + $200<span class="period">/mo each</span></div>
+          <ul>
+            <li>AI Phone Agent, Blog Generator, Lead Gen, Content Writer, Project Manager, Morning Briefing, Video Producer, Agent Generator</li>
+            <li>Customized for your business, deployed and running 24/7</li>
+            <li>Managed and maintained — you don't touch it</li>
+            <li>Cancel any automation anytime</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <div class="tier-name">Custom Integrations</div>
+          <p class="anchor">Agencies scope bespoke builds like these into five figures.</p>
+          <div class="tier-price">Custom <span class="period">scoped per project</span></div>
+          <ul>
+            <li>Bespoke automations for your specific processes</li>
+            <li>Connects to your existing tools and workflows</li>
+            <li>Built, tested, and deployed by Isaac</li>
+            <li>Scoped and quoted on a call</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <div class="tier-name">SOMA — Intelligence Systems</div>
+          <p class="anchor">Formal ontology and logic-layer work is six-figure consulting elsewhere.</p>
+          <div class="tier-price">Custom <span class="period">scoped per project</span></div>
+          <ul>
+            <li>Self-organizing AI with ontology and logic layer</li>
+            <li>System that understands your business and self-corrects</li>
+            <li>The tier nobody else can offer</li>
+          </ul>
+        </div>
+
+        <p class="eyebrow">Learning</p>
+
+        <div class="tier">
+          <div class="tier-name">Cohort — The School</div>
+          <p class="anchor">Most AI-agency courses charge this for slides — here you build the real system.</p>
+          <div class="tier-price">$997 <span class="period">or</span> $1,997 <span class="period">one-time</span></div>
+          <ul>
+            <li>Complete L1-L6 curriculum: from prompts to compound intelligence</li>
+            <li>Build your own AI business system during the program</li>
+            <li>Community access + peer cohort</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <div class="tier-name">Mastermind</div>
+          <p class="anchor">Direct-access masterminds routinely run several thousand a year.</p>
+          <div class="tier-price">$3,000<span class="period">/yr</span></div>
+          <ul>
+            <li>VIP cohort tier — all upsells included, handed not offered</li>
+            <li>Direct group access to Isaac</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <div class="tier-name">White-label OPERA + Seed</div>
+          <p class="anchor">A white-label engine to resell — normally a five-figure license.</p>
+          <div class="tier-price">Cohort graduates only</div>
+          <ul>
+            <li>License to white-label the engine for your own clients</li>
+            <li>Must complete the cohort first — this is earned, not bought</li>
+          </ul>
+        </div>
+
+        <p class="eyebrow">The Personal AI Stack — self-serve</p>
+
+        <div class="tier">
+          <div class="tier-name">CartON — your knowledge graph</div>
+          <p class="anchor">The base of the stack: a hosted graph your agents act from. Up to 500,000 nodes.</p>
+          <div class="tier-price">$65<span class="period">/mo</span></div>
+          <ul>
+            <li>Hosted knowledge graph + semantic search, yours via API key</li>
+            <li>Add-ons stack on top: <strong>CB +$15/mo</strong> · <strong>SOMA +$15/mo</strong> · <strong>GAS +$15/mo</strong></li>
+            <li>GAS with CartON = manual proving over your content · GAS with CartON + SOMA = automated reasoning</li>
+            <li>GAS proves your story like a theorem and returns story, funnel, and marketing artifacts — <a href="blog/gas-httyd.html">see the worked example</a></li>
+          </ul>
+          <div class="tier-note">Community — $65/mo: API key on join, Discord role, direct access to Isaac, accountability + courses.</div>
+        </div>
+
+        <p class="eyebrow">One-off</p>
+
+        <div class="tier">
+          <div class="tier-name">Strategy Session</div>
+          <p class="anchor">A senior AI consultant's hour runs $300–500. Roadmap included.</p>
+          <div class="tier-price">$500 <span class="period">one-time</span></div>
+          <ul>
+            <li>55 minutes with Isaac — no qualification needed</li>
+            <li>AI audit, roadmap, and honest advice</li>
+            <li>You keep everything discussed</li>
+          </ul>
+        </div>
+
+        <p class="fineprint mt-l">30-day guarantee on all services: in 30 days you'll have a working automation deployed and a documented roadmap, or you don't pay for the build. The condition: show up, give access, follow the process.</p>
+
+      </div>
     </div>
+  </section>
 
-    <div class="tier">
-      <div class="tier-name">Pre-built Automations</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Hiring a person for any one of these jobs costs far more than $200/mo.</div>
-      <div class="tier-price">$2,000+ <span class="period">one-time</span> + $200<span class="period">/mo each</span></div>
-      <ul>
-        <li>AI Phone Agent, Blog Generator, Lead Gen, Content Writer, Project Manager, Morning Briefing, Video Producer, Agent Generator</li>
-        <li>Customized for your business, deployed and running 24/7</li>
-        <li>Managed and maintained — you don't touch it</li>
-        <li>Cancel any automation anytime</li>
-      </ul>
-    </div>
+</main>
 
-    <div class="tier">
-      <div class="tier-name">Custom Integrations</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Agencies scope bespoke builds like these into five figures.</div>
-      <div class="tier-price">Custom <span class="period">scoped per project</span></div>
-      <ul>
-        <li>Bespoke automations for your specific processes</li>
-        <li>Connects to your existing tools and workflows</li>
-        <li>Built, tested, and deployed by Isaac</li>
-        <li>Scoped and quoted on a call</li>
-      </ul>
-    </div>
-
-    <div class="tier">
-      <div class="tier-name">SOMA — Intelligence Systems</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Formal ontology and logic-layer work is six-figure consulting elsewhere.</div>
-      <div class="tier-price">Custom <span class="period">scoped per project</span></div>
-      <ul>
-        <li>Self-organizing AI with ontology and logic layer</li>
-        <li>System that understands your business and self-corrects</li>
-        <li>The tier nobody else can offer</li>
-      </ul>
-    </div>
-
-    <div class="section-label">Learning</div>
-
-    <div class="tier">
-      <div class="tier-name">Cohort — The School</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Most AI-agency courses charge this for slides — here you build the real system.</div>
-      <div class="tier-price">$997 <span class="period">or</span> $1,997 <span class="period">one-time</span></div>
-      <ul>
-        <li>Complete L1-L6 curriculum: from prompts to compound intelligence</li>
-        <li>Build your own AI business system during the program</li>
-        <li>Community access + peer cohort</li>
-      </ul>
-    </div>
-
-    <div class="tier">
-      <div class="tier-name">Mastermind</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Direct-access masterminds routinely run several thousand a year.</div>
-      <div class="tier-price">$3,000<span class="period">/yr</span></div>
-      <ul>
-        <li>VIP cohort tier — all upsells included, handed not offered</li>
-        <li>Direct group access to Isaac</li>
-      </ul>
-    </div>
-
-    <div class="tier">
-      <div class="tier-name">White-label OPERA + Seed</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">A white-label engine to resell — normally a five-figure license.</div>
-      <div class="tier-price">Cohort graduates only</div>
-      <ul>
-        <li>License to white-label the engine for your own clients</li>
-        <li>Must complete the cohort first — this is earned, not bought</li>
-      </ul>
-    </div>
-
-    <div class="section-label">The Personal AI Stack — self-serve</div>
-
-    <div class="tier">
-      <div class="tier-name">CartON — your knowledge graph</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">The base of the stack: a hosted graph your agents act from. Up to 500,000 nodes.</div>
-      <div class="tier-price">$65<span class="period">/mo</span></div>
-      <ul>
-        <li>Hosted knowledge graph + semantic search, yours via API key</li>
-        <li>Add-ons stack on top: <strong>CB +$15/mo</strong> · <strong>SOMA +$15/mo</strong> · <strong>GAS +$15/mo</strong></li>
-        <li>GAS with CartON = manual proving over your content · GAS with CartON + SOMA = automated reasoning</li>
-        <li>GAS proves your story like a theorem and returns story, funnel, and marketing artifacts — <a href="blog/gas-httyd.html" style="color:var(--mercury-blue);">see the worked example</a></li>
-      </ul>
-      <div class="tier-note">Community — $65/mo: API key on join, Discord role, direct access to Isaac, accountability + courses.</div>
-    </div>
-
-    <div class="section-label">One-off</div>
-
-    <div class="tier">
-      <div class="tier-name">Strategy Session</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">A senior AI consultant's hour runs $300–500. Roadmap included.</div>
-      <div class="tier-price">$500 <span class="period">one-time</span></div>
-      <ul>
-        <li>55 minutes with Isaac — no qualification needed</li>
-        <li>AI audit, roadmap, and honest advice</li>
-        <li>You keep everything discussed</li>
-      </ul>
-    </div>
-
-    <p class="fine">30-day guarantee on all services: in 30 days you'll have a working automation deployed and a documented roadmap, or you don't pay for the build. The condition: show up, give access, follow the process.</p>
-  </div>
-
-  <div class="footer">
-    <span>&copy; 2026 Isaac &mdash; TWI</span>
-  </div>
-
-<script src="sticky-cta.js"></script>
-<script src="exit-popup.js"></script>
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="nav.js"></script>
 </body>
 </html>

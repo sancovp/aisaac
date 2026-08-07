@@ -31,7 +31,7 @@
 
 <!-- B1 NAV — pasted verbatim from _templates/_nav.html (ROOT variant). Do not edit here. -->
 <header class="nav">
-  <a href="index.html" class="logo">Isaac</a>
+  <a href="isaac.html" class="logo">Isaac</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
   <nav id="navlinks" class="nav-links" aria-label="The ladder">
     <a href="watch.html">Watch</a>
@@ -112,24 +112,24 @@
       <p class="lede">Most automation runs a task and hopes. This layer sits between an agent deciding and an agent acting: your business rules, written down formally, consulted first. It is the reason output holds up instead of quietly drifting.</p>
       <div class="stack">
         <div class="stack-item">
+          <div class="stack-bar"></div>
           <div class="stack-num">01</div>
           <div class="stack-content"><h4>Your rules, written down</h4><p>How your business actually works, formalised into something a machine can check against &mdash; so the agent operates inside boundaries you set instead of guessing at them.</p></div>
-          <div class="stack-bar"></div>
         </div>
         <div class="stack-item">
+          <div class="stack-bar"></div>
           <div class="stack-num">02</div>
           <div class="stack-content"><h4>Checked before it runs</h4><p>Every action is tested against those rules before execution, so an out-of-bounds action is caught in front of the work rather than patched behind it.</p></div>
-          <div class="stack-bar"></div>
         </div>
         <div class="stack-item">
+          <div class="stack-bar"></div>
           <div class="stack-num">03</div>
           <div class="stack-content"><h4>Conclusions it can show its work for</h4><p>The system derives results from your rules and can say which rule produced which conclusion, so a surprise is traceable instead of mysterious.</p></div>
-          <div class="stack-bar"></div>
         </div>
         <div class="stack-item">
+          <div class="stack-bar"></div>
           <div class="stack-num">04</div>
           <div class="stack-content"><h4>No agent marks its own homework</h4><p>Work is graded by something other than the thing that produced it, and when the rules change the checks change with them.</p></div>
-          <div class="stack-bar"></div>
         </div>
       </div>
       <p class="fineprint">The discipline behind this is published rather than asserted &mdash; <a href="ssri/alignment.html">read the alignment write-up &rarr;</a></p>
@@ -188,7 +188,9 @@
     <div class="wrap">
       <p class="eyebrow">What it costs</p>
       <h2>Priced against what you would pay a person.</h2>
-      <div class="price-block">
+      <!-- .wide: five table rows inside the 620px block crushed the
+           description column to ~176px. -->
+      <div class="price-block wide">
         <p class="anchor">An operations hire runs roughly <strong>$4,000&ndash;$6,000 a month</strong>, and an AI CTO on staff is a six-figure salary. Everything below is a fraction of one hire &mdash; and every figure here is a real number, not a &ldquo;contact us&rdquo;.</p>
 
         <div class="pricing-table">

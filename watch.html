@@ -48,7 +48,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav">
-  <a href="index.html" class="logo">Isaac</a>
+  <a href="isaac.html" class="logo">Isaac</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
   <nav id="navlinks" class="nav-links" aria-label="The ladder">
     <a href="watch.html" aria-current="page">Watch</a>
@@ -104,7 +104,12 @@
       <h2>What is missing, named, so you can hold me to it.</h2>
       <p class="lede">Two more exhibits belong on this page and neither one exists yet as something you could open. They are marked rather than filled, because a made-up number in one of these frames would make every other claim on this site worthless.</p>
 
-      <figure class="artifact mt-s">
+      <!-- Paired in the visual pass: two full-width empty 16:9 frames stacked
+           was ~1,200px of consecutive dead space. Side by side they read as
+           what the h2 calls them — "the two empty frames" — and the IOU stays
+           exactly as loud, at half the scroll. .duo collapses at 600px. -->
+      <div class="duo mt-s">
+      <figure class="artifact">
         <div class="artifact-frame">
           <a class="artifact-placeholder" href="run.html">
             <span class="ap-line">&#9656;&nbsp; slot A &mdash; a world running, captured by itself</span>
@@ -114,7 +119,7 @@
         <figcaption class="artifact-prov">A full world run, screen-captured by the agents doing it, narrating their own work. The capture rig exists; the run this page will show has not been cut. When it lands it goes here unedited, failures included &mdash; the failures are the interesting part, and an edited reel would be the same lie as a testimonial.</figcaption>
       </figure>
 
-      <figure class="artifact mt-l">
+      <figure class="artifact">
         <div class="artifact-frame">
           <a class="artifact-placeholder" href="isaac.html#think">
             <span class="ap-line">&#9656;&nbsp; slot B &mdash; a hundred flat cycles, then the step change</span>
@@ -123,6 +128,7 @@
         </div>
         <figcaption class="artifact-prov">A generative loop run about a hundred times with no meaningful gain, then one capability injection and a jump in a single step. The footage exists and is not cut. It is carried as an open debt on <a href="isaac.html#think">the maker&rsquo;s own page</a>; until it is here, treat the claim as unproven.</figcaption>
       </figure>
+      </div>
     </div>
   </section>
 

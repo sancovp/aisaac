@@ -1,7 +1,17 @@
 <!-- ══════════════════════════════════════════════════════════════════════
      B1 — THE NAV. THE SINGLE SOURCE. (rebuild spec §2.2)
 
-     The nav IS the ladder. Six items. Identical on EVERY page.
+     The nav IS the ladder. Six items + the brand slot. Identical on EVERY
+     page that carries a nav — index.html carries NONE (see below).
+
+     THE RATCHET LAW (Isaac, 2026-08-07): "fundamentally a funnel is a series
+     of ratcheted options such that the avatar can't figure out how to do
+     anything except sanctioned moves." Consequences, baked into this file:
+       · The brand slot (top-left "Isaac") routes to isaac.html — the hub you
+         return to — NEVER to index.html.
+       · index.html is the ENTRYPOINT ONLY, one-way: no nav element anywhere
+         on the site routes back to it (browser-back only), and index itself
+         is CHROMELESS — it ships no nav bar; its exits live in its bands.
      Builders B and C PASTE this verbatim. Nobody edits nav markup inside
      their own page — if the nav must change, Builder A changes it here and
      B/C re-paste.
@@ -18,7 +28,7 @@
 
 <!-- ─── VARIANT A — ROOT pages (index.html, system.html, watch.html, …) ─── -->
 <header class="nav">
-  <a href="index.html" class="logo">Isaac</a>
+  <a href="isaac.html" class="logo">Isaac</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
   <nav id="navlinks" class="nav-links" aria-label="The ladder">
     <a href="watch.html">Watch</a>
@@ -32,7 +42,7 @@
 
 <!-- ─── VARIANT B — DEPTH-1 pages (worlds/*, notes/*, blog/*, inside/*) ─── -->
 <header class="nav">
-  <a href="../index.html" class="logo">Isaac</a>
+  <a href="../isaac.html" class="logo">Isaac</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
   <nav id="navlinks" class="nav-links" aria-label="The ladder">
     <a href="../watch.html">Watch</a>

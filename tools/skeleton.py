@@ -47,7 +47,7 @@ def nav(up="", current=None):
              ("build.html", "Build"), ("run.html", "Run"),
              ("notes/", "Notes"), ("pricing.html", "Pricing")]
     out = ['<header class="nav">',
-           f'  <a href="{up}index.html" class="logo">Isaac</a>',
+           f'  <a href="{up}isaac.html" class="logo">Isaac</a>',  # ratchet law: brand slot -> the hub, never the one-way door
            '  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>',
            '  <nav id="navlinks" class="nav-links" aria-label="The ladder">']
     for href, label in items:

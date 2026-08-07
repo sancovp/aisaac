@@ -20,9 +20,12 @@
      ISAAC — THE IDENTITY PAGE.  Who he is, what he thinks, what he built.
 
      THIS PAGE SELLS NOTHING. No price, no offer, no paid CTA, no email
-     capture, no booking link. The only route to a commercial page is the
-     ordinary nav (pasted verbatim from _templates/_nav.html, ROOT variant).
-     Anything that reads as an offer is a defect on this page specifically.
+     capture, no booking link. The only routes to a commercial page are the
+     ordinary nav (pasted verbatim from _templates/_nav.html, ROOT variant)
+     and THE FUNNEL MAP band near the foot — Isaac's explicit order of
+     2026-08-07 (this page is the hub; it maps every funnel, with links,
+     reusing index.html's main-attested rung copy verbatim). Anything else
+     that reads as an offer is a defect on this page specifically.
 
      Block vocabulary only (spec §1.1) — every class used here already
      exists in style.css: .claim .panels/.panel .receipts .cards .honest
@@ -44,7 +47,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav">
-  <a href="index.html" class="logo">Isaac</a>
+  <a href="isaac.html" class="logo">Isaac</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
   <nav id="navlinks" class="nav-links" aria-label="The ladder">
     <a href="watch.html">Watch</a>
@@ -66,12 +69,27 @@
        What IS cashed today is the self-grading — CLAIM-AUDIT.md, the
        killed catalog entries, the adversarial panels. So the h1 claims
        that, and the honest band below states the debt out loud. ══ -->
-  <section class="claim">
+  <!-- The portrait is Isaac's explicit content order for this page (2026-08-07:
+       "the page about him must have HIS PHOTO"). No portrait asset exists yet
+       anywhere in ~/aios-research/brand-assets/ (verified against its README —
+       marks, favicons, banners only), so the DESIGNED SLOT ships, labelled as
+       pending per RULE 00 law 3. -->
+  <section class="claim claim-duo">
     <div class="wrap">
-      <p class="eyebrow">Isaac &middot; sancovp &middot; builds agent worlds</p>
-      <h1>Nobody is keeping score. So I grade myself in public.</h1>
-      <p class="lede">I build agent systems that run as <strong>worlds</strong> &mdash; a business, a body, a codebase, each with its own departments, its own economy and its own record of what it actually did. No computer-science degree, no lab, no team. A hundred-plus public repositories and a lot of nights.</p>
-      <a class="cta-secondary" href="#think">Skip the biography &mdash; what I actually think &darr;</a>
+      <div class="claim-copy">
+        <p class="eyebrow">Isaac &middot; sancovp &middot; builds agent worlds</p>
+        <h1>Nobody is keeping score. So I grade myself in public.</h1>
+        <p class="lede">I build agent systems that run as <strong>worlds</strong> &mdash; a business, a body, a codebase, each with its own departments, its own economy and its own record of what it actually did. No computer-science degree, no lab, no team. A hundred-plus public repositories and a lot of nights.</p>
+        <a class="cta-secondary" href="#think">Skip the biography &mdash; what I actually think &darr;</a>
+      </div>
+      <figure class="portrait">
+        <div class="portrait-frame">
+          <!-- ISAAC-PHOTO: drop image here. Replace the placeholder span with
+               <img src="assets/isaac-portrait.jpg" alt="Isaac" width="960" height="1200">
+               (any 4:5-ish crop; width/height attributes are mandatory — G5). -->
+          <span class="artifact-placeholder"><span class="ap-line">portrait &mdash; pending</span></span>
+        </div>
+      </figure>
     </div>
   </section>
 
@@ -98,7 +116,10 @@
       <h2>Seven things I believe, and what makes each one more than an opinion.</h2>
       <p class="lede">These are the load-bearing ones &mdash; the beliefs the code is actually shaped by. Every one gets a receipt line. Where the receipt is not public yet, it says so in the same breath, because a claim with a missing receipt is a debt, not a discovery.</p>
 
-      <div class="panels">
+      <!-- span-last: seven panels in a 3-up grid stranded the 7th alone in
+           the last row; it closes the band full-width instead — and the 7th
+           thesis ("both a story and a manual") happens to be the coda. -->
+      <div class="panels span-last">
 
         <div class="panel">
           <h3>Iteration doesn&rsquo;t compound. Worlds do.</h3>
@@ -253,6 +274,42 @@
       <p><strong>The scoreboard isn&rsquo;t published.</strong> Cost per verified task, defects carried between rounds, what actually compounds and what only looks like it &mdash; the field has none of these, which is why nobody can tell who is winning. I am building that measurement and I do not have it yet. So I am not going to tell you the field is losing. I am going to tell you nobody knows, which is a worse problem and a more interesting one.</p>
       <p><strong>Two receipts above are IOUs and are marked as such:</strong> the hundred-cycle footage and the pattern catalog. The footage exists and is not cut; the catalog exists and is not public. Both are named here so that if they never appear, this page is the evidence against me.</p>
       <p>None of this is modesty. It is the same discipline as everything above, pointed at me: a claim without a receipt is a debt, and a debt you announce is cheaper than one somebody finds.</p>
+    </div>
+  </section>
+
+  <!-- ══ THE FUNNEL MAP — Isaac's explicit content order for this page
+       (2026-08-07): a general funnel section that maps ALL the funnels, with
+       links. Every word below is REUSED VERBATIM from index.html's ladder
+       band (whose figures are main-attested and frozen) and its map link —
+       nothing new is claimed here. This page still sells nothing: the rungs
+       are wayfinding to the funnels, which is exactly what was ordered. ══ -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">Where to start</p>
+      <h2>Five rungs. Climb as far as you want, stop wherever you like.</h2>
+      <nav class="ladder" aria-label="The ladder">
+        <a class="rung" href="watch.html">
+          <span class="rung-n">01</span><span class="rung-t">Watch a world run</span>
+          <span class="rung-d">free &mdash; the engine, live, in your browser</span>
+        </a>
+        <a class="rung" href="learn.html">
+          <span class="rung-n">02</span><span class="rung-t">Learn to build them</span>
+          <span class="rung-d">the patterns and the notes, free &middot; community $65/mo</span>
+        </a>
+        <a class="rung" href="build.html">
+          <span class="rung-n">03</span><span class="rung-t">Run your work inside one</span>
+          <span class="rung-d">open source &mdash; install it today</span>
+        </a>
+        <a class="rung" href="run.html">
+          <span class="rung-n">04</span><span class="rung-t">Have one run your business</span>
+          <span class="rung-d">built with you &mdash; from $1,000/mo</span>
+        </a>
+        <a class="rung" href="pricing.html">
+          <span class="rung-n">05</span><span class="rung-t">What it costs</span>
+          <span class="rung-d">every price on one page</span>
+        </a>
+      </nav>
+      <p class="mt-s"><a class="cta-secondary" href="system.html">How the engine works, and what it can&rsquo;t do yet &rarr;</a></p>
     </div>
   </section>
 

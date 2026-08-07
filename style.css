@@ -26,6 +26,14 @@
      B0 head · B1 .nav · B2 .claim · B3 .artifact · B4 .receipts
      B5 .mechanism · B6 .ladder · B7 .honest · B8 .price-block
      B9 .final-cta · B10 .footer
+   VISUAL-REBUILD ADDITIONS (2026-08-07, Fable pass — recorded, not snuck in):
+     .artifact-code (build.html's quickstart pre — was an undefined class
+     rendering in browser-default mono at the top of an empty frame) ·
+     .price-block.wide (a .pricing-table crammed inside the 620px block got
+     ~176px for its description column) · .panels.span-last (a 7-item panel
+     grid orphaned its 7th) · .claim-duo + .portrait-frame (the isaac.html
+     portrait slot, Isaac's order) · .tier-sheet + .tier .anchor (pricing.html
+     reskinned onto the system; content frozen verbatim).
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Self-hosted fonts (replaces the fonts.googleapis.com @import) ───────── */
@@ -153,7 +161,9 @@ body[data-depth="3"] {
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+/* ^ scroll-padding: the nav is sticky, so every in-page anchor (#price,
+   #think, #exhibit …) used to land its target UNDER the bar. */
 
 body {
   font-family: var(--body);
@@ -359,6 +369,34 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 .claim > .wrap { display: block; }
 .claim .lede { margin-bottom: 2.4rem; }
 
+/* .claim-duo — a claim band with a PORTRAIT beside it (isaac.html, by
+   Isaac's order: his page carries his photo). Copy left, portrait right;
+   the portrait is a framed exhibit in the same glass language as
+   .artifact-frame, 4:5 because a face is not a film. */
+.claim-duo > .wrap {
+  display: grid; grid-template-columns: 1.55fr 1fr;
+  gap: 3rem; align-items: center;
+}
+.claim-duo .claim-copy, .claim-duo .portrait { min-width: 0; }
+.portrait { margin: 0; justify-self: end; width: 100%; max-width: 340px; }
+.portrait-frame {
+  position: relative; aspect-ratio: 4 / 5; width: 100%;
+  border: 1px solid var(--glass-border); border-radius: var(--r-card);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(125,211,252,0.04), 0 18px 60px rgba(0,0,0,0.45),
+              inset 0 1px 0 var(--glass-shine);
+}
+.portrait-frame > img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.portrait figcaption {
+  font-family: var(--micro); font-size: 0.7rem; line-height: 1.7;
+  color: var(--text-3); margin-top: 0.6rem;
+}
+
 /* ══ CTAs ═══════════════════════════════════════════════════════════════ */
 .cta-primary, .cta-big {   /* .cta-big = legacy alias */
   font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
@@ -397,6 +435,20 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 .artifact-frame > video,
 .artifact-frame > img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; display: block; }
 .artifact-frame > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* The quickstart code exhibit (build.html B3). The class was USED and defined
+   nowhere: the <pre> sat unstyled — browser-default monospace, no padding —
+   in the top-left corner of an empty 16:9 frame. A six-line install does not
+   want 590px of glass around it, so a code-bearing frame drops the film
+   aspect and hugs its readout. */
+.artifact-frame:has(> pre.artifact-code) { aspect-ratio: auto; }
+.artifact-frame > pre.artifact-code {
+  margin: 0; padding: 2rem 2.4rem; overflow-x: auto;
+}
+.artifact-code code {
+  font-family: var(--mono); font-size: clamp(0.72rem, 1.4vw, 0.92rem);
+  line-height: 2; color: var(--text-1); white-space: pre;
+}
 
 /* Inline-SVG diagrams. All colour and type lives HERE so no HTML file ever
    declares a hex value or a font-family (law L4). Diagrams use classes only. */
@@ -469,6 +521,10 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 .panels { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+/* An odd-count panel grid (isaac.html ships seven theses) strands its last
+   item alone in the final row at every column count. span-last promotes it
+   to a full-width closing panel instead — deliberate cadence, not an orphan. */
+.panels.span-last > .panel:last-child { grid-column: 1 / -1; }
 
 /* ══ B5 — MECHANISM ═════════════════════════════════════════════════════ */
 .mechanism .steps { margin-top: 2.2rem; }
@@ -658,6 +714,10 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   max-width: 620px;
 }
+/* A .pricing-table inside the 620px block left its description column ~176px
+   wide — three words a line on learn.html, worse on run.html's five rows.
+   .wide is for a price-block that CARRIES a table. */
+.price-block.wide { max-width: 880px; }
 .price-block .anchor {
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
   color: var(--text-3); margin-bottom: 0.6rem;
@@ -706,6 +766,16 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .tier ul { list-style: none; font-size: 0.8rem; line-height: 2.1; color: var(--text-2); }
 .tier ul li::before { content: '— '; color: var(--mercury-blue); opacity: 0.5; }
 .tier-note { font-size: 0.74rem; color: var(--mercury-teal); margin-top: 1.4rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; }
+/* The price sheet (pricing.html) — the old page hand-built these as inline
+   styles on a page-local .price-sheet. Same sheet, real tokens: a stacked
+   single column of .tier cards at reading measure. */
+.tier-sheet { max-width: 780px; }
+.tier-sheet .tier { margin-bottom: 1.5rem; }
+.tier-sheet .eyebrow { margin-top: 2.6rem; }
+.tier-sheet .eyebrow:first-child { margin-top: 0; }
+.tier .anchor { font-size: 0.8rem; color: var(--text-2); line-height: 1.7; margin: 0.3rem 0; }
+.tier a { color: var(--mercury-blue); }
+.tier a:hover { color: var(--text-1); }
 .tier-badge {
   position: absolute; top: 0; right: 0;
   background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
@@ -775,11 +845,14 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .status p { font-size: 0.84rem; color: var(--text-2); line-height: 1.7; }
 
 /* ══ B10 — FOOTER ══════════════════════════════════════════════════════ */
+/* The hairline runs FULL-BLEED (the nav's does; a border that stopped at the
+   1100px container made the page's top and bottom rules disagree). Content
+   still aligns to the container via the max() padding. */
 .footer {
-  padding: 2rem 1.5rem 4rem; border-top: 1px solid var(--glass-border);
+  padding: 2rem max(1.5rem, calc((100% - var(--wrap)) / 2)) 4rem;
+  border-top: 1px solid var(--glass-border);
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   font-family: var(--micro); font-size: 0.72rem; color: var(--text-3); flex-wrap: wrap;
-  max-width: var(--wrap); margin: 0 auto;
 }
 .footer .tagline { font-style: italic; }
 .footer a { color: var(--text-3); border-bottom: 1px solid transparent; }
@@ -800,6 +873,11 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   .price-label, .price-amount { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
   .stack-item, .layer { flex-direction: column; }
   .stack-num, .layer-name { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
+  /* In the stacked direction the 3px accent column collapsed to an invisible
+     0-height sliver; it becomes the row's top accent line instead. */
+  .stack-bar, .layer-bar { width: 100%; height: 3px; background: linear-gradient(90deg, var(--mercury-blue), var(--mercury-violet)); }
+  .claim-duo > .wrap { grid-template-columns: 1fr; gap: 2.2rem; }
+  .portrait { justify-self: start; max-width: 280px; }
   .final-cta { padding: calc(var(--sec-y) * 1.2) 1.25rem; }
   .footer { flex-direction: column; text-align: center; padding: 2rem 1.25rem 3rem; }
   .nav, .header { padding: 1rem 1.25rem; }
@@ -862,17 +940,27 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   grid-template-columns: 1.35fr 1fr;
   gap: 2.75rem;
   align-items: center;
-  /* First screen minus the nav: the stage AND the CTA must both be visible
-     without scrolling, or mechanic 1 is only half-served. svh where
-     supported, so a mobile URL bar cannot push the CTA under the fold. */
-  min-height: calc(100vh - 9rem);
-  min-height: calc(100svh - 9rem);
+  /* First screen: the stage AND the CTA must both be visible without
+     scrolling, or mechanic 1 is only half-served. svh where supported, so a
+     mobile URL bar cannot push the CTA under the fold. The allowance is the
+     door band's own padding — THE DOOR IS CHROMELESS now (ratchet law,
+     Isaac 2026-08-07: index is a one-way entrypoint, so it carries no nav;
+     its sanctioned moves are all in the page). */
+  min-height: calc(100vh - 8rem);
+  min-height: calc(100svh - 8rem);
 }
 /* Grid children default to min-width:auto and refuse to shrink below their
    content — which is what makes a 16:9 embed blow the column out. */
 .door-stage, .door-copy { min-width: 0; }
 .door-copy .eyebrow { margin-bottom: 1.1rem; }
-.door-copy h1 { max-width: 15ch; }
+/* THE LOPSIDEDNESS FIX (Isaac's word). Depth-0's h1 tops out at 5.4rem —
+   sized for a full-width claim, not for the door's ~28rem copy column, where
+   it wrapped to a near-word-per-line tower ~2x the stage's height and the
+   engine read as a postage stamp beside it. The door's claim is a COLUMN
+   claim: it caps lower here so the two columns weigh the same. This is a
+   band-composition rule, not a hole in the density gradient — the door is
+   still the largest type on the site. */
+.door-copy h1 { max-width: 15ch; font-size: clamp(2.6rem, 4.8vw, 4.2rem); }
 .door-copy .lede { max-width: 46ch; margin-bottom: 1.9rem; }
 .door .artifact-prov { max-width: none; }
 

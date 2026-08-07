@@ -35,18 +35,13 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="nav">
-  <a href="index.html" class="logo">Isaac</a>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
-  <nav id="navlinks" class="nav-links" aria-label="The ladder">
-    <a href="watch.html">Watch</a>
-    <a href="learn.html">Learn</a>
-    <a href="build.html">Build</a>
-    <a href="run.html">Run</a>
-    <a href="notes/">Notes</a>
-    <a href="pricing.html" class="nav-cta">Pricing</a>
-  </nav>
-</header>
+<!-- NO NAV — DELIBERATE (the ratchet law, Isaac 2026-08-07). index.html is
+     the ENTRYPOINT ONLY, a one-way door: no nav element anywhere on the site
+     routes back here, and this page ships no nav bar of its own. Its
+     sanctioned moves are all in the bands below — Enter, the three sort
+     cards, the ladder, the maker, the map. This also completes RULE 02's
+     screenshot test verbatim: the door's first viewport contains the running
+     world, one serif claim, one Enter — nothing else. -->
 
 <main id="main">
 
@@ -72,12 +67,8 @@
        written before the patch landed and is now WRONG; the interim and its
        veil are both gone. Do not reinstate either.
 
-       ⚠ THE ONE THING THAT WOULD BREAK THIS PAGE ON DEPLOY: watch.html does
-       not exist on this branch. Six links land on it — the "Enter" CTA, the
-       figcaption's "take the clock", sort card 3, the "Running now" receipt,
-       the final band, and the lab's own in-frame #door-enter — plus nav item
-       1. The door is finished; its destination is not. Do not merge to main
-       until watch.html ships, or the first click off the homepage 404s.
+       (A stale warning about watch.html not existing on this branch stood
+       here; watch.html ships on this branch — verified 2026-08-07.)
 
        COST, MEASURED (gzip -9, real bytes off disk — not an estimate).
        First MOTION is gated on the diagram engine alone, because the lab
@@ -191,8 +182,10 @@
        defect, fixed.
 
        FROZEN OFFER SURFACE (RULE 00 law 1). The figures below are
-       main-attested. Nobody edits, adds to, or deletes them but Isaac. ══ -->
-  <section>
+       main-attested. Nobody edits, adds to, or deletes them but Isaac.
+       .dark added in the visual pass: the door opened onto three identical
+       plain bands in a row — the ladder is the rhythm break. ══ -->
+  <section class="dark">
     <div class="wrap">
       <p class="eyebrow">Where to start</p>
       <h2>Five rungs. Climb as far as you want, stop wherever you like.</h2>
@@ -231,8 +224,9 @@
        exist on this branch. Rather than delete a canon band or ship a 404,
        it points at healthworld/index.html — the real page the band was
        lifted from, live in the repo today. Repoint if worlds/health.html
-       ever lands. ══ -->
-  <section class="dark">
+       ever lands. (Was .dark; the ladder above took the dark stripe, so this
+       band goes plain to keep the alternation.) ══ -->
+  <section>
     <div class="wrap">
       <p class="eyebrow">The category claim</p>
       <h2>Same engine. Different world.</h2>
@@ -338,6 +332,6 @@
   <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
 </footer>
 
-<script src="nav.js"></script>
+<!-- nav.js not loaded: this page carries no nav (one-way door). -->
 </body>
 </html>
