@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEMPLATE — TYPE 2 WORLD</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 2 — WORLD.  An exhibit: ONE artifact carrying ONE claim.
+     Instances: watch.html · worlds/plumbing.html · worlds/health.html
+     Block order: B0 · B1 · B2 · B3 · B5 · B4 · B6 · B9 · B10
+
+     THE RULE THAT MATTERS: the exhibit keeps its own look. Embed or link
+     cinematic-plumbing.html and lab/explainer.html — never reskin them.
+     Reskinning the artifact destroys the proof. This page is the THIN
+     WRAPPER that supplies claim + provenance + return path.
+
+     B4 here is receipts SPECIFIC to this world — never the shared strip.
+     Zero canon vocabulary (L3). Speak the world's own domain language.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — paste verbatim from _templates/_nav.html (DEPTH-1 variant here) -->
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM — what this world does, in the world's own language. -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Lorem world</p>
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+      <a class="cta-primary" href="#exhibit">Lorem, see it &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ B3 ARTIFACT — the world ITSELF. Embed / iframe / video / live page.
+       Lazy-load anything heavy; poster-frame any video; never autoplay
+       with sound. artifact-prov states what generated it, from what input,
+       in how long. -->
+  <section id="exhibit" class="flush-top">
+    <div class="wrap">
+      <figure class="artifact">
+        <div class="artifact-frame">
+          <!-- WORLD-SLOT: real embed goes here.
+               e.g. <iframe src="../lab/explainer.html" loading="lazy"
+                            title="Lorem" ></iframe>
+               or   <video muted playsinline preload="none" poster="…"></video> -->
+          <a class="artifact-placeholder" href="#">
+            <span class="ap-line">&#9656; lorem, the exhibit itself</span>
+            <span class="ap-go">Open the exhibit &rarr;</span>
+          </a>
+        </div>
+        <figcaption class="artifact-prov">Lorem provenance — what made this, from what input, in how long. <a href="#">how this page works</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ B5 MECHANISM — exactly 3 steps:
+       what you gave it / what it did / what it produces. -->
+  <section class="mechanism dark">
+    <div class="wrap">
+      <p class="eyebrow">How this one was made</p>
+      <h2>Lorem ipsum dolor.</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>What you gave it</h3><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>What it did</h3><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>What it produces</h3><p>Lorem ipsum dolor sit amet.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS — specific to THIS world. 2–4. -->
+  <section class="receipts compact">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Lorem ipsum dolor.</h2>
+      <p class="receipts-lede">Lorem ipsum dolor sit amet consectetur.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER — aria-current="step" on rung 1. -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Lorem ladder heading.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <span class="rung" aria-current="step"><span class="rung-n">01</span><span class="rung-t">Watch a world run</span><span class="rung-d">you are here</span></span>
+        <a class="rung" href="../learn.html"><span class="rung-n">02</span><span class="rung-t">Learn to build them</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../build.html"><span class="rung-n">03</span><span class="rung-t">Run your work inside one</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../run.html"><span class="rung-n">04</span><span class="rung-t">Have one run your business</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../pricing.html"><span class="rung-n">05</span><span class="rung-t">What it costs</span><span class="rung-d">lorem</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — ONE. "See how these get built →" (rung 2)
+       or "Have one run yours →" (rung 4). Never "learn more". -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Lorem ipsum dolor sit.</h2>
+      <p>Lorem ipsum dolor sit amet consectetur.</p>
+      <a class="cta-primary" href="../learn.html">See how these get built &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — paste verbatim from _templates/_footer.html -->
+<script src="../nav.js"></script>
+</body>
+</html>

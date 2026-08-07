@@ -1,0 +1,31 @@
+# old	new	why — feed this to a host that supports real 301s
+advertorial.html	/notes/the-ten-minute-product-priced-like-magic.html	This argument became a case study.
+agents.html	/notes/	The free agents live on the Learn rung now.
+apply.html	/pricing.html	Booking and prices are on one page now.
+blog/admissibility-engineering.html	/blog/admissibility.html	Two versions of one claim; this is the other one.
+blog/concentration-engineering.html	/blog/l6-concentration.html	Two versions of one claim; this is the other one.
+blog/doctor.html	/notes/	A sales page that was sitting in the writing folder.
+build.html	/run.html	This page is now the Run rung.
+business-buddhism.html	/inside/why.html	One idea survived; it is on the Why page.
+completely-fake-dharma.html	/inside/fake-dharma.html	Kept, unedited, but unlisted.
+dharma-concierge.html	/inside/fake-dharma.html	That project moved to its own site.
+dr-capitalism.html	/learn.html	Retired — a different business than this one.
+frameworks.html	/notes/	The frameworks are the notes. They moved to one index.
+free.html	/learn.html	Merged into the Learn rung and the notes.
+gnosys.html	/inside/gnosys.html	Moved inside.
+how_i.html	/learn.html	This stub folded into the Learn rung.
+jobworld-premium.html	/run.html	It lives inside the Run rung now.
+join.html	/learn.html	The community is a line on the Learn rung now, not a page.
+level10.html	/learn.html	The origin story folded into the Learn rung.
+opera.html	/inside/engine.html	The platform page moved inside, and lost its lore.
+phone-agent.html	/run.html	Single-service pages retired; this is part of Run.
+promptworld.html	/build.html	This page is now the Build rung.
+ralph.html	/build.html	Internal tooling — it lives inside the Build rung now.
+sancrev.html	/pricing.html	The price stack moved to the pricing page.
+sanctuary-nexus.html	/	This page was a shell that never got written.
+sanctuary-system.html	/inside/sanctuary-system.html	Moved inside.
+school.html	/learn.html	Merged into the Learn rung.
+soma-start.html	/pricing.html	Every price is on one page now.
+soma.html	/run.html	Became a tier on the Run rung.
+transform.html	/run.html	Merged into the Run rung.
+vajra-value-shop.html	/inside/why.html	One idea survived; it is on the Why page.

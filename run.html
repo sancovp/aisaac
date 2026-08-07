@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>An AI company that runs your repeat work — Isaac</title>
+<meta name="description" content="A CEO agent breaks the job down, stands up the departments it needs, does the work, and checks it before it counts as done. Runs on your own account.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/run.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="An AI company that runs your repeat work — Isaac">
+<meta property="og:description" content="A CEO agent breaks the job down, stands up the departments it needs, does the work, and checks it before it counts as done. Runs on your own account.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/run.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/run.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 3 — RUNG.  Rung 04: have one run your business.
+     Block order: B0 · B1 · B2 · B3 · B5 · B4 · B8 · B7 · B6 · B9 · B10
+     Laws: ONE <h1>. ONE .cta-primary (B9 uses the .cta-big alias, which
+           style.css defines as visually identical). No @media, no hex,
+           no page-local <style>. Renders complete with JS disabled.
+     Built from: build.html (old rung 4) + transform.html (Generative R&D)
+                 + the old logic-layer page (de-lored) + the old price-stack
+                 page (the honest band).
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — pasted verbatim from _templates/_nav.html (ROOT variant). Do not edit here. -->
+<header class="nav">
+  <a href="index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="watch.html">Watch</a>
+    <a href="learn.html">Learn</a>
+    <a href="build.html">Build</a>
+    <a href="run.html" aria-current="page">Run</a>
+    <a href="notes/">Notes</a>
+    <a href="pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM ═══════════════════════════════════════════════════════ -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Rung 04 — have one run your business</p>
+      <h1>An AI company that runs your <span>repeat work.</span></h1>
+      <p class="lede">A CEO agent breaks the job down, stands up the departments it needs, does the work, and checks it before anything counts as done. It runs on your own Claude Code account.</p>
+      <a class="cta-primary" href="https://cal.com/aisaac/ai-agents-for-your-business">Book the 15-minute stand-up &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ B3 ARTIFACT ════════════════════════════════════════════════════ -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <figure class="artifact">
+        <div class="artifact-frame">
+          <!-- WORLD-SLOT: a screen recording of a REAL stand-up call — a CEO
+               agent splitting a live customer's job, standing up departments,
+               and the checker sending work back. Recorded footage only.
+               DO NOT fill this with a simulated dashboard or generated
+               numbers: the previous version of this page animated its metrics
+               from a seeded RNG (done = 3 + floor(R()*5); "82 + floor(R()*15)%";
+               a hardcoded "80% / 4 of 5 steps") and presented them as a live
+               result. That is the exact defect this rebuild exists to remove. -->
+          <a class="artifact-placeholder" href="worlds/plumbing.html">
+            <span class="ap-line">&#9656; a recorded stand-up — footage pending. Meanwhile, here is what one run actually produced.</span>
+            <span class="ap-go">See one run's output &rarr;</span>
+          </a>
+        </div>
+        <figcaption class="artifact-prov">Placeholder, deliberately. This slot is reserved for footage of a real stand-up call recorded with the customer&rsquo;s consent &mdash; not a simulation. The animated dashboard that used to sit here generated its numbers from a seeded random-number generator; it was removed rather than relabelled.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ B5 MECHANISM — the three steps ════════════════════════════════ -->
+  <section class="mechanism dark">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Minutes, not months. Three steps.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Tell it what you do</h3>
+          <p>One sentence about your business and the job you want handled. That is the whole brief.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>It builds your company</h3>
+          <p>A CEO agent stands up and hires the exact departments the job needs. A department is a directory with its own instructions and its own workspace &mdash; not another tab in one chat window.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>It runs &mdash; and sharpens</h3>
+          <p>The team does the work, catches its own mistakes, and keeps the method, so the next cycle starts further along than the last one did.</p>
+        </div>
+      </div>
+      <p class="fineprint">All of it on <strong>your own Claude Code account</strong>. No second AI bill, no API keys to manage, no engineers to hire &mdash; and nothing routed through us.</p>
+    </div>
+  </section>
+
+  <!-- ══ B5b MECHANISM — the checking layer (from the old logic-layer page, de-lored) -->
+  <section class="mechanism">
+    <div class="wrap">
+      <p class="eyebrow">The part that makes it hold up</p>
+      <h2>A logic layer checks the work against your rules before it acts.</h2>
+      <p class="lede">Most automation runs a task and hopes. This layer sits between an agent deciding and an agent acting: your business rules, written down formally, consulted first. It is the reason output holds up instead of quietly drifting.</p>
+      <div class="stack">
+        <div class="stack-item">
+          <div class="stack-num">01</div>
+          <div class="stack-content"><h4>Your rules, written down</h4><p>How your business actually works, formalised into something a machine can check against &mdash; so the agent operates inside boundaries you set instead of guessing at them.</p></div>
+          <div class="stack-bar"></div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-num">02</div>
+          <div class="stack-content"><h4>Checked before it runs</h4><p>Every action is tested against those rules before execution, so an out-of-bounds action is caught in front of the work rather than patched behind it.</p></div>
+          <div class="stack-bar"></div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-num">03</div>
+          <div class="stack-content"><h4>Conclusions it can show its work for</h4><p>The system derives results from your rules and can say which rule produced which conclusion, so a surprise is traceable instead of mysterious.</p></div>
+          <div class="stack-bar"></div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-num">04</div>
+          <div class="stack-content"><h4>No agent marks its own homework</h4><p>Work is graded by something other than the thing that produced it, and when the rules change the checks change with them.</p></div>
+          <div class="stack-bar"></div>
+        </div>
+      </div>
+      <p class="fineprint">The discipline behind this is published rather than asserted &mdash; <a href="ssri/alignment.html">read the alignment write-up &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ══ B5c MECHANISM — Generative R&D (salvaged from transform.html;
+       the site's single best-receipted claim, so it keeps its receipt inline) -->
+  <section class="mechanism dark">
+    <div class="wrap">
+      <p class="eyebrow">Generative R&amp;D</p>
+      <h2>We map every product you could already sell.</h2>
+      <p class="lede">Everything you sell is a combination of options you already own &mdash; and you are selling the handful of combinations history happened to hand you. We model your option space, enumerate it, certify what you already claim, and hand you the map of the rest. When the market moves, you answer with a <strong>lookup</strong> while a competitor schedules a product-development meeting.</p>
+      <p class="fineprint"><strong>The worked demonstration:</strong> a famous burger menu has <strong>972 valid combinations</strong>. The published menu claims <strong>3</strong>. The secret menu &mdash; the combinations customers found on their own &mdash; is the proof that the market pays for the dark region. <a href="blog/innout-configuration-mining.html">Read the demonstration, with the enumeration shown &rarr;</a></p>
+      <p class="fineprint"><strong>&ldquo;Can&rsquo;t ChatGPT do this?&rdquo;</strong> It can count your combinations once, in a chat that forgets. It cannot hold the space as a navigable, certified map that composes across your products, pricing and marketing and stays organised on its own. That substrate is the technology; the frontier models work <em>inside</em> it.</p>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS — specific to this rung ═══════════════════════════ -->
+  <section class="receipts">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Don&rsquo;t take my word for it &mdash; take the code.</h2>
+      <p class="receipts-lede">No logo wall and no invented case studies. The engine is open source, one run&rsquo;s output is a live site you can load right now, and the reasoning is published as it is written.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp">
+          <div class="receipt-k">Open source</div>
+          <h3>The engine, on GitHub</h3>
+          <p>Installable and public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. Read it, run it, fork it.</p>
+          <span class="receipt-go">github.com/sancovp &rarr;</span>
+        </a>
+        <a class="receipt" href="worlds/plumbing.html">
+          <div class="receipt-k">One run&rsquo;s output</div>
+          <h3>A live site the system produced</h3>
+          <p>A working local-business site, built by a run of this engine. Load it &mdash; it is a site, not a screenshot of one.</p>
+          <span class="receipt-go">See the build &rarr;</span>
+        </a>
+        <a class="receipt" href="blog/innout-configuration-mining.html">
+          <div class="receipt-k">Worked demonstration</div>
+          <h3>972 combinations, enumerated</h3>
+          <p>The Generative R&amp;D claim above, done in public on a menu everyone knows, with the arithmetic shown rather than summarised.</p>
+          <span class="receipt-go">Read the demonstration &rarr;</span>
+        </a>
+        <a class="receipt" href="ssri/alignment.html">
+          <div class="receipt-k">Published research</div>
+          <h3>Why the checking layer exists</h3>
+          <p>The safety position in writing: every hand-off checked, no component trusted on its own word.</p>
+          <span class="receipt-go">Read the write-up &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B8 PRICE ══════════════════════════════════════════════════════ -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">What it costs</p>
+      <h2>Priced against what you would pay a person.</h2>
+      <div class="price-block">
+        <p class="anchor">An operations hire runs roughly <strong>$4,000&ndash;$6,000 a month</strong>, and an AI CTO on staff is a six-figure salary. Everything below is a fraction of one hire &mdash; and every figure here is a real number, not a &ldquo;contact us&rdquo;.</p>
+
+        <div class="pricing-table">
+          <div class="price-row highlight">
+            <div class="price-label">Retainer &mdash; your AI CTO</div>
+            <div class="price-amount">$1,000<span class="period">/mo</span></div>
+            <div class="price-desc">Two 55-minute strategy sessions a month, the roadmap planned and implemented together, unused meetings bank up to six months, direct access.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Pre-built automation</div>
+            <div class="price-amount">$2,000<span class="period">one-time</span></div>
+            <div class="price-desc">Then <strong>$200/mo</strong> each. Customised for your business, deployed and running, managed and maintained &mdash; you do not touch it. Cancel any automation at any time.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Managed website</div>
+            <div class="price-amount">$149<span class="period">/mo</span></div>
+            <div class="price-desc">Designed, written, shipped, hosted, managed. Day-to-day tweaks, copy edits and small additions included; a full redesign is scoped separately. Cancel anytime.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Custom integrations</div>
+            <div class="price-amount">Scoped<span class="period">per project</span></div>
+            <div class="price-desc">Bespoke work against your specific processes and the tools you already use. Scoped and quoted in writing on the call, before anything starts.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Logic layer, built for you</div>
+            <div class="price-amount">Scoped<span class="period">per project</span></div>
+            <div class="price-desc">Your rules formalised and the check layer stood up with you over a quarter. A hands-on engagement, not an install. The self-serve version of the same layer is <strong>$15/mo</strong> &mdash; see <a href="pricing.html">the full price sheet</a>.</div>
+          </div>
+        </div>
+
+        <ul>
+          <li>Your compiled company &mdash; a CEO plus the departments your work actually needs</li>
+          <li>Departments that grade and correct their own output before it counts as done</li>
+          <li>A live business dashboard fed by the work itself, not by a spreadsheet you maintain</li>
+          <li>Hosted and kept up to date &mdash; you do not maintain anything</li>
+          <li>It runs on your Claude Code account, with your data; nothing is routed through us</li>
+        </ul>
+
+        <div class="guarantee">
+          <h3>Leave the call with a company running &mdash; or the setup is free.</h3>
+          <p>We build it with you, live, on the call. If you do not walk away with a working company on your own Claude Code account, you pay nothing for setup. And the 30-day guarantee on every build: within 30 days you have a working automation deployed and a documented roadmap, or you do not pay for the build. The condition is your side of it &mdash; show up, give access, follow the process.</p>
+        </div>
+
+        <p class="fineprint">Each one is built by hand, so only a handful of stand-up calls open in a given week. That is a capacity statement, not a countdown clock.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B7 HONEST — mandatory on every RUNG ═══════════════════════════ -->
+  <section class="honest">
+    <div class="wrap">
+      <p class="eyebrow">Straight terms</p>
+      <h2>What you&rsquo;re buying, honestly.</h2>
+      <p><strong>What it can&rsquo;t do yet.</strong> It is early. It is not one-click self-serve &mdash; today we stand yours up on a call and host it for you. There is no magic button and there are no income promises. What you get is a real, working base that you build your edge on top of.</p>
+      <p><strong>What is proven versus what is roadmap.</strong> The engine runs, the departments run, the checking layer runs, and one run&rsquo;s output is a live site you can load right now. The full composition &mdash; every part auto-wiring into every other part with no hand-holding &mdash; is the frontier, and it gets built in the open on the engine that is already here. You are buying the system that exists plus the roadmap it is on, from the person building it.</p>
+      <p><strong>Who this is wrong for.</strong> If you are pre-revenue or under $10K/mo, the return math does not work yet, and we will say so rather than take your money for something that will not pay off. <a href="learn.html">Rung 2 is the honest answer at that stage</a> &mdash; and it is free.</p>
+      <p><strong>Your existing tools.</strong> The things you already use plug in on top of the base; that is the layer we build with you once the company is standing. The base gets you running first.</p>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER ═════════════════════════════════════════════════════ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Five rungs. You are standing on the fourth.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <a class="rung" href="watch.html"><span class="rung-n">01</span><span class="rung-t">Watch a world run</span><span class="rung-d">free &mdash; the engine, live, in your browser</span></a>
+        <a class="rung" href="learn.html"><span class="rung-n">02</span><span class="rung-t">Learn to build them</span><span class="rung-d">the patterns and the notes, free &middot; community $65/mo</span></a>
+        <a class="rung" href="build.html"><span class="rung-n">03</span><span class="rung-t">Run your work inside one</span><span class="rung-d">open source &mdash; install it today</span></a>
+        <a class="rung" href="run.html" aria-current="step"><span class="rung-n">04</span><span class="rung-t">Have one run your business</span><span class="rung-d">built with you &mdash; from $1,000/mo</span></a>
+        <a class="rung" href="pricing.html"><span class="rung-n">05</span><span class="rung-t">What it costs</span><span class="rung-d">every price on one page</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — one link, one destination (repeats B2's ask) ═════════ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">The 15-minute stand-up</p>
+      <h2>Get your company stood up &mdash; live, on the call.</h2>
+      <p>Fifteen minutes, on your business: we stand up a real company on your own Claude Code account while you watch. If it fits, you keep it running.</p>
+      <a class="cta-big" href="https://cal.com/aisaac/ai-agents-for-your-business">Book the 15-minute stand-up &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — pasted verbatim from _templates/_footer.html -->
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

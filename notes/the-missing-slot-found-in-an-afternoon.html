@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- RECONFORMED:C -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The architecture that drifted for months, diagnosed in two minutes — Isaac</title>
+<meta name="description" content="An architecture drifted for months and nobody could even name the problem. Everest expeditions and wingsuit jumps turned out to be the way in.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/notes/the-missing-slot-found-in-an-afternoon.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The architecture that drifted for months, diagnosed in two minutes — Isaac">
+<meta property="og:description" content="An architecture drifted for months and nobody could even name the problem. Everest expeditions and wingsuit jumps turned out to be the way in.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/the-missing-slot-found-in-an-afternoon.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/notes/the-missing-slot-found-in-an-afternoon.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Case study</p>
+    <h1>The architecture that drifted for months, diagnosed in two minutes</h1>
+    <p class="dek">An architecture drifted for months and nobody could even name the problem. Everest expeditions and wingsuit jumps turned out to be the way in.</p>
+
+<h3>The anecdote</h3>
+    <p>An agent architecture had grown into something that couldn't be held in one head anymore. It kept losing coherence — drifting from its mission, doing things nobody asked for, slowly becoming useless. And the worst part: you couldn't even <em>talk</em> about the problem, because "it's drifting" produced only generic advice. The thing that was wrong had no name.</p>
+    <p>The way out came sideways. Stuck, the mind reached for seemingly-unrelated content — Everest expeditions, high-altitude reconnaissance flights, wingsuit jumps — not as procrastination, but because those scenarios <em>felt like</em> the problem: one human doing something on top of a ridiculous amount of invisible infrastructure. Stacking a few of those wildly different domains and asking "what structure do these share?" collapsed the whole mess into four slots: something that steers, something that carries, something that keeps it aligned, and the defined ways the pieces talk.</p>
+    <p>Applied back to the architecture, the diagnosis was <em>instant.</em> There was a steerer. There was a vehicle. There were feedback loops. There was <strong>nothing keeping it aligned</strong> — nothing periodically asking "is this activity still serving the goal?" That's why drift was inevitable. The empty slot was the bug. And the fix turned out to be embarrassingly small: a short, honest, periodic check. Not a yes/no rubber stamp — a forced statement of <em>the goal is X, current activity is Y, Y serves X because Z.</em> If you can't say Z, you just caught the drift.</p>
+    <p>One person ran the same four-slot lens on their own agent setup and within ten minutes found three people steering, nobody checking alignment, and ad-hoc handoffs. The chaos had been there for months. The fix took an afternoon.</p>
+    <h3>What it reveals (the shape of the deeper rung)</h3>
+    <ul>
+    <li><strong>The unlabeled problem becomes solvable the moment it has a vocabulary</strong> — and you can <em>forge</em> that vocabulary from your own pre-conscious reaching plus cross-domain triangulation, rather than waiting for someone to name it for you.</li>
+    <li><strong>The diagnosis is finite, not infinite.</strong> "Everything feels broken" becomes four answerable questions, and the slot you can't answer cleanly <em>is</em> the failure. Almost always it's the alignment slot.</li>
+    <li><strong>Completing the diagnosis grants vision.</strong> Before the four-slot lens, the next steps were a fog of guesses; after it, the missing subsystem was <em>obvious</em> — not invented, revealed. That's what finishing a layer does: it hands you sight of the next one.</li>
+    </ul>
+    <h3>What you can take from it right now</h3>
+    <p>This is the most immediately usable thing in the whole free layer: take the most complex thing on your plate, name its four slots, and watch the empty one announce itself. That's a real two-minute diagnostic, and it's free. The deeper realization — that your "distraction" while stuck was your mind forging the lens — is yours too.</p>
+
+    <hr>
+    <p class="caveat"><strong>Honest caveat.</strong> What this doesn't cover: how to install the alignment check so it fires without willpower, and how the handoff protocols become binding instead of advisory.</p>
+    <p class="note-sources">Distilled from: <a href="../blog/soseeh.html">soseeh</a> · <a href="../blog/mission-control.html">mission control</a> · <a href="../blog/allegorization-compiler.html">allegorization compiler</a> · <a href="../blog/reach.html">reach</a> · <a href="../blog/helming.html">helming</a> · <a href="../blog/interaction-loop.html">interaction loop</a></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap" style="max-width:68ch">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="../blog/soseeh.html"><div class="receipt-k">Where this came from</div><h3>Distilled from notes written while building it</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+  <a class="note-next" href="the-compiler-that-resolves-the-ordinary.html">Next note: <b>The compiler that turns an ordinary thing into structure &rarr;</b></a>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

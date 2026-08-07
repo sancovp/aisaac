@@ -1,164 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing — Isaac TWI</title>
-  <style>
-    @media print { body { background: #fff; color: #111; } .header, .footer, .sticky-cta-bar { display: none; } .price-sheet { color: #111; } .price-sheet h1 { -webkit-text-fill-color: #111; background: none; } .price-sheet .tier { background: #f8f8f8; border-color: #ddd; } .price-sheet .tier-price { color: #111; } .price-sheet ul li { color: #333; } }
-    .price-sheet { max-width: 720px; margin: 0 auto; padding: 6rem 2rem 4rem; }
-    .price-sheet h1 { font-size: 2rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .price-sheet .sub { font-size: 0.85rem; color: var(--text-2); margin-bottom: 2.5rem; }
-    .price-sheet .tier { margin-bottom: 1.5rem; padding: 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-lg); }
-    .price-sheet .tier.highlight { border-color: rgba(125,211,252,0.2); }
-    .price-sheet .tier-name { font-weight: 600; font-size: 1.1rem; color: var(--text-1); }
-    .price-sheet .tier-price { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--mercury-blue); margin: 0.3rem 0 0.8rem; }
-    .price-sheet .tier-price .period { font-size: 0.7rem; font-weight: 400; color: var(--text-3); }
-    .price-sheet ul { margin: 0 0 0 1.2rem; font-size: 0.85rem; color: var(--text-2); line-height: 1.8; }
-    .price-sheet ul li::marker { color: var(--mercury-blue); }
-    .price-sheet .tier-note { font-size: 0.75rem; color: var(--text-3); margin-top: 0.8rem; font-style: italic; }
-    .price-sheet .section-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-violet); margin: 2.5rem 0 1rem; }
-    .price-sheet .fine { font-size: 0.75rem; color: var(--text-3); margin-top: 2rem; line-height: 1.7; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Every price, on one page — Isaac</title>
+<meta name="description" content="I don't tell you what it's worth — I show you what it costs everywhere else. Every number here is real, and nothing says contact us for pricing.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/pricing.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Every price, on one page — Isaac">
+<meta property="og:description" content="I don't tell you what it's worth — I show you what it costs everywhere else. Every number here is real, and nothing says contact us for pricing.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/pricing.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/pricing.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 3 — RUNG.  Rung 05: what it costs. Also THE convert surface.
+     Block order: B0 · B1 · B2 · B5 · B4 · B8 · B7 · B6 · B9 · B10
+     B3 ARTIFACT is deliberately ABSENT: a price sheet has no artifact, and
+     manufacturing one would be exactly the move this rebuild removes
+     elsewhere. §1.2 marks B3 optional on RUNG.
 
-  <div class="header">
-    <a href="index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="learn.html">Learn</a>
-      <a href="build.html">Jobworld</a>
-      <a href="transform.html">Services</a>
-      <a href="blog/">Blog</a>
+     THREE PRICE COLLISIONS RESOLVED HERE (spec §5, B4):
+       1. The logic layer read "+$15/mo" on the old price-stack page and
+          "ultra premium, talk to Isaac" on its own page. These were two
+          different products sharing one name. Split and both stated: a
+          $15/mo self-serve add-on, and a scoped build engagement.
+       2. The paid session read $500/55min (pricing + apply), $149/1hr
+          (transform), and $150 (exit-popup, now deleted). Resolved to
+          $500/55min — the figure on both surviving surfaces and the one
+          the live cal.com/aisaac/paid-session link is set up for.
+       3. Mastermind $3,000/yr vs school.html's undated tiers: no real
+          collision (school named no numbers), but BOTH are omitted below
+          because neither has an open date. See the note in B8.
+
+     ARITHMETIC FIXED: the old price-stack page headlined "$1,700+/mo" over a table
+     summing to $1,263, on the page whose thesis is showing real costs.
+     The stack below sums to $1,429/mo and the addends are printed.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — pasted verbatim from _templates/_nav.html (ROOT variant). Do not edit here. -->
+<header class="nav">
+  <a href="index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="watch.html">Watch</a>
+    <a href="learn.html">Learn</a>
+    <a href="build.html">Build</a>
+    <a href="run.html">Run</a>
+    <a href="notes/">Notes</a>
+    <a href="pricing.html" class="nav-cta" aria-current="page">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM ═══════════════════════════════════════════════════════ -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Rung 05 — what it costs</p>
+      <h1>Every price, <span>on one page.</span></h1>
+      <p class="lede">I don&rsquo;t tell you what it&rsquo;s worth &mdash; I show you what it costs everywhere else. Every number here is a real number, and nothing on this page says &ldquo;contact us for pricing&rdquo;.</p>
+      <a class="cta-primary" href="https://cal.com/aisaac/ai-agents-for-your-business">Book the free 30-minute build-map call &rarr;</a>
     </div>
-  </div>
+  </section>
 
-  <div class="price-sheet">
-    <h1>Pricing</h1>
-    <p class="sub">Everything I offer, what it costs, and how it works. No hidden fees.</p>
-
-    <div class="section-label">Services</div>
-
-    <div class="tier highlight">
-      <div class="tier-name">Retainer — Your AI CTO</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">An AI CTO on staff runs ~$180K/yr. This is $1,000/mo.</div>
-      <div class="tier-price">$1,000<span class="period">/mo</span></div>
-      <ul>
-        <li>2x 55-minute strategy sessions per month</li>
-        <li>AI transformation roadmap — we plan and implement together</li>
-        <li>Voice agent included free (just $200/mo usage with retainer)</li>
-        <li>SANCREV OPERA + Jobworld — yours to keep</li>
-        <li>Unused meetings bank up to 6 months</li>
-        <li>Direct access to Isaac</li>
-      </ul>
-      <div class="tier-note">Limited spots. First month: $1,200 ($1,000 retainer + $200 voice agent usage).</div>
+  <!-- ══ B5 MECHANISM — what actually happens after you book ═══════════ -->
+  <section class="mechanism dark">
+    <div class="wrap">
+      <p class="eyebrow">What happens next</p>
+      <h2>Three steps, and you can stop after any of them.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>The build-map call</h3>
+          <p>Thirty minutes, free, no pitch. We map what to automate in your business and in what order. You keep the roadmap whether or not you buy anything.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>A written scope</h3>
+          <p>Anything not already priced on this page gets scoped and quoted in writing before work starts. No open-ended hourly, no surprise line items.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>It runs, or you don&rsquo;t pay for the build</h3>
+          <p>Within 30 days you have a working automation deployed and a documented roadmap, or the build is free. Your side of it is showing up and giving access.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="tier">
-      <div class="tier-name">Pre-built Automations</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Hiring a person for any one of these jobs costs far more than $200/mo.</div>
-      <div class="tier-price">$2,000+ <span class="period">one-time</span> + $200<span class="period">/mo each</span></div>
-      <ul>
-        <li>AI Phone Agent, Blog Generator, Lead Gen, Content Writer, Project Manager, Morning Briefing, Video Producer, Agent Generator</li>
-        <li>Customized for your business, deployed and running 24/7</li>
-        <li>Managed and maintained — you don't touch it</li>
-        <li>Cancel any automation anytime</li>
-      </ul>
+  <!-- ══ B4 RECEIPTS — the money page had none. These are the four. ════ -->
+  <section class="receipts">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Before you spend anything, check the free parts.</h2>
+      <p class="receipts-lede">Two of the five rungs cost nothing at all, and they are the ones that prove whether any of this is real. Nothing below asks for a card or an email.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp">
+          <div class="receipt-k">Open source</div>
+          <h3>The engine, on GitHub</h3>
+          <p>The thing you would be paying me to run is public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. You can do it yourself for free.</p>
+          <span class="receipt-go">github.com/sancovp &rarr;</span>
+        </a>
+        <a class="receipt" href="worlds/plumbing.html">
+          <div class="receipt-k">One run&rsquo;s output</div>
+          <h3>A live site the system produced</h3>
+          <p>What the managed-website line actually buys, as a page you can load rather than a portfolio screenshot.</p>
+          <span class="receipt-go">See the build &rarr;</span>
+        </a>
+        <a class="receipt" href="notes/">
+          <div class="receipt-k">Open notes</div>
+          <h3>54 published field notes</h3>
+          <p>The full method, published as it was worked out. If you would rather learn it than buy it, it is all there for nothing.</p>
+          <span class="receipt-go">Read the notes &rarr;</span>
+        </a>
+        <a class="receipt" href="blog/gas-httyd.html">
+          <div class="receipt-k">Worked example</div>
+          <h3>What the graph tier produces</h3>
+          <p>The $65/mo stack, run end to end on a real input, with the story, funnel and marketing artifacts it returned.</p>
+          <span class="receipt-go">Read the worked example &rarr;</span>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class="tier">
-      <div class="tier-name">Custom Integrations</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Agencies scope bespoke builds like these into five figures.</div>
-      <div class="tier-price">Custom <span class="period">scoped per project</span></div>
-      <ul>
-        <li>Bespoke automations for your specific processes</li>
-        <li>Connects to your existing tools and workflows</li>
-        <li>Built, tested, and deployed by Isaac</li>
-        <li>Scoped and quoted on a call</li>
-      </ul>
+  <!-- ══ B8 PRICE — the whole sheet, grouped by rung ═══════════════════ -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">The sheet</p>
+      <h2>What it costs everywhere else, and what it costs here.</h2>
+      <div class="price-block">
+        <p class="anchor">An operations hire is <strong>$4,000&ndash;$6,000 a month</strong>. An AI CTO on staff is a six-figure salary. An agency quotes <strong>$10,000</strong> up front for the website alone, and a senior consultant&rsquo;s hour runs <strong>$300&ndash;$500</strong>. Those are the numbers you are actually choosing between.</p>
+
+        <h3>Rungs 1&ndash;3 — free</h3>
+        <div class="pricing-table">
+          <div class="price-row">
+            <div class="price-label">Watch a world run</div>
+            <div class="price-amount">Free<span class="period">rung 01</span></div>
+            <div class="price-desc">The engine running live in your browser. Nothing to install and nothing to sign up for. <a href="watch.html">Go to rung 1 &rarr;</a></div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">The notes and the stack</div>
+            <div class="price-amount">Free<span class="period">rung 02</span></div>
+            <div class="price-desc">All 54 field notes, the seven-layer stack and the frameworks underneath. No email wall. <a href="learn.html">Go to rung 2 &rarr;</a></div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">The engine itself</div>
+            <div class="price-amount">Free<span class="period">open source</span></div>
+            <div class="price-desc">Clone it, build it, boot it, fork it. You bring your own provider key and pay them directly, at cost. <a href="build.html">Go to rung 3 &rarr;</a></div>
+          </div>
+        </div>
+
+        <h3>Rung 4 — have one run your business</h3>
+        <div class="pricing-table">
+          <div class="price-row highlight">
+            <div class="price-label">Retainer &mdash; your AI CTO</div>
+            <div class="price-amount">$1,000<span class="period">/mo</span></div>
+            <div class="price-desc">Two 55-minute strategy sessions a month, the roadmap planned and implemented together, unused meetings bank up to six months, direct access. Limited spots.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Pre-built automation</div>
+            <div class="price-amount">$2,000<span class="period">one-time</span></div>
+            <div class="price-desc">Then <strong>$200/mo</strong> each. Customised, deployed, managed and maintained &mdash; you do not touch it. Cancel any automation at any time.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Managed website</div>
+            <div class="price-amount">$149<span class="period">/mo</span></div>
+            <div class="price-desc">Custom design, copy and SEO, built and hosted and managed. Day-to-day tweaks and small additions included; a full redesign is scoped separately. Cancel anytime.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Custom integrations</div>
+            <div class="price-amount">Scoped<span class="period">per project</span></div>
+            <div class="price-desc">Bespoke work against your processes and the tools you already use. Quoted in writing on the call, before anything starts.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Logic layer, built for you</div>
+            <div class="price-amount">Scoped<span class="period">per project</span></div>
+            <div class="price-desc">Your rules formalised and the check layer stood up with you over a quarter. A hands-on engagement, not an install &mdash; distinct from the $15/mo self-serve add-on below.</div>
+          </div>
+        </div>
+
+        <h3>The personal stack — self-serve</h3>
+        <div class="pricing-table">
+          <div class="price-row">
+            <div class="price-label">Hosted knowledge graph</div>
+            <div class="price-amount">$65<span class="period">/mo</span></div>
+            <div class="price-desc">A graph of your own with semantic search, up to 500,000 nodes, yours via API key. Includes the community: the private channel, accountability, and direct access.</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Add-ons</div>
+            <div class="price-amount">$15<span class="period">/mo each</span></div>
+            <div class="price-desc">Stack on top of the graph. The logic-layer add-on is the self-serve version of the check layer; the proving add-on turns your story into artifacts you can publish. <a href="blog/gas-httyd.html">See the worked example &rarr;</a></div>
+          </div>
+        </div>
+
+        <h3>One-off</h3>
+        <div class="pricing-table">
+          <div class="price-row">
+            <div class="price-label">Strategy session</div>
+            <div class="price-amount">$500<span class="period">55 minutes</span></div>
+            <div class="price-desc">No qualification needed and no pitch. An audit, a roadmap, and honest advice; you keep everything discussed. <a href="https://cal.com/aisaac/paid-session">Book the paid session &rarr;</a></div>
+          </div>
+        </div>
+
+        <h3>Stacked together</h3>
+        <div class="pricing-table">
+          <div class="price-row highlight">
+            <div class="price-label">Everything monthly, at once</div>
+            <div class="price-amount">$1,429<span class="period">/mo</span></div>
+            <div class="price-desc">Retainer $1,000 + managed website $149 + one automation $200 + the personal stack $65 + one add-on $15. Plus the automation&rsquo;s $2,000 one-time install. Those are the addends; that is the sum.</div>
+          </div>
+        </div>
+
+        <div class="guarantee">
+          <h3>30-day guarantee on every build.</h3>
+          <p>Within 30 days you have a working automation deployed and a documented roadmap, or you do not pay for the build. On a rung 4 stand-up call: if you do not leave with a working company on your own Claude Code account, the setup is free. The condition on both is your side of it &mdash; show up, give access, follow the process.</p>
+        </div>
+
+        <p class="fineprint">Two things that used to be listed here are not: the cohort and the mastermind. Both were advertised with prices and no open date, and a price with no date is a waiting list wearing a price tag. They return to this page when they have one. Everything above is available now.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="tier">
-      <div class="tier-name">SOMA — Intelligence Systems</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Formal ontology and logic-layer work is six-figure consulting elsewhere.</div>
-      <div class="tier-price">Custom <span class="period">scoped per project</span></div>
-      <ul>
-        <li>Self-organizing AI with ontology and logic layer</li>
-        <li>System that understands your business and self-corrects</li>
-        <li>The tier nobody else can offer</li>
-      </ul>
+  <!-- ══ B7 HONEST — the disqualifier, said out loud instead of hidden
+       four clicks deep inside a quiz. Salvaged verbatim from apply.html. ══ -->
+  <section class="honest">
+    <div class="wrap">
+      <p class="eyebrow">Straight terms</p>
+      <h2>Who I&rsquo;ll turn down.</h2>
+      <p><strong>Under $10K/mo, this is the wrong page for you.</strong> In the words this site used to bury behind a three-question quiz: <em>&ldquo;My retainer and automation builds are designed for businesses already doing $10K+/mo. At your stage, the ROI math doesn&rsquo;t work yet &mdash; and I won&rsquo;t take your money for something that won&rsquo;t pay off.&rdquo;</em> What does work at that stage is <a href="learn.html">rung 2</a>, which is free, and <a href="build.html">rung 3</a>, which is also free.</p>
+      <p><strong>You could do all of it yourself.</strong> The engine is open source and the method is published in full. The honest reason to pay me is that while you are building the base, I am already shipping it for a living &mdash; so you spend your time on the business instead of the plumbing. That is a time argument, not a moat argument.</p>
+      <p><strong>No income claims, anywhere.</strong> Nothing on this site promises revenue, and no figure here is a projection of what you will make. The prices are what things cost. What they earn is your side of the table.</p>
+      <p><strong>What isn&rsquo;t built yet.</strong> Rung 4 is not one-click self-serve &mdash; each one is stood up by hand on a call, which is why only a handful of slots open in a week. That is a capacity limit, not a scarcity tactic, and it is the honest reason the price is what it is.</p>
     </div>
+  </section>
 
-    <div class="section-label">Learning</div>
-
-    <div class="tier">
-      <div class="tier-name">Cohort — The School</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Most AI-agency courses charge this for slides — here you build the real system.</div>
-      <div class="tier-price">$997 <span class="period">or</span> $1,997 <span class="period">one-time</span></div>
-      <ul>
-        <li>Complete L1-L6 curriculum: from prompts to compound intelligence</li>
-        <li>Build your own AI business system during the program</li>
-        <li>Community access + peer cohort</li>
-      </ul>
+  <!-- ══ B6 LADDER ═════════════════════════════════════════════════════ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Five rungs. This one prices the other four.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <a class="rung" href="watch.html"><span class="rung-n">01</span><span class="rung-t">Watch a world run</span><span class="rung-d">free &mdash; the engine, live, in your browser</span></a>
+        <a class="rung" href="learn.html"><span class="rung-n">02</span><span class="rung-t">Learn to build them</span><span class="rung-d">the patterns and the notes, free &middot; community $65/mo</span></a>
+        <a class="rung" href="build.html"><span class="rung-n">03</span><span class="rung-t">Run your work inside one</span><span class="rung-d">open source &mdash; install it today</span></a>
+        <a class="rung" href="run.html"><span class="rung-n">04</span><span class="rung-t">Have one run your business</span><span class="rung-d">built with you &mdash; from $1,000/mo</span></a>
+        <a class="rung" href="pricing.html" aria-current="step"><span class="rung-n">05</span><span class="rung-t">What it costs</span><span class="rung-d">every price on one page</span></a>
+      </nav>
     </div>
+  </section>
 
-    <div class="tier">
-      <div class="tier-name">Mastermind</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">Direct-access masterminds routinely run several thousand a year.</div>
-      <div class="tier-price">$3,000<span class="period">/yr</span></div>
-      <ul>
-        <li>VIP cohort tier — all upsells included, handed not offered</li>
-        <li>Direct group access to Isaac</li>
-      </ul>
+  <!-- ══ B9 CTA — one link, one destination (repeats B2's ask) ═════════ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">Start here</p>
+      <h2>Map it first. Buy second, or not at all.</h2>
+      <p>Thirty minutes, free, no pitch: we map what to automate and in what order. You keep the roadmap either way.</p>
+      <a class="cta-big" href="https://cal.com/aisaac/ai-agents-for-your-business">Book the free 30-minute build-map call &rarr;</a>
     </div>
+  </section>
 
-    <div class="tier">
-      <div class="tier-name">White-label OPERA + Seed</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">A white-label engine to resell — normally a five-figure license.</div>
-      <div class="tier-price">Cohort graduates only</div>
-      <ul>
-        <li>License to white-label the engine for your own clients</li>
-        <li>Must complete the cohort first — this is earned, not bought</li>
-      </ul>
-    </div>
+</main>
 
-    <div class="section-label">The Personal AI Stack — self-serve</div>
-
-    <div class="tier">
-      <div class="tier-name">CartON — your knowledge graph</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">The base of the stack: a hosted graph your agents act from. Up to 500,000 nodes.</div>
-      <div class="tier-price">$65<span class="period">/mo</span></div>
-      <ul>
-        <li>Hosted knowledge graph + semantic search, yours via API key</li>
-        <li>Add-ons stack on top: <strong>CB +$15/mo</strong> · <strong>SOMA +$15/mo</strong> · <strong>GAS +$15/mo</strong></li>
-        <li>GAS with CartON = manual proving over your content · GAS with CartON + SOMA = automated reasoning</li>
-        <li>GAS proves your story like a theorem and returns story, funnel, and marketing artifacts — <a href="blog/gas-httyd.html" style="color:var(--mercury-blue);">see the worked example</a></li>
-      </ul>
-      <div class="tier-note">Community — $65/mo: API key on join, Discord role, direct access to Isaac, accountability + courses.</div>
-    </div>
-
-    <div class="section-label">One-off</div>
-
-    <div class="tier">
-      <div class="tier-name">Strategy Session</div>
-      <div style="font-size:0.8rem;color:var(--text-2);margin:0.3rem 0;">A senior AI consultant's hour runs $300–500. Roadmap included.</div>
-      <div class="tier-price">$500 <span class="period">one-time</span></div>
-      <ul>
-        <li>55 minutes with Isaac — no qualification needed</li>
-        <li>AI audit, roadmap, and honest advice</li>
-        <li>You keep everything discussed</li>
-      </ul>
-    </div>
-
-    <p class="fine">30-day guarantee on all services: in 30 days you'll have a working automation deployed and a documented roadmap, or you don't pay for the build. The condition: show up, give access, follow the process.</p>
-  </div>
-
-  <div class="footer">
-    <span>&copy; 2026 Isaac &mdash; TWI</span>
-  </div>
-
-<script src="sticky-cta.js"></script>
-<script src="exit-popup.js"></script>
+<!-- B10 FOOTER — pasted verbatim from _templates/_footer.html -->
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="nav.js"></script>
 </body>
 </html>

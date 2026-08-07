@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- RECONFORMED:C -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Right Is Not Fluent — Isaac</title>
+<meta name="description" content="Two completely different guarantees you can ask of an AI system, routinely conflated. More context makes a fluent system more convincingly fluent; it does…">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/notes/right-is-not-fluent.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Right Is Not Fluent — Isaac">
+<meta property="og:description" content="Two completely different guarantees you can ask of an AI system, routinely conflated. More context makes a fluent system more convincingly fluent; it does…">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/right-is-not-fluent.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/notes/right-is-not-fluent.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Framework</p>
+    <h1>Right Is Not Fluent</h1>
+    <p class="dek">Two completely different guarantees you can ask of an AI system, routinely conflated. More context makes a fluent system more convincingly fluent; it does not make it right.</p>
+
+<h3>The shape</h3>
+    <p>There are two completely different guarantees you can ask of an AI system, and almost everyone conflates them:</p>
+    <ul>
+    <li><strong>Fluent:</strong> the output reads well, sounds confident, and has the right shape. This is the default, and it's a trap — a fluent system <em>performs</em> knowing whether or not it actually knows.</li>
+    <li><strong>Right:</strong> every claim the system makes decomposes into parts that each individually check out, all the way down. If the chain doesn't close, the claim doesn't ship. A right system doesn't <em>try</em> not to be wrong; it is <em>structurally unable</em> to admit a claim it can't compose from validated pieces.</li>
+    </ul>
+    <p>The hinge between them is <strong>typed structure.</strong> A raw string can mean anything, so a system that only holds strings can only guess. The moment a thing is <em>typed</em> — you've declared what it is, what it requires, what it connects to — the system can check whether a claim about it actually holds, and refuse it when it doesn't. Constraints aren't a cage here; they're the only thing that makes "right" even definable.</p>
+    <h3>Why it matters</h3>
+    <p>Your AI hallucinates not because it's broken but because its outputs are unconstrained: nothing in the system checks whether what it said <em>composes</em> from things that are real. People try to fix this with more context — more documents, bigger windows, more RAG. It doesn't work, because <strong>reading is not the same as understanding compositionally.</strong> You can stuff fifty pages of procedure into the context and the system will still confidently contradict page 23, because it has <em>words about</em> the domain, not a <em>validated model</em> of the domain that it cannot contradict.</p>
+    <p>The reframe is brutal and clarifying: the question is never "did it sound right?" It's "could a wrong answer here cost real money?" If yes, fluent is not enough — you need a system where wrong claims can't be <em>admitted</em>, not one where you hope they won't be <em>generated.</em> That's a different category of system, and most never become it, because it costs speed and it costs the freedom to throw any string at the problem.</p>
+    <h3>How to think with it</h3>
+    <ol>
+    <li>For any AI output you depend on, ask: is this <em>fluent</em>, or is it <em>right</em>? Could I trace every claim back to something validated, or am I trusting that it sounds plausible?</li>
+    <li>Notice when "give it more context" is being proposed as the fix. More context makes a fluent system <em>more convincingly</em> fluent — it does not make it right. Different problem, different fix.</li>
+    <li>Decide honestly whether your use case needs <em>right</em> at all. A lot don't — fluent is fine for a FAQ bot. The discipline is knowing <em>which</em> one your stakes demand, and not paying for the expensive guarantee where the cheap one suffices.</li>
+    <li>Where you do need right: the unit of trust is the <em>composition</em>, not the sentence. The question becomes "does this decompose into validated parts?" — at every depth, not just the top.</li>
+    </ol>
+
+    <hr>
+    <p class="caveat"><strong>Honest caveat.</strong> What this doesn't cover: the apparatus that does the composing and the refusing — how a claim is decomposed and checked at every depth, and what the validator says back to make the model repair it.</p>
+    <p class="note-sources">Distilled from: <a href="../blog/admissibility-engineering.html">admissibility engineering</a> · <a href="../blog/l5-admissibility.html">l5 admissibility</a> · <a href="../blog/admissibility.html">admissibility</a> · <a href="../blog/composition.html">composition</a> · <a href="../blog/sanctot-example.html">sanctot example</a></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap" style="max-width:68ch">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="../blog/admissibility-engineering.html"><div class="receipt-k">Where this came from</div><h3>Distilled from notes written while building it</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+  <a class="note-next" href="forge-your-own-vocabulary.html">Next note: <b>Forge Your Own Vocabulary &rarr;</b></a>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

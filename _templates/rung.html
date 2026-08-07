@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEMPLATE — TYPE 3 RUNG</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 3 — RUNG.  One offer, one rung of the ladder.  Owner: Builder B.
+     Instances: learn.html (2) · build.html (3) · run.html (4) · pricing.html (5)
+     Block order: B0 · B1 · B2 · B3 · B5 · B4 · B8 · B7 · B6 · B9 · B10
+
+     ACCEPTANCE (all mechanical):
+       · B2, B4, B7, B8, B9 all present. Exactly one <h1>, one .cta-primary.
+       · Zero banned canon vocabulary (L3).
+       · No price reads "TBD" / "coming soon". A free rung says "free".
+       · No href="#" anywhere.
+       · Every claim in B8 has an artifact link inside the same section.
+       · B7 HONEST is MANDATORY — what it can't do yet, in plain words.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — paste verbatim from _templates/_nav.html (ROOT variant),
+     with aria-current="page" on this rung's own link -->
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM — the MAXIMAL TRUE claim for this rung. Nothing above it. -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Lorem rung</p>
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+      <a class="cta-primary" href="#price">Lorem, the one action &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ B3 ARTIFACT — optional but STRONGLY preferred: the thing itself.
+       A terminal recording, a runnable install command, a screenshot of
+       REAL output. A runnable install command is the strongest receipt a
+       product has — promote it, don't bury it.
+       NEVER render simulated numbers as if they were a live result.
+       Anything illustrative carries the word "illustration" in-block. -->
+  <section class="flush-top">
+    <div class="wrap">
+      <figure class="artifact">
+        <div class="artifact-frame">
+          <!-- WORLD-SLOT: real terminal capture / screenshot / embed -->
+          <a class="artifact-placeholder" href="#">
+            <span class="ap-line">&#9656; lorem — the thing itself, running</span>
+            <span class="ap-go">Lorem &rarr;</span>
+          </a>
+        </div>
+        <figcaption class="artifact-prov">Lorem provenance — real output, produced when, from what.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ B5 MECHANISM — 3 steps or a .stack -->
+  <section class="mechanism dark">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Lorem ipsum dolor.</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Lorem</h3><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Ipsum</h3><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Dolor</h3><p>Lorem ipsum dolor sit amet.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS — 2–4, SPECIFIC to this rung. -->
+  <section class="receipts compact">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Lorem ipsum dolor.</h2>
+      <p class="receipts-lede">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor.</p><span class="receipt-go">Lorem &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B8 PRICE — anchor + price + inclusions + guarantee.
+       The anchor states what this costs ELSEWHERE, with a real referent.
+       "We don't tell you what it's worth. We show you what it costs
+       everywhere else." Arithmetic must add up — a stack whose total
+       contradicts its own rows is a ship-blocker. -->
+  <section id="price">
+    <div class="wrap">
+      <p class="eyebrow">What it costs</p>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <div class="price-block">
+        <p class="anchor">Lorem, hiring for this costs ~$X/mo elsewhere</p>
+        <p class="price">$0<span class="period">/mo</span></p>
+        <ul>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Lorem ipsum dolor sit amet</li>
+        </ul>
+        <div class="guarantee">
+          <h3>Lorem guarantee</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B7 HONEST — MANDATORY. What it can't do yet. -->
+  <section class="honest">
+    <div class="wrap">
+      <p class="eyebrow">Straight terms</p>
+      <h2>What you&rsquo;re buying, honestly.</h2>
+      <p>Lorem ipsum dolor sit amet — what ships today.</p>
+      <p>Lorem ipsum — what does NOT work yet, named plainly. No income promises. No &ldquo;fully autonomous.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER — aria-current="step" on THIS rung. -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Lorem ladder heading.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <a class="rung" href="watch.html"><span class="rung-n">01</span><span class="rung-t">Watch a world run</span><span class="rung-d">lorem</span></a>
+        <span class="rung" aria-current="step"><span class="rung-n">02</span><span class="rung-t">Learn to build them</span><span class="rung-d">you are here</span></span>
+        <a class="rung" href="build.html"><span class="rung-n">03</span><span class="rung-t">Run your work inside one</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="run.html"><span class="rung-n">04</span><span class="rung-t">Have one run your business</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="pricing.html"><span class="rung-n">05</span><span class="rung-t">What it costs</span><span class="rung-d">lorem</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — ONE. Booking, install, or purchase. Never "learn more". -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Lorem ipsum dolor sit.</h2>
+      <p>Lorem ipsum dolor sit amet consectetur.</p>
+      <a class="cta-primary" href="#price">Lorem, do the thing &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — paste verbatim from _templates/_footer.html -->
+<script src="../nav.js"></script>
+</body>
+</html>

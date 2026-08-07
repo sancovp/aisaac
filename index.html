@@ -1,319 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Isaac — TWI | AI Transformation</title>
-  <style>
-    .hero-landing { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; }
-    .hero-landing h1 { font-weight: 700; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet), var(--mercury-chrome)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-landing .hero-sub { font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--text-2); max-width: 42ch; line-height: 1.7; margin: 0 auto 3rem; }
-    .hero-landing .hero-cta { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); padding: 0.9rem 2.5rem; border-radius: var(--r-sm); text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; }
-    .hero-landing .hero-cta:hover { filter: brightness(1.2); transform: translateY(-2px); }
-    .hero-scroll { position: absolute; bottom: 2rem; font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.15em; text-transform: uppercase; animation: pulse-down 2s ease-in-out infinite; }
-    @keyframes pulse-down { 0%, 100% { opacity: 0.4; transform: translateY(0); } 50% { opacity: 0.8; transform: translateY(4px); } }
-
-    /* Survey modal */
-    .survey-modal { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(4,4,14,0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); overflow-y: auto; animation: sm-in 0.3s ease-out; }
-    .survey-modal.open { display: flex; align-items: center; justify-content: center; }
-    @keyframes sm-in { from { opacity: 0; } to { opacity: 1; } }
-    .survey-inner { max-width: 680px; width: 100%; margin: 2rem; padding: 2rem 0; }
-    .survey-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--text-3); font-size: 1.8rem; cursor: pointer; z-index: 10001; line-height: 1; transition: color 0.2s; }
-    .survey-close:hover { color: var(--text-1); }
-    .survey-q { font-weight: 600; font-size: 1.3rem; color: var(--text-1); text-align: center; margin-bottom: 0.5rem; }
-    .survey-sub { font-size: 0.85rem; color: var(--text-3); text-align: center; margin-bottom: 2rem; }
-    .survey-cards { display: flex; gap: 0.8rem; overflow-x: auto; padding-bottom: 0.5rem; }
-    .survey-card { flex: 1; min-width: 140px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-lg); padding: 1.2rem; text-decoration: none; color: var(--text-1); transition: all 0.2s; display: block; }
-    .survey-card:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
-    .survey-card.highlight { border-color: rgba(125,211,252,0.12); background: rgba(125,211,252,0.03); }
-    .survey-card .sc-icon { font-size: 1.5rem; margin-bottom: 1rem; }
-    .survey-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-    .survey-card p { font-size: 0.78rem; color: var(--text-2); line-height: 1.6; }
-    .survey-card .sc-cta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.8rem; display: block; }
-    @media (max-width: 600px) { .survey-cards { grid-template-columns: 1fr; } }
-
-    /* Flow steps (reused from before) */
-    .router-flow { display: none; max-width: 520px; margin: 0 auto; animation: sm-in 0.3s ease-out; }
-    .router-flow.active { display: block; }
-    .flow-progress { display: flex; gap: 0.5rem; margin-bottom: 2rem; justify-content: center; }
-    .flow-dot { width: 2rem; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.07); transition: background 0.3s; }
-    .flow-dot.done { background: var(--mercury-blue); }
-    .flow-dot.current { background: var(--mercury-violet); }
-    .flow-step { display: none; animation: sm-in 0.3s ease-out; }
-    .flow-step.active { display: block; }
-    .flow-q { font-weight: 600; font-size: 1.15rem; color: var(--text-1); margin-bottom: 1.5rem; text-align: center; }
-    .flow-opts { display: flex; flex-direction: column; gap: 0.7rem; }
-    .flow-opt { background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-md); padding: 0.9rem 1.3rem; cursor: pointer; font-size: 0.9rem; color: var(--text-2); transition: all 0.2s; text-align: left; }
-    .flow-opt:hover { border-color: rgba(125,211,252,0.25); color: var(--text-1); transform: translateY(-1px); }
-    .flow-opt.selected { border-color: var(--mercury-blue); color: var(--text-1); background: rgba(125,211,252,0.06); }
-    .flow-result { padding: 1.5rem; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-lg); margin-top: 1rem; text-align: left; }
-    .flow-result h3 { font-size: 1.05rem; color: var(--text-1); margin-bottom: 0.6rem; }
-    .flow-result p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; margin-bottom: 0.8rem; }
-    .flow-result strong { color: var(--text-1); }
-    .flow-cta { display: inline-block; margin-top: 0.5rem; }
-    .flow-alt { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--mercury-blue); text-decoration: none; margin-left: 1rem; }
-    .flow-alt:hover { color: var(--text-1); }
-    .flow-escape { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.07); font-size: 0.75rem; color: var(--text-3); text-align: center; }
-    .flow-escape a { color: var(--mercury-violet); text-decoration: none; }
-    .flow-email-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-    .flow-input { flex: 1; max-width: 260px; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-sm); padding: 0.6rem 1rem; color: var(--text-1); font-size: 0.85rem; outline: none; font-family: var(--body); }
-    .flow-input:focus { border-color: var(--mercury-blue); }
-    .flow-input::placeholder { color: var(--text-3); }
-    .flow-small-btn { font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet)); padding: 0.5rem 1rem; border-radius: var(--r-sm); border: none; cursor: pointer; }
-    .flow-back { font-family: var(--mono); font-size: 0.65rem; color: var(--text-3); cursor: pointer; text-decoration: none; display: block; text-align: center; margin-bottom: 1rem; }
-    .flow-back:hover { color: var(--text-1); }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One engine. Many worlds. A loop that compounds. — Isaac</title>
+<meta name="description" content="This looks like a dozen separate products. It isn't — it's one engine that stands up a self-running world for whatever you're doing.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="One engine. Many worlds. A loop that compounds. — Isaac">
+<meta property="og:description" content="This looks like a dozen separate products. It isn't — it's one engine that stands up a self-running world for whatever you're doing.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 1 SPINE — HOME.  Rebuild spec §4.
+     Everything is in the DOM. No modal, no survey, no quiz, no exit-intent,
+     no sticky bar, no email capture, no 100vh empty hero. The page renders
+     complete with JavaScript disabled; nav.js only collapses the mobile menu.
+     ══════════════════════════════════════════════════════════════════════ -->
 
-  <div class="header">
-    <a href="index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="learn.html">Learn</a>
-      <a href="build.html">Jobworld</a>
-      <a href="transform.html">Services</a>
-      <a href="promptworld.html">PromptWorld</a>
-      <a href="system.html">The System</a>
-      <a href="blog/">Blog</a>
-    </div>
-  </div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- HERO -->
-  <div class="hero-landing">
-    <h1>Turn on the AI that runs the boring half of your business.</h1>
-    <p class="hero-sub">One engine. Four doors — pick yours below.</p>
-    <button class="hero-cta" id="open-survey">Get Started</button>
-    <div class="hero-scroll">&#x25BE; explore</div>
-  </div>
+<header class="nav">
+  <a href="index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="watch.html">Watch</a>
+    <a href="learn.html">Learn</a>
+    <a href="build.html">Build</a>
+    <a href="run.html">Run</a>
+    <a href="notes/">Notes</a>
+    <a href="pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
 
-  <!-- SURVEY MODAL -->
-  <div class="survey-modal" id="survey-modal">
-    <button class="survey-close" id="survey-close">&times;</button>
-    <div class="survey-inner">
+<main id="main">
 
-      <!-- Card selection (phase 1 of survey) -->
-      <div id="survey-cards">
-        <div class="survey-q">What brings you here?</div>
-        <div class="survey-sub">Four paths. Same engine. Pick yours.</div>
-        <div class="survey-cards">
-          <a href="opera.html" class="survey-card">
-            <div class="sc-icon">&#x2660;</div>
-            <h3>The Sanctuary System</h3>
-            <p>The full vision. Life architecture, compound intelligence, the myth that predicted the code.</p>
-            <span class="sc-cta">Enter &rarr;</span>
-          </a>
-          <a href="#" class="survey-card highlight" id="card-transform">
-            <div class="sc-icon">&#x26A1;</div>
-            <h3>I need AI in my business now.</h3>
-            <p>We build your AI system with you — live. You leave with it running.</p>
-            <span class="sc-cta">Get started &rarr;</span>
-          </a>
-          <a href="school.html" class="survey-card">
-            <div class="sc-icon">&#x2697;</div>
-            <h3>I want to make money with AI.</h3>
-            <p>The meta-funnel. How AI businesses actually work. Dr Capitalism explains.</p>
-            <span class="sc-cta">The School &rarr;</span>
-          </a>
-          <a href="free.html" class="survey-card">
-            <div class="sc-icon">&#x2692;</div>
-            <h3>I want to build AI agents.</h3>
-            <p>Skills, harnesses, frameworks, OPERA. Free tools and open source.</p>
-            <span class="sc-cta">PAIAB &rarr;</span>
-          </a>
-        </div>
-        <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:var(--text-2);"><a href="how_i.html" style="color:var(--mercury-blue);text-decoration:none;">Not sure? Browse everything I can teach you →</a></p>
-      </div>
-
-      <!-- B2B qualification flow (phase 2, triggered by Transform card) -->
-      <div class="router-flow" id="router-flow">
-        <a class="flow-back" id="flow-back">&larr; Back to paths</a>
-        <div class="flow-progress">
-          <div class="flow-dot current" data-fdot="0"></div>
-          <div class="flow-dot" data-fdot="1"></div>
-          <div class="flow-dot" data-fdot="2"></div>
-        </div>
-        <div class="flow-step active" data-fstep="0">
-          <div class="flow-q">What's your monthly revenue?</div>
-          <div class="flow-opts">
-            <div class="flow-opt" data-fval="pre" data-fgo="result-school">Pre-revenue / under $5K</div>
-            <div class="flow-opt" data-fval="5-10k" data-fgo="result-school">$5K — $10K</div>
-            <div class="flow-opt" data-fval="10-20k" data-fgo="1">$10K — $20K</div>
-            <div class="flow-opt" data-fval="20-50k" data-fgo="1">$20K — $50K</div>
-            <div class="flow-opt" data-fval="50k+" data-fgo="1">$50K+</div>
-          </div>
-        </div>
-        <div class="flow-step" data-fstep="1">
-          <div class="flow-q">What's eating your time?</div>
-          <div class="flow-opts">
-            <div class="flow-opt" data-fval="leads" data-fgo="2">Answering leads / follow-up</div>
-            <div class="flow-opt" data-fval="content" data-fgo="2">Creating content consistently</div>
-            <div class="flow-opt" data-fval="ops" data-fgo="2">Operations and repetitive tasks</div>
-            <div class="flow-opt" data-fval="all" data-fgo="2">All of it — I need the whole system</div>
-          </div>
-        </div>
-        <div class="flow-step" data-fstep="2">
-          <div class="flow-q">How soon do you want AI running?</div>
-          <div class="flow-opts">
-            <div class="flow-opt" data-fval="now" data-fgo="result-qualified">This week</div>
-            <div class="flow-opt" data-fval="soon" data-fgo="result-qualified">This month</div>
-            <div class="flow-opt" data-fval="later" data-fgo="result-qualified">Just scoping it out</div>
-          </div>
-        </div>
-        <div class="flow-step" data-fstep="result-qualified">
-          <div class="flow-q">You're a fit.</div>
-          <div class="flow-result">
-            <h3>See it in action:</h3>
-            <p>Our AI agent will walk you through exactly what we'd build for your business — live, right now. No obligation.</p>
-            <a href="#" class="cta-big flow-cta" id="demo-call-btn">Get a Demo</a>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:1rem;">[AI demo launching soon — book a discovery call in the meantime.]<br><a href="https://cal.com/aisaac/ai-agents-for-your-business" style="color:var(--mercury-blue);font-size:0.75rem;">Book discovery call &rarr;</a></p>
-          </div>
-          <p style="text-align:center;margin-top:1.5rem;"><a href="transform.html" class="flow-alt" style="margin:0;font-size:0.75rem;">Show me more first &rarr;</a></p>
-        </div>
-        <div class="flow-step" data-fstep="result-school">
-          <div class="flow-q">The school is your fastest path.</div>
-          <div class="flow-result">
-            <h3>Here's the honest answer:</h3>
-            <p>My builds are for businesses doing $10K+/mo. At your stage, learning to build it yourself gives you the best ROI.</p>
-            <a href="school.html" class="cta-big flow-cta">Enter the School</a>
-            <a href="free.html" class="flow-alt" style="margin-left:1rem;">Or browse free tools &rarr;</a>
-            <br><br>
-            <p style="font-size:0.8rem;color:var(--text-2);">Get notified when the next cohort opens:</p>
-            <div class="flow-email-row">
-              <input type="email" class="flow-input" id="flow-school-email" placeholder="your@email.com">
-              <button class="flow-small-btn" id="flow-notify-btn">Notify Me</button>
-            </div>
-          </div>
-          <div class="flow-escape"><p>Still want direct access? <a href="https://cal.com/aisaac/paid-session">$500 for 55 min with Isaac.</a></p></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- RECEIPTS STRIP -->
-  <section class="receipts">
-    <div class="tag">Receipts, not testimonials</div>
-    <h2>Don't take my word for it — take the code.</h2>
-    <p class="receipts-lede">No logo wall, no invented case studies. The proof is public: the engine is open source, the demo is a real site, and the notes are out in the open.</p>
-    <div class="receipts-grid">
-      <a href="https://github.com/sancovp" class="receipt">
-        <div class="receipt-k">Open source</div>
-        <h3>The engine, on GitHub</h3>
-        <p>Installable and public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. Read it, run it, fork it.</p>
-        <span class="receipt-go">github.com/sancovp &rarr;</span>
-      </a>
-      <a href="cinematic-plumbing.html" class="receipt">
-        <div class="receipt-k">Live demo</div>
-        <h3>A real site we built</h3>
-        <p>Dickinson Plumbing — a working, converting site produced by the system. Not a mockup.</p>
-        <span class="receipt-go">See the build &rarr;</span>
-      </a>
-      <a href="blog/" class="receipt">
-        <div class="receipt-k">Open notes</div>
-        <h3>The research, in the open</h3>
-        <p>The frameworks and notes behind the work — published as we go, not locked in a deck.</p>
-        <span class="receipt-go">Read the notes &rarr;</span>
-      </a>
+  <!-- ══ B2 CLAIM — the one site claim, promoted out of system.html:113 ══ -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Simulations and world loops</p>
+      <h1>One engine. Many worlds. A loop that compounds.</h1>
+      <p class="lede">This looks like a dozen separate products &mdash; a course, an agency, an open-source engine. It isn&rsquo;t: it&rsquo;s <strong>one engine</strong> that stands up a self-running world for whatever you&rsquo;re doing, and everything it produces feeds everything else.</p>
+      <a class="cta-primary" href="watch.html">Watch a world run &rarr;</a>
     </div>
   </section>
 
-  <p class="system-link"><a href="system.html">&#9672; One engine, many doors — see the whole map &rarr;</a></p>
+  <!-- ══ B3 ARTIFACT — the world slot, in the first screen, under the CTA ══
+       PHASE 1 (now): the framed placeholder below, linking to the exhibit.
+       PHASE 2 (when lab/ lands on main and watch.html ships): replace the
+       <a class="artifact-placeholder"> with the live embed, keeping the
+       frame and the figcaption exactly as they are:
+         <iframe src="lab/explainer.html?embed=1" loading="lazy"
+                 title="The engine drawing its own explainer"></iframe>
+       — or a poster-framed <video muted playsinline preload="none"> of a run.
+       Do not delete the figcaption: it is the provenance line, not a caption. -->
+  <section class="flush-top">
+    <div class="wrap">
+      <figure class="artifact">
+        <div class="artifact-frame">
+          <!-- WORLD-SLOT -->
+          <a class="artifact-placeholder" href="watch.html">
+            <span class="ap-line">&#9656;&nbsp; the engine, drawing its own explainer &mdash; your scroll is the clock</span>
+            <span class="ap-go">Open it &rarr;</span>
+          </a>
+        </div>
+        <figcaption class="artifact-prov">The explainer renders live in your browser, driven by your scroll, from the same engine that writes the notes. Nothing here is a mockup. <a href="watch.html">&rarr; how this page works</a></figcaption>
+      </figure>
+    </div>
+  </section>
 
-  <div class="footer">
-    <span>&copy; 2026 Isaac &mdash; TWI</span>
-    <span style="color:rgba(232,161,32,0.4);font-style:italic;">Built with AI. The site &mdash; and the systems I sell.</span>
-  </div>
+  <!-- ══ B6 LADDER — the four doors, demoted from a modal to five rungs.
+       Salvaged from system.html's .climb band, now with prices and a live
+       fifth rung: the audit's "names no prices, never links to pricing"
+       defect, fixed. ══ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Where to start</p>
+      <h2>Five rungs. Climb as far as you want, stop wherever you like.</h2>
+      <nav class="ladder" aria-label="The ladder">
+        <a class="rung" href="watch.html">
+          <span class="rung-n">01</span><span class="rung-t">Watch a world run</span>
+          <span class="rung-d">free &mdash; the engine, live, in your browser</span>
+        </a>
+        <a class="rung" href="learn.html">
+          <span class="rung-n">02</span><span class="rung-t">Learn to build them</span>
+          <span class="rung-d">the patterns and the notes, free &middot; community $65/mo</span>
+        </a>
+        <a class="rung" href="build.html">
+          <span class="rung-n">03</span><span class="rung-t">Run your work inside one</span>
+          <span class="rung-d">open source &mdash; install it today</span>
+        </a>
+        <a class="rung" href="run.html">
+          <span class="rung-n">04</span><span class="rung-t">Have one run your business</span>
+          <span class="rung-d">built with you &mdash; from $1,000/mo</span>
+        </a>
+        <a class="rung" href="pricing.html">
+          <span class="rung-n">05</span><span class="rung-t">What it costs</span>
+          <span class="rung-d">every price on one page</span>
+        </a>
+      </nav>
+      <p class="mt-s"><a class="cta-secondary" href="system.html">How the engine works, and what it can&rsquo;t do yet &rarr;</a></p>
+    </div>
+  </section>
 
-<script>
-(function() {
-  var modal = document.getElementById('survey-modal');
-  var cardsDiv = document.getElementById('survey-cards');
-  var flow = document.getElementById('router-flow');
-  var transformCard = document.getElementById('card-transform');
-  var backBtn = document.getElementById('flow-back');
-  var answers = {};
+  <!-- ══ SAME ENGINE, DIFFERENT WORLD — the two-panel block lifted from
+       healthworld/index.html, which already writes the category claim
+       better than anything else in the repo. A world either has a page or
+       it is not shown: no greyed "soon" cards. ══ -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">The category claim</p>
+      <h2>Same engine. Different world.</h2>
+      <p class="lede">A world is a domain run like a company: departments, signals, maintenance schedules, routing, failure cascades. Change the domain and the departments change. The engine underneath does not.</p>
+      <div class="panels">
+        <a class="panel" href="run.html">
+          <h3>Jobworld &mdash; business</h3>
+          <p>A CEO agent and self-grading departments doing the outreach, the writing, the delivery and the measurement. Your company, running itself, with you reviewing the work.</p>
+          <span class="receipt-go">Have one run your business &rarr;</span>
+        </a>
+        <a class="panel" href="worlds/health.html">
+          <h3>HealthWorld &mdash; the body</h3>
+          <p>Fourteen body systems as fourteen departments &mdash; each with visibility, a maintenance cadence, and a professional to route to. Same pattern, no AI anywhere in the domain.</p>
+          <span class="receipt-go">See the world &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  // Open survey
-  document.getElementById('open-survey').addEventListener('click', function() {
-    // Reset
-    cardsDiv.style.display = '';
-    flow.classList.remove('active');
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
+  <!-- ══ THE COMPOUNDING LOOP — salvaged from school.html's bootstrap loop
+       (the compounding argument in lore-free 8-second English) and closed
+       with system.html:248. ══ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Why it compounds</p>
+      <h2>The loop, in one line.</h2>
+      <div class="loopband">
+        <div class="loop">
+          <span class="lstep">Do it</span><span class="sep">&rarr;</span>
+          <span class="lstep">that&rsquo;s the <b>proof</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">the proof is the <b>content</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">the content brings <b>people</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">they fund the <b>next build</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">loop</span>
+        </div>
+        <div class="loop-return">&#10226; &nbsp; which produces more work, more proof, more people &mdash; forever</div>
+        <p class="loop-note">You&rsquo;re reading the output of this loop right now. <b>The marketing isn&rsquo;t separate from the product &mdash; the product produces the marketing.</b> This site, its notes, and the explainer above were built by the thing being sold. The proof isn&rsquo;t a testimonial. The proof is that it exists.</p>
+      </div>
+    </div>
+  </section>
 
-  // Close survey
-  document.getElementById('survey-close').addEventListener('click', closeSurvey);
-  modal.addEventListener('click', function(e) { if (e.target === modal) closeSurvey(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSurvey(); });
-  function closeSurvey() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+  <!-- ══ B4 RECEIPTS — the site-canonical 4-up set, salvaged near-verbatim
+       from the old index.html:195-219 (the best-written block on the site),
+       with the fourth card restored and the grid fixed to 4-up. ══ -->
+  <section class="receipts dark">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Don&rsquo;t take my word for it &mdash; take the code.</h2>
+      <p class="receipts-lede">No logo wall, no invented case studies. The proof is public: the engine is open source, the demo is a real site, and the notes are out in the open.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp">
+          <div class="receipt-k">Open source</div>
+          <h3>The engine, on GitHub</h3>
+          <p>Installable and public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. Read it, run it, fork it.</p>
+          <span class="receipt-go">github.com/sancovp &rarr;</span>
+        </a>
+        <a class="receipt" href="watch.html">
+          <div class="receipt-k">Running now</div>
+          <h3>A world running in your browser</h3>
+          <p>Not a video of a demo. The thing itself, rendering as you scroll, on this domain.</p>
+          <span class="receipt-go">Watch it run &rarr;</span>
+        </a>
+        <a class="receipt" href="worlds/plumbing.html">
+          <div class="receipt-k">One run&rsquo;s output</div>
+          <h3>What one run produced</h3>
+          <p>A live local-business site &mdash; copy, layout, imagery, the lot &mdash; produced by the system. Not a mockup.</p>
+          <span class="receipt-go">See the build &rarr;</span>
+        </a>
+        <!-- COUNT CHECK: 54 published posts under blog/ as of 2026-08-07
+             (55 files minus index.html). Builder C merges two duplicate
+             pairs and deletes doctor.html, taking it to ~51 — which is why
+             this reads "fifty-plus" and not a brittle exact figure. -->
+        <a class="receipt" href="notes/">
+          <div class="receipt-k">Open notes</div>
+          <h3>Fifty-plus field notes</h3>
+          <p>The research behind the work, published as it was written &mdash; not cleaned up afterwards, not locked in a deck.</p>
+          <span class="receipt-go">Read the notes &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  // Transform card → B2B qualification
-  transformCard.addEventListener('click', function(e) {
-    e.preventDefault();
-    try { if (localStorage.getItem('twi_qualify')) { closeSurvey(); location.href = 'transform.html'; return; } } catch(x) {}
-    cardsDiv.style.display = 'none';
-    flow.classList.add('active');
-    goFlowStep('0');
-  });
+  <!-- ══ B9 CTA — one, repeating the hero's ask. The homepage's job is
+       rung 1: not "choose a door", not "book a call". ══ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">Start at the bottom</p>
+      <h2>Nothing to decide yet. Just watch one run.</h2>
+      <p>It costs nothing and asks for no email. If it doesn&rsquo;t hold up, you&rsquo;ve lost a few minutes and learned something true about the claim.</p>
+      <a class="cta-primary" href="watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
 
-  // Back → show cards
-  backBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    flow.classList.remove('active');
-    cardsDiv.style.display = '';
-  });
+</main>
 
-  // Option clicks
-  flow.addEventListener('click', function(e) {
-    var opt = e.target.closest('.flow-opt');
-    if (!opt) return;
-    opt.parentElement.querySelectorAll('.flow-opt').forEach(function(s) { s.classList.remove('selected'); });
-    opt.classList.add('selected');
-    var step = opt.closest('.flow-step').dataset.fstep;
-    answers['step' + step] = opt.dataset.fval;
-    setTimeout(function() { goFlowStep(opt.dataset.fgo); }, 200);
-  });
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
 
-  function goFlowStep(id) {
-    flow.querySelectorAll('.flow-step').forEach(function(s) { s.classList.remove('active'); });
-    var target = flow.querySelector('.flow-step[data-fstep="' + id + '"]');
-    if (target) target.classList.add('active');
-    var num = parseInt(id);
-    flow.querySelectorAll('.flow-dot').forEach(function(d) {
-      var ds = parseInt(d.dataset.fdot);
-      d.className = 'flow-dot';
-      if (!isNaN(num)) { if (ds < num) d.classList.add('done'); else if (ds === num) d.classList.add('current'); }
-      else { d.classList.add('done'); }
-    });
-    backBtn.style.display = id.indexOf('result') === 0 ? 'none' : 'block';
-    try { localStorage.setItem('twi_qualify', JSON.stringify(answers)); } catch(e) {}
-  }
-
-  // Email capture
-  var notifyBtn = document.getElementById('flow-notify-btn');
-  if (notifyBtn) {
-    notifyBtn.addEventListener('click', function() {
-      var input = document.getElementById('flow-school-email');
-      if (!input) return;
-      var email = input.value.trim();
-      if (!email || email.indexOf('@') === -1) { input.focus(); return; }
-      answers.email = email;
-      try { localStorage.setItem('twi_qualify', JSON.stringify(answers)); } catch(e) {}
-      input.value = ''; input.placeholder = "Saved — we'll be in touch.";
-      input.disabled = true; notifyBtn.disabled = true; notifyBtn.textContent = 'Done';
-    });
-  }
-
-  // Also open on scroll hint click
-  document.querySelector('.hero-scroll')?.addEventListener('click', function() {
-    document.getElementById('open-survey').click();
-  });
-})();
-</script>
-
-<script src="sticky-cta.js"></script>
-<script src="exit-popup.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>

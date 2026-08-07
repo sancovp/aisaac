@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- RECONFORMED:C -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The agent that stopped drowning when it only saw the next turn — Isaac</title>
+<meta name="description" content="Give an agent three hundred tools and it gets worse, not better. The flip is embarrassing once you see it — and it changes the failure mode, not just the…">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/notes/the-agent-that-only-sees-the-next-turn.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The agent that stopped drowning when it only saw the next turn — Isaac">
+<meta property="og:description" content="Give an agent three hundred tools and it gets worse, not better. The flip is embarrassing once you see it — and it changes the failure mode, not just the…">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/the-agent-that-only-sees-the-next-turn.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/notes/the-agent-that-only-sees-the-next-turn.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Case study</p>
+    <h1>The agent that stopped drowning when it only saw the next turn</h1>
+    <p class="dek">Give an agent three hundred tools and it gets worse, not better. The flip is embarrassing once you see it — and it changes the failure mode, not just the failure rate.</p>
+
+<h3>The anecdote</h3>
+    <p>Give an AI agent everything it might need — twenty integrations, three hundred tools, a long system prompt describing every workflow — and it gets <em>worse,</em> not better. It hallucinates tools that don't exist. It forgets the one it called thirty seconds ago. Three steps into a ten-step process it stops and asks "what should I do next?" — like a surgeon putting down the scalpel mid-operation to ask which organ they're working on. The instinct is to fix this with <em>more</em>: bigger context window, longer prompt, harder fine-tune. All of which makes it worse.</p>
+    <p>The flip is almost embarrassing once you see it: <em>what if the agent only saw what it needed for the current step?</em> Not three hundred tools — the one instruction it needs right now, the way a GPS shows you the next turn instead of the entire road network of the country. You don't need the whole route. You need the next instruction, you execute it, you get the next one.</p>
+    <p>The result wasn't a small improvement. The failure <em>mode itself</em> changed. Instead of <em>wrong output</em> (the agent does seven of ten steps, gets confused on eight, produces plausible garbage, nobody notices until it's downstream) you get <em>no output</em> — the agent hits a guard, gets told exactly what's missing, and either self-corrects or stops clean. Garbage became a clean signal.</p>
+    <h3>What it reveals (the shape of the deeper rung)</h3>
+    <ul>
+    <li><strong>Capability and context are different problems.</strong> The agent didn't lack tools; it drowned in <em>seeing</em> them. The win came from <em>hiding</em> everything except the present step — disclosing progressively rather than all at once.</li>
+    <li>**Instructions alone aren't enough; something has to <em>refuse</em> invalid moves.** A step-by-step recipe still lets an agent skip ahead. The pieces that matter carry logic that <em>blocks</em> the wrong transition and returns a corrective instruction — so the agent reads "BLOCKED: do X first," follows it, and gets back on track without a human.</li>
+    <li><strong>It's the same idea as turning a toolkit into a game.</strong> A pile of tools with no rules is a child with a chainsaw; the same pile <em>compiled</em> into a bounded game — clear moves, clear win condition, invalid moves actually blocked — is something an agent can play reliably, repeatedly, without drift.</li>
+    </ul>
+    <h3>What you can take from it right now</h3>
+    <p>The reliability reframe is the gift: the goal isn't to stop the agent being <em>wrong</em>, it's to make wrong impossible to <em>do silently</em> — to convert garbage into a clean blocked-signal. And the tell for where to apply it is free and immediate: <em>if you've corrected the AI the same way twice, you have a procedure.</em> That noticing is yours to use today.</p>
+
+    <hr>
+    <p class="caveat"><strong>Honest caveat.</strong> What this doesn't cover: the layered architecture that holds the steps, and how guards are wired into the tools so an invalid transition is actually blocked rather than discouraged.</p>
+    <p class="note-sources">Distilled from: <a href="../blog/progressive-disclosure-harness.html">progressive disclosure harness</a> · <a href="../blog/shell.html">shell</a> · <a href="../blog/l4-harnesses.html">l4 harnesses</a> · <a href="../blog/seven-disciplines.html">seven disciplines</a></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap" style="max-width:68ch">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="../blog/progressive-disclosure-harness.html"><div class="receipt-k">Where this came from</div><h3>Distilled from notes written while building it</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+        <a class="receipt" href="https://github.com/sancovp/skilltree"><div class="receipt-k">Open source</div><h3>skilltree — progressive disclosure that can actually disclose</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

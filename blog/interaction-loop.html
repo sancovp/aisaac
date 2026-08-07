@@ -1,19 +1,43 @@
-<link rel="stylesheet" href="blog-style.css">
-<div id="isaac-site">
-  <div class="site-header">
-    <a href="../index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="./" class="nav-link">Blog</a>
-      <a href="../apply.html" class="nav-cta">Book a Call</a>
-    </div>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why Your Systems Break When They Talk to Each Other — Isaac</title>
+<meta name="description" content="The seven-element protocol that turns fragile handoffs into bulletproof coordination — in AI agents, teams, and everything between.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/blog/interaction-loop.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Why Your Systems Break When They Talk to Each Other — Isaac">
+<meta property="og:description" content="The seven-element protocol that turns fragile handoffs into bulletproof coordination — in AI agents, teams, and everything between.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/interaction-loop.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/blog/interaction-loop.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../index.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
 
-  <article>
-    <div class="post-tag">May 2026</div>
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">May 2026</p>
     <h1>Why Your Systems Break When They Talk to Each Other</h1>
-    <p class="post-subtitle">The seven-element protocol that turns fragile handoffs into bulletproof coordination — in AI agents, teams, and everything between.</p>
+    <p class="dek">The seven-element protocol that turns fragile handoffs into bulletproof coordination — in AI agents, teams, and everything between.</p>
 
-    <figure style="margin:2rem 0;">
+<figure style="margin:2rem 0;">
       <img src="diagrams/interaction-loop.png" alt="Interaction Loop Protocol diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
     </figure>
 
@@ -119,7 +143,7 @@
 
     <h2>What Comes Next</h2>
     <p>Interaction loops are one component of a larger systems design framework — how to build things that actually work reliably under pressure, whether those things are AI agents, teams, or organizations. The pattern is always the same: make implicit coordination explicit, define the protocol, test the failure modes.</p>
-    <p>Explore the <a href="../frameworks.html" style="color:var(--amber);">frameworks</a> to see how interaction loops fit into the bigger picture. Or if you're building AI systems and discovering that coordination failures are eating your reliability — <a href="../apply.html" style="color:var(--amber);">let's talk about it</a>.</p>
+    <p>Explore the <a href="../notes/" style="color:var(--amber);">frameworks</a> to see how interaction loops fit into the bigger picture. Or if you're building AI systems and discovering that coordination failures are eating your reliability — <a href="../pricing.html" style="color:var(--amber);">let's talk about it</a>.</p>
 
     <div class="post-nav">
       <a href="meta-cognitive-awareness.html">← Meta-Cognitive Awareness</a>
@@ -127,21 +151,30 @@
     </div>
   </article>
 
-  
-  <!-- Blog CTA -->
-  <div class="blog-cta blog-cta-build">
-    <p class="blog-cta-label">Ready to build this yourself?</p>
-    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
-    <div class="blog-cta-actions">
-      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
-      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+  <section class="receipts compact">
+    <div class="wrap" style="max-width:68ch">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>
+        <a class="receipt" href="../watch.html"><div class="receipt-k">Running now</div><h3>See it actually run</h3><p>The engine drawing its own explainer, live in the browser.</p><span class="receipt-go">Watch a world run &rarr;</span></a>
+      </div>
     </div>
-  </div>
+  </section>
+  <p class="note-next">Next note: <a href="l1-l2-prompts-tools.html"><b>L1-L2: Prompts and Tools &rarr;</b></a></p>
 
-  <div class="site-footer">
-    <span>© 2026 Isaac — TWI</span>
-    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">← Home</a></span>
-  </div>
-</div>
-<script src="../sticky-cta.js"></script>
-<script src="../newsletter.js"></script>
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>
