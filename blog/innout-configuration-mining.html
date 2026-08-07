@@ -15,7 +15,7 @@
 <link rel="icon" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body data-depth="2">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="nav">
   <a href="../index.html" class="logo">Isaac</a>
@@ -37,15 +37,15 @@
     <h1>Your Menu Already Contains Products You Haven't Found</h1>
     <p class="dek">Popeyes' chicken sandwich existed as a valid combination of things they already stocked — for years — before a trend found it by accident and made them a fortune. We map a business's whole option space in advance, so that when a trend hits, the answer is a <em>lookup</em>, not a product-development cycle. This is the worked demonstration, with the real numbers.</p>
 
-<figure style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-      <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mercury-violet);margin-bottom:1rem;">One burger menu, counted honestly</div>
-      <div style="display:grid;gap:0.4rem;font-family:var(--mono);font-size:0.78rem;">
-        <div style="display:flex;gap:1rem;"><span style="color:var(--mercury-blue);min-width:9rem;">972</span><span style="color:var(--text-2);">valid combinations of ingredients the chain already stocks</span></div>
-        <div style="display:flex;gap:1rem;"><span style="color:var(--mercury-blue);min-width:9rem;">3</span><span style="color:var(--text-2);">combinations claimed by the published menu</span></div>
-        <div style="display:flex;gap:1rem;"><span style="color:var(--mercury-teal);min-width:9rem;">3 more</span><span style="color:var(--text-2);">claimed by the famous "secret menu" — customers found them without help</span></div>
-        <div style="display:flex;gap:1rem;"><span style="color:var(--mercury-violet);min-width:9rem;">966</span><span style="color:var(--text-2);">valid, sellable, un-named combinations sitting in the dark</span></div>
+<figure class="gauge">
+      <div class="gauge-k">One burger menu, counted honestly</div>
+      <div class="gauge-rows">
+        <div class="gauge-row"><span class="gauge-n wide">972</span><span class="gauge-t">valid combinations of ingredients the chain already stocks</span></div>
+        <div class="gauge-row"><span class="gauge-n wide">3</span><span class="gauge-t">combinations claimed by the published menu</span></div>
+        <div class="gauge-row"><span class="gauge-n wide">3 more</span><span class="gauge-t">claimed by the famous "secret menu" — customers found them without help</span></div>
+        <div class="gauge-row"><span class="gauge-n wide">966</span><span class="gauge-t">valid, sellable, un-named combinations sitting in the dark</span></div>
       </div>
-      <figcaption style="font-size:0.7rem;color:var(--text-3);margin-top:1rem;">The dark region is the product. Every business has one; almost no business has counted theirs.</figcaption>
+      <figcaption class="fig-cap">The dark region is the product. Every business has one; almost no business has counted theirs.</figcaption>
     </figure>
 
     <h2>The Popeyes problem</h2>
@@ -93,14 +93,14 @@
     <p>What we do: <strong>model your option space, enumerate it, certify the points you already claim, and hand you the map of the dark region</strong> — so the next time the market moves, you respond with a lookup while your competitors schedule a product-development meeting.</p>
     <p>The secret-menu lesson is the one to keep: <strong>if you don't map your space, your customers — or your competitors — will find the valuable points in it before you do.</strong></p>
 
-    <div style="margin:2.5rem 0;padding:1.5rem;border:1px solid rgba(255,255,255,0.1);border-radius:12px;text-align:center;">
-      <p style="margin-bottom:1rem;"><strong>Want your dark region mapped?</strong> It starts with one call: we look at what you sell, and we tell you how big your space actually is.</p>
-      <a href="../pricing.html" class="nav-cta" style="display:inline-block;">Book a Call</a>
+    <div class="callout">
+      <p><strong>Want your dark region mapped?</strong> It starts with one call: we look at what you sell, and we tell you how big your space actually is.</p>
+      <a href="../pricing.html" class="nav-cta">Book a Call</a>
     </div>
   </article>
 
   <section class="receipts compact">
-    <div class="wrap" style="max-width:68ch">
+    <div class="wrap measure">
       <p class="eyebrow">Receipts</p>
       <div class="receipts-grid">
         <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>

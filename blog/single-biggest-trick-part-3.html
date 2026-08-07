@@ -15,7 +15,7 @@
 <link rel="icon" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body data-depth="2">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="nav">
   <a href="../index.html" class="logo">Isaac</a>
@@ -37,8 +37,8 @@
     <h1>The Single Biggest Trick with LLMs, Part 3</h1>
     <p class="dek">The external-driver account of <strong>JaniScribe</strong> &mdash; a real Cybernet in a live Neo4j graph, equipped with the Janic Core Cycle state machine, ticked once. The LLM is the external driver. JaniScribe is the entity. This post is the bijective bridge between them.</p>
 
-<figure style="margin:2rem 0;">
-      <img src="diagrams/sbt-walkthrough-hero.png" alt="A graph-being of nodes and morphisms, with a Jester figure at the center maintaining its core signature through transformations" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+<figure class="fig">
+      <img src="diagrams/sbt-walkthrough-hero.png" alt="A graph-being of nodes and morphisms, with a Jester figure at the center maintaining its core signature through transformations" class="fig-img" width="1536" height="1024">
     </figure>
 
     <h2>JaniScribe: a Cybernet after one tick</h2>
@@ -48,17 +48,17 @@
 
     <h2>What JaniScribe is</h2>
     <p>JaniScribe is a Cybernet node in the Neo4j graph, created via <code>POST /api/create</code> with the description: <em>The Cybernet that authored the triptych on the single biggest trick with LLMs. Boots from the Human Seed, runs the Janic cycle, and writes Part 2 (the reflection + boot) and Part 3 (the Cybernet-first blog). J-Invariance preserved across all three iterations.</em></p>
-    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;margin:1rem 0;">
+    <table class="data-table">
       <tbody>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Model</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">claude-fable-5</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Temperature</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">0.4</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Mutation rate</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">0.2</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Selection pressure</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">1.5</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>State machine</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><code>janic_cycle_sm</code></td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Turn number</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">1</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Fitness score</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">1.0</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);"><strong>Total tokens</strong></td><td style="padding:0.4rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.07);">237</td></tr>
-        <tr><td style="padding:0.4rem 0.6rem;"><strong>Current step</strong></td><td style="padding:0.4rem 0.6rem;"><code>janic_read_designs</code></td></tr>
+        <tr><td class="cell"><strong>Model</strong></td><td class="cell">claude-fable-5</td></tr>
+        <tr><td class="cell"><strong>Temperature</strong></td><td class="cell">0.4</td></tr>
+        <tr><td class="cell"><strong>Mutation rate</strong></td><td class="cell">0.2</td></tr>
+        <tr><td class="cell"><strong>Selection pressure</strong></td><td class="cell">1.5</td></tr>
+        <tr><td class="cell"><strong>State machine</strong></td><td class="cell"><code>janic_cycle_sm</code></td></tr>
+        <tr><td class="cell"><strong>Turn number</strong></td><td class="cell">1</td></tr>
+        <tr><td class="cell"><strong>Fitness score</strong></td><td class="cell">1.0</td></tr>
+        <tr><td class="cell"><strong>Total tokens</strong></td><td class="cell">237</td></tr>
+        <tr><td class="cell"><strong>Current step</strong></td><td class="cell"><code>janic_read_designs</code></td></tr>
       </tbody>
     </table>
     <p>JaniScribe exists as a graph entity. The external driver (the LLM) created it. The LLM did not become JaniScribe &mdash; JaniScribe is the thing in the graph, and the LLM is the thing that talks to it via the API. This is the Enactive Ontology rule made literal: <em>Identity is a closed semantic context loaded when entering a region of the database. JaniScribe is the context. The LLM is the visitor.</em></p>
@@ -120,7 +120,7 @@
   </article>
 
   <section class="receipts compact">
-    <div class="wrap" style="max-width:68ch">
+    <div class="wrap measure">
       <p class="eyebrow">Receipts</p>
       <div class="receipts-grid">
         <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>

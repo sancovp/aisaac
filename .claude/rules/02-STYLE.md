@@ -36,6 +36,30 @@ serves RULE 01's deducibility mechanics.
 - Single h1 per page; every `<img>` has width/height; og:image exists per page-type.
 - No font-family declarations outside style.css; no hex colors outside the token block.
 
+## Implementation record (2026-08-07 — what shipped against this rule)
+
+- **Display serif = Fraunces**, SIL OFL 1.1, self-hosted at
+  `assets/fonts/fraunces-latin-var.woff2` (67 KB; licence beside it). SOFT and
+  WONK axes pinned flat; `wght` + `opsz` left variable so optical sizing tracks
+  the type size from one file. Applied to `h1`, `h2`, `.note blockquote`
+  (pull-quotes) and `.myth`. Nothing else.
+- **Density gradient** = `body[data-depth="0|1|2|3"]` overriding
+  `--sec-y --claim-y --h1-size --h1-measure --h2-size --lede-size --lh-lede
+  --lh-prose --rule-a --micro --r-card`. Depth 1 IS the `:root` default, so a
+  page with no attribute renders as before. The gradient survives the 900px
+  breakpoint rather than flattening. Applied: 0 = door (index/watch) ·
+  1 = system/isaac/rungs · 2 = blog + notes · 3 = inside/.
+- **`--text-3` corrected `#64748b` → `#6c7c92`.** The §"mechanical quality
+  gates" contrast check found the old value at 4.29:1 on `--void` and 4.07:1 on
+  glass — under AA, on the token that carries fineprint, the footer and every
+  provenance line. Moved the smallest step along the existing slate ramp to
+  clear AA on both (4.80 / 4.55). Same ramp, corrected — logged here because
+  the restraint law requires any palette change to edit this rule.
+- **Not a colour change but worth knowing:** `--black`, `--grey`,
+  `--grey-light` and `--accent` were referenced across the posts and defined
+  NOWHERE, and `.post-nav` was used 40 times and defined nowhere. Retiring the
+  inline styles resolved all of them onto real tokens and real classes.
+
 ## What "high-end" means here, testably
 
 A stranger screenshots any page: it reads as one designed object with the door's

@@ -50,11 +50,30 @@
                  U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Fraunces — THE DISPLAY VOICE (RULE 02 §2). SIL OFL 1.1; the licence ships
+   beside it at assets/fonts/fraunces-OFL.txt. Subset to the same latin range
+   as Inter/Mono; the SOFT and WONK axes are pinned flat (SOFT=0 sharp
+   terminals, WONK=0 no wonky forms) so only wght + opsz remain variable.
+   opsz is left variable ON PURPOSE: font-optical-sizing is `auto` by default,
+   so a claim set at 5rem gets the high-contrast display cut and a pull-quote
+   at 1rem gets the sturdy text cut, from one file. Used ONLY for h1/h2
+   claims, .myth register lines and pull-quotes — never for chrome. */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/fraunces-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ── Tokens ─────────────────────────────────────────────────────────────── */
 :root {
   --void: #04040e;
   --glass-bg: rgba(255,255,255,0.035);
-  --glass-border: rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,var(--rule-a));
   --glass-shine: rgba(255,255,255,0.05);
   --blur: 20px;
   --mercury-blue: #7dd3fc;
@@ -65,7 +84,14 @@
   --amber: #fbbf24;            /* DEPRECATED — dead theme. Do not use on new pages. */
   --text-1: #e2e8f0;
   --text-2: #94a3b8;
-  --text-3: #64748b;
+  /* --text-3 was #64748b (slate-500): 4.29:1 on --void and 4.07:1 on a glass
+     panel — both under WCAG AA 4.5, and it is the token carrying fineprint,
+     the footer, provenance lines and .rung-d, all at 0.72-0.77rem. Nudged 16%
+     along the existing slate ramp toward --text-2, the smallest step that
+     clears AA on BOTH backgrounds (4.80 / 4.55). Not a new colour — the same
+     ramp, corrected. G1 in tools/style_qa.py is what caught it and is what
+     keeps it honest if anyone moves --void or --glass-bg. */
+  --text-3: #6c7c92;
   --ok: #4ade80;
   --r-sm: 8px;
   --r-md: 12px;
@@ -73,6 +99,56 @@
   --wrap: 1100px;              /* the one container width (breakpoint 1) */
   --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+  --display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+
+  /* ── THE DENSITY GRADIENT (RULE 02 §3) ────────────────────────────────
+     Depth made visible. Every one of these is overridden by the
+     body[data-depth] block below; the values HERE are depth 1 (the rung
+     level), so a page that forgets its attribute renders exactly as the
+     site did before this token layer existed. Nothing else in this file
+     hard-codes a vertical rhythm, a heading size or a hairline alpha —
+     if it does, the gradient has a hole in it. */
+  --sec-y: 5rem;               /* section vertical rhythm */
+  --claim-y: 5rem;             /* the claim band's own top pad */
+  --h1-size: clamp(2.2rem, 5vw, 3.8rem);
+  --h1-measure: 20ch;          /* the claim's line length */
+  --h2-size: clamp(1.45rem, 3vw, 2.1rem);
+  --lede-size: 0.98rem;
+  --lh-lede: 1.85;             /* leading tightens as you descend */
+  --lh-prose: 1.9;
+  --rule-a: 0.07;              /* hairline alpha — rules get MORE present deeper */
+  --micro: var(--body);        /* micro-labels flip to mono at depth 2+ */
+  --r-card: var(--r-lg);       /* glass rounds off toward instrument-panel */
+}
+
+/* Depth 0 — THE DOOR. Spacious: huge type, few elements, one action.
+   Depth 1 — the rungs and the map (the :root defaults above).
+   Depth 2 — notes and posts: reading density, mono micro-labels.
+   Depth 3 — inside/: data-table energy, brightest hairlines, tightest set. */
+body[data-depth="0"] {
+  --sec-y: 7rem; --claim-y: 7rem;
+  --h1-size: clamp(2.8rem, 7.5vw, 5.4rem); --h1-measure: 16ch;
+  --h2-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  --lede-size: 1.1rem; --lh-lede: 1.95; --lh-prose: 1.95;
+  --rule-a: 0.05;
+}
+body[data-depth="2"] {
+  --sec-y: 4rem; --claim-y: 4rem;
+  --h1-size: clamp(1.9rem, 4vw, 2.9rem); --h1-measure: 24ch;
+  --h2-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  --lede-size: 0.94rem; --lh-lede: 1.76; --lh-prose: 1.82;
+  --rule-a: 0.10;
+  --micro: var(--mono);
+  --r-card: var(--r-md);
+}
+body[data-depth="3"] {
+  --sec-y: 3.2rem; --claim-y: 3.4rem;
+  --h1-size: clamp(1.7rem, 3.2vw, 2.4rem); --h1-measure: 26ch;
+  --h2-size: clamp(1.2rem, 2vw, 1.5rem);
+  --lede-size: 0.9rem; --lh-lede: 1.66; --lh-prose: 1.72;
+  --rule-a: 0.13;
+  --micro: var(--mono);
+  --r-card: var(--r-sm);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -169,6 +245,7 @@ a:focus-visible, button:focus-visible {
   letter-spacing: 0.08em; text-transform: uppercase;
   color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
   padding: 0.5rem 1.2rem; border-radius: var(--r-sm); transition: all 0.3s;
+  display: inline-block;
 }
 .nav-cta:hover { filter: brightness(1.2); transform: translateY(-1px); }
 
@@ -186,14 +263,34 @@ a:focus-visible, button:focus-visible {
 .nav-toggle:hover { color: var(--text-1); border-color: rgba(125,211,252,0.25); }
 
 /* ══ Layout primitives ══════════════════════════════════════════════════ */
-section { padding: 5rem 1.5rem; }
+section { padding: var(--sec-y) 1.5rem; }
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; }
 
 /* Spacing utilities. These exist so that NO page ever needs a style=""
    attribute for a layout nudge — the block vocabulary stays closed. */
 .flush-top { padding-top: 0; }
 .mt-s { margin-top: 1.6rem; }
+.mt-m { margin-top: 2.2rem; }
 .mt-l { margin-top: 3.5rem; }
+.measure { max-width: 68ch; }
+.measure-none { max-width: none; }
+
+/* ── The in-article figure. ───────────────────────────────────────────────
+   54 posts carried this as three inline declarations on every image, which
+   is 41 copies of a border colour the stylesheet already owns — and the
+   reason the diagrams never picked up a token change. One class instead.
+   height:auto keeps the intrinsic width/height attributes (which every img
+   now carries, so the layout does not shift while the PNG loads) from
+   squashing the render. */
+.fig { margin: 2rem 0; }
+.fig img, img.fig-img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--r-card); border: 1px solid var(--glass-border);
+}
+.fig figcaption, .fig-cap {
+  font-family: var(--micro); font-size: 0.7rem; line-height: 1.7;
+  color: var(--text-3); margin-top: 0.6rem;
+}
 .dark {
   background: var(--glass-bg);
   border-top: 1px solid var(--glass-border);
@@ -210,9 +307,14 @@ section { padding: 5rem 1.5rem; }
   content: ''; display: block; width: 2rem; height: 1px; background: var(--mercury-blue);
 }
 
+/* The claims speak in the display serif; the chrome stays Inter. That split
+   IS the de-generic move (RULE 02 §2) — the gradient fill and the breathe
+   are Builder A's base, kept. Fraunces carries the gradient at 650: lighter
+   and the stems thin out under a transparent fill. */
 h1 {
-  font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.02;
-  letter-spacing: -0.03em; margin-bottom: 1.5rem; max-width: 20ch;
+  font-family: var(--display);
+  font-weight: 650; font-size: var(--h1-size); line-height: 1.06;
+  letter-spacing: -0.015em; margin-bottom: 1.5rem; max-width: var(--h1-measure);
   background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet), var(--mercury-chrome));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -227,22 +329,33 @@ h1 span, h1 .accent {
 }
 
 h2 {
-  font-weight: 700; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.12;
-  letter-spacing: -0.02em; margin-bottom: 1.4rem; max-width: 30ch;
+  font-family: var(--display);
+  font-weight: 600; font-size: var(--h2-size); line-height: 1.18;
+  letter-spacing: -0.01em; margin-bottom: 1.4rem; max-width: 30ch;
   color: var(--text-1);
 }
+/* h3/h4 are chrome, not claims — they stay in Inter. */
 h3 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.6rem; color: var(--text-1); }
 h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--text-1); }
 
+/* .myth — the myth-register line (RULE 02 §2, RULE 00 law 2). The ONE place
+   outside a heading or a pull-quote that speaks in the display voice, and it
+   belongs to inside/ and to Isaac's personal pages. Never at the door. */
+.myth {
+  font-family: var(--display); font-weight: 400;
+  font-size: 1.12rem; line-height: 1.7; letter-spacing: -0.005em;
+  color: var(--text-1); max-width: 54ch; margin-bottom: 1.6rem;
+}
+
 .lede, .sub {
-  font-size: 0.98rem; line-height: 1.85; color: var(--text-2);
+  font-size: var(--lede-size); line-height: var(--lh-lede); color: var(--text-2);
   max-width: 56ch; margin-bottom: 2.2rem;
 }
 .lede strong, .sub strong { color: var(--text-1); font-weight: 500; }
-.fineprint { font-size: 0.74rem; line-height: 1.7; color: var(--text-3); max-width: 60ch; }
+.fineprint { font-family: var(--micro); font-size: 0.74rem; line-height: 1.7; color: var(--text-3); max-width: 60ch; }
 
 /* ══ B2 — CLAIM (exactly one per page) ══════════════════════════════════ */
-.claim { padding: 5rem 1.5rem 3rem; }
+.claim { padding: var(--claim-y) 1.5rem calc(var(--claim-y) * 0.6); }
 .claim > .wrap { display: block; }
 .claim .lede { margin-bottom: 2.4rem; }
 
@@ -273,7 +386,7 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
   aspect-ratio: 16 / 9;
   width: 100%;
   border: 1px solid var(--glass-border);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-card);
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
   overflow: hidden;
@@ -318,6 +431,7 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
   border: 1px solid var(--glass-border); border-radius: 999px; padding: 0.45rem 1.1rem;
 }
 .artifact-prov {
+  font-family: var(--micro);
   font-size: 0.76rem; line-height: 1.7; color: var(--text-3);
   margin-top: 0.9rem; max-width: 68ch;
 }
@@ -329,7 +443,7 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
   border: 1px solid var(--glass-border);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-card);
   padding: 2rem;
   box-shadow: 0 0 0 1px rgba(125,211,252,0.03), 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 var(--glass-shine);
   transition: all .4s cubic-bezier(.4,0,.2,1);
@@ -363,7 +477,7 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 .step p { font-size: 0.84rem; line-height: 1.75; color: var(--text-2); }
 
 /* Stack layers (7-stack, engine layers) — reused, not reinvented */
-.stack { margin-top: 2rem; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--glass-border); }
+.stack { margin-top: 2rem; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--glass-border); }
 .stack-item, .layer { display: flex; align-items: stretch; border-bottom: 1px solid var(--glass-border); background: var(--glass-bg); }
 .stack-item:last-child, .layer:last-child { border-bottom: none; }
 .stack-num, .layer-name {
@@ -374,8 +488,18 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 }
 .stack-content, .layer-desc { flex: 1; padding: 1rem 1.5rem; font-size: 0.82rem; color: var(--text-2); line-height: 1.65; display: flex; align-items: center; }
 .stack-content h4 { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.2rem; }
-.stack-content p { font-size: 0.74rem; color: var(--text-3); }
+.stack-content p { font-family: var(--micro); font-size: 0.74rem; color: var(--text-3); }
 .stack-bar, .layer-bar { width: 3px; background: linear-gradient(180deg, var(--mercury-blue), var(--mercury-violet)); }
+
+/* Depth 3 is where the site stops being a page and starts being a readout:
+   the row labels go mono and lock to a uniform tracking, which is what turns
+   a stack of glass cards into a table you scan. */
+body[data-depth="3"] .stack-num,
+body[data-depth="3"] .layer-name,
+body[data-depth="3"] .price-label {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2);
+}
 
 /* The compounding-loop band (salvaged from system.html, promoted to shared) */
 .loopband {
@@ -390,6 +514,94 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 .loop-return { text-align: center; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--mercury-violet); margin-top: 1rem; }
 .loop-note { text-align: center; font-size: 0.86rem; color: var(--text-2); line-height: 1.75; max-width: 62ch; margin: 1.2rem auto 0; }
 .loop-note b { color: var(--text-1); }
+
+/* ── The GAUGE — a readout row with a proportion bar. ─────────────────────
+   Two posts were hand-building this out of eleven inline declarations per
+   row. It is the instrument register RULE 02 §4 asks for, so it gets a real
+   block. The fill length is a data-attribute, not a style attribute: the
+   proportion is DATA about the row, and keeping it out of style="" is what
+   lets the gate stay absolute. Tone classes carry the accent; there is no
+   colour here that is not already a token. */
+.gauge {
+  margin: 2rem 0; padding: 1.5rem;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+}
+.gauge-k {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mercury-violet); margin-bottom: 1rem;
+}
+.gauge-rows { display: grid; gap: 0.4rem; font-family: var(--mono); font-size: 0.75rem; }
+.gauge-row { display: flex; gap: 1rem; align-items: center; --gauge-c: var(--mercury-blue); }
+.gauge-row.teal { --gauge-c: var(--mercury-teal); }
+.gauge-row.violet { --gauge-c: var(--mercury-violet); }
+.gauge-n { min-width: 6.5rem; color: var(--gauge-c); }
+.gauge-n.wide { min-width: 9rem; }
+.gauge-t { color: var(--text-2); }
+.gauge-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--gauge-c); }
+.gauge-row[data-fill="25"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 25%); }
+.gauge-row[data-fill="45"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 45%); }
+.gauge-row[data-fill="70"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 70%); }
+.gauge-row[data-fill="95"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 95%); }
+.gauge figcaption { font-family: var(--micro); font-size: 0.7rem; line-height: 1.7; color: var(--text-3); margin-top: 1rem; }
+
+/* A plain two-ends row (a before/after pair, a from→to) and the small data
+   table two posts use. Both were inline; both are hairline-ruled, which is
+   the structural line language of RULE 02 §4 — so they get denser with
+   depth for free, through --glass-border. */
+.split-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; width: 100%; padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+.data-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem; margin: 1rem 0;
+}
+.data-table .cell,
+td.cell, th.cell {
+  padding: 0.4rem 0.6rem; text-align: left;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* .post-nav — the closing block on 40 posts. It was USED forty times and
+   DEFINED nowhere: the class did nothing and each post re-declared its
+   layout inline. Defined once, here. */
+/* Every one of the 40 sits inside <article class="note">, which already owns
+   the measure — so this carries layout only, no second width constraint. */
+.post-nav {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.5rem; text-align: center; margin-top: 2rem;
+}
+
+/* .duo — the before/after comparison two posts build by hand. The negative
+   and positive keys use --mercury-rose and --ok, which are already tokens;
+   they replace a #cc4444 / #44cc44 pair that existed in no palette. */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+.duo .k-neg { color: var(--mercury-rose); margin-bottom: 0.5rem; }
+.duo .k-pos { color: var(--ok); margin-bottom: 0.5rem; }
+
+/* .railed — a left-ruled aside (a question to ask, a check to run). The
+   sibling of .caveat, which is a fully-boxed one. */
+.railed {
+  background: var(--glass-bg); border-left: 3px solid var(--mercury-violet);
+  padding: 1.5rem; margin: 2rem 0;
+}
+.callout {
+  margin: 2.5rem 0; padding: 1.5rem; text-align: center;
+  border: 1px solid var(--glass-border); border-radius: var(--r-card);
+}
+.fig-wide { margin: 2rem auto; max-width: 900px; text-align: center; }
+
+/* .badge — the inline [RUNS TODAY] / [ROADMAP] marker one post uses to keep
+   its own claims honest paragraph by paragraph. Exactly the mono micro-label
+   register of RULE 02 §4, so it belongs in the stylesheet, not inline. It is
+   NOT live-data styling: no pulse, no glow. */
+.badge {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em;
+  color: var(--mercury-blue);
+}
+.badge.roadmap { color: var(--mercury-violet); }
 
 /* ══ B6 — LADDER (the IA spine, rendered as content) ════════════════════ */
 .ladder { display: block; max-width: 780px; margin-top: 2rem; }
@@ -407,11 +619,11 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .rung[aria-current="step"] .rung-n { color: var(--mercury-teal); }
 .rung-n { font-family: var(--mono); font-size: 0.72rem; color: var(--mercury-blue); flex-shrink: 0; width: 1.6rem; }
 .rung-t { font-weight: 600; font-size: 0.9rem; flex-shrink: 0; color: var(--text-1); }
-.rung-d { font-size: 0.77rem; color: var(--text-3); margin-left: auto; text-align: right; }
+.rung-d { font-family: var(--micro); font-size: 0.77rem; color: var(--text-3); margin-left: auto; text-align: right; }
 
 /* ══ B4 — RECEIPTS (4-up → 2-up → 1-up; never orphan a 4th card) ═══════ */
-.receipts { padding: 5rem 1.5rem; }
-.receipts .receipts-lede { font-size: 0.92rem; color: var(--text-2); max-width: 62ch; line-height: 1.8; margin-bottom: 0.5rem; }
+.receipts { padding: var(--sec-y) 1.5rem; }
+.receipts .receipts-lede { font-size: calc(var(--lede-size) - 0.04rem); color: var(--text-2); max-width: 62ch; line-height: var(--lh-lede); margin-bottom: 0.5rem; }
 .receipts .receipts-lede a { color: var(--mercury-blue); }
 .receipts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; margin-top: 2rem; }
 .receipts.compact .receipts-grid { grid-template-columns: repeat(2, 1fr); }
@@ -431,12 +643,12 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(125,211,252,0.05));
   border-top: 1px solid rgba(167,139,250,0.15);
   border-bottom: 1px solid rgba(167,139,250,0.15);
-  padding: 5rem 1.5rem;
+  padding: var(--sec-y) 1.5rem;
 }
 .honest .eyebrow, .honest .tag { color: var(--mercury-violet); }
 .honest .eyebrow::before, .honest .tag::before { background: var(--mercury-violet); }
 .honest h2 { color: var(--text-1); }
-.honest p { font-size: 0.95rem; line-height: 1.9; max-width: 62ch; color: var(--text-2); margin-bottom: 1rem; }
+.honest p { font-size: calc(var(--lede-size) + 0.01rem); line-height: var(--lh-prose); max-width: 62ch; color: var(--text-2); margin-bottom: 1rem; }
 .honest p:last-child { margin-bottom: 0; }
 
 /* ══ B8 — PRICE ════════════════════════════════════════════════════════ */
@@ -461,7 +673,7 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .price-block ul li::before { content: '— '; color: var(--mercury-blue); opacity: 0.6; }
 
 /* Price table rows (the price-stack device) */
-.pricing-table { margin-top: 2rem; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--glass-border); }
+.pricing-table { margin-top: 2rem; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--glass-border); }
 .price-row {
   display: flex; align-items: stretch;
   border-bottom: 1px solid var(--glass-border);
@@ -515,24 +727,29 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .guarantee p { font-size: 0.86rem; color: var(--text-2); line-height: 1.8; max-width: 58ch; margin: 0 auto; }
 
 /* ══ B9 — FINAL CTA (one link, one destination) ════════════════════════ */
-.final-cta { text-align: center; padding: 6.5rem 1.5rem; }
+.final-cta { text-align: center; padding: calc(var(--sec-y) * 1.3) 1.5rem; }
 .final-cta h2 { margin: 0 auto 1.4rem; max-width: none; text-align: center; }
 .final-cta p { font-size: 0.92rem; color: var(--text-2); margin: 0 auto 1.6rem; max-width: 58ch; line-height: 1.8; }
 .final-cta .eyebrow, .final-cta .tag { justify-content: center; }
 
 /* ══ NOTE (type 4 article body) ════════════════════════════════════════ */
-.note { max-width: 68ch; margin: 0 auto; padding: 4rem 1.5rem; }
-.note h1 { max-width: none; font-size: clamp(1.9rem, 4vw, 2.9rem); }
-.note .dek { font-size: 1.02rem; line-height: 1.8; color: var(--text-2); margin-bottom: 2.5rem; }
-.note p { font-size: 0.95rem; line-height: 1.9; color: var(--text-2); margin-bottom: 1.4rem; }
-.note h2 { font-size: 1.35rem; margin-top: 2.8rem; }
+.note { max-width: 68ch; margin: 0 auto; padding: calc(var(--sec-y) * 0.9) 1.5rem; }
+.note h1 { max-width: none; }
+.note .dek { font-size: calc(var(--lede-size) + 0.06rem); line-height: var(--lh-lede); color: var(--text-2); margin-bottom: 2.5rem; }
+.note p { font-size: calc(var(--lede-size) + 0.01rem); line-height: var(--lh-prose); color: var(--text-2); margin-bottom: 1.4rem; }
+.note h2 { margin-top: 2.8rem; }
 .note h3 { margin-top: 2rem; }
-.note ul, .note ol { color: var(--text-2); font-size: 0.95rem; line-height: 1.9; margin: 0 0 1.4rem 1.2rem; }
+.note ul, .note ol { color: var(--text-2); font-size: calc(var(--lede-size) + 0.01rem); line-height: var(--lh-prose); margin: 0 0 1.4rem 1.2rem; }
 .note a { color: var(--mercury-blue); }
 .note a:hover { color: var(--text-1); }
+/* Pull-quote — display-serif slot 3 (RULE 02 §2). The synthetic oblique the
+   italic declaration used to force is gone: Fraunces ships roman only, and a
+   slanted roman is the cheapest-looking thing a serif can do. */
 .note blockquote {
-  border-left: 2px solid var(--mercury-violet); padding-left: 1.2rem;
-  margin: 1.8rem 0; color: var(--text-1); font-style: italic;
+  border-left: 2px solid var(--mercury-violet); padding-left: 1.3rem;
+  margin: 2rem 0; color: var(--text-1);
+  font-family: var(--display); font-weight: 400;
+  font-size: 1.08rem; line-height: 1.6; letter-spacing: -0.005em;
 }
 .note code { font-family: var(--mono); font-size: 0.86em; color: var(--mercury-teal); background: var(--glass-bg); padding: 0.1em 0.35em; border-radius: 4px; }
 .note pre { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 1.2rem; overflow-x: auto; margin-bottom: 1.4rem; }
@@ -561,7 +778,7 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .footer {
   padding: 2rem 1.5rem 4rem; border-top: 1px solid var(--glass-border);
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  font-size: 0.72rem; color: var(--text-3); flex-wrap: wrap;
+  font-family: var(--micro); font-size: 0.72rem; color: var(--text-3); flex-wrap: wrap;
   max-width: var(--wrap); margin: 0 auto;
 }
 .footer .tagline { font-style: italic; }
@@ -570,15 +787,20 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 
 /* ══ BREAKPOINT 2 — 900px : grids → 2 col, nav → hamburger ═════════════ */
 @media (max-width: 900px) {
+  /* The gradient SURVIVES the breakpoint. Flattening --sec-y to one mobile
+     value here would delete the depth cue on every phone, which is where
+     most of the descent actually happens — so each depth just shrinks. */
+  body { --sec-y: 3.5rem; --claim-y: 3rem; }
+  body[data-depth="0"] { --sec-y: 4.6rem; --claim-y: 4.2rem; }
+  body[data-depth="2"] { --sec-y: 3rem; --claim-y: 2.6rem; }
+  body[data-depth="3"] { --sec-y: 2.4rem; --claim-y: 2.2rem; }
   section, .honest, .receipts, .claim { padding-left: 1.25rem; padding-right: 1.25rem; }
-  section, .honest, .receipts { padding-top: 3.5rem; padding-bottom: 3.5rem; }
-  .claim { padding-top: 3rem; padding-bottom: 2rem; }
   .receipts-grid { grid-template-columns: repeat(2, 1fr); }
   .price-row { flex-direction: column; }
   .price-label, .price-amount { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
   .stack-item, .layer { flex-direction: column; }
   .stack-num, .layer-name { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
-  .final-cta { padding: 4rem 1.25rem; }
+  .final-cta { padding: calc(var(--sec-y) * 1.2) 1.25rem; }
   .footer { flex-direction: column; text-align: center; padding: 2rem 1.25rem 3rem; }
   .nav, .header { padding: 1rem 1.25rem; }
 
@@ -600,10 +822,13 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 @media (max-width: 600px) {
   .receipts-grid,
   .receipts.compact .receipts-grid,
-  .cards, .tiers, .steps, .panels, .capabilities { grid-template-columns: 1fr; }
+  .cards, .tiers, .steps, .panels, .capabilities,
+  .duo { grid-template-columns: 1fr; }
+  .gauge-row { flex-wrap: wrap; }
+  .gauge-n, .gauge-n.wide { min-width: 100%; }
   h1 { max-width: none; }
   .price-block { padding: 1.6rem; }
-  .note { padding: 2.5rem 1.25rem; }
+  .note { padding: calc(var(--sec-y) * 0.75) 1.25rem; }
 }
 
 /* ══ Motion & contrast preferences ═════════════════════════════════════ */
@@ -611,3 +836,77 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   THE DOOR — index.html band 0. B2 .claim ⊕ B3 .artifact, FUSED.
+
+   Why a new band exists at all (RULE 01 mechanic 1): the door must open
+   INTO something alive. Stacked as two bands, the claim occupies the first
+   screen and the running artifact falls below the fold — the visitor reads
+   a sentence ABOUT the engine instead of watching it. This band puts them
+   side by side so the claim is cashed by the thing next to it.
+
+   It composes existing blocks and introduces nothing new: the stage is a
+   plain .artifact-frame, the copy column is .eyebrow/h1/.lede/.cta-primary,
+   and every value below is an existing custom property. No new colour, no
+   new font-family, no fourth breakpoint.
+
+   DEVIATION RECORDED (THE DOOR SPEC §1 asked for the stack to flip at
+   1000px): this stylesheet declares three breakpoints ONCE — 1100 / 900 /
+   600 — so the flip reuses 900 rather than minting a fourth. Between 900
+   and 1000 the two columns are tight but not broken.
+   ══════════════════════════════════════════════════════════════════════ */
+.door { padding: calc(var(--claim-y) * 0.72) 1.5rem calc(var(--claim-y) * 0.6); }
+.door > .wrap {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  /* First screen minus the nav: the stage AND the CTA must both be visible
+     without scrolling, or mechanic 1 is only half-served. svh where
+     supported, so a mobile URL bar cannot push the CTA under the fold. */
+  min-height: calc(100vh - 9rem);
+  min-height: calc(100svh - 9rem);
+}
+/* Grid children default to min-width:auto and refuse to shrink below their
+   content — which is what makes a 16:9 embed blow the column out. */
+.door-stage, .door-copy { min-width: 0; }
+.door-copy .eyebrow { margin-bottom: 1.1rem; }
+.door-copy h1 { max-width: 15ch; }
+.door-copy .lede { max-width: 46ch; margin-bottom: 1.9rem; }
+.door .artifact-prov { max-width: none; }
+
+/* The consent line. It is the door's smallest type and its most load-bearing
+   sentence: the door invites, it never traps (RULE 01 register). */
+.door-mini {
+  font-family: var(--micro);
+  font-size: 0.74rem; line-height: 1.75; color: var(--text-3);
+  max-width: 46ch; margin-top: 1.5rem;
+}
+.door-mini a { color: var(--text-2); border-bottom: 1px solid var(--glass-border); }
+.door-mini a:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
+
+/* THE ENTER AFFORDANCE IS NOT HERE — ON PURPOSE. It lives INSIDE the iframe
+   (the lab's own #door-enter, shown only under ?embed=door), which is the
+   spec's frame contract: this page owns the frame, the lab owns everything
+   inside it, and neither reskins the other. An interim parent-side overlay
+   existed while the door mode was still landing; it was REMOVED the moment
+   ?embed=door shipped, because an overlay would swallow the exhibit's own
+   hover affordance — reskinning it by stealth, which is the one thing the
+   world-template law forbids. Do not re-add a .door-veil. */
+
+@media (max-width: 900px) {
+  /* .door (0,1,0) outranks the breakpoint's `section` (0,0,1) side-padding
+     rule, so the door has to restate it or it sits 0.25rem wider than every
+     other band on the page. */
+  .door { padding: calc(var(--claim-y) * 0.55) 1.25rem calc(var(--claim-y) * 0.6); }
+  .door > .wrap { grid-template-columns: 1fr; gap: 2rem; min-height: 0; }
+  .door-stage { order: -1; }     /* the artifact stays FIRST when it stacks */
+  .door-copy h1, .door-copy .lede, .door-mini { max-width: none; }
+}
+
+/* MERGE NOTE (door builder 1): a second, near-identical .door block was
+   appended here by a parallel writer. Two blocks for one band is the exact
+   defect this stylesheet exists to prevent, so the two were folded into the
+   single block above — keeping that block's calc(100svh - 9rem) first-screen
+   sizing and its inset focus outline. Nothing was lost; do not re-append. */

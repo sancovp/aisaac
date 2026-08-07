@@ -15,7 +15,7 @@
 <link rel="icon" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body data-depth="2">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="nav">
   <a href="../index.html" class="logo">Isaac</a>
@@ -48,9 +48,9 @@
     <p>The field migrated from MCP (wire up tools, expose all their schemas) to "skills" (folders of procedural knowledge, loaded on demand), and the stated reason was tokens. Anthropic's own number: loading tools on demand cut usage from 150,000 tokens to 2,000 — a 98.7% saving. Real number. Hard to argue with.</p>
     <p>But the token comparison is the wrong axis. Per unit, a JSON schema and a skill are about the same size — a schema is a docstring, a skill wraps comparable code. What actually changed is the <em>loading model</em>: every schema upfront versus a tree you descend on demand. That's <code>O(#tools)</code> versus <code>O(depth)</code>. The migration didn't fix the shape. It moved a flat representation to a <em>different</em> flat representation.</p>
 
-    <figure style="margin:2rem 0;">
-      <img src="diagrams/flat-vs-tree.png" alt="Upfront context cost: flat O(number of tools) versus tree O(depth). The flat line climbs linearly; the tree line stays nearly flat. Anthropic's measured points — 150,000 tokens upfront, 2,000 on demand — sit on the curve." style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
-      <figcaption style="font-size:0.7rem;color:var(--text-3);margin-top:0.5rem;">Flat cost grows with the number of tools. Tree cost grows with depth. Below a handful of tools the flat load is trivially cheaper — which is exactly why small toolsets feel fine and the tax goes unnoticed. Past the crossover, the flat line explodes while the tree barely moves.</figcaption>
+    <figure class="fig">
+      <img src="diagrams/flat-vs-tree.png" alt="Upfront context cost: flat O(number of tools) versus tree O(depth). The flat line climbs linearly; the tree line stays nearly flat. Anthropic's measured points — 150,000 tokens upfront, 2,000 on demand — sit on the curve." class="fig-img" width="1488" height="1053">
+      <figcaption class="fig-cap">Flat cost grows with the number of tools. Tree cost grows with depth. Below a handful of tools the flat load is trivially cheaper — which is exactly why small toolsets feel fine and the tax goes unnoticed. Past the crossover, the flat line explodes while the tree barely moves.</figcaption>
     </figure>
 
     <h2>The punchline I couldn't stop laughing at</h2>
@@ -78,7 +78,7 @@
   </article>
 
   <section class="receipts compact">
-    <div class="wrap" style="max-width:68ch">
+    <div class="wrap measure">
       <p class="eyebrow">Receipts</p>
       <div class="receipts-grid">
         <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>

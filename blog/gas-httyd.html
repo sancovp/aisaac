@@ -15,7 +15,7 @@
 <link rel="icon" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body data-depth="2">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="nav">
   <a href="../index.html" class="logo">Isaac</a>
@@ -37,15 +37,15 @@
     <h1>We Turned How to Train Your Dragon Into a Theorem</h1>
     <p class="dek">GAS is a proving engine: you write a story down as a formal theory, and a checker certifies it level by level — theme, argument, scenes, individual dialogue lines. This is the worked example: the actual HTTYD corpus, the actual proof reports, and the marketing funnel that falls out the other side.</p>
 
-<figure style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-      <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mercury-violet);margin-bottom:1rem;">The certification ladder</div>
-      <div style="display:grid;gap:0.4rem;font-family:var(--mono);font-size:0.75rem;">
-        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-blue);min-width:6.5rem;">depth 1–4</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-blue),transparent 25%);"></span><span style="color:var(--text-2);">story spine — theme, thesis, grand argument, tropes</span></div>
-        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-blue);min-width:6.5rem;">depth 5+</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-blue),transparent 45%);"></span><span style="color:var(--text-2);">scenes instantiate premises</span></div>
-        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-teal);min-width:6.5rem;">depth 14+</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-teal),transparent 70%);"></span><span style="color:var(--text-2);">individual dialogue lines carry proof targets</span></div>
-        <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--mercury-violet);min-width:6.5rem;">depth 37</span><span style="flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--mercury-violet),transparent 95%);"></span><span style="color:var(--text-2);">the deepest obligations in the shipped corpus</span></div>
+<figure class="gauge">
+      <div class="gauge-k">The certification ladder</div>
+      <div class="gauge-rows">
+        <div class="gauge-row" data-fill="25"><span class="gauge-n">depth 1–4</span><span class="gauge-bar"></span><span class="gauge-t">story spine — theme, thesis, grand argument, tropes</span></div>
+        <div class="gauge-row" data-fill="45"><span class="gauge-n">depth 5+</span><span class="gauge-bar"></span><span class="gauge-t">scenes instantiate premises</span></div>
+        <div class="gauge-row teal" data-fill="70"><span class="gauge-n">depth 14+</span><span class="gauge-bar"></span><span class="gauge-t">individual dialogue lines carry proof targets</span></div>
+        <div class="gauge-row violet" data-fill="95"><span class="gauge-n">depth 37</span><span class="gauge-bar"></span><span class="gauge-t">the deepest obligations in the shipped corpus</span></div>
       </div>
-      <figcaption style="font-size:0.7rem;color:var(--text-3);margin-top:1rem;">Each depth is a set of proof obligations. A story element is only <em>certified</em> at a depth once the checker can prove the obligations at that depth from the story's own web.</figcaption>
+      <figcaption class="fig-cap">Each depth is a set of proof obligations. A story element is only <em>certified</em> at a depth once the checker can prove the obligations at that depth from the story's own web.</figcaption>
     </figure>
 
     <p><strong>Everything quoted below is real.</strong> Every excerpt on this page is copied verbatim from the engine's shipped worked corpus — the theory files and the saved proof reports that ship with GAS. Nothing is mocked up, no screenshots, no invented output. Where the corpus is still a work-in-progress, it says so, and so do we.</p>
@@ -175,7 +175,7 @@ kv(funnel_type_selection_variant, framework_signature,
   </article>
 
   <section class="receipts compact">
-    <div class="wrap" style="max-width:68ch">
+    <div class="wrap measure">
       <p class="eyebrow">Receipts</p>
       <div class="receipts-grid">
         <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>

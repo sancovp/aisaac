@@ -15,7 +15,7 @@
 <link rel="icon" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body data-depth="2">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="nav">
   <a href="../index.html" class="logo">Isaac</a>
@@ -40,12 +40,12 @@
 <h2>The Idea In One Sentence</h2>
     <p>If your ontology already says exactly what a thing is — its properties, their types, their constraints — then you should be able to <strong>generate the code for it</strong>, run that code as a live object, and let an LLM <em>be</em> that object while a database persists its state.</p>
     <p>One axis: OWL → Python → DB. The ontology is the schema. The generated class is the body. The agent is the mind. The database is the memory. Four lenses on a single entity.</p>
-    <p>This post is careful about one thing above all else: <strong>what runs today versus what is the roadmap.</strong> I built and ran a small piece of this. The rest is a clearly-marked plan, not a claim. I'll mark every section <span style="color:var(--mercury-blue);font-family:var(--mono);font-size:0.7rem;">[RUNS TODAY]</span> or <span style="color:var(--amber);font-family:var(--mono);font-size:0.7rem;">[ROADMAP]</span> so you never have to guess.</p>
+    <p>This post is careful about one thing above all else: <strong>what runs today versus what is the roadmap.</strong> I built and ran a small piece of this. The rest is a clearly-marked plan, not a claim. I'll mark every section <span class="badge">[RUNS TODAY]</span> or <span class="badge roadmap">[ROADMAP]</span> so you never have to guess.</p>
 
     <hr>
 
-    <h2 style="margin-bottom:0.3rem;">What Runs Today</h2>
-    <p style="margin-top:0;"><span style="color:var(--mercury-blue);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;">[RUNS TODAY — VERIFIED]</span></p>
+    <h2>What Runs Today</h2>
+    <p><span class="badge">[RUNS TODAY — VERIFIED]</span></p>
 
     <p>There is one Python file, <code>owl22python.py</code>, and it does exactly one demonstrable thing: it reads an OWL2/XML ontology, generates a typed Pydantic class from it, instantiates that class with real data, and roundtrips it back out as an OWL2 individual plus typed RDF triples. I ran it. It exits clean.</p>
 
@@ -98,8 +98,8 @@ TRIPLES:
 
     <hr>
 
-    <h2 style="margin-bottom:0.3rem;">Where This Goes</h2>
-    <p style="margin-top:0;"><span style="color:var(--amber);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;">[ROADMAP — VISION, NOT BUILT]</span></p>
+    <h2>Where This Goes</h2>
+    <p><span class="badge roadmap">[ROADMAP — VISION, NOT BUILT]</span></p>
 
     <p>Everything from here down is the plan. None of it is being claimed as working. It's the arc the roundtrip points at, written out so the direction is legible — not so you mistake it for a shipped system.</p>
 
@@ -143,7 +143,7 @@ TRIPLES:
   </article>
 
   <section class="receipts compact">
-    <div class="wrap" style="max-width:68ch">
+    <div class="wrap measure">
       <p class="eyebrow">Receipts</p>
       <div class="receipts-grid">
         <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>

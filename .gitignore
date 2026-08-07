@@ -23,3 +23,7 @@ Thumbs.db
 # Simulator/build artifacts (these get built, not tracked)
 simulator/twi-jobworld-*/
 simulator/backend/__pycache__/
+
+# Python bytecode (tools/)
+__pycache__/
+*.pyc
