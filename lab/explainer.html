@@ -101,10 +101,63 @@
   .foot { color:#8b93a7; font-size:13px; line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; }
   .foot a { color:#4fd1a5; text-decoration:none; }
   .foot a:hover { text-decoration:underline; }
-  noscript p { color:#e8574f; margin:24px 0; }
+  .foot-descend { border-top:0; padding-top:10px; }
+  .foot code { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; color:#e8b437; }
+  /* The no-JS still. Not a missing embed — a designed panel, in the lab's own
+     dark look, that says what would be here and links to the same seven
+     sentences in prose. It is the last rung of the degradation ladder. */
+  noscript .ns {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:14px; text-align:center; min-height:100vh; padding:32px 24px;
+    background:
+      linear-gradient(135deg, rgba(232,180,55,0.05), rgba(79,209,165,0.04)),
+      repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,0.02) 14px 28px);
+  }
+  noscript .ns-line { color:#e8b437; font-size:13px; line-height:1.7; max-width:44ch; letter-spacing:0.02em; }
+  noscript .ns-go { color:#f4f6fb; font-size:13px; font-weight:600; }
+  noscript .ns-go a { color:#4fd1a5; }
+
   /* ?bare=1 dev hook: hide the chrome so a short headless window captures the
-     full stage (screenshot verification only) */
+     full stage (screenshot verification only). ?embed=door|room reuse it. */
   .bare header, .bare footer, .bare #scrub-progress-rail { display:none; }
+
+  /* ── ?embed=door / ?embed=room — the two framed surfaces ──────────────────
+     The exhibit KEEPS ITS OWN LOOK. Nothing here reskins the lab to match the
+     host page; it only removes chrome that makes no sense inside a 16:9 frame
+     and lets the stage fill it exactly. */
+  .embed-door, .embed-room,
+  .embed-door body, .embed-room body { overflow:hidden; height:100%; }
+  .embed-door #scrub-world, .embed-room #scrub-world { height:100vh; }
+  .embed-door #stage, .embed-room #stage { position:relative; height:100vh; }
+  /* #stagebox is deliberately NOT overridden: min(100vw, 100vh*16/9) already
+     fills a 16:9 frame exactly, and it is what holds the 1920x1080 composite
+     coordinate contract between the two engines. */
+
+  /* DOOR: no chrome at all, and no sound — the mode toggle cannot be reached
+     because narration at the door is banned, not merely discouraged. */
+  .embed-door #route, .embed-door #scroll-hint, .embed-door #mode-toggle { display:none; }
+
+  /* ROOM: the route rail and the play toggle stay — that is the whole offer
+     of the room ("take the clock"). The scroll hint goes; there is no scroll. */
+  .embed-room #scroll-hint { display:none; }
+  .embed-room #stage { touch-action:pan-y; }
+
+  /* The enter link. A real anchor over the whole door frame, present in the
+     markup, so it works with or without JavaScript and takes keyboard focus. */
+  #door-enter { display:none; }
+  .embed-door #door-enter {
+    display:flex; position:absolute; inset:0; z-index:50;
+    align-items:flex-end; justify-content:flex-end; padding:18px 22px;
+    text-decoration:none; color:#f4f6fb;
+    font:700 12px/1 'Inter', system-ui, sans-serif; letter-spacing:3px; text-transform:uppercase;
+  }
+  .embed-door #door-enter span {
+    background:rgba(15,21,32,0.82); border:1px solid rgba(232,180,55,0.35);
+    border-radius:999px; padding:9px 16px; transition:border-color 200ms, color 200ms;
+  }
+  .embed-door #door-enter:hover span, .embed-door #door-enter:focus-visible span {
+    border-color:#e8b437; color:#e8b437;
+  }
 
   @media (max-width:860px) {
     #route { display:none; }
@@ -134,7 +187,13 @@
   </p>
 </header>
 
-<noscript><p class="wrap">This lab page needs JavaScript — it runs the explainer engine in your browser.</p></noscript>
+<noscript>
+  <div class="ns">
+    <p class="ns-line">&#9656;&nbsp; the explainer engine renders here, live, from seven sentences</p>
+    <p class="ns-go">This needs JavaScript to run.
+      <a href="../blog/levels-overview.html">Read the same seven sentences &rarr;</a></p>
+  </div>
+</noscript>
 
 <div id="scrub-world">
   <div id="stage">
@@ -146,6 +205,10 @@
     <div id="route"></div>
     <div id="scroll-hint">scroll to explain<i></i></div>
     <button id="mode-toggle" type="button">▶ play with narration</button>
+    <!-- ?embed=door only (CSS-gated). A real anchor, in the markup, so a click
+         anywhere in the homepage frame enters the room whether or not any
+         script ran. target="_top" breaks out of the iframe. -->
+    <a id="door-enter" href="../watch.html" target="_top"><span>Enter &rarr;</span></a>
   </div>
 </div>
 
@@ -161,18 +224,38 @@
     <a href="https://github.com/oso95/scroll-world">oso95/scroll-world</a> (MIT).
     The only media file is the narration mp3, used by play mode. No external requests.
   </p>
+  <p class="foot foot-descend">
+    One level down: the exact command both bundles were built with lives at
+    <a href="src/build.sh">src/build.sh</a>, and the attribution ledger &mdash; what
+    was adopted from scroll-world, what was adapted, and what was <em>dropped and
+    why</em> &mdash; is in <a href="README.md">README.md</a>, alongside the
+    <code>video_aios</code> commit the engines were cut from. Past that the chain
+    leaves this website: <a href="../build.html">the engines themselves &rarr;</a>
+  </p>
 </footer>
 
 <script>
-  if (new URLSearchParams(location.search).has('bare')) document.documentElement.classList.add('bare');
+  // Stamp the surface class SYNCHRONOUSLY, before first paint. scrub.js stamps
+  // the same class (it is idempotent), but it now loads deferred — waiting for
+  // it would flash the full-page chrome inside the frame for a frame or two.
+  (function () {
+    var q = new URLSearchParams(location.search), m = q.get('embed');
+    if (m === 'door' || m === 'room') document.documentElement.classList.add('bare', 'embed-' + m);
+    else if (q.has('bare')) document.documentElement.classList.add('bare');
+  })();
   // The engine resolves the narration mp3 through remotion's staticFile();
   // point its static base at this page's own directory so the file ships in
   // the repo and resolves under any deployment prefix (GitHub Pages project
   // path, a custom domain, or file://).
   window.remotion_staticBase = new URL('.', location.href).pathname.replace(/\/+$/, '');
 </script>
-<script src="explainer.bundle.js"></script>
-<script src="explainer.presenter.bundle.js"></script>
-<script src="scrub.js"></script>
+<!-- ORDER MATTERS, AND SO DOES `defer`.
+     defer keeps document order but unblocks the parser, so first motion is
+     gated on the 125 KB gz diagram engine, not on all 479 KB. The presenter
+     (354 KB gz) is LAST and attaches itself late, on `aisaac:presenter-ready`
+     — the diagram is already running by the time the stickman arrives. -->
+<script src="explainer.bundle.js" defer></script>
+<script src="scrub.js" defer></script>
+<script src="explainer.presenter.bundle.js" defer></script>
 </body>
 </html>

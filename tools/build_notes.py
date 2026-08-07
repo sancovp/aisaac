@@ -198,9 +198,9 @@ def build():
         "    </div>",
         "  </section>",
         "",
-        '  <section id="patterns" style="padding-top:0">',
+        '  <section id="patterns" class="flush-top">',
         '    <div class="wrap">',
-        '      <nav class="ladder" aria-label="Jump to a section" style="max-width:none">',
+        '      <nav class="ladder measure-none" aria-label="Jump to a section">',
         f'        <a class="rung" href="#frameworks"><span class="rung-n">{len(fw):02d}</span>'
         '<span class="rung-t">Frameworks</span><span class="rung-d">ways to think about the '
         "problem &mdash; the shape, not the build</span></a>",
@@ -234,6 +234,14 @@ def build():
         "hiding in every AI &ldquo;skills&rdquo; folder &mdash; and the paper about it. They "
         "named it &ldquo;progressive disclosure,&rdquo; then shipped it unable to disclose.</p>"
         '<span class="receipt-go">Read &rarr;</span></a>',
+        # The last hop of the reader's descent. isaac.html is deliberately NOT
+        # in the nav (the nav is single-source and a seventh item forces a
+        # re-paste across every page), so the maker is reached from the door
+        # and from the end of the reading chain. This is that end.
+        '        <a class="card" href="../isaac.html"><h3>Who writes these</h3><p>Seven things '
+        "he believes, each with the receipt attached &mdash; and, at the bottom, the debts he "
+        "names before anyone else gets to.</p>"
+        '<span class="receipt-go">Meet the maker &rarr;</span></a>',
         "      </div>",
         "    </div>",
         "  </section>",

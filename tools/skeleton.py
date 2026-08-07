@@ -36,7 +36,7 @@ def head(title, description, path, og_slug, up="", noindex=False):
 <link rel="icon" href="{up}assets/favicon.svg">
 <link rel="stylesheet" href="{up}style.css">
 </head>
-<body>
+<body data-depth="2">
 <a class="skip-link" href="#main">Skip to content</a>"""
 
 
@@ -99,7 +99,7 @@ def receipts(up=""):
       <div class="receipts-grid">
         <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine, on GitHub</h3><p><b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b> &mdash; MIT, full commit history.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>
         <a class="receipt" href="{up}watch.html"><div class="receipt-k">Running now</div><h3>A world running in your browser</h3><p>The engine drawing its own explainer. Your scroll is the clock.</p><span class="receipt-go">Watch it &rarr;</span></a>
-        <a class="receipt" href="{up}worlds/plumbing.html"><div class="receipt-k">One run's output</div><h3>What one run produced</h3><p>A live local-business site, built end to end by the engine. Not a mockup.</p><span class="receipt-go">Open it &rarr;</span></a>
+        <a class="receipt" href="{up}cinematic-plumbing.html"><div class="receipt-k">One run's output</div><h3>What one run produced</h3><p>A live local-business site, built end to end by the engine. Not a mockup.</p><span class="receipt-go">Open it &rarr;</span></a>
         <a class="receipt" href="{up}notes/"><div class="receipt-k">Open notes</div><h3>The field notes</h3><p>Published as they were written &mdash; including the ones that record a mistake.</p><span class="receipt-go">Read them &rarr;</span></a>
       </div>
     </div>
@@ -113,7 +113,7 @@ def receipts_compact(items):
         f"<h3>{h3}</h3><p>{p}</p><span class=\"receipt-go\">{go} &rarr;</span></a>"
         for k, h3, p, go, href in items[:2])
     return f"""  <section class="receipts compact">
-    <div class="wrap" style="max-width:68ch">
+    <div class="wrap measure">
       <p class="eyebrow">Receipts</p>
       <div class="receipts-grid">
 {rows}

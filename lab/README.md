@@ -2,7 +2,7 @@
 
 `explainer.html` — the animated diagram explainer + ink-stickman presenter,
 **live and scroll-scrubbed**. Both engines run in the browser; the visitor's
-scroll position is the composition clock. Not linked from the site nav.
+scroll position is the composition clock.
 
 Two modes (toggle bottom-right of the stage):
 
@@ -15,7 +15,52 @@ Two modes (toggle bottom-right of the stage):
 Deep link: `?f=623` opens scrolled to that frame. Dev hook: `?p=0.42` previews
 the page state at 42% scrub progress without scrolling (used for headless
 screenshot verification — old-headless screenshot passes don't honor
-`position:sticky`).
+`position:sticky`). `?bare=1` hides the chrome for the same screenshot pass.
+
+## Three SURFACES, one file (`?embed=…`)
+
+This page is embedded twice on the public site. Both embeds are the SAME file
+under a query param — there is no second copy, no reskin, and no video. The
+rule the site templates state and this file obeys: *the exhibit keeps its own
+look; reskinning the artifact destroys the proof.* The host page owns the
+frame, this page owns everything inside it.
+
+| URL | chrome | clock | audio | used by |
+|---|---|---|---|---|
+| `explainer.html` | full — header, lede, footer, progress rail, route rail, mode toggle | **scroll is the clock** | play mode | the raw instrument; the engineer's descent rung |
+| `explainer.html?embed=door` | none | **autoruns and loops** on a wall clock | never | `index.html` — the first-screen frame |
+| `explainer.html?embed=room` | route rail + mode toggle only | autoruns until the visitor takes it, then wheel / drag | play mode, explicit click only | `watch.html` — the exhibit |
+
+Behaviour the embeds add (all of it in `scrub.js`; no bundle rebuild):
+
+- **Boot is gated on the diagram engine alone.** `boot()` no longer waits up to
+  3s for the presenter; it mounts the instant `window.AisaacBackdrop` exists and
+  attaches the presenter later on the `aisaac:presenter-ready` event that
+  `presenter-entry.tsx` already dispatched, handing it the current frame. First
+  motion costs 125 KB gz instead of 479 KB. This improves the standalone page too.
+- **Off-screen and hidden-tab pause.** An `IntersectionObserver` with `root:null`
+  (which intersects the top-level viewport even from inside an iframe) plus
+  `document.hidden`. A homepage scrolled past the door drops the frame to idle,
+  and because the elapsed delta is dropped rather than banked, the film does not
+  jump when it comes back.
+- **`prefers-reduced-motion` at the door does not autorun.** It renders ONE real
+  frame (mid-beat 2) from the same two engines and stops. A held real frame is
+  honest; a poster image pretending to be a live engine would not be.
+- **Room mode releases the page at both ends.** Wheel is captured only while the
+  composition has somewhere to go; at frame 0 scrolling up, and at the last frame
+  scrolling down, the handler stops calling `preventDefault()` and the parent page
+  scrolls normally. The exhibit is a clock you can put down, never a scroll trap.
+- **`#door-enter`** is a real `<a href="../watch.html" target="_top">` in the
+  markup, shown by CSS only under `?embed=door`. It is keyboard-focusable and it
+  works whether or not any script ran.
+- **`<noscript>`** renders a designed still on the lab's own background — one mono
+  line plus a live link to the same seven sentences in prose. Deliberate, not
+  missing.
+
+Degradation ladder, each rung shipping something real: WebGL missing → the
+diagram runs alone (the existing `boot()` P-null path) → JavaScript off → the
+`<noscript>` still + link → the iframe blocked entirely → the host page's own
+figcaption still states in prose exactly what the frame does.
 
 ## Pieces
 
@@ -81,6 +126,19 @@ brand topbar/nav/CTA chrome (lab page, not a landing page).
 ## Known limits
 
 The presenter needs WebGL (virtually universal); if its bundle fails to boot,
-scrub.js proceeds backdrop-only after a 3s grace. Scroll feel (LERP_K=0.16,
-VH_PER_BEAT=1.35, LINGER=0.35 — one-line constants in scrub.js) and mobile
-need a human browser pass.
+scrub.js proceeds backdrop-only. Scroll feel (LERP_K=0.16, VH_PER_BEAT=1.35,
+LINGER=0.35 — one-line constants in scrub.js) and mobile need a human browser
+pass. Two more constants belong to the embeds and want the same pass:
+`EMBED_FPP=0.5` (frames per px of wheel/drag in room mode) and `HELD_FRAME=240`
+(the frame the reduced-motion door holds).
+
+**Coarse pointers in room mode scrub on HORIZONTAL drag only.** Vertical touch
+is left to the page on purpose (`touch-action: pan-y` on the stage), because a
+frame that eats vertical swipes on a phone is a trap, and the end-release rule
+that saves the mouse wheel has no clean touch equivalent. A phone visitor gets
+the autorun, the route dots and the play toggle; taking the clock by hand is a
+sideways gesture. This is a stated limit, not an oversight.
+
+**Not measured yet:** cold-load time to first engine frame on throttled mobile.
+The door is on every homepage visit, so this is the number that decides whether
+the `defer` order above is sufficient or the diagram engine needs splitting.
