@@ -48,7 +48,20 @@ serves RULE 01's deducibility mechanics.
   --lh-prose --rule-a --micro --r-card`. Depth 1 IS the `:root` default, so a
   page with no attribute renders as before. The gradient survives the 900px
   breakpoint rather than flattening. Applied: 0 = door (index/watch) ·
-  1 = system/isaac/rungs · 2 = blog + notes · 3 = inside/.
+  1 = system/isaac/rungs · 2 = blog + notes · 3 = inside/ **and
+  patterns.html** (2026-08-08 — the catalog wall is the densest surface on
+  the site. Depth is a DENSITY token, not an access level: patterns is
+  public, indexed and in the nav, and shares depth 3 with `inside/` only
+  because both are read at the same tightness).
+- **`.data-table` gained links and a provenance column (2026-08-08).** The
+  table existed for one blog post; patterns.html is 57 rows of it. Two
+  declarations added, ZERO new colours and zero new block vocabulary:
+  `.data-table a` is the identical colour pair `.note a` already carries
+  (a bare `a` is `color: inherit` sitewide, so a table link was invisible),
+  and `.data-table td:last-child` takes `--micro`, which is the token the
+  density gradient already flips to mono at depth 2+ — so the "runs in"
+  column speaks the receipt voice for free at the depth it ships at. It
+  carries no `color`, deliberately, so `.data-table a` still wins inside it.
 - **`--text-3` corrected `#64748b` → `#6c7c92`.** The §"mechanical quality
   gates" contrast check found the old value at 4.29:1 on `--void` and 4.07:1 on
   glass — under AA, on the token that carries fineprint, the footer and every

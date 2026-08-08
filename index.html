@@ -176,7 +176,13 @@
         </a>
 
       </div>
-      <p class="mt-s"><a class="cta-secondary" href="isaac.html">Or meet the maker &rarr;</a></p>
+      <!-- The door is chromeless, so this line is the ONLY path from here to
+           the pattern catalog — every other page reaches it through the nav.
+           It sits beside the maker link rather than inside the engineer card
+           because a card is already an <a>; a link inside it would be invalid
+           markup and a second competing exit inside one target. -->
+      <p class="mt-s"><a class="cta-secondary" href="isaac.html">Or meet the maker &rarr;</a>
+        &nbsp;&middot;&nbsp; <a class="cta-secondary" href="patterns.html">Or read all 57 patterns &rarr;</a></p>
     </div>
   </section>
 

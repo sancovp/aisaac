@@ -59,7 +59,8 @@ def nav(up="", current=None):
     the only variable is A's documented ROOT vs DEPTH-1 variant."""
     items = [("watch.html", "Watch"), ("learn.html", "Learn"),
              ("build.html", "Build"), ("run.html", "Run"),
-             ("notes/", "Notes"), ("pricing.html", "Pricing")]
+             ("notes/", "Notes"), ("patterns.html", "Patterns"),
+             ("pricing.html", "Pricing")]
     out = ['<header class="nav">',
            f'  <a href="{up}isaac.html" class="logo">Isaac</a>',  # ratchet law: brand slot -> the hub, never the one-way door
            '  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>',

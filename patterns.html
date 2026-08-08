@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>57 patterns, and where each one runs — Isaac</title>
+<meta name="description" content="The working pattern catalog, opened up: 57 architecture patterns pulled out of real systems, organised by region, each one saying what it does and naming the repository it runs in.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/patterns.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="57 patterns, and where each one runs — Isaac">
+<meta property="og:description" content="The working pattern catalog, opened up: 57 architecture patterns pulled out of real systems, organised by region, each one saying what it does and naming the repository it runs in.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/patterns.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-depth="3">
+<!-- ══════════════════════════════════════════════════════════════════════
+     PATTERNS — the catalog rendered public. RULE 01 mechanic 2 (the depth
+     gradient) at full width: this is the deepest free surface on the site,
+     so it is the densest. data-depth="3" is the density token, nothing else
+     — the page is public, indexed and in the nav (inside/ is the other
+     depth-3 surface and is unlisted for unrelated reasons; RULE 02's
+     implementation record carries the amendment).
+
+     THE PROOF STANDARD (Isaac, verbatim, governs every row): "I AM TRYING
+     TO SHOW PEOPLE PATTERNS AND ARCHITECTURES THEY DO NOT KNOW. THERE IS
+     ZERO NEED FOR ANY PROOF OTHER THAN 'IT DOES X, AND IT RUNS'." So each
+     row is exactly three things: the name, the one sentence saying what it
+     does, and where it runs. No metrics, no cost figures, no novelty
+     essays, no scoreboard. The persuasion is the wall itself (RULE 01: the
+     count and the density do the arguing; superiority is never stated).
+
+     SOURCE: the internal catalog, entry for entry, organised by its own
+     region lattice. Names carrying internal vocabulary are rendered by
+     their plain mechanism name; the one killed entry stays internal.
+     "Runs in" links ONLY where the receipt sits in a repository the public
+     can actually open today — everything else says "the lab" rather than
+     shipping a 404.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — pasted verbatim from _templates/_nav.html (ROOT variant). Do not edit here. -->
+<header class="nav">
+  <a href="isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="watch.html">Watch</a>
+    <a href="learn.html">Learn</a>
+    <a href="build.html">Build</a>
+    <a href="run.html">Run</a>
+    <a href="notes/">Notes</a>
+    <a href="patterns.html" aria-current="page">Patterns</a>
+    <a href="pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM ═══════════════════════════════════════════════════════ -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">The catalog</p>
+      <h1>57 patterns you probably haven&rsquo;t seen. <span>Every one of them runs.</span></h1>
+      <p class="lede">This is my working catalog, opened up. Each entry is a mechanism I hit in real code, kept, and then used again somewhere else &mdash; so what you get is the name, one sentence saying what it does, and the repository where it runs. Nothing else is offered, because nothing else is worth offering: either a mechanism is new to you or it isn&rsquo;t, and either it runs or it doesn&rsquo;t.</p>
+      <p class="fineprint">Fifty-seven is the count today. It grows when a sweep finds something that appears more than once in code that shipped, and it shrinks when an entry fails its own evidence test. Where a pattern already has a full write-up, its name links to it; most don&rsquo;t have one yet, and those go out one at a time as field notes.</p>
+      <a class="cta-primary mt-m" href="notes/">Read the write-ups &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ THE REGION INDEX — the lattice as jump targets. Reuses the brand
+       tag-pill vocabulary (.eyebrow a), the same control as the corpus
+       filter row, deliberately: it is the same move. ══ -->
+  <section class="flush-top">
+    <div class="wrap">
+      <p class="eyebrow">Thirteen regions
+        <a href="#r-reasoning">Reasoning without acting</a>
+        <a href="#r-code">The code/instruction boundary</a>
+        <a href="#r-demand">Demand-driven organisation</a>
+        <a href="#r-declared">Declared versus observed</a>
+        <a href="#r-evidence">Evidence discipline</a>
+        <a href="#r-types">Type-system moves</a>
+        <a href="#r-transform">Code transformation</a>
+        <a href="#r-teaching">Teaching as infrastructure</a>
+        <a href="#r-boundaries">Boundaries and failure direction</a>
+        <a href="#r-mutation">Safe mutation</a>
+        <a href="#r-ownership">Process and ownership</a>
+        <a href="#r-worlds">Worlds and the selection inside them</a>
+        <a href="#r-composition">The composition</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ REGION 1 ═══════════════════════════════════════════════════════ -->
+  <section id="r-reasoning">
+    <div class="wrap">
+      <h2>Reasoning without acting</h2>
+      <p class="receipts-lede">How an engine reaches a conclusion without being allowed to touch the world while it is thinking.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Derive, then release</th>
+            <td class="cell">The reasoner may never act on the world mid-derivation: it emits each effect as a description, and a separate outer worker carries those out after the durable write.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Validate synchronously, realise after the commit</th>
+            <td class="cell">The write call itself does no input or output at all &mdash; it drops one command file carrying every deduced follow-on effect as data, and a daemon enacts those effects only once the record has landed.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Bracket the model with code on both sides</th>
+            <td class="cell">Deterministic code picks the exact batch and serves it complete, the model supplies only the judgment, then code independently re-runs the same structural check and marks done only what actually improved.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Park the gap, re-derive on the answer</th>
+            <td class="cell">When a computation needs something only an outside party can supply, don&rsquo;t freeze a continuation: type the gap by who is allowed to fill it, store it as a durable record, and let the answer arrive as a new event that re-runs the whole derivation.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row"><a href="notes/the-validator-that-refuses-to-be-wrong.html">The validator&rsquo;s answer is the next prompt</a></th>
+            <td class="cell">What comes back from a check is not a status code, it is the sentence telling the caller exactly what to write next &mdash; every gap phrased as an imperative.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Hold nothing at rest</th>
+            <td class="cell">The reasoner keeps no facts between events; per event it loads only the concepts actually mentioned plus whatever those require, so the cost of thinking stays flat as the store grows.</td>
+            <td class="cell">the lab</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 2 ═══════════════════════════════════════════════════════ -->
+  <section id="r-code" class="dark">
+    <div class="wrap">
+      <h2>The code/instruction boundary</h2>
+      <p class="receipts-lede">What has to be written as a function, and what is only a sentence you hand a language model.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">The one law</th>
+            <td class="cell">A thing is code only if it must execute an external effect &mdash; a mail server, an HTTP API, a database, a file. Everything else is an instruction handed to the model, and writing it as a function is how codebases get enormous.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row"><a href="blog/owl-to-agent.html">Turn a code object into a system type</a></th>
+            <td class="cell">Introspect a typed Python model and project it into an ontology type whose fields become required, typed restrictions, so your classes are literally the system&rsquo;s vocabulary rather than a description of it.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">One generative slot</th>
+            <td class="cell">Exactly one position in the loop is permitted to be non-deterministic, and its socket is generic enough that a plain function, a live model session, or an entire nested world of trading agents drops in without changing anything that judges.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Move every rule to the slot that can refuse it</th>
+            <td class="cell">Take each &ldquo;must&rdquo; and &ldquo;never&rdquo; out of the prompt and relocate it to the structural position that can mechanically reject the violation, so the rule stops being obeyed and starts being true.</td>
+            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 3 ═══════════════════════════════════════════════════════ -->
+  <section id="r-demand">
+    <div class="wrap">
+      <h2>Demand-driven organisation</h2>
+      <p class="receipts-lede">Nothing gets built until something specific asks for it by name.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">The gap list is the workflow</th>
+            <td class="cell">No artifact is generated speculatively; every one is pulled into existence by a named absence, so the outstanding gaps and the plan of work are the same object.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">A pipeline is a type</th>
+            <td class="cell">A workflow is a typed object whose required slots are its stages, so the ordinary machinery that fills missing fields is what sequences the build.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Three ways a state can change</th>
+            <td class="cell">Every transition in the system is induced by exactly one of three things: a gap pulls it, recurrence reifies it, or a signature releases it. There is no fourth.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Frictionless capture, gated canon</th>
+            <td class="cell">A phrase becomes a concept once its usage recurs, everything is admitted to an unvalidated layer with zero friction, and promotion toward canonical happens through a gate that warns rather than blocks &mdash; judging the accumulated union each time, so a concept climbs by being filled in.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">The server holds the repair buffer</th>
+            <td class="cell">When a large structured call fails, its payload is kept server-side under the entity&rsquo;s name and the model is told the retry need only supply the missing fields, so a heavy typed call becomes repairable across turns.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Rounds as data</th>
+            <td class="cell">Every worker report carries a reproducible recipe, identical process names accumulate into a pattern on their own, and harvesting emits a skill whose organisational scope is deduced from who appears in the trace.</td>
+            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 4 ═══════════════════════════════════════════════════════ -->
+  <section id="r-declared" class="dark">
+    <div class="wrap">
+      <h2>Declared versus observed</h2>
+      <p class="receipts-lede">What a system says about itself, held against the record of what it actually did.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Hold the self-description against the event stream</th>
+            <td class="cell">Compare what a system declares it does with what its own records show it did, and surface each divergence as a typed item that carries its own repair spec.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Boundary sealing and validity intervals</th>
+            <td class="cell">A traced execution boundary covers nothing until it is sealed; drift invalidates it through everything composed on top of it, and the resulting work item carries the root reason rather than a symptom.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">One source, many compiled projections</th>
+            <td class="cell">Canonical data lives in one store and every file, channel, environment and directory is a typed projection you re-render on demand &mdash; never hand-authored, always a full render that converges instead of churning, and drift heals by backfilling from either side.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 5 ═══════════════════════════════════════════════════════ -->
+  <section id="r-evidence">
+    <div class="wrap">
+      <h2>Evidence discipline</h2>
+      <p class="receipts-lede">How a claim survives contact with something trying to break it, including me.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Don&rsquo;t judge the artifact, run it</th>
+            <td class="cell">Instead of scoring a thing with a judge, instantiate it as the world and read what the world does; where the artifact isn&rsquo;t executable by code, drop a fresh model with none of the build context into the same socket &mdash; execute what executes, ballot only what can&rsquo;t.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Nothing mints its own receipt</th>
+            <td class="cell">No agent may write its own scoreboard: payoffs are read from world-owned files rather than from anything the agent submitted, and a value claim must carry a receipt bound to that specific artifact and issued by a third party with no context.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Rigour is a dial on the constructor</th>
+            <td class="cell">Evidence strength is a parameter rather than a rewrite: one number turns a single controlled trial into a replicated majority-vote championship with an identical report contract, and the runtime picks the setting from how deterministic the judge is.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">The graveyard is the deliverable</th>
+            <td class="cell">A losing proposal is not discarded but closed with its measured verdict attached, and every death is appended to a machine-readable record, so the standing proof of rigour is the pile of things that were refused.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Read the transcript before concluding</th>
+            <td class="cell">A status flag is never evidence &mdash; the harness has to open the message files, the artifacts and the agent histories; and the runtime enforces the same discipline by handing over a pointer instead of the payload.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Nothing the checker says evaporates</th>
+            <td class="cell">Pass a validator&rsquo;s output through verbatim rather than parsing it to decide what to show, overflow to a file rather than truncate, and keep its live rejections &mdash; those are the labelled negative examples other systems have to manufacture.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Carry the limits as data</th>
+            <td class="cell">Build and run the specific refutation first and read-only, treat &ldquo;the criterion cannot even engage yet&rdquo; as a legitimate stop, attach the soundness caveat to every result as a field, and never fill a hole with a number.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Clone the proven shape, then name the one thing that changed</th>
+            <td class="cell">Don&rsquo;t redesign something that resembles a system already working: copy the architecture verbatim, then isolate and document the single translation that differs, so the risk is one named delta and everything else inherits the proof.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Test inputs are never authored</th>
+            <td class="cell">The fixture library is history&rsquo;s own before-and-after pairs, taken from what the system actually did, so the tests cannot quietly encode what you hoped it did.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Loops don&rsquo;t climb</th>
+            <td class="cell">A generator-and-critic loop plateaus when the generator is a single point and the judge is half-blind; the step change comes from giving it a combinatorial space to search and an instrument to see with, not from running more rounds.</td>
+            <td class="cell">the lab</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 6 ═══════════════════════════════════════════════════════ -->
+  <section id="r-types" class="dark">
+    <div class="wrap">
+      <h2>Type-system moves</h2>
+      <p class="receipts-lede">Structure carrying load that would otherwise be carried by code somebody has to maintain.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">One carrier type, closed under every operator</th>
+            <td class="cell">Pick one type and make every operation consume and produce it, so composition recurses for free: each step is a skill directory, each composite is the same link type, and a whole simulated world is itself one of them &mdash; which is why a world is an agent and nests inside another world at any depth.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a>, <a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">The schema lives in the same store as the data</th>
+            <td class="cell">Every relationship type is itself a node that must pass the same validation any fact does, trustworthiness is metadata the structure carries rather than a claim beside it, and a thing&rsquo;s grade is the minimum grade of its parts.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">A prerequisite is a multi-tail edge</th>
+            <td class="cell">Navigation, prerequisite enforcement and context injection become one object: a transition whose entire set of preconditions must have been visited before it is legal, and firing it both moves you and appends the destination&rsquo;s payload to what you are carrying.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Levels are roles, not layers</th>
+            <td class="cell">One flat store where the strata are roles occupied many-to-many by ordinary things, so there is no tower of meta-levels to build or keep consistent.</td>
+            <td class="cell">the lab</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 7 ═══════════════════════════════════════════════════════ -->
+  <section id="r-transform">
+    <div class="wrap">
+      <h2>Code transformation</h2>
+      <p class="receipts-lede">Changing the shape of working code without losing the proof that it works.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Onionisation</th>
+            <td class="cell">Transform real code into ring structure and prove the transform by running the module&rsquo;s own existing test suite, unchanged, against the rebuilt version.</td>
+            <td class="cell"><a href="https://github.com/sancovp/lfpoop">lfpoop</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 8 ═══════════════════════════════════════════════════════ -->
+  <section id="r-teaching" class="dark">
+    <div class="wrap">
+      <h2>Teaching as infrastructure</h2>
+      <p class="receipts-lede">The artifact that does the work and the thing that teaches it are the same object in two moods.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">One artifact, three renderings</th>
+            <td class="cell">A single pattern renders as a skill an agent can install, a course module a person can take, and a video &mdash; so teaching material is installable process rather than writing about process.</td>
+            <td class="cell"><a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Give both sides the same rubric</th>
+            <td class="cell">Splice the verification method verbatim into the judge and into the judged, with role-specific application clauses, so the seller knows inspection is certain and the judge is required to run the same check against its own verdict.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">The system prompt is a build artifact</th>
+            <td class="cell">A worker&rsquo;s prompt is generated at dispatch by inlining the same source files the other executor reads, never a forked copy, so both substrates provably run one source of truth.</td>
+            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">The library ships its own teacher</th>
+            <td class="cell">A Python library reaches agents as a plugin whose skills mirror the API one for one, with the same directory symlinked into every harness&rsquo;s convention folder, so the manual is a loadable capability rather than documentation about a library.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row"><a href="blog/flat-vs-tree.html">Curriculum as manifest</a></th>
+            <td class="cell">A flat pile of sibling skills that all load at once is re-rooted from one manifest into a dependency-ordered tree you walk with a read &mdash; learning order becomes data, context loading becomes traversal, and the testing machine is a node of the same tree.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Steer by shaped space, not better questions</th>
+            <td class="cell">Hand the model a typed stage alphabet, a grammar and two recursion operators, then make it locate the situation inside that structure: complex enough to elicit real reasoning, constrained enough to collapse onto a decision.</td>
+            <td class="cell">the lab</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 9 ═══════════════════════════════════════════════════════ -->
+  <section id="r-boundaries">
+    <div class="wrap">
+      <h2>Boundaries and failure direction</h2>
+      <p class="receipts-lede">Every boundary fails one way or the other. Which way is a design decision, not an accident.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Write the surface for whoever reads it</th>
+            <td class="cell">A tool&rsquo;s return string is a prompt telling the model exactly how to call it again rather than a swallowed exception, and each subsystem&rsquo;s failure direction is chosen deliberately: trust boundaries fail closed and refuse ambiguity, optional overlays are inert by default and fail open so they can never brick the base system.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Guard the narrowest point</th>
+            <td class="cell">Enforce the invariant inside the one function every read passes through rather than at each call site, and expose mutation through a deliberately narrow door that never creates, refuses unresolved references with suggestions instead of stubbing them, and binds every value.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Make the metric unreachable</th>
+            <td class="cell">Stop an optimiser gaming its benchmark structurally rather than by rule: the test battery is closed over so no proposed change can reach it, telemetry returns failing inputs and never expected outputs, and the seat is a toolless call that cannot go and read the answers sitting in the same repository.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Partition the writes</th>
+            <td class="cell">Give an autonomous process one funnel for all of its writes that refuses every path except the artifact directory and the ledger &mdash; which puts its own code, its schedule, its documentation and its off-switch on the read-only side of the same wall.</td>
+            <td class="cell">the lab</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 10 ══════════════════════════════════════════════════════ -->
+  <section id="r-mutation" class="dark">
+    <div class="wrap">
+      <h2>Safe mutation</h2>
+      <p class="receipts-lede">Changing things that cannot be changed back.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Plan, export, then apply</th>
+            <td class="cell">Treat any irreversible bulk change as a guarded transaction: dry-run by default, compute the whole plan from read-only probes, export every affected record before the first write, create the new before deleting the old so nothing is transiently invalid, verify the effect landed, and send anything ambiguous to a human-reviewed report rather than guessing.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Edit by original offset</th>
+            <td class="cell">To change structured objects embedded in free text, scan bracket depth while skipping string contents instead of matching a regular expression, and splice back at recorded byte offsets so everything you didn&rsquo;t touch stays byte-identical.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 11 ══════════════════════════════════════════════════════ -->
+  <section id="r-ownership">
+    <div class="wrap">
+      <h2>Process and ownership</h2>
+      <p class="receipts-lede">Who is allowed to write, and what that single decision buys you.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">One owner per resource</th>
+            <td class="cell">Give a single always-on process exclusive write authority over a shared store or a heavy dependency, and make every other process &mdash; including its own host &mdash; reach it through a dependency-free client, so writes serialise without locks and the heavy stack is paid for once.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Two substrates, one contract</th>
+            <td class="cell">&ldquo;Run the departments&rdquo; is a seam with two real implementations, and the round contract is identical on both sides because the pass-or-fail evidence was moved out of either substrate&rsquo;s transcript and into the shared store.</td>
+            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 12 ══════════════════════════════════════════════════════ -->
+  <section id="r-worlds" class="dark">
+    <div class="wrap">
+      <h2>Worlds and the selection inside them</h2>
+      <p class="receipts-lede">A world is not a loop. It has episodes, inhabitants, heredity, and something that decides what survives.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">Two gates, two questions</th>
+            <td class="cell">Rejection splits into two categorically different organs: a gate asking &ldquo;is this a legal organism at all&rdquo; that returns a cause the proposer can act on, and a race asking &ldquo;is it better&rdquo; that returns nothing at all. Worse never means dead.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">One variable, and ties revert</th>
+            <td class="cell">Build the comparison so the thing under test is the only thing that can differ &mdash; same constructor, same deterministic drivers, a fresh sandbox per side &mdash; then require a strict win to ship, so a tie keeps the incumbent and change has to pay for itself.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Agents propose, one mutator disposes</th>
+            <td class="cell">A whole game world is reusable control pieces plus exactly one game-specific function that raises to reject; agents never write, every refusal is caught and logged as world exhaust, and the offender&rsquo;s only penalty is the progress that didn&rsquo;t happen.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Reset, carry, ratchet</th>
+            <td class="cell">An epoch boundary is not a reset but a three-way partition of state: spendable currencies reset to a floor, earned state carries by default with resets named explicitly, and the standard ratchets monotonically tighter &mdash; which turns termination into a condition inside the world instead of the operator&rsquo;s patience.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Auditing the rules is a legal move</th>
+            <td class="cell">Put the critique surface inside the system as a priced, adjudicated, settled action, so &ldquo;this game&rsquo;s rules are broken&rdquo; becomes a move with a payout rather than a complaint from outside the game.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Inherit the architecture, wipe the memory</th>
+            <td class="cell">Reproduce an agent by copying its entire working directory &mdash; instructions, skills, rules, crafted artifacts, including the odd structure it grew off-script &mdash; then deleting its session memory, so the child is born advanced and born fresh, free to diverge again.</td>
+            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">Scheduled CI is the developer</th>
+            <td class="cell">Invert continuous integration: the scheduled job is not a test runner attached to human commits, it is the developer &mdash; it opens its own pull request, adjudicates it with a controlled trial, and merges on a strict win, so the main branch is the machine&rsquo;s line of descent and humans come in through the same gate.</td>
+            <td class="cell">the lab</td>
+          </tr>
+          <tr>
+            <th class="cell" scope="row">One procedure, every door</th>
+            <td class="cell">Every entry point into the organisation &mdash; a clock tick, a human message, an API call &mdash; resolves to the same complete round, so a trigger says only when and never what, and there is no path that half-runs the loop.</td>
+            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ REGION 13 ══════════════════════════════════════════════════════ -->
+  <section id="r-composition">
+    <div class="wrap">
+      <h2>The composition</h2>
+      <p class="receipts-lede">The one entry that is not a part but the assembly of them, running as a single loop.</p>
+      <table class="data-table">
+        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
+        <tbody>
+          <tr>
+            <th class="cell" scope="row">A symbolic gate on the agent&rsquo;s working memory</th>
+            <td class="cell">An agent whose knowledge lives entirely as a typed semantic graph, where every single write passes a deterministic symbolic gate that can refuse with a typed reason, demand the missing slots back as instructions the writer must act on, route each gap to the specific authority permitted to fill it, and deduce new facts released as effects for an outer worker &mdash; all as the agent&rsquo;s live per-call working memory, not an offline curation pipeline.</td>
+            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — one destination. The engineer who read this far wants to
+       run one, not read another page. ══ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">Where these live</p>
+      <h2>Reading a pattern is not having one.</h2>
+      <p>The repositories named above are open. Clone one, run it, and see whether the mechanism does what this page says it does &mdash; that is the only test any of it is asking you to apply.</p>
+      <a class="cta-big" href="build.html">Run your work inside one &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — pasted verbatim from _templates/_footer.html -->
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="nav.js"></script>
+</body>
+</html>

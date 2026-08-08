@@ -55,6 +55,7 @@ STYLESHEET = os.path.join(ROOT, "style.css")
 CANON_FILES = {
     "index.html", "watch.html", "system.html", "isaac.html",
     "learn.html", "build.html", "run.html", "404.html",
+    "patterns.html",
 }
 # FROZEN — pricing.html is restored verbatim from main by Isaac's order of
 # 2026-08-07 ("STOP CHANGING MY OFFERS"). RULE 00 law 1 makes it his file

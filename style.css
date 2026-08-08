@@ -634,6 +634,16 @@ td.cell, th.cell {
   padding: 0.4rem 0.6rem; text-align: left;
   border-bottom: 1px solid var(--glass-border);
 }
+/* The catalog wall (patterns.html) is 57 rows of the table above, which is
+   the first time a data table has had to carry links and a provenance
+   column. Two declarations rather than 57 inline ones. NO new colours and
+   no new vocabulary: the link colour is the identical declaration `.note a`
+   already carries, and the last column is the "runs in" label — the mono
+   receipt voice that `.eyebrow` and `.receipt-k` already speak in, not the
+   prose voice. Left uncoloured so `.data-table a` still wins inside it. */
+.data-table a { color: var(--mercury-blue); }
+.data-table a:hover { color: var(--text-1); }
+.data-table td:last-child { font-family: var(--micro); font-size: 0.78rem; }
 
 /* .post-nav — the closing block on 40 posts. It was USED forty times and
    DEFINED nowhere: the class did nothing and each post re-declared its
