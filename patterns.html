@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>57 patterns, and where each one runs — Isaac</title>
-<meta name="description" content="The working pattern catalog, opened up: 57 architecture patterns pulled out of real systems, organised by region, each one saying what it does and naming the repository it runs in.">
+<title>25 architectures, and where each one runs — Isaac</title>
+<meta name="description" content="Twenty-five named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
 <link rel="canonical" href="https://sancovp.github.io/aisaac/patterns.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="57 patterns, and where each one runs — Isaac">
-<meta property="og:description" content="The working pattern catalog, opened up: 57 architecture patterns pulled out of real systems, organised by region, each one saying what it does and naming the repository it runs in.">
+<meta property="og:title" content="25 architectures, and where each one runs — Isaac">
+<meta property="og:description" content="Twenty-five named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
 <meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
 <meta property="og:url" content="https://sancovp.github.io/aisaac/patterns.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,27 +17,52 @@
 </head>
 <body data-depth="3">
 <!-- ══════════════════════════════════════════════════════════════════════
-     PATTERNS — the catalog rendered public. RULE 01 mechanic 2 (the depth
-     gradient) at full width: this is the deepest free surface on the site,
-     so it is the densest. data-depth="3" is the density token, nothing else
-     — the page is public, indexed and in the nav (inside/ is the other
-     depth-3 surface and is unlisted for unrelated reasons; RULE 02's
-     implementation record carries the amendment).
+     PATTERNS v2 — THE ARCHITECTURES.
 
-     THE PROOF STANDARD (Isaac, verbatim, governs every row): "I AM TRYING
+     v1 shipped the catalog as 57 table rows organised by region. That page
+     showed the WORKING DISCIPLINES — how a claim earns a receipt — when the
+     job of this surface is to show ARCHITECTURE PATTERNS: named SYSTEM
+     STRUCTURES, with topologies, components and arrows. Gang-of-Four for
+     agent systems. A stranger has to look at an entry and think "I have
+     never seen this shape, and it runs." So the body of the page is now 25
+     structures, and the 57 disciplines sit in one compact closing band where
+     they belong: honest, dense, secondary.
+
+     THE PROOF STANDARD (Isaac, verbatim, governs every entry): "I AM TRYING
      TO SHOW PEOPLE PATTERNS AND ARCHITECTURES THEY DO NOT KNOW. THERE IS
      ZERO NEED FOR ANY PROOF OTHER THAN 'IT DOES X, AND IT RUNS'." So each
-     row is exactly three things: the name, the one sentence saying what it
-     does, and where it runs. No metrics, no cost figures, no novelty
-     essays, no scoreboard. The persuasion is the wall itself (RULE 01: the
-     count and the density do the arguing; superiority is never stated).
+     entry is exactly five things — the name, one sentence, the structure,
+     the participants and their write paths, and where it runs. No metrics,
+     no cost figures, no novelty essays, no scoreboard.
 
-     SOURCE: the internal catalog, entry for entry, organised by its own
-     region lattice. Names carrying internal vocabulary are rendered by
-     their plain mechanism name; the one killed entry stays internal.
-     "Runs in" links ONLY where the receipt sits in a repository the public
-     can actually open today — everything else says "the lab" rather than
-     shipping a 404.
+     SOURCES READ FOR THIS PAGE (RULE 00: nobody edits without reading):
+       · cave-teams/curriculum/TOPOLOGY-DIAGRAMS.md — every verified topology
+       · cave_teams/{blackboard,season,gameworld,gauntlet,skillcraft,
+         darkfactory,evolve,npc,agentdir}.py — the module headers state each
+         structure precisely; those statements are what the entries render
+       · the self-maintaining repository's README + its docs/*.svg
+       · skills/compile-claude-code-component/reference.md — the 7 primitives
+       · the internal catalog, architectural entries only
+       · sancovp/doc-mirror and sancovp/brain-agent public READMEs
+
+     DIAGRAM METHOD. Five entries carry the source repository's OWN diagrams,
+     copied unaltered into assets/ (the build.html precedent: an artifact
+     island is a receipt, and reskinning it destroys the proof it carries).
+     The other twenty carry ASCII structure diagrams in one uniform grammar,
+     declared in the legend below. ASCII rather than inline SVG on purpose:
+     the self-hosted mono is subset to latin-1, so a box-drawing glyph would
+     fall back to a system face mid-diagram and break the grid — and twenty
+     hand-drawn SVGs is a maintenance surface nobody would keep true.
+
+     RUNS-IN. A link ships ONLY where the receipt sits in a repository the
+     public can open today (verified by unauthenticated fetch, not by
+     assumption). Everything else says "the lab" rather than shipping a 404.
+     Two repositories that this page's material comes from are still private;
+     their entries are the ones that say "the lab".
+
+     KEPT OUT, on purpose: the observation-stack shell. Its own source marks
+     it untested and the catalog killed the entry for want of a run receipt.
+     It is a shape, but it is not yet a shape that runs, so it is not here.
      ══════════════════════════════════════════════════════════════════════ -->
 
 <a class="skip-link" href="#main">Skip to content</a>
@@ -62,488 +87,808 @@
   <!-- ══ B2 CLAIM ═══════════════════════════════════════════════════════ -->
   <section class="claim">
     <div class="wrap">
-      <p class="eyebrow">The catalog</p>
-      <h1>57 patterns you probably haven&rsquo;t seen. <span>Every one of them runs.</span></h1>
-      <p class="lede">This is my working catalog, opened up. Each entry is a mechanism I hit in real code, kept, and then used again somewhere else &mdash; so what you get is the name, one sentence saying what it does, and the repository where it runs. Nothing else is offered, because nothing else is worth offering: either a mechanism is new to you or it isn&rsquo;t, and either it runs or it doesn&rsquo;t.</p>
-      <p class="fineprint">Fifty-seven is the count today. It grows when a sweep finds something that appears more than once in code that shipped, and it shrinks when an entry fails its own evidence test. Where a pattern already has a full write-up, its name links to it; most don&rsquo;t have one yet, and those go out one at a time as field notes.</p>
-      <a class="cta-primary mt-m" href="notes/">Read the write-ups &rarr;</a>
+      <p class="eyebrow">The architectures</p>
+      <h1>Twenty-five system shapes. <span>Every one of them runs.</span></h1>
+      <p class="lede">Not tips, not principles, not a list of things I believe about agents. These are structures &mdash; what the parts are, which one is allowed to write, who is allowed to refuse, and where the loop closes. Each entry gives you the name, one sentence, the diagram, the participants, and the repository it runs in. If a shape is new to you, take it; that is what it is here for.</p>
+      <p class="fineprint">Twenty-five is what is standing today. Below them sits the other half of the catalog &mdash; 57 working disciplines these machines are built out of. Those are real and they are secondary: a discipline tells you how to hold a claim, an architecture tells you what to build.</p>
+      <a class="cta-primary mt-m" href="#disciplines">Skip to the 57 disciplines &darr;</a>
     </div>
   </section>
 
-  <!-- ══ THE REGION INDEX — the lattice as jump targets. Reuses the brand
-       tag-pill vocabulary (.eyebrow a), the same control as the corpus
-       filter row, deliberately: it is the same move. ══ -->
+  <!-- ══ THE LEGEND + THE INDEX — the grammar every ASCII diagram speaks,
+       declared once. Reuses the brand tag-pill vocabulary (.eyebrow a), the
+       same control as the corpus filter row. ══ -->
   <section class="flush-top">
     <div class="wrap">
-      <p class="eyebrow">Thirteen regions
-        <a href="#r-reasoning">Reasoning without acting</a>
-        <a href="#r-code">The code/instruction boundary</a>
-        <a href="#r-demand">Demand-driven organisation</a>
-        <a href="#r-declared">Declared versus observed</a>
-        <a href="#r-evidence">Evidence discipline</a>
-        <a href="#r-types">Type-system moves</a>
-        <a href="#r-transform">Code transformation</a>
-        <a href="#r-teaching">Teaching as infrastructure</a>
-        <a href="#r-boundaries">Boundaries and failure direction</a>
-        <a href="#r-mutation">Safe mutation</a>
-        <a href="#r-ownership">Process and ownership</a>
-        <a href="#r-worlds">Worlds and the selection inside them</a>
-        <a href="#r-composition">The composition</a>
+      <p class="eyebrow">Five groups
+        <a href="#g-worlds">Worlds, and the things that live in them</a>
+        <a href="#g-selection">The selection machinery</a>
+        <a href="#g-self">Systems that develop themselves</a>
+        <a href="#g-routing">How work is routed</a>
+        <a href="#g-aios">Operating systems for agents</a>
       </p>
+      <pre class="arch-dia"><code>  READING THE DIAGRAMS
+
+    [ seat ]     a slot an agent or a model occupies. it PROPOSES.
+    ( organ )    code. it executes, measures, refuses, or decides.
+    { state }    the durable thing many read and exactly one writes.
+    --&gt;          a move, an arrow of causation, or a hand-off.</code></pre>
     </div>
   </section>
 
-  <!-- ══ REGION 1 ═══════════════════════════════════════════════════════ -->
-  <section id="r-reasoning">
+  <!-- ══════════════════════════════════════════════════════════════════
+       GROUP A — WORLDS
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-worlds">
     <div class="wrap">
-      <h2>Reasoning without acting</h2>
-      <p class="receipts-lede">How an engine reaches a conclusion without being allowed to touch the world while it is thinking.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Derive, then release</th>
-            <td class="cell">The reasoner may never act on the world mid-derivation: it emits each effect as a description, and a separate outer worker carries those out after the durable write.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Validate synchronously, realise after the commit</th>
-            <td class="cell">The write call itself does no input or output at all &mdash; it drops one command file carrying every deduced follow-on effect as data, and a daemon enacts those effects only once the record has landed.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Bracket the model with code on both sides</th>
-            <td class="cell">Deterministic code picks the exact batch and serves it complete, the model supplies only the judgment, then code independently re-runs the same structural check and marks done only what actually improved.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Park the gap, re-derive on the answer</th>
-            <td class="cell">When a computation needs something only an outside party can supply, don&rsquo;t freeze a continuation: type the gap by who is allowed to fill it, store it as a durable record, and let the answer arrive as a new event that re-runs the whole derivation.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row"><a href="notes/the-validator-that-refuses-to-be-wrong.html">The validator&rsquo;s answer is the next prompt</a></th>
-            <td class="cell">What comes back from a check is not a status code, it is the sentence telling the caller exactly what to write next &mdash; every gap phrased as an imperative.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Hold nothing at rest</th>
-            <td class="cell">The reasoner keeps no facts between events; per event it loads only the concepts actually mentioned plus whatever those require, so the cost of thinking stays flat as the store grows.</td>
-            <td class="cell">the lab</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Worlds, and the things that live in them</h2>
+      <p class="receipts-lede">A world is not a loop with extra steps. It has a persistent state, inhabitants that only ever propose, exactly one thing allowed to write, an epoch boundary, and something that decides what survives it. These nine are the parts and the assemblies.</p>
+
+      <!-- 1 -->
+      <article class="arch">
+        <h3>Agent-in-a-Directory</h3>
+        <p class="arch-what">An agent is not a process you configure &mdash; it is a directory. The folder holds the identity file, the equipped skills, and everything the agent has made; hand that folder to a fresh model process and the process <em>is</em> the agent.</p>
+        <figure class="fig">
+          <img src="assets/dark-factory-agent.svg" alt="An agent is an AI process embodied in a directory: CLAUDE.md is its identity, .claude/skills/ its equipped loadout, crafted/ what it makes. Give the directory to a fresh process and that process IS the agent." width="760" height="430">
+          <figcaption class="fig-cap">The source repository&rsquo;s own diagram, unaltered.</figcaption>
+        </figure>
+        <ul class="arch-moves">
+          <li><b>The body</b> is built from a template with the agent&rsquo;s id rendered into it; skills and rules are <em>equipped</em> into its loadout folder, which is the runtime&rsquo;s native convention, so nothing has to be injected into a prompt.</li>
+          <li><b>Embodiment is a socket:</b> binding a runtime to the directory sets that runtime&rsquo;s working directory, and the loadout is picked up on tool use. Two different runtimes embody the same body identically.</li>
+          <li><b>Rehydration is the same call on an existing body</b> &mdash; which is what makes the directory the identity rather than a workspace the identity happens to use.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 2 -->
+      <article class="arch">
+        <h3>The Blackboard Arena</h3>
+        <p class="arch-what">Not a dataflow shape. N autonomous agents, one persistent shared state, one adjudicator &mdash; coordinating indirectly through the environment rather than by passing each other messages, with a single atomic write path between the proposals and the state.</p>
+        <pre class="arch-dia"><code>   round N
+   [ agent a ]     [ agent b ]     [ agent c ]     each reads the CURRENT
+        |               |               |          board and proposes,
+        '-------.       |       .-------'          concurrently, blind
+                v       v       v                  to the others
+              ( THE MUTATOR )   the ONE write path. all world-logic
+                |         |     lives here; agents only ever propose
+         accept |         | refuse -&gt; ValueError, logged as world
+                v         |           exhaust. the arena survives
+          { THE BOARD }   |           and the round continues
+                |  '------'
+                v
+          ( THE ADJUDICATOR )   reads the board, may rewrite it,
+                |               may set the stop flag
+                '--&gt; next round, until rounds run out or stop is set</code></pre>
+        <ul class="arch-moves">
+          <li><b>Agents never write.</b> They emit a proposal; the mutator applies proposals serially and is the only code that touches state. That is what makes a rejection survivable instead of a crash.</li>
+          <li><b>A refusal is data.</b> The rejected action is logged, and the offender&rsquo;s only penalty is the progress that did not happen.</li>
+          <li><b>The arena is itself a composable unit</b>, so arenas nest inside arenas.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 3 -->
+      <article class="arch">
+        <h3>Reset / Carry / Ratchet &mdash; the epoch boundary</h3>
+        <p class="arch-what">An epoch boundary is not a reset. It is a three-way typed partition of the world&rsquo;s state, and one of the three moves in only one direction &mdash; which is what turns &ldquo;when do we stop&rdquo; into a condition inside the world instead of the operator&rsquo;s patience.</p>
+        <pre class="arch-dia"><code>   season N                  THE BOUNDARY               season N+1
+
+   { spendable currency }  --&gt;  RESET   to the floor  --&gt;  { at the floor }
+   { earned state:        }  --&gt;  CARRY   by default   --&gt;  { still there  }
+   {   reputation, records }      a reset must be NAMED
+   { the valuation standard } --&gt; RATCHET monotonically --&gt; { tighter }
+
+   the SAME agents cross the boundary. the bar they are judged
+   against never comes back down, so the next epoch is harder
+   than the one they just survived.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Carry is the default and reset is the exception</b>, stated explicitly per field. The direction of that default is the whole design: forgetting has to be argued for.</li>
+          <li><b>The ratchet is on the standard, not the score.</b> Nothing an agent earned is taken away; what changes is what counts as good.</li>
+          <li><b>It composes:</b> a season wraps an arena, and a season is itself a unit, so a whole seasoned world drops into any slot that takes one agent.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 4 -->
+      <article class="arch">
+        <h3>GameWorld = season(blackboard(...))</h3>
+        <p class="arch-what">A whole game world as one composable object: a program and a class. Everything a sprawl of shell scripts and a giant shared state file used to do collapses into two primitives wrapped in each other.</p>
+        <pre class="arch-dia"><code>   GameWorld
+   +-------------------------------------------------------------+
+   |  season( arena, advance = reset / carry / ratchet )         |
+   |                                                             |
+   |    +-----------------------------------------------------+  |
+   |    |  blackboard( [ agents ] &lt;-&gt; { state } &lt;-&gt; referee,  |  |
+   |    |              mutator = THIS game's rules )          |  |
+   |    +-----------------------------------------------------+  |
+   +-------------------------------------------------------------+
+
+   one class, so a world is:
+     instantiable   many worlds from one definition
+     data-driven    from_spec(spec) is a mode-to-economy compiler
+     subclassable   a specific game fixes its own economy + ratchet</code></pre>
+        <ul class="arch-moves">
+          <li><b>The only game-specific part is the mutator.</b> Everything else &mdash; rounds, the board, the epoch boundary, the adjudicator seat &mdash; is reusable control machinery.</li>
+          <li><b>The world is a value, not a script.</b> It has a constructor, so you can hold ten of them, diff them, and pass one as an argument.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 5 -->
+      <article class="arch">
+        <h3>World-as-Agent &mdash; the closure law</h3>
+        <p class="arch-what">Pick one carrier type and close every operator over it, and composition recurses for free: a whole simulated world satisfies the agent contract, so a world <em>is</em> an agent and nests inside another world at any depth. The interface between levels is a single projection function, not a protocol.</p>
+        <pre class="arch-dia"><code>   OUTER WORLD
+   +-------------------------------------------------------------+
+   |  [ agent ]   [ agent ]   [ -- an entire inner world -- ]    |
+   |                       +----------------------------------+  |
+   |                       |  [a] [b] --&gt; ( inner mutator )   |  |
+   |                       |        { inner board }           |  |
+   |                       |        ( inner referee )         |  |
+   |                       +----------------------------------+  |
+   |                                    |                        |
+   |        derive_action: collapse the whole inner run          |
+   |        down to ONE outer move                               |
+   |                                    v                        |
+   |                           ( outer mutator )                 |
+   +-------------------------------------------------------------+
+
+   proven three levels deep: the inner world's earnings become its
+   single move in the middle world, which surfaces in the outer one.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The same carrier type all the way down.</b> Sequence, parallel, choice, gate, team &mdash; every operator consumes and produces it, which is why nesting needs no adapter layer.</li>
+          <li><b>Level-crossing is one function you supply</b>: given the inner world&rsquo;s finished board, what single action did it just take? Change that function and the same inner world means something different upstairs.</li>
+          <li><b>The same law at the small scale:</b> in the compiler, every operation consumes and produces a skill directory, so a composite is the same kind of thing as a step.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a>, <a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></p>
+      </article>
+
+      <!-- 6 -->
+      <article class="arch">
+        <h3>The Skillcraft Market World</h3>
+        <p class="arch-what">A world whose economy manufactures honest signals about which agent work is worth anything: agents craft real files, cannot list one without a test record, and the only way a skill acquires value is that a <em>peer pays for it</em>. A referee applies selection pressure from above.</p>
+        <figure class="fig">
+          <img src="assets/dark-factory-wos.svg" alt="The market world: two AI agents, each embodied in a directory and holding 100 gold, craft, test and trade skills on a trade board that refuses any listing without a test record; a referee validates bug bounties; quests pay a reward parsed out of the quest file itself; each epoch resets the gold but the quality bar only ratchets up." width="1000" height="560">
+          <figcaption class="fig-cap">The source repository&rsquo;s own diagram, unaltered.</figcaption>
+        </figure>
+        <ul class="arch-moves">
+          <li><b>The embodiment is real files.</b> Crafting writes an actual skill document; a passing test mints an actual test record; buying moves the file to the buyer. Nothing is a counter pretending to be a transaction.</li>
+          <li><b>The guards are on the mutator, not in the briefing.</b> Listing checks that the file exists <em>and</em> that a test record points at that specific file; you cannot buy your own listing; a quest&rsquo;s reward is read out of the quest file, so an agent claiming a bigger payout gets the file&rsquo;s number.</li>
+          <li><b>Auditing the economy is a priced move.</b> A player can file a bug report against the rules of the game they are playing; the referee validates it; the season settles the bounty. Critique is inside the system, not a complaint from outside it.</li>
+          <li><b>Every guard is a fossilised bug fix</b> from real seasons, ported in intent rather than re-invented.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 7 -->
+      <article class="arch">
+        <h3>The Gauntlet World</h3>
+        <p class="arch-what">The parallel-builders-and-a-blind-critic loop, with every prose rule moved into the structural slot that can mechanically refuse it. What was &ldquo;please stay in your own directory&rdquo; in a briefing becomes a write the mutator rejects.</p>
+        <pre class="arch-dia"><code>   season( blackboard( builders &lt;-&gt; { board } &lt;-&gt; blind critic ) )
+
+   [ builder: render ] --.
+   [ builder: audio  ] --+--&gt; ( THE MUTATOR )   a write outside your own
+   [ builder: ai     ] --'          |           subsystem is REFUSED, not
+                                    |           requested
+                                    v
+                      { board: the built subsystems,
+                        THE CRITIQUE LEDGER,
+                        the bar }
+                                    |
+                                    v
+                        [ THE BLIND CRITIC ]   fresh context; compares the
+                                    |          build to a real reference
+                                    v
+     THE BOUNDARY:  the critique ledger CARRIES  (the critic stops
+                      re-diagnosing what was already answered)
+                    the bar RATCHETS
+                    the season count IS the termination -- in-world,
+                      not a human watching a meter</code></pre>
+        <ul class="arch-moves">
+          <li><b>Four prose rules, four slots.</b> Directory ownership &rarr; the mutator. Critic amnesia &rarr; a ledger that carries across the boundary. A fixed bar &rarr; the ratchet. A human deciding when to stop &rarr; the season count.</li>
+          <li><b>The board is data in and data out</b>, so the run persists, resumes, and nests as one agent inside a larger world &mdash; which the single-session prompt version could not do.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 8 -->
+      <article class="arch">
+        <h3>NPCs &mdash; the agent factory, placed inside the world</h3>
+        <p class="arch-what">Some agents exist inside the world and are callable <em>by the players</em>, as a move. What the NPC makes &mdash; a prompt, a skill, an entire agent &mdash; is deposited into the caller&rsquo;s inventory on the shared board. The factory stops being infrastructure and becomes a character.</p>
+        <pre class="arch-dia"><code>   [ player ] --&gt; action { type: call_npc, npc: "oracle", ask: ... }
+                          |
+                          v
+                  ( npc_mutator )   wraps ANY economy: call_npc is routed
+                          |         to the registry, everything else is
+                          |         delegated to the base game's rules
+                          v
+                    [ THE NPC ]     a seat like any other -- so a whole
+                          |         GameWorld can sit in it
+                          v
+        { the caller's inventory on the board }
+              &lt;-- the crafted reply lands here as world state</code></pre>
+        <ul class="arch-moves">
+          <li><b>The wrapper is the whole mechanism.</b> Any existing economy gains NPCs by being wrapped; the base rules do not learn that NPCs exist.</li>
+          <li><b>The reply is world state, not a message.</b> It lands in an inventory other moves can read, so what an NPC gave you is a thing you now have.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 9 -->
+      <article class="arch">
+        <h3>Inherit the directory, wipe the memory</h3>
+        <p class="arch-what">Reproduction for an agent whose architecture <em>is</em> its directory: copy the whole body, including the odd structure it grew off-script, then delete its episodic memory. The child is born advanced and born fresh.</p>
+        <pre class="arch-dia"><code>   THE WINNER'S BODY                          THE CHILD
+   +-----------------------------+            +-----------------------------+
+   | identity file               |  copy  --&gt; | identity file               |
+   | .claude/skills/             |  copy  --&gt; | .claude/skills/             |
+   |   including the weird ones  |            |   including the weird ones  |
+   |   it invented off-script    |            |                             |
+   | rules/                      |  copy  --&gt; | rules/                      |
+   | crafted artifacts           |  copy  --&gt; | crafted artifacts           |
+   |                             |            |                             |
+   | session / episodic memory   |  WIPED     |          (empty)            |
+   +-----------------------------+            +-----------------------------+
+
+   you INHERIT THE ALTITUDE (the directory) and REGROW THE CONTENT
+   (the memory), so the child re-engages an advanced body cold and is
+   free to diverge again. selection is the external buyer, never self-report.</code></pre>
+        <ul class="arch-moves">
+          <li><b>This is not a season advance.</b> A season keeps the same agent and its memories; this makes a new agent that must not remember the parent&rsquo;s sessions.</li>
+          <li><b>Divergence is inherited on purpose.</b> No canonical pattern is imposed on the child &mdash; whatever weird structure earned the win is copied intact, because that structure is the thing being selected.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
     </div>
   </section>
 
-  <!-- ══ REGION 2 ═══════════════════════════════════════════════════════ -->
-  <section id="r-code" class="dark">
+  <!-- ══════════════════════════════════════════════════════════════════
+       GROUP B — SELECTION
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-selection" class="dark">
     <div class="wrap">
-      <h2>The code/instruction boundary</h2>
-      <p class="receipts-lede">What has to be written as a function, and what is only a sentence you hand a language model.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">The one law</th>
-            <td class="cell">A thing is code only if it must execute an external effect &mdash; a mail server, an HTTP API, a database, a file. Everything else is an instruction handed to the model, and writing it as a function is how codebases get enormous.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row"><a href="blog/owl-to-agent.html">Turn a code object into a system type</a></th>
-            <td class="cell">Introspect a typed Python model and project it into an ontology type whose fields become required, typed restrictions, so your classes are literally the system&rsquo;s vocabulary rather than a description of it.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">One generative slot</th>
-            <td class="cell">Exactly one position in the loop is permitted to be non-deterministic, and its socket is generic enough that a plain function, a live model session, or an entire nested world of trading agents drops in without changing anything that judges.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Move every rule to the slot that can refuse it</th>
-            <td class="cell">Take each &ldquo;must&rdquo; and &ldquo;never&rdquo; out of the prompt and relocate it to the structural position that can mechanically reject the violation, so the rule stops being obeyed and starts being true.</td>
-            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>The selection machinery</h2>
+      <p class="receipts-lede">You do not need the thing proposing changes to be right. You need the structure that decides which changes survive to be sound. These five are that structure, taken apart.</p>
+
+      <!-- 10 -->
+      <article class="arch">
+        <h3>The Ladder of Orders</h3>
+        <p class="arch-what">Five orders of evidence, each one a typed simulation, each harder to survive than the one below it &mdash; and the artifact under test is the same object all the way up. The frame is a racing team: nothing is about the drivers, everything is an effect of the car&rsquo;s fitness.</p>
+        <pre class="arch-dia"><code>   ORDER            WHAT IT IS                      WHAT IT PRODUCES
+   --------------   -----------------------------   ---------------------
+   [ driver ]       an agent with an opinion        a claim
+   ( world )        a market that selects           a price nobody set
+                                                      on their own
+   ( stable )       a directed R&amp;D loop with        a survivor, or a
+                      a DEATH gate                    cause of death
+   ( racetrack )    ONE controlled trial:           a CAUSAL verdict
+                      exactly one variable
+   ( championship ) the same trial, replicated,     a verdict that
+                      decided by strict majority      survives noise
+
+   each rung is harder to survive than the one below it, and the artifact
+   under test -- the "car" -- is the SAME OBJECT all the way up: the car is
+   the configuration that parameterises the world, so racing a car IS
+   running a world. no order above ever learns what a car is made of.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Each rung kills a different failure mode</b>, so a change that is merely plausible has to get past a market, then a death gate, then an experiment, then a repeat of the experiment.</li>
+          <li><b>The rungs are separable.</b> You can run the market alone, or the racetrack alone; the ladder is a composition, not a monolith.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 11 -->
+      <article class="arch">
+        <h3>The Two-Tier Gate</h3>
+        <p class="arch-what">Rejection is two categorically different organs, and confusing them is how selection loops rot. One asks &ldquo;is this a legal organism at all&rdquo; and answers with a cause. The other asks &ldquo;is it better&rdquo; and answers with nothing. Worse never means dead.</p>
+        <pre class="arch-dia"><code>                     [ THE PROPOSER ]
+                            |  a candidate
+                            v
+              ( THE GATE )   is this a legal organism at all?
+              materialises the candidate in a sandbox and RUNS it
+                  |                    |
+            alive |                    | DEAD
+                  |                    v
+                  |             { the cause }  a string, fed straight back
+                  |                    |       into the proposer's next
+                  |                    '--&gt;    attempt. lineage: extinct.
+                  v
+          ( THE RACETRACK )   is it better?
+                  |                    |
+             ship |                    | worse -&gt; NOTHING. no feedback,
+                  v                              no death. the incumbent
+            { it merges }                        simply stays.
+
+   PARTIAL failure is LIFE: something that errors on some cases survives
+   to be selected against. and the gate does NOT repair its input --
+   repairing launders the very signal the selection is reading.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The gate&rsquo;s output is a prompt.</b> A death returns a cause the proposer can act on, which is what makes the next attempt informed rather than a re-roll.</li>
+          <li><b>The race is deliberately mute.</b> Feeding the loser a critique would teach the proposer to argue with the experiment.</li>
+          <li><b>No silent correction.</b> Sanitising a malformed candidate would let a bad proposer keep scoring on the fixer&rsquo;s work.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 12 -->
+      <article class="arch">
+        <h3>The Racetrack &mdash; one variable, and ties revert</h3>
+        <p class="arch-what">Replace review with an experiment. Two live worlds boot identical in every way except the one thing under test, both play, and the comparison is therefore causal: not &ldquo;the numbers moved after we shipped&rdquo; but &ldquo;the world with this change out-produced the world without it, same day, same conditions.&rdquo;</p>
+        <pre class="arch-dia"><code>              ONE VARIABLE, BY CONSTRUCTION
+
+   ( same constructor )                  ( same constructor )
+             |                                    |
+   [ CONTROL ARM ]                       [ TREATMENT ARM ]
+     the incumbent                         the candidate
+     fresh sandbox                         fresh sandbox
+     identical drivers                     identical drivers
+     identical rounds                      identical rounds
+             |                                    |
+             '--------------&gt; ( JUDGE ) &lt;---------'
+                                 |
+             strictly beats --&gt; SHIP
+             tie or loss    --&gt; REVERT
+
+   a tie NEVER ships. change has a cost, and a coin-flip is not evidence.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Identical by construction, not by discipline.</b> Both arms come out of the same constructor with the same drivers, so &ldquo;we forgot to hold something constant&rdquo; is not a possible mistake.</li>
+          <li><b>Fitness is what the world did</b> &mdash; a count read off the world&rsquo;s own records &mdash; not a model&rsquo;s opinion of the change. The judge compares two integers.</li>
+          <li><b>The default is the incumbent.</b> Requiring a strict win is what stops a loop from drifting on noise.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 13 -->
+      <article class="arch">
+        <h3>The Championship &mdash; rigour as a dial on the constructor</h3>
+        <p class="arch-what">Evidence strength is a parameter, not a rewrite. One number turns a single controlled trial into a replicated majority-vote championship with an identical report contract &mdash; and the runtime picks the setting from how noisy the judge is.</p>
+        <pre class="arch-dia"><code>   replicates = 1    ( racetrack )                     --&gt; verdict
+   replicates = 3    ( racetrack ) x3  --&gt; majority     --&gt; verdict
+   replicates = 7    ( racetrack ) x7  --&gt; majority     --&gt; verdict
+
+              same arms. same fitness. same report shape.
+              one constructor argument is the only difference.
+
+   deterministic drivers  =&gt; a ZERO-NOISE trial: one race is already
+                             a sound comparison
+   model-driven arms      =&gt; the worlds are noisy, so replicate and
+                             decide by STRICT majority</code></pre>
+        <ul class="arch-moves">
+          <li><b>The escalation costs nothing structurally.</b> Everything downstream reads one report shape, so raising rigour never forks the pipeline.</li>
+          <li><b>The setting is justified by the judge, not by taste.</b> Noise in the measurement is what buys replicates; a deterministic measurement does not get to claim them.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 14 -->
+      <article class="arch">
+        <h3>The Single Generative Slot</h3>
+        <p class="arch-what">Exactly one position in the loop is allowed to be non-deterministic. Everything that judges is code. And that one socket is generic enough that a plain function, a live model session, or an entire nested world of trading agents drops into it with no adapter.</p>
+        <pre class="arch-dia"><code>   ( gate )   ( track )   ( drivers )   ( judge )   ( fitness )
+       \           \          |            /            /
+        '----------+----------+-----------+------------'
+                              |          ALL CODE: execution
+                              |          and measurement only
+                              v
+                     [ THE PROPOSER ]
+                the ONE non-deterministic position
+
+   and the socket accepts, unchanged:
+
+     a plain function      ctx -&gt; delta
+     a live model seat     ONE conversation held across attempts, so a
+                           death at the gate is context it still has
+     an ENTIRE WORLD       a market of dev agents where one crafts the
+                           change, a second BUYS it, and the purchased
+                           artifact is read off disk as the proposal</code></pre>
+        <ul class="arch-moves">
+          <li><b>The contract is one field.</b> A world satisfies the proposer contract because its level-crossing projection writes to the same key a function would &mdash; which is the whole reason a market can be dropped in where a lambda was.</li>
+          <li><b>Nothing that judges is generative.</b> The gate, the track, the drivers, the judge and the fitness are execution and measurement, so there is no place for a model to talk its way past a result.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
     </div>
   </section>
 
-  <!-- ══ REGION 3 ═══════════════════════════════════════════════════════ -->
-  <section id="r-demand">
+  <!-- ══════════════════════════════════════════════════════════════════
+       GROUP C — SELF-DEVELOPING
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-self">
     <div class="wrap">
-      <h2>Demand-driven organisation</h2>
-      <p class="receipts-lede">Nothing gets built until something specific asks for it by name.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">The gap list is the workflow</th>
-            <td class="cell">No artifact is generated speculatively; every one is pulled into existence by a named absence, so the outstanding gaps and the plan of work are the same object.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">A pipeline is a type</th>
-            <td class="cell">A workflow is a typed object whose required slots are its stages, so the ordinary machinery that fills missing fields is what sequences the build.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Three ways a state can change</th>
-            <td class="cell">Every transition in the system is induced by exactly one of three things: a gap pulls it, recurrence reifies it, or a signature releases it. There is no fourth.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Frictionless capture, gated canon</th>
-            <td class="cell">A phrase becomes a concept once its usage recurs, everything is admitted to an unvalidated layer with zero friction, and promotion toward canonical happens through a gate that warns rather than blocks &mdash; judging the accumulated union each time, so a concept climbs by being filled in.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">The server holds the repair buffer</th>
-            <td class="cell">When a large structured call fails, its payload is kept server-side under the entity&rsquo;s name and the model is told the retry need only supply the missing fields, so a heavy typed call becomes repairable across turns.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Rounds as data</th>
-            <td class="cell">Every worker report carries a reproducible recipe, identical process names accumulate into a pattern on their own, and harvesting emits a skill whose organisational scope is deduced from who appears in the trace.</td>
-            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Systems that develop themselves</h2>
+      <p class="receipts-lede">Three structures from one machine: a repository that maintains and improves itself on a schedule, with no human in the loop and no trust in the model doing the work.</p>
+
+      <!-- 15 -->
+      <article class="arch">
+        <h3>The Three-Gate Escalation</h3>
+        <p class="arch-what">What replaces human review is not a better reviewer. It is three independent gates in series, each killing a failure mode the others cannot see, ending in a controlled experiment.</p>
+        <figure class="fig">
+          <img src="assets/dark-factory-gates.svg" alt="Three gates in sequence: the market (a peer must pay gold — kills self-assessed value), the fresh-model test (a blank instance must follow the skill from text alone — kills context-dependence and forged records), and the replicated race (the live world with the change must out-produce the one without — kills plausible-but-useless changes). What falls through becomes receipts." width="1120" height="330">
+          <figcaption class="fig-cap">The source repository&rsquo;s own diagram, unaltered.</figcaption>
+        </figure>
+        <ul class="arch-moves">
+          <li><b>Gate one, the market:</b> a peer had to pay for it. Kills self-assessed value &mdash; self-praise is worth nothing.</li>
+          <li><b>Gate two, the fresh-model test:</b> a completely blank model instance &mdash; no history, no context, no knowledge of the system &mdash; is handed only the artifact&rsquo;s text and one input, and must follow it. Kills anything that only worked with its author in the room. The gate&rsquo;s own run <em>mints the test record</em>, so the certificate never comes from the claimant.</li>
+          <li><b>Gate three, the replicated race:</b> the world with the change has to out-produce the world without it. Kills changes that are plausible, well-argued and useless. The proposer can be confidently wrong; the experiment does not care.</li>
+          <li><b>What falls through is not waste.</b> Each death is logged with its cause and becomes the input signal for the next cycle.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 16 -->
+      <article class="arch">
+        <h3>The Self-Developing Repository</h3>
+        <p class="arch-what">Invert continuous integration. The scheduled job is not a test runner attached to human commits &mdash; it <em>is</em> the developer. It convenes a world of agents, takes the change the market voted for, gates it, races it, opens its own pull request, and merges on a strict win.</p>
+        <figure class="fig">
+          <img src="assets/dark-factory-cycle.svg" alt="One cycle: telemetry, dev-world, apply, gate, race, ship or receipt — deaths loop back to dev, ships loop back to live." width="1240" height="400">
+          <figcaption class="fig-cap">The source repository&rsquo;s own diagram, unaltered.</figcaption>
+        </figure>
+        <ul class="arch-moves">
+          <li><b>Step 0 is telemetry from a live world</b> running on the current version of the package. Its throughput is the fitness of the current version of the repository &mdash; the codebase is measured by what a world built on it manages to do.</li>
+          <li><b>The dev world&rsquo;s product is an instrument, not an answer.</b> Agents craft candidate <em>procedures</em>; the one a peer actually bought is then executed against a checkout, and the diff that falls out is the proposal.</li>
+          <li><b>The merge condition is not &ldquo;tests pass.&rdquo;</b> It is &ldquo;the treatment strictly beat the control on the same measurement, today.&rdquo;</li>
+          <li><b>Lessons accumulate separately from skills.</b> After the verdict the referee reviews the whole trace and writes the lesson into a standing rulebook every future world boots with &mdash; so the way it develops improves, not only what it has developed.</li>
+          <li><b>Containment is a write partition:</b> the runner can write the world definition, the shipped skill set and the ledger. Its own code, its schedule and its off-switch are on the read-only side of the same wall.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 17 -->
+      <article class="arch">
+        <h3>The Closed Trigger Loop</h3>
+        <p class="arch-what">The loop closes when the running system&rsquo;s own failures are what summon the development system. Agents file bugs from inside the game, the referee validates them, validated bugs become real issues, and an issue landing convenes the dev world automatically.</p>
+        <figure class="fig">
+          <img src="assets/dark-factory-loop.svg" alt="The closed loop: live play, bugs filed from inside the game and validated by the referee, real issues, the dev world convenes, the gates and the ship decision, live play resumes on the new version — with the daily schedule as the heartbeat." width="860" height="560">
+          <figcaption class="fig-cap">The source repository&rsquo;s own diagram, unaltered.</figcaption>
+        </figure>
+        <ul class="arch-moves">
+          <li><b>Three doors, one procedure:</b> the daily schedule is the heartbeat, a validated in-game bug is the demand signal, and a manual dispatch is the override. All three convene the same cycle.</li>
+          <li><b>The bug report is an in-world move</b> before it is an issue &mdash; filed by a player, adjudicated by the referee, paid at the epoch boundary. That is what stops the backlog from being someone&rsquo;s opinion.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
     </div>
   </section>
 
-  <!-- ══ REGION 4 ═══════════════════════════════════════════════════════ -->
-  <section id="r-declared" class="dark">
+  <!-- ══════════════════════════════════════════════════════════════════
+       GROUP D — ROUTING
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-routing" class="dark">
     <div class="wrap">
-      <h2>Declared versus observed</h2>
-      <p class="receipts-lede">What a system says about itself, held against the record of what it actually did.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Hold the self-description against the event stream</th>
-            <td class="cell">Compare what a system declares it does with what its own records show it did, and surface each divergence as a typed item that carries its own repair spec.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Boundary sealing and validity intervals</th>
-            <td class="cell">A traced execution boundary covers nothing until it is sealed; drift invalidates it through everything composed on top of it, and the resulting work item carries the root reason rather than a symptom.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">One source, many compiled projections</th>
-            <td class="cell">Canonical data lives in one store and every file, channel, environment and directory is a typed projection you re-render on demand &mdash; never hand-authored, always a full render that converges instead of churning, and drift heals by backfilling from either side.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>How work is routed through an organisation</h2>
+      <p class="receipts-lede">Four structures for the part everybody hand-waves: who is dispatched, in what order, on what evidence, and what the run leaves behind that is worth more than a log.</p>
+
+      <!-- 18 -->
+      <article class="arch">
+        <h3>The Leader-Driven Message Spine</h3>
+        <p class="arch-what">Multi-agent coordination where a message is a file, a dispatch is a <em>pointer</em> to a file, and a guardrail sits between what the leader wants and what actually gets delivered. Turn order becomes a checkable property rather than a hope.</p>
+        <pre class="arch-dia"><code>   [ THE LEADER ]  proposes:  leader_outbox/msg_007.json
+        |          { to, prompt, path, wait, end }
+        |
+        |   three kinds of leader, one proposal shape:
+        |     a coded function decides    an LLM emits JSON
+        |     an LLM writes a message file
+        v
+   ( check_proposal )   THE GUARDRAIL
+        |          |
+   invalid         | valid
+        |          v
+        |    inbox/&lt;teammate&gt;/msg.json      delivered
+        |          |
+        |          v
+        |    [ the teammate runs, and OPENS THE FILE IT POINTS AT ]
+        |          |
+        |          +--&gt; artifacts/&lt;name&gt;-response-N.txt   the payload
+        |          '--&gt; messages/....json                 the record
+        |
+        '--&gt; re-prompt the leader WITH THE REASON
+             ("it isn't the writer's turn -- these can run now: [...]")</code></pre>
+        <ul class="arch-moves">
+          <li><b>Pointer, not payload.</b> A dispatch carries a path; the teammate has to go and read the artifact. That is what makes hand-offs auditable &mdash; and it is also a real constraint: a tool-less model leader cannot gate a loop on a teammate&rsquo;s verdict, because it is handed the path and never the contents.</li>
+          <li><b>An invalid proposal is not an error, it is a turn.</b> The leader is re-prompted with the reason and the set of agents that <em>could</em> run now.</li>
+          <li><b>Revision loops are legal by design:</b> the guardrail permits re-dispatching an agent that already answered, and a step ceiling bounds the loop.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
+      </article>
+
+      <!-- 19 -->
+      <article class="arch">
+        <h3>The Executor Seam</h3>
+        <p class="arch-what">&ldquo;Run the departments&rdquo; is a seam with two real implementations on completely different substrates &mdash; and the round contract is identical on both sides, because the pass-or-fail evidence was moved out of either substrate&rsquo;s transcript and into the shared store.</p>
+        <pre class="arch-dia"><code>                   "run the departments"
+                            |  ONE contract
+             +--------------+---------------+
+             v                              v
+   [ SUBSTRATE A ]                 [ SUBSTRATE B ]
+   agent processes running         worker agents in a
+   IN the department dirs          separate runtime
+             |                              |
+             '--------------+---------------'
+                            v
+                  { THE SHARED STORE }
+
+     the acceptance predicate lives HERE, not in a transcript:
+       observations --&gt; supposedly_done --&gt; review --&gt; complete --&gt; goal met
+
+   which is the only reason the seam is legal: one substrate leaves a
+   directory transcript and the other does not, so a transcript could
+   never have been the contract.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The seam is a dispatch on one variable</b>, and the instruction on both branches is the same sentence: the departments do the work and report; you do not inline their work while you wait.</li>
+          <li><b>A third, diagnostic substrate exists</b> &mdash; a deterministic stand-in that posts the expected observations &mdash; because anything with the right method signature is a valid runtime. That is how the contract gets tested without spending a model call.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></p>
+      </article>
+
+      <!-- 20 -->
+      <article class="arch">
+        <h3>One Procedure, Every Door</h3>
+        <p class="arch-what">Every entry point into the organisation &mdash; a clock tick, a human message, an API call &mdash; resolves to the same complete round. A trigger says only <em>when</em>. It never says <em>what</em>. There is no path that half-runs the loop.</p>
+        <pre class="arch-dia"><code>   a clock tick  ----.
+   a human message ---+--&gt; ( ONE prompt-generating function ) --&gt; THE ROUND
+   an API call    ----'                                           steps 0..6,
+                                                                  in full
+   BEFORE: each door had its own vague poke, and one of them was a
+           broadcast that created nothing at all.
+
+   AFTER:  every door calls the same function and pushes it down the
+           same path. the skill itself carries the closure --
+           "a round that half-runs is a bug, not a small round."
+
+   the move is edge-triggered --&gt; LEVEL-TRIGGERED: the desired state is
+   re-established in full on every event, whatever the event was.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The convergence is enforced in one place</b>: the function that builds the round instruction. Adding a door means calling it, and there is nowhere to put a shortcut.</li>
+          <li><b>New instances are born converged</b>, because the template ships this way rather than being fixed up afterwards.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></p>
+      </article>
+
+      <!-- 21 -->
+      <article class="arch">
+        <h3>Rounds as Data, and the Harvested Procedure</h3>
+        <p class="arch-what">Make every worker report a model fragment instead of a log line, and organisational knowledge accumulates on its own: identical process names pile into a pattern, and harvesting emits an installable procedure whose <em>scope</em> is deduced from who appears in the trace.</p>
+        <pre class="arch-dia"><code>   [ worker ] --&gt; an event that MUST carry:
+                  { process, domain, instructions, kv }
+
+                  instructions = "how to reproduce this result --
+                                  write it as if teaching someone who
+                                  has never done this before"
+                        |
+                        v
+              ( the server groups events by PROCESS NAME )
+                        |
+                        v
+              { a pattern: steps, agents_involved, depts_involved }
+                        |
+                        v
+              ( harvest )  reads the PARTICIPANT SET to place the artifact
+                        |
+        more than one department  --&gt;  a business-wide procedure
+        one department, one agent --&gt;  that agent's own procedure
+        one department, N agents  --&gt;  a resource under that department
+
+   omitting the fields is not a style violation. it means your work
+   taught the system nothing.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The report contract does the work.</b> Because every event carries a reproducible recipe, the pattern is assembled by grouping rather than by anyone writing documentation.</li>
+          <li><b>Scope is inferred, not declared.</b> Who took part in the trace decides whether the harvested artifact belongs to an agent, a department, or the whole business.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></p>
+      </article>
+
     </div>
   </section>
 
-  <!-- ══ REGION 5 ═══════════════════════════════════════════════════════ -->
-  <section id="r-evidence">
+  <!-- ══════════════════════════════════════════════════════════════════
+       GROUP E — AGENT OPERATING SYSTEMS
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-aios">
     <div class="wrap">
-      <h2>Evidence discipline</h2>
-      <p class="receipts-lede">How a claim survives contact with something trying to break it, including me.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Don&rsquo;t judge the artifact, run it</th>
-            <td class="cell">Instead of scoring a thing with a judge, instantiate it as the world and read what the world does; where the artifact isn&rsquo;t executable by code, drop a fresh model with none of the build context into the same socket &mdash; execute what executes, ballot only what can&rsquo;t.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Nothing mints its own receipt</th>
-            <td class="cell">No agent may write its own scoreboard: payoffs are read from world-owned files rather than from anything the agent submitted, and a value claim must carry a receipt bound to that specific artifact and issued by a third party with no context.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Rigour is a dial on the constructor</th>
-            <td class="cell">Evidence strength is a parameter rather than a rewrite: one number turns a single controlled trial into a replicated majority-vote championship with an identical report contract, and the runtime picks the setting from how deterministic the judge is.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">The graveyard is the deliverable</th>
-            <td class="cell">A losing proposal is not discarded but closed with its measured verdict attached, and every death is appended to a machine-readable record, so the standing proof of rigour is the pile of things that were refused.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Read the transcript before concluding</th>
-            <td class="cell">A status flag is never evidence &mdash; the harness has to open the message files, the artifacts and the agent histories; and the runtime enforces the same discipline by handing over a pointer instead of the payload.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Nothing the checker says evaporates</th>
-            <td class="cell">Pass a validator&rsquo;s output through verbatim rather than parsing it to decide what to show, overflow to a file rather than truncate, and keep its live rejections &mdash; those are the labelled negative examples other systems have to manufacture.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Carry the limits as data</th>
-            <td class="cell">Build and run the specific refutation first and read-only, treat &ldquo;the criterion cannot even engage yet&rdquo; as a legitimate stop, attach the soundness caveat to every result as a field, and never fill a hole with a number.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Clone the proven shape, then name the one thing that changed</th>
-            <td class="cell">Don&rsquo;t redesign something that resembles a system already working: copy the architecture verbatim, then isolate and document the single translation that differs, so the risk is one named delta and everything else inherits the proof.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Test inputs are never authored</th>
-            <td class="cell">The fixture library is history&rsquo;s own before-and-after pairs, taken from what the system actually did, so the tests cannot quietly encode what you hoped it did.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Loops don&rsquo;t climb</th>
-            <td class="cell">A generator-and-critic loop plateaus when the generator is a single point and the judge is half-blind; the step change comes from giving it a combinatorial space to search and an instrument to see with, not from running more rounds.</td>
-            <td class="cell">the lab</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Operating systems for agents</h2>
+      <p class="receipts-lede">Four structures at the layer above a single agent: the shape of what an agent lives inside, what it retrieves through, what it is assembled from &mdash; and one that this page is currently running.</p>
+
+      <!-- 22 -->
+      <article class="arch">
+        <h3>The Cursor State Machine</h3>
+        <p class="arch-what">An agent that is always <em>inside</em> one state, routed there by a persisted &ldquo;you are here&rdquo; pin, where the states are skills. It does that state&rsquo;s leg, advances the cursor, journals why, and loops. Two agents on the same codebase produce the same structure &mdash; that invariance is the point.</p>
+        <pre class="arch-dia"><code>   ( BOOT )  the first thing every session does, and every
+      |       resumption after a context compaction
+      v
+   ( read { THE CURSOR } )   a persisted "you are here" pin
+      |
+      v
+   [ the state it names ]    each state IS a skill:
+      |                        init     mirror an unmirrored codebase
+      |                        seework  the dispatcher: pick the next gap
+      |                        change   a module changed, re-derive its doc
+      |                        prompts  find or author a scored procedure
+      v
+   ( do that state's leg )
+      |
+      v
+   ( advance { THE CURSOR } + journal the WHY )
+      |
+      '--&gt; loop back to boot, or exit
+
+   the agent is never "deciding what to do next". the flow is scripted,
+   so it cannot improvise a new kind of artifact halfway through.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The cursor is the whole control structure.</b> Boot reads it; the leg advances it; nothing else routes. A compaction, a crash or a new session all resume identically.</li>
+          <li><b>Every output is exactly one legal kind.</b> No ad-hoc session notes, no topic documents &mdash; which is what makes two independent runs converge on the same tree.</li>
+          <li><b>The paired commit closes the loop:</b> the derived artifact and the code it describes land in the same commit, so drift is not a thing that can quietly happen.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/doc-mirror">doc-mirror</a></p>
+      </article>
+
+      <!-- 23 -->
+      <article class="arch">
+        <h3>Brains Whose Neurons Are Brains</h3>
+        <p class="arch-what">Retrieval as a recursive structure rather than a flat index: a node is either a document or another whole brain, and both answer the same two-stage protocol &mdash; so the hierarchy nests to arbitrary depth without a second mechanism.</p>
+        <pre class="arch-dia"><code>                        { BRAIN }  its digest
+                        /    |    \
+                       /     |     \
+              { BRAIN }   [ doc ]  [ doc ]      a NEURON is either a
+              /      \                          document or another
+        [ doc ]    [ doc ]                      entire brain
+
+   every node -- leaf or brain -- answers the SAME two stages:
+
+     cognize    a cheap relevance vote, read off the node's digest
+     instruct   the full pass: cognize -&gt; instruct -&gt; synthesise,
+                recursively, through whatever is below it
+
+   digests build BOTTOM-UP: the level touching raw files gets a real
+   fold; every level above concatenates its children's digests verbatim,
+   so distinctive vocabulary survives all the way to the top.</code></pre>
+        <ul class="arch-moves">
+          <li><b>One protocol at both scales</b> is what buys the nesting: a brain is a legal neuron because it answers what a neuron answers.</li>
+          <li><b>The cheap stage is a gate on the expensive one.</b> Relevance is voted from a digest before anything descends, so depth costs only where the query actually goes.</li>
+          <li><b>Verbatim concatenation upward</b> is a deliberate choice against summarising twice &mdash; a fold of a fold is where the distinguishing words go missing.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/brain-agent">brain-agent</a></p>
+      </article>
+
+      <!-- 24 -->
+      <article class="arch">
+        <h3>The Seven Primitives, and What Each One Actually Buys</h3>
+        <p class="arch-what">Everything you can build in a modern coding-agent harness is a combination of seven component types. The design question is never &ldquo;what do I put in the prompt&rdquo; &mdash; it is which primitive carries each requirement, because they differ in one property: how much control they actually have.</p>
+        <pre class="arch-dia"><code>   PRIMITIVE     WHAT IT IS                      CONTROL LEVEL
+   -----------   -----------------------------   -----------------
+   CLAUDE.md     system-prompt injection         a TRIGGER -- it hopes
+   skill         a capability, hot-reloaded      a SUGGESTION
+   hook          an event handler                CONTROL -- it enforces
+   MCP           an external tool with state     EXTERNAL effect
+   subagent      an isolated context             DELEGATION
+   plugin        a bundle                        PACKAGING
+   team          coordinated sessions            COORDINATION
+
+   the third column is the whole table. the SAME rule written into the
+   instructions file is a hope; written as a hook it is a law.
+
+   the combinations are the systems:
+
+     skill                      -&gt; a workflow you invoke
+     skill + scoped hook        -&gt; behaviour enforced WHILE it runs
+     skill + forked subagent    -&gt; research in an isolated context
+     subagent + skills + MCPs   -&gt; a domain specialist with a loadout
+     hook + MCP                 -&gt; an external system driven by an event
+     team + SHARED STATE        -&gt; a market world (see the arena above)
+     plugin + any of the above  -&gt; the whole thing, distributable</code></pre>
+        <ul class="arch-moves">
+          <li><b>Read the ladder, then place the requirement.</b> Anything that must never happen belongs at the enforcing end; anything that should usually happen can live at the suggesting end.</li>
+          <li><b>The decision is mechanical:</b> is it something you invoke, or something that should fire on its own? does it need enforcement? does it need isolation? is it multi-agent, and if so is the coupling peer messaging or shared state?</li>
+          <li><b>Every architecture above is one of these combinations</b>, which is why they port between harnesses instead of being tricks.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 25 -->
+      <article class="arch">
+        <h3>The Ratchet-Navigation Funnel</h3>
+        <p class="arch-what">A funnel is a series of ratcheted options such that the visitor cannot work out how to do anything except a sanctioned move. Every page&rsquo;s visible exits <em>are</em> its sanctioned moves, and the entrance is one-way. You are inside one now.</p>
+        <pre class="arch-dia"><code>   { THE ENTRANCE }  one way. nothing routes back to it.
+          |
+          v
+   [ a page ]  ------&gt;  [ one level deeper ]   every artifact links into
+          |             the system that generated it, with a receipt at
+          |             each layer -- the descent IS the argument
+          v
+   [ the hub ]  &lt;-- reachable from the brand mark, from anywhere
+          |
+          v
+   [ the offer ]
+
+   the exit set of each page is DESIGNED, not inherited from a template.
+   nav is a grammar: what you can see is what you are allowed to do, and
+   the visitor sorts themselves by how deep they choose to go.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The one-way entrance is structural.</b> After the first pass there is no navigation route back to it &mdash; the browser&rsquo;s back button is the only way, which is exactly the friction a ratchet is.</li>
+          <li><b>The exit set is the design surface.</b> Deciding what a page links to is deciding what a reader can do next; leaving it to a template is leaving the funnel to chance.</li>
+          <li><b>It grades its reader rather than filtering them.</b> Engineers who pull threads land on running code, operators land on running businesses, and nobody is told anything untrue on the way.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="isaac.html">this site</a></p>
+      </article>
+
     </div>
   </section>
 
-  <!-- ══ REGION 6 ═══════════════════════════════════════════════════════ -->
-  <section id="r-types" class="dark">
+  <!-- ══════════════════════════════════════════════════════════════════
+       THE DISCIPLINES — demoted to one closing band. These were the whole
+       page in v1. They are real, they are the other half of the catalog,
+       and they are secondary to the machines above: a discipline tells you
+       how to hold a claim, an architecture tells you what to build. Several
+       of the architectures above appear here too in their one-line form —
+       both halves come out of the same catalog, and the count is the
+       catalog's count, not a curated subset.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="disciplines" class="dark">
     <div class="wrap">
-      <h2>Type-system moves</h2>
-      <p class="receipts-lede">Structure carrying load that would otherwise be carried by code somebody has to maintain.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">One carrier type, closed under every operator</th>
-            <td class="cell">Pick one type and make every operation consume and produce it, so composition recurses for free: each step is a skill directory, each composite is the same link type, and a whole simulated world is itself one of them &mdash; which is why a world is an agent and nests inside another world at any depth.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a>, <a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">The schema lives in the same store as the data</th>
-            <td class="cell">Every relationship type is itself a node that must pass the same validation any fact does, trustworthiness is metadata the structure carries rather than a claim beside it, and a thing&rsquo;s grade is the minimum grade of its parts.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">A prerequisite is a multi-tail edge</th>
-            <td class="cell">Navigation, prerequisite enforcement and context injection become one object: a transition whose entire set of preconditions must have been visited before it is legal, and firing it both moves you and appends the destination&rsquo;s payload to what you are carrying.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Levels are roles, not layers</th>
-            <td class="cell">One flat store where the strata are roles occupied many-to-many by ordinary things, so there is no tower of meta-levels to build or keep consistent.</td>
-            <td class="cell">the lab</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <h2>The 57 working disciplines behind these machines</h2>
+      <p class="receipts-lede">The rest of the catalog: the mechanisms I hit in real code, kept, and used again somewhere else. One line each, in no particular order, with the repository where the receipt sits. These are how the machines above are built and held honest &mdash; they are not themselves machines.</p>
 
-  <!-- ══ REGION 7 ═══════════════════════════════════════════════════════ -->
-  <section id="r-transform">
-    <div class="wrap">
-      <h2>Code transformation</h2>
-      <p class="receipts-lede">Changing the shape of working code without losing the proof that it works.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Onionisation</th>
-            <td class="cell">Transform real code into ring structure and prove the transform by running the module&rsquo;s own existing test suite, unchanged, against the rebuilt version.</td>
-            <td class="cell"><a href="https://github.com/sancovp/lfpoop">lfpoop</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══ REGION 8 ═══════════════════════════════════════════════════════ -->
-  <section id="r-teaching" class="dark">
-    <div class="wrap">
-      <h2>Teaching as infrastructure</h2>
-      <p class="receipts-lede">The artifact that does the work and the thing that teaches it are the same object in two moods.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">One artifact, three renderings</th>
-            <td class="cell">A single pattern renders as a skill an agent can install, a course module a person can take, and a video &mdash; so teaching material is installable process rather than writing about process.</td>
-            <td class="cell"><a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Give both sides the same rubric</th>
-            <td class="cell">Splice the verification method verbatim into the judge and into the judged, with role-specific application clauses, so the seller knows inspection is certain and the judge is required to run the same check against its own verdict.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">The system prompt is a build artifact</th>
-            <td class="cell">A worker&rsquo;s prompt is generated at dispatch by inlining the same source files the other executor reads, never a forked copy, so both substrates provably run one source of truth.</td>
-            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">The library ships its own teacher</th>
-            <td class="cell">A Python library reaches agents as a plugin whose skills mirror the API one for one, with the same directory symlinked into every harness&rsquo;s convention folder, so the manual is a loadable capability rather than documentation about a library.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row"><a href="blog/flat-vs-tree.html">Curriculum as manifest</a></th>
-            <td class="cell">A flat pile of sibling skills that all load at once is re-rooted from one manifest into a dependency-ordered tree you walk with a read &mdash; learning order becomes data, context loading becomes traversal, and the testing machine is a node of the same tree.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Steer by shaped space, not better questions</th>
-            <td class="cell">Hand the model a typed stage alphabet, a grammar and two recursion operators, then make it locate the situation inside that structure: complex enough to elicit real reasoning, constrained enough to collapse onto a decision.</td>
-            <td class="cell">the lab</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══ REGION 9 ═══════════════════════════════════════════════════════ -->
-  <section id="r-boundaries">
-    <div class="wrap">
-      <h2>Boundaries and failure direction</h2>
-      <p class="receipts-lede">Every boundary fails one way or the other. Which way is a design decision, not an accident.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Write the surface for whoever reads it</th>
-            <td class="cell">A tool&rsquo;s return string is a prompt telling the model exactly how to call it again rather than a swallowed exception, and each subsystem&rsquo;s failure direction is chosen deliberately: trust boundaries fail closed and refuse ambiguity, optional overlays are inert by default and fail open so they can never brick the base system.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Guard the narrowest point</th>
-            <td class="cell">Enforce the invariant inside the one function every read passes through rather than at each call site, and expose mutation through a deliberately narrow door that never creates, refuses unresolved references with suggestions instead of stubbing them, and binds every value.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Make the metric unreachable</th>
-            <td class="cell">Stop an optimiser gaming its benchmark structurally rather than by rule: the test battery is closed over so no proposed change can reach it, telemetry returns failing inputs and never expected outputs, and the seat is a toolless call that cannot go and read the answers sitting in the same repository.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Partition the writes</th>
-            <td class="cell">Give an autonomous process one funnel for all of its writes that refuses every path except the artifact directory and the ledger &mdash; which puts its own code, its schedule, its documentation and its off-switch on the read-only side of the same wall.</td>
-            <td class="cell">the lab</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══ REGION 10 ══════════════════════════════════════════════════════ -->
-  <section id="r-mutation" class="dark">
-    <div class="wrap">
-      <h2>Safe mutation</h2>
-      <p class="receipts-lede">Changing things that cannot be changed back.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Plan, export, then apply</th>
-            <td class="cell">Treat any irreversible bulk change as a guarded transaction: dry-run by default, compute the whole plan from read-only probes, export every affected record before the first write, create the new before deleting the old so nothing is transiently invalid, verify the effect landed, and send anything ambiguous to a human-reviewed report rather than guessing.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Edit by original offset</th>
-            <td class="cell">To change structured objects embedded in free text, scan bracket depth while skipping string contents instead of matching a regular expression, and splice back at recorded byte offsets so everything you didn&rsquo;t touch stays byte-identical.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══ REGION 11 ══════════════════════════════════════════════════════ -->
-  <section id="r-ownership">
-    <div class="wrap">
-      <h2>Process and ownership</h2>
-      <p class="receipts-lede">Who is allowed to write, and what that single decision buys you.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">One owner per resource</th>
-            <td class="cell">Give a single always-on process exclusive write authority over a shared store or a heavy dependency, and make every other process &mdash; including its own host &mdash; reach it through a dependency-free client, so writes serialise without locks and the heavy stack is paid for once.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Two substrates, one contract</th>
-            <td class="cell">&ldquo;Run the departments&rdquo; is a seam with two real implementations, and the round contract is identical on both sides because the pass-or-fail evidence was moved out of either substrate&rsquo;s transcript and into the shared store.</td>
-            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══ REGION 12 ══════════════════════════════════════════════════════ -->
-  <section id="r-worlds" class="dark">
-    <div class="wrap">
-      <h2>Worlds and the selection inside them</h2>
-      <p class="receipts-lede">A world is not a loop. It has episodes, inhabitants, heredity, and something that decides what survives.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">Two gates, two questions</th>
-            <td class="cell">Rejection splits into two categorically different organs: a gate asking &ldquo;is this a legal organism at all&rdquo; that returns a cause the proposer can act on, and a race asking &ldquo;is it better&rdquo; that returns nothing at all. Worse never means dead.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">One variable, and ties revert</th>
-            <td class="cell">Build the comparison so the thing under test is the only thing that can differ &mdash; same constructor, same deterministic drivers, a fresh sandbox per side &mdash; then require a strict win to ship, so a tie keeps the incumbent and change has to pay for itself.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Agents propose, one mutator disposes</th>
-            <td class="cell">A whole game world is reusable control pieces plus exactly one game-specific function that raises to reject; agents never write, every refusal is caught and logged as world exhaust, and the offender&rsquo;s only penalty is the progress that didn&rsquo;t happen.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Reset, carry, ratchet</th>
-            <td class="cell">An epoch boundary is not a reset but a three-way partition of state: spendable currencies reset to a floor, earned state carries by default with resets named explicitly, and the standard ratchets monotonically tighter &mdash; which turns termination into a condition inside the world instead of the operator&rsquo;s patience.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Auditing the rules is a legal move</th>
-            <td class="cell">Put the critique surface inside the system as a priced, adjudicated, settled action, so &ldquo;this game&rsquo;s rules are broken&rdquo; becomes a move with a payout rather than a complaint from outside the game.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Inherit the architecture, wipe the memory</th>
-            <td class="cell">Reproduce an agent by copying its entire working directory &mdash; instructions, skills, rules, crafted artifacts, including the odd structure it grew off-script &mdash; then deleting its session memory, so the child is born advanced and born fresh, free to diverge again.</td>
-            <td class="cell"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">Scheduled CI is the developer</th>
-            <td class="cell">Invert continuous integration: the scheduled job is not a test runner attached to human commits, it is the developer &mdash; it opens its own pull request, adjudicates it with a controlled trial, and merges on a strict win, so the main branch is the machine&rsquo;s line of descent and humans come in through the same gate.</td>
-            <td class="cell">the lab</td>
-          </tr>
-          <tr>
-            <th class="cell" scope="row">One procedure, every door</th>
-            <td class="cell">Every entry point into the organisation &mdash; a clock tick, a human message, an API call &mdash; resolves to the same complete round, so a trigger says only when and never what, and there is no path that half-runs the loop.</td>
-            <td class="cell"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══ REGION 13 ══════════════════════════════════════════════════════ -->
-  <section id="r-composition">
-    <div class="wrap">
-      <h2>The composition</h2>
-      <p class="receipts-lede">The one entry that is not a part but the assembly of them, running as a single loop.</p>
-      <table class="data-table">
-        <thead><tr><th class="cell" scope="col">Pattern</th><th class="cell" scope="col">What it does</th><th class="cell" scope="col">Runs in</th></tr></thead>
-        <tbody>
-          <tr>
-            <th class="cell" scope="row">A symbolic gate on the agent&rsquo;s working memory</th>
-            <td class="cell">An agent whose knowledge lives entirely as a typed semantic graph, where every single write passes a deterministic symbolic gate that can refuse with a typed reason, demand the missing slots back as instructions the writer must act on, route each gap to the specific authority permitted to fill it, and deduce new facts released as effects for an outer worker &mdash; all as the agent&rsquo;s live per-call working memory, not an offline curation pipeline.</td>
-            <td class="cell"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <ul class="disc">
+        <li><b>Derive, then release.</b> The reasoner may never act on the world mid-derivation: it emits each effect as a description, and a separate outer worker carries those out after the durable write. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Validate synchronously, realise after the commit.</b> The write call itself does no input or output at all &mdash; it drops one command file carrying every deduced follow-on effect as data, and a daemon enacts those effects only once the record has landed. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Bracket the model with code on both sides.</b> Deterministic code picks the exact batch and serves it complete, the model supplies only the judgment, then code independently re-runs the same structural check and marks done only what actually improved. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Park the gap, re-derive on the answer.</b> When a computation needs something only an outside party can supply, don&rsquo;t freeze a continuation: type the gap by who is allowed to fill it, store it as a durable record, and let the answer arrive as a new event that re-runs the whole derivation. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b><a href="notes/the-validator-that-refuses-to-be-wrong.html">The validator&rsquo;s answer is the next prompt.</a></b> What comes back from a check is not a status code, it is the sentence telling the caller exactly what to write next &mdash; every gap phrased as an imperative. <span class="disc-in">the lab</span></li>
+        <li><b>Hold nothing at rest.</b> The reasoner keeps no facts between events; per event it loads only the concepts actually mentioned plus whatever those require, so the cost of thinking stays flat as the store grows. <span class="disc-in">the lab</span></li>
+        <li><b>The one law.</b> A thing is code only if it must execute an external effect &mdash; a mail server, an HTTP API, a database, a file. Everything else is an instruction handed to the model, and writing it as a function is how codebases get enormous. <span class="disc-in">the lab</span></li>
+        <li><b><a href="blog/owl-to-agent.html">Turn a code object into a system type.</a></b> Introspect a typed model and project it into an ontology type whose fields become required, typed restrictions, so your classes are literally the system&rsquo;s vocabulary rather than a description of it. <span class="disc-in">the lab</span></li>
+        <li><b>One generative slot.</b> Exactly one position in the loop is permitted to be non-deterministic, and its socket is generic enough that a plain function, a live model session, or an entire nested world of trading agents drops in without changing anything that judges. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Move every rule to the slot that can refuse it.</b> Take each &ldquo;must&rdquo; and &ldquo;never&rdquo; out of the prompt and relocate it to the structural position that can mechanically reject the violation, so the rule stops being obeyed and starts being true. <span class="disc-in"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></span></li>
+        <li><b>The gap list is the workflow.</b> No artifact is generated speculatively; every one is pulled into existence by a named absence, so the outstanding gaps and the plan of work are the same object. <span class="disc-in">the lab</span></li>
+        <li><b>A pipeline is a type.</b> A workflow is a typed object whose required slots are its stages, so the ordinary machinery that fills missing fields is what sequences the build. <span class="disc-in">the lab</span></li>
+        <li><b>Three ways a state can change.</b> Every transition in the system is induced by exactly one of three things: a gap pulls it, recurrence reifies it, or a signature releases it. There is no fourth. <span class="disc-in">the lab</span></li>
+        <li><b>Frictionless capture, gated canon.</b> A phrase becomes a concept once its usage recurs, everything is admitted to an unvalidated layer with zero friction, and promotion toward canonical happens through a gate that warns rather than blocks &mdash; judging the accumulated union each time, so a concept climbs by being filled in. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>The server holds the repair buffer.</b> When a large structured call fails, its payload is kept server-side under the entity&rsquo;s name and the model is told the retry need only supply the missing fields, so a heavy typed call becomes repairable across turns. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Rounds as data.</b> Every worker report carries a reproducible recipe, identical process names accumulate into a pattern on their own, and harvesting emits a skill whose organisational scope is deduced from who appears in the trace. <span class="disc-in"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></span></li>
+        <li><b>Hold the self-description against the event stream.</b> Compare what a system declares it does with what its own records show it did, and surface each divergence as a typed item that carries its own repair spec. <span class="disc-in">the lab</span></li>
+        <li><b>Boundary sealing and validity intervals.</b> A traced execution boundary covers nothing until it is sealed; drift invalidates it through everything composed on top of it, and the resulting work item carries the root reason rather than a symptom. <span class="disc-in">the lab</span></li>
+        <li><b>One source, many compiled projections.</b> Canonical data lives in one store and every file, channel, environment and directory is a typed projection you re-render on demand &mdash; never hand-authored, always a full render that converges instead of churning, and drift heals by backfilling from either side. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Don&rsquo;t judge the artifact, run it.</b> Instead of scoring a thing with a judge, instantiate it as the world and read what the world does; where the artifact isn&rsquo;t executable by code, drop a fresh model with none of the build context into the same socket &mdash; execute what executes, ballot only what can&rsquo;t. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Nothing mints its own receipt.</b> No agent may write its own scoreboard: payoffs are read from world-owned files rather than from anything the agent submitted, and a value claim must carry a receipt bound to that specific artifact and issued by a third party with no context. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Rigour is a dial on the constructor.</b> Evidence strength is a parameter rather than a rewrite: one number turns a single controlled trial into a replicated majority-vote championship with an identical report contract, and the runtime picks the setting from how deterministic the judge is. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>The graveyard is the deliverable.</b> A losing proposal is not discarded but closed with its measured verdict attached, and every death is appended to a machine-readable record, so the standing proof of rigour is the pile of things that were refused. <span class="disc-in">the lab</span></li>
+        <li><b>Read the transcript before concluding.</b> A status flag is never evidence &mdash; the harness has to open the message files, the artifacts and the agent histories; and the runtime enforces the same discipline by handing over a pointer instead of the payload. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Nothing the checker says evaporates.</b> Pass a validator&rsquo;s output through verbatim rather than parsing it to decide what to show, overflow to a file rather than truncate, and keep its live rejections &mdash; those are the labelled negative examples other systems have to manufacture. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Carry the limits as data.</b> Build and run the specific refutation first and read-only, treat &ldquo;the criterion cannot even engage yet&rdquo; as a legitimate stop, attach the soundness caveat to every result as a field, and never fill a hole with a number. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Clone the proven shape, then name the one thing that changed.</b> Don&rsquo;t redesign something that resembles a system already working: copy the architecture verbatim, then isolate and document the single translation that differs, so the risk is one named delta and everything else inherits the proof. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Test inputs are never authored.</b> The fixture library is history&rsquo;s own before-and-after pairs, taken from what the system actually did, so the tests cannot quietly encode what you hoped it did. <span class="disc-in">the lab</span></li>
+        <li><b>Loops don&rsquo;t climb.</b> A generator-and-critic loop plateaus when the generator is a single point and the judge is half-blind; the step change comes from giving it a combinatorial space to search and an instrument to see with, not from running more rounds. <span class="disc-in">the lab</span></li>
+        <li><b>One carrier type, closed under every operator.</b> Pick one type and make every operation consume and produce it, so composition recurses for free: each step is a skill directory, each composite is the same link type, and a whole simulated world is itself one of them &mdash; which is why a world is an agent and nests inside another world at any depth. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a>, <a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></span></li>
+        <li><b>The schema lives in the same store as the data.</b> Every relationship type is itself a node that must pass the same validation any fact does, trustworthiness is metadata the structure carries rather than a claim beside it, and a thing&rsquo;s grade is the minimum grade of its parts. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>A prerequisite is a multi-tail edge.</b> Navigation, prerequisite enforcement and context injection become one object: a transition whose entire set of preconditions must have been visited before it is legal, and firing it both moves you and appends the destination&rsquo;s payload to what you are carrying. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Levels are roles, not layers.</b> One flat store where the strata are roles occupied many-to-many by ordinary things, so there is no tower of meta-levels to build or keep consistent. <span class="disc-in">the lab</span></li>
+        <li><b>Onionisation.</b> Transform real code into ring structure and prove the transform by running the module&rsquo;s own existing test suite, unchanged, against the rebuilt version. <span class="disc-in"><a href="https://github.com/sancovp/lfpoop">lfpoop</a></span></li>
+        <li><b>One artifact, three renderings.</b> A single pattern renders as a skill an agent can install, a course module a person can take, and a video &mdash; so teaching material is installable process rather than writing about process. <span class="disc-in"><a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></span></li>
+        <li><b>Give both sides the same rubric.</b> Splice the verification method verbatim into the judge and into the judged, with role-specific application clauses, so the seller knows inspection is certain and the judge is required to run the same check against its own verdict. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>The system prompt is a build artifact.</b> A worker&rsquo;s prompt is generated at dispatch by inlining the same source files the other executor reads, never a forked copy, so both substrates provably run one source of truth. <span class="disc-in"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></span></li>
+        <li><b>The library ships its own teacher.</b> A Python library reaches agents as a plugin whose skills mirror the API one for one, with the same directory symlinked into every harness&rsquo;s convention folder, so the manual is a loadable capability rather than documentation about a library. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b><a href="blog/flat-vs-tree.html">Curriculum as manifest.</a></b> A flat pile of sibling skills that all load at once is re-rooted from one manifest into a dependency-ordered tree you walk with a read &mdash; learning order becomes data, context loading becomes traversal, and the testing machine is a node of the same tree. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Steer by shaped space, not better questions.</b> Hand the model a typed stage alphabet, a grammar and two recursion operators, then make it locate the situation inside that structure: complex enough to elicit real reasoning, constrained enough to collapse onto a decision. <span class="disc-in">the lab</span></li>
+        <li><b>Write the surface for whoever reads it.</b> A tool&rsquo;s return string is a prompt telling the model exactly how to call it again rather than a swallowed exception, and each subsystem&rsquo;s failure direction is chosen deliberately: trust boundaries fail closed and refuse ambiguity, optional overlays are inert by default and fail open so they can never brick the base system. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Guard the narrowest point.</b> Enforce the invariant inside the one function every read passes through rather than at each call site, and expose mutation through a deliberately narrow door that never creates, refuses unresolved references with suggestions instead of stubbing them, and binds every value. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Make the metric unreachable.</b> Stop an optimiser gaming its benchmark structurally rather than by rule: the test battery is closed over so no proposed change can reach it, telemetry returns failing inputs and never expected outputs, and the seat is a toolless call that cannot go and read the answers sitting in the same repository. <span class="disc-in">the lab</span></li>
+        <li><b>Partition the writes.</b> Give an autonomous process one funnel for all of its writes that refuses every path except the artifact directory and the ledger &mdash; which puts its own code, its schedule, its documentation and its off-switch on the read-only side of the same wall. <span class="disc-in">the lab</span></li>
+        <li><b>Plan, export, then apply.</b> Treat any irreversible bulk change as a guarded transaction: dry-run by default, compute the whole plan from read-only probes, export every affected record before the first write, create the new before deleting the old so nothing is transiently invalid, verify the effect landed, and send anything ambiguous to a human-reviewed report rather than guessing. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Edit by original offset.</b> To change structured objects embedded in free text, scan bracket depth while skipping string contents instead of matching a regular expression, and splice back at recorded byte offsets so everything you didn&rsquo;t touch stays byte-identical. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>One owner per resource.</b> Give a single always-on process exclusive write authority over a shared store or a heavy dependency, and make every other process &mdash; including its own host &mdash; reach it through a dependency-free client, so writes serialise without locks and the heavy stack is paid for once. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+        <li><b>Two substrates, one contract.</b> &ldquo;Run the departments&rdquo; is a seam with two real implementations, and the round contract is identical on both sides because the pass-or-fail evidence was moved out of either substrate&rsquo;s transcript and into the shared store. <span class="disc-in"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></span></li>
+        <li><b>Two gates, two questions.</b> Rejection splits into two categorically different organs: a gate asking &ldquo;is this a legal organism at all&rdquo; that returns a cause the proposer can act on, and a race asking &ldquo;is it better&rdquo; that returns nothing at all. Worse never means dead. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>One variable, and ties revert.</b> Build the comparison so the thing under test is the only thing that can differ &mdash; same constructor, same deterministic drivers, a fresh sandbox per side &mdash; then require a strict win to ship, so a tie keeps the incumbent and change has to pay for itself. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Agents propose, one mutator disposes.</b> A whole game world is reusable control pieces plus exactly one game-specific function that raises to reject; agents never write, every refusal is caught and logged as world exhaust, and the offender&rsquo;s only penalty is the progress that didn&rsquo;t happen. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Reset, carry, ratchet.</b> An epoch boundary is not a reset but a three-way partition of state: spendable currencies reset to a floor, earned state carries by default with resets named explicitly, and the standard ratchets monotonically tighter &mdash; which turns termination into a condition inside the world instead of the operator&rsquo;s patience. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Auditing the rules is a legal move.</b> Put the critique surface inside the system as a priced, adjudicated, settled action, so &ldquo;this game&rsquo;s rules are broken&rdquo; becomes a move with a payout rather than a complaint from outside the game. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Inherit the architecture, wipe the memory.</b> Reproduce an agent by copying its entire working directory &mdash; instructions, skills, rules, crafted artifacts, including the odd structure it grew off-script &mdash; then deleting its session memory, so the child is born advanced and born fresh, free to diverge again. <span class="disc-in"><a href="https://github.com/sancovp/cave-teams">cave-teams</a></span></li>
+        <li><b>Scheduled CI is the developer.</b> Invert continuous integration: the scheduled job is not a test runner attached to human commits, it is the developer &mdash; it opens its own pull request, adjudicates it with a controlled trial, and merges on a strict win, so the main branch is the machine&rsquo;s line of descent and humans come in through the same gate. <span class="disc-in">the lab</span></li>
+        <li><b>One procedure, every door.</b> Every entry point into the organisation &mdash; a clock tick, a human message, an API call &mdash; resolves to the same complete round, so a trigger says only when and never what, and there is no path that half-runs the loop. <span class="disc-in"><a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></span></li>
+        <li><b>A symbolic gate on the agent&rsquo;s working memory.</b> An agent whose knowledge lives entirely as a typed semantic graph, where every single write passes a deterministic symbolic gate that can refuse with a typed reason, demand the missing slots back as instructions the writer must act on, route each gap to the specific authority permitted to fill it, and deduce new facts released as effects for an outer worker &mdash; all as the agent&rsquo;s live per-call working memory, not an offline curation pipeline. <span class="disc-in"><a href="https://github.com/sancovp/carton-mcp">carton-mcp</a></span></li>
+      </ul>
     </div>
   </section>
 
@@ -552,8 +897,8 @@
   <section class="final-cta">
     <div class="wrap">
       <p class="eyebrow">Where these live</p>
-      <h2>Reading a pattern is not having one.</h2>
-      <p>The repositories named above are open. Clone one, run it, and see whether the mechanism does what this page says it does &mdash; that is the only test any of it is asking you to apply.</p>
+      <h2>Reading an architecture is not having one.</h2>
+      <p>The repositories named above are open. Clone one, run it, and see whether the structure does what this page says it does &mdash; that is the only test any of it is asking you to apply.</p>
       <a class="cta-big" href="build.html">Run your work inside one &rarr;</a>
     </div>
   </section>

@@ -74,6 +74,25 @@ serves RULE 01's deducibility mechanics.
   at `--r-sm`, and the hover border reuses `.rung:hover`'s existing rgba —
   deliberately, because the filter row and the pills are the same control and
   must light up the same way. Nothing else in the file gained a selector.
+- **`.arch*` + `.disc` — the architecture entry (2026-08-08, patterns v2).**
+  patterns.html stopped being a 57-row table and became 25 named system
+  STRUCTURES, each carrying a diagram; a table row cannot hold a diagram, so
+  the row became an entry (name · one sentence · structure · moves ·
+  receipt). ZERO new colours and zero new type: `.arch-dia` is `.note pre`'s
+  declaration set, `.arch-runs` / `.disc-in` are the `.receipt-k` mono label
+  voice, and the entry separator is `--glass-border`, so the whole block
+  densifies with the depth gradient for free. **Two diagram methods, both
+  deliberate:** (a) five entries carry the source repository's OWN svg,
+  copied into `assets/` and referenced as `<img>` — the build.html precedent,
+  where an artifact island is a receipt and reskinning it destroys the proof;
+  (b) the other twenty carry ASCII in `.arch-dia`. ASCII rather than inline
+  SVG because the self-hosted mono is subset to latin-1, so a box-drawing
+  glyph falls back to a system face mid-diagram and breaks the grid — and
+  twenty hand-drawn SVGs is a maintenance surface nobody keeps true. §5's
+  "diagrams are inline SVG in token colors only" therefore reads: inline SVG
+  is the rule for diagrams the site DRAWS; a repository's own diagram ships
+  unaltered, and an ASCII structure diagram lives inside the closed `<pre>`
+  vocabulary. Nothing here declares a colour or a typeface.
 - **`.receipts-lede` unscoped (2026-08-08).** It existed only as
   `.receipts .receipts-lede`, so the identical class on the corpus-index section
   blurbs rendered as unstyled body copy. Added the unscoped base; the `.receipts`

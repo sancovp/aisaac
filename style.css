@@ -645,6 +645,68 @@ td.cell, th.cell {
 .data-table a:hover { color: var(--text-1); }
 .data-table td:last-child { font-family: var(--micro); font-size: 0.78rem; }
 
+/* ── The architecture entry (patterns.html v2). ────────────────────────────
+   patterns.html stopped being a 57-row table and became 25 named system
+   STRUCTURES, each carrying a diagram. A table row cannot hold a diagram, so
+   the row became an entry: name, one sentence, the structure, the moves, the
+   receipt. ZERO new colours and zero new type: `.arch-dia` is `.note pre`'s
+   declaration set (the glass-panelled readout that already carries every
+   code exhibit on the site), `.arch-runs` is the `.receipt-k` mono label
+   voice, and the hairline between entries is `--glass-border`, the
+   structural line language of RULE 02 §4 — so the whole block densifies with
+   the depth gradient for free. The ASCII in `.arch-dia` is deliberate: the
+   self-hosted mono is subset to latin-1, so box-drawing glyphs would fall
+   back to a system face mid-diagram and break the grid. */
+.arch { border-top: 1px solid var(--glass-border); padding: 1.7rem 0 0.4rem; }
+.arch:first-of-type { border-top: 0; padding-top: 0.6rem; }
+.arch h3 { font-size: 1.02rem; margin-bottom: 0.45rem; }
+.arch-what {
+  font-size: 0.92rem; line-height: var(--lh-prose);
+  color: var(--text-2); max-width: 70ch; margin-bottom: 1.1rem;
+}
+.arch-dia {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-md); padding: 1.1rem 1.25rem;
+  overflow-x: auto; margin: 0 0 1.1rem;
+}
+.arch-dia code {
+  display: block; font-family: var(--mono); font-size: 0.71rem;
+  line-height: 1.75; color: var(--text-1); white-space: pre;
+}
+.arch .fig { margin: 0 0 1.1rem; }
+.arch-moves { list-style: none; margin: 0 0 0.9rem; padding: 0; max-width: 74ch; }
+.arch-moves li {
+  position: relative; padding-left: 1.05rem; margin-bottom: 0.3rem;
+  font-size: 0.83rem; line-height: 1.7; color: var(--text-2);
+}
+.arch-moves li::before {
+  content: "\2014"; position: absolute; left: 0; color: var(--text-3);
+}
+.arch-moves b { color: var(--text-1); font-weight: 600; }
+.arch-runs {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-3);
+}
+.arch-runs a { color: var(--mercury-blue); }
+.arch-runs a:hover { color: var(--text-1); }
+
+/* The closing disciplines band: 57 name+one-liner entries, dense, secondary.
+   A definition list rather than a table because there is no second column
+   worth ruling — the receipt rides at the end of the line in the same mono
+   label voice `.arch-runs` uses. */
+.disc { margin: 1.2rem 0 0; padding: 0; list-style: none; max-width: 82ch; }
+.disc li {
+  font-size: 0.81rem; line-height: 1.72; color: var(--text-2);
+  padding: 0.42rem 0; border-bottom: 1px solid var(--glass-border);
+}
+.disc b { color: var(--text-1); font-weight: 600; }
+.disc .disc-in {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-3); white-space: nowrap;
+}
+.disc .disc-in a { color: var(--mercury-blue); }
+.disc .disc-in a:hover { color: var(--text-1); }
+
 /* .post-nav — the closing block on 40 posts. It was USED forty times and
    DEFINED nowhere: the class did nothing and each post re-declared its
    layout inline. Defined once, here. */
