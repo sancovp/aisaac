@@ -93,6 +93,18 @@ serves RULE 01's deducibility mechanics.
   is the rule for diagrams the site DRAWS; a repository's own diagram ships
   unaltered, and an ASCII structure diagram lives inside the closed `<pre>`
   vocabulary. Nothing here declares a colour or a typeface.
+- **patterns v3 (2026-08-08) added ZERO style surface.** The page grew from 35
+  entries to 81 and from six groups to eight, and it needed no new selector, no
+  new colour, no new type and no new block: every entry is the `.arch` /
+  `.arch-what` / `.arch-dia` / `.arch-moves` / `.arch-runs` vocabulary v2
+  declared, and the two new group headers are ordinary `<section>` + `h2` +
+  `.receipts-lede`. That is the test of a closed vocabulary — doubling the
+  content twice over should cost the stylesheet nothing. One authoring law
+  logged for the next scribe: **`.arch-dia` content is PURE ASCII, 0x20–0x7E
+  only.** A middle dot slipped in as a list separator during v3 and was
+  removed; it is inside latin-1, but the diagram grammar declared in the page's
+  own legend is ASCII, and one glyph that falls back to a system face breaks the
+  monospace grid the whole method depends on.
 - **`.receipts-lede` unscoped (2026-08-08).** It existed only as
   `.receipts .receipts-lede`, so the identical class on the corpus-index section
   blurbs rendered as unstyled body copy. Added the unscoped base; the `.receipts`
