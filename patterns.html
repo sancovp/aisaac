@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>81 architectures, and where each one runs — Isaac</title>
-<meta name="description" content="Eighty-one named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
+<title>104 architectures, and where each one runs — Isaac</title>
+<meta name="description" content="One hundred and four named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
 <link rel="canonical" href="https://sancovp.github.io/aisaac/patterns.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="81 architectures, and where each one runs — Isaac">
-<meta property="og:description" content="Eighty-one named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
+<meta property="og:title" content="104 architectures, and where each one runs — Isaac">
+<meta property="og:description" content="One hundred and four named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
 <meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
 <meta property="og:url" content="https://sancovp.github.io/aisaac/patterns.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -95,6 +95,41 @@
      persona library — come from packages that exist in the monorepo but NOT
      in the public repository, and RULE 00 forbids building this page on
      them. They are not here.
+
+     ══════════════════════════════════════════════════════════════════════
+     PATTERNS v4 (2026-08-08) — TWO MORE SYSTEMS, READ END TO END: the
+     layered agent shell (private — every one of its entries says "the
+     lab") and the public agent framework underneath it. 81 -> 104
+     entries, ONE new group:
+
+       · INSIDE ONE AGENT TURN (new, after the operating systems) — the
+         anatomy of a single turn: the resolver, the location, the
+         identity directive, the nine hook seams, the tool envelope,
+         the compaction clone, the extraction channel, the history and
+         the prompt chain. Twelve entries, one public package, every
+         one deep-linking a path verified 200 unauthenticated.
+
+     The other eleven folded into the standing groups: three into
+     worlds (the directory tree read five ways, the custodian
+     write-block, the object feeder), two into the self-developing
+     machines (gated extrusion, the shadow agent), five into the
+     operating systems (five dotdirs, the connector-as-hook-file,
+     activation by rename, one core and N sinks, the daemon that is the
+     world server) and one into the stores (status as a fold).
+
+     MERGED, NOT ADDED. The shell's "ambient place-loadout resolution"
+     is the SAME mechanism as the framework's resolver and work-dir
+     tracker, seen from the consumer side. It is folded into those two
+     entries — which UPGRADES them: the receipt moves from a private
+     path to a public file, and the private half contributes the part
+     the public docstring does not state (that the walk is what makes a
+     directory teach whoever stands in it, and that the inactive-file
+     suffix being excluded by the grammar is what makes rename-as-
+     activation need no loader support).
+
+     WITHHELD. Nothing from the shell links out: the repository is
+     private (verified — an unauthenticated fetch 404s), so all eleven
+     of its entries say "the lab", per RULE 00.
      ══════════════════════════════════════════════════════════════════════ -->
 
 <a class="skip-link" href="#main">Skip to content</a>
@@ -120,9 +155,9 @@
   <section class="claim">
     <div class="wrap">
       <p class="eyebrow">The architectures</p>
-      <h1>Eighty-one system shapes. <span>Every one of them runs.</span></h1>
+      <h1>One hundred and four system shapes. <span>Every one of them runs.</span></h1>
       <p class="lede">Not tips, not principles, not a list of things I believe about agents. These are structures &mdash; what the parts are, which one is allowed to write, who is allowed to refuse, and where the loop closes. Each entry gives you the name, one sentence, the diagram, the participants, and the repository it runs in. If a shape is new to you, take it; that is what it is here for.</p>
-      <p class="fineprint">Eighty-one is what is standing today. Below them sits the other half of the catalog &mdash; 57 working disciplines these machines are built out of. Those are real and they are secondary: a discipline tells you how to hold a claim, an architecture tells you what to build.</p>
+      <p class="fineprint">One hundred and four is what is standing today. Below them sits the other half of the catalog &mdash; 57 working disciplines these machines are built out of. Those are real and they are secondary: a discipline tells you how to hold a claim, an architecture tells you what to build.</p>
       <a class="cta-primary mt-m" href="#disciplines">Skip to the 57 disciplines &darr;</a>
     </div>
   </section>
@@ -132,13 +167,14 @@
        same control as the corpus filter row. ══ -->
   <section class="flush-top">
     <div class="wrap">
-      <p class="eyebrow">Eight groups
+      <p class="eyebrow">Nine groups
         <a href="#g-substrate">The substrate</a>
         <a href="#g-worlds">Worlds, and the things that live in them</a>
         <a href="#g-selection">The selection machinery</a>
         <a href="#g-self">Systems that develop themselves</a>
         <a href="#g-routing">How work is routed</a>
         <a href="#g-aios">Operating systems for agents</a>
+        <a href="#g-turn">Inside one agent turn</a>
         <a href="#g-compiler">The compiler wing</a>
         <a href="#g-stores">Stores that judge what enters them</a>
       </p>
@@ -315,7 +351,7 @@
   <section id="g-worlds">
     <div class="wrap">
       <h2>Worlds, and the things that live in them</h2>
-      <p class="receipts-lede">A world is not a loop with extra steps. It has a persistent state, inhabitants that only ever propose, exactly one thing allowed to write, an epoch boundary, and something that decides what survives it. These nine are the parts and the assemblies.</p>
+      <p class="receipts-lede">A world is not a loop with extra steps. It has a persistent state, inhabitants that only ever propose, exactly one thing allowed to write, an epoch boundary, and something that decides what survives it. These twelve are the parts and the assemblies &mdash; including three where the world is a directory tree on somebody&rsquo;s own disk.</p>
 
       <!-- 5 -->
       <article class="arch">
@@ -533,6 +569,130 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
       </article>
 
+      <!-- 14 -->
+      <article class="arch" id="onion-tree">
+        <h3>One Directory Tree, Five Readings</h3>
+        <p class="arch-what">The recursive tree of directories that carry a configuration folder is read, at the same time, as the filesystem, the world map, the permission boundary, the agent&rsquo;s contact list, and the place-world a learning engine walks. There is no separate registry of any of those.</p>
+        <pre class="arch-dia"><code>   ONE WALK over the tree for directories carrying a config folder
+        --&gt; a FLAT list { path, name, owner }, nested by whoever reads it
+
+   THE SAME TREE, READ FIVE WAYS:
+
+     1. THE WRITE GATE    the nearest ancestor holding an owner file,
+                          excluding your own -- see the next entry
+     2. WAYFINDING        your PLACE is the nearest ancestor holding a
+                          render folder, and its image IS the chat
+                          background you are looking at
+     3. SCOPE             your contacts are the owners under THIS dir,
+                          which is what the delegation switchboard shows
+                          instead of every agent on the box
+     4. THE LEARNING      each dir is a PLACE, its affordances are the
+        SUBSTRATE         skills switched on there, its exits are its
+                          child dirs -- populated DIRECTLY, bypassing
+                          the library's own one-level file glob
+     5. THE ROSTER        every dir carrying an agent body is a card,
+                          and picking one RE-ROOTS THE LIVE WORLD:
+                          choosing your character and choosing your
+                          world are one act
+
+   CONTAINMENT IS A WRITE PATH, NOT A LABEL:
+
+     extract a selection into a child dir by LINKING, and the link
+     DIRECTION is the ownership:
+          move the items down; leave the parent a symlink
+          the owner walk RESOLVES symlinks, so the parent can still
+               READ them
+          but a WRITE resolves into the child's domain -- and is
+               therefore delegated to the child's owner</code></pre>
+        <ul class="arch-moves">
+          <li><b>One walk, five consumers, zero indexes.</b> The place resolver and the write gate are literally the same climb; nobody maintains a map of where anything is, because the tree is the map.</li>
+          <li><b>The flat list is deliberate.</b> The walk returns paths; nesting is the reader&rsquo;s business. A tree returned as a tree is a tree somebody has to keep true.</li>
+          <li><b>Linking is the containment operation</b>, so who owns a thing and where a thing lives are the same fact, and the read path stays open while the write path narrows.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 15 -->
+      <article class="arch" id="custodian">
+        <h3>The Custodian Write-Block &mdash; read allowed, write delegated</h3>
+        <p class="arch-what">A directory can be <em>owned</em> by an agent. Every other agent may read all of it &mdash; that is the point &mdash; but any write into it is vetoed and converted into a delegation to the owner, with the refusal message doing the conversion.</p>
+        <pre class="arch-dia"><code>   PROMOTION WRITES ONE FILE into the directory and registers the owner
+   as an importable agent. that is the whole ceremony.
+
+   then, for every other agent, at every write:
+
+        ( ONE BEFORE-TOOL HOOK )   one gate, every write tool
+             the edit tools    matched precisely, by name
+             a shell command   matched heuristically, by write tokens
+                    |
+                    v
+        walk to the nearest ancestor owner file
+             YOUR OWN directory is excluded -- you can always write home
+                    |
+             none  --&gt; the tool runs, untouched
+             found --&gt; set BLOCK + a message. the framework SKIPS the
+                       tool and returns that message AS THE TOOL RESULT.
+
+   AND THE MESSAGE IS THE MECHANIC -- verbatim, pedagogical:
+        it NAMES the owner
+        it tells you to hand over the sequence of READS you did and
+             your CHANGE IDEA
+        it says the owner should derive something same-same but better,
+             and iterate
+
+   READS ARE NEVER INTERCEPTED. that is the design: read-derived
+   confidence -- which is usually a little bit wrong -- is what gets
+   converted into a delegated, verified change.
+
+   no worktree. no pull request. the owner writes directly, and the
+   owner's judgement IS the review.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The refusal is not an error, it is a hand-off.</b> The blocked agent receives an ordinary tool result telling it exactly what to do next, so the veto teaches instead of failing.</li>
+          <li><b>The enabling change had to be upstreamed:</b> the before-tool seam was fire-and-forget &mdash; it discarded the hook&rsquo;s return and ran the tool anyway. A veto nobody reads back is decoration.</li>
+          <li><b>The delegation rides the event spine already there.</b> The sub-agent&rsquo;s transcript streams under one wrapping event into its own panel so it cannot collide with the host&rsquo;s chat log, and a fire-and-forget sibling is scheduled on the server&rsquo;s long-lived loop so the errand outlives the turn that started it.</li>
+          <li><b>The delegate tools are split into a required-argument form and a configured form</b>, because a model correctly skips an optional argument &mdash; including the critical one.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 16 -->
+      <article class="arch">
+        <h3>The Object Feeder &mdash; a Python object becomes an entity</h3>
+        <p class="arch-what">Objects in a process become entities in a running game world through one fixed envelope emitted by a sidecar. The world renders only what has already been proven, and re-emitting everything is the reconnect protocol rather than a bug.</p>
+        <pre class="arch-dia"><code>   ( A SOURCE )   implements exactly TWO methods, and nothing else
+        poll()      --&gt; the objects that exist right now
+        removed()   --&gt; the ids that are gone
+             |
+             v
+   ( announce )   a PURE function: object --&gt; the downstream envelope,
+        VERBATIM. and the vocabulary is kernel-coordinated: a new kind
+        of thing is a BLESS IN THE KERNEL FIRST, and until then the
+        library REFUSES to emit it rather than leaking it downstream.
+             |
+             v
+   ( THE FEEDER )   a standard-library event stream on its own port.
+        ALWAYS a separate process. never inside the page.
+             |
+             v
+   { THE WORLD }   upserts by node id -- which is a STABLE key, and is
+                   NEVER random
+                        |
+   SO RE-EMISSION IS THE HANDSHAKE:
+        every connection keeps its own seen-set
+        steady state = new objects plus keepalives
+        a reconnect safely REPLAYS the entire world
+
+   and the shipped source reads ONLY the proven store: an unproven,
+   quarantined entry never renders, and one corrupt artifact is skipped
+   rather than killing the feeder.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Idempotency at the receiving kernel is what makes the transport dumb.</b> No sequence numbers, no delta protocol, no resume cursor &mdash; the reconnect story is &ldquo;send it all again.&rdquo;</li>
+          <li><b>Provenance fields come only from real recorded fields</b>, and when there is none there is an explicit limbo path. A fabricated origin is the one thing a world render must never contain.</li>
+          <li><b>The refusal to emit an unknown kind</b> is what keeps two independently-moving codebases &mdash; the source and the world &mdash; from drifting into a vocabulary nobody blessed.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
     </div>
   </section>
 
@@ -544,7 +704,7 @@
       <h2>The selection machinery</h2>
       <p class="receipts-lede">You do not need the thing proposing changes to be right. You need the structure that decides which changes survive to be sound. These five are that structure, taken apart.</p>
 
-      <!-- 14 -->
+      <!-- 17 -->
       <article class="arch">
         <h3>The Ladder of Orders</h3>
         <p class="arch-what">Five orders of evidence, each one a typed simulation, each harder to survive than the one below it &mdash; and the artifact under test is the same object all the way up. The frame is a racing team: nothing is about the drivers, everything is an effect of the car&rsquo;s fitness.</p>
@@ -571,7 +731,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
       </article>
 
-      <!-- 15 -->
+      <!-- 18 -->
       <article class="arch">
         <h3>The Two-Tier Gate</h3>
         <p class="arch-what">Rejection is two categorically different organs, and confusing them is how selection loops rot. One asks &ldquo;is this a legal organism at all&rdquo; and answers with a cause. The other asks &ldquo;is it better&rdquo; and answers with nothing. Worse never means dead.</p>
@@ -604,7 +764,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
       </article>
 
-      <!-- 16 -->
+      <!-- 19 -->
       <article class="arch">
         <h3>The Racetrack &mdash; one variable, and ties revert</h3>
         <p class="arch-what">Replace review with an experiment. Two live worlds boot identical in every way except the one thing under test, both play, and the comparison is therefore causal: not &ldquo;the numbers moved after we shipped&rdquo; but &ldquo;the world with this change out-produced the world without it, same day, same conditions.&rdquo;</p>
@@ -632,7 +792,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
       </article>
 
-      <!-- 17 -->
+      <!-- 20 -->
       <article class="arch">
         <h3>The Championship &mdash; rigour as a dial on the constructor</h3>
         <p class="arch-what">Evidence strength is a parameter, not a rewrite. One number turns a single controlled trial into a replicated majority-vote championship with an identical report contract &mdash; and the runtime picks the setting from how noisy the judge is.</p>
@@ -654,7 +814,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
       </article>
 
-      <!-- 18 -->
+      <!-- 21 -->
       <article class="arch">
         <h3>The Single Generative Slot</h3>
         <p class="arch-what">Exactly one position in the loop is allowed to be non-deterministic. Everything that judges is code. And that one socket is generic enough that a plain function, a live model session, or an entire nested world of trading agents drops into it with no adapter.</p>
@@ -691,9 +851,9 @@
   <section id="g-self">
     <div class="wrap">
       <h2>Systems that develop themselves</h2>
-      <p class="receipts-lede">Three structures from one machine: a repository that maintains and improves itself on a schedule, with no human in the loop and no trust in the model doing the work.</p>
+      <p class="receipts-lede">Five structures from two machines: a repository that maintains and improves itself on a schedule, and an agent whose own turns are mined for the steps the world actually validated. Neither has a human in the loop; neither trusts the model doing the work.</p>
 
-      <!-- 19 -->
+      <!-- 22 -->
       <article class="arch">
         <h3>The Three-Gate Escalation</h3>
         <p class="arch-what">What replaces human review is not a better reviewer. It is three independent gates in series, each killing a failure mode the others cannot see, ending in a controlled experiment.</p>
@@ -710,7 +870,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 20 -->
+      <!-- 23 -->
       <article class="arch">
         <h3>The Self-Developing Repository</h3>
         <p class="arch-what">Invert continuous integration. The scheduled job is not a test runner attached to human commits &mdash; it <em>is</em> the developer. It convenes a world of agents, takes the change the market voted for, gates it, races it, opens its own pull request, and merges on a strict win.</p>
@@ -728,7 +888,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 21 -->
+      <!-- 24 -->
       <article class="arch">
         <h3>The Closed Trigger Loop</h3>
         <p class="arch-what">The loop closes when the running system&rsquo;s own failures are what summon the development system. Agents file bugs from inside the game, the referee validates them, validated bugs become real issues, and an issue landing convenes the dev world automatically.</p>
@@ -739,6 +899,98 @@
         <ul class="arch-moves">
           <li><b>Three doors, one procedure:</b> the daily schedule is the heartbeat, a validated in-game bug is the demand signal, and a manual dispatch is the override. All three convene the same cycle.</li>
           <li><b>The bug report is an in-world move</b> before it is an issue &mdash; filed by a player, adjudicated by the referee, paid at the epoch boundary. That is what stops the backlog from being someone&rsquo;s opinion.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 25 -->
+      <article class="arch">
+        <h3>Gated Extrusion, and the Promotion Trichotomy</h3>
+        <p class="arch-what">The agent&rsquo;s own tool stream is recorded as a route, but only the steps the <em>world</em> validated survive into what it learns &mdash; and nothing it learns becomes reusable capability without a human move.</p>
+        <pre class="arch-dia"><code>   AFTER EVERY TOOL CALL, record one step:
+
+        { who, the action, what it produced,
+          THE PLACE -- the directory it happened in,
+          PASSED    -- the world's verdict }
+
+   passed = the same directory write-gate, expressed in the learning
+            engine's own currency, PLUS a verified-terminal check.
+            a tool that ERRORED docks the stat too. the number tracks
+            what the world ACCEPTED, not what the agent issued.
+                    |
+                    v
+   AT TURN END, extrude the buffer into a procedure, KEEPING ONLY THE
+   PASSED STEPS -- so a blocked write can never enter the learned
+   route. you learn what was VALIDATED, not what you did.
+                    |
+                    v
+   { THE ROUTE LIBRARY }   consulted BEFORE deriving: a stored route
+        whose input terminals are warranted right now is conducted as
+        ONE move, prepended into the turn. any exception at all falls
+        back to the ordinary turn.
+                    |
+                    v
+   AND THE PROMOTION IS A TRICHOTOMY:
+
+        1. promote it into a skill file the scanner already indexes
+                --&gt; the agent now carries its own learned skill, in
+                    its own menu
+        2. write a promotion REQUEST into quarantine
+        3. quarantine --&gt; proven : THE HUMAN. only the human.
+
+   an agent cannot promote its own capability. it is the same
+   request-then-approve gate as owning a directory and as approving a
+   contact -- and the runtime phase that will run only proven
+   capabilities, or refuse, is backed by that same gate.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The gate the world already had is reused as the learning signal.</b> Nothing new judges the steps &mdash; the <a href="#custodian">write-block</a> verdict is simply recorded next to each one.</li>
+          <li><b>Reuse is attempted before derivation</b>, and it is fail-open: a route that does not apply costs one check, never the turn.</li>
+          <li><b>Self-goldenisation is the failure mode being designed against.</b> An agent that can bless its own output has a gauge, not a handler.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 26 -->
+      <article class="arch">
+        <h3>The Shadow Agent, and Its Two Delivery Surfaces</h3>
+        <p class="arch-what">A second agent watches the first one&rsquo;s live conversation from a forked history in its own process, writes rules, skills and hints into the place&rsquo;s config folder, and gets them back into the primary through exactly two surfaces &mdash; one passive, one that refuses to let the turn end.</p>
+        <pre class="arch-dia"><code>   ( A PER-ITERATION CLOCK )   forks the LIVE history, drops a job
+        |                      file, returns. that is all it does.
+        v
+   ( AN OUT-OF-PROCESS WORKER )   runs a BARE agent ON the fork, so it
+        inherits the whole conversation -- with every system message
+        STRIPPED, or it inherits the primary's identity (the framework
+        only swaps the first message when the prompt changed)
+        |
+        v
+   the shadow has real tools. it writes RULES, SKILLS and HINTS into
+   the place's own config folder.
+        |
+        the worker PARSES NOTHING. it snapshots modification times
+        before and DIFFS after -- so a delivery knows CREATED from
+        REVISED, which is what lets a revision of a rule you were not
+        following be announced as a revision.
+        |
+   +----+---------------------------------+
+   v                                      v
+   SURFACE 1: A PREPEND                   SURFACE 2: A STOP GATE
+   one line onto the user's NEXT          a HINT means "there was a
+   message, applied at the message-       problem, stop". the turn is
+   assembly chokepoint -- because a       BLOCKED and the agent is
+   lifecycle hook CANNOT mutate the       re-invoked carrying the hint.
+   user prompt: the framework never       then the shadow runs AGAIN,
+   reads it back. once per delivery,      as a JUDGE, on the fixed
+   scoped to the place.                   conversation. the loop exits
+                                          only when it has no hint.
+                                          capped, switchable, fail-open.
+
+   THE RECURSION GUARD IS BY CONSTRUCTION: the child is a bare agent
+   with the enabling switch stripped out of its environment, so the
+   shadow can never spawn itself.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Each delivery lands where that kind of thing can actually land.</b> A hook cannot rewrite the user&rsquo;s prompt, so surface one sits at the assembly chokepoint; a rule the agent ignored needs the turn stopped, so surface two is a gate and not a note.</li>
+          <li><b>Stripping the system messages out of the fork is what makes it a second agent</b> rather than the same agent talking to itself with extra steps.</li>
+          <li><b>Diffing modification times instead of parsing output</b> means the shadow can write anything it likes in any shape, and the delivery layer still knows exactly what changed.</li>
         </ul>
         <p class="arch-runs">Runs in the lab</p>
       </article>
@@ -754,7 +1006,7 @@
       <h2>How work is routed through an organisation</h2>
       <p class="receipts-lede">Four structures for the part everybody hand-waves: who is dispatched, in what order, on what evidence, and what the run leaves behind that is worth more than a log.</p>
 
-      <!-- 22 -->
+      <!-- 27 -->
       <article class="arch">
         <h3>The Leader-Driven Message Spine</h3>
         <p class="arch-what">Multi-agent coordination where a message is a file, a dispatch is a <em>pointer</em> to a file, and a guardrail sits between what the leader wants and what actually gets delivered. Turn order becomes a checkable property rather than a hope.</p>
@@ -787,7 +1039,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave-teams">cave-teams</a></p>
       </article>
 
-      <!-- 23 -->
+      <!-- 28 -->
       <article class="arch">
         <h3>The Executor Seam</h3>
         <p class="arch-what">&ldquo;Run the departments&rdquo; is a seam with two real implementations on completely different substrates &mdash; and the round contract is identical on both sides, because the pass-or-fail evidence was moved out of either substrate&rsquo;s transcript and into the shared store.</p>
@@ -816,7 +1068,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></p>
       </article>
 
-      <!-- 24 -->
+      <!-- 29 -->
       <article class="arch">
         <h3>One Procedure, Every Door</h3>
         <p class="arch-what">Every entry point into the organisation &mdash; a clock tick, a human message, an API call &mdash; resolves to the same complete round. A trigger says only <em>when</em>. It never says <em>what</em>. There is no path that half-runs the loop.</p>
@@ -840,7 +1092,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/twi-jobworld">twi-jobworld</a></p>
       </article>
 
-      <!-- 25 -->
+      <!-- 30 -->
       <article class="arch">
         <h3>Rounds as Data, and the Harvested Procedure</h3>
         <p class="arch-what">Make every worker report a model fragment instead of a log line, and organisational knowledge accumulates on its own: identical process names pile into a pattern, and harvesting emits an installable procedure whose <em>scope</em> is deduced from who appears in the trace.</p>
@@ -882,9 +1134,9 @@
   <section id="g-aios">
     <div class="wrap">
       <h2>Operating systems for agents</h2>
-      <p class="receipts-lede">Sixteen structures at the layer above a single agent: what an agent lives inside, what it retrieves through, what it is assembled from, the control plane that drives one without owning it, the instrument that watches it write code &mdash; and one that this page is currently running.</p>
+      <p class="receipts-lede">Twenty-one structures at the layer above a single agent: what an agent lives inside, what it retrieves through, what it is assembled from, the control plane that drives one without owning it, the instrument that watches it write code, the one directory that carries five layers of it at once &mdash; and one that this page is currently running.</p>
 
-      <!-- 26 -->
+      <!-- 31 -->
       <article class="arch" id="cursor-sm">
         <h3>The Cursor State Machine</h3>
         <p class="arch-what">An agent that is always <em>inside</em> one state, routed there by a persisted &ldquo;you are here&rdquo; pin, where the states are skills. It does that state&rsquo;s leg, advances the cursor, journals why, and loops. Two agents on the same codebase produce the same structure &mdash; that invariance is the point.</p>
@@ -917,7 +1169,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/doc-mirror">doc-mirror</a></p>
       </article>
 
-      <!-- 27 -->
+      <!-- 32 -->
       <article class="arch">
         <h3>Brains Whose Neurons Are Brains</h3>
         <p class="arch-what">Retrieval as a recursive structure rather than a flat index: a node is either a document or another whole brain, and both answer the same two-stage protocol &mdash; so the hierarchy nests to arbitrary depth without a second mechanism.</p>
@@ -945,7 +1197,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/brain-agent">brain-agent</a></p>
       </article>
 
-      <!-- 28 -->
+      <!-- 33 -->
       <article class="arch">
         <h3>The Seven Primitives, and What Each One Actually Buys</h3>
         <p class="arch-what">Everything you can build in a modern coding-agent harness is a combination of seven component types. The design question is never &ldquo;what do I put in the prompt&rdquo; &mdash; it is which primitive carries each requirement, because they differ in one property: how much control they actually have.</p>
@@ -979,7 +1231,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 29 -->
+      <!-- 34 -->
       <article class="arch">
         <h3>The Ratchet-Navigation Funnel</h3>
         <p class="arch-what">A funnel is a series of ratcheted options such that the visitor cannot work out how to do anything except a sanctioned move. Every page&rsquo;s visible exits <em>are</em> its sanctioned moves, and the entrance is one-way. You are inside one now.</p>
@@ -1026,7 +1278,7 @@
            downstream consumer is not public.
            ────────────────────────────────────────────────────────── -->
 
-      <!-- 30 -->
+      <!-- 35 -->
       <article class="arch">
         <h3>The Attached Terminal Mirror</h3>
         <p class="arch-what">A control plane that does not own the agent process. It attaches to an already-running terminal session <em>by name</em>, drives it by typing, reads it by capturing the screen, and separately lifts the agent&rsquo;s configuration off the filesystem &mdash; then serves both as one interface. Kill the control plane and the agent keeps working; restart it and it re-attaches.</p>
@@ -1062,7 +1314,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/cave_agent.py">cave</a></p>
       </article>
 
-      <!-- 31 -->
+      <!-- 36 -->
       <article class="arch">
         <h3>Hooks Lifted Out, and an Active Set</h3>
         <p class="arch-what">Every behavioural hook is moved out of the agent&rsquo;s own configuration and into a registry inside the runtime; what stays in the agent is a set of thin relays that post the event. Dispatch is then filtered by a mutable set of active names, so the same loaded registry produces completely different behaviour depending on which names are switched on &mdash; and the runtime, not the agent, holds the authority to refuse.</p>
@@ -1095,7 +1347,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/hooks.py">cave</a></p>
       </article>
 
-      <!-- 32 -->
+      <!-- 37 -->
       <article class="arch">
         <h3>A Loop Is Data: a prompt, a hook set, and an exit predicate</h3>
         <p class="arch-what">An autonomous work loop over an interactive agent, written as a plain record instead of a driver program. Activating it does two things at once: it installs the loop&rsquo;s hook set and it types the loop&rsquo;s prompt. The loop then closes through the hooks it just installed &mdash; they write into shared state, and the exit condition is a predicate over exactly that state.</p>
@@ -1132,7 +1384,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/loops/base.py">cave</a></p>
       </article>
 
-      <!-- 33 -->
+      <!-- 38 -->
       <article class="arch">
         <h3>Conversations, Not Transports</h3>
         <p class="arch-what">An agent&rsquo;s input and output modelled as a named map of conversations rather than a list of pipes. Two conversations can ride the same transport and stay separate histories; one conversation can be both an input source and an output mirror. Each carries a mode set, so the same object graph gives you &ldquo;stream me everything&rdquo; or &ldquo;only tell me the answer&rdquo; from configuration.</p>
@@ -1165,8 +1417,8 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/channel.py">cave</a></p>
       </article>
 
-      <!-- 34 -->
-      <article class="arch">
+      <!-- 39 -->
+      <article class="arch" id="one-clock">
         <h3>One Clock, One Way Out</h3>
         <p class="arch-what">The whole runtime has a single background thread and a single place that touches the outside world. Every periodic behaviour is a tick on one clock, and the rule is written into the source: nothing polls an external service anywhere else.</p>
         <pre class="arch-dia"><code>   ( THE CLOCK )   ONE daemon thread, one-second cadence
@@ -1199,7 +1451,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/mixins/anatomy.py">cave</a></p>
       </article>
 
-      <!-- 35 -->
+      <!-- 40 -->
       <article class="arch">
         <h3>Scheduled Work Judged by Artifacts, and Identity-Checked Reaping</h3>
         <p class="arch-what">Scheduled work whose success is decided by files on disk, not by exit status. Each job declares what it must leave behind and what must have succeeded first. When a run hands back a process id, the runtime re-reads that process&rsquo;s <em>start time</em> before believing the id is still the same process &mdash; and only once it is genuinely gone does it check the declared files.</p>
@@ -1233,7 +1485,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/automation.py">cave</a></p>
       </article>
 
-      <!-- 36 -->
+      <!-- 41 -->
       <article class="arch">
         <h3>The Loadout Archive, Identified by Hash</h3>
         <p class="arch-what">An agent&rsquo;s entire identity surface &mdash; its servers, its settings, its instructions file, its rules and its hooks &mdash; treated as one swappable unit. Injecting a named loadout always archives the current one first, so a swap cannot destroy what it replaces. And &ldquo;which loadout is active&rdquo; is answered by hashing the live files, with the bookkeeping record demoted to a labelled fallback.</p>
@@ -1267,7 +1519,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/cave/blob/master/cave/core/config_snapshots.py">cave</a></p>
       </article>
 
-      <!-- 37 -->
+      <!-- 42 -->
       <article class="arch">
         <h3>One Detector, Two Mounts, Asymmetric Authority</h3>
         <p class="arch-what">A single code-smell detector mounted twice on the identical event, with deliberately different powers: the copy that runs <em>before</em> a write can refuse it; the copy that runs <em>after</em> cannot block anything, so it speaks through the only channel that still reaches the model. Both fail open &mdash; every error path lets the edit through.</p>
@@ -1300,7 +1552,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/codenose">codenose</a></p>
       </article>
 
-      <!-- 38 -->
+      <!-- 43 -->
       <article class="arch">
         <h3>The Mode Latch Is a File</h3>
         <p class="arch-what">Two operating modes live in the filesystem rather than in configuration or a daemon: one is the <em>existence</em> of a file, the other is a word inside one. Three processes that never talk to each other each check the same path and independently escalate the same finding &mdash; advisory becomes critical, critical becomes a refused write. The dial is a touch; the read is a file check.</p>
@@ -1331,7 +1583,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/codenose">codenose</a></p>
       </article>
 
-      <!-- 39 -->
+      <!-- 44 -->
       <article class="arch">
         <h3>The Taxonomy Is Data</h3>
         <p class="arch-what">The smell taxonomy is not a pile of branches &mdash; it is a name-to-function registry plus layered configuration, with third-party detectors named as a module and a function and imported at scan time. And the detectors never decide how serious they are: the scanner stamps severity on afterwards.</p>
@@ -1364,7 +1616,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/codenose/blob/master/codenose/util_deps/detectors.py">codenose</a></p>
       </article>
 
-      <!-- 40 -->
+      <!-- 45 -->
       <article class="arch">
         <h3>Severity Is Which Envelope It Arrives In</h3>
         <p class="arch-what">How serious a finding is, is expressed by <em>which context envelope</em> it is wrapped in. A normal result comes back in the tool&rsquo;s own low-priority tag; a critical one is rendered in the harness&rsquo;s highest-attention framing and carries an explicit obligation. The tag, the icons, the severity words and even the tool&rsquo;s name are configuration, so the whole instrument re-skins without touching a detector.</p>
@@ -1399,7 +1651,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/codenose">codenose</a></p>
       </article>
 
-      <!-- 41 -->
+      <!-- 46 -->
       <article class="arch">
         <h3>Layers From Filenames</h3>
         <p class="arch-what">Architectural layers derived from file <em>names</em> &mdash; not from a manifest, a package graph or annotations. A short whitelist of canonical names is enforced at write time, which makes every file&rsquo;s depth computable from its basename alone, so a static check can flag an import that points outward or one that skips a layer with zero project configuration.</p>
@@ -1430,6 +1682,748 @@
           <li><b>The invariant survives because it was made survivable:</b> tests, migrations, scripts and the base directory are exempt by name, so nobody has to fight the lock to do ordinary work.</li>
         </ul>
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/codenose">codenose</a></p>
+      </article>
+
+      <!-- 47 -->
+      <article class="arch">
+        <h3>Five Dotdirs, One Directory</h3>
+        <p class="arch-what">One directory carries up to five sibling configuration folders, each owned by a different layer of the stack &mdash; so a single folder is simultaneously an instruction set, an agent roster, a machine shop, a render manifest and a graph door, and no layer reads another layer&rsquo;s slot.</p>
+        <pre class="arch-dia"><code>   ONE directory. up to FIVE sibling config folders, one per layer:
+
+     .claude      the harness vendor's. READ-ONLY to us.
+     .heaven      WHO IS HERE        rules, skills, agents, hooks,
+                                     rename-sets
+     the runtime  WHAT RUNS HERE     hooks, automations, the ledger seat
+     the render   WHAT IT LOOKS LIKE a render program. a raw object
+                                     list is FORBIDDEN in it -- that is
+                                     the doubling trap
+     the graph    the graph's ONLY door
+
+   EXACTLY TWO VERBS. THERE IS NO THIRD.
+
+     REGISTER   present in the tree ==&gt; known, addressable, importable.
+                the home-level folder IS the registry: no second store,
+                no symlink duplicates, no index to fall out of date.
+     ACTIVATE   local presence -- PRESENT IS ACTIVE, there is no
+                activation index for a local file -- or naming it by
+                reference in the slot's own json.
+                NAMING IS IMPORTING IS ACTIVATING: one move.
+
+   AND MEMBERSHIP IS DECIDED BY A TRANSPORT TEST:
+
+     if it does not MOVE when somebody downloads this directory --
+     tokens, machine-local application settings, runtime state --
+     IT IS NOT DEVDIR MATERIAL.
+
+   the test convicted and deleted a chat-integration file, a persona
+   pair, and an entire home-level hook folder that held a static file
+   impersonating the runtime's activation authority.
+
+   ONE CARVE-OUT, BY LAW: an automation being PRESENT is not ARMED.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The stranger who downloads the folder is the whole design constraint.</b> Membership is not taste; it is a mechanical question with a yes and a no, which is why it could convict three existing files and delete them.</li>
+          <li><b>Two verbs and no third</b> is what removes the class of bug where a thing is installed but not enabled, enabled but not installed, or listed in two registries that disagree.</li>
+          <li><b>A slot may be forbidden content.</b> The render folder holds a program, never a list of the objects it renders &mdash; the moment it holds both, the world exists twice and one copy starts losing.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 48 -->
+      <article class="arch">
+        <h3>The Connector Is a Hook File</h3>
+        <p class="arch-what">Putting any agent system &mdash; a coding harness, an in-process agent, an opaque terminal session &mdash; under one reflective controller is done by dropping a hook <em>file</em> into that system&rsquo;s own hooks folder. The connector is not a service, and it is not a slot of its own.</p>
+        <pre class="arch-dia"><code>   THREE CHANNELS, never conflated:
+
+     A   the in-process LIFECYCLE hooks fired during an agent's own run
+         before / after run - iteration - tool call - system prompt -
+         block report - error
+     B   THE REFLECTIVE CONTROLLER -- the layer that lifts hook events
+         into a stateful, programmable runtime with activation gating
+         and block / inject verdicts
+     C   the event STREAM. observation. NOT a hook tier.
+
+   AND CHANNEL B IS REACHED BY A CHANNEL-A *FILE*:
+
+     one conventionally-named hook file into the coding harness's own
+          hooks folder     --&gt; that harness is now on the controller
+     the same-shaped file into the in-process agent's hooks folder
+                           --&gt; that agent is now on the controller
+
+     same name, same shape, one per harness. install it and that agent
+     system is hooked up. there is nothing else to run.
+
+   TRANSPORT DEGRADES EXPLICITLY:
+     the in-process seam FIRST -- an HTTP call to a controller sitting
+          on a BLOCKED loop can never complete
+     else HTTP to an external controller
+     else no-op
+
+   VERDICTS MAP BOTH WAYS, FIXED:
+     block          --&gt; the framework's tool veto
+     extra context  --&gt; the system-prompt inject
+
+   THE OBSERVER-CLASS VARIANT -- a tap on an agent the world cannot own
+   -- is the same install into a foreign harness's config, under three
+   clauses:
+     FAIL-OPEN   every path exits zero. the world being down never
+                 blocks somebody else's tool.
+     SILENT      in that harness stdout INJECTS into the watched
+                 agent's context, so a reporter writes none.
+     BOUNDED     sub-second timeout, fire-and-forget.
+   it gives the world EYES on a foreign agent. never a mouth.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The integration surface is a file, not an interface.</b> Nothing registers, nothing is discovered, nothing negotiates a protocol &mdash; the file is in the folder, so the events arrive.</li>
+          <li><b>The three channels being separate is the load-bearing part.</b> Treating the event stream as a hook tier is how an observation surface quietly acquires the authority to block.</li>
+          <li><b>The observer tier is deliberately mute.</b> A watcher that can also speak into the watched agent&rsquo;s context is not a watcher; and in that harness the difference is one accidental print statement, which is why silence is written as a law rather than a habit.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 49 -->
+      <article class="arch">
+        <h3>Activation by Rename</h3>
+        <p class="arch-what">An agent&rsquo;s loadout is not a configuration value; it is the state of the filesystem. Turning a skill, rule, hook or sub-agent off renames its file, and a saved rename-set is equipped like a talent build.</p>
+        <pre class="arch-dia"><code>   THE LOADOUT IS THE STATE OF THE FILESYSTEM.
+
+        PRESENT = ACTIVE
+        OFF     = the same file with ".inactive" appended
+
+   which the resolver's slot grammar STRUCTURALLY EXCLUDES -- so the
+   toggle needs no index, no registry, and no cooperation from any
+   loader. an active file wins over its inactive sibling on a scan.
+
+   A SAVED RENAME-SET:   { section: { item: on | off } }
+        four sections -- skills, rules, agents, hooks
+        applying it performs EXACTLY the renames needed, and reports
+        how many it did
+
+   the browser configurator and the library are BYTE-COMPATIBLE
+   implementations of one rename algebra (one was extracted from the
+   other), so a human clicking rings and an agent calling a function
+   are performing the identical operation.
+
+   AND IT CAN BE SCOPED IN TIME: the heartbeat applies its own set for
+   ONE beat and restores it in a finally block.
+
+   one more file promotes the configuration into an OWNER of the
+   directory -- see the write-block above.
+
+   a stack of these layers, faced as ONE agent, is the whole topology;
+   today's single agent is the degenerate one-layer case it grows from.</code></pre>
+        <ul class="arch-moves">
+          <li><b>No loader had to learn about this.</b> The off-state is unreadable to the <a href="#one-resolver">resolver</a> because of the shape of its filename &mdash; which is the cheapest possible way to make a switch that every consumer already honours.</li>
+          <li><b>Two implementations, one algebra, verified byte-compatible</b> &mdash; so the interface a human uses and the interface an agent uses cannot drift into two different meanings of &ldquo;equipped.&rdquo;</li>
+          <li><b>Reversible and time-boxed.</b> Applying a set returns enough to undo it, which is what lets a background beat borrow a completely different loadout and give it back.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 50 -->
+      <article class="arch">
+        <h3>One Core, N Sinks</h3>
+        <p class="arch-what">Terminal app, web daemon and desktop app are not three implementations of the agent. They are three sinks attached to one agent turn through a single callback argument.</p>
+        <pre class="arch-dia"><code>   THE WHOLE FACE LAYER IS ONE ARGUMENT:
+
+     agent.run( message, callback = composite([ capture, A SINK ]) )
+
+     and a sink is just a callable taking one raw message.
+
+        TERMINAL    renders to a terminal IN-PROCESS. no HTTP, no port
+                    -- deliberately the self-modification safety net:
+                    the surface that still works while you are editing
+                    the server
+        STREAM      converts to { type, data } and hands off to the
+                    event loop
+        WRAPPED     another agent's turn, under ONE outer event type,
+                    so a delegated sub-agent routes to its own panel
+                    instead of colliding with the host's chat log
+
+   TWO STRUCTURAL RULES, BOTH LEARNED FROM LIVE FAILURES:
+
+     1. THE EMIT MUST HOP onto the event loop threadsafe, because the
+        callback fires from a worker thread. without the hop, every
+        event batches to turn-end: the interface sits on "working" and
+        then dumps everything at once.
+
+     2. THE STREAM IS A FAN-OUT BUS, ONE QUEUE PER SUBSCRIBER.
+        a single shared queue PARTITIONS events across clients: the
+        second browser tab steals the DONE, and the first tab hangs
+        forever.
+
+   and the desktop shell is a META process: adopt a healthy daemon on
+   the port or fork one, keep the app being built as a separate
+   crashable process, and cap its restart budget.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Adding a face is adding a function</b>, not a transport, an adapter or a second code path through the agent.</li>
+          <li><b>The in-process terminal is a safety net on purpose.</b> When the thing being modified is the server, the surface that needs no server is the one you can still watch it from.</li>
+          <li><b>One queue per subscriber is not an optimisation.</b> A shared queue does not slow the second client down; it silently splits the conversation between them, and both halves look like a hang.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 51 -->
+      <article class="arch">
+        <h3>The Agent&rsquo;s Daemon Is the World Server</h3>
+        <p class="arch-what">Instead of an app talking to a game server, the coding agent&rsquo;s own daemon <em>is</em> the world server &mdash; rooted at the user&rsquo;s own directory, with one event stream carrying chat, world events and agent activity, and the directory&rsquo;s machines running on the heartbeat that was already ticking.</p>
+        <pre class="arch-dia"><code>   NOT an app talking to a game server.
+
+   ( THE CODING AGENT'S OWN DAEMON )
+        + ONE EXTENSION mounts the entire world surface onto it: the
+             loading walk, the graph events, the verb doors, the board
+             persisted under the place's own config folder
+        + a MERGED event generator
+
+   so a chat message, a world event and an agent's activity all ride
+   ONE event system. the previously standalone world server collapses
+   into this one and survives only as a development harness.
+
+   ROOT RESOLUTION NEVER GUESSES:
+        the environment variable wins
+        else the working directory, ONLY IF it already carries the
+             game-seat marks
+        else THE MOUNT IS SKIPPED, with one honest log line
+   mounting a universe into an arbitrary working directory would write
+   seats into somebody's unrelated folder.
+
+   THE MACHINE LAYER OBEYS THE SAME DISCIPLINE:
+        per-directory automation programs register IN MEMORY, under a
+             place-prefixed key, on the daemon's OWN registry
+        they fire on the heart's existing minute tick -- ZERO new
+             schedulers. the calendar's registry IS the registry.
+        the hot-reload method is wrapped ON THE BOUND INSTANCE, so the
+             periodic reload cannot sweep them away
+        NOTHING is written to the flat host-shared registry folder: a
+             file there is loaded AND fired by every daemon on the box
+        THE MONEY LAW: a code-pointer machine registers live; a
+             model-calling machine lands DORMANT until it is armed
+
+   and a world failure never takes the agent's daemon down.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The collapse is the point.</b> Two servers means two event streams, two lifecycles and two places state can be; one server means the world is something the agent is already inside.</li>
+          <li><b>Reusing the existing clock rather than adding one</b> is the same discipline as the <a href="#one-clock">single-clock runtime</a> two floors up: a second scheduler is a second answer to &ldquo;what time is it.&rdquo;</li>
+          <li><b>Refusing to mount is a feature.</b> A universe that guesses its own root writes seats into a stranger&rsquo;s directory, and the one honest log line is cheaper than every recovery path that follows.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       GROUP E-bis — INSIDE ONE AGENT TURN (added 2026-08-08, patterns v4)
+
+       One floor below the operating systems: the anatomy of a single
+       agent turn, read end to end out of the public agent framework
+       (sancovp/heaven-framework, default branch main, also on PyPI).
+       Every entry here deep-links a path verified 200 unauthenticated.
+
+       Sources read (RULE 00): heaven_base/devdir.py (the resolver's own
+       stated contract + what it refuses), baseheavenagent.py (the work-dir
+       tracker, the persona directives, the hook registry and the veto, the
+       compaction clone, the extraction harvest, the prompt-block chain),
+       hook_script.py, baseheaventool.py, compaction.py, state_machine.py,
+       memory/history.py, and the tests named beside each.
+
+       MERGED, not added: the layered shell's own "ambient place-loadout
+       resolution" shape is the SAME mechanism as the first two entries
+       here, seen from the consumer side — it is folded into them rather
+       than shipped twice, and the public receipt replaces the private one.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-turn">
+    <div class="wrap">
+      <h2>Inside one agent turn</h2>
+      <p class="receipts-lede">One floor below an operating system for agents is the turn itself. Twelve structures out of one agent core: how it finds its configuration, where it thinks it is standing, who is allowed to cancel a tool call, what a tool result is, what a hook may rewrite, and what happens when the transcript outgrows the window. All twelve are one public package, so every entry here links the file rather than describing it.</p>
+
+      <!-- 52 -->
+      <article class="arch" id="one-resolver">
+        <h3>The One Resolver &mdash; one function, every slot</h3>
+        <p class="arch-what">One function finds every configuration file an agent loads &mdash; its rules, its skills, its hooks, its sub-agents, its rename-sets, or a slot nobody has invented yet &mdash; and it deliberately refuses to do the loading.</p>
+        <pre class="arch-dia"><code>   RESOLVE( launch dir, current dir, slot )
+        --&gt; [ file { path, front matter, content, PROVENANCE } ]
+
+   ONE resolver, crossed from two axes:
+
+     A SOURCE LADDER                x     A SLOT GRAMMAR TABLE
+       1 the home level, ALWAYS on          rules   skills   hooks
+         (that level IS the registry)       agents  rename-sets
+       2 the LAUNCH walk                    ... plus a DEFAULT grammar,
+       3 the ACTIVE walk -- where the           so an unknown slot
+         agent is standing right now            ALREADY resolves
+
+   AND THE WALK IS TWO PHASES:
+     ENTER   climb to the nearest ancestor that HAS a config folder,
+             skipping a leading gap
+     CLIMB   keep going only while the PARENT also has one.
+             a gap ABOVE the entry ENDS the chain. it is never jumped.
+
+   emitted nearest-level LAST, so a consumer iterates reversed and the
+   nearest one refines. de-duplicated by resolved path, then by content
+   hash.
+
+   ADDING A SLOT IS ADDING ONE TABLE ROW -- not writing a scanner. and
+   the inactive-file suffix is excluded BY THE GRAMMAR, which is what
+   makes rename-as-activation work with no loader support at all.
+
+   THE FILE IS IMPORT-TERMINAL ON PURPOSE: it imports nothing of the
+   framework. character caps, hook registration, skill rendering all
+   belong to consumers.
+
+        IT FINDS. THEY DECIDE WHAT FINDING MEANS.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Provenance is stamped at the source, not reconstructed later.</b> Each returned file knows which root kind, which level and which folder it came from, so precedence is inspectable rather than implied by list order.</li>
+          <li><b>The refusal is the design.</b> The character caps live at the consumer as a semantic alarm; a resolver that also truncates is a resolver whose answer depends on who asked.</li>
+          <li><b>The competing loader was deleted.</b> An application-side loader that read one directory and never walked had made the ambient rule silently false for hooks &mdash; two resolvers means one of them is lying, and you find out at the worst moment.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/devdir.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 53 -->
+      <article class="arch">
+        <h3>The Swapping Work-Dir</h3>
+        <p class="arch-what">The agent&rsquo;s &ldquo;where I am&rdquo; is the last directory it read or ran a command in &mdash; not its process working directory &mdash; and moving out of a directory silently unloads that directory&rsquo;s rules.</p>
+        <pre class="arch-dia"><code>   A PROCESS WORKING DIRECTORY IS FIXED AT LAUNCH, so it is REFUSED as
+   the answer to "where is the agent".
+
+   ( AFTER EVERY TOOL CALL )
+        scrape a filesystem path out of the call --
+             from the known argument names, or, for a shell command,
+             by finding absolute paths in the command string and
+             CHECKING THEY EXIST
+                  |
+                  v
+        SWAP the active directory. swap, NOT accumulate:
+             LEAVING A DIRECTORY DROPS ITS RULES,
+             exactly as an instructions file is live only while you
+             are standing in it.
+
+   the configured launch directory stays always-on, separately, so:
+
+        the context = MY OWN rules
+                      AND the rules of wherever I am standing now
+
+   AND THE TIMING IS HALF THE MECHANISM:
+        the whole thing is re-derived FROM DISK every iteration AND
+        mid-tool-loop, BEFORE the model is shown the tool result --
+        so the model reads that result with the just-entered
+        directory's rules ALREADY in its system prompt.
+        refresh after the call instead, and the rules land one model
+        call late.
+
+   walking into a place equips that place. THE PLACE TEACHES WHOEVER
+   STANDS IN IT -- including an agent that was never designed to run
+   there.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The scrape is best-effort and never raises.</b> Location tracking that can break a tool call is worse than location tracking that occasionally misses one.</li>
+          <li><b>Swap rather than accumulate</b> is what makes a directory a <em>place</em> instead of a permanent acquisition. An agent that walks through ten directories does not end up carrying ten loadouts.</li>
+          <li><b>Re-deriving every iteration is the cost that buys the property.</b> Nothing is cached, so nothing can be stale, and editing a rule file changes the next model call rather than the next session.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheavenagent.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 54 -->
+      <article class="arch">
+        <h3>The Sticky Persona Declaration</h3>
+        <p class="arch-what">A line of text inside any file the agent loads can seize the agent&rsquo;s identity &mdash; and one form of it switches off the entire ambient rule-loading walk.</p>
+        <pre class="arch-dia"><code>   TWO DIRECTIVES, scanned in EVERY loaded instruction surface -- an
+   instructions file, an ambient rule, the base system prompt itself:
+
+        persona = NAME              composes WITH the ambient rules
+        ABSOLUTE persona = NAME     also switches the ambient walk OFF
+
+   absolute is tested FIRST, because its literal CONTAINS the plain one
+   as a substring; a fixed-width negative lookbehind then stops the
+   plain form from matching inside it.
+
+   AND UNLIKE THE WORK DIRECTORY, WHICH SWAPS, THIS IS STICKY:
+        set once, never cleared on move -- a forced identity survives
+        the agent walking away from the file that declared it.
+
+   ONE NAME EXPANDS INTO FOUR SUBSYSTEMS:
+        the frame          prepended inside a marker that is STRIPPED
+                           at the top of every render, so it cannot
+                           double across turns
+        the skill set
+        the tool-server set   which expands AGAIN: server configs
+                           loaded onto the agent, PLUS one skill per
+                           server so the agent has it in context
+        the store identity
+
+   the persona is a READ, not the equip ceremony. and the whole cascade
+   is wrapped best-effort, so resolving an identity can never block a
+   startup.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Identity is declarable from inside the content</b>, which is the same move as the ambient walk itself: what the agent is, is a property of what it is currently reading.</li>
+          <li><b>The absolute form is an escape hatch with teeth.</b> Composing with ambient rules is the default; a persona that must not be edited by its surroundings says so, and the walk stops.</li>
+          <li><b>Sticky is the right default here and swapping is the right default for location</b> &mdash; the two live side by side in the same resolve, deliberately, because an identity you can walk out of is not an identity.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheavenagent.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 55 -->
+      <article class="arch">
+        <h3>Nine Seams, and One of Them Can Say No</h3>
+        <p class="arch-what">Nine named points in an agent turn where outside code runs &mdash; and one of them can cancel a tool call and hand the model a perfectly normal-looking tool result instead.</p>
+        <pre class="arch-dia"><code>   NINE NAMED POINTS in a turn:
+
+     before run           before iteration      before tool call
+     after run            after iteration       after tool call
+     before system prompt        on block report        on error
+
+   a registry maps point --&gt; callables. a context object carries the
+   named fields PLUS a free data dict which is BOTH inter-hook state
+   AND the channel for point-specific extras.
+
+   TWO OF THE NINE ARE NOT OBSERVERS. THEY ARE WRITE PATHS INTO THE
+   TURN:
+
+     before tool call     a hook sets BLOCK; the tool is SKIPPED and
+                          the block message becomes THE TOOL RESULT --
+                          so the model receives an ordinary result,
+                          not an exception and not a silent no-op
+     before system prompt a hook REWRITES the rendered prompt
+
+   and the block-report point fires with the structured report AND the
+   rendered text BEFORE the temporary file is deleted, so a handler can
+   never race the cleanup.
+
+   THE REGISTRY IS A CONFIG FIELD, so an agent's hook set is part of
+   its declared shape -- and the framework's own directory tracker
+   registers into it exactly like a third party does.</code></pre>
+        <ul class="arch-moves">
+          <li><b>A veto that reads back as a tool result is the whole trick.</b> The model does not learn about the enforcement layer; it learns what happened, in the grammar it already speaks &mdash; which is how the <a href="#custodian">write-block</a> can be pedagogical rather than fatal.</li>
+          <li><b>The free data dict is doing two jobs on purpose:</b> it is how one hook talks to the next, and it is how a hook talks back to the turn. One channel, so there is no second convention to learn.</li>
+          <li><b>Firing before the cleanup, not after</b>, is the difference between a report handler and a race.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheavenagent.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 56 -->
+      <article class="arch">
+        <h3>Header-Declared Hooks</h3>
+        <p class="arch-what">A hook file says what it binds to in a text header, so the loader knows its events without ever executing it &mdash; and hooks written in any language, importing nothing, plug into the same seams as in-process ones.</p>
+        <pre class="arch-dia"><code>   TWO KINDS BEHIND ONE LOADER -- and the classifier READS the file. it
+   never executes it to find out what it is.
+
+     # hook-events: before_tool_call, after_run      &lt;-- in the first
+     # hook-timeout: 10        (optional)                30 lines
+
+     header present  --&gt; A SCRIPT HOOK. a subprocess. one JSON object
+                         on stdin, one on stdout. imports NOTHING of
+                         the framework. ANY LANGUAGE.
+     no header       --&gt; A MODULE HOOK. imported in-process and bound.
+
+   THE SCRIPT ENVELOPE MAPS ONTO THE WRITE PATHS ABOVE:
+
+     decision "block"  -- or exit code 2, with stderr as the reason
+                       --&gt; the before-tool veto
+     a system message / extra context
+                       --&gt; accumulated into a per-agent buffer that a
+                           FLUSHER drains into the prompt. the flusher
+                           is registered EXACTLY ONCE, by whichever
+                           script hook arrives first.
+
+   EVERY FAILURE MODE IS FAIL-OPEN: a timeout, a crash, unparseable
+   output. logged; the turn untouched.
+
+   AND ONE GUARD ON THE MODULE PATH:
+        an EXIT RAISED AT IMPORT is converted into an import error.
+        a hooks folder also holds standalone stdin-scripts that exit at
+        module level -- and that particular exception is not an
+        ordinary one, so it slipped past the caller's guard and killed
+        the HOST process.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Declaration in a comment header is what keeps the loader honest.</b> Discovering a hook&rsquo;s events by importing it means importing every candidate file to find out whether you wanted it.</li>
+          <li><b>Two implementation languages, one authority.</b> A shell script and an in-process function reach the same veto and the same prompt inject, so the choice is about the job, never about how much power you get.</li>
+          <li><b>The import guard is a receipt.</b> The failure it prevents took down the host process, and the fix is one narrow conversion at the one place a foreign file gets imported.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/hook_script.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 57 -->
+      <article class="arch">
+        <h3>Arguments as Data, Compiled per Destination</h3>
+        <p class="arch-what">A tool declares its arguments as a plain nested dictionary &mdash; not language types, not a schema class &mdash; and the framework compiles that dictionary into whatever schema shape the target runtime demands.</p>
+        <pre class="arch-dia"><code>   THE DECLARATION IS A PLAIN NESTED DICT:
+
+        { name, type, description, required,
+          items    for arrays,
+          nested   for a true sub-model }
+
+   ( VALIDATE )   walks it recursively and RAISES on a missing
+        description, an unsupported type, or a non-boolean required
+        flag -- and performs ONE quiet rewrite:
+
+             a DEFAULT is DELETED from the schema and folded into the
+             description text, so the model READS "(defaults to X)"
+             instead of being handed a schema-level default it might
+             not send.
+
+   ( COMPILE )   one dynamic model, extras FORBIDDEN, built through the
+        single spelling that resolves identically across every minor
+        version of the validation library -- deliberately
+        version-agnostic
+             |
+        +----+----------------------------+
+        v                                 v
+   ONE RUNTIME'S TOOL               ANOTHER RUNTIME'S TOOL
+   plus a raising synchronous       wrapped so its declaration is
+   stub when the tool is            HAND-MERGED back over the one that
+   asynchronous-only                runtime generated: recursing into
+                                    object properties and array items,
+                                    re-deriving what is required, and
+                                    lowercasing enum types for the
+                                    router underneath
+
+   THE DECLARATION IS DATA. THE BINDING IS COMPILED PER DESTINATION.
+   and the inverse exists: a function signature plus its docstring
+   produces the same dictionary.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Data beats types here for one reason:</b> the same declaration has to become two different runtimes&rsquo; idea of a schema, and only one of those is yours to define.</li>
+          <li><b>Folding the default into the description</b> is the small honest fix for a model that reads prose more reliably than it reads schema metadata.</li>
+          <li><b>Hand-merging over the generated declaration</b> is admitted maintenance, not elegance &mdash; it is what makes nested objects and array items survive a runtime whose generator flattens them.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheaventool.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 58 -->
+      <article class="arch">
+        <h3>Four Slots, and No Tool Ever Raises</h3>
+        <p class="arch-what">Every outcome &mdash; output, error, image, system note &mdash; comes back in the same frozen four-field value, so the agent&rsquo;s loop reads errors as content rather than handling exceptions.</p>
+        <pre class="arch-dia"><code>   ONE FROZEN VALUE, FOUR OPTIONAL SLOTS:
+
+        { output | error | image | system }
+
+        truthy   = any slot filled
+        adding two results concatenates field by field, and REFUSES to
+                   merge two images
+        the failure subtype carries NO NEW FIELDS. THE SHAPE IS THE
+                   CONTRACT.
+
+   both execution paths funnel every exception into the ERROR SLOT, so
+   the agent loop's job is never exception handling -- it is deciding
+   what an error slot MEANS. the loop then materialises the envelope
+   into a message in slot priority:
+
+        error  --&gt;  image  --&gt;  output
+
+   THE STRANGEST EDGE: crossing one runtime's function-response
+   boundary, a result can arrive as its own PRINTED FORM -- so the
+   envelope is parsed back out of its own repr, and re-parsed once more
+   if the unwrapped output is itself a nested one.
+
+   AND THE STRUCTURAL COUNTERPART: EVERY tool-use gets a matching
+   result message -- including SYNTHETIC ones for a tool that was not
+   available, and for calls abandoned at the call ceiling.
+   an orphan tool-use makes the NEXT request fail outright.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Errors as values, at the tool boundary</b>, is what lets a hook veto, a crashed subprocess and a successful call all come back through one path the loop already understands.</li>
+          <li><b>Refusing to merge two images</b> is the kind of small explicit refusal that keeps a concatenation operator from silently inventing a result.</li>
+          <li><b>Pairing every tool-use with a result, including the abandoned ones</b>, is not tidiness &mdash; an unmatched call is a hard failure on the following request, so the synthetic message is load-bearing.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheaventool.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 59 -->
+      <article class="arch">
+        <h3>The No-Tools Compaction Clone</h3>
+        <p class="arch-what">When its transcript gets too big, the agent builds a stripped copy of itself pointed at its own history, makes the copy narrate the whole conversation in passes, then replaces its live history with that narration.</p>
+        <pre class="arch-dia"><code>   the transcript is over the threshold -- checked BEFORE every model
+   call, guarded by a re-entrancy flag
+             |
+             v
+   ( BUILD A CLONE FROM SELF )   same model, same provider, same
+        ceiling, same extra arguments -- TOOL LIST STRIPPED EMPTY, the
+        compaction prompt swapped in, constructed ON THE SAME HISTORY
+             |
+             v
+   ( MULTI-PASS )   the first prompt, then a continue prompt,
+        harvesting summary blocks each pass; stop on the completion
+        marker, or on a pass that yields nothing new
+             |
+             v
+   REPLACE the working transcript with exactly:
+        [ the system message , ONE human turn carrying the summary ]
+
+   AND THE PROMPTS INVERT NORMAL SUMMARISATION: exhaustive,
+   chronological, exact paths and commands, "do NOT compress or
+   abstract". they live in a pure-data module that imports nothing of
+   the framework -- the dependency runs ONE WAY only.
+
+   PLUS THE REACTIVE HALF, for when the threshold guessed wrong:
+        catch an error whose text mentions the context window
+        POP WHOLE ITERATIONS off the front -- a message plus every
+             non-human message following it -- until about thirty
+             thousand characters are gone
+        retry. up to twenty times.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The compactor is the same agent minus its tools.</b> Nothing new is configured, nothing new is deployed, and the narration is produced by exactly the model that produced the transcript.</li>
+          <li><b>Same history id, on purpose.</b> The clone is not handed a copy of the conversation; it is pointed at the conversation, which is why the replacement is a swap rather than a merge.</li>
+          <li><b>The proactive threshold and the reactive pop are both kept</b>, because a threshold is a guess and the error is a fact.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/compaction.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 60 -->
+      <article class="arch">
+        <h3>The Fenced Keyword Channel</h3>
+        <p class="arch-what">Any caller can name arbitrary keywords, and whatever the model writes inside those fences is harvested out of free text into persisted, auto-numbered agent state. Structured output without a structured-output API.</p>
+        <pre class="arch-dia"><code>   the caller names arbitrary KEYWORDS, plus one instruction telling
+   the model how to fence them. then, after every response:
+
+        FLATTEN the content into one string -- recursing through
+        dicts, lists and nested message objects
+                  |
+                  v
+        for each keyword, scan for BOTH syntaxes:
+             a fenced code block named for it
+             a tag pair named for it
+        merge the two match sets SORTED BY POSITION, so declaration
+        order inside the response survives
+                  |
+                  v
+        REPEATS DO NOT COLLIDE AND DO NOT OVERWRITE:
+             the first lands under the keyword
+             the next under keyword_2, keyword_3 ...
+             numbered from the highest already persisted
+                  |
+                  v
+   { the agent's extracted content }   saved WITH the history, so a
+                                       harvested deliverable outlives
+                                       the run
+
+   THE SAME TEXT-AS-CONTROL-PLANE IDEA FROM THE OTHER DIRECTION: agent
+   mode is switched on by a regular expression over the INCOMING
+   prompt, and the task-list, complete and goal-accomplished signals
+   are recognised as fenced text AND as tool calls.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The channel is the caller&rsquo;s to define.</b> Nothing in the framework knows what the keywords mean; it knows how to find them and where to put them.</li>
+          <li><b>Accepting both a fence and a tag</b> costs one merge and removes the entire class of near-miss where the model chose the other obvious syntax.</li>
+          <li><b>Numbering against the persisted state, not the response</b>, is what makes repeated emissions across many turns accumulate instead of overwrite.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheavenagent.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 61 -->
+      <article class="arch">
+        <h3>A State Machine Riding the Keyword Channel</h3>
+        <p class="arch-what">A finite state machine for an agent, built entirely on top of the keyword-extraction channel above: the state names <em>are</em> the keywords, and a transition swaps the agent&rsquo;s goal, tools and prompt for the next iteration.</p>
+        <pre class="arch-dia"><code>   NO SEPARATE CONTROL PLANE.
+
+   AT CONSTRUCTION, three things are wired onto the agent:
+        every state name is registered as an extraction keyword
+        a closure-captured transition tool is appended to its tools
+        a block listing the states and the LEGAL transitions is
+             appended to its system prompt
+        + any persisted state is loaded back off disk
+
+   PER ITERATION:
+        the agent emits    &lt;STATE NAME&gt; the reason &lt;/STATE NAME&gt;
+                  |
+        the existing extraction catches it into the agent's state
+                  |
+        the machine VALIDATES the move against the declared table
+                  |
+        and swaps in that state's config -- goal, tool list, prompt
+        suffix, extra keywords -- WHICH TAKES EFFECT NEXT ITERATION
+                  |
+        persisted on EVERY transition, so a crash resumes mid-machine
+
+   AN UNNAMED AGENT IS REFUSED AT CONSTRUCTION: persistence needs a
+   unique directory, so the reserved names are rejected outright.
+
+   AND ABOVE IT SITS A COMPLETION CLAMP: reach a terminal state too
+   early and the machine is RESET and re-run with a continuation
+   prompt naming the cycle number.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Control flow riding an existing channel</b> is why this cost almost nothing: the transition mechanism is the harvest that was already running after every response.</li>
+          <li><b>The transition table is declared and checked</b>, so an invented move is refused rather than quietly followed &mdash; the difference between a state machine and a suggestion.</li>
+          <li><b>The clamp is a second opinion about being finished.</b> An agent that reaches its terminal state on the first cycle has usually answered a smaller question than the one it was given.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/state_machine.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 62 -->
+      <article class="arch">
+        <h3>Iteration-Derived History</h3>
+        <p class="arch-what">The conversation is stored twice &mdash; machine-readable and human-readable, side by side in the same date-sharded folder &mdash; and &ldquo;an iteration&rdquo; is not stored at all. It is computed by splitting the message list at user turns.</p>
+        <pre class="arch-dia"><code>   STORED TWICE, SIDE BY SIDE:
+
+        { id }.json   for machines      in one date-sharded folder,
+        { id }.md     for people        the id itself encoding the
+                                        timestamp and the agent
+
+   re-saving an existing id OVERWRITES IN PLACE. a history is a live
+   handle, not an append log.
+
+   AND "AN ITERATION" IS NOT STORED AT ALL -- IT IS DERIVED:
+
+        walk the messages; START A NEW BUCKET AT EVERY USER TURN;
+        every non-user message falls into the current bucket
+
+   so everything that trims operates on COMPUTED boundaries rather
+   than message counts:
+        the summariser keeps N recent ITERATIONS and replaces the rest
+             with one summary message
+        the context guard pops whole ITERATIONS
+
+   ONE MORE THING THE LOG HAS TO SUPPLY: the message objects carry no
+   native timestamp. so one is written into their free-form extras AT
+   RECEIPT, set-if-absent and never overwriting, and the history
+   round-trips those extras for free. that is the ONE place a
+   per-message happen-time can live, and a downstream observatory keys
+   a stable identity off it.
+
+   the goal, the task list, the current task and the extracted content
+   persist alongside -- which is what makes resuming a real RESUME
+   rather than a replay.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Derived structure over a flat log</b> means there is no second representation to keep in sync: the buckets cannot disagree with the messages, because they are recomputed from them.</li>
+          <li><b>Two files, two audiences, one save.</b> The human copy is not a debugging export; it is written every time, so it is never behind.</li>
+          <li><b>Set-if-absent on the timestamp</b> is what keeps a re-save or a round-trip from quietly restamping when a message actually happened.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/memory/history.py">heaven-framework</a></p>
+      </article>
+
+      <!-- 63 -->
+      <article class="arch">
+        <h3>Prompt Blocks That Execute</h3>
+        <p class="arch-what">A system prompt is assembled from a list of reference strings, and some of those references import a module and <em>call a function</em> at render time &mdash; with failures rendered into the prompt as visible text instead of raised.</p>
+        <pre class="arch-dia"><code>   THE SUFFIX IS A LIST OF STRINGS, each read as a mini-address:
+
+     path = /abs/file             read that file
+     variable = { path, name }    load a module FROM A FILE PATH and
+                                  pull a module-level value out of it
+     registry value = { ... }     read a value out of a registry
+     CALL = { path, function, args }
+                                  import the module and INVOKE it,
+                                  splicing the return into the prompt
+     a bare name                  fall through to the block registry
+
+   AND THE FAILURE POLICY IS THE NOTABLE PART:
+
+     a bad import, a missing function, or a non-callable target each
+     append "[ dynamic call failed: ... ]" WITH the traceback INTO THE
+     PROMPT -- so the model can SEE its own broken context instead of
+     the run dying on assembly.
+
+   UNDERNEATH, THE BASE PROMPT IS ITSELF POSSIBLY GENERATED: rebuilt
+   from a definition file and CACHED AGAINST THAT FILE'S MODIFICATION
+   TIME, so it re-renders only when the definition changes on disk.
+
+   AND ASSEMBLY IS IDEMPOTENT BY CONSTRUCTION: a suffix already present
+   in the base is filtered out, and the whole chain --
+
+        definition  --&gt;  the blocks  --&gt;  the ambient walk  --&gt;  the
+        rewrite hook
+
+   -- runs EVERY iteration, writing back into the transcript's first
+   slot ONLY when the text actually changed.</code></pre>
+        <ul class="arch-moves">
+          <li><b>A prompt that can call code is a prompt that can be current</b> &mdash; the alternative is a template somebody re-pastes whenever the underlying value moves.</li>
+          <li><b>Rendering the failure into the prompt</b> puts the broken context in front of the one participant who can say &ldquo;my instructions are damaged&rdquo; &mdash; and costs nothing when everything works.</li>
+          <li><b>Change-gated write-back</b> is what makes re-deriving the whole prompt every single iteration affordable: the transcript is only touched when the text is genuinely different.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/heaven-framework/blob/main/heaven_base/baseheavenagent.py">heaven-framework</a></p>
       </article>
 
     </div>
@@ -1466,7 +2460,7 @@
       <h2>The compiler wing</h2>
       <p class="receipts-lede">A model learns in context: hand it a notation and it thinks in that notation. The hard part was never running one notation &mdash; it was minting, checking, composing and organising them without the model drifting out of its own syntax. These twenty-one are that factory. Everything it makes is one type, the skill directory, which is why the pieces compose at all &mdash; the same closure law the <a href="#closure-law">worlds run on</a> and the <a href="#one-type">substrate is built from</a>, one floor down.</p>
 
-      <!-- 42 -->
+      <!-- 64 -->
       <article class="arch">
         <h3>The Compiler-Compiler Loop</h3>
         <p class="arch-what">Four organs in a fixed order that turn a handful of examples into a notation the model cannot malform &mdash; and the product is not a compiler, it is the thing that mints a new compiler per domain.</p>
@@ -1501,7 +2495,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></p>
       </article>
 
-      <!-- 43 -->
+      <!-- 65 -->
       <article class="arch">
         <h3>The Syntax-Only Gate</h3>
         <p class="arch-what">A linter with jurisdiction over <em>form</em> and nothing else, returning a two-axis verdict: a known token in the wrong slot is steerable, a token foreign to the language is fatal. What the gate never does is judge whether the content is any good &mdash; and that refusal is the load-bearing part.</p>
@@ -1536,7 +2530,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/rulecatcher">chaincompiler / rulecatcher</a></p>
       </article>
 
-      <!-- 44 -->
+      <!-- 66 -->
       <article class="arch">
         <h3>The Chain in Two Registers</h3>
         <p class="arch-what">One object rendered twice: silently as the template that generates the output, aloud as the paragraph the model has to say. Because the generator and the thing being measured are the same chain, a drift detector falls out for free instead of being built.</p>
@@ -1572,7 +2566,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/accc">chaincompiler / accc + corcc</a></p>
       </article>
 
-      <!-- 45 -->
+      <!-- 67 -->
       <article class="arch">
         <h3>The Selector Above the Flavors</h3>
         <p class="arch-what">A seat that sits <em>above</em> a set of interchangeable reasoning styles rather than being one of them, choosing per task between exploiting a proven chain and constructing a new one &mdash; and its policy is not a config value, it is rendered as a readable, lintable persona.</p>
@@ -1611,7 +2605,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/.claude/skills/bandit-chain-system">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 46 -->
+      <!-- 68 -->
       <article class="arch">
         <h3>The Construct Seat &mdash; anti-melt as a window boundary</h3>
         <p class="arch-what">Filling a frame excellently needs more domain context than fits in one window without the geometry flattening. So the building arm is given a window of its own, burns it, and hands back only the finished artifact. The parent never loaded the context, so the parent never degrades.</p>
@@ -1642,7 +2636,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 47 -->
+      <!-- 69 -->
       <article class="arch">
         <h3>The Three-Seat Flow, Where a Seat Is a Directory</h3>
         <p class="arch-what">Challenger, Generator, Observer &mdash; and none of them is a function. Each is a directory you travel to in order to learn the role, do the work, and leave the artifacts. There is deliberately no run method: the agent walking the directories <em>is</em> the run.</p>
@@ -1673,7 +2667,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 48 -->
+      <!-- 70 -->
       <article class="arch">
         <h3>The Cat-Breadcrumb Tree</h3>
         <p class="arch-what">Progressive disclosure implemented in the filesystem, built around a hard platform constraint: the harness auto-loads only the root skills folder and will not descend into a nested one. So the descent is moved into the content &mdash; each node&rsquo;s body hands you the command that opens its children.</p>
@@ -1710,7 +2704,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/.claude/skills/skilltree">chaincompiler / skilltree</a></p>
       </article>
 
-      <!-- 49 -->
+      <!-- 71 -->
       <article class="arch">
         <h3>Steer-then-Hide &mdash; the sidecar split</h3>
         <p class="arch-what">The form of a document that gets <em>indexed</em> is deliberately not the form that gets <em>returned</em>. A compiled, controlled marker is attached to steer retrieval in two regimes at once, then stripped before the text reaches the reader &mdash; so the machinery never leaks into the output.</p>
@@ -1748,7 +2742,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/glyphsteer">chaincompiler / glyphsteer</a></p>
       </article>
 
-      <!-- 50 -->
+      <!-- 72 -->
       <article class="arch">
         <h3>Skillchains with Authored Bridges</h3>
         <p class="arch-what">A chain of skills where the <em>seam</em> is a step. Between two capability steps sits an explicitly written reasoning move that routes the first one&rsquo;s output into the second &mdash; so the glue is an artifact somebody authored and shipped, not something the runtime improvises each time.</p>
@@ -1783,7 +2777,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/skillchain-compiler">chaincompiler / skillchain-compiler</a></p>
       </article>
 
-      <!-- 51 -->
+      <!-- 73 -->
       <article class="arch">
         <h3>The Render Pipeline &mdash; alternating generative and code steps</h3>
         <p class="arch-what">One built system becomes a publishable chapter, a front-door index skill, an installable plugin, and a row in a library &mdash; through a chain where generative steps and deterministic steps alternate, and the terminal move is always code.</p>
@@ -1840,7 +2834,7 @@
            repository, so no entry here is built on them.
            ────────────────────────────────────────────────────────── -->
 
-      <!-- 52 -->
+      <!-- 74 -->
       <article class="arch">
         <h3>Demolish and Restate</h3>
         <p class="arch-what">Every change to a live agent&rsquo;s skill tree is a total demolition of its directory followed by a full re-materialisation from a manifest. There is no incremental edit path at all. Identity survives because it is <em>data</em> in the manifest, and the two things that cannot be regenerated are copied out first and restored after. Adding one capability and re-cohering the entire agent are the same operation.</p>
@@ -1877,7 +2871,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 53 -->
+      <!-- 75 -->
       <article class="arch">
         <h3>One Role Block, Swappable Rule Blocks</h3>
         <p class="arch-what">An agent&rsquo;s directory splits its instructions into exactly two kinds of file: one role block &mdash; who you are in this domain, the invariant &mdash; and a set of numbered rule blocks the harness appends. Because identity is one file and equipment is files, a different <em>species</em> of agent is built by swapping a single rule file. Same directory shape, different creature.</p>
@@ -1904,7 +2898,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 54 -->
+      <!-- 76 -->
       <article class="arch">
         <h3>The Parts List Is a Domain</h3>
         <p class="arch-what">The system holds a literal table of what it is made of &mdash; one row per package, its blurb, and its real public operations written in its own notation &mdash; and then runs its own headline compile move over that table. What comes out is one closed subsystem per part, assembled into a single tree: the toolchain&rsquo;s view of itself, generated by the toolchain, at the granularity of operations rather than package names.</p>
@@ -1938,7 +2932,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 55 -->
+      <!-- 77 -->
       <article class="arch">
         <h3>The Address Is in the Index</h3>
         <p class="arch-what">Every node in an agent&rsquo;s tree has a path coordinate, and that coordinate is baked into the node&rsquo;s indexed name and description at build time. The full-text index therefore carries the address as ordinary searchable text, so restricting a search to one branch is a prefix match &mdash; no access-control layer, no graph query.</p>
@@ -1969,7 +2963,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
       </article>
 
-      <!-- 56 -->
+      <!-- 78 -->
       <article class="arch">
         <h3>The Gate the Contribution Cannot Edit</h3>
         <p class="arch-what">Contributions to the shared registry are pull requests that edit one data file. The validating job checks out the contribution, then <em>throws away the contribution&rsquo;s copy of the validator</em> and fetches the base branch&rsquo;s copy instead before running it against the contributed data. A contributor cannot weaken the gate that judges them.</p>
@@ -2003,7 +2997,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/blob/main/.github/workflows/contribute.yml">chaincompiler</a></p>
       </article>
 
-      <!-- 57 -->
+      <!-- 79 -->
       <article class="arch">
         <h3>A Registry Is a Repository</h3>
         <p class="arch-what">There is no marketplace server. A marketplace is a data file in a repository whose entries are pointers, never code &mdash; and a child marketplace joins its parent by adding one entry that points at its own file. Discovery is a recursive walk with a cycle guard and a pluggable resolver, so the whole federation walks offline in tests and over the network in production.</p>
@@ -2041,7 +3035,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/blob/main/registry.json">chaincompiler</a></p>
       </article>
 
-      <!-- 58 -->
+      <!-- 80 -->
       <article class="arch">
         <h3>A Prompt Read as a Three-Layer Program</h3>
         <p class="arch-what">A hand-authored megaprompt is not treated as text to be rewritten. It is parsed as a program with three simultaneous layers, and each layer is routed to a compiler that already exists in the stack. Then the compiled output feeds itself back through the gate the compiler exists to enforce.</p>
@@ -2079,7 +3073,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chaincompiler">chaincompiler / chaincompiler</a></p>
       </article>
 
-      <!-- 59 -->
+      <!-- 81 -->
       <article class="arch">
         <h3>The Notice Arrives as a Rule</h3>
         <p class="arch-what">A background checker that watches a directory tree for structural drift does not write a log, open an issue or print to a terminal. It rewrites a self-managed rule file inside the rules directory the agent auto-loads &mdash; so the alert arrives as part of the agent&rsquo;s own standing context on its next turn, carrying the findings, the severity split, and the exact command that fixes them.</p>
@@ -2111,7 +3105,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/skilltree/blob/master/src/skilltree/cohere.py">skilltree</a></p>
       </article>
 
-      <!-- 60 -->
+      <!-- 82 -->
       <article class="arch">
         <h3>Hand-Written Body, Generated Tail</h3>
         <p class="arch-what">Each node file in the tree has two zones with different authors. Everything above the generated sections is hand-written and preserved verbatim; the tail is stripped and re-emitted from the manifest on every touch. Registering something writes one row into the manifest and then surgically rewrites only that one file &mdash; the exact inverse of the demolish-and-restate path, living in the same system for a different unit size.</p>
@@ -2146,7 +3140,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/skilltree/blob/master/src/skilltree/tome.py">skilltree</a></p>
       </article>
 
-      <!-- 61 -->
+      <!-- 83 -->
       <article class="arch">
         <h3>A Learned Grammar With a Health Reading</h3>
         <p class="arch-what">A learned grammar is not frozen once adopted. Every adopted rule accumulates counters from real linting traffic, and those counters produce a standing recommendation per rule. On the other side, proposals awaiting adoption are triaged against each other, and a frontier filter hides anything shadowed by a stronger sibling &mdash; so a human sees only the live edge.</p>
@@ -2185,7 +3179,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/rulecatcher">chaincompiler / rulecatcher</a></p>
       </article>
 
-      <!-- 62 -->
+      <!-- 84 -->
       <article class="arch">
         <h3>The Language Is a Dictionary</h3>
         <p class="arch-what">The self-interpreter for the project&rsquo;s own dialect has no parser and no evaluator. The dialect <em>is</em> the host language plus a namespace: one function builds a dictionary of the toolchain&rsquo;s primitives, and programs run with that dictionary as their globals. Self-hosting falls out rather than being engineered &mdash; because the vocabulary includes the emitter that turns a tree into a tool server.</p>
@@ -2254,9 +3248,9 @@
   <section id="g-stores">
     <div class="wrap">
       <h2>Stores that judge what enters them</h2>
-      <p class="receipts-lede">A knowledge store that accepts whatever it is handed is a log. These nineteen are stores with opinions: a symbolic gate that refuses a write and hands back what is missing as an instruction, a grade stamped on every edge, a validator that names the exact address where knowledge stops. In every one of them the thing that assesses itself and the thing allowed to accept it are different parties &mdash; which is the same split the <a href="#g-selection">selection machinery</a> runs on, at a much smaller grain.</p>
+      <p class="receipts-lede">A knowledge store that accepts whatever it is handed is a log. These twenty are stores with opinions: a symbolic gate that refuses a write and hands back what is missing as an instruction, a grade stamped on every edge, a validator that names the exact address where knowledge stops, a record with no settable status at all. In every one of them the thing that assesses itself and the thing allowed to accept it are different parties &mdash; which is the same split the <a href="#g-selection">selection machinery</a> runs on, at a much smaller grain.</p>
 
-      <!-- 63 -->
+      <!-- 85 -->
       <article class="arch">
         <h3>Validate Live, Park, Drain</h3>
         <p class="arch-what">The call that adds a concept never touches the database. It runs the gates in its own process, writes one envelope into a spool directory, and returns. A separate worker drains the spool and is the only thing that writes the store and the readable mirror &mdash; so the caller is cheap and non-blocking, and a rejection provably never reaches the store, because the gates fire before the envelope exists.</p>
@@ -2292,7 +3286,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/add_concept_tool.py">carton-mcp</a></p>
       </article>
 
-      <!-- 64 -->
+      <!-- 86 -->
       <article class="arch">
         <h3>The Gate Whose State Machine Lives in the Store It Gates</h3>
         <p class="arch-what">A state machine here is not code and not configuration &mdash; it is ordinary concepts and edges, authored through the same interface everything else uses. Each actor carries a cursor; while an actor sits at a step, <em>every</em> retrieval must match that step&rsquo;s pattern. A match passes and advances the cursor; a miss is refused, and the refusal message <em>is</em> the instruction for the next move.</p>
@@ -2327,7 +3321,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/sm_gate.py">carton-mcp</a></p>
       </article>
 
-      <!-- 65 -->
+      <!-- 87 -->
       <article class="arch">
         <h3>The Predicate Is a Node, and Every Edge Is Stamped</h3>
         <p class="arch-what">Relationship types are themselves concepts in the same store, so writing one mints a node for the relationship. Every edge is stamped at write time with whether its predicate is a proven vocabulary word or an invented one, the inverse edge is written automatically with the same stamp, and an unproven predicate gets an edge marking it as unfinished &mdash; so the store&rsquo;s own incomplete vocabulary is a query rather than a lint report somewhere else.</p>
@@ -2359,7 +3353,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/add_concept_tool.py">carton-mcp</a></p>
       </article>
 
-      <!-- 66 -->
+      <!-- 88 -->
       <article class="arch">
         <h3>Two Bodies per Concept, and a Linker That Cannot See the Fences</h3>
         <p class="arch-what">Every concept exists twice &mdash; as a node in the store and as a readable file on disk &mdash; written by the same drain, so the store is never a black box and the same knowledge is queryable, diffable and indexable. On top sits a linker that turns any mention of another concept into a link across the whole corpus, using a masking trick that makes embedded structured blocks literally invisible to it.</p>
@@ -2391,7 +3385,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/observation_worker_daemon.py">carton-mcp</a></p>
       </article>
 
-      <!-- 67 -->
+      <!-- 89 -->
       <article class="arch">
         <h3>Off by Default, Metered When On</h3>
         <p class="arch-what">The same program is a private local store and a metered multi-tenant service, and the difference is two environment values. Unset, both the network layer and the quota layer are byte-identical no-ops that run zero queries and never touch the server object. Set, they become a fail-closed gate around the transport and a count gate at the single write chokepoint &mdash; one that refuses growth but still allows refinement.</p>
@@ -2427,7 +3421,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/network_gateway.py">carton-mcp</a></p>
       </article>
 
-      <!-- 68 -->
+      <!-- 90 -->
       <article class="arch">
         <h3>The Deducer That Ships Its Own Bound</h3>
         <p class="arch-what">A module that reads one class&rsquo;s definition from two independent surfaces at once &mdash; the live property store and a loaded formal ontology &mdash; fuses them into a coloured slot structure, computes its symmetry, cross-checks the answer by brute-force enumeration, and staples a soundness caveat onto every single output. It writes nothing: the write-back encoder exists, is fully implemented, and is deliberately called from nowhere.</p>
@@ -2462,7 +3456,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/aut_deducer.py">carton-mcp</a></p>
       </article>
 
-      <!-- 69 -->
+      <!-- 91 -->
       <article class="arch">
         <h3>An Identity With Two Halves, Handed Over in a File</h3>
         <p class="arch-what">An acting identity is not a configuration object &mdash; it is a node in the same store as the knowledge, split into a persona half and a substrate half, with the retrieval cursor hanging off the substrate. And because the process that equips an identity is not the process that runs the gate, the active identity is handed over as one line in a file &mdash; which makes the whole mechanism default-safe.</p>
@@ -2497,7 +3491,7 @@
         <p class="arch-runs">Runs in <a href="https://github.com/sancovp/carton-mcp/blob/main/sm_gate.py">carton-mcp</a></p>
       </article>
 
-      <!-- 70 -->
+      <!-- 92 -->
       <article class="arch">
         <h3>Gaps Typed by Who May Fill Them</h3>
         <p class="arch-what">When the reasoner hits a slot it cannot fill it neither guesses nor merely reports &ldquo;incomplete&rdquo; &mdash; it emits the gap <em>typed by which authority is permitted to fill it</em>. A client routes each typed gap to a filler keyed by that authority, merges any answer back in as a new observation, and re-derives. Re-derivation is the resume; there is no saved continuation anywhere.</p>
@@ -2532,7 +3526,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 71 -->
+      <!-- 93 -->
       <article class="arch">
         <h3>Who Fills It, Deduced From What It Is</h3>
         <p class="arch-what">For a gap no curated table covers, <em>who</em> must fill it is deduced from the ontological category of the missing thing. If the expected type reaches the abstract branch it is a universal, and a model can generate it. If it reaches the concrete branches it is a particular, and it must be attested from reality &mdash; so only a human who knows the instance may fill it.</p>
@@ -2568,7 +3562,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 72 -->
+      <!-- 94 -->
       <article class="arch">
         <h3>Load Only What This Event Mentions, and Only Above a Floor</h3>
         <p class="arch-what">The reasoner holds no domain facts at rest &mdash; only the program. Each event pulls in just the requirement closure of the concepts that event mentions, and the pull is filtered by grade, so it can never wander into the low-quality neighbourhood. The same line is the write floor: only material above the bar is persisted back.</p>
@@ -2605,7 +3599,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 73 -->
+      <!-- 95 -->
       <article class="arch">
         <h3>Ask Backwards, Compose Forwards, Same Turn</h3>
         <p class="arch-what">Because the reasoner may not reach the store, a rule that needs something it cannot see raises a <em>need</em> naming the shape it wants. The host satisfies that need with one indexed query, pulls the match&rsquo;s bounded neighbourhood in, and re-fires. Backward asking and forward composing alternate inside a single event until nothing changes.</p>
@@ -2636,7 +3630,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 74 -->
+      <!-- 96 -->
       <article class="arch">
         <h3>Lift a Foreign Runtime Into the Type System</h3>
         <p class="arch-what">An existing, working logic program is neither rewritten nor run as a separate service. A scanner written in the same language reads it structurally, its predicate signatures are lifted into the ontology as types with one required part per argument, and the same embedded runtime that holds the reasoner also holds the foreign modules &mdash; so an admitted instance resolves to a module-qualified call made in the same process.</p>
@@ -2678,7 +3672,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 75 -->
+      <!-- 97 -->
       <article class="arch">
         <h3>The Tool Call Becomes an Observation First</h3>
         <p class="arch-what">An agent&rsquo;s tool call is turned into an observation before it executes; the ontology grades it like anything else, and the gate blocks the call when its target was never observed. The facts about the call exist only for the length of that event and leave no residue in the store.</p>
@@ -2713,7 +3707,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 76 -->
+      <!-- 98 -->
       <article class="arch">
         <h3>Three Lanes at the Door</h3>
         <p class="arch-what">A candidate is submitted to an external validator <em>before</em> it joins the structure, and the verdict routes it down one of three lanes: full member, admitted at zero weight with a written obligation to be completed, or refused outright. Bad-but-honest content gets in and is visibly inert; only contradictions are turned away.</p>
@@ -2753,7 +3747,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 77 -->
+      <!-- 99 -->
       <article class="arch">
         <h3>Three Independent Marks on One Address</h3>
         <p class="arch-what">One address carries three orthogonal verdicts that cannot overwrite each other &mdash; its structural shape, what happened when something ran there, and whether a person declared it canonical &mdash; each written by a different authority. &ldquo;Wrong&rdquo; stays separate from &ldquo;invalid&rdquo; stays separate from &ldquo;official.&rdquo;</p>
@@ -2791,7 +3785,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 78 -->
+      <!-- 100 -->
       <article class="arch">
         <h3>The Address Decodes to Sentences, and Names Where It Stops</h3>
         <p class="arch-what">Each token class in an address decodes to a specific relation, so walking an address emits a web of sentences &mdash; and the walk deliberately keeps going past the point where the structure actually exists, reporting the exact token at which decoding must hand off to inference.</p>
@@ -2833,7 +3827,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 79 -->
+      <!-- 101 -->
       <article class="arch">
         <h3>Total Agreement Is the Alarm</h3>
         <p class="arch-what">When every enumerated path in a space comes back fully resolved, the system raises an alarm and demands an external witness instead of reporting success. Frictionless internal coherence is treated as a defect signal.</p>
@@ -2864,7 +3858,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 80 -->
+      <!-- 102 -->
       <article class="arch">
         <h3>Rejection Is a Five-Field Argument, Signed</h3>
         <p class="arch-what">Calling something wrong requires filling out a formal argument &mdash; the entity, what it has, what it therefore should map to, what it is claimed to map to, and the missing step &mdash; and the rejection is stamped with whose point of view it came from. The same structure aimed at your own work flips it into a work item with a named target.</p>
@@ -2900,7 +3894,7 @@
         <p class="arch-runs">Runs in the lab</p>
       </article>
 
-      <!-- 81 -->
+      <!-- 103 -->
       <article class="arch">
         <h3>A Slot Can Produce a Whole Space, and Depth Counts Up From the Bottom</h3>
         <p class="arch-what">A single slot can produce an entire further space &mdash; and pointing it at a space that already exists <em>links</em> instead of creating, so the levels form a spiral rather than a tree. Depth is then counted from the bottom up and stops dead at the first layer that is filled but not locked, so the number measures how much <em>proven</em> structure justifies a node.</p>
@@ -2927,6 +3921,52 @@
         <ul class="arch-moves">
           <li><b>Create-or-link on a name is the whole spiral:</b> reuse is the default outcome of pointing at something that already exists, rather than a deduplication pass afterwards.</li>
           <li><b>Locking, not filling, is what lets a layer count</b> &mdash; so the depth number cannot be inflated by starting a lot of things.</li>
+        </ul>
+        <p class="arch-runs">Runs in the lab</p>
+      </article>
+
+      <!-- 104 -->
+      <article class="arch">
+        <h3>Status Is a Fold, Never a Field</h3>
+        <p class="arch-what">An achievement record with no settable status: every state is derived by replaying an append-only log, and its three conditions are conferred by three different parties, none of whom is the claimant.</p>
+        <pre class="arch-dia"><code>   ONE append-only log. one event per line. a versioned envelope:
+
+        { version, SEQ, kind, at, actor, data }
+
+   ORDERING IS THE SEQUENCE NUMBER -- a strictly increasing integer
+   assigned at append -- NEVER the wall clock. a naive timestamp, or a
+   number that does not increase, is REFUSED at append, so clock skew
+   can never reorder a proof against the claim it proves.
+
+   TWO EVENT CLASSES, and the difference is the whole ontology:
+        DECLARATIONS   an actor claims a binding. it CONFERS NOTHING.
+        FACTS          emitted by seams that already exist anyway.
+
+   COMPLETION IS A CONJUNCTION OF THREE, CONFERRED BY THREE DIFFERENT
+   PARTIES -- and there is a deliberate asymmetry:
+
+     the journey     WORLD-conferred proof, and it must re-conduct
+                     AFTER the declaration. declare, THEN reproduce.
+                     a success from before the claim does not count,
+                     which is what stops anyone declaring over an old
+                     one.
+     the structure   the timeless HUMAN approval gate
+     the agent       mere existence -- the promotion flow already
+                     gated that
+
+   THE MODULE EXPORTS NO SETTER AT ALL. no set-, no mark- : asserted on
+   the export list AS A TEST, because it is written against code where
+   completing, marking viable and naming were all unchecked self-set
+   fields.
+
+   THREE ONE-LINE WIRE SITES at seams that already existed, always-on
+   and FAIL-OPEN: a broken log must never break the turn, and a missing
+   record simply reads later as never-happened. an unknown kind is an
+   ERROR NAMING THE LINE -- never a silent skip.</code></pre>
+        <ul class="arch-moves">
+          <li><b>No status field means no status to set wrongly.</b> Every question the record answers is a fold over the events, so the only way to change an answer is to add an event somebody was allowed to add.</li>
+          <li><b>The ordering rule is the integrity of the whole thing.</b> Sequence numbers rather than timestamps is what makes &ldquo;the proof came after the claim&rdquo; a fact about the log rather than a fact about two machines&rsquo; clocks.</li>
+          <li><b>Asserting the absence of mutators as a test</b> is how a negation stays true: the anti-pattern it was written against is one import away, and nothing else would notice it coming back.</li>
         </ul>
         <p class="arch-runs">Runs in the lab</p>
       </article>
