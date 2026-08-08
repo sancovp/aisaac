@@ -28,6 +28,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from skeleton import (head, nav, ladder, receipts, receipts_compact,  # noqa: E402
                       final_cta, footer)
+import tags as TAGS  # noqa: E402  — the brand tag vocabulary + the assignments
 
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "notes"
@@ -45,6 +46,11 @@ CASE_STUDIES = ["the-ten-minute-product-priced-like-magic",
                 "the-compiler-that-resolves-the-ordinary",
                 "the-agent-that-only-sees-the-next-turn"]
 ORDER = FRAMEWORKS + CASE_STUDIES
+
+# Derived, never typed: the two counts this page quotes. FEED_N was the literal
+# 51 in three places, which is exactly how a count goes stale.
+FEED_N = len(TAGS.BLOG_TAGS)                          # the blog/ field notes
+CORPUS_N = FEED_N + len(TAGS.NOTE_TAGS)               # everything the tag index files
 
 
 def clean(s):
@@ -80,7 +86,9 @@ def parse(path):
     eyebrow, title, dek = "", "", ""
     mm = re.search(r'<p class="eyebrow">(.*?)</p>', art, re.S)
     if mm:
-        eyebrow = clean(mm.group(1))
+        # strip the tag pills first: they are REGENERATED from tools/tags.py on
+        # every run, so reading them back as eyebrow text would concatenate
+        eyebrow = clean(re.sub(r"<a\b.*?</a>", "", mm.group(1), flags=re.S))
         art = art[:mm.start()] + art[mm.end():]
     mm = re.search(r"<h1[^>]*>(.*?)</h1>", art, re.S)
     if not mm:
@@ -111,6 +119,10 @@ def parse(path):
 
 def render(note, nxt):
     desc = html.escape(truncate(clean(note["dek"]) or note["title"], 155), quote=True)
+    # the note declares its framework concepts; each pill jumps to that
+    # concept's section on the corpus index (tools/tags.py, law 4)
+    pills = TAGS.pills(TAGS.tags_for(f'{note["slug"]}.html', "notes"),
+                       lambda k: f"{UP}blog/index.html#{k}")
     dek = f'\n    <p class="dek">{note["dek"]}</p>' if note["dek"] else ""
     rec = [(k, h3, p or "Open the artifact and check the claim yourself.", go, href)
            for (k, h3, p, go), href in zip(note["receipts"], _hrefs(note))] \
@@ -129,7 +141,7 @@ def render(note, nxt):
         nav(up=UP, current="notes/"),
         "",
         '  <article class="note">',
-        f'    <p class="eyebrow">{note["eyebrow"]}</p>',
+        f'    <p class="eyebrow">{note["eyebrow"]}{pills}</p>',
         f'    <h1>{note["title_html"]}</h1>{dek}',
         "",
         note["body"],
@@ -207,10 +219,19 @@ def build():
         f'        <a class="rung" href="#case-studies"><span class="rung-n">{len(cs):02d}</span>'
         '<span class="rung-t">Case studies</span><span class="rung-d">one real thing that '
         "happened, and what it cost</span></a>",
-        '        <a class="rung" href="../blog/"><span class="rung-n">51</span>'
+        f'        <a class="rung" href="../blog/"><span class="rung-n">{FEED_N}</span>'
         '<span class="rung-t">Field notes</span><span class="rung-d">the long feed, published '
         "as the work happened</span></a>",
         "      </nav>",
+        "",
+        # The SAME row the corpus index carries (tools/tags.py). One vocabulary
+        # across both surfaces: whichever index a reader lands on, the framework
+        # is the thing they see first and the concept is the thing they can jump
+        # to. The rungs point INTO blog/index.html because that is where the
+        # per-concept sections live — one corpus, one tag index (tags.py law 4).
+        '      <p class="eyebrow">Or jump straight to a concept</p>',
+        TAGS.tag_row({k: f"../blog/index.html#{k}" for k in TAGS.ORDER},
+                     TAGS.corpus_counts()),
         "",
         '      <h2 id="frameworks">Frameworks</h2>',
         '      <p class="receipts-lede">A way to think about the problem. These hand you the '
@@ -223,12 +244,13 @@ def build():
         f'      <div class="cards">\n{cards(cs)}\n      </div>',
         "",
         '      <h2 id="field-notes">Field notes</h2>',
-        '      <p class="receipts-lede">The long feed &mdash; 51 notes published as the work '
-        "happened, grouped by discipline.</p>",
+        f'      <p class="receipts-lede">The long feed &mdash; {FEED_N} notes published as '
+        "the work happened, filed by concept.</p>",
         '      <div class="cards">',
         '        <a class="card" href="../blog/"><h3>The whole feed</h3><p>Every field note on '
-        "agent engineering, grouped by discipline &mdash; tools, context, harnesses, "
-        'admissibility, concentration, emergence.</p><span class="receipt-go">Browse 51 notes '
+        "agent engineering, filed under the seven levels &mdash; prompts, tools, context, "
+        "harnesses, admissibility, concentration, emergence &mdash; and the concepts that cut "
+        f'across them.</p><span class="receipt-go">Browse all {CORPUS_N} '
         "&rarr;</span></a>",
         '        <a class="card" href="../blog/flat-vs-tree.html"><h3>Flat vs Tree</h3><p>A bug '
         "hiding in every AI &ldquo;skills&rdquo; folder &mdash; and the paper about it. They "

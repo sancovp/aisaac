@@ -316,6 +316,21 @@ section { padding: var(--sec-y) 1.5rem; }
 .eyebrow::before, .tag::before {
   content: ''; display: block; width: 2rem; height: 1px; background: var(--mercury-blue);
 }
+/* THE BRAND TAG PILLS (vocabulary + assignments: tools/tags.py). A post declares
+   which of the framework concepts it belongs to, right in the eyebrow row, and
+   each pill links back to that concept's section on the corpus index. No new
+   block vocabulary and no new colour: the eyebrow is ALREADY the mono label
+   voice, so a pill is that voice plus a hairline. The hover border is the exact
+   rgba `.rung:hover` already uses — the filter row and the pills are the same
+   control, so they light up the same way. */
+.eyebrow { flex-wrap: wrap; row-gap: 0.5rem; }
+.eyebrow a {
+  color: var(--text-2); text-decoration: none; line-height: 1;
+  padding: 0.28rem 0.6rem; border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm); background: var(--glass-bg);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.eyebrow a:hover { color: var(--mercury-blue); border-color: rgba(125,211,252,0.25); }
 
 /* The claims speak in the display serif; the chrome stays Inter. That split
    IS the de-generic move (RULE 02 §2) — the gradient fill and the breathe
@@ -679,6 +694,10 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 
 /* ══ B4 — RECEIPTS (4-up → 2-up → 1-up; never orphan a 4th card) ═══════ */
 .receipts { padding: var(--sec-y) 1.5rem; }
+/* The section blurb. It was only ever defined INSIDE .receipts, so the same
+   class on the corpus-index tag sections rendered as unstyled body copy —
+   unscoped base first, the .receipts variant unchanged below it. */
+.receipts-lede { font-size: calc(var(--lede-size) - 0.04rem); color: var(--text-2); max-width: 62ch; line-height: var(--lh-lede); margin-bottom: 1.4rem; }
 .receipts .receipts-lede { font-size: calc(var(--lede-size) - 0.04rem); color: var(--text-2); max-width: 62ch; line-height: var(--lh-lede); margin-bottom: 0.5rem; }
 .receipts .receipts-lede a { color: var(--mercury-blue); }
 .receipts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; margin-top: 2rem; }

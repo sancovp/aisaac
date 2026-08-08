@@ -55,6 +55,16 @@ serves RULE 01's deducibility mechanics.
   provenance line. Moved the smallest step along the existing slate ramp to
   clear AA on both (4.80 / 4.55). Same ramp, corrected — logged here because
   the restraint law requires any palette change to edit this rule.
+- **The brand tag pills (2026-08-08).** `.eyebrow a` + `.eyebrow { flex-wrap }`.
+  ZERO new colours and zero new block vocabulary: the eyebrow is already the mono
+  uppercase label voice, so a pill is that voice plus a `--glass-border` hairline
+  at `--r-sm`, and the hover border reuses `.rung:hover`'s existing rgba —
+  deliberately, because the filter row and the pills are the same control and
+  must light up the same way. Nothing else in the file gained a selector.
+- **`.receipts-lede` unscoped (2026-08-08).** It existed only as
+  `.receipts .receipts-lede`, so the identical class on the corpus-index section
+  blurbs rendered as unstyled body copy. Added the unscoped base; the `.receipts`
+  variant is untouched.
 - **Not a colour change but worth knowing:** `--black`, `--grey`,
   `--grey-light` and `--accent` were referenced across the posts and defined
   NOWHERE, and `.post-nav` was used 40 times and defined nowhere. Retiring the

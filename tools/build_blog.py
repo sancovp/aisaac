@@ -23,9 +23,11 @@ sys.path.insert(0, str(Path(__file__).parent))
 from skeleton import (head, nav, ladder, receipts, receipts_compact,  # noqa: E402
                       final_cta, footer)
 from linkmap import rewrite_href  # noqa: E402
+import tags as TAGS  # noqa: E402  — the brand tag vocabulary + the assignments
 
 ROOT = Path(__file__).resolve().parent.parent
 BLOG = ROOT / "blog"
+NOTES = ROOT / "notes"
 UP = "../"
 
 # §3.2 — files that leave the corpus.
@@ -37,17 +39,14 @@ DROP = {"doctor.html", "admissibility-engineering.html",
 
 # §3.2 FILTER ROW RULE — the tags a stranger sees first must be ENGINEERING
 # tags. PAIAB / SANCTUM / CAVE / UNICORN are demoted out of the row entirely
-# (L3: zero canon vocabulary above the door). They survive only in data-tags.
-DISCIPLINES = [
-    ("tool-eng", "Tools", "what the agent can reach for"),
-    ("context-eng", "Context", "what it knows when it acts"),
-    ("harness-eng", "Harnesses", "the loop it runs inside"),
-    ("admissibility-eng", "Admissibility", "how it knows it is wrong"),
-    ("concentration-eng", "Concentration", "holding one thread to the end"),
-    ("emergence-eng", "Emergence", "what shows up that nobody wrote"),
-]
-DISC_LABEL = {k: v for k, v, _ in DISCIPLINES}
-OTHER = ("other", "Everything else", "the rest of the corpus")
+# (L3: zero canon vocabulary above the door).
+#
+# The row itself now comes from tools/tags.py: the seven levels of agent
+# engineering in order, then the cross-cutting concepts. The six generic
+# discipline keys that used to live here matched NOTHING — all 51 cards shipped
+# `data-tags=""` and the whole corpus collapsed under one "Everything else"
+# heading. That is the defect tags.py was written to close; the vocabulary and
+# the per-post assignments both live there so the two generators cannot drift.
 
 
 def clean_text(s):
@@ -92,7 +91,10 @@ def parse_post(path):
     m = re.search(r'<(?:div|p|span)[^>]*class="[^"]*\b(?:post-tag|tag|eyebrow)\b[^"]*"'
                   r"[^>]*>(.*?)</(?:div|p|span)>", art, re.S)
     if m:
-        eyebrow = clean_text(m.group(1))
+        # drop the tag pills before reading the eyebrow back — they are
+        # REGENERATED from tools/tags.py every run, and parsing them as part of
+        # the eyebrow text is how a re-run would silently concatenate them
+        eyebrow = clean_text(re.sub(r"<a\b.*?</a>", "", m.group(1), flags=re.S))
         art = art[:m.start()] + art[m.end():]
     m = re.search(r"<h1[^>]*>(.*?)</h1>", art, re.S)
     if not m:
@@ -111,10 +113,20 @@ def parse_post(path):
 
 
 def fix_links(fragment):
-    """Point every in-body link at a URL that still exists (tools/linkmap.py)."""
-    return re.sub(r'href=(["\'])(.*?)\1',
-                  lambda m: f"href={m.group(1)}{rewrite_href(m.group(2), UP)}{m.group(1)}",
-                  fragment)
+    """Point every in-body link at a URL that still exists (tools/linkmap.py).
+
+    `index.html` is exempt. Inside a post body that href means THIS DIRECTORY's
+    index — the "All posts" link at the foot of ~16 salvaged posts — but
+    linkmap reads a bare `index.html` as the site root and rewrote it to
+    `../index.html`. That sent readers back to the door, which the ratchet law
+    of navigation forbids (RULE 00 decision log, 2026-08-07: index.html is the
+    ENTRYPOINT ONLY, one-way, no nav routes back to it), and it made the build
+    non-idempotent besides."""
+    return re.sub(
+        r'href=(["\'])(.*?)\1',
+        lambda m: m.group(0) if m.group(2) == "index.html" else
+        f"href={m.group(1)}{rewrite_href(m.group(2), UP)}{m.group(1)}",
+        fragment)
 
 
 def note_page(post, path_url, nxt=None):
@@ -122,6 +134,10 @@ def note_page(post, path_url, nxt=None):
     the cave-unicorn renderer skeleton."""
     desc = esc(truncate(clean_text(post["dek"]) or post["title"], 155))
     slug = post["slug"][:-5]
+    # the post declares its framework concepts and each pill jumps to that
+    # concept's section on the corpus index (tools/tags.py, law 4)
+    pills = TAGS.pills(TAGS.tags_for(post["slug"], "blog"),
+                       lambda k: f"index.html#{k}")
     dek = f'\n    <p class="dek">{post["dek"]}</p>' if post["dek"] else ""
     nxt_html = ""
     if nxt:
@@ -132,7 +148,7 @@ def note_page(post, path_url, nxt=None):
         nav(up=UP, current="notes/"),
         "",
         '  <article class="note">',
-        f'    <p class="eyebrow">{post["eyebrow"]}</p>',
+        f'    <p class="eyebrow">{post["eyebrow"]}{pills}</p>',
         f'    <h1>{post["title_html"]}</h1>{dek}',
         "",
         fix_links(post["body"]),
@@ -160,8 +176,46 @@ CARD_RE = re.compile(
 
 
 def read_index_order():
-    return [m.groupdict() for m in CARD_RE.finditer(
-        (BLOG / "index.html").read_text(encoding="utf-8"))]
+    """The curated title/description for each post, in its current order.
+
+    DEDUPED BY HREF, and that is load-bearing: the index is no longer a
+    partition — a post is listed under every concept it carries — so the same
+    card is legitimately in the markup two or three times. Reading them all
+    back is how one run turned 51 posts into 233 and the next into 495."""
+    seen, out = set(), []
+    for m in CARD_RE.finditer((BLOG / "index.html").read_text(encoding="utf-8")):
+        c = m.groupdict()
+        if c["href"] in seen:
+            continue
+        seen.add(c["href"])
+        out.append(c)
+    return out
+
+
+def note_cards():
+    """The 13 short pieces, as cards for the corpus index.
+
+    Law 4 of tools/tags.py: ONE corpus, ONE tag index. A filter that reached the
+    51 field notes but not the 13 notes/ pieces would be the same unbrandedness
+    in a new costume — and every note page's pills link into these sections, so
+    the note has to be listed in them. notes/index.html keeps its own
+    Frameworks / Case-studies curation; this is the concept view over the same
+    files, not a second home for them."""
+    from build_notes import ORDER as NOTE_ORDER, parse as parse_note
+    out = []
+    for slug in NOTE_ORDER:
+        path = NOTES / f"{slug}.html"
+        if not path.exists():
+            continue
+        n = parse_note(path)
+        if not n:
+            print(f"  !! unparseable note {slug}", file=sys.stderr)
+            continue
+        out.append({"href": f"../notes/{slug}.html", "slug": f"{slug}.html",
+                    "corpus": "notes", "title": esc(n["title"]),
+                    "search": esc(n["title"].lower()),
+                    "desc": esc(truncate(clean_text(n["dek"]), 180))})
+    return out
 
 
 def build():
@@ -182,24 +236,49 @@ def build():
                       "desc": esc(truncate(clean_text(post["dek"]), 180))})
     cards = [c for c in cards if c["href"] in on_disk]
 
-    # ---- group the corpus by discipline. NO FILTER JS: §2.4 permits only
-    # nav.js sitewide, so the filter row is static in-page anchors and the
-    # grid is grouped under real headings. Crawlable, and works with JS off.
-    # Grouping happens BEFORE the posts are written because the grouped order
-    # IS the reading order: it drives the next-note chain, and computing it
-    # first is what makes one pass converge instead of two.
-    groups, seen = [], set()
-    for key, label, blurb in DISCIPLINES:
-        members = [c for c in cards if key in c["tags"].split() and c["href"] not in seen]
-        seen.update(c["href"] for c in members)
+    # ---- THE TAG INDEX. NO FILTER JS: §2.4 permits only nav.js sitewide, so
+    # the filter row is static in-page anchors and the grid is grouped under
+    # real headings. Crawlable, and works with JS off.
+    #
+    # Unlike the old discipline grouping this is NOT a partition: a post is
+    # listed under EVERY tag it carries. A filter that only showed you the
+    # posts whose FIRST concept matched would be lying about the corpus — ask
+    # for Level 5 and you must get all eleven, not the four that happen to be
+    # filed there first.
+    notes = note_cards()
+    for c in cards:
+        c["corpus"], c["slug"] = "blog", c["href"]
+        c["tags"] = " ".join(TAGS.tags_for(c["href"], "blog"))
+
+    # The base order comes from tools/tags.py, NOT from the markup. Sorting on
+    # the markup's order was a feedback loop: cross-listing changed where each
+    # card FIRST appears, that changed the order read back, and the reading
+    # chain oscillated between two states forever. The index may be re-derived
+    # from the tag table; it may not be derived from itself.
+    base = {slug: i for i, slug in enumerate(TAGS.BLOG_TAGS)}
+    cards.sort(key=lambda c: base.get(c["slug"], len(base)))
+
+    violations = TAGS.check({c["slug"] for c in cards}, {n["slug"] for n in notes})
+    if violations:
+        for v in violations:
+            print(f"  !! TAG {v}", file=sys.stderr)
+        sys.exit(1)
+
+    # Reading order (the next-note chain) stays a partition and stays inside
+    # blog/: each post sits with its PRIMARY concept, concepts in ladder order.
+    # It is computed BEFORE the posts are written because that order IS the
+    # chain — computing it first is what makes one pass converge instead of two.
+    ordered = [c for key in TAGS.ORDER for c in cards
+               if TAGS.tags_for(c["slug"], "blog")[:1] == (key,)]
+
+    corpus_order = {c["href"]: i for i, c in enumerate(ordered + notes)}
+    groups = []
+    for key, label, blurb in TAGS.TAGS:
+        members = sorted(
+            (c for c in cards + notes if key in TAGS.tags_for(c["slug"], c["corpus"])),
+            key=lambda c: corpus_order[c["href"]])
         if members:
             groups.append((key, label, blurb, members))
-    rest = [c for c in cards if c["href"] not in seen]
-    if rest:
-        groups.append((OTHER[0], OTHER[1], OTHER[2], rest))
-
-    # the grouped order, flattened = the canonical reading order
-    ordered = [c for _, _, _, members in groups for c in members]
     for i, c in enumerate(ordered):
         post = parse_post(BLOG / c["href"])
         if not post:
@@ -210,18 +289,19 @@ def build():
         (BLOG / c["href"]).write_text(
             note_page(post, f"/blog/{c['href']}", nxt), encoding="utf-8")
 
-    filt = "\n".join(
-        f'        <a class="rung" href="#{k}"><span class="rung-n">{len(m):02d}</span>'
-        f'<span class="rung-t">{lbl}</span><span class="rung-d">{blurb}</span></a>'
-        for k, lbl, blurb, m in groups)
+    filt = TAGS.tag_row({k: f"#{k}" for k in TAGS.ORDER},
+                        {k: len(m) for k, _, _, m in groups})
 
     sections = []
     for key, label, blurb, members in groups:
         # Attribute order MUST match CARD_RE — this markup is the script's own
         # input on the next run, and that round-trip is what keeps the curated
-        # titles/descriptions/tags from being lost.
+        # titles and descriptions from being lost. (data-tags is now WRITTEN
+        # from tools/tags.py rather than read back, so the markup can no longer
+        # be the place a tag silently disappears.)
         cardhtml = "\n".join(
-            f'        <a href="{c["href"]}" class="card" data-tags="{c["tags"]}"'
+            f'        <a href="{c["href"]}" class="card"'
+            f' data-tags="{" ".join(TAGS.tags_for(c["slug"], c["corpus"]))}"'
             f' data-search="{c["search"]}"><h3>{c["title"]}</h3><p>{c["desc"]}</p>'
             f'<span class="receipt-go">Read &rarr;</span></a>' for c in members)
         sections.append(
@@ -240,17 +320,18 @@ def build():
         '    <div class="wrap">',
         '      <p class="eyebrow">Open notes</p>',
         "      <h1>The notes written while the thing was being built.</h1>",
-        f'      <p class="lede">{len(cards)} posts, published as they were written and never '
-        "cleaned up afterwards &mdash; including the ones that record a mistake.</p>",
+        f'      <p class="lede">{len(cards) + len(notes)} posts, published as they were '
+        "written and never cleaned up afterwards &mdash; including the ones that record a "
+        "mistake. Filed under the seven levels of agent engineering and the concepts that "
+        "cut across them.</p>",
         '      <a class="cta-primary" href="#notes">Read them &rarr;</a>',
         "    </div>",
         "  </section>",
         "",
-        '  <section id="notes" style="padding-top:0">',
+        '  <section id="notes" class="flush-top">',
         '    <div class="wrap">',
-        '      <nav class="ladder" aria-label="Jump to a discipline" style="max-width:none">',
+        '      <p class="eyebrow">Filter by concept</p>',
         filt,
-        "      </nav>",
         "",
         "\n\n".join(sections),
         "    </div>",
@@ -261,7 +342,9 @@ def build():
         footer(up=UP),
     ])
     (BLOG / "index.html").write_text(index, encoding="utf-8")
-    print(f"posts: {len(cards)}   groups: {[g[0] for g in groups]}   orphans listed: {orphans}")
+    print(f"corpus: {len(cards)} blog + {len(notes)} notes   orphans listed: {orphans}")
+    for k, lbl, _, m in groups:
+        print(f"  {len(m):3d}  {k:<18} {clean_text(lbl)}")
     return cards
 
 

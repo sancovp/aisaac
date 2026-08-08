@@ -36,12 +36,25 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 | **pricing.html** | `main:pricing.html` VERBATIM + Isaac. No other source exists. |
 | **rung pages (learn/build/run)** | the funnel row (FLYWHEEL/CLINIC-MAP/OFFER-AND-FUNNEL) for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
 | **watch.html / world demos** | real run receipts ONLY: cave-teams live tests (`test_live_skillcraft.py` runs), future footage per `GARAGE-LAB-LAUNCH-STRATEGY.md` §1b. Never generated numbers. |
-| **blog/ + notes/ (field notes)** | the posts' own content (conform layout only) · new notes draw from `~/repo/garage-lab/CATALOG.md` entries (receipted patterns) |
+| **blog/ + notes/ (field notes)** | the posts' own content (conform layout only) · new notes draw from `~/repo/garage-lab/CATALOG.md` entries (receipted patterns) · **the tag vocabulary + every post's tags = `tools/tags.py`, the single source both generators read — a new post is TAGGED THERE or the build fails** |
 | **inside/ (the lored register)** | `SANCTUARY-MYTH-ORIGIN.md` · `HJ-GAUGE-SPEC.md` · the train doc — this is the ONE place the inner register ships |
 | **audience/market claims** | `~/aios-research/WAVE-STATE-BRIEF.md` · `~/aios-research/reports/` — cite or omit |
 | **archetype/rung strategy** (why the site is shaped this way) | `~/repo/sra-git/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m/§7m-bis (Dudjom→Hormozi transition; Mipham-with-a-door = free-the-WHAT / paid-the-how-I) |
 
 ## Decision log (rulings that bind edits; newest first)
+
+- 2026-08-08 (Isaac, verbatim): "in the blog search, we have by tags, but those tags
+  are not by extremely important concept in my system so it doesnt feel as branded as
+  it could... shouldnt you be able to search for like the 7 levels of agent engineering
+  itself as a filter? ... this kind of unbrandedness is rampant." **THE BRANDED-FILTER
+  LAW: every browse/filter surface filters by HIS FRAMEWORK CONCEPTS, never by generic
+  categories.** The corpus index now files all 64 pieces under the seven levels of
+  agent engineering (the flagship framework, `lab/explainer.html` →
+  `blog/levels-overview.html`) plus the cross-cutting concepts. Vocabulary and
+  assignments: `tools/tags.py`, whose four laws bind — the seven levels are the spine ·
+  door register only (law 2 above) · no orphan tags and 1–3 tags per post, both checked
+  mechanically at build time · ONE corpus, ONE tag index. Unbrandedness elsewhere is
+  the same defect: when a surface sorts, it sorts by the framework.
 
 - 2026-08-08 (Isaac, verbatim, on first seeing the rebuild): "it's this 'okay okay, i
   get it, theres a thing, where do i go next?' thats the mark of a real funnel. Human
