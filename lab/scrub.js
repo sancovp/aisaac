@@ -292,8 +292,14 @@
     // ---- PLAY mode: timed playback with narration --------------------------
     function enterPlay() {
       mode = 'play';
-      if (modeBtn) { modeBtn.textContent = '↕ back to scroll'; modeBtn.classList.add('is-playing'); }
+      if (modeBtn) { modeBtn.textContent = EMBED ? '❚❚ pause' : '↕ back to scroll'; modeBtn.classList.add('is-playing'); }
       if (hint) hint.style.opacity = 0;
+      // At (or within 2 frames of) the end, play restarts from the top —
+      // otherwise 'ended' fires immediately and the button appears dead.
+      if (cur >= DUR - 2) {
+        cur = target = 0; lastSent = -1;
+        B.setFrame(0); if (P) P.setFrame(0); lastSent = 0;
+      }
       B.play();
     }
     function exitPlay(atFrame) {
@@ -310,7 +316,12 @@
     }
     if (modeBtn) {
       modeBtn.addEventListener('click', function () {
-        if (mode === 'scrub') enterPlay(); else exitPlay();
+        // Enter play from ANY non-play mode. The old test (mode === 'scrub')
+        // was standalone-page logic: in the embeds the mode starts as
+        // 'autorun', so the first click fell through to exitPlay() — pausing —
+        // and every later click did the same. Play never started. (Reported
+        // by Isaac on watch.html, 2026-08-08.)
+        if (mode === 'play') exitPlay(); else enterPlay();
       });
     }
     B.on('frameupdate', function (f) {
