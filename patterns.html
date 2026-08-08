@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>25 architectures, and where each one runs — Isaac</title>
-<meta name="description" content="Twenty-five named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
+<title>35 architectures, and where each one runs — Isaac</title>
+<meta name="description" content="Thirty-five named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
 <link rel="canonical" href="https://sancovp.github.io/aisaac/patterns.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="25 architectures, and where each one runs — Isaac">
-<meta property="og:description" content="Twenty-five named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
+<meta property="og:title" content="35 architectures, and where each one runs — Isaac">
+<meta property="og:description" content="Thirty-five named system structures for agent software — the topology, the participants, the write paths, and the repository each one runs in. Plus the 57 working disciplines behind them.">
 <meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
 <meta property="og:url" content="https://sancovp.github.io/aisaac/patterns.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -88,9 +88,9 @@
   <section class="claim">
     <div class="wrap">
       <p class="eyebrow">The architectures</p>
-      <h1>Twenty-five system shapes. <span>Every one of them runs.</span></h1>
+      <h1>Thirty-five system shapes. <span>Every one of them runs.</span></h1>
       <p class="lede">Not tips, not principles, not a list of things I believe about agents. These are structures &mdash; what the parts are, which one is allowed to write, who is allowed to refuse, and where the loop closes. Each entry gives you the name, one sentence, the diagram, the participants, and the repository it runs in. If a shape is new to you, take it; that is what it is here for.</p>
-      <p class="fineprint">Twenty-five is what is standing today. Below them sits the other half of the catalog &mdash; 57 working disciplines these machines are built out of. Those are real and they are secondary: a discipline tells you how to hold a claim, an architecture tells you what to build.</p>
+      <p class="fineprint">Thirty-five is what is standing today. Below them sits the other half of the catalog &mdash; 57 working disciplines these machines are built out of. Those are real and they are secondary: a discipline tells you how to hold a claim, an architecture tells you what to build.</p>
       <a class="cta-primary mt-m" href="#disciplines">Skip to the 57 disciplines &darr;</a>
     </div>
   </section>
@@ -100,12 +100,13 @@
        same control as the corpus filter row. ══ -->
   <section class="flush-top">
     <div class="wrap">
-      <p class="eyebrow">Five groups
+      <p class="eyebrow">Six groups
         <a href="#g-worlds">Worlds, and the things that live in them</a>
         <a href="#g-selection">The selection machinery</a>
         <a href="#g-self">Systems that develop themselves</a>
         <a href="#g-routing">How work is routed</a>
         <a href="#g-aios">Operating systems for agents</a>
+        <a href="#g-compiler">The compiler wing</a>
       </p>
       <pre class="arch-dia"><code>  READING THE DIAGRAMS
 
@@ -215,7 +216,7 @@
       </article>
 
       <!-- 5 -->
-      <article class="arch">
+      <article class="arch" id="closure-law">
         <h3>World-as-Agent &mdash; the closure law</h3>
         <p class="arch-what">Pick one carrier type and close every operator over it, and composition recurses for free: a whole simulated world satisfies the agent contract, so a world <em>is</em> an agent and nests inside another world at any depth. The interface between levels is a single projection function, not a protocol.</p>
         <pre class="arch-dia"><code>   OUTER WORLD
@@ -817,6 +818,396 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════════════════
+       GROUP F — THE COMPILER WING (added 2026-08-08)
+
+       The floor above was mostly worlds. This wing is the other machine:
+       the factory that MINTS the artifacts those worlds load. Sources read
+       (RULE 00): the monorepo README (§Why · §the one idea · §the loop ·
+       §the stack · §SkillTree · §the formal spec), REBUILD-SPEC.md (the
+       layered DAG + the import-direction gate), FEDERATION.md, and the
+       package READMEs / module headers for rulecatcher · honeyc · accc ·
+       corcc · sccc · chainaios (bandit · gba · hba · cog · construct) ·
+       glyphsteer · si · framework · skillchain-compiler · personacc ·
+       personapack · goldenreq, plus chains/skill2framework.chain and the
+       bandit-chain-system skill.
+
+       ALL TEN ARE ASCII. The monorepo ships four of its own SVGs, and they
+       are NOT reusable here: unlike the self-maintaining repository's dark
+       diagrams, these are light-themed (white plates, near-black type), so
+       they would sit on the void as glowing rectangles. Redrawing them in
+       tokens would make them the site's diagrams rather than the repo's
+       receipt, which is the thing the artifact-island rule protects — so
+       the structures are drawn in the same ASCII grammar as the rest.
+
+       RUNS-IN: every entry deep-links a path verified 200 unauthenticated.
+       personacc, personapack and goldenreq are NOT in the public repo, so
+       nothing here is built on them.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section id="g-compiler" class="dark">
+    <div class="wrap">
+      <h2>The compiler wing</h2>
+      <p class="receipts-lede">A model learns in context: hand it a notation and it thinks in that notation. The hard part was never running one notation &mdash; it was minting, checking, composing and organising them without the model drifting out of its own syntax. These ten are that factory. Everything it makes is one type, the skill directory, which is why the pieces compose at all &mdash; the same closure law the <a href="#closure-law">worlds run on</a>, one floor down.</p>
+
+      <!-- 26 -->
+      <article class="arch">
+        <h3>The Compiler-Compiler Loop</h3>
+        <p class="arch-what">Four organs in a fixed order that turn a handful of examples into a notation the model cannot malform &mdash; and the product is not a compiler, it is the thing that mints a new compiler per domain.</p>
+        <pre class="arch-dia"><code>   a handful of EXAMPLES written in the notation you want
+                     |
+                     v
+            ( LEARN )     induce the grammar from the examples and
+                 |        store it as a NAMED, PERSISTENT scope
+                 v
+      { the ratified grammar }   exportable, importable, and it
+                 |               accumulates evidence across calls
+                 v
+            ( GATE )      lint any new text against that scope
+                 |
+                 v
+            ( COMPILE )   parse the notation into a syntax tree and
+                 |        render it through a lens: prose, triples,
+                 |        a logic program, a graph query
+                 v
+            ( PACKAGE )   write it out as &lt;name&gt;/SKILL.md
+                 |
+                 v
+        { a skill directory }   THE ONE TYPE. any agent auto-loads it.
+
+   the same four organs mint a DIFFERENT notation for every domain, so
+   the factory -- not any one notation -- is the artifact you keep.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The grammar is a durable named scope, not a prompt.</b> It is learned once, stored, exported, imported and linted against later &mdash; so the language a team ratifies is a thing that exists on disk rather than a habit everyone tries to maintain.</li>
+          <li><b>Every stage produces or consumes the one type</b>, which is what lets the output of one loop be the input of the next without an adapter.</li>
+          <li><b>Nothing in the loop is a model call that could refuse.</b> The learning, the gate, the parse and the write are code; the notation is what the model is being handed.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler">chaincompiler</a></p>
+      </article>
+
+      <!-- 27 -->
+      <article class="arch">
+        <h3>The Syntax-Only Gate</h3>
+        <p class="arch-what">A linter with jurisdiction over <em>form</em> and nothing else, returning a two-axis verdict: a known token in the wrong slot is steerable, a token foreign to the language is fatal. What the gate never does is judge whether the content is any good &mdash; and that refusal is the load-bearing part.</p>
+        <pre class="arch-dia"><code>   text --&gt; ( THE GATE )   jurisdiction: FORM ONLY
+                  |
+        +---------+-----------------+
+        |         |                 |
+      clean   orthogonal        syntax_break
+        |         |                 |
+        |         |                 '--&gt; FATAL. a token FOREIGN to the
+        |         |                      language -- the model has left
+        |         |                      its own syntax
+        |         '--&gt; STEERABLE. a KNOWN token in the WRONG SLOT --
+        |              rotate it and carry on. the verdict names the
+        |              token it expected
+        v
+     accepted
+
+   what this buys: the model can be handed a custom notation and held
+   inside it MECHANICALLY, by a check that exits non-zero -- so the
+   language survives contact with a long session.
+
+   what it deliberately gives up: any opinion about whether the thought
+   is correct. the compilers guarantee WELL-FORMED, COMPOSABLE,
+   ORGANIZED. a linter that starts grading content stops being a gate
+   and becomes a second, unaccountable author.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Two axes, two different responses.</b> Steerable gets a correction the writer can act on; fatal stops the run. Collapsing them into one &ldquo;invalid&rdquo; is how a gate becomes noise.</li>
+          <li><b>The verdict is machine-readable and exits non-zero</b>, so the same gate that steers a model in a session is the gate that fails a build.</li>
+          <li><b>The jurisdiction is declared, not implied.</b> A checker that is honest about what it does <em>not</em> cover is the only kind you can safely put in a loop.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/rulecatcher">chaincompiler / rulecatcher</a></p>
+      </article>
+
+      <!-- 28 -->
+      <article class="arch">
+        <h3>The Chain in Two Registers</h3>
+        <p class="arch-what">One object rendered twice: silently as the template that generates the output, aloud as the paragraph the model has to say. Because the generator and the thing being measured are the same chain, a drift detector falls out for free instead of being built.</p>
+        <pre class="arch-dia"><code>   [Focus] =&gt; [Focus] =&gt; [Focus] =&gt; |Held|
+        the INNER chain -- silent. an ordered sequence of attention
+        foci converging on one bounded held focus. this is the
+        TEMPLATE THAT GENERATES.
+                     |
+                     |  the SAME move sequence, other register
+                     v
+   "First I ... then I ... which means ... so I decide ..."
+        the OUTER chain -- spoken. the paragraph the model must
+        actually produce. this is WHAT GETS CHECKED.
+                     |
+                     v
+             ( THE LINT )   does the spoken paragraph still parse
+                  |         as that chain?
+          +-------+-------+
+          |               |
+      it parses       it fails
+          |               |
+     the persona      "MELT": the model has drifted out of
+     is intact        its own syntax. a vibe becomes a verdict.
+
+   each move carries CUE PHRASES -- the surface words that count as
+   evidence that move actually happened -- so the check is mechanical
+   rather than a judgement about tone.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Separating &ldquo;how to think&rdquo; from &ldquo;what to say&rdquo; and then insisting they are one chain</b> is the whole move. Two chains would need reconciling; one chain in two registers reconciles itself.</li>
+          <li><b>The spoken register is the one under test</b>, because it is the only one that leaves evidence. The silent template is inferred from it, never asserted alongside it.</li>
+          <li><b>A persona is then a checkable object:</b> description blocks, the attention chains it thinks along, and at least one spoken chain that uses them &mdash; with a mechanical check that the moves it declares are actually wired to a chain.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/accc">chaincompiler / accc + corcc</a></p>
+      </article>
+
+      <!-- 29 -->
+      <article class="arch">
+        <h3>The Selector Above the Flavors</h3>
+        <p class="arch-what">A seat that sits <em>above</em> a set of interchangeable reasoning styles rather than being one of them, choosing per task between exploiting a proven chain and constructing a new one &mdash; and its policy is not a config value, it is rendered as a readable, lintable persona.</p>
+        <pre class="arch-dia"><code>              [ THE SELECTOR ]   a named style is an OUTPUT of this
+                    |            seat, never a peer of it
+                    |
+         +----------+----------+
+         |                     |
+      EXPLOIT               EXPLORE
+   ( select a proven      ( construct a NEW chain
+     chain from the KB )    for this task )
+         |                     |
+         '----------+----------'
+                    v
+              ( EXECUTE )
+                    v
+              ( REWARD )   grade the run, write a note
+                    |
+                    '--&gt; { the KB } --&gt; read by the next Select
+
+   ROLL UP and CLOSE: compose the three registers into one sequence,
+   resolve every step to a real skill directory, and require the
+   organising tree to validate with ZERO violations. closure is the
+   proof, and it is a boolean the caller can assert on.
+
+   what falls out is a DOMAIN AGENT: a directory carrying its own
+   instructions, its own grading vocabulary and its own KB -- with a
+   standing instruction to keep writing to that KB and to read it back
+   better. run the same move over the selector's OWN PARTS and you get
+   a granular view of what it is made of.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Policy as an artifact.</b> Because the selector is itself a spoken chain, &ldquo;how this agent decides&rdquo; is a file you can read, lint, version and hand to someone &mdash; not a branch buried in a runtime.</li>
+          <li><b>Closure is asserted, not assumed.</b> The rollup is only accepted if every referenced step resolves on disk and the tree validates clean.</li>
+          <li><b>The output is a directory, not a function call</b> &mdash; which is exactly the agent-in-a-directory shape from the first group, arriving here as a compiler output.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/.claude/skills/bandit-chain-system">chaincompiler / chainaios</a></p>
+      </article>
+
+      <!-- 30 -->
+      <article class="arch">
+        <h3>The Construct Seat &mdash; anti-melt as a window boundary</h3>
+        <p class="arch-what">Filling a frame excellently needs more domain context than fits in one window without the geometry flattening. So the building arm is given a window of its own, burns it, and hands back only the finished artifact. The parent never loaded the context, so the parent never degrades.</p>
+        <pre class="arch-dia"><code>   [ THE PARENT AGENT ]   holds the role, the dispatch rule, the tree
+           |
+           |  dispatch: "construct the artifact this task needs"
+           v
+   [ THE CONSTRUCT SEAT ]   ITS OWN context window
+           |                 loads as many domain chains as the job
+           |                 wants, and spends that window on them
+           v
+     returns ONLY the finished skill directory
+           |
+           v
+   { the parent's tree }   the artifact persists HERE
+
+   the parent's identity travels with the dispatch as a small profile,
+   so the seat knows who it is building for without inheriting the
+   window that knowledge would cost.
+
+   anti-melt is not an instruction in a prompt. it is a boundary in
+   the topology: the context that would flatten the parent is never
+   in the parent.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The delegation is emitted, not executed.</b> The compiler writes the seat definitions and the dispatch protocol; a real agent runtime does the delegating &mdash; so the structure is portable to any harness with subagents.</li>
+          <li><b>Only the artifact crosses the boundary.</b> Not the reasoning, not the sources, not the transcript &mdash; which is what makes the saving real rather than deferred.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
+      </article>
+
+      <!-- 31 -->
+      <article class="arch">
+        <h3>The Three-Seat Flow, Where a Seat Is a Directory</h3>
+        <p class="arch-what">Challenger, Generator, Observer &mdash; and none of them is a function. Each is a directory you travel to in order to learn the role, do the work, and leave the artifacts. There is deliberately no run method: the agent walking the directories <em>is</em> the run.</p>
+        <pre class="arch-dia"><code>   cd C/   [ CHALLENGER ]   mint the chains the work needs, and
+              |              place them into G's tree
+              v
+   cd G/   [ GENERATOR ]    use those skills to produce, into the
+              |              shared workspace, until the deliverable
+              |              exists
+              |
+              '--&gt; loop C --&gt; G until done
+              v
+   cd O/   [ OBSERVER ]     observe the whole cycle. the NEXT cycle's
+                            Challenger starts from these observations.
+
+   the code here does exactly one job, and it does it at BUILD time:
+   guarantee the shape. it gates the syntax, places the coordinates,
+   validates the tree and makes it searchable.
+
+   there is no runtime engine and no run() to call -- which is the
+   design, not a gap. the flow itself is a chain the agent reads and
+   travels, so the whole topology is prompts plus a filesystem.</code></pre>
+        <ul class="arch-moves">
+          <li><b>One seat writes into another seat&rsquo;s loadout.</b> The Challenger&rsquo;s output is not a message to the Generator &mdash; it is a skill placed in the Generator&rsquo;s tree, so the hand-off is an equipment change.</li>
+          <li><b>The Observer&rsquo;s output is the next cycle&rsquo;s input</b>, which is what makes it a loop rather than a report at the end.</li>
+          <li><b>Code guarantees shape; prompts carry behaviour.</b> Stated as the design rather than discovered as a limitation &mdash; the same split as the one law on the floor above.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/chainaios">chaincompiler / chainaios</a></p>
+      </article>
+
+      <!-- 32 -->
+      <article class="arch">
+        <h3>The Cat-Breadcrumb Tree</h3>
+        <p class="arch-what">Progressive disclosure implemented in the filesystem, built around a hard platform constraint: the harness auto-loads only the root skills folder and will not descend into a nested one. So the descent is moved into the content &mdash; each node&rsquo;s body hands you the command that opens its children.</p>
+        <pre class="arch-dia"><code>   THE CONSTRAINT
+     the harness auto-loads ONLY the root skills folder, and will
+     NOT descend into a nested one.
+
+   THE STRUCTURE
+     put the descent in the CONTENT.
+
+   root/.claude/skills/tree/SKILL.md      &lt;-- the ONLY thing that
+        |                                     auto-loads
+        |   its body IS the breadcrumbs:
+        |     "reason -&gt; cat .../reason/.claude/skills/reason/SKILL.md"
+        |     "debug  -&gt; cat .../debug/.claude/skills/debug/SKILL.md"
+        v
+   reason/.claude/skills/reason/SKILL.md
+        |   which hands you ITS children, and so on down
+        v
+   reason/thinklikeeinstein/.claude/skills/.../SKILL.md    a leaf
+
+   load ONE root, walk to the exact leaf you need, and nothing else
+   ever enters the context.
+
+   a JSON manifest is the org chart: edit it however you like, rebuild,
+   and every directory and every breadcrumb regenerates. and because
+   the platform never checks that a breadcrumb resolves, a validator
+   does -- every crumb must open the file it claims.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The constraint is not worked around, it is used.</b> Auto-load stopping at the root is what makes the tree cheap: depth costs context only where you actually walk.</li>
+          <li><b>The manifest is the source of truth</b>, so re-organising a body of knowledge is editing one file and rebuilding &mdash; not moving directories and fixing links.</li>
+          <li><b>The validator exists because the platform has no opinion.</b> A breadcrumb that points nowhere would fail silently at the worst moment, so it fails loudly at build time instead.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/.claude/skills/skilltree">chaincompiler / skilltree</a></p>
+      </article>
+
+      <!-- 33 -->
+      <article class="arch">
+        <h3>Steer-then-Hide &mdash; the sidecar split</h3>
+        <p class="arch-what">The form of a document that gets <em>indexed</em> is deliberately not the form that gets <em>returned</em>. A compiled, controlled marker is attached to steer retrieval in two regimes at once, then stripped before the text reaches the reader &mdash; so the machinery never leaks into the output.</p>
+        <pre class="arch-dia"><code>   clean text --&gt; ( ANNOTATE )   attach a marker from a compiled,
+                        |         CONTROLLED vocabulary -- not free text
+                        v
+      indexed-form = clean text + the marker
+                        |
+           +------------+-------------+
+           |                          |
+     LEXICAL regime            DENSE regime
+     the marker is a rare      the marker carries a learned direction
+     token: a maximal exact-   that nudges the chunk's vector
+     match facet you can
+     filter on
+           |                          |
+           '------------+-------------'
+                        v
+                   ( SEARCH )
+                        |
+                        v
+      returned-form = clean text ONLY
+                        |    the marker is STRIPPED. a tested
+                        v    invariant, not a convention.
+                  [ the reader ]
+
+   ONE axis, TWO renderings, for a mechanical reason found by testing:
+   the index's tokenizer DROPS the dense marker entirely, so the same
+   facet needs a plain-text twin to be lexically searchable at all.</code></pre>
+        <ul class="arch-moves">
+          <li><b>Indexed-form and returned-form are separate objects</b> with a hard invariant between them. Once you accept that, a retrieval layer can carry as much steering apparatus as it likes.</li>
+          <li><b>A controlled vocabulary rather than generated context.</b> The markers come from a closed, compiled set, so the facets are queryable and enumerable rather than a pile of free text you hope is consistent.</li>
+          <li><b>The honest edge:</b> the dense half is model-dependent &mdash; some embedding models collapse the markers to a single token and the direction disappears. The lexical half does not have that failure mode.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/glyphsteer">chaincompiler / glyphsteer</a></p>
+      </article>
+
+      <!-- 34 -->
+      <article class="arch">
+        <h3>Skillchains with Authored Bridges</h3>
+        <p class="arch-what">A chain of skills where the <em>seam</em> is a step. Between two capability steps sits an explicitly written reasoning move that routes the first one&rsquo;s output into the second &mdash; so the glue is an artifact somebody authored and shipped, not something the runtime improvises each time.</p>
+        <pre class="arch-dia"><code>   THE SPEC -- two kinds of step, interleaved
+
+     &gt; skill-a : args                    a SKILL step: invoke a real,
+     = result_a                          on-disk skill, capture its result
+     ~ "Given {result_a}, reason about   a BRIDGE step: an authored
+        X, then produce Y."              reasoning move between skills
+     &gt; skill-b : use {result_a} and Y
+
+                        |
+                        v
+                ( THE COMPILER )
+                        |
+      1. INDEX    every skill available on disk
+      2. VALIDATE every referenced skill exists -- a missing one is an
+                 ERROR THAT NAMES IT, at compile time, not a silent
+                 failure halfway through a run
+      3. WIRE     the bridges between the steps
+      4. EXPORT   one package that executes the sequence in order
+                        |
+                        v
+      { &lt;name&gt;/SKILL.md + the chain manifest }    the one type again
+
+   so a chain is itself a skill, and a chain step can be a chain.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The bridge is the interesting part.</b> Most pipelines leave the reasoning between two tools implicit; here it is a written step with a name, versioned alongside the steps it joins.</li>
+          <li><b>References are resolved against the real filesystem at compile time</b>, so a chain that names a skill you do not have refuses to compile instead of failing mid-run.</li>
+          <li><b>Two interchangeable spec formats</b>, an ergonomic text one and a canonical structured one, parsing to the same internal object &mdash; the authoring surface and the machine surface are not allowed to drift.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/tree/main/packages/skillchain-compiler">chaincompiler / skillchain-compiler</a></p>
+      </article>
+
+      <!-- 35 -->
+      <article class="arch">
+        <h3>The Render Pipeline &mdash; alternating generative and code steps</h3>
+        <p class="arch-what">One built system becomes a publishable chapter, a front-door index skill, an installable plugin, and a row in a library &mdash; through a chain where generative steps and deterministic steps alternate, and the terminal move is always code.</p>
+        <pre class="arch-dia"><code>   [ LLM  ]  the narrative render     fills a FIXED model from the
+      |                                system's own history, then
+      v   { the story }                renders it deterministically
+
+   [ LLM  ]  the mechanics render     reads the implementation docs
+      |                                and explains only what they
+      v   { the deep dive }            say IS
+
+   ( CODE )  assemble the chapter     copies BOTH VERBATIM into one
+      |                                directory and adds links and a
+      v   { the chapter }              manifest. the prose is never
+                                       rewritten.
+
+   [ LLM  ]  the index skill          the front door: the system's
+      |                                skills, rules and decision tree
+      v   { the volume }
+
+   ( CODE )  package the plugin       a self-contained installable
+      |                                directory; only link paths are
+      v   { the plugin }               repathed, never the prose
+
+   ( CODE )  fold into the library    idempotent, one row per entry,
+                                      the manifest is the source of truth
+
+   the last thing that touches the library is the thing that cannot
+   invent a row -- and every generative step writes into a fixed model
+   rather than authoring free-form, so each datum renders exactly once.</code></pre>
+        <ul class="arch-moves">
+          <li><b>The alternation is the design.</b> Generative where judgment is needed, deterministic where a mistake would be invisible &mdash; and the boundary is visible in the chain spec itself, not buried in an implementation.</li>
+          <li><b>Verbatim copy is enforced by the code step.</b> The assembling stage may add links and a manifest and may not touch the prose, so nothing quietly re-writes what a previous stage produced.</li>
+          <li><b>The whole pipeline is itself one of the artifacts</b> &mdash; a chain spec that compiles into a single installable package, which is the same closure that makes the rest of this wing work.</li>
+        </ul>
+        <p class="arch-runs">Runs in <a href="https://github.com/sancovp/chaincompiler/blob/main/chains/skill2framework.chain">chaincompiler / skill2framework</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
        THE DISCIPLINES — demoted to one closing band. These were the whole
        page in v1. They are real, they are the other half of the catalog,
        and they are secondary to the machines above: a discipline tells you
@@ -825,7 +1216,7 @@
        both halves come out of the same catalog, and the count is the
        catalog's count, not a curated subset.
        ══════════════════════════════════════════════════════════════════ -->
-  <section id="disciplines" class="dark">
+  <section id="disciplines">
     <div class="wrap">
       <h2>The 57 working disciplines behind these machines</h2>
       <p class="receipts-lede">The rest of the catalog: the mechanisms I hit in real code, kept, and used again somewhere else. One line each, in no particular order, with the repository where the receipt sits. These are how the machines above are built and held honest &mdash; they are not themselves machines.</p>
