@@ -95,6 +95,8 @@ BLOG_TAGS = {
     "flat-vs-tree.html": ("skills", "l3-context"),
     "flow.html": ("the-operator", "l6-concentration"),
     "gas-httyd.html": ("l5-admissibility", "worlds-loops"),
+    "grand-argument-synthesis-gas-the-story.html": ("l5-admissibility", "vocabulary"),
+    "run-grand-argument-synthesis-gas-yourself.html": ("l5-admissibility", "l1-prompts"),
     "halo.html": ("drift-repair", "the-operator"),
     "helming.html": ("the-operator", "composition"),
     "hiel.html": ("l6-concentration", "the-operator"),
