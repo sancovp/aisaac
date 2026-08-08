@@ -7,7 +7,7 @@
   <meta name="description" content="Family-owned HVAC in Acworth, Georgia since 2001. NATE-certified, Carrier Factory Authorized. 24/7 emergency AC repair. License #CR109219. Call (770) 685-7521.">
   <meta property="og:title" content="Edwards Heating & Air | AC Died in July? We Answer.">
   <meta property="og:description" content="Family-owned since 2001. NATE-certified, Carrier Factory Authorized. License #CR109219.">
-  <meta property="og:image" content="edwards-hero-ref.png">
+  <meta property="og:image" content="assets/edwards-hero-ref.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -356,10 +356,11 @@
 <!-- HERO WITH VIDEO -->
 <section class="hero">
   <div class="hero-video-wrap">
-    <img class="hero-still" src="edwards-hero-ref.png" alt="NATE-certified HVAC technician on a shingled roof beside a residential condenser unit, golden hour">
-    <video class="hero-video" id="heroVideo" autoplay muted playsinline preload="auto" poster="edwards-hero-ref.png">
-      <source src="edwards-hero-video.mp4" type="video/mp4">
-    </video>
+    <img class="hero-still" src="assets/edwards-hero-ref.png" alt="NATE-certified HVAC technician on a shingled roof beside a residential condenser unit, golden hour">
+    <!-- The hero video element is removed, not hidden: edwards-hero-video.mp4 was
+         never cut for this build, so the <source> 404'd on every load. The still
+         above is what the video crossfaded onto anyway; the rAF crossfade script
+         below already guards on the element being absent. -->
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
@@ -409,7 +410,7 @@
   <div class="section-inner">
     <div class="toolkit">
       <div class="toolkit-img">
-        <img src="edwards-tools.png" alt="Manifold gauges, multimeter, refrigerant tank" />
+        <img src="assets/edwards-tools.png" alt="Manifold gauges, multimeter, refrigerant tank" />
       </div>
       <div>
         <div class="section-label">// Capabilities</div>
@@ -503,7 +504,7 @@
 
 <!-- 24/7 EMERGENCY -->
 <section class="section emergency-section" id="emergency">
-  <img class="emergency-img" src="edwards-emergency.png" alt="HVAC service van in suburban driveway at night" />
+  <img class="emergency-img" src="assets/edwards-emergency.png" alt="HVAC service van in suburban driveway at night" />
   <div class="emergency-overlay"></div>
   <div class="emergency-content">
     <div class="live-badge"><span class="pulse"></span>Live · 24/7 dispatch</div>
@@ -519,7 +520,7 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-portrait reveal">
-        <img src="edwards-portrait.png" alt="Bryan, NATE-certified HVAC technician" />
+        <img src="assets/edwards-portrait.png" alt="Bryan, NATE-certified HVAC technician" />
       </div>
       <div class="about-text">
         <div class="section-label">// About</div>

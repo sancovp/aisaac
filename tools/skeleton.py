@@ -13,12 +13,26 @@ A's class vocabulary (verified against style.css):
   .ladder > .rung > .rung-n .rung-t .rung-d |  .cards > .card  |  .wrap .eyebrow .lede
 """
 
+import pathlib
+
 SITE_ORIGIN = "https://sancovp.github.io/aisaac"
+
+_OG_DIR = pathlib.Path(__file__).resolve().parent.parent / "assets" / "og"
+
+
+def og_image(og_slug):
+    """Resolve a slug to a card that EXISTS. Only home.png and system.png have
+    ever been drawn; every other slug the generators ask for pointed at a 404,
+    which is a broken card in every preview that scrapes the page. A missing
+    slug falls back to the site card rather than shipping the dead URL. Drop a
+    real <slug>.png into assets/og/ and it is picked up with no code change."""
+    return og_slug if (_OG_DIR / f"{og_slug}.png").is_file() else "home"
 
 
 def head(title, description, path, og_slug, up="", noindex=False):
     """B0 — A's _templates/_head.html, placeholders filled."""
     robots = '\n<meta name="robots" content="noindex">' if noindex else ""
+    og_slug = og_image(og_slug)
     return f"""<!doctype html>
 <html lang="en">
 <head>
