@@ -43,6 +43,16 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## Decision log (rulings that bind edits; newest first)
 
+- 2026-08-08 (Isaac, verbatim — the buyer's five questions; every surface answers its
+  own): "most of marketing is actually organization and if it feels like the organized
+  thing is the occurrence of 'you finding the organized treasure trove of xyz' then you
+  go 'omg omg omg'... a) does it LOOK LIKE the information isnt bullshit, is useful, is
+  what i need? b) is there a lot? is it really organized? am i going to get everything
+  i need even tho i dont know what that means? c) so what should i expect? is this what
+  i expect i should expect? d) ok what are the guarantees e) can i afford this relative
+  to the way the guarantees change my life?" — a/b/c = the free surfaces' job (door,
+  blog/tags, repos, notes); d/e = the OFFER layer (pricing — Isaac authors, frozen).
+
 - 2026-08-08 (Isaac, verbatim): "in the blog search, we have by tags, but those tags
   are not by extremely important concept in my system so it doesnt feel as branded as
   it could... shouldnt you be able to search for like the 7 levels of agent engineering
