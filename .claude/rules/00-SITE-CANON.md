@@ -43,6 +43,13 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## Decision log (rulings that bind edits; newest first)
 
+- 2026-08-08 (Isaac, verbatim, on first seeing the rebuild): "it's this 'okay okay, i
+  get it, theres a thing, where do i go next?' thats the mark of a real funnel. Human
+  recognition that the info there is safe and they want the next part. They wont go
+  back and really read it all unless you put an offer that makes them pause. Either
+  they convert or pause and then either convert or leave. Thats it." — every page
+  tests against this: safe + where-next.
+
 - 2026-08-07 (later): **THE PRODUCT-LANDING RULING (Isaac): the site's main job is to
   be an AWESOME LANDING PAGE for cave-teams and dark-factory.** The engineer descent
   ends at dark-factory's README (which literally ends in a clone command — the door's
