@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- RECONFORMED:C -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The codebase that got safer to edit every time it was touched — Isaac</title>
+<meta name="description" content="A repo isn&#x27;t a pile of files — it&#x27;s overlapping invisible surfaces. Here&#x27;s why AI-written codebases rot, and what it looks like when one stops.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/notes/the-repo-that-repaired-its-own-blind-spots.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The codebase that got safer to edit every time it was touched — Isaac">
+<meta property="og:description" content="A repo isn&#x27;t a pile of files — it&#x27;s overlapping invisible surfaces. Here&#x27;s why AI-written codebases rot, and what it looks like when one stops.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/notes/the-repo-that-repaired-its-own-blind-spots.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-depth="2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Case study<a href="../blog/index.html#l7-emergence">Level 7 &middot; Emergence</a><a href="../blog/index.html#drift-repair">Drift &amp; repair</a></p>
+    <h1>The codebase that got safer to edit every time it was touched</h1>
+    <p class="dek">A repo isn't a pile of files — it's overlapping invisible surfaces. Here's why AI-written codebases rot, and what it looks like when one stops.</p>
+
+<h3>The anecdote</h3>
+    <p>Here's why AI-written codebases rot. A repo isn't a pile of files — it's overlapping invisible surfaces: a function quietly called by something three files away, a write that a background process is watching, a comment claiming behavior the code no longer performs, an import reaching across a boundary into a subsystem with its own release cycle. A human developer often <em>feels</em> these relationships. An AI agent usually doesn't: it reads a few visible files, infers a local story, and edits as if the hidden causal system didn't exist. So it breaks something it couldn't see. Then the next agent trusts the now-stale surface and breaks more. The repo decays while everyone's busy.</p>
+    <p>The intervention was simple in concept: before editing, <em>surface the invisible.</em> A pass over the repo finds the hidden couplings and leaves a small, local, readable breadcrumb right where each one lives — "this function participates in a hidden chain; include these edges in your edit boundary or you'll break something you can't see." The breadcrumb isn't documentation. It's a marker that tells the next actor what must be known before this can be safely changed.</p>
+    <p>The effect over time is the whole point: every pass detects new hidden edges and repairs the surfaces that describe them. Each scan makes the next edit safer. The repo improves its <em>own</em> readability. That is a compounding loop — not vague magic, a concrete one.</p>
+    <h3>What it reveals (the shape of the deeper rung)</h3>
+    <ul>
+    <li><strong>The reason AI-coded systems rot is a gap between what's <em>visible</em> and what's <em>actually causal</em></strong> — and you fix it by repairing the geometry, not by making the agent try harder.</li>
+    <li><strong>Self-readability is a first-class activity, not a someday task.</strong> The difference between a system that compounds and one that rots is whether each cycle <em>repairs its own self-description.</em> Skip that step and you're on the rotting trajectory by default.</li>
+    <li><strong>An invisible-but-real connection should be made visible <em>at the exact point it matters</em></strong> — right where the next actor's attention will be — so the right information is present at the moment of the decision, not buried in a doc nobody opens.</li>
+    </ul>
+    <h3>What you can take from it right now</h3>
+    <p>The diagnosis transfers far beyond code: any system you run is either getting <em>more</em> self-readable each cycle or <em>less,</em> and the rot is silent until it's downstream. Asking "where does this system's record of itself drift from what it actually does?" is a free, sharp question — and the rot points it surfaces (the stale doc, the hidden coupling, the "only so-and-so knows how this works") are exactly where your system is quietly decaying.</p>
+
+    <hr>
+    <p class="caveat"><strong>Honest caveat.</strong> What this doesn't cover: the categories of hidden coupling a scanner has to detect, and how a pass patches the explanatory surfaces without a human remembering.</p>
+    <p class="note-sources">Distilled from: <a href="../blog/docmagic-stack.html">docmagic stack</a> · <a href="../blog/admissibility-engineering.html">admissibility engineering</a> · <a href="../blog/seven-disciplines.html">seven disciplines</a> · <a href="../blog/composition.html">composition</a> · <a href="../blog/l7-emergence.html">l7 emergence</a></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap measure">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="../blog/docmagic-stack.html"><div class="receipt-k">Where this came from</div><h3>Distilled from notes written while building it</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+        <a class="receipt" href="https://github.com/sancovp/docmagic"><div class="receipt-k">Open source</div><h3>DocMagic — the scanner this case study is about</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+  <a class="note-next" href="the-validator-that-refuses-to-be-wrong.html">Next note: <b>The validator that won&#x27;t let the AI be wrong about Susan &rarr;</b></a>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

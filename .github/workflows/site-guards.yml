@@ -1,0 +1,149 @@
+name: site guards
+
+# The rebuild's mechanical laws, enforced. Each job maps to a numbered law in the
+# rebuild spec; a failure names the law it broke.
+on:
+  push:
+    branches: [main, ceo]
+  pull_request:
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---------------------------------------------------------------- §2.5
+      - name: No stray markdown ships
+        run: |
+          # .nojekyll makes every .md in the repo publicly fetchable. Internal corpora
+          # (pitch scripts, positioning bets, competitive tallies) must not be in the
+          # web root. _build/ is a coordination dir and must be removed before deploy.
+          # Dot-directories are not served by GitHub Pages, so .claude/ and .github/
+          # are not part of the leak. ssri/ is a research sub-brand that publishes
+          # papers on purpose.
+          stray=$(find . -name '*.md' \
+            -not -path './README.md' \
+            -not -path './.*/*' \
+            -not -path './ssri/*' | sort)
+          echo "$(echo "$stray" | grep -c . 2>/dev/null || echo 0) stray markdown file(s)"
+          if [ -n "$stray" ]; then
+            echo "::error::§2.5 — markdown in the web root is publicly fetchable:"
+            echo "$stray"
+            exit 1
+          fi
+
+      - name: _build must not deploy
+        run: |
+          if [ -d _build ]; then
+            echo "::error::_build/ is a builder coordination directory and must be removed or gitignored before deploy."
+            exit 1
+          fi
+
+      # ---------------------------------------------------------------- L4
+      - name: No page-local design system
+        run: |
+          # No colors, fonts, or @import in HTML. Page-scoped <style> is layout-only.
+          # Artifact islands are deliberately foreign and exempt.
+          hits=$(grep -rlE '#[0-9a-fA-F]{6}|font-family:|@import' --include='*.html' . \
+            | grep -vE '^\./(cinematic-plumbing\.html|lab/|ssri/)' || true)
+          if [ -n "$hits" ]; then
+            echo "::error::L4 — page-local design system found in:"; echo "$hits"; exit 1
+          fi
+
+      - name: No @media in HTML
+        run: |
+          hits=$(grep -rl '@media' --include='*.html' . \
+            | grep -vE '^\./(cinematic-plumbing\.html|lab/|ssri/)' || true)
+          if [ -n "$hits" ]; then
+            echo "::error::§2.1 — breakpoints are declared once in style.css:"; echo "$hits"; exit 1
+          fi
+
+      # ---------------------------------------------------------------- L1
+      - name: One claim per surface
+        run: |
+          fail=0
+          for f in $(git ls-files '*.html' \
+              | grep -vE '^(cinematic-plumbing\.html|lab/|ssri/|blog/|notes/)'); do
+            n=$(grep -o '<h1' "$f" | wc -l)
+            [ "$n" -eq 1 ] || { echo "L1: $f has $n <h1>"; fail=1; }
+          done
+          [ $fail -eq 0 ] || { echo "::error::L1 — one <h1> per page"; exit 1; }
+
+      # ---------------------------------------------------------------- §2.3
+      - name: Head contract on every note
+        run: |
+          fail=0
+          for pat in '<!doctype' '<title>' 'viewport' 'og:image'; do
+            miss=$(grep -Lie "$pat" blog/*.html notes/*.html || true)
+            [ -n "$miss" ] && { echo "missing $pat: $miss"; fail=1; }
+          done
+          [ $fail -eq 0 ] || { echo "::error::§2.3 — head contract"; exit 1; }
+
+      # ---------------------------------------------------------------- §2.4
+      - name: Only nav.js ships
+        run: |
+          if [ -f exit-popup.js ] || [ -f sticky-cta.js ]; then
+            echo "::error::§2.4 — exit-popup.js / sticky-cta.js must be deleted"; exit 1
+          fi
+          hits=$(grep -rho '<script[^>]*src="[^"]*"' --include='*.html' . \
+            | grep -v 'nav.js' | grep -vE 'lab/|ssri/' | sort -u || true)
+          if [ -n "$hits" ]; then
+            echo "::error::§2.4 — only nav.js may ship:"; echo "$hits"; exit 1
+          fi
+
+      # ---------------------------------------------------------------- L3
+      - name: No canon vocabulary above the door
+        run: |
+          # WORD-BOUNDARY and comment-stripped. The spec's naive grep matches
+          # "operations" for "opera" and "sanctummm" for "sanctum", and it hits terms
+          # inside HTML comments that never render. Both produce false failures.
+          # Scope: the door surfaces only. inside/ is where the lore lives, and the
+          # BODY of an opened note is the inside too — see _build/RENDERER-PATCH.md §5.
+          words='sancrev|opera|sanctum|starsystem|gnosys|soma|cave|paiab|mifge|unicorn|sanctuary|ova|chenrezig|dharma|sangha|vajra|chulen|namthar|vimalakirti'
+          fail=0
+          for f in index.html system.html watch.html worlds/*.html \
+                   learn.html build.html run.html pricing.html \
+                   notes/index.html blog/index.html; do
+            [ -f "$f" ] || continue
+            # strip comments, then neutralise `cave-unicorn` — the real name of a
+            # public MIT repo. Renaming a shipped tool to satisfy a copy rule would
+            # misname it; bare `cave` / `unicorn` still fail.
+            hit=$(perl -0777 -pe 's/<!--.*?-->//gs' "$f" \
+              | sed 's/cave-unicorn//g' \
+              | grep -oEi "\\b($words)\\b" | sort -u || true)
+            [ -n "$hit" ] && { echo "L3: $f -> $(echo $hit | tr '\n' ' ')"; fail=1; }
+          done
+          [ $fail -eq 0 ] || { echo "::error::L3 — canon vocabulary above the door"; exit 1; }
+
+      # ---------------------------------------------------------------- WCAG 2.2.1
+      - name: Redirect stubs are instant and linked
+        run: |
+          bad=$(grep -rl 'http-equiv="refresh"' --include='*.html' . \
+            | xargs -r grep -L 'content="0;' || true)
+          if [ -n "$bad" ]; then
+            echo "::error::WCAG 2.2.1 — a timed meta-refresh is a failure; use content=\"0;\":"
+            echo "$bad"; exit 1
+          fi
+
+      # ---------------------------------------------------------------- dead links
+      - name: No links to killed surfaces
+        run: |
+          killed='apply|transform|school|free|promptworld|soma|sancrev|opera|gnosys|join|level10|ralph|phone-agent|agents|advertorial|vajra-value-shop|business-buddhism|dr-capitalism|jobworld-premium|soma-start|how_i|sanctuary-nexus'
+          hits=$(grep -rEo "href=\"[^\"]*($killed)\.html\"" --include='*.html' . \
+            | grep -vE '^\./(_build|docs|builds)/' || true)
+          if [ -n "$hits" ]; then
+            echo "::error::links to killed surfaces:"; echo "$hits"; exit 1
+          fi
+
+      - name: Internal links resolve
+        run: |
+          fail=0
+          for f in $(git ls-files '*.html'); do
+            d=$(dirname "$f")
+            for h in $(grep -oE 'href="[^"#?:]+\.html"' "$f" | sed 's/href="//;s/"//'); do
+              case "$h" in /*) t=".$h" ;; *) t="$d/$h" ;; esac
+              [ -f "$t" ] || { echo "dead: $f -> $h"; fail=1; }
+            done
+          done
+          [ $fail -eq 0 ] || { echo "::error::dead internal links"; exit 1; }

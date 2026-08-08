@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- RECONFORMED:C -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The validator that won&#x27;t let the AI be wrong about Susan — Isaac</title>
+<meta name="description" content="Susan processes invoices every Tuesday. Your AI knows none of this — and will happily generate a confident, plausible workflow that has never existed.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/notes/the-validator-that-refuses-to-be-wrong.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The validator that won&#x27;t let the AI be wrong about Susan — Isaac">
+<meta property="og:description" content="Susan processes invoices every Tuesday. Your AI knows none of this — and will happily generate a confident, plausible workflow that has never existed.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/notes/the-validator-that-refuses-to-be-wrong.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-depth="2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Case study<a href="../blog/index.html#l5-admissibility">Level 5 &middot; Admissibility</a><a href="../blog/index.html#drift-repair">Drift &amp; repair</a></p>
+    <h1>The validator that won't let the AI be wrong about Susan</h1>
+    <p class="dek">Susan processes invoices every Tuesday. Your AI knows none of this — and will happily generate a confident, plausible workflow that has never existed.</p>
+
+<h3>The anecdote</h3>
+    <p>Susan processes invoices every Tuesday. She routes them to Jim in procurement first, because of a PO check. She cares more about the cost-center field than anything else. She takes a chocolate break at 4pm on Wednesdays. Your AI knows <em>none</em> of this — and worse, it will happily generate a confident, plausible workflow for "automate Susan's job" that has <em>never existed</em>: invoice goes straight to the approver, cost-center check skipped, Jim never mentioned. It doesn't know. It <em>performs</em> knowing.</p>
+    <p>The fix that actually works isn't "give it more context." You can paste fifty pages of Susan's procedures into the window and it'll still contradict page 23, because reading is not the same as understanding compositionally. The fix is to <em>constrain how the AI is allowed to talk about Susan.</em> Every claim it makes has to decompose into parts that are each individually validated, all the way down. "Susan's invoices go through Jim for PO validation" is admissible <em>because</em> every piece of that composition is real. "Susan's invoices go straight to the CFO" is <em>inadmissible</em> — not because it sounds wrong, but because the composition doesn't close: there's no validated path from Susan's invoices to the CFO. The system catches it. Immediately.</p>
+    <h3>What it reveals (the shape of the deeper rung)</h3>
+    <ul>
+    <li>**There's a thing that sits between the AI and reality and <em>gates</em> what gets admitted.** New claims are proposed; the gate checks them against a typed model of what's allowed; claims that don't compose are <em>not admitted as knowledge</em> — they're held aside until repaired or they sit there forever, never participating in anything downstream.</li>
+    <li><strong>The model is built up, not declared.</strong> You start with almost nothing ("what <em>is</em> an invoice? what's a 'Susan'?") and add validated observation on validated observation until you have a model the AI must respect. Each layer verified before the next is trusted.</li>
+    <li><strong>An error is an instruction, not a dead end.</strong> When a claim is rejected, the rejection <em>tells the AI exactly what's missing and how to fix it</em> — "you said X requires Y, and Y has never been observed; observe Y first" — and primes it to repair rather than just fail. The failure message is the next prompt.</li>
+    </ul>
+    <h3>What you can take from it right now</h3>
+    <p>The distinction is the gift: your AI doesn't <em>know</em> your domain, it <em>performs</em> knowing it — and the cure isn't more documents, it's whether claims have to <em>compose from validated parts.</em> Just holding that distinction changes how you evaluate every AI output you depend on, and it's free.</p>
+
+    <hr>
+    <p class="caveat"><strong>Honest caveat.</strong> What this doesn't cover: the ontology the gate checks against, and the mechanics of decomposing a claim at every depth so a malformed one can never slip through.</p>
+    <p class="note-sources">Distilled from: <a href="../blog/admissibility-engineering.html">admissibility engineering</a> · <a href="../blog/l5-admissibility.html">l5 admissibility</a> · <a href="../blog/admissibility.html">admissibility</a> · <a href="../blog/l6-concentration.html">l6 concentration</a></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap measure">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="../blog/admissibility-engineering.html"><div class="receipt-k">Where this came from</div><h3>Distilled from notes written while building it</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+  <a class="note-next" href="the-missing-slot-found-in-an-afternoon.html">Next note: <b>The architecture that drifted for months, diagnosed in two minutes &rarr;</b></a>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

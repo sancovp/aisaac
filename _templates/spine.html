@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEMPLATE — TYPE 1 SPINE</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 1 — SPINE.  Exactly 2 instances: index.html (HOME), system.html (MAP).
+     Block order:  B0 · B1 · B2 · B3 · [B5 on MAP only] · B6 · B4 · [B7 on MAP] · B9 · B10
+     Laws: ONE <h1>. ONE .cta-primary. No modal, no survey, no quiz,
+           no exit-intent, no sticky bar. Everything in the DOM — the page
+           must render complete with JavaScript disabled.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — paste verbatim from _templates/_nav.html (ROOT variant) -->
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM — exactly one per page. h1 ≤12 words. lede ≤2 sentences, ≤40 words. -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Lorem eyebrow</p>
+      <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <a class="cta-primary" href="../watch.html">Lorem action &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ B3 ARTIFACT — the world slot. ABOVE THE FOLD, directly under the CTA.
+       The frame holds a <video>, an <iframe>, or an .artifact-placeholder.
+       The figcaption is the PROVENANCE line (what it is / what made it /
+       when) — never marketing copy. -->
+  <section class="flush-top">
+    <div class="wrap">
+      <figure class="artifact">
+        <div class="artifact-frame">
+          <!-- WORLD-SLOT: replace this placeholder with the real embed. -->
+          <a class="artifact-placeholder" href="../watch.html">
+            <span class="ap-line">&#9656; lorem, the thing actually running</span>
+            <span class="ap-go">Lorem go &rarr;</span>
+          </a>
+        </div>
+        <figcaption class="artifact-prov">Lorem provenance — what generated this, from what input, in how long.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ B5 MECHANISM — MAP ONLY (between B3 and B6). Use .steps (3) or .stack (n). -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">Lorem mechanism</p>
+      <h2>Lorem ipsum dolor sit amet.</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Lorem</h3><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Ipsum</h3><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Dolor</h3><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER — the IA spine rendered as content. Five rungs, with prices.
+       aria-current="step" marks the rung the reader is standing on. -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Lorem ladder heading.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <a class="rung" href="../watch.html"><span class="rung-n">01</span><span class="rung-t">Lorem</span><span class="rung-d">lorem ipsum dolor</span></a>
+        <a class="rung" href="../learn.html"><span class="rung-n">02</span><span class="rung-t">Ipsum</span><span class="rung-d">lorem ipsum dolor</span></a>
+        <a class="rung" href="../build.html"><span class="rung-n">03</span><span class="rung-t">Dolor</span><span class="rung-d">lorem ipsum dolor</span></a>
+        <a class="rung" href="../run.html"><span class="rung-n">04</span><span class="rung-t">Sit</span><span class="rung-d">lorem ipsum dolor</span></a>
+        <a class="rung" href="../pricing.html"><span class="rung-n">05</span><span class="rung-t">Amet</span><span class="rung-d">lorem ipsum dolor</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS — 4 receipts. Every one links to a real artifact.
+       No number, testimonial, or metric without a linked artifact (L5). -->
+  <section class="receipts dark">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Lorem — take the code.</h2>
+      <p class="receipts-lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B7 HONEST — MAP only (HOME links to it). What it can't do yet. -->
+  <section class="honest">
+    <div class="wrap">
+      <p class="eyebrow">Straight terms</p>
+      <h2>What you&rsquo;re buying, honestly.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. No income promises, no &ldquo;fully autonomous.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — ONE link, ONE destination. Repeats the hero's ask. -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">Lorem</p>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+      <a class="cta-primary" href="../watch.html">Lorem action &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — paste verbatim from _templates/_footer.html -->
+<script src="../nav.js"></script>
+</body>
+</html>

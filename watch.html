@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The room where it runs — Isaac</title>
+<meta name="description" content="Two rendering engines, one clock, live in your browser — and the slots where real world footage goes when it exists.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/watch.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The room where it runs — Isaac">
+<meta property="og:description" content="Two rendering engines, one clock, live in your browser — and the slots where real world footage goes when it exists.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/watch.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<!-- data-depth="1" — THE RUNG level (style.css §Density gradient: "Depth 0 —
+     THE DOOR … Depth 1 — the rungs and the map"). A parallel pass had stamped
+     this page depth 0; depth 0 belongs to index.html alone. watch.html calls
+     itself "Rung 01" in its own eyebrow and ladder, and its siblings
+     (build/run/learn/system/isaac) are all depth 1 — so it renders at 1. -->
+<body data-depth="1">
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 2 WORLD (_templates/world.html) at ROOT level — nav VARIANT A.
+     Block order: B0 · B1 · B2 · B3 · B3b · B5 · B4 · B6 · B7 · B9 · B10.
+
+     THE RULE THAT MATTERS (world-template law): the exhibit keeps its own
+     look. lab/explainer.html is EMBEDDED, never reskinned — reskinning the
+     artifact destroys the proof. This page is the thin wrapper that supplies
+     the claim, the provenance and the return path. Everything inside the
+     frame belongs to the lab; everything outside it belongs to style.css.
+
+     Laws honoured here: exactly one top-level heading · exactly one
+     .cta-primary (B2; B9 uses .cta-secondary) · relative in-page paths,
+     absolute only in canonical/og · no page-local breakpoints and no inline
+     style attributes · zero canon-internal vocabulary · no cost figures,
+     offers or booking links anywhere (offers are frozen; the ladder links the
+     cost page, which is the mandated nav/ladder target, and quotes nothing
+     from it) · no fabricated numbers — the two empty slots below stay empty
+     until real runs fill them.
+
+     The page renders complete with JavaScript disabled: it is pure DOM plus
+     nav.js (mobile menu collapse only), and the iframe carries its own
+     no-JS still.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a href="isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="watch.html" aria-current="page">Watch</a>
+    <a href="learn.html">Learn</a>
+    <a href="build.html">Build</a>
+    <a href="run.html">Run</a>
+    <a href="notes/">Notes</a>
+    <a href="pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM ══════════════════════════════════════════════════════ -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Rung 01 &middot; free</p>
+      <h1>The room where it runs.</h1>
+      <p class="lede">At the door the engine ran itself. In here you get the clock. <strong>Scrub it forward and back at your own pace, or press play and let it narrate.</strong> Same engine either way &mdash; there is no video file on this page.</p>
+      <a class="cta-primary" href="#exhibit">Take the clock &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ B3 EXHIBIT 1 — the live engine. The frame is style.css's
+       .artifact-frame (aspect-ratio 16/9, iframe pinned to inset:0); the
+       contents are lab/explainer.html under ?embed=room, which supplies its
+       own chrome, its own clock and its own no-JS fallback. ══ -->
+  <section id="exhibit" class="flush-top">
+    <div class="wrap">
+      <figure class="artifact">
+        <div class="artifact-frame">
+          <iframe src="lab/explainer.html?embed=room"
+                  title="The explainer engine running live — a diagram pass and a character pass on one clock"
+                  loading="eager" scrolling="no" referrerpolicy="no-referrer"></iframe>
+        </div>
+        <figcaption class="artifact-prov">Seven sentences, 1,299 frames, thirty per second. The captions you are reading are DOM text compiled from the same shot rows the composition runs on &mdash; one authored source, three surfaces: the film, this page, and the spec. Wheel or drag to take the clock; at either end of the composition the frame hands the page back to you. <a href="lab/explainer.html">&rarr; open the raw instrument, full page, scroll-driven</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ B3b FOOTAGE SLOTS — labelled IOUs. NOT fake liveness: no numbers,
+       no dashboard, no seeded data, no greyed "coming soon". Each states
+       what will occupy it and what it is waiting on. Slot B was checked
+       against ~/repo/cave-teams for a publishable live-run log on
+       2026-08-07: the live test files are there (test_live_skillcraft.py and
+       eight siblings) but NO committed run log or transcript exists, so the
+       slot ships as the IOU rather than as a summary somebody wrote by
+       hand. Fill it only with a verbatim log, its path, its date and the
+       command that produced it. ══ -->
+  <!-- Footage bands (world runs, the hundred-cycles before/after) get ADDED here
+       the day real footage exists — nothing is shown before it is real
+       (Isaac's ruling 2026-08-08: no placeholder frames on live pages). -->
+
+  <!-- ══ B5 MECHANISM — exactly 3 steps (world-template law). ══ -->
+  <section class="mechanism dark">
+    <div class="wrap">
+      <p class="eyebrow">How this one was made</p>
+      <h2>One source. Two passes. Three surfaces.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>What you gave it</h3>
+          <p>Seven sentences of narration and a shot list. That is the whole input &mdash; no storyboard, no keyframes, no timeline scrubbed by hand.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>What it did</h3>
+          <p>Compiled two passes from the same rows: a diagram pass &mdash; layout maths, node network, spine, a live exclusion zone that keeps the diagram off the presenter &mdash; and a character pass, a rig on a transparent canvas. Layered at identical film coordinates.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>What it produces</h3>
+          <p>A rendered film, this scrubbable page, and the captions you just read. The film and the webpage are the same artifact in two moods &mdash; which is easier to show than to argue, so this page shows it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS — specific to THIS world, never the shared strip. ══ -->
+  <section class="receipts compact">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Four things about this page you can go and check.</h2>
+      <p class="receipts-lede">Every one of these is either in this repository or is a fact you can verify by opening the frame above and looking.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="lab/src/build.sh">
+          <div class="receipt-k">Reproducible</div>
+          <h3>The build command ships with the page</h3>
+          <p>Both bundles were cut from the engine checkout at commit <b>afd48414bc99b717b0929c65bb2b0d8ac28ce57e</b>. The script that made them is in the repository, not paraphrased in a caption.</p>
+          <span class="receipt-go">Open lab/src/build.sh &rarr;</span>
+        </a>
+        <a class="receipt" href="lab/README.md">
+          <div class="receipt-k">Two engines, two Reacts</div>
+          <h3>The detail nobody would invent</h3>
+          <p>The character rig&rsquo;s reconciler reads <b>ReactCurrentBatchConfig</b>, which React 19 removed &mdash; a verified crash. So: two bundles, each carrying its own React, two mount roots, one clock. Frame N here is frame N there.</p>
+          <span class="receipt-go">Read the ledger &rarr;</span>
+        </a>
+        <a class="receipt" href="lab/explainer.html">
+          <div class="receipt-k">No external requests</div>
+          <h3>Everything you are running came from here</h3>
+          <p>One mp3 &mdash; the narration, play mode only &mdash; is the sole media file. Fonts, engines and captions all ship from this domain. Open the network tab and count.</p>
+          <span class="receipt-go">Open the raw instrument &rarr;</span>
+        </a>
+        <a class="receipt" href="lab/README.md">
+          <div class="receipt-k">Known limits, stated</div>
+          <h3>What is still rough, in writing</h3>
+          <p>The character pass needs WebGL; without it the diagram runs alone. Scroll feel and touch behaviour are a handful of constants that still want a human pass. Both are written down in the lab&rsquo;s own notes, not discovered by you.</p>
+          <span class="receipt-go">Read the known limits &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B4b EXPECTATIONS — the (c) layer: "so what should I expect?"
+       The duration is not invented: it is this page's own figcaption
+       arithmetic, 1,299 frames at 30fps = 43.3s. The scope claim ("one
+       question, and it is not whether a business runs") is the same line
+       B7 draws, stated forwards as an expectation instead of backwards as
+       a caveat. Ends on the sanctioned next move — rung 02 — which is
+       already this page's B9 destination. No .cta-primary here; B2 spent
+       the page's one. ══ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What to expect</p>
+      <h2>Forty-three seconds. That is the whole ask.</h2>
+      <p class="lede">1,299 frames at thirty a second comes to about forty-three seconds end to end. Watch it in one pass, or take the clock and walk it frame by frame &mdash; it redraws at whatever rate you scrub. Nothing to install, nothing to decide, no email.</p>
+      <p>What you have at the end is an answer to exactly one question: whether there is a real engine here, or a website describing one. That is the only question this rung is built to settle, and it settles it in under a minute. Everything further down the ladder assumes you got a yes here &mdash; so if it does not hold up, stop. You are out forty-three seconds.</p>
+      <p class="fineprint">If it did hold up, the next question is how these get built &mdash; <a href="learn.html">that is rung 02 &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER — rung 01 is a <span>, not a link (template law). ══ -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Five rungs. This is the first one, and it is the free one.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <span class="rung" aria-current="step"><span class="rung-n">01</span><span class="rung-t">Watch a world run</span><span class="rung-d">you are here</span></span>
+        <a class="rung" href="learn.html"><span class="rung-n">02</span><span class="rung-t">Learn to build them</span><span class="rung-d">the patterns and the notes</span></a>
+        <a class="rung" href="build.html"><span class="rung-n">03</span><span class="rung-t">Run your work inside one</span><span class="rung-d">open source &mdash; install it today</span></a>
+        <a class="rung" href="run.html"><span class="rung-n">04</span><span class="rung-t">Have one run your business</span><span class="rung-d">built with you, then handed over</span></a>
+        <a class="rung" href="pricing.html"><span class="rung-n">05</span><span class="rung-t">What it costs</span><span class="rung-d">every rung, on one page</span></a>
+      </nav>
+      <!-- DEVIATION, REPORTED: the spec routes the tourist chain from here to
+           the health world (the same pattern on a domain with no AI anywhere in
+           it). worlds/health.html does not exist; the real one, healthworld/,
+           is unconformed — it still carries canon-internal vocabulary and a
+           booking CTA, so linking it from a rung-01 page would breach the lore
+           firewall and the offer freeze. Until it is conformed this slot points
+           at the map instead, which is real and one level deeper. -->
+      <p class="mt-s"><a class="cta-secondary" href="system.html">How the engine works, and what it can&rsquo;t do yet &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ══ B7 HONEST — mandatory on every rung, and this page IS rung 01. ══ -->
+  <section class="honest">
+    <div class="wrap">
+      <p class="eyebrow">Honestly</p>
+      <h2>What this is, and what it is not.</h2>
+      <p><strong>What this is:</strong> the engine drawing an explanation of the seven levels, live, from the same seven sentences a film renders from. That part is real and you are looking at it.</p>
+      <p><strong>What it is not:</strong> a business running. That footage does not exist yet; when real runs are cut they will appear on this page unedited. A generated number in one of those frames would make every other claim on this site worthless, so there is not one.</p>
+      <p><strong>What is also true:</strong> nobody outside the person who built this has deployed the core of it, and nobody outside him has witnessed it run. Those two rows are open on <a href="isaac.html#think">his own audit</a> and they are restated here rather than left upstairs, because you should read everything above against them.</p>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — rung 2 per the template. .cta-secondary, because this
+       page has already spent its one .cta-primary on "take the clock". ══ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">If it held up</p>
+      <h2>You have watched one run. The next question is how they get built.</h2>
+      <p>Nothing to decide and no email to leave. If you would rather know who is behind it first, that is <a href="isaac.html">the maker&rsquo;s page</a> &mdash; seven things he believes, each with the receipt attached, and the debts named at the bottom. Or read <a href="notes/">the field notes</a> written the nights this was built.</p>
+      <a class="cta-secondary" href="learn.html">See how these get built &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

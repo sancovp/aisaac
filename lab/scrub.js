@@ -1,0 +1,455 @@
+/*!
+ * aisaac explainer lab — scroll-scrub driver (v3, after a full read of the
+ * scroll-world skill).
+ *
+ * Scroll mechanics adapted from oso95/scroll-world, references/scrub-engine.js
+ * (MIT License, Copyright (c) 2026 cyw): segment scroll-range layout, the
+ * smoothstep copy-opacity curves (first section greets on landing, last holds,
+ * middle peaks mid-range), lingerEase (time settles mid-section exactly where
+ * the copy peaks, quicker at the seams; f(0)=0, f(1)=1), the damped lerp
+ * toward the scrub target, route rail + dots, top scrollbar, scroll hint,
+ * width-gated mobile resize, prefers-reduced-motion. The <video>.currentTime
+ * core of that engine is replaced by seekTo() on LIVE @remotion/player mounts
+ * — there are no video files on this page; scroll drives the composition
+ * clock. Scroll-world's seam/connector discipline is structurally unnecessary
+ * here: the whole excerpt is ONE continuous composition.
+ *
+ * Two modes:
+ *   SCRUB (default) — scroll position -> frame; silent.
+ *   PLAY            — normal timed playback with the narration mp3 through
+ *                     the composition's own <Audio>; scroll suspended; the
+ *                     presenter and copy cards follow the player's
+ *                     frameupdate events. Exiting play syncs scroll back to
+ *                     the current frame.
+ *
+ * Three SURFACES, one file (?embed=…). The standalone page is unchanged:
+ *   (none)      the raw instrument — full chrome, scroll IS the clock.
+ *   ?embed=door the homepage frame — no chrome, autoruns and loops, never
+ *               sounds, pauses when off-screen or the tab is hidden, and
+ *               under prefers-reduced-motion holds ONE real frame instead of
+ *               animating. A full-frame <a> enters watch.html.
+ *   ?embed=room the watch.html exhibit — route rail + play toggle kept;
+ *               autoruns until the visitor takes the clock, then wheel (fine
+ *               pointer) or horizontal drag (coarse pointer) scrubs. At both
+ *               ends of the composition the handler stops preventing default
+ *               so the PARENT page scrolls: the frame never traps anyone.
+ *
+ * Pure math is exported for node tests when require()d; the browser side
+ * mounts on DOMContentLoaded.
+ */
+(function () {
+  'use strict';
+
+  // ---- pure math (node-testable) ------------------------------------------
+  var clamp = function (x, a, b) {
+    a = a == null ? 0 : a; b = b == null ? 1 : b;
+    return Math.min(b, Math.max(a, x));
+  };
+  var smooth = function (x) { x = clamp(x); return x * x * (3 - 2 * x); };
+
+  /**
+   * scroll-world's lingerEase: monotone remap of a section's local progress so
+   * time settles mid-section (where the copy peaks) and moves quicker at the
+   * edges. L=0 linear, L=1 full mid pause; f(0)=0, f(1)=1 always.
+   */
+  var lingerEase = function (x, L) {
+    L = clamp(L); var c = x - 0.5;
+    return (1 - L) * x + L * (4 * c * c * c + 0.5);
+  };
+
+  /**
+   * Scroll progress 0..1 -> composition frame (float), beat-aware: the linear
+   * frame position is linger-remapped WITHIN the beat it falls in, so the
+   * film dwells mid-sentence (where the copy peaks) and moves quicker at the
+   * beat seams. Beat boundary frames are fixed points, so the map is
+   * continuous and monotone; endpoints exact.
+   */
+  function frameForProgress(p, duration, beats) {
+    p = clamp(p);
+    var f = p * (duration - 1);
+    if (!beats || !beats.length) return f;
+    for (var i = 0; i < beats.length; i++) {
+      var b = beats[i], end = b.start + b.frames;
+      if (f >= b.start && f <= end) {
+        var x = (f - b.start) / b.frames;
+        return b.start + lingerEase(x, b.linger || 0) * b.frames;
+      }
+    }
+    return f;
+  }
+
+  /** Inverse of frameForProgress (binary search — the map is monotone). */
+  function progressForFrame(frame, duration, beats) {
+    var lo = 0, hi = 1;
+    for (var i = 0; i < 40; i++) {
+      var mid = (lo + hi) / 2;
+      if (frameForProgress(mid, duration, beats) < frame) lo = mid; else hi = mid;
+    }
+    return (lo + hi) / 2;
+  }
+
+  /**
+   * Copy-card opacity for section i of N at its local progress pr
+   * (pr < 0 => before its range, pr > 1 => after). scroll-world's read() curves.
+   */
+  function copyOpacity(i, N, pr) {
+    var before = pr < 0, after = pr > 1;
+    if (i === 0) return after ? 0 : smooth(1 - clamp(pr) / 0.62);
+    if (i === N - 1) return before ? 0 : smooth(clamp(pr) / 0.4);
+    return (before || after) ? 0 : smooth(1 - Math.abs(pr - 0.5) / 0.5);
+  }
+
+  /** One damped lerp step toward target (scroll-world's raf smoothing). */
+  function lerpStep(cur, target, k) { return cur + (target - cur) * k; }
+
+  /** Local progress of beat {start, frames} at global float frame f. */
+  function beatProgress(f, beat) { return (f - beat.start) / beat.frames; }
+
+  var API = {
+    clamp: clamp, smooth: smooth, lingerEase: lingerEase,
+    frameForProgress: frameForProgress, progressForFrame: progressForFrame,
+    copyOpacity: copyOpacity, lerpStep: lerpStep, beatProgress: beatProgress,
+  };
+  if (typeof module !== 'undefined' && module.exports) { module.exports = API; return; }
+
+  // ---- browser mount --------------------------------------------------------
+  var VH_PER_BEAT = 1.35;  // viewport-heights of scroll per sentence (diveScroll)
+  var LERP_K = 0.16;       // damped scrub factor per rAF
+  var LINGER = 0.35;       // per-beat dwell (scroll-world keeps <= 0.6)
+  var LINGER_LAST = 0.5;   // the payoff sentence dwells longer
+  var EMBED_FPP = 0.5;     // frames per px of wheel/drag delta in ?embed=room
+  var HELD_FRAME = 240;    // the one frame the door holds under reduced-motion
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+  // ---- surface selection (?embed=door | ?embed=room) -----------------------
+  var QS = new URLSearchParams(location.search);
+  var MODE = QS.get('embed') || '';
+  var EMBED = MODE === 'door' || MODE === 'room';
+  if (EMBED) {
+    document.documentElement.classList.add('bare', 'embed-' + MODE);
+  } else if (QS.has('bare')) {
+    document.documentElement.classList.add('bare');
+  }
+
+  function boot(tries) {
+    var B = window.AisaacBackdrop;
+    // Boot the INSTANT the diagram engine exists. The presenter bundle is 3x
+    // heavier; blocking on it (the old 3s grace) meant first motion waited on
+    // 479KB instead of 125KB. It attaches late, on its own ready event.
+    if (!B) return setTimeout(function () { boot((tries || 0) + 1); }, 40);
+    mount(B, window.AisaacPresenter || null);
+  }
+
+  function mount(B, P) {
+    var world = document.getElementById('scrub-world');
+    var stage = document.getElementById('stage');
+    var copylayer = document.getElementById('copylayer');
+    var route = document.getElementById('route');
+    var hint = document.getElementById('scroll-hint');
+    var scrollbar = document.getElementById('scrub-progress');
+    var modeBtn = document.getElementById('mode-toggle');
+    if (!world || !copylayer) return;
+
+    var N = B.beats.length;
+    var DUR = B.duration;
+    var FPS = B.fps || 30;
+    var totalVh = VH_PER_BEAT * N;
+    var beats = B.beats.map(function (b, i) {
+      return { start: b.start, frames: b.frames, line: b.line, eyebrow: b.eyebrow,
+               linger: i === N - 1 ? LINGER_LAST : LINGER };
+    });
+
+    // copy cards + route dots from the SAME beats the composition runs on
+    var cards = [], dots = [];
+    beats.forEach(function (b, i) {
+      var c = document.createElement('article');
+      c.className = 'copy-card';
+      c.innerHTML =
+        '<span class="copy-card__num">' + pad(i + 1) + ' / ' + pad(N) + '</span>' +
+        (b.eyebrow ? '<span class="copy-card__eyebrow">' + esc(b.eyebrow) + '</span>' : '') +
+        '<p class="copy-card__line">' + esc(b.line) + '</p>';
+      copylayer.appendChild(c); cards.push(c);
+      if (route) {
+        var d = document.createElement('button');
+        d.className = 'route-dot';
+        d.setAttribute('aria-label', b.eyebrow || ('sentence ' + (i + 1)));
+        d.innerHTML = '<span>' + esc(b.eyebrow || '') + '</span><i></i>';
+        d.addEventListener('click', function () { jumpTo(i); });
+        route.appendChild(d); dots.push(d);
+      }
+    });
+
+    var vh = window.innerHeight, laidOutW = window.innerWidth;
+    var worldTop = 0, scrollRange = 1;
+    var target = 0, cur = 0, lastSent = -1, activeDot = -1, ticking = false;
+    // 'scrub' scroll-driven (standalone) · 'play' timed+narrated ·
+    // 'autorun' wall-clock (both embeds) · 'take' the visitor has the clock (room)
+    var mode = EMBED ? 'autorun' : 'scrub';
+    var offscreen = false, lastTs = 0;
+
+    // The presenter bundle may still be in flight. Attach it the moment it
+    // announces itself and hand it the frame we are already on, so it fades
+    // in ON the diagram rather than a beat behind it.
+    if (!P) {
+      window.addEventListener('aisaac:presenter-ready', function () {
+        if (P) return;
+        P = window.AisaacPresenter || null;
+        if (P) P.setFrame(lastSent >= 0 ? lastSent : Math.round(cur));
+      });
+    }
+
+    function layout() {
+      vh = window.innerHeight;
+      laidOutW = window.innerWidth;
+      if (EMBED) {
+        // No scroll runway inside a frame: the stage IS the whole document.
+        world.style.height = vh + 'px';
+        worldTop = 0; scrollRange = 1;
+        return;
+      }
+      world.style.height = Math.round((totalVh + 1) * vh) + 'px';
+      var r = world.getBoundingClientRect();
+      worldTop = r.top + (window.scrollY || window.pageYOffset);
+      scrollRange = totalVh * vh;
+      if (mode === 'scrub') read();
+    }
+
+    function scrollForFrame(f) {
+      return worldTop + progressForFrame(f, DUR, beats) * scrollRange;
+    }
+
+    function jumpTo(i) {
+      var b = beats[i];
+      var f = b.start + b.frames * 0.5;
+      if (EMBED) {
+        if (mode === 'play') exitPlay(f); else { mode = 'take'; target = f; }
+        return;
+      }
+      if (mode === 'play') exitPlay();
+      window.scrollTo({ top: scrollForFrame(f), behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    /** Push a float frame to both engines, de-duped on the integer. */
+    function sendFrame(f) {
+      var r = Math.round(f);
+      if (r === lastSent) return;
+      lastSent = r;
+      B.setFrame(r);
+      if (P) P.setFrame(r);
+    }
+
+    /** Drive cards/dots/scrollbar from a float frame (used by both modes). */
+    function paintFrame(f, scrollP) {
+      var near = 0;
+      for (var i = 0; i < N; i++) {
+        var pr = beatProgress(f, beats[i]);
+        var op = copyOpacity(i, N, pr);
+        cards[i].style.opacity = op;
+        cards[i].style.transform =
+          'translateY(calc(-50% + ' + (reduce ? 0 : (0.5 - clamp(pr)) * 4) + 'vh))';
+        cards[i].style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+        if (pr >= 0) near = i;
+      }
+      if (near !== activeDot) {
+        activeDot = near;
+        dots.forEach(function (d, k) { d.classList.toggle('is-active', k === near); });
+      }
+      if (scrollbar) scrollbar.style.transform = 'scaleX(' + clamp(scrollP) + ')';
+    }
+
+    function read() {
+      var y = clamp((window.scrollY || window.pageYOffset) - worldTop, 0, scrollRange);
+      var p = y / scrollRange;
+      target = frameForProgress(p, DUR, beats);
+      paintFrame(target, p);
+      if (hint) hint.style.opacity = clamp(1 - y / (0.5 * vh));
+      ticking = false;
+    }
+
+    function raf(ts) {
+      var dt = lastTs ? (ts - lastTs) : 0;
+      lastTs = ts;
+      if (mode === 'scrub') {
+        cur = reduce ? target : lerpStep(cur, target, LERP_K);
+        sendFrame(cur);
+      } else if (mode === 'autorun') {
+        // Wall-clock playback, looping. A door scrolled past, or a hidden tab,
+        // burns nothing: dt is dropped, so the film also does not skip ahead.
+        if (!offscreen && !document.hidden && dt > 0 && dt < 250) {
+          cur = target = (cur + (dt / 1000) * FPS) % DUR;
+          sendFrame(cur);
+          paintFrame(cur, cur / (DUR - 1));
+        }
+      } else if (mode === 'take') {
+        cur = reduce ? target : lerpStep(cur, target, LERP_K);
+        sendFrame(cur);
+        paintFrame(cur, cur / (DUR - 1));
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // ---- PLAY mode: timed playback with narration --------------------------
+    function enterPlay() {
+      mode = 'play';
+      if (modeBtn) { modeBtn.textContent = EMBED ? '❚❚ pause' : '↕ back to scroll'; modeBtn.classList.add('is-playing'); }
+      if (hint) hint.style.opacity = 0;
+      // At (or within 2 frames of) the end, play restarts from the top —
+      // otherwise 'ended' fires immediately and the button appears dead.
+      if (cur >= DUR - 2) {
+        cur = target = 0; lastSent = -1;
+        B.setFrame(0); if (P) P.setFrame(0); lastSent = 0;
+      }
+      B.play();
+    }
+    function exitPlay(atFrame) {
+      var f = atFrame != null ? atFrame : cur;
+      B.pause();
+      mode = EMBED ? 'take' : 'scrub';
+      if (modeBtn) { modeBtn.textContent = '▶ play with narration'; modeBtn.classList.remove('is-playing'); }
+      cur = target = f;
+      lastSent = -1; // force a re-send so both players land exactly on f
+      if (!EMBED) { window.scrollTo(0, scrollForFrame(f)); read(); }
+      else paintFrame(f, f / (DUR - 1));
+      B.setFrame(Math.round(f)); if (P) P.setFrame(Math.round(f));
+      lastSent = Math.round(f);
+    }
+    if (modeBtn) {
+      modeBtn.addEventListener('click', function () {
+        // Enter play from ANY non-play mode. The old test (mode === 'scrub')
+        // was standalone-page logic: in the embeds the mode starts as
+        // 'autorun', so the first click fell through to exitPlay() — pausing —
+        // and every later click did the same. Play never started. (Reported
+        // by Isaac on watch.html, 2026-08-08.)
+        if (mode === 'play') exitPlay(); else enterPlay();
+      });
+    }
+    B.on('frameupdate', function (f) {
+      if (mode !== 'play') return;
+      cur = f;
+      if (P) P.setFrame(f);
+      paintFrame(f, progressForFrame(f, DUR, beats));
+    });
+    B.on('ended', function () { if (mode === 'play') exitPlay(DUR - 1); });
+
+    window.addEventListener('scroll', function () {
+      if (mode !== 'scrub') return;
+      if (!ticking) { ticking = true; requestAnimationFrame(read); }
+    }, { passive: true });
+    // scroll-world: on touch, the URL bar fires height-only resizes — relaying
+    // out there would rebuild the track and yank the scroll. Gate on width.
+    window.addEventListener('resize', function () {
+      if (coarse && window.innerWidth === laidOutW) return;
+      layout();
+    });
+    window.addEventListener('orientationchange', layout);
+
+    // ---- EMBED surfaces ----------------------------------------------------
+    if (EMBED && stage) {
+      // Never render a frame nobody is looking at. root:null intersects the
+      // TOP-LEVEL viewport even from inside an iframe, so this is what keeps a
+      // homepage that scrolled past the door at idle CPU.
+      if (window.IntersectionObserver) {
+        new IntersectionObserver(function (es) {
+          offscreen = !es[0].isIntersecting;
+        }, { root: null, threshold: 0 }).observe(stage);
+      }
+      if (hint) hint.style.display = 'none';
+    }
+
+    if (MODE === 'room' && stage) {
+      var takeClock = function (frames) {
+        if (mode === 'play') return;
+        mode = 'take';
+        target = clamp(target + frames, 0, DUR - 1);
+      };
+      // END-RELEASE RULE: at frame 0 scrolling up, and at the last frame
+      // scrolling down, we stop preventing default — the wheel event chains
+      // out to the parent page and normal scrolling resumes. The exhibit is a
+      // clock you can pick up and put down, never a scroll trap.
+      stage.addEventListener('wheel', function (e) {
+        if (mode === 'play') return;
+        var up = e.deltaY < 0;
+        if ((up && target <= 0.5) || (!up && target >= DUR - 1.5)) return;
+        e.preventDefault();
+        takeClock(e.deltaY * EMBED_FPP);
+      }, { passive: false });
+
+      // Pointer drag. Fine pointers scrub on dy. Coarse pointers scrub on dx
+      // only — vertical touch belongs to the page (the stage keeps
+      // touch-action:pan-y), so a phone visitor can always scroll past.
+      var dragX = null, dragY = null;
+      stage.addEventListener('pointerdown', function (e) {
+        if (mode === 'play') return;
+        dragX = e.clientX; dragY = e.clientY;
+      });
+      stage.addEventListener('pointermove', function (e) {
+        if (dragY === null) return;
+        var dx = dragX - e.clientX, dy = dragY - e.clientY;
+        dragX = e.clientX; dragY = e.clientY;
+        takeClock((coarse ? dx * 2.2 : dy) * EMBED_FPP);
+      });
+      var dragEnd = function () { dragX = dragY = null; };
+      stage.addEventListener('pointerup', dragEnd);
+      stage.addEventListener('pointercancel', dragEnd);
+      stage.addEventListener('pointerleave', dragEnd);
+    }
+
+    layout();
+
+    // The door under prefers-reduced-motion: hold ONE real frame, rendered by
+    // the same two engines, and never start the loop. A held frame is honest —
+    // a video poster pretending to be a live engine would not be.
+    if (MODE === 'door' && reduce) {
+      cur = target = clamp(HELD_FRAME, 0, DUR - 1);
+      paintFrame(cur, cur / (DUR - 1));
+      B.setFrame(Math.round(cur)); if (P) P.setFrame(Math.round(cur));
+      lastSent = Math.round(cur);
+      document.documentElement.classList.add('held');
+      return;
+    }
+
+    // dev/screenshot hook: ?p=0.42 previews the page STATE at 42% scrub
+    // progress without scrolling — frame + copy cards are set directly, once,
+    // and the rAF loop never starts, so a headless screenshot is deterministic
+    // (old-headless screenshot passes don't honor position:sticky, so a real
+    // scroll would show the empty track). Production path: no param.
+    var q = QS;
+    var pq = Number(q.get('p'));
+    if (Number.isFinite(pq) && pq > 0) {
+      cur = target = frameForProgress(clamp(pq), DUR, beats);
+      var pf = Math.round(cur);
+      paintFrame(pf, clamp(pq));
+      if (hint) hint.style.opacity = 0;
+      B.setFrame(pf); if (P) P.setFrame(pf);
+      return;
+    }
+
+    // deep link: ?f=623 opens scrolled to that frame's scroll position. Inside
+    // a frame there is no scroll position, so it simply opens ON that frame.
+    var fq = Number(q.get('f'));
+    if (Number.isFinite(fq) && fq > 0) {
+      fq = clamp(fq, 0, DUR - 1);
+      cur = target = fq;
+      if (EMBED) { mode = 'take'; paintFrame(fq, fq / (DUR - 1)); }
+      else { window.scrollTo(0, scrollForFrame(fq)); read(); }
+    }
+
+    B.setFrame(Math.round(cur)); if (P) P.setFrame(Math.round(cur));
+    lastSent = Math.round(cur);
+    requestAnimationFrame(raf);
+  }
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch];
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { boot(0); });
+  } else {
+    boot(0);
+  }
+})();

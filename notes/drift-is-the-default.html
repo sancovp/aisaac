@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- RECONFORMED:C -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drift Is The Default — Isaac</title>
+<meta name="description" content="Everything that generates, drifts. Correctness is not something you install once — it&#x27;s something you maintain by returning, and the interval is the…">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/notes/drift-is-the-default.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drift Is The Default — Isaac">
+<meta property="og:description" content="Everything that generates, drifts. Correctness is not something you install once — it&#x27;s something you maintain by returning, and the interval is the…">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/notes/drift-is-the-default.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-depth="2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Framework<a href="../blog/index.html#l6-concentration">Level 6 &middot; Concentration</a><a href="../blog/index.html#drift-repair">Drift &amp; repair</a></p>
+    <h1>Drift Is The Default</h1>
+    <p class="dek">Everything that generates, drifts. Correctness is not something you install once — it's something you maintain by returning, and the interval is the quality.</p>
+
+<h3>The shape</h3>
+    <p>Any system that generates — an AI agent, a creative human mind, a working team — <em>drifts by default.</em> Not because it's incapable, but because it's stochastic: it wanders off the thing it was doing, a little each step, and twenty steps later it's confidently solving a different problem than the one you gave it. Each individual step looked fine. The trajectory rotted.</p>
+    <p>The consequence: <strong>correctness is not something you install once. It's something you maintain by returning.</strong> You externalize the goal, periodically check current activity against it, catch the drift early, and steer back. The real performance number isn't "how good is each step" — it's <em>how short the interval is between drifting and noticing.</em> This is exactly concentration in the meditative sense: not the absence of wandering, but catching the wander sooner each time until the return becomes continuous.</p>
+    <p>And the variability that causes drift is the <em>same</em> variability that produces novelty. You don't want to eliminate it (that kills the engine) — you want to ride it, leaning into the drift early so the trajectory stays on target.</p>
+    <h3>Why it matters</h3>
+    <p>Long-running work fails in a way that's invisible until it's expensive. The session, the project, the agent run all <em>look</em> productive the whole time — and then you look up and ask "what did we actually accomplish?" Nobody made a dramatic mistake. There just was never anything checking, on a short enough interval, whether all that motion still served the goal. The drift compounded silently.</p>
+    <p>This kills the most common false belief about AI (and about your own focus): that if you set it up right, it'll stay on track. It won't. Nothing stays on track on its own. The teams, agents, and people who <em>appear</em> to have superhuman focus are not drifting less — they're <em>returning</em> faster, because something is checking alignment often enough to catch the wander while it's still small.</p>
+    <h3>How to think with it</h3>
+    <ol>
+    <li>Assume drift. For any extended piece of work, the question is not "will it drift?" but "how will I catch the drift early?"</li>
+    <li>Externalize the goal so it can be checked against. A goal that lives only in your head morphs and softens until there's nothing to compare current activity <em>to.</em></li>
+    <li>Make the check <em>honest.</em> "Are we still on mission?" → "yep" → next, is theater. The real check forces specifics: the goal is X, current activity is Y, Y serves X <em>because Z</em>. If you can't say Z, you just caught the drift.</li>
+    <li>Shorten the interval. Check every ten minutes and you catch ten-minute drifts; check every four hours and you lose half a day. The frequency of the return <em>is</em> the quality of the work.</li>
+    </ol>
+
+    <hr>
+    <p class="caveat"><strong>Honest caveat.</strong> What this doesn't cover: the structures that perform the return without you, so an unsupervised run stays on goal for hours instead of degenerating.</p>
+    <p class="note-sources">Distilled from: <a href="../blog/mission-control.html">mission control</a> · <a href="../blog/l6-concentration.html">l6 concentration</a> · <a href="../blog/concentration-engineering.html">concentration engineering</a> · <a href="../blog/seam-repair.html">seam repair</a> · <a href="../blog/meta-cognitive-awareness.html">meta cognitive awareness</a> · <a href="../blog/hiel.html">hiel</a></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap measure">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="../blog/mission-control.html"><div class="receipt-k">Where this came from</div><h3>Distilled from notes written while building it</h3><p>Open the artifact and check the claim yourself.</p><span class="receipt-go">Open &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+  <a class="note-next" href="right-is-not-fluent.html">Next note: <b>Right Is Not Fluent &rarr;</b></a>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

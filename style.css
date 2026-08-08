@@ -1,14 +1,87 @@
-/* ══════════════════════════════════════════════
-   MERCURIAL CYBERGLASS — AIsaac Site Theme
-   Adapted from TWI Jobworld dashboard
-   ══════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════════
+   AISAAC — THE ONE STYLESHEET
+   Mercurial cyberglass. Single source of truth for the whole site.
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+   REBUILD SPEC §2.1. Rules that govern this file:
+     · No other stylesheet ships, except the deliberately-foreign artifact
+       islands (cinematic-plumbing.html inline, lab/explainer.html bundle)
+       and ssri/style.css (separate research sub-brand, unlisted).
+     · NO @media may appear in any HTML file. Three breakpoints, declared
+       here, once: 1100 (container) · 900 (grids→2col, nav→hamburger)
+       · 600 (grids→1col).
+     · Page-scoped <style> is permitted ONLY for a page-unique LAYOUT
+       (an embed's aspect ratio), max 20 lines, using var(--*) only.
+       Never a color, never a font-family, never card chrome.
+     · Fonts are self-hosted (assets/fonts/). Zero external requests.
 
+   PATH LAW (confirmed 2026-08-07 against the live deploy):
+     The site serves from https://sancovp.github.io/aisaac/ — a GitHub Pages
+     PROJECT subpath, not a domain root. Root-absolute hrefs ("/style.css")
+     resolve to sancovp.github.io/style.css and 404. Every in-page href and
+     src is therefore RELATIVE ("style.css" from root, "../style.css" from
+     one level down). Absolute URLs appear ONLY in <link rel=canonical> and
+     the og:/twitter: meta, where the protocol requires them.
+
+   BLOCK VOCABULARY (spec §1.1). Nothing outside this list may be styled:
+     B0 head · B1 .nav · B2 .claim · B3 .artifact · B4 .receipts
+     B5 .mechanism · B6 .ladder · B7 .honest · B8 .price-block
+     B9 .final-cta · B10 .footer
+   VISUAL-REBUILD ADDITIONS (2026-08-07, Fable pass — recorded, not snuck in):
+     .artifact-code (build.html's quickstart pre — was an undefined class
+     rendering in browser-default mono at the top of an empty frame) ·
+     .price-block.wide (a .pricing-table crammed inside the 620px block got
+     ~176px for its description column) · .panels.span-last (a 7-item panel
+     grid orphaned its 7th) · .claim-duo + .portrait-frame (the isaac.html
+     portrait slot, Isaac's order) · .tier-sheet + .tier .anchor (pricing.html
+     reskinned onto the system; content frozen verbatim).
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Self-hosted fonts (replaces the fonts.googleapis.com @import) ───────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/inter-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('assets/fonts/jetbrains-mono-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fraunces — THE DISPLAY VOICE (RULE 02 §2). SIL OFL 1.1; the licence ships
+   beside it at assets/fonts/fraunces-OFL.txt. Subset to the same latin range
+   as Inter/Mono; the SOFT and WONK axes are pinned flat (SOFT=0 sharp
+   terminals, WONK=0 no wonky forms) so only wght + opsz remain variable.
+   opsz is left variable ON PURPOSE: font-optical-sizing is `auto` by default,
+   so a claim set at 5rem gets the high-contrast display cut and a pull-quote
+   at 1rem gets the sturdy text cut, from one file. Used ONLY for h1/h2
+   claims, .myth register lines and pull-quotes — never for chrome. */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/fraunces-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
 :root {
   --void: #04040e;
   --glass-bg: rgba(255,255,255,0.035);
-  --glass-border: rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,var(--rule-a));
   --glass-shine: rgba(255,255,255,0.05);
   --blur: 20px;
   --mercury-blue: #7dd3fc;
@@ -16,19 +89,81 @@
   --mercury-chrome: #c0c0c0;
   --mercury-teal: #5eead4;
   --mercury-rose: #fda4af;
-  --amber: #fbbf24;
+  --amber: #fbbf24;            /* DEPRECATED — dead theme. Do not use on new pages. */
   --text-1: #e2e8f0;
   --text-2: #94a3b8;
-  --text-3: #64748b;
+  /* --text-3 was #64748b (slate-500): 4.29:1 on --void and 4.07:1 on a glass
+     panel — both under WCAG AA 4.5, and it is the token carrying fineprint,
+     the footer, provenance lines and .rung-d, all at 0.72-0.77rem. Nudged 16%
+     along the existing slate ramp toward --text-2, the smallest step that
+     clears AA on BOTH backgrounds (4.80 / 4.55). Not a new colour — the same
+     ramp, corrected. G1 in tools/style_qa.py is what caught it and is what
+     keeps it honest if anyone moves --void or --glass-bg. */
+  --text-3: #6c7c92;
   --ok: #4ade80;
   --r-sm: 8px;
   --r-md: 12px;
   --r-lg: 16px;
-  --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --wrap: 1100px;              /* the one container width (breakpoint 1) */
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+  --display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+
+  /* ── THE DENSITY GRADIENT (RULE 02 §3) ────────────────────────────────
+     Depth made visible. Every one of these is overridden by the
+     body[data-depth] block below; the values HERE are depth 1 (the rung
+     level), so a page that forgets its attribute renders exactly as the
+     site did before this token layer existed. Nothing else in this file
+     hard-codes a vertical rhythm, a heading size or a hairline alpha —
+     if it does, the gradient has a hole in it. */
+  --sec-y: 5rem;               /* section vertical rhythm */
+  --claim-y: 5rem;             /* the claim band's own top pad */
+  --h1-size: clamp(2.2rem, 5vw, 3.8rem);
+  --h1-measure: 20ch;          /* the claim's line length */
+  --h2-size: clamp(1.45rem, 3vw, 2.1rem);
+  --lede-size: 0.98rem;
+  --lh-lede: 1.85;             /* leading tightens as you descend */
+  --lh-prose: 1.9;
+  --rule-a: 0.07;              /* hairline alpha — rules get MORE present deeper */
+  --micro: var(--body);        /* micro-labels flip to mono at depth 2+ */
+  --r-card: var(--r-lg);       /* glass rounds off toward instrument-panel */
+}
+
+/* Depth 0 — THE DOOR. Spacious: huge type, few elements, one action.
+   Depth 1 — the rungs and the map (the :root defaults above).
+   Depth 2 — notes and posts: reading density, mono micro-labels.
+   Depth 3 — inside/: data-table energy, brightest hairlines, tightest set. */
+body[data-depth="0"] {
+  --sec-y: 7rem; --claim-y: 7rem;
+  --h1-size: clamp(2.8rem, 7.5vw, 5.4rem); --h1-measure: 16ch;
+  --h2-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  --lede-size: 1.1rem; --lh-lede: 1.95; --lh-prose: 1.95;
+  --rule-a: 0.05;
+}
+body[data-depth="2"] {
+  --sec-y: 4rem; --claim-y: 4rem;
+  --h1-size: clamp(1.9rem, 4vw, 2.9rem); --h1-measure: 24ch;
+  --h2-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  --lede-size: 0.94rem; --lh-lede: 1.76; --lh-prose: 1.82;
+  --rule-a: 0.10;
+  --micro: var(--mono);
+  --r-card: var(--r-md);
+}
+body[data-depth="3"] {
+  --sec-y: 3.2rem; --claim-y: 3.4rem;
+  --h1-size: clamp(1.7rem, 3.2vw, 2.4rem); --h1-measure: 26ch;
+  --h2-size: clamp(1.2rem, 2vw, 1.5rem);
+  --lede-size: 0.9rem; --lh-lede: 1.66; --lh-prose: 1.72;
+  --rule-a: 0.13;
+  --micro: var(--mono);
+  --r-card: var(--r-sm);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+/* ^ scroll-padding: the nav is sticky, so every in-page anchor (#price,
+   #think, #exhibit …) used to land its target UNDER the bar. */
 
 body {
   font-family: var(--body);
@@ -77,250 +212,344 @@ body::after {
 @keyframes star-drift { from { transform: translateY(0); } to { transform: translateY(-220px); } }
 
 a { color: inherit; text-decoration: none; }
+img, video, iframe { max-width: 100%; }
 
-/* ── Header ── */
-.header {
-  padding: 1.5rem 3rem;
-  display: flex; justify-content: space-between; align-items: center;
+/* Keyboard focus must always be visible (WCAG 2.4.7) */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--mercury-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--mercury-blue); color: var(--void);
+  font-family: var(--mono); font-size: 0.75rem; padding: 0.7rem 1.2rem;
+}
+.skip-link:focus { left: 0; }
+
+/* ══ B1 — NAV (the nav IS the ladder; identical bytes on every page) ═════ */
+.nav, .header {          /* .header = legacy alias, retained until C re-renders blog/ */
+  padding: 1.2rem 2rem;
+  display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
   border-bottom: 1px solid var(--glass-border);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   position: sticky; top: 0; z-index: 100;
-  background: rgba(4,4,14,0.8);
+  background: rgba(4,4,14,0.85);
+  flex-wrap: wrap;
 }
 .logo {
-  font-weight: 700; font-size: 1rem; letter-spacing: -0.01em;
+  font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; flex-shrink: 0;
   background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links {
+  display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap;
+  margin-left: auto;
+}
 .nav-links a { font-size: 0.8rem; color: var(--text-3); transition: color 0.2s; }
-.nav-links a:hover { color: var(--text-1); }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text-1); }
 .nav-cta {
-  font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
   color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
   padding: 0.5rem 1.2rem; border-radius: var(--r-sm); transition: all 0.3s;
+  display: inline-block;
 }
 .nav-cta:hover { filter: brightness(1.2); transform: translateY(-1px); }
 
-/* ── Tags ── */
-.tag {
-  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--mercury-blue); margin-bottom: 1.5rem;
+/* The hamburger is PROGRESSIVE ENHANCEMENT, in the safe direction:
+   nav.js stamps data-nav="collapsed" on the header. With JS off, no
+   attribute is ever set, the toggle stays hidden and the links stay
+   visible (wrapping to a second row). The menu is never unreachable. */
+.nav-toggle {
+  display: none;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-2);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm); padding: 0.5rem 0.9rem; cursor: pointer;
+}
+.nav-toggle:hover { color: var(--text-1); border-color: rgba(125,211,252,0.25); }
+
+/* ══ Layout primitives ══════════════════════════════════════════════════ */
+section { padding: var(--sec-y) 1.5rem; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; }
+
+/* Spacing utilities. These exist so that NO page ever needs a style=""
+   attribute for a layout nudge — the block vocabulary stays closed. */
+.flush-top { padding-top: 0; }
+.mt-s { margin-top: 1.6rem; }
+.mt-m { margin-top: 2.2rem; }
+.mt-l { margin-top: 3.5rem; }
+.measure { max-width: 68ch; }
+.measure-none { max-width: none; }
+
+/* ── The in-article figure. ───────────────────────────────────────────────
+   54 posts carried this as three inline declarations on every image, which
+   is 41 copies of a border colour the stylesheet already owns — and the
+   reason the diagrams never picked up a token change. One class instead.
+   height:auto keeps the intrinsic width/height attributes (which every img
+   now carries, so the layout does not shift while the PNG loads) from
+   squashing the render. */
+.fig { margin: 2rem 0; }
+.fig img, img.fig-img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--r-card); border: 1px solid var(--glass-border);
+}
+.fig figcaption, .fig-cap {
+  font-family: var(--micro); font-size: 0.7rem; line-height: 1.7;
+  color: var(--text-3); margin-top: 0.6rem;
+}
+.dark {
+  background: var(--glass-bg);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ══ Typography ═════════════════════════════════════════════════════════ */
+.eyebrow, .tag {         /* .tag = legacy alias */
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 1.5rem;
   display: flex; align-items: center; gap: 0.8rem;
 }
-.tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--mercury-blue); }
+.eyebrow::before, .tag::before {
+  content: ''; display: block; width: 2rem; height: 1px; background: var(--mercury-blue);
+}
+/* THE BRAND TAG PILLS (vocabulary + assignments: tools/tags.py). A post declares
+   which of the framework concepts it belongs to, right in the eyebrow row, and
+   each pill links back to that concept's section on the corpus index. No new
+   block vocabulary and no new colour: the eyebrow is ALREADY the mono label
+   voice, so a pill is that voice plus a hairline. The hover border is the exact
+   rgba `.rung:hover` already uses — the filter row and the pills are the same
+   control, so they light up the same way. */
+.eyebrow { flex-wrap: wrap; row-gap: 0.5rem; }
+.eyebrow a {
+  color: var(--text-2); text-decoration: none; line-height: 1;
+  padding: 0.28rem 0.6rem; border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm); background: var(--glass-bg);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.eyebrow a:hover { color: var(--mercury-blue); border-color: rgba(125,211,252,0.25); }
 
-/* ── Typography ── */
+/* The claims speak in the display serif; the chrome stays Inter. That split
+   IS the de-generic move (RULE 02 §2) — the gradient fill and the breathe
+   are Builder A's base, kept. Fraunces carries the gradient at 650: lighter
+   and the stems thin out under a transparent fill. */
 h1 {
-  font-weight: 700; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95;
-  letter-spacing: -0.03em; margin-bottom: 1.5rem;
+  font-family: var(--display);
+  font-weight: 650; font-size: var(--h1-size); line-height: 1.06;
+  letter-spacing: -0.015em; margin-bottom: 1.5rem; max-width: var(--h1-measure);
   background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet), var(--mercury-chrome));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: hue-breathe 6s ease-in-out infinite alternate;
 }
 @keyframes hue-breathe { to { filter: hue-rotate(15deg) brightness(1.1); } }
-h1 .accent { -webkit-text-fill-color: var(--mercury-teal); }
+/* FIX: an <h1><span> had no rule at all, so the second clause inherited the
+   same transparent fill and read as one run-on line on five pages. */
+h1 span, h1 .accent {
+  -webkit-text-fill-color: var(--mercury-teal);
+  color: var(--mercury-teal);
+}
 
 h2 {
-  font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.1;
-  letter-spacing: -0.02em; margin-bottom: 1.5rem; max-width: 28ch;
+  font-family: var(--display);
+  font-weight: 600; font-size: var(--h2-size); line-height: 1.18;
+  letter-spacing: -0.01em; margin-bottom: 1.4rem; max-width: 30ch;
   color: var(--text-1);
 }
-
+/* h3/h4 are chrome, not claims — they stay in Inter. */
 h3 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.6rem; color: var(--text-1); }
+h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--text-1); }
 
-/* ── Sections ── */
-section { padding: 5rem; }
-.dark {
+/* .myth — the myth-register line (RULE 02 §2, RULE 00 law 2). The ONE place
+   outside a heading or a pull-quote that speaks in the display voice, and it
+   belongs to inside/ and to Isaac's personal pages. Never at the door. */
+.myth {
+  font-family: var(--display); font-weight: 400;
+  font-size: 1.12rem; line-height: 1.7; letter-spacing: -0.005em;
+  color: var(--text-1); max-width: 54ch; margin-bottom: 1.6rem;
+}
+
+.lede, .sub {
+  font-size: var(--lede-size); line-height: var(--lh-lede); color: var(--text-2);
+  max-width: 56ch; margin-bottom: 2.2rem;
+}
+.lede strong, .sub strong { color: var(--text-1); font-weight: 500; }
+.fineprint { font-family: var(--micro); font-size: 0.74rem; line-height: 1.7; color: var(--text-3); max-width: 60ch; }
+
+/* ══ B2 — CLAIM (exactly one per page) ══════════════════════════════════ */
+.claim { padding: var(--claim-y) 1.5rem calc(var(--claim-y) * 0.6); }
+.claim > .wrap { display: block; }
+.claim .lede { margin-bottom: 2.4rem; }
+
+/* .claim-duo — a claim band with a PORTRAIT beside it (isaac.html, by
+   Isaac's order: his page carries his photo). Copy left, portrait right;
+   the portrait is a framed exhibit in the same glass language as
+   .artifact-frame, 4:5 because a face is not a film. */
+.claim-duo > .wrap {
+  display: grid; grid-template-columns: 1.55fr 1fr;
+  gap: 3rem; align-items: center;
+}
+.claim-duo .claim-copy, .claim-duo .portrait { min-width: 0; }
+.portrait { margin: 0; justify-self: end; width: 100%; max-width: 340px; }
+.portrait-frame {
+  position: relative; aspect-ratio: 4 / 5; width: 100%;
+  border: 1px solid var(--glass-border); border-radius: var(--r-card);
   background: var(--glass-bg);
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(125,211,252,0.04), 0 18px 60px rgba(0,0,0,0.45),
+              inset 0 1px 0 var(--glass-shine);
 }
-.sub {
-  font-size: 0.95rem; line-height: 1.9; color: var(--text-2); max-width: 54ch; margin-bottom: 2.5rem;
+.portrait-frame > img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
 }
-.sub strong { color: var(--text-1); font-weight: 500; }
+.portrait figcaption {
+  font-family: var(--micro); font-size: 0.7rem; line-height: 1.7;
+  color: var(--text-3); margin-top: 0.6rem;
+}
 
-/* ── Glass Cards ── */
-.card, .tier, .fw-card, .menu-item, .bonus, .offer-card, .link-card {
+/* ══ CTAs ═══════════════════════════════════════════════════════════════ */
+.cta-primary, .cta-big {   /* .cta-big = legacy alias */
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #000;
+  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
+  padding: 1rem 2.4rem; border-radius: var(--r-sm);
+  display: inline-block; transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(125,211,252,0.2);
+}
+.cta-primary:hover, .cta-big:hover {
+  filter: brightness(1.2); transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(125,211,252,0.3);
+}
+.cta-secondary {
+  font-size: 0.78rem; color: var(--text-3);
+  border-bottom: 1px solid var(--text-3); padding-bottom: 2px; transition: color 0.2s;
+}
+.cta-secondary:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
+
+/* ══ B3 — ARTIFACT (the world slot) ═════════════════════════════════════ */
+.artifact { margin: 0; }
+.artifact-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(125,211,252,0.04), 0 18px 60px rgba(0,0,0,0.45),
+              inset 0 1px 0 var(--glass-shine);
+}
+.artifact-frame > iframe,
+.artifact-frame > video,
+.artifact-frame > img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; display: block; }
+.artifact-frame > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* The quickstart code exhibit (build.html B3). The class was USED and defined
+   nowhere: the <pre> sat unstyled — browser-default monospace, no padding —
+   in the top-left corner of an empty 16:9 frame. A six-line install does not
+   want 590px of glass around it, so a code-bearing frame drops the film
+   aspect and hugs its readout. */
+.artifact-frame:has(> pre.artifact-code) { aspect-ratio: auto; }
+.artifact-frame > pre.artifact-code {
+  margin: 0; padding: 2rem 2.4rem; overflow-x: auto;
+}
+.artifact-code code {
+  font-family: var(--mono); font-size: clamp(0.72rem, 1.4vw, 0.92rem);
+  line-height: 2; color: var(--text-1); white-space: pre;
+}
+
+/* Inline-SVG diagrams. All colour and type lives HERE so no HTML file ever
+   declares a hex value or a font-family (law L4). Diagrams use classes only. */
+.diagram .d-ring { fill: none; stroke: var(--glass-border); stroke-width: 1.5; stroke-dasharray: 5 7; }
+.diagram .d-arrow { fill: var(--mercury-violet); opacity: 0.85; }
+.diagram .d-node { fill: var(--void); stroke: var(--glass-border); stroke-width: 1; }
+.diagram .d-hub { fill: rgba(125,211,252,0.06); stroke: rgba(125,211,252,0.35); stroke-width: 1.2; }
+.diagram .d-t { fill: var(--text-1); font-family: var(--body); font-size: 13px; font-weight: 600; }
+.diagram .d-sub { fill: var(--text-3); font-family: var(--body); font-size: 9.5px; }
+.diagram .d-k { fill: var(--mercury-blue); font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; font-weight: 600; }
+.diagram .d-hubt { fill: var(--mercury-teal); font-family: var(--body); font-size: 15px; font-weight: 700; }
+
+/* The placeholder must read as DELIBERATE, not missing: a framed slot with
+   a caption and a live destination — never a grey box. */
+.artifact-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.9rem; text-align: center; padding: 2rem;
+  background:
+    linear-gradient(135deg, rgba(125,211,252,0.05), rgba(167,139,250,0.04)),
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,0.012) 14px 28px);
+  transition: all 0.3s;
+}
+.artifact-placeholder:hover { background-color: rgba(125,211,252,0.03); }
+.artifact-placeholder .ap-line {
+  font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.02em;
+  color: var(--mercury-blue); line-height: 1.7; max-width: 44ch;
+}
+.artifact-placeholder .ap-go {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-2);
+  border: 1px solid var(--glass-border); border-radius: 999px; padding: 0.45rem 1.1rem;
+}
+.artifact-prov {
+  font-family: var(--micro);
+  font-size: 0.76rem; line-height: 1.7; color: var(--text-3);
+  margin-top: 0.9rem; max-width: 68ch;
+}
+.artifact-prov a { color: var(--mercury-blue); }
+.artifact-prov a:hover { color: var(--text-1); }
+
+/* ══ Glass cards ════════════════════════════════════════════════════════ */
+.card, .tier, .panel, .link-card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
   border: 1px solid var(--glass-border);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-card);
   padding: 2rem;
   box-shadow: 0 0 0 1px rgba(125,211,252,0.03), 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 var(--glass-shine);
   transition: all .4s cubic-bezier(.4,0,.2,1);
   position: relative; overflow: hidden;
 }
-.card::before, .tier::before, .fw-card::before, .link-card::before {
+.card::before, .tier::before, .link-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(125,211,252,0.25) 20%, rgba(167,139,250,0.35) 50%, rgba(192,192,192,0.25) 80%, transparent);
   animation: shimmer 4s ease-in-out infinite alternate;
 }
 @keyframes shimmer { 0% { opacity: .4; transform: translateX(-10%); } 100% { opacity: 1; transform: translateX(10%); } }
-.card:hover, .tier:hover, .fw-card:hover, .link-card:hover {
+.card:hover, .tier:hover, .link-card:hover {
   border-color: rgba(125,211,252,0.15);
   box-shadow: 0 0 0 1px rgba(125,211,252,0.08), 0 0 40px rgba(125,211,252,0.06), 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
   transform: translateY(-2px);
 }
 .card.highlight, .tier.highlight { border-color: rgba(125,211,252,0.2); background: rgba(125,211,252,0.04); }
+.card p, .tier p, .panel p, .link-card p { font-size: 0.84rem; line-height: 1.75; color: var(--text-2); }
 
-/* ── CTA Buttons ── */
-.cta-big {
-  font-family: var(--mono); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #000;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
-  padding: 1rem 2.5rem; border-radius: var(--r-sm);
-  display: inline-block; transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(125,211,252,0.2);
-}
-.cta-big:hover { filter: brightness(1.2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(125,211,252,0.3); }
-
-.cta-secondary {
-  font-size: 0.75rem; color: var(--text-3); border-bottom: 1px solid var(--text-3);
-  padding-bottom: 2px; transition: color 0.2s;
-}
-.cta-secondary:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
-
-/* ── Grids ── */
-.cards, .tiers, .steps, .menu-grid, .bonuses, .frameworks-grid, .links-grid, .capabilities {
+/* ══ Grids — auto-fit everywhere so an odd item never orphans ═══════════ */
+.cards, .tiers, .steps, .panels, .capabilities {
   display: grid; gap: 1.5rem; margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-.cards, .tiers, .steps, .frameworks-grid, .links-grid, .capabilities { grid-template-columns: repeat(3, 1fr); }
-.menu-grid, .bonuses { grid-template-columns: repeat(2, 1fr); }
+.panels { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+/* An odd-count panel grid (isaac.html ships seven theses) strands its last
+   item alone in the final row at every column count. span-last promotes it
+   to a full-width closing panel instead — deliberate cadence, not an orphan. */
+.panels.span-last > .panel:last-child { grid-column: 1 / -1; }
 
-/* ── Steps ── */
-.step { padding-top: 1.5rem; border-top: 1px solid var(--glass-border); }
+/* ══ B5 — MECHANISM ═════════════════════════════════════════════════════ */
+.mechanism .steps { margin-top: 2.2rem; }
+.step { padding-top: 1.4rem; border-top: 1px solid var(--glass-border); }
 .step-num { font-family: var(--mono); font-weight: 700; font-size: 0.85rem; color: var(--mercury-blue); margin-bottom: 0.8rem; }
-.step p, .card p, .tier p, .fw-card p, .menu-item p, .bonus p, .link-card p, .cap p {
-  font-size: 0.82rem; line-height: 1.7; color: var(--text-2);
-}
+.step p { font-size: 0.84rem; line-height: 1.75; color: var(--text-2); }
 
-/* ── Tier-specific ── */
-.tier-label, .fw-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 0.5rem; }
-.tier-name, .offer-name { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.3rem; }
-.tier-price, .offer-price {
-  font-weight: 700; font-size: 2rem; margin-bottom: 0.3rem;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.tier-price .period, .offer-price .period { font-size: 0.8rem; -webkit-text-fill-color: var(--text-3); font-weight: 400; }
-.tier-min { font-size: 0.7rem; color: var(--text-3); margin-bottom: 1.5rem; }
-.tier ul, .offer-card ul { list-style: none; font-size: 0.78rem; line-height: 2.2; color: var(--text-2); }
-.tier ul li::before, .offer-card ul li::before { content: '— '; color: var(--mercury-blue); opacity: 0.5; }
-.tier-note { font-size: 0.72rem; color: var(--mercury-teal); margin-top: 1.5rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; }
-.tier-badge {
-  position: absolute; top: 0; right: 0;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
-  color: var(--void); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.4rem 1rem; border-radius: 0 var(--r-lg) 0 var(--r-sm);
-}
-
-/* ── Menu items ── */
-.menu-item { border-radius: var(--r-md); padding: 1.5rem 2rem; }
-.menu-price, .bonus-value { font-family: var(--mono); font-size: 0.7rem; color: var(--mercury-teal); letter-spacing: 0.08em; margin-bottom: 0.6rem; }
-.menu-item.coming { opacity: 0.35; pointer-events: none; }
-.menu-item.coming::after { content: 'COMING SOON'; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-3); margin-top: 0.8rem; display: block; }
-
-/* ── Pricing Table ── */
-.pricing-table { margin-top: 2rem; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--glass-border); }
-.price-row {
-  display: flex; align-items: stretch;
-  border-bottom: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  transition: all 0.3s;
-}
-.price-row:last-child { border-bottom: none; }
-.price-row:hover { background: rgba(255,255,255,0.05); }
-.price-row.highlight { background: rgba(125,211,252,0.04); }
-.price-label {
-  width: 220px; flex-shrink: 0; padding: 1.5rem;
-  font-weight: 600; font-size: 0.9rem;
-  display: flex; align-items: center;
-  border-right: 1px solid var(--glass-border);
-}
-.price-amount {
-  width: 180px; flex-shrink: 0; padding: 1.5rem;
-  font-family: var(--mono); font-weight: 700; font-size: 1.3rem;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  display: flex; align-items: center;
-  border-right: 1px solid var(--glass-border);
-}
-.price-amount .period { font-size: 0.7rem; -webkit-text-fill-color: var(--text-3); font-weight: 400; margin-left: 0.3rem; }
-.price-desc { flex: 1; padding: 1.5rem; font-size: 0.8rem; color: var(--text-2); line-height: 1.6; display: flex; align-items: center; }
-
-/* ── Guarantee ── */
-.guarantee {
-  margin-top: 2rem; border: 1px solid rgba(125,211,252,0.2); padding: 2.5rem;
-  text-align: center; border-radius: var(--r-lg);
-  background: rgba(125,211,252,0.03);
-  backdrop-filter: blur(12px);
-}
-.guarantee h3 {
-  font-weight: 700; font-size: 1.3rem; margin-bottom: 0.8rem;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.guarantee p { font-size: 0.85rem; color: var(--text-2); line-height: 1.8; max-width: 56ch; margin: 0 auto; }
-
-/* ── SOMA Callout ── */
-.soma-callout {
-  margin-top: 2rem; border: 1px solid rgba(167,139,250,0.2); padding: 2rem;
-  border-radius: var(--r-lg); background: rgba(167,139,250,0.03);
-  display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-  backdrop-filter: blur(12px);
-}
-.soma-callout h3 { color: var(--mercury-violet); }
-.soma-callout p { font-size: 0.8rem; color: var(--text-2); line-height: 1.6; max-width: 45ch; }
-.soma-cta {
-  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--mercury-violet); border: 1px solid var(--mercury-violet);
-  padding: 0.8rem 1.5rem; border-radius: var(--r-sm); white-space: nowrap; flex-shrink: 0;
-  transition: all 0.3s;
-}
-.soma-cta:hover { background: var(--mercury-violet); color: var(--void); }
-
-/* ── Honest section ── */
-.honest {
-  background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(125,211,252,0.05));
-  border-top: 1px solid rgba(167,139,250,0.15);
-  border-bottom: 1px solid rgba(167,139,250,0.15);
-  padding: 5rem;
-}
-.honest .tag { color: var(--mercury-violet); }
-.honest .tag::before { background: var(--mercury-violet); }
-.honest h2 { color: var(--text-1); }
-.honest p { font-size: 0.95rem; line-height: 1.9; max-width: 60ch; color: var(--text-2); }
-
-/* ── Patreon CTA ── */
-.patreon-cta {
-  margin-top: 2rem; border: 1px solid rgba(125,211,252,0.15); padding: 2.5rem;
-  border-radius: var(--r-lg); background: rgba(125,211,252,0.03);
-  text-align: center; backdrop-filter: blur(12px);
-}
-.patreon-cta h3 { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.8rem; }
-.patreon-cta p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; max-width: 50ch; margin: 0 auto 1.5rem; }
-
-/* ── Final CTA ── */
-.final-cta { text-align: center; padding: 7rem 5rem; }
-.final-cta h2 { margin: 0 auto 1.5rem; max-width: none; text-align: center; }
-.final-cta p { font-size: 0.9rem; color: var(--text-2); margin: 0 auto 1rem; max-width: 56ch; }
-.final-cta .tag { justify-content: center; }
-.scarcity { font-family: var(--mono); font-size: 0.75rem; color: var(--mercury-violet); margin-top: 2rem; }
-
-/* ── Card arrows ── */
-.arrow, .card-cta {
-  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--mercury-blue); margin-top: 1rem; display: block; transition: gap 0.2s;
-}
-
-/* ── Stack layers (OPERA, 7-stack) ── */
-.stack { margin-top: 2rem; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--glass-border); }
-.stack-item, .layer { display: flex; align-items: stretch; border-bottom: 1px solid var(--glass-border); }
+/* Stack layers (7-stack, engine layers) — reused, not reinvented */
+.stack { margin-top: 2rem; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--glass-border); }
+.stack-item, .layer { display: flex; align-items: stretch; border-bottom: 1px solid var(--glass-border); background: var(--glass-bg); }
 .stack-item:last-child, .layer:last-child { border-bottom: none; }
 .stack-num, .layer-name {
   width: 180px; flex-shrink: 0; padding: 1rem 1.5rem;
@@ -328,32 +557,155 @@ section { padding: 5rem; }
   display: flex; align-items: center;
   border-right: 1px solid var(--glass-border);
 }
-.stack-content, .layer-desc { flex: 1; padding: 1rem 1.5rem; font-size: 0.8rem; color: var(--text-2); line-height: 1.6; display: flex; align-items: center; }
+.stack-content, .layer-desc { flex: 1; padding: 1rem 1.5rem; font-size: 0.82rem; color: var(--text-2); line-height: 1.65; display: flex; align-items: center; }
 .stack-content h4 { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.2rem; }
-.stack-content p { font-size: 0.72rem; color: var(--text-3); }
+.stack-content p { font-family: var(--micro); font-size: 0.74rem; color: var(--text-3); }
 .stack-bar, .layer-bar { width: 3px; background: linear-gradient(180deg, var(--mercury-blue), var(--mercury-violet)); }
 
-/* ── Status box ── */
-.status {
-  border: 1px solid rgba(125,211,252,0.15); padding: 2rem; border-radius: var(--r-lg);
-  background: rgba(125,211,252,0.03); margin-bottom: 2rem;
-  backdrop-filter: blur(12px);
+/* Depth 3 is where the site stops being a page and starts being a readout:
+   the row labels go mono and lock to a uniform tracking, which is what turns
+   a stack of glass cards into a table you scan. */
+body[data-depth="3"] .stack-num,
+body[data-depth="3"] .layer-name,
+body[data-depth="3"] .price-label {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2);
 }
-.status h3 { color: var(--mercury-blue); font-size: 1.1rem; margin-bottom: 0.6rem; }
-.status p { font-size: 0.82rem; color: var(--text-2); line-height: 1.7; }
 
-/* ── Footer ── */
-.footer {
-  padding: 2rem 5rem 4rem; border-top: 1px solid var(--glass-border);
+/* The compounding-loop band (salvaged from system.html, promoted to shared) */
+.loopband {
+  border: 1px solid rgba(167,139,250,0.18); border-radius: var(--r-lg);
+  padding: 2rem 1.5rem 1.6rem;
+  background: linear-gradient(135deg, rgba(167,139,250,0.05), rgba(125,211,252,0.03));
+}
+.loop { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem 0.4rem; }
+.loop .lstep { font-size: 0.78rem; color: var(--text-2); background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 999px; padding: 0.45rem 0.9rem; }
+.loop .lstep b { color: var(--mercury-blue); font-weight: 600; }
+.loop .sep { color: var(--mercury-violet); font-family: var(--mono); font-size: 0.85rem; }
+.loop-return { text-align: center; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--mercury-violet); margin-top: 1rem; }
+.loop-note { text-align: center; font-size: 0.86rem; color: var(--text-2); line-height: 1.75; max-width: 62ch; margin: 1.2rem auto 0; }
+.loop-note b { color: var(--text-1); }
+
+/* ── The GAUGE — a readout row with a proportion bar. ─────────────────────
+   Two posts were hand-building this out of eleven inline declarations per
+   row. It is the instrument register RULE 02 §4 asks for, so it gets a real
+   block. The fill length is a data-attribute, not a style attribute: the
+   proportion is DATA about the row, and keeping it out of style="" is what
+   lets the gate stay absolute. Tone classes carry the accent; there is no
+   colour here that is not already a token. */
+.gauge {
+  margin: 2rem 0; padding: 1.5rem;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+}
+.gauge-k {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mercury-violet); margin-bottom: 1rem;
+}
+.gauge-rows { display: grid; gap: 0.4rem; font-family: var(--mono); font-size: 0.75rem; }
+.gauge-row { display: flex; gap: 1rem; align-items: center; --gauge-c: var(--mercury-blue); }
+.gauge-row.teal { --gauge-c: var(--mercury-teal); }
+.gauge-row.violet { --gauge-c: var(--mercury-violet); }
+.gauge-n { min-width: 6.5rem; color: var(--gauge-c); }
+.gauge-n.wide { min-width: 9rem; }
+.gauge-t { color: var(--text-2); }
+.gauge-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--gauge-c); }
+.gauge-row[data-fill="25"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 25%); }
+.gauge-row[data-fill="45"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 45%); }
+.gauge-row[data-fill="70"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 70%); }
+.gauge-row[data-fill="95"] .gauge-bar { background: linear-gradient(90deg, var(--gauge-c), transparent 95%); }
+.gauge figcaption { font-family: var(--micro); font-size: 0.7rem; line-height: 1.7; color: var(--text-3); margin-top: 1rem; }
+
+/* A plain two-ends row (a before/after pair, a from→to) and the small data
+   table two posts use. Both were inline; both are hairline-ruled, which is
+   the structural line language of RULE 02 §4 — so they get denser with
+   depth for free, through --glass-border. */
+.split-row {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.7rem; color: var(--text-3);
+  gap: 1rem; width: 100%; padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+.data-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem; margin: 1rem 0;
+}
+.data-table .cell,
+td.cell, th.cell {
+  padding: 0.4rem 0.6rem; text-align: left;
+  border-bottom: 1px solid var(--glass-border);
 }
 
-/* ── Receipts strip (proof-of-work — receipts, not testimonials) ── */
-.receipts { padding: 5rem; }
-.receipts .receipts-lede { font-size: 0.9rem; color: var(--text-2); max-width: 58ch; line-height: 1.8; margin-bottom: 0.5rem; }
-.receipts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-.receipt { display: block; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 1.5rem; transition: all 0.3s; }
+/* .post-nav — the closing block on 40 posts. It was USED forty times and
+   DEFINED nowhere: the class did nothing and each post re-declared its
+   layout inline. Defined once, here. */
+/* Every one of the 40 sits inside <article class="note">, which already owns
+   the measure — so this carries layout only, no second width constraint. */
+.post-nav {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.5rem; text-align: center; margin-top: 2rem;
+}
+
+/* .duo — the before/after comparison two posts build by hand. The negative
+   and positive keys use --mercury-rose and --ok, which are already tokens;
+   they replace a #cc4444 / #44cc44 pair that existed in no palette. */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+.duo .k-neg { color: var(--mercury-rose); margin-bottom: 0.5rem; }
+.duo .k-pos { color: var(--ok); margin-bottom: 0.5rem; }
+
+/* .railed — a left-ruled aside (a question to ask, a check to run). The
+   sibling of .caveat, which is a fully-boxed one. */
+.railed {
+  background: var(--glass-bg); border-left: 3px solid var(--mercury-violet);
+  padding: 1.5rem; margin: 2rem 0;
+}
+.callout {
+  margin: 2.5rem 0; padding: 1.5rem; text-align: center;
+  border: 1px solid var(--glass-border); border-radius: var(--r-card);
+}
+.fig-wide { margin: 2rem auto; max-width: 900px; text-align: center; }
+
+/* .badge — the inline [RUNS TODAY] / [ROADMAP] marker one post uses to keep
+   its own claims honest paragraph by paragraph. Exactly the mono micro-label
+   register of RULE 02 §4, so it belongs in the stylesheet, not inline. It is
+   NOT live-data styling: no pulse, no glow. */
+.badge {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em;
+  color: var(--mercury-blue);
+}
+.badge.roadmap { color: var(--mercury-violet); }
+
+/* ══ B6 — LADDER (the IA spine, rendered as content) ════════════════════ */
+.ladder { display: block; max-width: 780px; margin-top: 2rem; }
+.rung {
+  display: flex; align-items: center; gap: 1.1rem;
+  padding: 0.95rem 1.3rem;
+  border: 1px solid var(--glass-border); border-radius: var(--r-sm);
+  margin-bottom: 0.6rem; background: var(--glass-bg);
+  transition: all 0.25s;
+}
+a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,252,0.04); transform: translateX(3px); }
+.rung[aria-current="step"] {
+  border-color: rgba(94,234,212,0.35); background: rgba(94,234,212,0.05);
+}
+.rung[aria-current="step"] .rung-n { color: var(--mercury-teal); }
+.rung-n { font-family: var(--mono); font-size: 0.72rem; color: var(--mercury-blue); flex-shrink: 0; width: 1.6rem; }
+.rung-t { font-weight: 600; font-size: 0.9rem; flex-shrink: 0; color: var(--text-1); }
+.rung-d { font-family: var(--micro); font-size: 0.77rem; color: var(--text-3); margin-left: auto; text-align: right; }
+
+/* ══ B4 — RECEIPTS (4-up → 2-up → 1-up; never orphan a 4th card) ═══════ */
+.receipts { padding: var(--sec-y) 1.5rem; }
+/* The section blurb. It was only ever defined INSIDE .receipts, so the same
+   class on the corpus-index tag sections rendered as unstyled body copy —
+   unscoped base first, the .receipts variant unchanged below it. */
+.receipts-lede { font-size: calc(var(--lede-size) - 0.04rem); color: var(--text-2); max-width: 62ch; line-height: var(--lh-lede); margin-bottom: 1.4rem; }
+.receipts .receipts-lede { font-size: calc(var(--lede-size) - 0.04rem); color: var(--text-2); max-width: 62ch; line-height: var(--lh-lede); margin-bottom: 0.5rem; }
+.receipts .receipts-lede a { color: var(--mercury-blue); }
+.receipts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; margin-top: 2rem; }
+.receipts.compact .receipts-grid { grid-template-columns: repeat(2, 1fr); }
+.receipt {
+  display: block; background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-md); padding: 1.4rem; transition: all 0.3s;
+}
 .receipt:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
 .receipt-k { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-teal); margin-bottom: 0.6rem; }
 .receipt h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
@@ -361,31 +713,307 @@ section { padding: 5rem; }
 .receipt p b { color: var(--text-1); font-weight: 600; }
 .receipt-go { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.8rem; display: block; }
 
-/* ── "part of the system" map link (frame unity) ── */
-.system-link { text-align: center; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; margin: 0; padding: 2rem 1.5rem; }
-.system-link a { color: var(--mercury-violet); transition: color 0.2s; }
-.system-link a:hover { color: var(--text-1); }
+/* ══ B7 — HONEST (mandatory on every RUNG) ═════════════════════════════ */
+.honest {
+  background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(125,211,252,0.05));
+  border-top: 1px solid rgba(167,139,250,0.15);
+  border-bottom: 1px solid rgba(167,139,250,0.15);
+  padding: var(--sec-y) 1.5rem;
+}
+.honest .eyebrow, .honest .tag { color: var(--mercury-violet); }
+.honest .eyebrow::before, .honest .tag::before { background: var(--mercury-violet); }
+.honest h2 { color: var(--text-1); }
+.honest p { font-size: calc(var(--lede-size) + 0.01rem); line-height: var(--lh-prose); max-width: 62ch; color: var(--text-2); margin-bottom: 1rem; }
+.honest p:last-child { margin-bottom: 0; }
 
-/* ── Router (index) ── */
-.router { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; }
-.router h1 { text-align: center; }
-.router-sub { font-size: 0.9rem; color: var(--text-3); text-align: center; margin-bottom: 3rem; }
-.card-icon { font-size: 1.8rem; margin-bottom: 1.5rem; }
-.card h2 { font-weight: 600; font-size: 1.1rem; line-height: 1.3; margin-bottom: 0.8rem; }
+/* ══ B8 — PRICE ════════════════════════════════════════════════════════ */
+.price-block {
+  border: 1px solid var(--glass-border); border-radius: var(--r-lg);
+  padding: 2.2rem; background: var(--glass-bg);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  max-width: 620px;
+}
+/* A .pricing-table inside the 620px block left its description column ~176px
+   wide — three words a line on learn.html, worse on run.html's five rows.
+   .wide is for a price-block that CARRIES a table. */
+.price-block.wide { max-width: 880px; }
+.price-block .anchor {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
+  color: var(--text-3); margin-bottom: 0.6rem;
+}
+.price-block .anchor s { color: var(--text-3); opacity: 0.7; }
+.price-block .price {
+  font-weight: 700; font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.1; margin-bottom: 0.4rem;
+  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.price-block .price .period { font-size: 0.8rem; -webkit-text-fill-color: var(--text-3); font-weight: 400; }
+.price-block ul { list-style: none; font-size: 0.82rem; line-height: 2.1; color: var(--text-2); margin-top: 1rem; }
+.price-block ul li::before { content: '— '; color: var(--mercury-blue); opacity: 0.6; }
 
-/* ── Responsive ── */
+/* Price table rows (the price-stack device) */
+.pricing-table { margin-top: 2rem; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--glass-border); }
+.price-row {
+  display: flex; align-items: stretch;
+  border-bottom: 1px solid var(--glass-border);
+  background: var(--glass-bg); backdrop-filter: blur(8px); transition: all 0.3s;
+}
+.price-row:last-child { border-bottom: none; }
+.price-row:hover { background: rgba(255,255,255,0.05); }
+.price-row.highlight { background: rgba(125,211,252,0.04); }
+.price-label { width: 220px; flex-shrink: 0; padding: 1.4rem; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; border-right: 1px solid var(--glass-border); }
+.price-amount {
+  width: 180px; flex-shrink: 0; padding: 1.4rem;
+  font-family: var(--mono); font-weight: 700; font-size: 1.25rem;
+  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: flex; align-items: center; border-right: 1px solid var(--glass-border);
+}
+.price-amount .period { font-size: 0.7rem; -webkit-text-fill-color: var(--text-3); font-weight: 400; margin-left: 0.3rem; }
+.price-desc { flex: 1; padding: 1.4rem; font-size: 0.8rem; color: var(--text-2); line-height: 1.6; display: flex; align-items: center; }
+
+/* Tier card internals (retained) */
+.tier-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 0.5rem; }
+.tier-name { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.3rem; }
+.tier-price {
+  font-weight: 700; font-size: 2rem; margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.tier-price .period { font-size: 0.8rem; -webkit-text-fill-color: var(--text-3); font-weight: 400; }
+.tier-min { font-size: 0.7rem; color: var(--text-3); margin-bottom: 1.4rem; }
+.tier ul { list-style: none; font-size: 0.8rem; line-height: 2.1; color: var(--text-2); }
+.tier ul li::before { content: '— '; color: var(--mercury-blue); opacity: 0.5; }
+.tier-note { font-size: 0.74rem; color: var(--mercury-teal); margin-top: 1.4rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; }
+/* The price sheet (pricing.html) — the old page hand-built these as inline
+   styles on a page-local .price-sheet. Same sheet, real tokens: a stacked
+   single column of .tier cards at reading measure. */
+.tier-sheet { max-width: 780px; }
+.tier-sheet .tier { margin-bottom: 1.5rem; }
+.tier-sheet .eyebrow { margin-top: 2.6rem; }
+.tier-sheet .eyebrow:first-child { margin-top: 0; }
+.tier .anchor { font-size: 0.8rem; color: var(--text-2); line-height: 1.7; margin: 0.3rem 0; }
+.tier a { color: var(--mercury-blue); }
+.tier a:hover { color: var(--text-1); }
+.tier-badge {
+  position: absolute; top: 0; right: 0;
+  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
+  color: var(--void); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border-radius: 0 var(--r-lg) 0 var(--r-sm);
+}
+
+/* Guarantee */
+.guarantee {
+  margin-top: 2rem; border: 1px solid rgba(125,211,252,0.2); padding: 2.2rem;
+  text-align: center; border-radius: var(--r-lg);
+  background: rgba(125,211,252,0.03); backdrop-filter: blur(12px);
+}
+.guarantee h3 {
+  font-weight: 700; font-size: 1.25rem; margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.guarantee p { font-size: 0.86rem; color: var(--text-2); line-height: 1.8; max-width: 58ch; margin: 0 auto; }
+
+/* ══ B9 — FINAL CTA (one link, one destination) ════════════════════════ */
+.final-cta { text-align: center; padding: calc(var(--sec-y) * 1.3) 1.5rem; }
+.final-cta h2 { margin: 0 auto 1.4rem; max-width: none; text-align: center; }
+.final-cta p { font-size: 0.92rem; color: var(--text-2); margin: 0 auto 1.6rem; max-width: 58ch; line-height: 1.8; }
+.final-cta .eyebrow, .final-cta .tag { justify-content: center; }
+
+/* ══ NOTE (type 4 article body) ════════════════════════════════════════ */
+.note { max-width: 68ch; margin: 0 auto; padding: calc(var(--sec-y) * 0.9) 1.5rem; }
+.note h1 { max-width: none; }
+.note .dek { font-size: calc(var(--lede-size) + 0.06rem); line-height: var(--lh-lede); color: var(--text-2); margin-bottom: 2.5rem; }
+.note p { font-size: calc(var(--lede-size) + 0.01rem); line-height: var(--lh-prose); color: var(--text-2); margin-bottom: 1.4rem; }
+.note h2 { margin-top: 2.8rem; }
+.note h3 { margin-top: 2rem; }
+.note ul, .note ol { color: var(--text-2); font-size: calc(var(--lede-size) + 0.01rem); line-height: var(--lh-prose); margin: 0 0 1.4rem 1.2rem; }
+.note a { color: var(--mercury-blue); }
+.note a:hover { color: var(--text-1); }
+/* Pull-quote — display-serif slot 3 (RULE 02 §2). The synthetic oblique the
+   italic declaration used to force is gone: Fraunces ships roman only, and a
+   slanted roman is the cheapest-looking thing a serif can do. */
+.note blockquote {
+  border-left: 2px solid var(--mercury-violet); padding-left: 1.3rem;
+  margin: 2rem 0; color: var(--text-1);
+  font-family: var(--display); font-weight: 400;
+  font-size: 1.08rem; line-height: 1.6; letter-spacing: -0.005em;
+}
+.note code { font-family: var(--mono); font-size: 0.86em; color: var(--mercury-teal); background: var(--glass-bg); padding: 0.1em 0.35em; border-radius: 4px; }
+.note pre { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 1.2rem; overflow-x: auto; margin-bottom: 1.4rem; }
+.note pre code { background: none; padding: 0; color: var(--text-1); }
+.note .caveat {
+  border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.04);
+  border-radius: var(--r-md); padding: 1.3rem 1.5rem; margin: 2rem 0;
+  font-size: 0.88rem; line-height: 1.8; color: var(--text-2);
+}
+.note-meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 2rem; }
+.note-next {
+  display: block; max-width: 68ch; margin: 0 auto; padding: 1.4rem 1.5rem;
+  border-top: 1px solid var(--glass-border); font-size: 0.85rem; color: var(--text-2);
+}
+.note-next b { color: var(--mercury-blue); }
+
+/* ══ Status box ════════════════════════════════════════════════════════ */
+.status {
+  border: 1px solid rgba(125,211,252,0.15); padding: 1.8rem; border-radius: var(--r-lg);
+  background: rgba(125,211,252,0.03); margin-bottom: 2rem; backdrop-filter: blur(12px);
+}
+.status h3 { color: var(--mercury-blue); font-size: 1.1rem; margin-bottom: 0.6rem; }
+.status p { font-size: 0.84rem; color: var(--text-2); line-height: 1.7; }
+
+/* ══ B10 — FOOTER ══════════════════════════════════════════════════════ */
+/* The hairline runs FULL-BLEED (the nav's does; a border that stopped at the
+   1100px container made the page's top and bottom rules disagree). Content
+   still aligns to the container via the max() padding. */
+.footer {
+  padding: 2rem max(1.5rem, calc((100% - var(--wrap)) / 2)) 4rem;
+  border-top: 1px solid var(--glass-border);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: var(--micro); font-size: 0.72rem; color: var(--text-3); flex-wrap: wrap;
+}
+.footer .tagline { font-style: italic; }
+.footer a { color: var(--text-3); border-bottom: 1px solid transparent; }
+.footer a:hover { color: var(--mercury-violet); border-color: var(--mercury-violet); }
+
+/* ══ BREAKPOINT 2 — 900px : grids → 2 col, nav → hamburger ═════════════ */
 @media (max-width: 900px) {
-  section, .honest { padding: 3rem 2rem; }
-  .cards, .tiers, .steps, .frameworks-grid, .links-grid, .capabilities { grid-template-columns: 1fr; }
-  .menu-grid, .bonuses { grid-template-columns: 1fr; }
+  /* The gradient SURVIVES the breakpoint. Flattening --sec-y to one mobile
+     value here would delete the depth cue on every phone, which is where
+     most of the descent actually happens — so each depth just shrinks. */
+  body { --sec-y: 3.5rem; --claim-y: 3rem; }
+  body[data-depth="0"] { --sec-y: 4.6rem; --claim-y: 4.2rem; }
+  body[data-depth="2"] { --sec-y: 3rem; --claim-y: 2.6rem; }
+  body[data-depth="3"] { --sec-y: 2.4rem; --claim-y: 2.2rem; }
+  section, .honest, .receipts, .claim { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .receipts-grid { grid-template-columns: repeat(2, 1fr); }
   .price-row { flex-direction: column; }
   .price-label, .price-amount { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
-  .soma-callout { flex-direction: column; align-items: flex-start; }
   .stack-item, .layer { flex-direction: column; }
   .stack-num, .layer-name { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
-  .final-cta { padding: 4rem 2rem; }
-  .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
-  .header { padding: 1rem 1.5rem; }
-  .receipts { padding: 3rem 2rem; }
-  .receipts-grid { grid-template-columns: 1fr; }
+  /* In the stacked direction the 3px accent column collapsed to an invisible
+     0-height sliver; it becomes the row's top accent line instead. */
+  .stack-bar, .layer-bar { width: 100%; height: 3px; background: linear-gradient(90deg, var(--mercury-blue), var(--mercury-violet)); }
+  .claim-duo > .wrap { grid-template-columns: 1fr; gap: 2.2rem; }
+  .portrait { justify-self: start; max-width: 280px; }
+  .final-cta { padding: calc(var(--sec-y) * 1.2) 1.25rem; }
+  .footer { flex-direction: column; text-align: center; padding: 2rem 1.25rem 3rem; }
+  .nav, .header { padding: 1rem 1.25rem; }
+
+  /* Hamburger — only ever active once nav.js has stamped data-nav */
+  .nav[data-nav] .nav-toggle, .header[data-nav] .nav-toggle { display: block; }
+  .nav[data-nav="collapsed"] .nav-links,
+  .header[data-nav="collapsed"] .nav-links { display: none; }
+  .nav[data-nav="open"] .nav-links, .header[data-nav="open"] .nav-links {
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 1rem; width: 100%; margin-left: 0; padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+  }
+  .nav-links { margin-left: 0; }
+  .rung-d { display: none; }
+  .rung { flex-wrap: wrap; }
 }
+
+/* ══ BREAKPOINT 3 — 600px : grids → 1 col ══════════════════════════════ */
+@media (max-width: 600px) {
+  .receipts-grid,
+  .receipts.compact .receipts-grid,
+  .cards, .tiers, .steps, .panels, .capabilities,
+  .duo { grid-template-columns: 1fr; }
+  .gauge-row { flex-wrap: wrap; }
+  .gauge-n, .gauge-n.wide { min-width: 100%; }
+  h1 { max-width: none; }
+  .price-block { padding: 1.6rem; }
+  .note { padding: calc(var(--sec-y) * 0.75) 1.25rem; }
+}
+
+/* ══ Motion & contrast preferences ═════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   THE DOOR — index.html band 0. B2 .claim ⊕ B3 .artifact, FUSED.
+
+   Why a new band exists at all (RULE 01 mechanic 1): the door must open
+   INTO something alive. Stacked as two bands, the claim occupies the first
+   screen and the running artifact falls below the fold — the visitor reads
+   a sentence ABOUT the engine instead of watching it. This band puts them
+   side by side so the claim is cashed by the thing next to it.
+
+   It composes existing blocks and introduces nothing new: the stage is a
+   plain .artifact-frame, the copy column is .eyebrow/h1/.lede/.cta-primary,
+   and every value below is an existing custom property. No new colour, no
+   new font-family, no fourth breakpoint.
+
+   DEVIATION RECORDED (THE DOOR SPEC §1 asked for the stack to flip at
+   1000px): this stylesheet declares three breakpoints ONCE — 1100 / 900 /
+   600 — so the flip reuses 900 rather than minting a fourth. Between 900
+   and 1000 the two columns are tight but not broken.
+   ══════════════════════════════════════════════════════════════════════ */
+.door { padding: calc(var(--claim-y) * 0.72) 1.5rem calc(var(--claim-y) * 0.6); }
+.door > .wrap {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  /* First screen: the stage AND the CTA must both be visible without
+     scrolling, or mechanic 1 is only half-served. svh where supported, so a
+     mobile URL bar cannot push the CTA under the fold. The allowance is the
+     door band's own padding — THE DOOR IS CHROMELESS now (ratchet law,
+     Isaac 2026-08-07: index is a one-way entrypoint, so it carries no nav;
+     its sanctioned moves are all in the page). */
+  min-height: calc(100vh - 8rem);
+  min-height: calc(100svh - 8rem);
+}
+/* Grid children default to min-width:auto and refuse to shrink below their
+   content — which is what makes a 16:9 embed blow the column out. */
+.door-stage, .door-copy { min-width: 0; }
+.door-copy .eyebrow { margin-bottom: 1.1rem; }
+/* THE LOPSIDEDNESS FIX (Isaac's word). Depth-0's h1 tops out at 5.4rem —
+   sized for a full-width claim, not for the door's ~28rem copy column, where
+   it wrapped to a near-word-per-line tower ~2x the stage's height and the
+   engine read as a postage stamp beside it. The door's claim is a COLUMN
+   claim: it caps lower here so the two columns weigh the same. This is a
+   band-composition rule, not a hole in the density gradient — the door is
+   still the largest type on the site. */
+.door-copy h1 { max-width: 15ch; font-size: clamp(2.6rem, 4.8vw, 4.2rem); }
+.door-copy .lede { max-width: 46ch; margin-bottom: 1.9rem; }
+.door .artifact-prov { max-width: none; }
+
+/* The consent line. It is the door's smallest type and its most load-bearing
+   sentence: the door invites, it never traps (RULE 01 register). */
+.door-mini {
+  font-family: var(--micro);
+  font-size: 0.74rem; line-height: 1.75; color: var(--text-3);
+  max-width: 46ch; margin-top: 1.5rem;
+}
+.door-mini a { color: var(--text-2); border-bottom: 1px solid var(--glass-border); }
+.door-mini a:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
+
+/* THE ENTER AFFORDANCE IS NOT HERE — ON PURPOSE. It lives INSIDE the iframe
+   (the lab's own #door-enter, shown only under ?embed=door), which is the
+   spec's frame contract: this page owns the frame, the lab owns everything
+   inside it, and neither reskins the other. An interim parent-side overlay
+   existed while the door mode was still landing; it was REMOVED the moment
+   ?embed=door shipped, because an overlay would swallow the exhibit's own
+   hover affordance — reskinning it by stealth, which is the one thing the
+   world-template law forbids. Do not re-add a .door-veil. */
+
+@media (max-width: 900px) {
+  /* .door (0,1,0) outranks the breakpoint's `section` (0,0,1) side-padding
+     rule, so the door has to restate it or it sits 0.25rem wider than every
+     other band on the page. */
+  .door { padding: calc(var(--claim-y) * 0.55) 1.25rem calc(var(--claim-y) * 0.6); }
+  .door > .wrap { grid-template-columns: 1fr; gap: 2rem; min-height: 0; }
+  .door-stage { order: -1; }     /* the artifact stays FIRST when it stacks */
+  .door-copy h1, .door-copy .lede, .door-mini { max-width: none; }
+}
+
+/* MERGE NOTE (door builder 1): a second, near-identical .door block was
+   appended here by a parallel writer. Two blocks for one band is the exact
+   defect this stylesheet exists to prevent, so the two were folded into the
+   single block above — keeping that block's calc(100svh - 9rem) first-screen
+   sizing and its inset focus outline. Nothing was lost; do not re-append. */

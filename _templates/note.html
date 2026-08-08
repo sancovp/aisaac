@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEMPLATE — TYPE 4 NOTE (article)</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 4 — NOTE (article).  Owner: Builder C.
+     Block order: B0 · B1 · <article class="note"> · B4 (compact, 2 max)
+                  · next-note link · B9 · B10
+
+     The exemplar is blog/flat-vs-tree.html: one claim, a real argument with
+     a crossover point, one diagram, an honest caveat, an MIT repo receipt.
+     Every note is measured against it.
+
+     This template is ALSO what the cave-unicorn renderer skeleton must emit
+     (spec §C1) — patch the renderer once, re-render all 54 posts, and every
+     future post is born with a doctype, a title, a viewport, and og tags.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — paste verbatim from _templates/_nav.html (DEPTH-1 variant) -->
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">Lorem eyebrow</p>
+    <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+    <p class="note-meta">2026-08-07 &middot; lorem tag &middot; lorem tag</p>
+    <p class="dek">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Body copy goes here.</p>
+
+    <h2>Lorem section heading</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+    <!-- ONE diagram per note. Inline SVG or a framed artifact — no external
+         image hosts, no libraries. -->
+    <figure class="artifact mt-l">
+      <div class="artifact-frame">
+        <!-- WORLD-SLOT: the note's one diagram -->
+        <span class="artifact-placeholder"><span class="ap-line">&#9656; lorem — the one diagram</span></span>
+      </div>
+      <figcaption class="artifact-prov">Lorem — what this diagram shows and where the numbers come from.</figcaption>
+    </figure>
+
+    <!-- The honest caveat. Every note has one. -->
+    <div class="caveat"><b>Where this breaks:</b> lorem ipsum dolor sit amet — the case this argument does not cover.</div>
+  </article>
+
+  <!-- ══ B4 RECEIPTS — inline compact, 2 MAX. Every note attaches at least
+       one receipt: the source post, the repo, or the running world. -->
+  <section class="receipts compact">
+    <div class="wrap">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem ipsum</h3><p>Lorem ipsum dolor sit amet.</p><span class="receipt-go">Lorem &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- next-note link — the chain that closes into a circle -->
+  <a class="note-next" href="#">Next: <b>Lorem ipsum dolor sit amet &rarr;</b></a>
+
+  <!-- ══ B9 CTA — ONE. -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Lorem ipsum dolor sit.</h2>
+      <p>Lorem ipsum dolor sit amet consectetur.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — paste verbatim from _templates/_footer.html -->
+<script src="../nav.js"></script>
+</body>
+</html>

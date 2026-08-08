@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEMPLATE — TYPE 4 NOTE-INDEX</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 4 — NOTE-INDEX.  Owner: Builder C.
+     Block order: B0 · B1 · B2 · [filter row] · [card grid] · B4 · B6 · B10
+
+     Serves notes/index.html and blog/index.html from the same template.
+     PREFERRED: one index at notes/, with the blog posts listed inside it.
+     frameworks.html has 43 inbound links — promote that URL to the real
+     notes index rather than bouncing it.
+
+     FILTER ROW RULE: the tags a stranger sees first must be ENGINEERING
+     tags, not canon. Demote PAIAB / SANCTUM / CAVE / UNICORN out of the
+     primary row entirely (L3 — zero canon vocabulary above the door).
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — paste verbatim from _templates/_nav.html (DEPTH-1 variant) -->
+
+<main id="main">
+
+  <!-- ══ B2 CLAIM -->
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Open notes</p>
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit — published as they were written, not cleaned up afterwards.</p>
+      <a class="cta-primary" href="#notes">Lorem, read them &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ══ FILTER ROW — engineering tags only. -->
+  <section id="notes" class="flush-top">
+    <div class="wrap">
+      <nav class="ladder" aria-label="Filter by topic">
+        <a class="rung" href="#"><span class="rung-n">&mdash;</span><span class="rung-t">All notes</span><span class="rung-d">lorem count</span></a>
+      </nav>
+
+      <!-- ══ CARD GRID -->
+      <div class="cards">
+        <a class="card" href="#"><h3>Lorem ipsum dolor</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p><span class="receipt-go">Read &rarr;</span></a>
+        <a class="card" href="#"><h3>Lorem ipsum dolor</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p><span class="receipt-go">Read &rarr;</span></a>
+        <a class="card" href="#"><h3>Lorem ipsum dolor</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p><span class="receipt-go">Read &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS -->
+  <section class="receipts dark">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Lorem &mdash; take the code.</h2>
+      <p class="receipts-lede">Lorem ipsum dolor sit amet consectetur.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem</h3><p>Lorem ipsum.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem</h3><p>Lorem ipsum.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem</h3><p>Lorem ipsum.</p><span class="receipt-go">Lorem &rarr;</span></a>
+        <a class="receipt" href="#"><div class="receipt-k">Lorem</div><h3>Lorem</h3><p>Lorem ipsum.</p><span class="receipt-go">Lorem &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Where this sits</p>
+      <h2>Lorem ladder heading.</h2>
+      <nav class="ladder" aria-label="Where this sits">
+        <a class="rung" href="../watch.html"><span class="rung-n">01</span><span class="rung-t">Watch a world run</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../learn.html"><span class="rung-n">02</span><span class="rung-t">Learn to build them</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../build.html"><span class="rung-n">03</span><span class="rung-t">Run your work inside one</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../run.html"><span class="rung-n">04</span><span class="rung-t">Have one run your business</span><span class="rung-d">lorem</span></a>
+        <a class="rung" href="../pricing.html"><span class="rung-n">05</span><span class="rung-t">What it costs</span><span class="rung-d">lorem</span></a>
+      </nav>
+    </div>
+  </section>
+
+</main>
+
+<!-- B10 FOOTER — paste verbatim from _templates/_footer.html -->
+<script src="../nav.js"></script>
+</body>
+</html>

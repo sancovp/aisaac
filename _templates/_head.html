@@ -1,0 +1,36 @@
+<!-- ══════════════════════════════════════════════════════════════════════
+     B0 — THE HEAD/META CONTRACT. (rebuild spec §2.3)
+     Non-negotiable on every page, including every blog post.
+
+     SITE_ORIGIN = https://sancovp.github.io/aisaac
+       Confirmed 2026-08-07 against the live deploy (200 on /aisaac/ and
+       /aisaac/system.html; 404 on sancovp.github.io/style.css).
+       It is a GitHub Pages PROJECT SUBPATH.
+
+     Consequence — THE PATH LAW:
+       · in-page href/src  → RELATIVE   ("style.css", "../style.css")
+       · canonical + og/twitter URLs → ABSOLUTE, prefixed with SITE_ORIGIN
+       Root-absolute paths ("/style.css") are FORBIDDEN sitewide: they
+       resolve above the project subpath and 404.
+
+     Placeholders to fill: {TITLE} ≤60 chars · {DESC} ≤155 chars ·
+     {PATH} the page path after SITE_ORIGIN · {PAGE} og image basename ·
+     {UP} "" at root, "../" one level down.
+     ══════════════════════════════════════════════════════════════════════ -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{TITLE} — Isaac</title>
+<meta name="description" content="{DESC}">
+<link rel="canonical" href="https://sancovp.github.io/aisaac{PATH}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{TITLE} — Isaac">
+<meta property="og:description" content="{DESC}">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/{PAGE}.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac{PATH}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{UP}assets/favicon.svg">
+<link rel="stylesheet" href="{UP}style.css">
+</head>

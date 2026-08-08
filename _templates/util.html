@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEMPLATE — TYPE 5 UTILITY</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 5 — UTILITY.  Owner: Builder C.  Three sub-uses, no others.
+
+     1. REDIRECT — must be a HOST-LEVEL 301 wherever possible.
+        A meta-refresh is permitted ONLY at content="0" AND must carry a
+        real, visible link. A timed refresh (content="4") is a WCAG 2.2.1
+        failure and dies. Pattern:
+          <meta http-equiv="refresh" content="0; url=notes/">
+          <p>This page moved. <a href="notes/">Go to the notes &rarr;</a></p>
+
+     2. 404.html — new; the site has none today.
+
+     3. inside/* — canon / lore pages. ALWAYS <meta name="robots"
+        content="noindex">. No sticky-cta, no exit-popup, no email capture.
+        Reachable ONLY from system.html's footer and from each other.
+        Lore is the inside, never the door.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- B1 NAV — inside/* only. Redirect stubs and 404 carry it too so the
+     reader is never stranded. Paste verbatim from _templates/_nav.html. -->
+
+<main id="main">
+  <section class="claim">
+    <div class="wrap">
+      <p class="eyebrow">Lorem</p>
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a class="cta-primary" href="../isaac.html">Lorem, go somewhere real &rarr;</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="lede">Lorem body content.</p>
+    </div>
+  </section>
+</main>
+
+<!-- B10 FOOTER — paste verbatim from _templates/_footer.html -->
+<script src="../nav.js"></script>
+</body>
+</html>

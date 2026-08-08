@@ -1,20 +1,44 @@
-<link rel="stylesheet" href="blog-style.css">
-<div id="isaac-site">
-  <div class="site-header">
-    <a href="../index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="./" class="nav-link">Blog</a>
-      <a href="../apply.html" class="nav-cta">Book a Call</a>
-    </div>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mission Control: Three Questions That Kill Drift — Isaac</title>
+<meta name="description" content="You don&#x27;t lose alignment in one dramatic moment. You lose it gradually, silently, while being extremely busy doing the wrong thing.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/blog/mission-control.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mission Control: Three Questions That Kill Drift — Isaac">
+<meta property="og:description" content="You don&#x27;t lose alignment in one dramatic moment. You lose it gradually, silently, while being extremely busy doing the wrong thing.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/blog/mission-control.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-depth="2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
 
-  <article>
-    <div class="post-tag">May 2026</div>
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">May 2026<a href="index.html#l6-concentration">Level 6 &middot; Concentration</a><a href="index.html#drift-repair">Drift &amp; repair</a></p>
     <h1>Mission Control: Three Questions That Kill Drift</h1>
-    <p class="post-subtitle">You don't lose alignment in one dramatic moment. You lose it gradually, silently, while being extremely busy doing the wrong thing.</p>
+    <p class="dek">You don't lose alignment in one dramatic moment. You lose it gradually, silently, while being extremely busy doing the wrong thing.</p>
 
-    <figure style="margin:2rem 0;">
-      <img src="diagrams/mission-control.png" alt="Mission Control diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+<figure class="fig">
+      <img src="diagrams/mission-control.png" alt="Mission Control diagram" class="fig-img" width="3120" height="2240">
     </figure>
 
     <h2>The Drift Problem</h2>
@@ -48,13 +72,13 @@
     <h2>Three Questions. That's It.</h2>
     <p>Every N exchanges — or every 10 minutes, or every logical checkpoint — ask three questions:</p>
 
-    <div style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--amber); padding: 1.5rem; margin: 2rem 0;">
-      <p style="margin: 0 0 1rem 0;"><strong>1. Are we still on mission?</strong></p>
-      <p style="margin: 0 0 0.5rem 0; opacity: 0.8;">Does current activity serve the original goal?</p>
-      <p style="margin: 0 0 1rem 0;"><strong>2. What's changed?</strong></p>
-      <p style="margin: 0 0 0.5rem 0; opacity: 0.8;">What new information affects the plan?</p>
-      <p style="margin: 0 0 1rem 0;"><strong>3. What's the next checkpoint?</strong></p>
-      <p style="margin: 0; opacity: 0.8;">When do we check alignment again?</p>
+    <div class="railed">
+      <p><strong>1. Are we still on mission?</strong></p>
+      <p class="fineprint">Does current activity serve the original goal?</p>
+      <p><strong>2. What's changed?</strong></p>
+      <p class="fineprint">What new information affects the plan?</p>
+      <p><strong>3. What's the next checkpoint?</strong></p>
+      <p class="fineprint">When do we check alignment again?</p>
     </div>
 
     <p>That's the entire protocol. Three questions. Asked periodically. Answered honestly.</p>
@@ -126,7 +150,7 @@
 
 <h2>The Minimum Viable Version</h2>
     <p>If everything else in this article fades, keep this:</p>
-    <p style="font-size: 1.1em; padding: 1rem; border: 1px solid var(--amber); text-align: center; margin: 2rem 0;"><strong>Every 10 minutes, ask: "Does what I'm doing right now serve the goal I stated at the start?"</strong></p>
+    <p class="caveat"><strong>Every 10 minutes, ask: "Does what I'm doing right now serve the goal I stated at the start?"</strong></p>
     <p>If yes, continue.</p>
     <p>If no, stop and return.</p>
     <p>That's Mission Control at its core. Everything else is elaboration.</p>
@@ -135,9 +159,9 @@
 
     <h2>See the Full Picture</h2>
     <p>Mission Control is one of the four components identified by <a href="soseeh.html">SOSEEH</a>. It connects to <a href="seam-repair.html">Seam Repair</a> (what to do when check-ins reveal a break), <a href="helming.html">Helming</a> (the vision you get when layers complete), and the full system we build with clients.</p>
-    <p style="margin-top: 1.5rem;"><a href="../frameworks.html" style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); padding-bottom: 2px;">Browse All Frameworks →</a></p>
-    <p style="margin-top: 2rem;">If your AI systems drift off-task, your team keeps building the wrong thing, or your sessions end with "what did we actually accomplish?" — you're missing Mission Control. Three questions, asked regularly, answered honestly. We can help you install it.</p>
-    <p style="margin-top: 1.5rem;"><a href="../apply.html" style="font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); background: var(--amber); padding: 0.6rem 1.5rem; text-decoration: none; display: inline-block;">Book a Call</a></p>
+    <p class="mt-s"><a href="../notes/" class="cta-secondary">Browse All Frameworks →</a></p>
+    <p class="mt-m">If your AI systems drift off-task, your team keeps building the wrong thing, or your sessions end with "what did we actually accomplish?" — you're missing Mission Control. Three questions, asked regularly, answered honestly. We can help you install it.</p>
+    <p class="mt-s"><a href="../pricing.html" class="cta-secondary">Book a Call</a></p>
 
     <div class="post-nav">
       <a href="seam-repair.html">← Seam Repair</a>
@@ -145,21 +169,30 @@
     </div>
   </article>
 
-  
-  <!-- Blog CTA -->
-  <div class="blog-cta blog-cta-learn">
-    <p class="blog-cta-label">Want to go deeper?</p>
-    <p class="blog-cta-desc">Frameworks, architecture, the 7-stack methodology. Free content that shows you how compound AI systems actually work.</p>
-    <div class="blog-cta-actions">
-      <a href="../learn.html" class="blog-cta-primary">Keep Learning</a>
-      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+  <section class="receipts compact">
+    <div class="wrap measure">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>
+        <a class="receipt" href="../watch.html"><div class="receipt-k">Running now</div><h3>See it actually run</h3><p>The engine drawing its own explainer, live in the browser.</p><span class="receipt-go">Watch a world run &rarr;</span></a>
+      </div>
     </div>
-  </div>
+  </section>
+  <p class="note-next">Next note: <a href="seam-repair.html"><b>Seam Repair: What to Do When Alignment Breaks &rarr;</b></a></p>
 
-  <div class="site-footer">
-    <span>© 2026 Isaac — TWI Consulting</span>
-    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">← Home</a></span>
-  </div>
-</div>
-<script src="../sticky-cta.js"></script>
-<script src="../newsletter.js"></script>
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

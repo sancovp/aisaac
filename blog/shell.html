@@ -1,20 +1,44 @@
-<link rel="stylesheet" href="blog-style.css">
-<div id="isaac-site">
-  <div class="site-header">
-    <a href="../index.html" class="logo">Isaac — TWI</a>
-    <div class="nav-links">
-      <a href="./" class="nav-link">Blog</a>
-      <a href="../apply.html" class="nav-cta">Book a Call</a>
-    </div>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHELL: Turn Any Toolkit Into a Game Your Agent Can Play — Isaac</title>
+<meta name="description" content="Most AI agents fail not because they lack tools, but because nobody defined the rules of the game. SHELL is the missing compilation step.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/blog/shell.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SHELL: Turn Any Toolkit Into a Game Your Agent Can Play — Isaac">
+<meta property="og:description" content="Most AI agents fail not because they lack tools, but because nobody defined the rules of the game. SHELL is the missing compilation step.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/blog/shell.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-depth="2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
 
-  <article>
-    <div class="post-tag">May 2026</div>
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">May 2026<a href="index.html#l2-tools">Level 2 &middot; Tools</a><a href="index.html#l4-harnesses">Level 4 &middot; Harnesses</a><a href="index.html#worlds-loops">Worlds &amp; loops</a></p>
     <h1>SHELL: Turn Any Toolkit Into a Game Your Agent Can Play</h1>
-    <p class="post-subtitle">Most AI agents fail not because they lack tools, but because nobody defined the rules of the game. SHELL is the missing compilation step.</p>
+    <p class="dek">Most AI agents fail not because they lack tools, but because nobody defined the rules of the game. SHELL is the missing compilation step.</p>
 
-    <figure style="margin:2rem 0;">
-      <img src="diagrams/shell.png" alt="SHELL diagram" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.07);">
+<figure class="fig">
+      <img src="diagrams/shell.png" alt="SHELL diagram" class="fig-img" width="3120" height="2240">
     </figure>
 
     <h2>Tools Without Rules</h2>
@@ -152,29 +176,38 @@ Enforcement:
       <li><strong>One guard.</strong> What is the most common mistake? Block it with corrective feedback.</li>
     </ol>
     <p>You now have a compiled SHELL. The toolkit is a playable game zone. The agent stops drifting and starts operating.</p>
-    <p>If you want help compiling your first SHELL &mdash; or figuring out which toolkits in your organization need one most &mdash; <a href="../apply.html" style="color:var(--amber);">let's talk</a>.</p>
+    <p>If you want help compiling your first SHELL &mdash; or figuring out which toolkits in your organization need one most &mdash; <a href="../pricing.html">let's talk</a>.</p>
 
     <div class="post-nav">
       <a href="admissibility.html">&larr; Admissibility Engineering</a>
-      <a href="../frameworks.html">Frameworks &rarr;</a>
+      <a href="../notes/">Frameworks &rarr;</a>
     </div>
   </article>
 
-  
-  <!-- Blog CTA -->
-  <div class="blog-cta blog-cta-build">
-    <p class="blog-cta-label">Ready to build this yourself?</p>
-    <p class="blog-cta-desc">Jobworld is the business operating system. Voice agents, automations, dashboards &mdash; everything your AI-powered business needs, in one platform.</p>
-    <div class="blog-cta-actions">
-      <a href="../build.html" class="blog-cta-primary">See Jobworld</a>
-      <a href="../apply.html" class="blog-cta-secondary">Or book a call &rarr;</a>
+  <section class="receipts compact">
+    <div class="wrap measure">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>
+        <a class="receipt" href="../watch.html"><div class="receipt-k">Running now</div><h3>See it actually run</h3><p>The engine drawing its own explainer, live in the browser.</p><span class="receipt-go">Watch a world run &rarr;</span></a>
+      </div>
     </div>
-  </div>
+  </section>
+  <p class="note-next">Next note: <a href="l3-context.html"><b>L3: Context Engineering &rarr;</b></a></p>
 
-  <div class="site-footer">
-    <span>&copy; 2026 Isaac &mdash; TWI Consulting</span>
-    <span><a href="../index.html" style="color:var(--amber);text-decoration:none;">&larr; Home</a></span>
-  </div>
-</div>
-<script src="../sticky-cta.js"></script>
-<script src="../newsletter.js"></script>
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>
