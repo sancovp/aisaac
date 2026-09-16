@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Transformation That Actually Works</title>
+<meta name="description" content="From manual processes to a more capable, efficient, and resilient business.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/ai-transformation.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Transformation That Actually Works">
+<meta property="og:description" content="From manual processes to a more capable, efficient, and resilient business.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/ai-transformation.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-depth="0">
+<!-- ══════════════════════════════════════════════════════════════════════
+     THE LANDING PAGE FOR THE NEW OFFER.  Isaac's spec, 2026-09-16:
+     "a headline, subheadline, VSL hero, and nothing else on the page besides
+     a button that opens the form or scroll that scrolls into the form."
+
+     Nothing else is on this page. No nav links, no method, no pricing, no
+     terms, no ladder — one exit and it is the form.
+
+     THE WORDS ARE HIS.  Headline and subheadline are slide 1 of his own sales
+     deck, verbatim. The VSL hero is the deck itself, six slides, until a
+     video is cut to replace it.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#book">Skip to the form</a>
+
+<header class="nav">
+  <a href="isaac.html" class="logo">Isaac</a>
+</header>
+
+<main id="main">
+
+  <!-- HEADLINE · SUBHEADLINE · VSL HERO · BUTTON -->
+  <section class="claim">
+    <div class="wrap">
+      <h1>AI Transformation That <span>Actually Works.</span></h1>
+      <p class="lede">From manual processes to a more capable, efficient, and resilient business.</p>
+
+      <div class="artifact-frame deck" id="deck">
+        <img class="deck-slide" src="assets/deck/hero.jpg" width="1600" height="900" alt="AI Transformation That Actually Works — from manual processes to a more capable, efficient and resilient business. Practical. Incremental. Measurable. Real.">
+        <img class="deck-slide" src="assets/deck/obstacles.jpg" width="1524" height="1600" alt="The ten obstacles to AI transformation, each with the sentence a business says and the solution beside it: lack of clarity, change resistance, siloed systems, missing SOPs, unclear ROI, risk and reliability, no internal capacity, too much too fast, vendor overwhelm, no long-term governance.">
+        <img class="deck-slide" src="assets/deck/box.jpg" width="1600" height="900" alt="Three states of a workflow. Unclear: four question marks, nobody can name the steps. Mapped: Receive, Review, Check, Approve. AI-ready: replace only the steps worth replacing.">
+        <img class="deck-slide" src="assets/deck/arc.jpg" width="1600" height="1066" alt="Complete AI transformation in three phases. Foundation: map, implement, iterate. Hardening: map across, integrate across, custom implementations. Closure: a governed environment for people, agents, tools, data and processes.">
+        <img class="deck-slide" src="assets/deck/method.jpg" width="1600" height="900" alt="The method, five steps: Discover a job or function, Map how work actually happens, Analyze the highest-value workflows, Research what already solves them, Decide whether to map more, implement, or stop.">
+        <img class="deck-slide" src="assets/deck/value.jpg" width="1600" height="900" alt="What the engagement produces: mapped operations, prioritized opportunities, researched solutions, cost and time and risk analysis, an implementation roadmap, and ongoing refinement.">
+      </div>
+      <div class="deck-nav" id="deck-nav">
+        <button class="deck-btn" type="button" data-deck="prev">&larr; Back</button>
+        <button class="deck-btn" type="button" data-deck="next">Next &rarr;</button>
+        <span class="deck-count" id="deck-count">1 / 6</span>
+      </div>
+
+      <a class="cta-primary" href="#book">Book a call &rarr;</a>
+    </div>
+  </section>
+
+  <!-- THE FORM -->
+  <section id="book">
+    <div class="wrap">
+      <!-- Plain GET to the cal.com booking page: the answers travel as query
+           params and prefill the booking, so there is no backend and the form
+           still submits with JavaScript disabled.
+           ⚠ For the answers to stick, add booking questions on the cal.com
+           event with slugs matching company / revenue / focus. Until then the
+           booking works and the extra params are ignored. -->
+      <form class="lead-form" action="https://cal.com/aisaac/ai-agents-for-your-business" method="GET">
+        <div class="lead-row">
+          <label class="lead-field"><span>Your name</span>
+            <input type="text" name="name" autocomplete="name" required placeholder="Your name">
+          </label>
+          <label class="lead-field"><span>Email</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="you@company.com">
+          </label>
+        </div>
+        <label class="lead-field"><span>Company</span>
+          <input type="text" name="company" autocomplete="organization" required placeholder="Company name, or the website">
+        </label>
+        <label class="lead-field"><span>Roughly what does the business do a year?</span>
+          <select name="revenue" required>
+            <option value="">Pick a range</option>
+            <option>Under $500K</option>
+            <option>$500K &ndash; $2M</option>
+            <option>$2M &ndash; $10M</option>
+            <option>$10M &ndash; $50M</option>
+            <option>Over $50M</option>
+          </select>
+        </label>
+        <label class="lead-field"><span>What would you want looked at first?</span>
+          <input type="text" name="focus" placeholder="One line is fine">
+        </label>
+        <button class="cta-primary" type="submit">Pick a time &rarr;</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac &middot; Ribcage Solutions, Inc.</span>
+</footer>
+<script>
+(function () {
+  var frame = document.getElementById('deck');
+  if (!frame) return;
+  var slides = frame.querySelectorAll('.deck-slide');
+  if (slides.length < 2) return;
+  var nav = document.getElementById('deck-nav');
+  var count = document.getElementById('deck-count');
+  var i = 0;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    for (var k = 0; k < slides.length; k++) slides[k].classList.toggle('is-on', k === i);
+    var w = slides[i].getAttribute('width'), h = slides[i].getAttribute('height');
+    if (w && h) frame.style.setProperty('--deck-ar', w + ' / ' + h);
+    count.textContent = (i + 1) + ' / ' + slides.length;
+  }
+  frame.classList.add('is-live');
+  nav.classList.add('is-live');
+  nav.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-deck]');
+    if (b) show(b.dataset.deck === 'next' ? i + 1 : i - 1);
+  });
+  show(0);
+})();
+</script>
+</body>
+</html>

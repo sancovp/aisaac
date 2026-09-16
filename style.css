@@ -1089,3 +1089,52 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    defect this stylesheet exists to prevent, so the two were folded into the
    single block above — keeping that block's calc(100svh - 9rem) first-screen
    sizing and its inset focus outline. Nothing was lost; do not re-append. */
+
+/* ══ .deck — the VSL hero on ai-transformation.html ═══════════════════════
+   The deck stands in for the video until one is cut. The slides are NOT all
+   16:9, and .artifact-frame is 16/9 with object-fit: cover — right for video,
+   wrong here: the obstacles slide is 1524x1600, so cover cut ~46% off it.
+   So: contain, and the frame takes the CURRENT slide's ratio (the script sets
+   --deck-ar from each image's width/height). No transition on aspect-ratio —
+   it does not interpolate reliably and leaves the frame on the old ratio.
+   With JS off, slide 1 shows and the controls stay hidden. */
+.deck { aspect-ratio: var(--deck-ar, 16 / 9); }
+.deck .deck-slide { object-fit: contain; }
+.deck-slide { opacity: 0; visibility: hidden; transition: opacity .25s; }
+.deck-slide:first-child { opacity: 1; visibility: visible; }
+.deck.is-live .deck-slide { opacity: 0; visibility: hidden; }
+.deck.is-live .deck-slide.is-on { opacity: 1; visibility: visible; }
+.deck-nav { display: none; align-items: center; gap: 1rem; margin-top: 0.8rem; }
+.deck-nav.is-live { display: flex; }
+.deck-btn {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-2);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm); padding: 0.5rem 1rem; cursor: pointer;
+  transition: all .2s;
+}
+.deck-btn:hover { color: var(--text-1); border-color: rgba(125,211,252,0.25); }
+.deck-count { font-family: var(--micro); font-size: 0.72rem; color: var(--text-3); }
+
+/* ══ .lead-form — the form on ai-transformation.html ══════════════════════
+   Five fields; revenue is the only gate. Plain GET to cal.com so it works
+   with JavaScript disabled. No new colours and no new type: the fields reuse
+   --glass-bg/--glass-border and the labels are the --micro label voice. */
+.lead-form { max-width: 620px; }
+.lead-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.lead-field { display: block; margin-bottom: 1rem; }
+.lead-field > span {
+  display: block; font-family: var(--micro); font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-3); margin-bottom: 0.4rem;
+}
+.lead-field input, .lead-field select {
+  width: 100%; font-family: inherit; font-size: 0.9rem; color: var(--text-1);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm); padding: 0.75rem 0.9rem; transition: border-color .2s;
+}
+.lead-field input::placeholder { color: var(--text-3); }
+.lead-field input:focus, .lead-field select:focus { outline: none; border-color: rgba(125,211,252,0.4); }
+.lead-field select option { background: var(--void); color: var(--text-1); }
+.lead-form .cta-primary { border: none; cursor: pointer; margin-top: 0.6rem; }
+@media (max-width: 900px) { .lead-row { grid-template-columns: 1fr; } }
