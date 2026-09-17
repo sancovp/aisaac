@@ -103,6 +103,20 @@ take additional project-specific terms.
 
 **Signed:** Isaac Wostrel-Rubin for Ribcage Solutions, Inc., 9/15/2026.
 
+## 3b. THE METHOD ITSELF — pointer
+
+⭐ **What the engagement DOES is not in this document.** Isaac stated the method in full on
+2026-09-17 — the department/role/process map, the JD-as-closure-of-SOPs test, the six-way
+automation ladder per process, the revenue-and-levers overlay, the culture/incentive layer,
+and the DTO (Digital Twin of Organization) → productizable automations →
+business-model-in-a-box arc that ends in *"So what kind of business do you want to transform
+into?"*
+
+It lives, verbatim, in **[`the-transformation-method-2026-09-17.md`](the-transformation-method-2026-09-17.md)**,
+which is CANONICAL for the method. This document stays canonical for the commercial facts.
+⛔ A surface that describes the work without reading that file will undersell it to layer 2
+of 5 — which is exactly what the first VSL cut did.
+
 ## 4. THE DECK — the argument that carried it (13 slides)
 
 The deck's spine is **one problem, one method, one arc, one price cascade.**
