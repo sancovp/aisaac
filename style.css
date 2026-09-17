@@ -1154,19 +1154,30 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    grid-template-columns written AFTER the 900px breakpoint wins over it at
    equal specificity and silently defeats the collapse — that is exactly how
    the hero shipped as an unreadable 13-line h1 earlier today. */
+   ⛔ AND THE RAIL IS A BYLINE, NOT A TOWER. Shipped first as a 260px poster
+   portrait over three paragraphs: 785px of rail beside a 374px form — 411px
+   of dead space, measured, which is what Isaac saw. The portrait is now 92px
+   inline with the name, and the copy is two paragraphs, so the rail's height
+   is of the form's order. Re-measure the pair after any copy change. */
 .book-duo {
-  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr);
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
   gap: 3.5rem; align-items: start;
 }
 .book-duo .book-form, .book-duo .booker { min-width: 0; }
-.booker .portrait { justify-self: start; max-width: 260px; margin-bottom: 1.6rem; }
-.booker .eyebrow { margin-bottom: 0.9rem; }
-.booker .lede { font-size: calc(var(--lede-size) * 0.92); margin-bottom: 1rem; }
+.booker-id { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.booker-id .portrait-frame { width: 92px; flex: none; border-radius: var(--r-sm); }
+.booker-who { margin: 0; line-height: 1.45; }
+.booker-who strong { display: block; color: var(--text-1); font-weight: 500; font-size: 1.05rem; }
+.booker-who span {
+  font-family: var(--micro); font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3);
+}
+.booker .eyebrow { margin-bottom: 0.8rem; }
+.booker .lede { font-size: 0.92rem; line-height: 1.75; margin-bottom: 0.9rem; }
 .booker .lede:last-child { margin-bottom: 0; }
 @media (max-width: 900px) {
-  .book-duo { grid-template-columns: 1fr; gap: 2.8rem; }
+  .book-duo { grid-template-columns: 1fr; gap: 2.4rem; }
   /* The form is the point of the page, so on a phone the rail goes BELOW it
      rather than pushing the fields down a screen. */
   .booker { order: 2; }
-  .booker .portrait { max-width: 200px; }
 }
