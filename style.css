@@ -1143,3 +1143,30 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    frame, so unlike .deck (whose slides were not all 16:9) it needs no
    per-item ratio; object-fit: cover would crop, so it is contain. */
 .artifact-frame.vsl > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--void); }
+
+/* .book-duo — the form, and the person you are booking, side by side
+   (Isaac's order, 2026-09-16: the right half of the form band was empty).
+   ZERO new colours, type or blocks: the rail is the existing .portrait
+   exhibit plus the .eyebrow label voice and .lede prose, and the grid is
+   .claim-duo's shape with the portrait stacked ABOVE the copy instead of
+   beside it — a rail is a column, not a duo.
+   ⛔ THE COLLAPSE RULE FOLLOWS THE BASE RULE, DELIBERATELY. A
+   grid-template-columns written AFTER the 900px breakpoint wins over it at
+   equal specificity and silently defeats the collapse — that is exactly how
+   the hero shipped as an unreadable 13-line h1 earlier today. */
+.book-duo {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr);
+  gap: 3.5rem; align-items: start;
+}
+.book-duo .book-form, .book-duo .booker { min-width: 0; }
+.booker .portrait { justify-self: start; max-width: 260px; margin-bottom: 1.6rem; }
+.booker .eyebrow { margin-bottom: 0.9rem; }
+.booker .lede { font-size: calc(var(--lede-size) * 0.92); margin-bottom: 1rem; }
+.booker .lede:last-child { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .book-duo { grid-template-columns: 1fr; gap: 2.8rem; }
+  /* The form is the point of the page, so on a phone the rail goes BELOW it
+     rather than pushing the fields down a screen. */
+  .booker { order: 2; }
+  .booker .portrait { max-width: 200px; }
+}
