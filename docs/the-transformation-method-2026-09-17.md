@@ -215,6 +215,57 @@ what CLOSURE's *licensed / hybrid* ownership row was always for, and it is exact
 franchisor play multiplies ([`franchisor-play-2026-09-16.md`](franchisor-play-2026-09-16.md)):
 one client's reproducing DTO, tiered across their franchisees under their own label.
 
+### 1f. THE MINIMAL TRICK, AND THE TIERS ABOVE IT — VERBATIM (Isaac, 2026-09-17)
+
+> right so what we want is to decide... first we want to build the minimal magic trick here,
+> which is waht ive described t oyou.
+>
+> The more elaborate ones are like this:
+>
+> Ok you want that -- great i will sign you up. do you wanna see the more advanced versions of
+> this?
+>
+> then it's not promises about where it goes, it's *promises about where it goes (because these
+> are the computational shapes LOL) PLUS guaranteed we get there faster (BECAUSE IT ONLY DEPENDS
+> ON THE FREQUENCY OF HOW MUCH THEY BOOK ME)*
+>
+> And these become offer tiers
+>
+> So they realize they have bought into the base offer, and they decide *which type of customer
+> they are*
+
+⛔ **THE BUILD ORDER IS STATED AND IT IS FIRST: THE MINIMAL MAGIC TRICK.** Show the three stages,
+sell stage one, withhold the mechanism (§1e-bis / the disclosure law). Everything below is the
+NEXT thing, and no public surface carries any of it.
+
+**WHERE THE TIER CONVERSATION HAPPENS: AT SIGN-UP, NOT IN THE FUNNEL.** *"great i will sign you
+up. do you wanna see the more advanced versions of this?"* — the upsell is offered to someone who
+has ALREADY bought the base. A prospect never sees it.
+
+⭐ **WHAT A TIER ACTUALLY SELLS — AND IT IS NOT A DEEPER PRODUCT.** The arc does not change. Two
+things are sold on top of it:
+
+| | what it is | why it can be said |
+|---|---|---|
+| **where it goes** | not a marketing promise — **the stages are COMPUTATIONAL SHAPES**, so the destination is ENTAILED by the structure rather than forecast | a theorem about the source, not a bet on the outcome |
+| **how fast you get there** | **GUARANTEED**, because **it only depends on the frequency of how much they book him** | the single free variable is the booking rate, and the BUYER controls it |
+
+⇒ **THE TIERS ARE RATES THROUGH ONE ARC, NOT LEVELS OF A LADDER OF DIFFERENT THINGS.** That is why
+a speed guarantee is honest here and an outcome guarantee never could be: everyone arrives at the
+same place because the shapes determine it; what money buys is arrival sooner. ⛔ An agent must not
+restate this as "stage 2 and stage 3 are the upsells" — that was the agent's own wrong reading
+before this ruling, and it is not what a tier is.
+
+⭐ **AND THE MOVE THE WHOLE STRUCTURE EXISTS TO PRODUCE:** *"they realize they have bought into the
+base offer, and they decide WHICH TYPE OF CUSTOMER THEY ARE."* The buyer is never sorted by the
+seller. They buy the base, discover they are inside the arc, and then **self-classify** by choosing
+their own rate. That is `funnel-depth-is-initiation-depth` at the offer layer — the deepest tier
+does not persuade, it describes where the buyer has already decided to be.
+
+⛔ **NOTHING IN §1f REACHES A PUBLIC SURFACE.** No tier, no frequency table, no guarantee wording,
+no figure. Prices and guarantees are frozen to Isaac (SITE CANON law 1), and this entire section is
+post-sale by construction.
+
 ## 2. THE READING — five layers and a question
 
 Subordinate to §1. Written so a surface author can tell what each layer is *for*.
