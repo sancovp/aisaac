@@ -1138,3 +1138,8 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .lead-field select option { background: var(--void); color: var(--text-1); }
 .lead-form .cta-primary { border: none; cursor: pointer; margin-top: 0.6rem; }
 @media (max-width: 900px) { .lead-row { grid-template-columns: 1fr; } }
+
+/* .vsl — the video in the landing page's hero slot. A 16:9 film fills the
+   frame, so unlike .deck (whose slides were not all 16:9) it needs no
+   per-item ratio; object-fit: cover would crop, so it is contain. */
+.artifact-frame.vsl > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--void); }
