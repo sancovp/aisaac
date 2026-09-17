@@ -238,9 +238,33 @@ one client's reproducing DTO, tiered across their franchisees under their own la
 sell stage one, withhold the mechanism (§1e-bis / the disclosure law). Everything below is the
 NEXT thing, and no public surface carries any of it.
 
-**WHERE THE TIER CONVERSATION HAPPENS: AT SIGN-UP, NOT IN THE FUNNEL.** *"great i will sign you
-up. do you wanna see the more advanced versions of this?"* — the upsell is offered to someone who
-has ALREADY bought the base. A prospect never sees it.
+### WHERE THE TIER CONVERSATION HAPPENS — VERBATIM (Isaac, 2026-09-17, the same day, refining)
+
+> theyre upsells. So because they are upsells, *selling them before someone is closed is a
+> different format than just upselling it*.
+>
+> Thats the problem we have right now. its a metasystem transition im not sure we can just make.
+> I think it is literally the upsell funnel... so what we do is *we let them buy, schedule on cal*
+> THEN i can just *introduce them to it in the second meeting*
+
+⭐ **THE TIERS ARE INTRODUCED IN THE SECOND MEETING. BY HIM. LIVE.**
+*(Superseded, kept at its own location: this block read "AT SIGN-UP, NOT IN THE FUNNEL", quoting
+*"great i will sign you up. do you wanna see the more advanced versions of this?"* — that was the
+first statement of the same day and the refinement above moves it later, out of the transaction
+and into the relationship.)*
+
+⛔ **AND THE REASON IS A FORMAT FACT, NOT A PREFERENCE: SELLING AN UPSELL BEFORE THE CLOSE IS A
+DIFFERENT FORMAT FROM UPSELLING IT.** A surface that tries to do both is attempting a **metasystem
+transition** — climbing to a frame where the base offer becomes the anchor for the next one — inside
+a single artifact, and Isaac's own reading is that it may not be makeable that way: *"im not sure we
+can just make"* it. The tiers therefore own **their own funnel — the upsell funnel** — and that is a
+separate thing that does not exist yet.
+
+⇒ **THE RESOLUTION IS THAT A PERSON CROSSES THE FRAME, NOT AN ARTIFACT.** The sequence is
+**VSL → form → buy → schedule on cal → meeting one → the tiers, introduced in meeting two.**
+⇒ ⭐ **THEREFORE NO UPSELL SURFACE IS BUILT NOW, AND THE PUBLIC FUNNEL IS ALREADY COMPLETE** —
+`ai-transformation.html` runs VSL → form → cal.com today. The only thing standing between it and
+live is the film.
 
 ⭐ **WHAT A TIER ACTUALLY SELLS — AND IT IS NOT A DEEPER PRODUCT.** The arc does not change. Two
 things are sold on top of it:
