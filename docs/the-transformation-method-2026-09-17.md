@@ -55,6 +55,18 @@ over. §2 is the agent's reading of it and is subordinate — where the two diff
 **DTO = Digital Twin of Organization** (Isaac, same exchange, in answer to the agent's
 refusal to guess the term).
 
+### 1b. WHAT THE DTO ACTUALLY IS, at its ultimate level — VERBATIM (Isaac, 2026-09-17)
+
+> DTO is like the ultimate level of:
+>
+> You went through Stages 1-3 with me, and then in stage 3 we built a self-hosting
+> metacompiler inside your business, of your business.
+
+⛔ **THIS IS THE TERMINUS AND IT IS A COMPILER CLAIM, NOT A METAPHOR.** Stages 1–3 are deck
+slide 5's FOUNDATION (1 Map · 2 Implement · 3 Iterate). What gets built by the end of stage 3
+is not a pile of automations — it is **the thing that emits them from the business's own
+description.**
+
 ---
 
 ## 2. THE READING — five layers and a question
@@ -93,6 +105,45 @@ Subordinate to §1. Written so a surface author can tell what each layer is *for
   end at "you saved twelve hours a week." It ends with the owner holding a complete,
   parameterized, data-form model of their own company — including the parts that make no
   sense — and being asked what they want it to become.
+
+### 2b. READING THE TERMINUS — what "self-hosting metacompiler" entails
+
+⚠ **This section is the agent's unpacking of §1b and is graded as such** — the compiler terms
+are Isaac's; the entailments below are inference from them, and §1b wins on any conflict.
+
+A **metacompiler** takes a *description of a language* and emits a compiler for it. **Self-hosting**
+means it is written in the language it compiles — so it can compile itself. Applied here:
+
+| the term | what it is, in the business |
+|---|---|
+| the SOURCE LANGUAGE | the business's own description of itself — departments, roles, JDs, SOPs, processes |
+| the PARAMS | the levers named in layer 3; the knobs the compiled system exposes |
+| what it EMITS | the automations, services, agents and agent networks of layer 2's ladder |
+| **inside** your business | it runs in the client's environment, not the seller's — this is what "installed" means and why CLOSURE's ownership question exists at all |
+| **of** your business | its input is the company itself, which is why layer 1 has to CLOSE first |
+| **self-hosting** | the business extends itself with it, without him — the engagement's exit condition |
+
+⇒ **THE CLOSURE TEST IS THE TYPE CHECK.** This is the agent's reading, and it is why layer 1
+is stated as a closure rather than a drawing: a compiler needs a well-formed grammar, and
+`JD = closure of the SOPs for the role` is exactly the well-formedness condition on the
+source. A business whose JDs are not the closure of their SOPs **does not compile**, and the
+map's holes are type errors with coordinates rather than a list of complaints.
+
+⇒ **AND IT RE-READS THE WHOLE ARC.** FOUNDATION (1–3) builds the compiler. HARDENING (4–6 —
+map across · integrate across · custom implementations) extends it over the whole org.
+CLOSURE (7, the governed harness, client-owned · licensed · hybrid) is **who owns the
+compiler**. Business-model-in-a-box is what you have once a business compiles itself from its
+own description: the description plus the compiler is a thing you can hand to someone else —
+which is precisely what a franchisor multiplies.
+
+⇒ **AND IT IS THE ANTI-CASE-STUDY RULE, CASHED.** `.claude/rules/anti-case-study.md` says the
+system IS the proof, never a fabricated client story. Isaac is not selling a methodology he
+read about; he runs a self-hosting metacompiler over his own work — the AIOS where every
+directory is a self-improving program and reading IS the call. The offer installs the shape
+he already lives in. That is also the identity rule (`01-IDENTITY`) at work: he builds worlds
+out of language, and a DTO is a world built out of a business's own language. ⛔ Per that
+rule the superiority is DEDUCED and never stated — so this paragraph explains surfaces, it is
+never copy.
 
 ### The through-line to the frozen surfaces
 
