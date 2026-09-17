@@ -1153,7 +1153,7 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    ⛔ THE COLLAPSE RULE FOLLOWS THE BASE RULE, DELIBERATELY. A
    grid-template-columns written AFTER the 900px breakpoint wins over it at
    equal specificity and silently defeats the collapse — that is exactly how
-   the hero shipped as an unreadable 13-line h1 earlier today. */
+   the hero shipped as an unreadable 13-line h1 earlier today.
    ⛔ AND THE RAIL IS A BYLINE, NOT A TOWER. Shipped first as a 260px poster
    portrait over three paragraphs: 785px of rail beside a 374px form — 411px
    of dead space, measured, which is what Isaac saw. The portrait is now 92px
