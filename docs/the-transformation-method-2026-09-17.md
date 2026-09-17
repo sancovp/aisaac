@@ -58,12 +58,22 @@ The visual grammar carries what no transcript of it does, and it is consistent a
 - **`value.jpg`** — six checks. *"Not an AI toy. A continuously improving map of what is worth
   doing next."*
 
-⇒ **THE DECK ESTABLISHES THE SUMMIT BEFORE IT SHOWS THE CLIMB, NAMES EVERY CHASM, AND THEN
-BRIDGES THEM IN ORDER.** That is the same spine `aida-fractal-value-ladder` states — the
-customer travels a hero's journey and convinces themselves to go because they already believe
-themselves to be the hero. **A VSL built from the transcript is a method explainer. A VSL built
-from the IMAGES is the journey**, and the mountain is a through-line strong enough to carry a
-long runtime without the viewer losing their place.
+⇒ **THE DECK ESTABLISHES THE DESTINATION BEFORE IT SHOWS THE ROUTE, NAMES EVERY OBSTACLE, AND THEN
+CLOSES THEM IN ORDER.** That is the same spine `aida-fractal-value-ladder` states — the customer
+travels a hero's journey and convinces themselves to go because they already believe themselves to
+be the hero. **A VSL built from the transcript is a method explainer; a VSL built from the IMAGES is
+the journey** — but what is read off the images is WHICH THINGS ARE NAMED, never a picture to hang
+the beats on.
+
+⛔ **AND THAT DISTINCTION IS A CORRECTION, NOT A NUANCE — IT COST A WHOLE BUILD.** This paragraph
+used to end *"and the mountain is a through-line strong enough to carry a long runtime without the
+viewer losing their place"*, and the-climb was built on exactly that: a ridge, five notched chasms
+and a gold summit carrying about twenty beats. **Isaac, 2026-09-17, on watching it:** *"WHY THE FUCK
+ARE YOU NOT PUTTING THE FUCKING ELEMENTS BEING TALKED ABOUT ON THE SCREEN!? STOP TRYING TO
+METAPHORICALLY SYMBOLICALLY REPRESENT THINGS"* and *"YOU NEED MORE ELEMENTS. EVERY SINGLE LITERAL
+THING MENTIONED NEEDS TO BE SHOWN."* The narration never says mountain, ridge, climb or summit, so
+nothing on screen may. **The deck's mountain is the DECK's drawing of its own argument; it is not a
+licence for the film to draw an argument instead of drawing the things the argument is about.**
 
 ### ⚠ TWO MEASUREMENT GAPS IN THE EXTRACTION, NOT RESOLVED HERE
 
