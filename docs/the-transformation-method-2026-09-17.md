@@ -12,6 +12,72 @@ over. §2 is the agent's reading of it and is subordinate — where the two diff
 
 ---
 
+## 0. ⛔ READ THE SLIDE IMAGES, NOT THE TRANSCRIPT — and the retraction that bought this section
+
+**Isaac, 2026-09-17:** *"you had no idea? isnt it shown in the images in the slides? i guess you
+never looked at them individually. read those images"*
+
+**He is right, and the agent's claim is RETRACTED.** The escalation of §1d was called "the
+engine I did not have at all." It is **on the deck's own arc slide, in the sub-bullets**, and
+it was lost because the deck was transcribed from the PPTX text into a markdown TABLE of stage
+NAMES. The names survived; the contents — which are the argument — did not.
+
+| what §1d says | where it already was, on `assets/deck/arc.jpg` |
+|---|---|
+| *"we will never want to make everything"* | **Stage 2 Implement** → "Keep · **Buy existing** · Configure · Connect · AI-augment" |
+| the dash, the start/stop, the remote login — *"that's a whole application"* | **Stage 5 Integrate Across** → "**Build the connective tissue.** Integrate systems · **Unify business state** · **Add observability** · Implement controls · Establish verification · Harden for scale" |
+| *"custom implementations dont all cost \$30k because we can runtime stack this on your setup"* | **Stage 6 Custom Implementations** → "Build what the market can't provide. Solve unique needs · **Leverage accumulated knowledge** · Integrate deeply · Fill strategic gaps · Create durable advantages" |
+| who owns the reproducing DTO | **Stage 7 Closed Harness** → OWNERSHIP OPTIONS: Client-owned · **Licensed (our platform)** · Hybrid |
+
+⇒ **THE LESSON, AND IT IS THE REASON THIS SECTION IS §0:** a slide is not its text. Flattening
+a deck into a table keeps the headings and throws away the mechanism, and the flattening is
+invisible afterwards because the table looks complete.
+
+### THE DECK IS A HERO'S JOURNEY, DRAWN — this is what "the graphics explain better" means
+
+The visual grammar carries what no transcript of it does, and it is consistent across the deck:
+
+- **`hero.jpg` (slide 1 of 10)** — a climber on a summit at sunrise, above the cloud line,
+  looking out at the range. PRACTICAL · INCREMENTAL · MEASURABLE · REAL down the left; "HIGHER
+  PRODUCTIVITY / HAPPIER TEAMS / A STRONGER FUTURE" bottom right. **The destination, established
+  first.**
+- **`obstacles.jpg`** — the same figure, now at the bottom left at **CURRENT STATE: Fragmented.
+  Manual. Reactive. Unclear.**, beside a signpost reading MANUAL WORK · FRAGMENTED TOOLS ·
+  INCONSISTENT PROCESSES · LIMITED VISIBILITY · STALLED EFFORTS. Between them and the sunlit
+  **AI-ENABLED BUSINESS** on the far summit: a chain of rope bridges over named chasms —
+  **UNCERTAINTY · SILOS · RISK · COMPLEXITY · SCOPE CREEP** — each with a red warning marker.
+  The ten obstacle cards hang above and below that path. Closing line: *"Every obstacle is
+  solvable."* **The journey, with the gaps named and located.**
+- **`box.jpg`** — UNCLEAR (`? → ? → ? → ?`) · MAPPED (`Receive → Review → Check → Approve`) ·
+  AI-READY ("Replace only the steps that are worth replacing"). **The transformation of one
+  process, shown as three states of the same object.**
+- **`arc.jpg`** — the staged path, three phases, seven stages, each with its real sub-bullets,
+  under a band reading LOCAL IMPROVEMENTS → SYSTEM-WIDE INTEGRATION → LONG-TERM ADVANTAGE.
+- **`method.jpg`** — DISCOVER → MAP → ANALYZE → RESEARCH → DECIDE, *"Each cycle produces a
+  clearer map and a better next decision."* **The loop that runs inside every stage.**
+- **`value.jpg`** — six checks. *"Not an AI toy. A continuously improving map of what is worth
+  doing next."*
+
+⇒ **THE DECK ESTABLISHES THE SUMMIT BEFORE IT SHOWS THE CLIMB, NAMES EVERY CHASM, AND THEN
+BRIDGES THEM IN ORDER.** That is the same spine `aida-fractal-value-ladder` states — the
+customer travels a hero's journey and convinces themselves to go because they already believe
+themselves to be the hero. **A VSL built from the transcript is a method explainer. A VSL built
+from the IMAGES is the journey**, and the mountain is a through-line strong enough to carry a
+long runtime without the viewer losing their place.
+
+### ⚠ TWO MEASUREMENT GAPS IN THE EXTRACTION, NOT RESOLVED HERE
+
+1. **`hero.jpg` is captioned "1 / 10"** while
+   [`business-context-2026-09-15-first-client.md`](business-context-2026-09-15-first-client.md)
+   §4 describes **13 slides**. One of the two is wrong, or they are different cuts of the deck.
+   Not resolved — Isaac's call.
+2. **Only 6 slides were ever extracted to `assets/deck/`** — `hero · obstacles · box · arc ·
+   method · value`. **The DIY cost-anchor slide and all five price-cascade slides were never
+   extracted at all**, which is why the strongest sequence in the deck has never appeared on
+   any surface of this site.
+
+---
+
 ## 1. THE METHOD — VERBATIM (Isaac, 2026-09-17)
 
 > What i do is i map out:

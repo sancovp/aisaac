@@ -150,7 +150,30 @@ UNCLEAR (`? → ? → ? → ?`) · MAPPED (`Receive → Review → Check → App
 > "Your business has to know what it is doing if you want AI to know what to do in your
 > business."
 
-**Slide 5 — the full arc**, "Complete AI Transformation", three phases and seven stages:
+**Slide 5 — the full arc**, "Complete AI Transformation", three phases and seven stages.
+⛔ **THE SUB-BULLETS BELOW WERE DROPPED FROM THIS ENTRY UNTIL 2026-09-17, AND THEY ARE THE
+ARGUMENT** — the stage names alone read as a service menu, while the sub-bullets state the
+ESCALATION (buy existing → you need connective tissue anyway → that accumulated base makes
+custom cheap). Read `assets/deck/arc.jpg` itself; see
+[`the-transformation-method-2026-09-17.md`](the-transformation-method-2026-09-17.md) §0:
+
+- **1 Map** — understand what the business actually does: jobs & roles · SOPs · workflows ·
+  steps · systems · cost/time/risk
+- **2 Implement** — replace or augment appropriate steps: **Keep · Buy existing · Configure ·
+  Connect · AI-augment**
+- **3 Iterate** — repeat mapping and implementation across the business: expand to new roles ·
+  find the next opportunities · continuously improve
+- **4 Map Across** — understand how AI-enabled workflows interact: data dependencies · system
+  handoffs · permissions · failure propagation · overlaps & gaps · organization-wide view
+- **5 Integrate Across** — **build the connective tissue**: integrate systems · **unify business
+  state** · **add observability** · implement controls · establish verification · harden for scale
+- **6 Custom Implementations** — build what the market can't provide: solve unique needs ·
+  **leverage accumulated knowledge** · integrate deeply · fill strategic gaps · create durable
+  advantages
+- **7 Closed Harness** — unified operating environment · governance, permissions and audit ·
+  end-to-end observability · reliable escalation and recovery · designed for long-term operation
+
+The phase summary:
 - **FOUNDATION** (make individual parts AI-integrated) — 1 Map · 2 Implement · 3 Iterate.
   Result: key workflows understood and meaningfully AI-integrated.
 - **HARDENING** (connect and strengthen the whole) — 4 Map Across · 5 Integrate Across ·
