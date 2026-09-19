@@ -145,7 +145,11 @@
            ⚠ Formspree's free tier has a monthly submission cap. If bookings
            ever stop arriving, check the quota before debugging the form. -->
       <form class="lead-form" action="https://formspree.io/f/xbgllvry" method="POST">
-        <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-agents-for-your-business">
+        <!-- THE EVENT: "AI Transformation Discovery Call" (Isaac, 2026-09-19).
+             ⚠ Other pages still point at the older `ai-agents-for-your-business`
+             slug, deliberately — they sell DIFFERENT calls (a 15-min screening,
+             a 30-min build-map, a 15-min stand-up). Do not sweep-replace it. -->
+        <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-transformation-discovery-call">
         <div class="lead-row">
           <label class="lead-field"><span>Your name</span>
             <input type="text" name="name" autocomplete="name" required placeholder="Your name">
