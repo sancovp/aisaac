@@ -111,7 +111,8 @@
        and then `_next` forwards the person to cal.com. The contact is
        captured BEFORE the booking — so someone who fills this in and never
        picks a time is still a lead, which is the hole Isaac named.
-       ⚠ THE ENDPOINT IS STILL A PLACEHOLDER — see the form's own comment. ══ -->
+       ✅ The endpoint is claimed and live; lead.js carries name and email
+       through to cal so nobody types them twice. ══ -->
   <section id="book">
     <div class="wrap">
       <p class="eyebrow">Book a call</p>
@@ -130,9 +131,17 @@
 
            ⛔ NEVER point this action back at cal.com. A direct GET to cal.com
            is what this replaced, and it saved nothing on our side.
-           ⚠ The cal.com prefill params are gone in this flow (the answers go
-           to Formspree, not into the URL). cal.com asks name and email itself,
-           so nothing is lost that matters.
+           ⛔ CAL.COM HAS ITS OWN BOOKING QUESTIONS AND THAT IS NOT A REASON TO
+           DELETE THIS FORM. They capture at different moments: cal fires ONLY
+           on a completed booking, this fires on SUBMIT. Everyone who fills this
+           in is a lead even if they never pick a time — that is the whole point.
+           ⇒ THE DIVISION OF LABOUR: this form asks everything and captures
+           everyone; cal asks only name/email/notes and captures bookings.
+           `lead.js` rewrites `_next` on submit to carry name and email as cal
+           prefill params, so the last step before the booking has no retyping.
+           ⛔ Do NOT add company/revenue/focus as cal booking questions — they
+           are already in Formspree, and asking again is a third round of
+           typing for data you have.
            ⚠ Formspree's free tier has a monthly submission cap. If bookings
            ever stop arriving, check the quota before debugging the form. -->
       <form class="lead-form" action="https://formspree.io/f/xbgllvry" method="POST">
@@ -173,5 +182,6 @@
   <span>&copy; 2026 Isaac</span>
 </footer>
 <script src="vsl.js"></script>
+<script src="lead.js"></script>
 </body>
 </html>
