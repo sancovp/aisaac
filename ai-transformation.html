@@ -63,46 +63,88 @@
       <h1>You Either Pay For People's Skills And Hope Money Falls Out, <span>Or You're Still Doing It All Yourself.</span></h1>
       <p class="lede">Find what is worth doing. Then do it. The goal is not more AI &mdash; it is a more capable business.</p>
 
-      <!-- THE VSL. Diagram-only, narrated, 9:20. Built slide by slide from Isaac's
-           own sales deck — the one that closed the first client — in the deck's own
-           order: the climb, the box you can't draw, all ten obstacles with the
-           objections in the customer's own words, the five-step method, the
-           foundation/hardening/closure arc, and the value. No price and no offer
-           terms are spoken; those are the call's.
-           Source + render: video-aios/the-climb/ -> out/the-climb.mp4.
-           Shipped here web-encoded (286 MB -> 93 MB; git's hard limit is 100 MB).
-           ⛔ The runtime is NEVER stated on the page — naming it is a reason to
-           leave. Isaac, 2026-09-18: "why the fuck would you tell them how long the
-           VSL is". The old 1:58 whatido cut that stood here is superseded. -->
-      <div class="artifact-frame vsl">
-        <video controls preload="metadata" playsinline
-               poster="assets/vsl-poster.jpg" width="1920" height="1080">
-          <source src="assets/vsl.mp4" type="video/mp4">
-          Your browser cannot play this video.
-        </video>
-      </div>
+      <!-- ══ THE HERO BAND — Isaac's layout, 2026-09-19:
+             HEADLINE / SUBHEADLINE / VIDEO | PHOTO OF ME / VIDEO | ABOUT ME
+           The film and the person sit side by side, and the portrait is a
+           PRIMARY element here, not the 92px byline it was down at the form.
+           "my photo needs to be the thing on the site."
 
-      <a class="cta-primary" href="#book">Book a call &rarr;</a>
+           THE VSL: diagram-only, narrated, built slide by slide from the deck
+           that closed the first client — the box you can't draw, all ten
+           obstacles with the objections in the customer's own words, the
+           five-step method, the arc, the value. No price and no offer terms
+           are spoken; those are the call's. Source: video-aios/the-climb/.
+           ⛔ The runtime is NEVER stated on the page — naming it is a reason
+           to leave. Isaac, 2026-09-18: "why the fuck would you tell them how
+           long the VSL is". ══ -->
+      <div class="hero-duo">
+        <div class="artifact-frame vsl">
+          <video controls preload="metadata" playsinline
+                 poster="assets/vsl-poster.jpg" width="1920" height="1080">
+            <source src="assets/vsl.mp4" type="video/mp4">
+            Your browser cannot play this video.
+          </video>
+        </div>
+
+        <aside class="booker">
+          <div class="portrait-frame">
+            <img src="assets/isaac-portrait.jpg" alt="Isaac" width="960" height="1200">
+          </div>
+          <p class="booker-who"><strong>Isaac</strong><span>sancovp</span></p>
+          <p class="eyebrow">Who you&rsquo;d be talking to</p>
+          <p class="lede">I map how your business actually runs &mdash; department by department, role by role, system by system &mdash; then find where AI genuinely helps. <strong>You cannot automate a box you cannot draw.</strong></p>
+          <p class="lede">Two sessions a month, and the research between them happens to me, not to you. Sometimes the answer is a forty dollar tool you could have bought yourself, and sometimes it is nothing at all &mdash; I will tell you when it is nothing.</p>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <!-- THE FORM, AND WHO IS ON THE OTHER SIDE OF IT.
-       Isaac's order, 2026-09-16, looking at the live page: the form sat in a
-       narrow left column with the right half empty starfield — "put about me
-       in the right side here with my photo and stuff".
-       Every line in the rail is his own, from the VSL narration, which is
-       itself the deck and the signed advisory agreement. Nothing new is
-       claimed here, and no client is named. -->
+  <!-- ══ THE CONTACT FORM, AND THE ONLY EXIT.
+       Isaac, 2026-09-19: "BOOK A CALL BUTTON *REQUIRES* THE CONTACT FORM
+       (because we dont get them from CAL i dont think)".
+       So there is no bare link to cal.com anywhere on this page — the ONLY
+       way to reach the booking page is by submitting this form, and the
+       submit button IS the Book a Call button.
+
+       CAPTURE: this is a static GitHub Pages site with no backend, so the
+       form POSTs to Formspree, which stores every submission and emails it,
+       and then `_next` forwards the person to cal.com. The contact is
+       captured BEFORE the booking — so someone who fills this in and never
+       picks a time is still a lead, which is the hole Isaac named.
+       ⚠ THE ENDPOINT IS STILL A PLACEHOLDER — see the form's own comment. ══ -->
   <section id="book">
-    <div class="wrap book-duo">
+    <div class="wrap">
+      <p class="eyebrow">Book a call</p>
+      <p class="lede">Tell me how the business runs and I&rsquo;ll tell you where the first box goes.</p>
+
       <div class="book-form">
-      <!-- Plain GET to the cal.com booking page: the answers travel as query
-           params and prefill the booking, so there is no backend and the form
-           still submits with JavaScript disabled.
-           ⚠ For the answers to stick, add booking questions on the cal.com
-           event with slugs matching company / revenue / focus. Until then the
-           booking works and the extra params are ignored. -->
-      <form class="lead-form" action="https://cal.com/aisaac/ai-agents-for-your-business" method="GET">
+      <!-- ⛔ ENDPOINT NOT CLAIMED YET — THIS FORM CAPTURES NOTHING UNTIL IT IS.
+           Isaac, 2026-09-19: the booking must require the form, "because we
+           dont get them from CAL i dont think" — and he is right that anyone
+           who fills this in and doesn't finish booking is invisible today.
+
+           THE FIX, and it is two steps:
+           1. Isaac opens the Formspree claim link (in the report beside this
+              commit), signs in, and gets back an endpoint of the shape
+              https://formspree.io/f/XXXXXXXX
+           2. that id replaces FORMSPREE_ENDPOINT_PENDING below. Nothing else
+              changes.
+
+           THEN THE FLOW IS: submit → Formspree stores it and emails Isaac →
+           `_next` forwards them to the cal.com booking page. So the contact is
+           captured BEFORE the booking, which is the whole point: a person who
+           fills the form and never picks a time is still a lead.
+
+           ⚠ UNTIL THE ENDPOINT IS LIVE the action below 404s and the form does
+           not submit. That is deliberate — a form that silently drops leads is
+           worse than one that visibly does not work. Do not "fix" it by
+           pointing the action back at cal.com; that is the exact hole this
+           closes.
+           ⚠ The cal.com prefill params are gone in this flow (the answers go
+           to Formspree, not into the URL). cal.com asks name and email itself,
+           so nothing is lost that matters. -->
+      <form class="lead-form" action="https://formspree.io/f/FORMSPREE_ENDPOINT_PENDING" method="POST">
+        <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-agents-for-your-business">
         <div class="lead-row">
           <label class="lead-field"><span>Your name</span>
             <input type="text" name="name" autocomplete="name" required placeholder="Your name">
@@ -127,21 +169,9 @@
         <label class="lead-field"><span>What would you want looked at first?</span>
           <input type="text" name="focus" placeholder="One line is fine">
         </label>
-        <button class="cta-primary" type="submit">Pick a time &rarr;</button>
+        <button class="cta-primary" type="submit">Book a call &rarr;</button>
       </form>
       </div>
-
-      <aside class="booker">
-        <div class="booker-id">
-          <div class="portrait-frame">
-            <img src="assets/isaac-portrait.jpg" alt="Isaac" width="960" height="1200">
-          </div>
-          <p class="booker-who"><strong>Isaac</strong><span>sancovp</span></p>
-        </div>
-        <p class="eyebrow">Who you&rsquo;d be talking to</p>
-        <p class="lede">I map how your business actually runs &mdash; department by department, role by role, system by system &mdash; then find where AI genuinely helps. <strong>You cannot automate a box you cannot draw.</strong></p>
-        <p class="lede">Two sessions a month, and the research between them happens to me, not to you. Sometimes the answer is a forty dollar tool you could have bought yourself, and sometimes it is nothing at all &mdash; I will tell you when it is nothing.</p>
-      </aside>
     </div>
   </section>
 
@@ -150,5 +180,6 @@
 <footer class="footer">
   <span>&copy; 2026 Isaac</span>
 </footer>
+<script src="vsl.js"></script>
 </body>
 </html>

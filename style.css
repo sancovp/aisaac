@@ -1181,3 +1181,70 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
      rather than pushing the fields down a screen. */
   .booker { order: 2; }
 }
+
+/* .hero-duo — the landing page's hero band: the FILM and the PERSON, side by
+   side. Isaac, 2026-09-19: "my photo needs to be the thing on the site."
+   It is .book-duo's exact grid, with one difference that is the whole point:
+   the portrait is FULL WIDTH of its column rather than the 92px byline thumb,
+   because here the photo is a primary element and not a signature on a form.
+   ZERO new colours, type or blocks — .portrait-frame, .eyebrow and .lede are
+   the existing vocabulary, and the ratio comes from .portrait-frame itself.
+   ⛔ The collapse rule follows the base rule, deliberately — same trap
+   .book-duo documents above: a grid-template-columns written after the
+   breakpoint wins at equal specificity and silently defeats the collapse. */
+.hero-duo {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  gap: 3rem; align-items: start; margin-top: 2.5rem;
+}
+.hero-duo > * { min-width: 0; }
+.hero-duo .portrait-frame { width: 100%; border-radius: var(--r-card); margin-bottom: 1.25rem; }
+.hero-duo .booker-who { margin-bottom: 1.5rem; }
+.hero-duo .lede { font-size: 0.95rem; line-height: 1.75; margin-bottom: 0.9rem; }
+.hero-duo .lede:last-child { margin-bottom: 0; }
+@media (max-width: 900px) {
+  /* On a phone the film leads and the person follows it — the film is what
+     the page is for, and the portrait is what confirms who made it. */
+  .hero-duo { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* .vsl-ui — the film's own controls. ⛔ THE NATIVE BAR PRINTS THE RUNTIME and
+   no attribute suppresses it (controlsList has no token for the time display),
+   so vsl.js removes `controls` and draws these instead: play/pause, a seek
+   line, mute, fullscreen — and NO CLOCK. Isaac, 2026-09-18: "why the fuck
+   would you tell them how long the VSL is".
+   ZERO new colours or type: --text-1/-2, --mercury-blue, --glass-border and
+   --r-sm are all existing tokens. If JS is off the <video> keeps its own
+   `controls` and the film still plays. */
+.artifact-frame.vsl.vsl-custom > video { cursor: pointer; }
+.vsl-ui {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  background: linear-gradient(to top, rgba(2,4,10,0.92), rgba(2,4,10,0));
+  opacity: 0; transition: opacity 160ms ease;
+}
+.artifact-frame.vsl:hover .vsl-ui,
+.artifact-frame.vsl:focus-within .vsl-ui,
+.artifact-frame.vsl:not(.is-playing) .vsl-ui { opacity: 1; }
+.vsl-ui button {
+  flex: none; width: 30px; height: 30px; padding: 0;
+  display: grid; place-items: center;
+  background: none; border: 0; cursor: pointer; color: var(--text-2);
+  transition: color 120ms ease;
+}
+.vsl-ui button:hover { color: var(--text-1); }
+.vsl-ui svg { width: 20px; height: 20px; fill: currentColor; }
+.vsl-icon-pause, .vsl-icon-quiet { display: none; }
+.is-playing .vsl-icon-play { display: none; }
+.is-playing .vsl-icon-pause { display: block; }
+.is-muted .vsl-icon-loud { display: none; }
+.is-muted .vsl-icon-quiet { display: block; }
+.vsl-track {
+  flex: 1 1 auto; height: 4px; border-radius: var(--r-sm); cursor: pointer;
+  background: var(--glass-border); position: relative; touch-action: none;
+}
+.vsl-track:focus-visible { outline: 2px solid var(--mercury-blue); outline-offset: 4px; }
+.vsl-fill {
+  position: absolute; inset: 0 auto 0 0; width: 0;
+  background: var(--mercury-blue); border-radius: var(--r-sm);
+}
