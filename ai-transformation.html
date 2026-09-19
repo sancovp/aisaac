@@ -118,32 +118,24 @@
       <p class="lede">Tell me how the business runs and I&rsquo;ll tell you where the first box goes.</p>
 
       <div class="book-form">
-      <!-- ⛔ ENDPOINT NOT CLAIMED YET — THIS FORM CAPTURES NOTHING UNTIL IT IS.
-           Isaac, 2026-09-19: the booking must require the form, "because we
-           dont get them from CAL i dont think" — and he is right that anyone
-           who fills this in and doesn't finish booking is invisible today.
+      <!-- ✅ THE CAPTURE IS LIVE. Endpoint claimed by Isaac 2026-09-19.
+           Isaac's order the same day: the booking must require the form,
+           "because we dont get them from CAL i dont think" — and he was right
+           that anyone who filled it in and didn't finish booking was invisible.
 
-           THE FIX, and it is two steps:
-           1. Isaac opens the Formspree claim link (in the report beside this
-              commit), signs in, and gets back an endpoint of the shape
-              https://formspree.io/f/XXXXXXXX
-           2. that id replaces FORMSPREE_ENDPOINT_PENDING below. Nothing else
-              changes.
+           THE FLOW: submit → Formspree stores it and emails Isaac → `_next`
+           forwards them to the cal.com booking page. The contact is captured
+           BEFORE the booking, which is the whole point: a person who fills the
+           form and never picks a time is still a lead.
 
-           THEN THE FLOW IS: submit → Formspree stores it and emails Isaac →
-           `_next` forwards them to the cal.com booking page. So the contact is
-           captured BEFORE the booking, which is the whole point: a person who
-           fills the form and never picks a time is still a lead.
-
-           ⚠ UNTIL THE ENDPOINT IS LIVE the action below 404s and the form does
-           not submit. That is deliberate — a form that silently drops leads is
-           worse than one that visibly does not work. Do not "fix" it by
-           pointing the action back at cal.com; that is the exact hole this
-           closes.
+           ⛔ NEVER point this action back at cal.com. A direct GET to cal.com
+           is what this replaced, and it saved nothing on our side.
            ⚠ The cal.com prefill params are gone in this flow (the answers go
            to Formspree, not into the URL). cal.com asks name and email itself,
-           so nothing is lost that matters. -->
-      <form class="lead-form" action="https://formspree.io/f/FORMSPREE_ENDPOINT_PENDING" method="POST">
+           so nothing is lost that matters.
+           ⚠ Formspree's free tier has a monthly submission cap. If bookings
+           ever stop arriving, check the quota before debugging the form. -->
+      <form class="lead-form" action="https://formspree.io/f/xbgllvry" method="POST">
         <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-agents-for-your-business">
         <div class="lead-row">
           <label class="lead-field"><span>Your name</span>
