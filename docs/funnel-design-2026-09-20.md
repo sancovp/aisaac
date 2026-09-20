@@ -41,6 +41,84 @@ the exit.
 
 ---
 
+## 0b. ⭐ THE 90-DAY FOUNDING PARTNERSHIP — the name, and what is actually delivered
+
+**THE NAME** (MAGIC: *Founding* magnet · *90-day* interval · *Partnership* container). ⛔ **THE
+DISCOUNT IS NOT IN THE NAME, DELIBERATELY** — "onboarding special" prices $3,000 as cheap;
+*Founding* prices it as EARLY. Same fact, opposite frame, and it is the true reason-why.
+
+⭐ **AND "FOUNDING" IS NOT A MARKETING WORD HERE — IT IS THE POSITION ON THE MAP.** Slide 5's first
+phase is **FOUNDATION**: *"Make individual parts of the business AI-integrated,"* result *"key
+workflows are understood and meaningfully AI-integrated."* The 90-day partnership **IS** phase one
+of the arc the video already walks. ⇒ and the video already set up the word: *"the person who does
+that for you is called an AI transformation **partner**."* The role is Partner, the offer is the
+Partnership, the phase is Foundation. **ONE NAME IN EVERY PLACE** — button, Stripe product, receipt,
+onboarding page, and how it is said on a call.
+
+### THE GUARANTEE (*USER*, 2026-09-20)
+
+> *"we guarantee we map out a substantial portion of your business over the next 90 days ie 6
+> sessions (we aim for the full transformation map)"*
+
+**6 sessions** = two a month × three months, which is the cadence the video already states.
+
+⚠ **"A SUBSTANTIAL PORTION" IS NOT CHECKABLE, SO IT CANNOT BE GUARANTEED AS WRITTEN.** ⇒ **the fix
+is not to promise a quantity, it is to DEFINE THE UNIT** — then the promise has teeth for free:
+
+> **A process is not MAPPED until it carries all seven.** Anything short of that is not counted.
+
+| # | what comes back for EVERY process mapped | *USER*'s words |
+|---|---|---|
+| 1 | the research | "research" |
+| 2 | the analysis | "analysis" |
+| 3 | **an AI-alignment score per step** | "process step ai alignment scores" |
+| 4 | the services that already solve it | "list of services that are relevant" |
+| 5 | the recommendation | "recommendation" |
+| 6 | the integration pathway | "integration pathway" |
+| 7 | custom implementation options | "custom implementation options (custom agents)" |
+
+⇒ **THIS IS WHAT SEPARATES IT FROM A CONSULTANT'S DOCUMENT**, which is the objection the video
+raises by name (*"they hand you a document and an invoice and then they leave"*). Every process
+comes back with a DECISION attached, not a description.
+
+🚩 **`AI-alignment score` is *USER*'s term and is UNDEFINED here.** It is a deliverable a client is
+buying, so it owes a definition — what it scores, on what scale, and what a high one licenses. Not
+invented in this document.
+
+### THE THREE LEVELS THEY ARE SOLD AT (*USER*, verbatim)
+
+> *"they are really sold at three levels here. l1: processes get mapped l2: the whole business gets
+> this treatment l3: that includes their own job."*
+
+| | | why it sells |
+|---|---|---|
+| **L1** | processes get mapped | the concrete unit — seven artifacts, countable |
+| **L2** | the whole business gets this treatment | the roll-up — it is not a pilot, it is a method applied everywhere |
+| **L3** | **that includes their own job** | ⭐ the one they do not expect. The video already told them they are the bottleneck; this is the line that says the bottleneck gets mapped too |
+
+**L3 IS THE STRONGEST AND THE LEAST OBVIOUS — it should be said out loud on the page, not implied.**
+
+### ⭐ THE SEQUENCING — RULED: THESE ARE TWO QUESTIONS, NOT ONE
+
+*USER* posed it as a fork: *"We can start it top down from their job so they go first, and then
+branch out, or we can start with the easiest jobs that are also the most impactful."*
+
+**It is not a fork, because MAP ORDER and IMPLEMENT ORDER are different decisions — and the deck
+already separates them.** Stage 1 Map is *"understand what the business actually does"* (broad);
+Stage 2 Implement is *"replace or augment **appropriate** steps"* (selective); slide 2 says it
+outright: *"Replace only the steps that are worth replacing."*
+
+| | order | why |
+|---|---|---|
+| **MAP** | **top-down, starting from THEIR job** | that is where the undocumented knowledge actually is, and it is the "play the music" moment — `business-context`: *"representing the CEO's own business so elegantly they say 'Yes. That is my business.'"* Nothing does that like handing an owner their own job on paper |
+| **IMPLEMENT** | **easiest × most impactful first, at STEP grain** | the owner's job is the least proceduralized thing in the company, so implementing there first means 90 days with nothing shipped. *USER*: *"its not like we can do a whole job at once, we do the easiest steps of each process, etc it factors out like that"* |
+
+⇒ **THE ATOM IS THE STEP, NOT THE JOB.** Jobs decompose to processes decompose to steps, and the
+selection function is `easiest × highest-impact` — which is slide 4's ANALYZE (*"find the
+highest-value workflows"*) crossed with feasibility.
+
+---
+
 ## 1. THE PAGE
 
 ```
