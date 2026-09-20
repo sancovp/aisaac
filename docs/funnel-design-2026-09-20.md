@@ -185,6 +185,41 @@ the 26th and is admitted, the representation was untrue and every prior month's 
 performance. **The price of this mechanism being real is being willing to refuse money you could
 have taken** — that cost is the mechanism, and it should be known before it goes on the page.
 
+### ⭐⭐ RULED (*USER*, 2026-09-20): THE CAP IS ENFORCED BY THE SYSTEM, NOT DISPLAYED BY IT
+
+> *"yeah it has to be scarce! so the scarcity is REAL it LITERALLY ONLY ALLOWS that number of people
+> to sign up, and if they do then that part of the site's offer stack just goes to SOLD OUT and you
+> have to buy a la carte."*
+
+**THIS CLOSES THE WHOLE SCARCITY QUESTION.** The number is not a claim that has to be defended — it
+is a GATE, and it is true because the system refuses the N+1th purchase. Nothing above about wording
+stops mattering, but it stops being load-bearing: a counter that cannot lie does not need careful
+phrasing to be honest.
+
+**STRIPE ENFORCES IT, THE PAGE ONLY ASKS.** A Payment Link takes a completed-sessions limit and
+honours it atomically — the link itself stops accepting purchases at N. ⇒ **there is no race
+condition to engineer around and no bookmarked-URL hole**, which is exactly what a page-side check
+would have had. The function's only job is to READ the remaining count and render it.
+
+**THE SOLD-OUT STATE — and the card STAYS ON THE PAGE:**
+
+```
+[ $3,000 — three months ]   ~~SOLD OUT~~   reopens 1 October
+[ $2,000 / month ]          ← becomes primary
+  rather talk first? book a call
+```
+
+⛔ **DO NOT REMOVE THE SOLD-OUT CARD.** A removed card teaches nothing. A struck one PROVES the cap
+was real, makes the à la carte button the obvious next move rather than a consolation, and means a
+visitor who returns in the next window to find it OPEN has learned the cycle is genuine. The sell-out
+is a conversion event, not a dead end.
+
+⛔ **THE SYSTEM MUST BE THE ONLY DOOR.** If a founding term is ever sold off-platform — an email, a
+handshake on a call — the counter is lying while displaying a number that looks true. **Every
+founding sale goes through the link, or the count is not real.** This is the same failure as
+admitting a late-month buyer, one level up: the mechanism is only as honest as its least convenient
+enforcement.
+
 ⇒ **MAKE THE CAP REAL AND IT DOES EVERYTHING THE FAKE ONE WOULD.** The truthful version is already
 strong here and costs nothing, because the scarcity is genuinely real: *USER* needs three clients
 and can only serve so many at once. **"The first three companies" is a fact.** When the seats fill,
