@@ -17,73 +17,70 @@
 </head>
 <body data-depth="0">
 <!-- ══════════════════════════════════════════════════════════════════════
-     THE LANDING PAGE FOR THE NEW OFFER.  Isaac's spec, 2026-09-16:
-     "a headline, subheadline, VSL hero, and nothing else on the page besides
-     a button that opens the form or scroll that scrolls into the form."
+     THE LANDING PAGE FOR THE NEW OFFER.
 
-     Nothing else is on this page. No nav links, no method, no pricing, no
-     terms, no ladder — one exit and it is the form.
+     ⛔ SUPERSEDED, KEPT — this file's spec until 2026-09-20 was Isaac's
+     2026-09-16 order: "a headline, subheadline, VSL hero, and nothing else on
+     the page besides a button that opens the form or scroll that scrolls into
+     the form." One exit, and it was the form. THAT IS NO LONGER THE PAGE.
+     On 2026-09-20 he designed the full funnel: "i think we **put the full
+     funnel like with pricing, value stack, everything** and put it in the
+     video, AND give them the option to downsell into a *free discovery call*.
+     So it becomes a checkout button OR book a discovery call."
+     ⇒ THE SPEC IS NOW `docs/funnel-design-2026-09-20.md`. Read it before
+     changing anything here; every block below is specified there.
 
-     THE WORDS ARE HIS.  Headline and subheadline are slide 1 of his own sales
-     deck, verbatim; the VSL's narration is the same argument, scripted from
-     the deck and the signed agreement. The deck carousel that stood in this
-     slot is gone — the video replaces it.
+     THE SHAPE:  headline · subheadline · video | photo · the stack ·
+                 THREE DOORS · the form · the FAQ
+
+     THE WORDS ARE HIS. Headline and subheadline are slide 1 of his own sales
+     deck, verbatim. The stack is slide 7. The FAQ's second half is slide 3's
+     ten obstacles with their own SOLUTION lines. Source for all of it:
+     `video-aios/references/sales-deck/DECK-EXTRACTION.md` — all 13 slides.
+
+     ⛔ THE PRICES ON THIS PAGE BREAK `.claude/CLAUDE.md`'s "No dollar amounts
+     on public B2B pages. Numbers are on pricing.html only." Isaac authored
+     this page's prices himself on 2026-09-20 and the funnel design is built on
+     them, so the rule is SUPERSEDED FOR THIS PAGE and needs rescoping — it is
+     flagged in the commit rather than silently broken. ⚠ `pricing.html` still
+     says $1,000/mo and is now STALE; canonical is $2,000 (Isaac, 2026-09-20).
      ══════════════════════════════════════════════════════════════════════ -->
 
-<a class="skip-link" href="#book">Skip to the form</a>
+<a class="skip-link" href="#offer">Skip to the offer</a>
 
 <!-- ⛔ THE WORDMARK IS NOT A LINK, AND THAT IS THE POINT.
      Isaac, 2026-09-19: "this is the only page we are working on that will be
      made public right now." It used to link to isaac.html — an exit off the
-     one public page, into a surface he is not presenting to anybody.
-     The spec at the top of this file allows exactly one exit and it is the
-     form; a brand mark that navigates is a second one. So the mark stays (it
-     says whose page this is) and the link is gone. -->
+     one public page, into a surface he is not presenting to anybody. This page
+     has exactly three sanctioned exits now (the two checkouts and the call)
+     and a brand mark that navigates is a fourth. -->
 <header class="nav">
   <span class="logo">Isaac</span>
 </header>
 
 <main id="main">
 
-  <!-- HEADLINE · SUBHEADLINE · VSL HERO · BUTTON -->
+  <!-- HEADLINE · SUBHEADLINE · VSL | PHOTO -->
   <section class="claim">
     <div class="wrap">
-      <!-- ══════════════════════════════════════════════════════════════════
-           ⛔ THE FRACTAL DOES NOT GO ON THIS PAGE. IT GOES IN THE VIDEO.
-           Isaac, 2026-09-19, on seeing it as page copy: "NO. YOU CANNOT PUT
-           THAT ON THE SITE. IT MUST GO IN THE VIDEO."
-
-           The structure he gave — {avatar 1 or 2} + their version of the
-           problem → {symptoms} → Right? → {solution} → Right? → so you need a
-           {ROLE} with a {FRAMEWORK} sold as a {SERVICE}, unlike a consultant
-           {cons} it's {pros} {stack} → book; and then THE SAME THING EXPANDED —
-           is the VSL's SCRIPT, not body copy. It was briefly built as two
-           copy sections on this page and that was wrong: the page is a
-           headline, a subheadline, the VSL, and one button. Nothing else has
-           ever been allowed here (the spec at the top of this file, 2026-09-16)
-           and the fractal is the largest thing that has ever tried.
-
-           ⇒ the fractal lives in video-aios/the-climb/, in the narration.
-           ══════════════════════════════════════════════════════════════════ -->
-
       <p class="eyebrow">AI Transformation</p>
       <h1>You Either Pay For People's Skills And Hope Money Falls Out, <span>Or You're Still Doing It All Yourself.</span></h1>
       <p class="lede">Find what is worth doing. Then do it. The goal is not more AI &mdash; it is a more capable business.</p>
 
       <!-- ══ THE HERO BAND — Isaac's layout, 2026-09-19:
              HEADLINE / SUBHEADLINE / VIDEO | PHOTO OF ME / VIDEO | ABOUT ME
-           The film and the person sit side by side, and the portrait is a
-           PRIMARY element here, not the 92px byline it was down at the form.
            "my photo needs to be the thing on the site."
 
-           THE VSL: diagram-only, narrated, built slide by slide from the deck
-           that closed the first client — the box you can't draw, all ten
-           obstacles with the objections in the customer's own words, the
-           five-step method, the arc, the value. No price and no offer terms
-           are spoken; those are the call's. Source: video-aios/the-climb/.
-           ⛔ The runtime is NEVER stated on the page — naming it is a reason
-           to leave. Isaac, 2026-09-18: "why the fuck would you tell them how
-           long the VSL is". ══ -->
+           THE VSL is built from the deck slide by slide. ⛔ IT STATES NO PRICE
+           — Isaac, 2026-09-20: "this has to be changing so we have to not do
+           pricing in the video." The cascade runs its descent ($38,000 market
+           rate → not even that → not even half → not even half that → and I'm
+           still not charging that) and LANDS ON THE BUTTONS BELOW. A spoken
+           price costs a re-record and a full re-render every time the offer
+           moves; a price on this page is one line of HTML.
+           ⛔ The runtime is NEVER stated — naming it is a reason to leave.
+           Isaac, 2026-09-18: "why the fuck would you tell them how long the
+           VSL is". `vsl.js` draws controls with no clock for exactly this. ══ -->
       <div class="hero-duo">
         <div class="artifact-frame vsl">
           <video controls preload="metadata" playsinline
@@ -100,62 +97,127 @@
           <p class="booker-who"><strong>Isaac</strong><span>sancovp</span></p>
           <p class="eyebrow">Who you&rsquo;d be talking to</p>
           <p class="lede">I map how your business actually runs &mdash; department by department, role by role, system by system &mdash; then find where AI genuinely helps. <strong>You cannot automate a box you cannot draw.</strong></p>
-          <p class="lede">Two sessions a month, and the research between them happens to me, not to you. Sometimes the answer is a forty dollar tool you could have bought yourself, and sometimes it is nothing at all &mdash; I will tell you when it is nothing.</p>
+          <p class="lede">Two sessions a cycle, and the research between them happens to me, not to you. Sometimes the answer is a forty dollar tool you could have bought yourself, and sometimes it is nothing at all &mdash; I will tell you when it is nothing.</p>
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- ══ THE CONTACT FORM, AND THE ONLY EXIT.
-       Isaac, 2026-09-19: "BOOK A CALL BUTTON *REQUIRES* THE CONTACT FORM
-       (because we dont get them from CAL i dont think)".
-       So there is no bare link to cal.com anywhere on this page — the ONLY
-       way to reach the booking page is by submitting this form, and the
-       submit button IS the Book a Call button.
+  <!-- ══ THE STACK — slide 7 of the deck, "Here's the Actual Value", verbatim.
+       It is on the page as well as in the video because people scroll past
+       video. Six checks, each one thing they hold at the end. ══ -->
+  <section class="stack-sec">
+    <div class="wrap">
+      <p class="eyebrow">What you end up holding</p>
+      <h2>Not an AI toy. A continuously improving map of what is worth doing next.</h2>
+      <ul class="stack">
+        <li><strong>Mapped operations</strong><span>Know how work actually happens.</span></li>
+        <li><strong>Prioritized opportunities</strong><span>Focus on the workflows that matter.</span></li>
+        <li><strong>Researched solutions</strong><span>Know what already exists before building.</span></li>
+        <li><strong>Cost / time / risk analysis</strong><span>Compare realistic implementation paths.</span></li>
+        <li><strong>Implementation roadmap</strong><span>Buy, integrate, build &mdash; in the right order.</span></li>
+        <li><strong>Ongoing refinement</strong><span>Keep mapping only while the next cycle is valuable.</span></li>
+      </ul>
+      <p class="lede">Fewer bad bets, faster wins, and a business that becomes progressively more AI&#8209;integrated.</p>
+      <!-- L3 — the level they do not expect, and the strongest of the three.
+           `funnel-design-2026-09-20.md` §0b: the video already told them they
+           are the bottleneck; this is the line that says the bottleneck gets
+           mapped too. It is explicit here deliberately, not implied. -->
+      <p class="lede"><strong>And that includes your own job.</strong> You are on the map too &mdash; it is usually the least written-down role in the company, and the one holding the most.</p>
+    </div>
+  </section>
 
-       CAPTURE: this is a static GitHub Pages site with no backend, so the
-       form POSTs to Formspree, which stores every submission and emails it,
-       and then `_next` forwards the person to cal.com. The contact is
-       captured BEFORE the booking — so someone who fills this in and never
-       picks a time is still a lead, which is the hole Isaac named.
-       ✅ The endpoint is claimed and live; lead.js carries name and email
-       through to cal so nobody types them twice. ══ -->
+  <!-- ══════════════════════════════════════════════════════════════════════
+       THE THREE DOORS.  §1 of the funnel design.
+
+       ⛔ THE FOUNDING DEAL IS PRIMARY AND THE RETAINER'S JOB IS TO PRICE IT.
+       $3,000 for three months against $2,000/month is only legible when both
+       are on screen. The expensive option exists so the cheap one can be read.
+
+       ⛔ THE CALL IS THE EXIT, NOT A PEER — smaller, last, lower contrast, and
+       worded "rather talk first?" NEVER the word FREE next to a price: a free
+       thing beside a $2,000 thing is not a downsell, it is the obvious choice,
+       and it takes the price with it.
+
+       ⛔ SOLD OUT: when the founding cap is reached, the card STAYS ON THE PAGE
+       struck through, with the reopen date. A removed card teaches nothing; a
+       struck one proves the cap was real and makes the retainer the obvious
+       move. Add `sold-out` to the <li> and fill `.door-note`.
+       Isaac, 2026-09-20: "if they do then that part of the site's offer stack
+       just goes to SOLD OUT and you have to buy a la carte."
+
+       ⛔ THE CAP IS ENFORCED BY STRIPE, NOT DISPLAYED BY THIS PAGE. A Payment
+       Link takes a completed-sessions limit and honours it atomically, so
+       there is no race and no bookmarked-URL hole. This page only shows it.
+       ⛔ AND THE SYSTEM MUST BE THE ONLY DOOR — a founding term sold by email
+       makes the counter lie while showing a true-looking number.
+
+       ⏸ UNBUILT, AND *USER* OWNS BOTH:
+         · STRIPE_FOUNDING_URL / STRIPE_RETAINER_URL — the two links below are
+           `#` placeholders. The Stripe products do not exist yet; creating
+           live payment objects on his account is his, not an agent's.
+         · THE CAP NUMBER — `data-cap` below is unset. The remaining-count text
+           is hardcoded here for now and becomes a fetch once the function
+           exists (§2 of the design: a real cart needs one serverless function
+           because a static page cannot hold a Stripe secret key).
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="offer" class="offer-sec">
+    <div class="wrap">
+      <p class="eyebrow">Two ways in</p>
+      <h2>And I&rsquo;m still not charging that.</h2>
+
+      <ul class="doors" data-cap="">
+        <li class="door door-primary">
+          <p class="door-name">The 90&#8209;Day Founding Partnership</p>
+          <p class="door-price">$3,000<span>three months</span></p>
+          <p class="door-what">Six working sessions. Every process we map comes back with the research, the analysis, an AI&#8209;alignment score on every step, the services that already solve it, the recommendation, the integration pathway, and your custom implementation options.</p>
+          <!-- ⛔ THE DISCLOSURE GOES ON THE BUTTON, NOT IN THE TERMS.
+               §2 of the design: trial-continuation is only honest if the
+               continuation is stated where the money is. -->
+          <a class="cta-primary" href="#">Start &mdash; $3,000 &rarr;</a>
+          <p class="door-fine">Continues at $2,000 per cycle after the three months. Cancel any time.</p>
+          <p class="door-note">The founding price is limited to a real number of clients. When they are taken it closes until the next opening.</p>
+        </li>
+
+        <li class="door">
+          <p class="door-name">The Partnership</p>
+          <p class="door-price">$2,000<span>per cycle</span></p>
+          <p class="door-what">The same work, month to month. Two sessions every cycle, the mapping and research between them on my time. Start any time, stop any time.</p>
+          <a class="cta-secondary" href="#">Start &mdash; $2,000 &rarr;</a>
+          <p class="door-fine">A cycle is four weeks. We meet every two.</p>
+        </li>
+      </ul>
+
+      <p class="door-exit">Rather talk first? <a href="#book">Book a call</a> &mdash; no purchase, and I&rsquo;ll tell you if the answer is nothing.</p>
+    </div>
+  </section>
+
+  <!-- ══ THE CALL — the third door, and the only one that captures a lead we
+       would otherwise never see.
+       Isaac, 2026-09-19: "BOOK A CALL BUTTON *REQUIRES* THE CONTACT FORM
+       (because we dont get them from CAL i dont think)". So there is no bare
+       link to cal.com on this page — the ONLY way to reach the booking page is
+       by submitting this form, and the submit button IS the Book a Call button.
+
+       THE FLOW: submit → Formspree stores it and emails Isaac → `_next`
+       forwards to cal.com. The contact is captured BEFORE the booking, so
+       someone who fills this in and never picks a time is still a lead.
+       ⛔ NEVER point this action at cal.com directly — that is what it replaced.
+       ⛔ Cal's own booking questions are NOT a reason to delete this form: cal
+       fires only on a completed booking, this fires on SUBMIT. `lead.js`
+       carries name and email through as prefill so nobody types them twice.
+       ⚠ Formspree's free tier has a monthly submission cap. If bookings stop
+       arriving, check the quota before debugging the form. ══ -->
   <section id="book">
     <div class="wrap">
       <p class="eyebrow">Book a call</p>
       <p class="lede">Tell me how the business runs and I&rsquo;ll tell you where the first box goes.</p>
 
       <div class="book-form">
-      <!-- ✅ THE CAPTURE IS LIVE. Endpoint claimed by Isaac 2026-09-19.
-           Isaac's order the same day: the booking must require the form,
-           "because we dont get them from CAL i dont think" — and he was right
-           that anyone who filled it in and didn't finish booking was invisible.
-
-           THE FLOW: submit → Formspree stores it and emails Isaac → `_next`
-           forwards them to the cal.com booking page. The contact is captured
-           BEFORE the booking, which is the whole point: a person who fills the
-           form and never picks a time is still a lead.
-
-           ⛔ NEVER point this action back at cal.com. A direct GET to cal.com
-           is what this replaced, and it saved nothing on our side.
-           ⛔ CAL.COM HAS ITS OWN BOOKING QUESTIONS AND THAT IS NOT A REASON TO
-           DELETE THIS FORM. They capture at different moments: cal fires ONLY
-           on a completed booking, this fires on SUBMIT. Everyone who fills this
-           in is a lead even if they never pick a time — that is the whole point.
-           ⇒ THE DIVISION OF LABOUR: this form asks everything and captures
-           everyone; cal asks only name/email/notes and captures bookings.
-           `lead.js` rewrites `_next` on submit to carry name and email as cal
-           prefill params, so the last step before the booking has no retyping.
-           ⛔ Do NOT add company/revenue/focus as cal booking questions — they
-           are already in Formspree, and asking again is a third round of
-           typing for data you have.
-           ⚠ Formspree's free tier has a monthly submission cap. If bookings
-           ever stop arriving, check the quota before debugging the form. -->
       <form class="lead-form" action="https://formspree.io/f/xbgllvry" method="POST">
         <!-- THE EVENT: "AI Transformation Discovery Call" (Isaac, 2026-09-19).
              ⚠ Other pages still point at the older `ai-agents-for-your-business`
-             slug, deliberately — they sell DIFFERENT calls (a 15-min screening,
-             a 30-min build-map, a 15-min stand-up). Do not sweep-replace it. -->
+             slug, deliberately — they sell DIFFERENT calls. Do not sweep-replace. -->
         <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-transformation-discovery-call">
         <div class="lead-row">
           <label class="lead-field"><span>Your name</span>
@@ -183,6 +245,93 @@
         </label>
         <button class="cta-primary" type="submit">Book a call &rarr;</button>
       </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       THE FAQ.  §1b of the funnel design, drafted there as copy.
+       Isaac, 2026-09-20: "add a small FAQ section at the bottom, FAQ accordion
+       like we always see in funnels. explain all these obstacles and overcomes
+       there. 'What if i [obstacle]?' '[overcome we made]'"
+
+       ⛔ TWO LISTS AND THE ORDER MATTERS. The video already walks the deck's ten
+       obstacles, so leading with them wastes the slot. What blocks the BUTTON is
+       transactional — what am I committing to — and those go first. The
+       strategic ten follow for the skimmer who scrolled past the video.
+       ⛔ FIRST QUESTION = THE MOST COMMON BLOCKER, NOT THE MOST FLATTERING.
+       ⛔ LAST QUESTION IS THE EASIEST YES.
+       ⛔ EVERY ANSWER IS ALREADY TRUE OF THE DESIGN DOC. If one stops matching
+       §0–§4 there, the FAQ is the lie, not the design.
+
+       <details>/<summary> is deliberate — a native accordion needs no JS, is
+       keyboard accessible and works with the page's one-stylesheet rule.
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section class="faq-sec">
+    <div class="wrap">
+      <p class="eyebrow">Questions</p>
+      <h2>What if&hellip;</h2>
+
+      <div class="faq">
+        <details><summary>What if I miss a session?</summary>
+          <p>Send me what you would have said in writing and you get the written response with the work attached, exactly as if we had met. There is a rescheduling fee, because writing it up takes longer than talking &mdash; but you never lose the work. Cancel 48 hours ahead and there is no fee at all.</p></details>
+
+        <details><summary>What if I need to stop?</summary>
+          <p>Stop is a real answer at every step. Cancel any time, from your own billing page. I will ask you why, because that is the most useful thing I get from anyone who leaves.</p></details>
+
+        <details><summary>What happens at the end of the three months?</summary>
+          <p>It continues at $2,000 per cycle, and we decide that together in the last session rather than letting it happen to you. You will have had a 30&#8209;day notice and a 14&#8209;day notice before that conversation.</p></details>
+
+        <details><summary>Is implementation included?</summary>
+          <p>No. Implementation is separate, and only when you decide something is worth doing. What you are buying is knowing what is worth doing &mdash; and there is no month where I need you to buy anything else.</p></details>
+
+        <details><summary>How much of my time does this actually take?</summary>
+          <p>Two sessions per four&#8209;week cycle. The mapping and the research happen between them, on my time.</p></details>
+
+        <details><summary>What if the answer is a $40 tool I could have bought myself?</summary>
+          <p>I will tell you that. It has already happened and it will happen again. You are paying me to know which one, not to build something.</p></details>
+
+        <details><summary>What if the answer is to do nothing?</summary>
+          <p>Then I say so and we stop. Decide has a real stop in it &mdash; sometimes the honest answer is that the next round is not worth your money.</p></details>
+
+        <details><summary>Who owns what we build?</summary>
+          <p>Depends on the solution. Client&#8209;owned, licensed through my platform, or hybrid &mdash; decided per thing, not up front.</p></details>
+
+        <details><summary>Why is it sold out?</summary>
+          <p>Because it is. The founding price is limited to a real number of clients and the system stops accepting them at that number. It reopens on the date shown.</p></details>
+
+        <details><summary>What if we don&rsquo;t really know all the ways work gets done?</summary>
+          <p>That is the normal starting position and it is the first thing we fix. We map the business and make the work legible. You cannot automate a box you cannot draw.</p></details>
+
+        <details><summary>What if my people don&rsquo;t want to change?</summary>
+          <p>We start small and show value before asking anyone to trust it. Resistance is usually a reasonable response to a previous initiative that failed.</p></details>
+
+        <details><summary>What if our tools don&rsquo;t talk to each other?</summary>
+          <p>That is the integrate&#8209;across stage. Unify the data, then the handoffs stop being manual.</p></details>
+
+        <details><summary>What if nothing is documented?</summary>
+          <p>Then documenting it <em>is</em> the work of the first three months, and it is the thing everything else depends on.</p></details>
+
+        <details><summary>What if we&rsquo;re not sure what the payoff is?</summary>
+          <p>Every process comes back with cost, time and risk on each path, so you can compare them honestly instead of guessing.</p></details>
+
+        <details><summary>What if it makes a mistake?</summary>
+          <p>Controls, verification and human oversight are part of the design, not added after. The steps that need a human keep one.</p></details>
+
+        <details><summary>What if we&rsquo;re already too busy?</summary>
+          <p>That is the reason to bring someone external. The research happens on my time; your people are needed for two sessions a cycle.</p></details>
+
+        <details><summary>What if we try to do too much at once?</summary>
+          <p>We do not. It is one part of the business at a time, easiest and highest&#8209;impact first, proved before it scales.</p></details>
+
+        <details><summary>What if there are too many vendors to compare?</summary>
+          <p>Independent research on what already exists, compared against your needs, is one of the seven things every mapped process comes back with.</p></details>
+
+        <details><summary>What if it works now but not in a year?</summary>
+          <p>That is what the closure phase is for &mdash; governance, observability and a system designed to keep running.</p></details>
+
+        <details><summary>Do I have to buy to talk to you?</summary>
+          <p>No. <a href="#book">Book a call.</a></p></details>
       </div>
     </div>
   </section>

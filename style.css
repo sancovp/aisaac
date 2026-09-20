@@ -1248,3 +1248,139 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   position: absolute; inset: 0 auto 0 0; width: 0;
   background: var(--mercury-blue); border-radius: var(--r-sm);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE FUNNEL BLOCKS — the stack, the three doors, the FAQ.
+   Spec: docs/funnel-design-2026-09-20.md §1, §1b.
+
+   ⛔ ZERO NEW COLOURS AND ZERO NEW TYPE, per RULE 02's restraint law. Every
+   value below resolves to a token that already exists: the cards are the
+   `.glass` treatment this sheet already declares, the accent is
+   --mercury-blue, the rules are --glass-border, and the micro-labels are
+   --micro so they flip to mono with the depth gradient for free.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── THE STACK — slide 7's six checks ─────────────────────────────────────── */
+.stack-sec { padding: var(--sec-y) 1.25rem; }
+.stack {
+  list-style: none; margin: 2.25rem 0; padding: 0;
+  display: grid; gap: 1px; background: var(--glass-border);
+  border: 1px solid var(--glass-border); border-radius: var(--r-card);
+  overflow: hidden;
+}
+.stack > li {
+  background: var(--void); padding: 1.25rem 1.5rem;
+  display: grid; gap: 0.3rem;
+}
+.stack > li::before {
+  content: '✓'; color: var(--mercury-blue);
+  font-size: 0.9rem; line-height: 1;
+}
+.stack > li strong { color: var(--text-1); font-weight: 500; font-size: 1rem; }
+.stack > li span { color: var(--text-2); font-size: 0.92rem; line-height: 1.6; }
+@media (min-width: 720px) { .stack { grid-template-columns: 1fr 1fr; } }
+
+/* ── THE THREE DOORS ──────────────────────────────────────────────────────── */
+.offer-sec { padding: var(--sec-y) 1.25rem; }
+.doors {
+  list-style: none; margin: 2.25rem 0 1.75rem; padding: 0;
+  display: grid; gap: 1.25rem;
+}
+@media (min-width: 820px) { .doors { grid-template-columns: 1.15fr 1fr; align-items: start; } }
+
+.door {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--r-card); padding: 1.75rem;
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+}
+/* the founding deal carries the accent edge — it is the primary and the
+   retainer's job is to price it (§1). */
+.door-primary { border-color: rgba(125,211,252,0.35); }
+
+.door-name {
+  font-family: var(--micro); font-size: 0.78rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-2); margin: 0 0 0.75rem;
+}
+.door-price {
+  font-family: var(--display); font-size: clamp(2.1rem, 5vw, 2.9rem);
+  color: var(--text-1); line-height: 1; margin: 0 0 1.1rem;
+  display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+}
+.door-price span {
+  font-family: var(--body); font-size: 0.85rem; letter-spacing: 0.02em;
+  color: var(--text-3); font-weight: 400;
+}
+.door-what {
+  color: var(--text-2); font-size: 0.95rem; line-height: var(--lh-prose);
+  margin: 0 0 1.5rem;
+}
+.door .cta-primary { width: 100%; text-align: center; }
+/* ⛔ THE RETAINER IS A $2,000 PURCHASE AND MUST READ AS A BUTTON.
+   The site-wide `.cta-secondary` is a small underlined TEXT LINK, which is
+   right everywhere else and wrong here — rendered beside the filled primary it
+   read as a footnote, not a door. This override is scoped to `.door` so no
+   other page moves. The hierarchy is kept the honest way: same shape, same
+   size, FILLED beats OUTLINED. */
+.door .cta-secondary {
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-1); background: transparent;
+  border: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+  padding: 1rem 2.4rem; border-radius: var(--r-sm);
+  display: block; width: 100%; text-align: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.door .cta-secondary:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
+/* ⛔ THE DISCLOSURE SITS WITH THE MONEY, NOT IN THE TERMS (§2). */
+.door-fine {
+  color: var(--text-3); font-size: 0.82rem; line-height: 1.6;
+  margin: 0.9rem 0 0;
+}
+.door-note {
+  color: var(--text-3); font-size: 0.82rem; line-height: 1.6;
+  margin: 0.9rem 0 0; padding-top: 0.9rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+/* ⛔ SOLD OUT — the card STAYS, struck. A removed card teaches nothing; a
+   struck one proves the cap was real and makes the retainer the obvious move
+   (§3). Add `sold-out` to the <li> and put the reopen date in `.door-note`. */
+.door.sold-out { opacity: 0.55; }
+.door.sold-out .door-price { text-decoration: line-through; text-decoration-thickness: 2px; }
+.door.sold-out .cta-primary, .door.sold-out .cta-secondary { pointer-events: none; opacity: 0.4; }
+.door.sold-out .door-name::after {
+  content: ' — sold out'; color: var(--mercury-rose); text-decoration: none;
+}
+
+/* the call is the EXIT, not a peer — smaller, last, lower contrast, and never
+   the word FREE next to a price (§1). */
+.door-exit { color: var(--text-3); font-size: 0.92rem; line-height: 1.7; margin: 0; }
+.door-exit a { color: var(--mercury-blue); border-bottom: 1px solid rgba(125,211,252,0.25); }
+.door-exit a:hover { border-bottom-color: var(--mercury-blue); }
+
+/* ── THE FAQ — native <details>, no JS ────────────────────────────────────── */
+.faq-sec { padding: var(--sec-y) 1.25rem; }
+.faq {
+  margin-top: 2.25rem;
+  border-top: 1px solid var(--glass-border);
+}
+.faq details { border-bottom: 1px solid var(--glass-border); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 1.15rem 2.5rem 1.15rem 0;
+  color: var(--text-1); font-size: 1rem; line-height: 1.55; position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: '+'; position: absolute; right: 0.25rem; top: 1rem;
+  color: var(--mercury-blue); font-size: 1.25rem; line-height: 1;
+  transition: transform 160ms ease;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: var(--mercury-blue); }
+.faq summary:focus-visible { outline: 2px solid var(--mercury-blue); outline-offset: 3px; }
+.faq details p {
+  color: var(--text-2); font-size: 0.95rem; line-height: var(--lh-prose);
+  margin: 0 0 1.3rem; padding-right: 2.5rem; max-width: 68ch;
+}
+.faq details p a { color: var(--mercury-blue); border-bottom: 1px solid rgba(125,211,252,0.25); }
+@media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
