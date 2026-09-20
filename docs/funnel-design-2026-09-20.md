@@ -408,6 +408,55 @@ the receipt and the onboarding page, and §0b's law is one name in every place.
 
 ---
 
+## 4c-ii. MISSED SESSIONS — the fee, and the clause that keeps billing honest
+
+*USER*, 2026-09-20: *"every two weeks, if you miss a session then you pay a fee and we reschedule
+but the 4 week schedule remains the same."*
+
+**BILLING NEVER MOVES, AND THAT IS THE CORRECT CALL.** The cycle is a CALENDAR, not a session
+counter — otherwise two reschedules push a client's billing date into a different month and every
+other number in this document drifts with it.
+
+### THE NOTICE WINDOW — the distinction the policy needs
+
+| | | |
+|---|---|---|
+| cancelled **with notice** (≥48h) | reschedule, **no fee** | the slot can be refilled — nothing was lost |
+| cancelled **late** (<48h) | fee + reschedule | the slot is gone |
+| **no-show** | fee + reschedule | the slot is gone |
+
+Without the window a client with a genuine conflict who gives five days' notice is charged the same
+as someone who simply does not appear, which is both unfair and unnecessary. **cal.com enforces the
+window natively** — inside 48h the client cannot self-cancel and has to make contact, which is the
+right friction in the right place.
+
+### ⛔ THE CONSEQUENCE UPSTREAM: §0b's GUARANTEE CANNOT PROMISE SIX SESSIONS
+
+If the term is calendar-fixed at 12 weeks and a client misses two sessions, **six sessions cannot
+fit inside it.** A promise of six is then a promise the policy itself can break.
+
+⇒ **THE FIX IS ALREADY HALF-BUILT — §0b MOVED THE GUARANTEE TO THE MAPPING OUTPUT.** Sessions are
+the CADENCE; the deliverable is processes mapped to the seven-artifact standard. So the promise
+reads:
+
+> We meet every two weeks for twelve weeks — six sessions. What is guaranteed is what comes out of
+> them: **every process we map comes back with all seven.** Attendance is yours.
+
+Honest, protective, and it keeps the strong half of the promise — which was never the session count.
+
+### ⏸ FEE OR FORFEIT — *USER*'s call; they cost differently to RUN
+
+| | mechanism cost | |
+|---|---|---|
+| **forfeit** — miss it, it is spent | **none.** self-enforcing, nothing to collect | harsher |
+| **fee + reschedule** — *USER*'s stated choice | needs a payment path: the card on file charged one-off, or an invoice someone has to chase | relationship-preserving |
+
+Recommended for founding clients: **fee + reschedule**, charged to the card Stripe already holds
+from checkout — so there is nothing to chase. ⛔ **THE FEE AMOUNT IS AN OFFER TERM AND IS *USER*'S
+ALONE.** For reference only, the cadence math in §4c puts a session at **$1,000**.
+
+---
+
 ## 4d. THE CANCEL FLOW — the reason is required, and Stripe does it natively
 
 *USER*: *"the cancel flow has to ask them for a reason why."*
