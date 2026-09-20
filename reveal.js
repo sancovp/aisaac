@@ -106,7 +106,15 @@
              skim past — each question arrives, opens, is read, and hands over
              to the next. `open` is set rather than a class so the native
              <details> semantics (and its accessibility) stay intact. */
-          var isCurrent = live && (i === n - 1 || p < next);
+          /* ⛔ THE FIRST QUESTION IS OPEN ON ARRIVAL. With `live` gated on
+             `p >= a`, the opening screen of the FAQ showed twenty dim
+             summaries, nothing open and a 380px hole — the single worst
+             screen on the page, and it was the one that introduced a
+             thirteen-screen section. Item 0 is current from the top of the
+             track; the walk starts already underway. */
+          var isCurrent = i === 0
+            ? (p < d.a + span)
+            : (live && (i === n - 1 || p < next));
           if (isCurrent) cur = i;
           el.open = isCurrent;
           el.classList.toggle('on', isCurrent);
@@ -126,6 +134,16 @@
         d.last = cur;
         var pick = d.items[cur < 0 ? 0 : cur];
         var shift = (d.box.clientHeight - pick.offsetHeight) / 2 - pick.offsetTop;
+
+        /* ⛔ CLAMP, OR THE STAGE SHOWS EMPTINESS AT BOTH ENDS. Centring alone
+           pushes the reel DOWN for the first few questions (blank above) and
+           drags it up past the last one (blank below) — the first screen of
+           the walk was a 380px void for exactly this reason. Clamped, the
+           live answer drifts from the top of the stage to the middle over the
+           first few beats and settles; the stage is never part empty. */
+        var floor = Math.min(0, d.box.clientHeight - d.reel.offsetHeight);
+        if (shift > 0) shift = 0;
+        if (shift < floor) shift = floor;
         d.reel.style.setProperty('--shift', Math.round(shift) + 'px');
       }
 

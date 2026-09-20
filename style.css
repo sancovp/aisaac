@@ -1192,9 +1192,15 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    ⛔ The collapse rule follows the base rule, deliberately — same trap
    .book-duo documents above: a grid-template-columns written after the
    breakpoint wins at equal specificity and silently defeats the collapse. */
+/* ⛔ THE COLUMNS ARE CENTRED, NOT TOP-ALIGNED. The film is a 16:9 band about
+   355px tall and the person column is ~900px (a full-width portrait plus two
+   paragraphs), so `align-items: start` left a 545px EMPTY HOLE under the video
+   — measured at 1440×900, and it was the largest void on the page. Centring
+   splits that difference into breathing room on both sides of the film
+   instead of one dead quarter-screen. */
 .hero-duo {
   display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
-  gap: 3rem; align-items: start; margin-top: 2.5rem;
+  gap: 3rem; align-items: center; margin-top: 2.5rem;
 }
 .hero-duo > * { min-width: 0; }
 .hero-duo .portrait-frame { width: 100%; border-radius: var(--r-card); margin-bottom: 1.25rem; }
@@ -1286,7 +1292,11 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   list-style: none; margin: 2.25rem 0 1.75rem; padding: 0;
   display: grid; gap: 1.25rem;
 }
-@media (min-width: 820px) { .doors { grid-template-columns: 1.15fr 1fr; align-items: start; } }
+/* ⛔ THE TWO DOORS ARE THE SAME HEIGHT. `align-items: start` let the retainer
+   card stop 105px short of the founding card, so the cheaper door read as a
+   smaller, lesser object floating beside the real one — a visual discount on
+   a $2,000 product. Stretching costs nothing and the cards square up. */
+@media (min-width: 820px) { .doors { grid-template-columns: 1.15fr 1fr; align-items: stretch; } }
 
 .door {
   background: var(--glass-bg); border: 1px solid var(--glass-border);
@@ -1463,9 +1473,14 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 }
 .cascade > li > span { color: var(--text-2); font-size: 0.95rem; line-height: 1.7; }
 .cascade > li > span em { color: var(--text-1); font-style: italic; }
-/* struck = superseded by the rung below it */
+/* struck = superseded by the rung below it.
+   ⛔ STRUCK IS NOT HIDDEN. A crossed-out price still has to be READ — the
+   descent 38 → 19 → 9 IS the section, and a number nobody can make out
+   delivers none of it. This was `--text-3`, which combined with the 0.45
+   `.past` opacity below rendered $19,000 and $9,000 as barely-there smudges
+   at 1440×900. The LINE marks them superseded; the colour must not. */
 .cascade .struck > b {
-  color: var(--text-3);
+  color: var(--text-2);
   text-decoration: line-through; text-decoration-thickness: 3px;
   text-decoration-color: var(--mercury-rose);
 }
@@ -1550,7 +1565,7 @@ html.js .cascade-punch.on {
    line REFERS to it. "And I'm still not charging that" is meaningless if
    "that" is the faintest thing on screen. The anchor holds; the two struck
    rungs recede, which is what makes it read as a descent instead of a list. */
-html.js .cascade > li.struck.on.past { opacity: 0.45; transition: opacity 420ms ease; }
+html.js .cascade > li.struck.on.past { opacity: 0.75; transition: opacity 420ms ease; }
 
 /* the strike wipes as its own rung lands, not on a global timer */
 html.js .cascade .struck.on > b::after {
@@ -1708,8 +1723,13 @@ html.js .faq-reel {
   transition: transform 620ms cubic-bezier(.22,.61,.36,1);
   will-change: transform;
 }
-html.js .faq details { opacity: 0.18; transition: opacity 380ms ease; }
-html.js .faq details.past { opacity: 0.4; }
+/* ⛔ THE UNREAD QUESTIONS ARE DIM, NEVER ILLEGIBLE. At 0.18 the whole column
+   read as grey noise — and since the walk shows ~10 questions at a time with
+   one open, that meant nine tenths of the screen was unreadable smudge. The
+   questions ahead are part of the argument: seeing "What if I need to stop?"
+   coming is what makes someone keep walking. */
+html.js .faq details { opacity: 0.34; transition: opacity 380ms ease; }
+html.js .faq details.past { opacity: 0.55; }
 html.js .faq details.on { opacity: 1; }
 html.js .faq details.on summary { color: var(--mercury-blue); }
 html.js .faq details:not(.on) > p { display: none; }
