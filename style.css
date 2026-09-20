@@ -1314,14 +1314,16 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   color: var(--text-2); font-size: 0.95rem; line-height: var(--lh-prose);
   margin: 0 0 1.5rem;
 }
-.door .cta-primary { width: 100%; text-align: center; }
+.door .cta-primary,
+.close-doors .cta-primary { width: 100%; text-align: center; }
 /* ⛔ THE RETAINER IS A $2,000 PURCHASE AND MUST READ AS A BUTTON.
    The site-wide `.cta-secondary` is a small underlined TEXT LINK, which is
    right everywhere else and wrong here — rendered beside the filled primary it
    read as a footnote, not a door. This override is scoped to `.door` so no
    other page moves. The hierarchy is kept the honest way: same shape, same
    size, FILLED beats OUTLINED. */
-.door .cta-secondary {
+.door .cta-secondary,
+.close-doors .cta-secondary {
   font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--text-1); background: transparent;
@@ -1330,7 +1332,25 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   display: block; width: 100%; text-align: center;
   transition: border-color 0.2s, color 0.2s;
 }
-.door .cta-secondary:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
+.door .cta-secondary:hover,
+.close-doors .cta-secondary:hover { color: var(--mercury-blue); border-color: var(--mercury-blue); }
+
+/* ── THE TERMINUS ────────────────────────────────────────────────────────
+   The last screen of the driven walk. It carries no new vocabulary: the two
+   buttons, the names and the fine print are the #offer block's, and the only
+   declarations here are LAYOUT. See the HTML comment above .close-sec for why
+   a repeated CTA is not a second offer. */
+.close-sec { padding: var(--sec-y) 1.25rem; border-top: 1px solid var(--glass-border); }
+.close-lede {
+  font-family: var(--display); font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  color: var(--text-1); line-height: 1.25; margin: 0 0 2.2rem;
+}
+.close-doors {
+  list-style: none; margin: 0 0 1.6rem; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem;
+}
+.close-doors > li { margin: 0; }
+@media (max-width: 720px) { .close-doors { grid-template-columns: 1fr; } }
 /* ⛔ THE DISCLOSURE SITS WITH THE MONEY, NOT IN THE TERMS (§2). */
 .door-fine {
   color: var(--text-3); font-size: 0.82rem; line-height: 1.6;
@@ -1427,14 +1447,8 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    per beat, which is the "slower scroll": you cannot flick past the cascade,
    and you are never held against your input either.
    ⛔ `html:not(.js)` collapses the whole thing back to ordinary flow. */
-.cascade-sec { position: relative; height: 340vh; padding: 0; }
-.cascade-pin {
-  position: sticky; top: 0; min-height: 100vh;
-  display: flex; align-items: center; padding: 3rem 1.25rem;
-}
-html:not(.js) .cascade-sec { height: auto; padding: var(--sec-y) 0 calc(var(--sec-y) * 0.4); }
-html:not(.js) .cascade-pin { position: static; min-height: 0; padding: 0 1.25rem; }
-@media (max-width: 720px) { .cascade-sec { height: 300vh; } }
+/* the cascade now uses the SHARED track/stage below — its height comes from
+   --track, which reveal.js derives from the item count. */
 /* ⛔ SAME — full wrap. See .cost above. */
 .cascade { list-style: none; margin: 2.5rem 0 0; padding: 0; }
 .cascade > li {
@@ -1625,3 +1639,95 @@ html.js .cascade .struck.on > b::after {
 .phone-field { margin-top: 1rem; }
 .phone-field[hidden] { display: none; }
 .phone-field span em { color: var(--text-3); font-style: normal; text-transform: none; letter-spacing: 0; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE DRIVEN WALK — every section is a TRACK with a sticky STAGE.
+   Isaac: "force/control the entire experience. never relinquish the scroll
+   control to go down faster until they hit the absolute bottom."
+
+   ⛔ THE CONTROL IS DISTANCE, NOT INTERCEPTION. Each section is as tall as its
+   content deserves (--track, set by reveal.js from the item count) and the
+   stage inside is sticky, so scrolling the track advances the content instead
+   of leaving it. The wheel is never touched — there is just more page between
+   them and the bottom, and every beat is on the way down.
+
+   ⛔ COLLAPSES COMPLETELY without JS or under reduced-motion: no track, no
+   pin, everything visible. See the two blocks at the end.
+   ══════════════════════════════════════════════════════════════════════════ */
+html.js .cost-sec,
+html.js .stack-sec,
+html.js .cascade-sec,
+html.js .faq-sec {
+  position: relative; height: var(--track, 300vh); padding: 0;
+}
+html.js .cost-sec > .wrap,
+html.js .stack-sec > .wrap,
+html.js .faq-sec > .wrap,
+html.js .cascade-pin {
+  position: sticky; top: 0; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3rem 1.25rem;
+}
+html.js .cost-sec > .wrap,
+html.js .stack-sec > .wrap,
+html.js .faq-sec > .wrap { width: 100%; max-width: none; }
+html.js .cost-sec > .wrap > *,
+html.js .stack-sec > .wrap > *,
+html.js .faq-sec > .wrap > * { max-width: var(--wrap); width: 100%; margin-left: auto; margin-right: auto; }
+
+/* the items themselves arrive as their beat lands */
+html.js .cost > li,
+html.js .stack > li { opacity: 0; transform: translateY(20px); }
+html.js .cost > li.on,
+html.js .stack > li.on {
+  opacity: 1; transform: none;
+  transition: opacity 480ms cubic-bezier(.22,.61,.36,1),
+              transform 480ms cubic-bezier(.22,.61,.36,1);
+}
+/* ⛔ THE COST TOTAL IS NOT DIMMED WHEN SUPERSEDED — it is the anchor the whole
+   cascade is measured against, same rule as $38,000 in the cascade. */
+html.js .cost > li.cost-total.on.past { opacity: 1; }
+
+/* ── THE FAQ, ONE AT A TIME ──────────────────────────────────────────────
+   ⛔ EVERY ANSWER IS WALKED THROUGH, NOT SKIMMED PAST. The current question is
+   open and lit; the ones already read recede but stay legible so the reader
+   can see how far they have come; the ones ahead are dim. `open` is set on the
+   native <details>, so keyboard and screen-reader behaviour is unchanged. */
+html.js .faq {
+  border-top: 0; max-height: 78vh; overflow: hidden; position: relative;
+  /* the questions dissolve at the top and bottom of the window instead of
+     being guillotined by the overflow edge — the stage reads as a stage */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+}
+/* THE REEL — built by reveal.js, never present in the HTML. It carries the
+   whole list and slides so the open answer is always at the same height. */
+html.js .faq-reel {
+  transform: translateY(var(--shift, 0px));
+  transition: transform 620ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+html.js .faq details { opacity: 0.18; transition: opacity 380ms ease; }
+html.js .faq details.past { opacity: 0.4; }
+html.js .faq details.on { opacity: 1; }
+html.js .faq details.on summary { color: var(--mercury-blue); }
+html.js .faq details:not(.on) > p { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .cost-sec, html.js .stack-sec, html.js .cascade-sec, html.js .faq-sec {
+    height: auto !important; padding: var(--sec-y) 1.25rem !important;
+  }
+  html.js .cost-sec > .wrap, html.js .stack-sec > .wrap,
+  html.js .faq-sec > .wrap, html.js .cascade-pin {
+    position: static !important; min-height: 0; padding: 0;
+  }
+  html.js .cost > li, html.js .stack > li { opacity: 1 !important; transform: none !important; }
+  html.js .faq {
+    max-height: none; overflow: visible;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  html.js .faq-reel { transform: none !important; transition: none; }
+  html.js .faq details { opacity: 1 !important; }
+  html.js .faq details:not(.on) > p { display: block; }
+}

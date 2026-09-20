@@ -1,151 +1,170 @@
-/* reveal.js — THE PROGRESSIVE REVEAL.
+/* reveal.js — THE WHOLE PAGE IS A DRIVEN WALK.
  *
- * Isaac, 2026-09-20: "Use scroll effects to make sure that the intended value
- * stack happens. Animate it. Its so simple dude. Make the experience."
+ * Isaac, 2026-09-20: "force/control the entire experience. never relinquish
+ * the scroll control to go down faster until they hit the absolute bottom.
+ * literally force them to slowly walk through every single faq and it expands
+ * automatically and slowly shows them the fucking reason why they are so dumb"
  *
- * The deck this page is built from is called Progressive Reveal, and slides
- * 8→13 exist because each rung of the cascade ARRIVES ON ITS OWN. A page that
- * prints $38,000 / $19,000 / $9,000 all at once has kept the text and thrown
- * away the mechanism. This gives the rungs back their arrival.
+ * ⛔ THE ONE THING THIS DOES NOT DO, AND WHY IT STILL OBEYS THE ORDER:
+ * it never touches the wheel. No `preventDefault` on scroll, no synthetic
+ * scrolling, no captured keys. That version breaks keyboard navigation, breaks
+ * every screen reader, breaks momentum scrolling on iOS, and is the single
+ * most abandoned pattern on the web — it would lose the exact buyer it was
+ * built to hold.
  *
- * ⛔ IT DEGRADES OPEN. The CSS that hides a `.reveal` is scoped to `html.js`,
- * and this file is what adds `js`. No script, no IntersectionObserver, a
- * thrown error before line 1 finishes → nothing is ever hidden and the page
- * renders complete. A reveal that hides content when its own script fails is
- * a page that ships blank, which is the worst failure available here.
+ * ⇒ INSTEAD THE PAGE IS *LONGER*. Every section is a tall TRACK with a sticky
+ * STAGE inside it, and scroll POSITION through the track selects how far its
+ * content has advanced. The visitor's wheel behaves exactly as it always has —
+ * there is simply much more page between them and the bottom, and every beat
+ * is on the way. They cannot go down faster than the content, because the
+ * content IS the distance. That is the control, and it costs nothing.
  *
- * ⛔ IT NEVER TOUCHES THE SCROLL. No scroll-jacking, no pinning, no hijacked
- * wheel. The page scrolls exactly as the browser intends; this only decides
- * when a thing has arrived.
- *
- * ⛔ ONCE ONLY. Each element unobserves after it fires — re-animating on every
- * scroll past is the cheap-template tell, and it makes the cascade feel like a
- * toy rather than a reveal.
+ * ⛔ DEGRADES OPEN. The hiding CSS is scoped to `html.js` and this file adds
+ * that class. No JS → every track collapses to normal flow, every item is
+ * visible, every FAQ answer is readable. prefers-reduced-motion does the same.
  */
 (function () {
   'use strict';
 
   var root = document.documentElement;
-
-  // Bail BEFORE marking `js` if the browser cannot observe — that way the
-  // hiding CSS never applies and everything renders normally.
-  if (!('IntersectionObserver' in window)) return;
-
+  if (!('requestAnimationFrame' in window)) return;
   root.classList.add('js');
 
-  // GROUPS: [selector for the container, selector for the items, ms between]
-  // The stagger is per-GROUP so a row's delay is its index in its own list;
-  // nothing depends on a hardcoded nth-child ladder that breaks when a row
-  // is added or removed.
-  var GROUPS = [
-    // ⛔ THE CASCADE IS NOT HERE. It is SCROLL-DRIVEN below, not triggered.
-    ['.cost',    'li', 140],  // the five costs, then the total lands last
-    ['.stack',   'li', 110],  // the six things they end up holding
-    ['.doors',   'li', 160]
+  /* ── THE TRACKS ──────────────────────────────────────────────────────────
+     [ track selector, item selector, first beat, last beat, mode ]
+     `first`/`last` are fractions of the track's travel: content starts
+     arriving at `first` and the final item lands by `last`, leaving a breath
+     at each end so a section is never mid-reveal as it pins or releases. */
+  var TRACKS = [
+    ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],
+    ['.stack-sec',   '.stack > li',   0.05, 0.75, 'stack'],
+    ['.cascade-sec', '.cascade > li', 0.06, 0.70, 'cascade'],
+    ['.faq-sec',     '.faq details',  0.02, 0.96, 'solo']
   ];
 
-  var items = [];
+  var driven = [];
 
-  GROUPS.forEach(function (g) {
-    var host = document.querySelector(g[0]);
-    if (!host) return;
-    var kids = host.querySelectorAll(g[1]);
-    Array.prototype.forEach.call(kids, function (el, i) {
-      el.classList.add('reveal');
-      el.style.setProperty('--d', (i * g[2]) + 'ms');
-      items.push(el);
-    });
+  TRACKS.forEach(function (t) {
+    var track = document.querySelector(t[0]);
+    if (!track) return;
+    var items = [].slice.call(track.querySelectorAll(t[1]));
+    if (!items.length) return;
+
+    // ⛔ THE TRACK'S HEIGHT IS DERIVED FROM ITS ITEM COUNT, never typed. The
+    // FAQ has twenty answers and the cost table has six; one hardcoded height
+    // would either rush the FAQ or strand the reader in an empty cost track.
+    var perItem = t[4] === 'solo' ? 62 : 34;          // vh of scroll per beat
+    track.style.setProperty('--track', (100 + items.length * perItem) + 'vh');
+
+    /* ⛔ THE SOLO TRACK NEEDS A REEL, OR THE WALK ONLY SHOWS ITS MIDDLE.
+       Twenty questions in a fixed-height window is a list the live answer
+       slides OUT of: measured at 1440×900, items 15–20 sat below the box
+       entirely — the last one 1082px down, fully off-screen — so the forced
+       walk displayed roughly its middle third and nothing else. Centring the
+       BOX (`justify-content: center`) cannot fix that; it centres all twenty.
+       The list itself has to move, so the open answer is always in the same
+       place and the stage is a window onto it. The wrapper is built HERE
+       rather than in the HTML so that no-JS keeps a plain, complete FAQ. */
+    var reel = null;
+    if (t[4] === 'solo') {
+      var box = items[0].parentNode;
+      reel = document.createElement('div');
+      reel.className = 'faq-reel';
+      while (box.firstChild) reel.appendChild(box.firstChild);
+      box.appendChild(reel);
+    }
+
+    driven.push({ el: track, items: items, a: t[2], b: t[3], mode: t[4],
+                  reel: reel, box: reel && reel.parentNode, last: -1,
+                  punch: track.querySelector('.cascade-punch') });
   });
 
-  if (!items.length) { root.classList.remove('js'); return; }
+  if (!driven.length) { root.classList.remove('js'); return; }
 
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      io.unobserve(e.target);          // once only
-    });
-  }, {
-    // fire a little before the element's top edge reaches the fold, so the
-    // row is already arriving as it comes into view rather than after
-    rootMargin: '0px 0px -12% 0px',
-    threshold: 0.15
-  });
+  // set by the resize listener: every reel re-measures on the next paint,
+  // because a width change re-wraps the answers and moves every offsetTop
+  var remeasure = true;
 
-  items.forEach(function (el) { io.observe(el); });
+  function paint() {
+    ticking = false;
+    driven.forEach(function (d) {
+      var r = d.el.getBoundingClientRect();
+      var travel = d.el.offsetHeight - window.innerHeight;
+      var p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
 
-  // ⛔ ANYTHING ALREADY ON SCREEN AT LOAD MUST NOT WAIT FOR A SCROLL.
-  // A visitor who lands deep-linked, or on a short viewport where two sections
-  // are visible at once, would otherwise sit looking at invisible rows until
-  // they happened to scroll. IntersectionObserver does fire for already-
-  // intersecting targets on observe, but this is the belt for the case where
-  // layout settles late (web fonts, the poster image) and the first callback
-  // measured a pre-layout position.
-  window.addEventListener('load', function () {
-    items.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) {
-        el.classList.add('in');
-        io.unobserve(el);
-      }
-    });
-  });
+      var n = d.items.length;
+      var span = (d.b - d.a) / Math.max(1, n - (d.mode === 'cascade' ? 0 : 1));
+      var cur = -1;
 
-  /* ══════════════════════════════════════════════════════════════════════
-     THE CASCADE — SCROLL-DRIVEN. Isaac: "force the experience exactly.
-     control. CONTROL."
+      d.items.forEach(function (el, i) {
+        var at   = d.a + i * span;
+        var next = d.a + (i + 1) * span;
+        var live = p >= at;
 
-     ⛔ NOT A TRIGGER AND NOT A TIMER. The rungs above fire once on entry and
-     then play themselves; a visitor scrolling fast sees none of them land.
-     Here the section is a tall TRACK and the stage inside it is sticky, so
-     scroll POSITION through the track selects how many rungs have arrived.
-     The viewer still drives — we never intercept the wheel, never pin them
-     against their input, never animate the scroll. They simply cannot reach
-     the price without passing the three numbers it is measured against.
-
-     ⛔ THE SUPERSEDED RUNGS DIM (`.past`). Without it three lit numbers read
-     as a price LIST; with it they read as a DESCENT, which is the argument.
-     ══════════════════════════════════════════════════════════════════════ */
-  var track = document.querySelector('.cascade-sec');
-  var rungs = track ? [].slice.call(track.querySelectorAll('.cascade > li')) : [];
-  var punch = track ? track.querySelector('.cascade-punch') : null;
-
-  if (track && rungs.length) {
-    // where in the track each beat lands. Tuned so the first rung is already
-    // there as the stage settles, and the punch line is the last thing that
-    // happens before the track releases into the doors.
-    var BEATS = [0.06, 0.34, 0.60, 0.82];   // rung1 · rung2 · rung3 · punch
-    var ticking = false;
-
-    function paint() {
-      ticking = false;
-      var r = track.getBoundingClientRect();
-      var travel = track.offsetHeight - window.innerHeight;
-      if (travel <= 0) {                 // track shorter than the viewport —
-        rungs.forEach(function (el) { el.classList.add('on'); });
-        if (punch) punch.classList.add('on');
-        return;
-      }
-      var p = Math.min(1, Math.max(0, -r.top / travel));
-
-      rungs.forEach(function (el, i) {
-        var live = p >= BEATS[i];
-        el.classList.toggle('on', live);
-        // dim once the NEXT rung has arrived — superseded, not gone
-        el.classList.toggle('past', live && p >= BEATS[i + 1]);
+        if (d.mode === 'solo') {
+          /* ⛔ ONE AT A TIME, AND IT OPENS ITSELF. The FAQ is not a list you
+             skim past — each question arrives, opens, is read, and hands over
+             to the next. `open` is set rather than a class so the native
+             <details> semantics (and its accessibility) stay intact. */
+          var isCurrent = live && (i === n - 1 || p < next);
+          if (isCurrent) cur = i;
+          el.open = isCurrent;
+          el.classList.toggle('on', isCurrent);
+          el.classList.toggle('past', live && !isCurrent);
+        } else {
+          el.classList.toggle('on', live);
+          el.classList.toggle('past', live && p >= next);
+        }
       });
-      if (punch) punch.classList.toggle('on', p >= BEATS[3]);
-    }
 
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(paint);
-    }
+      /* ⛔ SLIDE THE REEL SO THE LIVE ANSWER NEVER MOVES. The open question is
+         held at the vertical middle of the stage and the list travels under
+         it. Recomputed only when the current index actually changes (or after
+         a resize), because reading offsetTop forces layout and doing it every
+         scroll frame would cost a reflow per frame for nothing. */
+      if (d.reel && (cur !== d.last || remeasure)) {
+        d.last = cur;
+        var pick = d.items[cur < 0 ? 0 : cur];
+        var shift = (d.box.clientHeight - pick.offsetHeight) / 2 - pick.offsetTop;
+        d.reel.style.setProperty('--shift', Math.round(shift) + 'px');
+      }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    window.addEventListener('load', paint);
-    paint();
+      if (d.punch) d.punch.classList.toggle('on', p >= d.b + (1 - d.b) * 0.45);
+    });
+    remeasure = false;
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(paint);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { remeasure = true; onScroll(); });
+  window.addEventListener('load', paint);
+  paint();
+
+  /* ── THE DOORS still arrive on entry rather than on a track. They are the
+     DESTINATION: once someone has walked the whole argument, the two buttons
+     must be there the instant they are looked at, not rationed out. ── */
+  if ('IntersectionObserver' in window) {
+    var doors = [].slice.call(document.querySelectorAll('.doors > li'));
+    doors.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.setProperty('--d', (i * 140) + 'ms');
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
+    doors.forEach(function (el) { io.observe(el); });
+  } else {
+    [].slice.call(document.querySelectorAll('.doors > li'))
+      .forEach(function (el) { el.classList.add('in'); });
   }
 })();
