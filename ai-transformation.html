@@ -164,18 +164,46 @@
     </div>
   </section>
 
-  <!-- ══ SLIDES 8–12 — THE CASCADE. This is the setup the page was missing,
-       and it is why the next heading lands. Each rung is struck as the next
-       arrives, exactly as the deck reveals them one slide at a time. ══ -->
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SLIDES 8–13 — THE CASCADE, AND IT IS SCROLL-DRIVEN, NOT SCROLL-TRIGGERED.
+
+       Isaac, 2026-09-20: "slower scroll. force the experience exactly.
+       control. CONTROL."
+
+       ⛔ THE DIFFERENCE, AND IT IS THE WHOLE THING: a triggered reveal fires
+       once when the section enters and then runs on a TIMER — the viewer can
+       scroll straight past $38,000 → $19,000 → $9,000 and never see a single
+       rung land. A DRIVEN reveal maps SCROLL POSITION to rung index inside a
+       pinned stage: the section holds still, and each rung arrives because
+       they advanced it. They keep control of the pace; they cannot skip the
+       beats. That is what the deck does one slide at a time, and it is why
+       the file is called Progressive Reveal.
+
+       ⛔ THE PUNCH LINE LIVES INSIDE THE PIN. "And I'm still not charging
+       that" is the cascade's LAST RUNG, not the doors' heading — it has to
+       arrive after $9,000 is struck, on the same stage, or it is an orphan
+       again (which is exactly the bug Isaac caught an hour ago).
+
+       ⛔ NO SCROLL-JACKING. The track is a tall section and the stage is
+       `position: sticky`. The browser scrolls exactly as it always does; only
+       what is REVEALED is a function of how far through the track you are.
+       Nothing is intercepted, nothing is animated against the user's input.
+
+       ⛔ DEGRADES OPEN: `html:not(.js)` collapses the track to normal flow
+       with every rung visible and every strike drawn.
+       ══════════════════════════════════════════════════════════════════════ -->
   <section class="cascade-sec">
-    <div class="wrap">
-      <p class="eyebrow">So what&rsquo;s a fair price for this?</p>
-      <h2>Process mapping, opportunity analysis, solution research, and ongoing advisory.</h2>
-      <ol class="cascade">
-        <li><b>$38,000+</b><span>Market rate &mdash; a reasonable anchor for the first three months of this level of work.</span></li>
-        <li class="struck"><b>$19,000+</b><span>But it&rsquo;s not even that price. It&rsquo;s not even half that.</span></li>
-        <li class="struck"><b>$9,000+</b><span>It&rsquo;s not even half <em>that</em>.</span></li>
-      </ol>
+    <div class="cascade-pin">
+      <div class="wrap">
+        <p class="eyebrow">So what&rsquo;s a fair price for this?</p>
+        <h2>Process mapping, opportunity analysis, solution research, and ongoing advisory.</h2>
+        <ol class="cascade">
+          <li><b>$38,000+</b><span>Market rate &mdash; a reasonable anchor for the first three months of this level of work.</span></li>
+          <li class="struck"><b>$19,000+</b><span>But it&rsquo;s not even that price. It&rsquo;s not even half that.</span></li>
+          <li class="struck"><b>$9,000+</b><span>It&rsquo;s not even half <em>that</em>.</span></li>
+        </ol>
+        <p class="cascade-punch">And I&rsquo;m still not charging that.</p>
+      </div>
     </div>
   </section>
 
@@ -197,8 +225,6 @@
        ══════════════════════════════════════════════════════════════════════ -->
   <section id="offer" class="offer-sec">
     <div class="wrap">
-      <h2 class="cascade-punch">And I&rsquo;m still not charging that.</h2>
-
       <ul class="doors" data-cap="">
         <li class="door door-primary">
           <p class="door-name">The 90&#8209;Day Founding Partnership</p>
@@ -372,6 +398,11 @@
 <footer class="footer">
   <span>&copy; 2026 Isaac</span>
 </footer>
+<!-- THE PROGRESSIVE REVEAL — the cascade's rungs arrive one at a time, the
+     way the deck reveals them slide by slide. It degrades OPEN: the hiding CSS
+     is scoped to `html.js` and reveal.js is what adds that class, so no script
+     means nothing is ever hidden. -->
+<script src="reveal.js"></script>
 <script src="vsl.js"></script>
 <script src="lead.js"></script>
 </body>

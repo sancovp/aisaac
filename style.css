@@ -1388,8 +1388,14 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 
 /* ── SLIDE 6 — THE DIY COST ANCHOR. Itemised, and it SUMS. ───────────────── */
 .cost-sec { padding: var(--sec-y) 1.25rem; }
+/* ⛔ FULL WRAP WIDTH, NOT 46rem. MEASURED at a real 1440 viewport: a 46rem
+   table inside the 1100px wrap sat 170 left / 534 RIGHT — a 534px hole down
+   one side while .stack, .doors and .faq all ran the full 1100. That is the
+   asymmetry Isaac saw. Full width also makes the numbers right-align to the
+   same edge as everything else, so it reads as an invoice, which is the
+   feeling this section wants. */
 .cost {
-  list-style: none; margin: 2.25rem 0 1.75rem; padding: 0; max-width: 46rem;
+  list-style: none; margin: 2.25rem 0 1.75rem; padding: 0;
   border-top: 1px solid var(--glass-border);
 }
 .cost > li {
@@ -1414,12 +1420,29 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    Without it "and I'm still not charging that" is a punchline with no joke
    in front of it. Each rung is struck as the next arrives, which is what the
    deck does one slide at a time. ─────────────────────────────────────────── */
-.cascade-sec { padding: var(--sec-y) 1.25rem calc(var(--sec-y) * 0.4); }
-.cascade { list-style: none; margin: 2.5rem 0 0; padding: 0; max-width: 46rem; }
-.cascade > li {
-  display: grid; grid-template-columns: minmax(0, auto) 1fr;
-  align-items: baseline; gap: 0.4rem 1.5rem; padding: 0.85rem 0;
+/* ══ THE PINNED STAGE. Isaac: "force the experience exactly. control." ══
+   The SECTION is a tall scroll TRACK; the STAGE inside it is sticky and
+   viewport-tall. Scrolling the track does not move the stage — it advances
+   which rung has arrived. 340vh over four beats is roughly a screen of scroll
+   per beat, which is the "slower scroll": you cannot flick past the cascade,
+   and you are never held against your input either.
+   ⛔ `html:not(.js)` collapses the whole thing back to ordinary flow. */
+.cascade-sec { position: relative; height: 340vh; padding: 0; }
+.cascade-pin {
+  position: sticky; top: 0; min-height: 100vh;
+  display: flex; align-items: center; padding: 3rem 1.25rem;
 }
+html:not(.js) .cascade-sec { height: auto; padding: var(--sec-y) 0 calc(var(--sec-y) * 0.4); }
+html:not(.js) .cascade-pin { position: static; min-height: 0; padding: 0 1.25rem; }
+@media (max-width: 720px) { .cascade-sec { height: 300vh; } }
+/* ⛔ SAME — full wrap. See .cost above. */
+.cascade { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.cascade > li {
+  display: grid; grid-template-columns: minmax(0, 15rem) 1fr;
+  align-items: baseline; gap: 0.4rem 3rem; padding: 1.1rem 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+.cascade > li:last-child { border-bottom: 0; }
 .cascade > li > b {
   font-family: var(--display); font-size: clamp(2rem, 5.5vw, 3.2rem);
   color: var(--text-1); line-height: 1; letter-spacing: -0.02em;
@@ -1436,3 +1459,100 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 
 /* the punch line sits directly above the doors and is the cascade's last rung */
 .cascade-punch { margin-bottom: 2.25rem; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE PROGRESSIVE REVEAL.  Isaac, 2026-09-20: "Use scroll effects to make sure
+   that the intended value stack happens. Animate it. Its so simple dude. Make
+   the experience."
+
+   ⛔ THE DECK IS LITERALLY CALLED `AI_Transformation_Sales_Deck_Progressive_
+   Reveal.pptx` AND IT SHIPPED STATIC. Slides 8→13 exist because each rung
+   ARRIVES one at a time; a page that prints all three at once has thrown away
+   the mechanism and kept the text.
+
+   ⛔ NO LIBRARY, NO SCROLL-JACKING. IntersectionObserver adds `.in`; CSS does
+   the rest. The page never steals the scroll — it only reveals as you arrive.
+
+   ⛔ AND IT DEGRADES OPEN, NEVER CLOSED. `.reveal` is only made transparent
+   inside `html.js`, which reveal.js sets on itself. JS off, or the observer
+   unsupported → every element renders normally. A reveal that hides content
+   when its script fails is a page that ships blank.
+   ══════════════════════════════════════════════════════════════════════════ */
+html.js .reveal { opacity: 0; transform: translateY(18px); }
+html.js .reveal.in { opacity: 1; transform: none;
+  transition: opacity 620ms cubic-bezier(.22,.61,.36,1), transform 620ms cubic-bezier(.22,.61,.36,1); }
+/* the stagger is set per-item by reveal.js as --d, so a row's delay is its
+   position in its own list rather than a hardcoded nth-child ladder */
+html.js .reveal.in { transition-delay: var(--d, 0ms); }
+
+/* THE TOTAL LANDS LAST AND LANDS HARDER — it is the anchor the whole cascade
+   is measured against, so it arrives after the rows that sum to it. */
+html.js .cost-total.reveal { transform: translateY(24px) scale(0.96); }
+html.js .cost-total.reveal.in { transform: none; }
+
+/* ⛔ THE STRIKE IS A BAR, NOT `text-decoration` — text-decoration cannot be
+   animated, and the strike ARRIVING is the whole point of the rung. The bar
+   wipes left-to-right as the rung enters. */
+.cascade .struck > b { position: relative; text-decoration: none; }
+.cascade .struck > b::after {
+  /* 46%, not 52% — measured on a real 1440 screenshot, where a 52% bar on
+     display-size digits crosses their BOTTOM rather than striking through
+     them. 4px because the number is ~60px tall and 3px reads as a hairline. */
+  content: ''; position: absolute; left: -0.06em; right: -0.06em; top: 46%;
+  height: 4px; background: var(--mercury-rose); border-radius: 2px;
+  transform: scaleX(0); transform-origin: left center;
+}
+html.js .cascade .struck.in > b::after {
+  transform: scaleX(1);
+  transition: transform 520ms cubic-bezier(.22,.61,.36,1);
+  transition-delay: calc(var(--d, 0ms) + 260ms);
+}
+/* JS off: the bar is simply already drawn, so the rung still reads as struck */
+html:not(.js) .cascade .struck > b::after { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal, html.js .reveal.in,
+  html.js .cost-total.reveal, html.js .cost-total.reveal.in {
+    opacity: 1; transform: none; transition: none;
+  }
+  .cascade .struck > b::after { transform: scaleX(1); transition: none; }
+}
+
+
+/* ── THE DRIVEN RUNGS — `.on` is set by reveal.js from scroll POSITION ───── */
+html.js .cascade > li,
+html.js .cascade-punch { opacity: 0; transform: translateY(26px); }
+html.js .cascade > li.on,
+html.js .cascade-punch.on {
+  opacity: 1; transform: none;
+  transition: opacity 520ms cubic-bezier(.22,.61,.36,1),
+              transform 520ms cubic-bezier(.22,.61,.36,1);
+}
+/* ⛔ ONLY THE SUPERSEDED *DISCOUNT* RUNGS DIM — NEVER THE ANCHOR.
+   Seen at a real 1440 (the pane renders ~398px, so this was invisible until
+   it was screenshotted at full size): with `.past` on every rung, $38,000 had
+   faded to near-unreadable by the time the punch line landed — and the punch
+   line REFERS to it. "And I'm still not charging that" is meaningless if
+   "that" is the faintest thing on screen. The anchor holds; the two struck
+   rungs recede, which is what makes it read as a descent instead of a list. */
+html.js .cascade > li.struck.on.past { opacity: 0.45; transition: opacity 420ms ease; }
+
+/* the strike wipes as its own rung lands, not on a global timer */
+html.js .cascade .struck.on > b::after {
+  transform: scaleX(1);
+  transition: transform 460ms cubic-bezier(.22,.61,.36,1) 220ms;
+}
+
+.cascade-punch {
+  font-family: var(--display); font-size: var(--h2-size);
+  color: var(--text-1); margin: 2.5rem 0 0; line-height: 1.25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cascade-sec { height: auto !important; padding: var(--sec-y) 0 calc(var(--sec-y) * 0.4); }
+  .cascade-pin { position: static !important; min-height: 0; padding: 0 1.25rem; }
+  html.js .cascade > li, html.js .cascade-punch { opacity: 1 !important; transform: none !important; transition: none; }
+  html.js .cascade > li.on.past { opacity: 1 !important; }
+  .cascade .struck > b::after { transform: scaleX(1) !important; transition: none; }
+}
