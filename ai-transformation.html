@@ -231,7 +231,7 @@
           <p class="door-price">$3,000<span>three months</span></p>
           <p class="door-what">Six working sessions. Every process we map comes back with the research, the analysis, an AI&#8209;alignment score on every step, the services that already solve it, the recommendation, the integration pathway, and your custom implementation options.</p>
           <!-- ⛔ THE DISCLOSURE GOES ON THE BUTTON, NOT IN THE TERMS (§2). -->
-          <a class="cta-primary" href="#">Start &mdash; $3,000 &rarr;</a>
+          <button class="cta-primary" type="button" data-buy="founding">Start &mdash; $3,000 &rarr;</button>
           <p class="door-fine">Continues at $2,000 per cycle after the three months. Cancel any time.</p>
           <p class="door-note">The founding price is limited to a real number of clients. When they are taken it closes until the next opening.</p>
         </li>
@@ -240,69 +240,12 @@
           <p class="door-name">The Partnership</p>
           <p class="door-price">$2,000<span>per cycle</span></p>
           <p class="door-what">The same work, month to month. Two sessions every cycle, the mapping and research between them on my time. Start any time, stop any time.</p>
-          <a class="cta-secondary" href="#">Start &mdash; $2,000 &rarr;</a>
+          <button class="cta-secondary" type="button" data-buy="retainer">Start &mdash; $2,000 &rarr;</button>
           <p class="door-fine">A cycle is four weeks. We meet every two.</p>
         </li>
       </ul>
 
-      <p class="door-exit">Rather talk first? <a href="#book">Book a call</a> &mdash; no purchase, and I&rsquo;ll tell you if the answer is nothing.</p>
-    </div>
-  </section>
-
-  <!-- ══ THE CALL — the third door, and the only one that captures a lead we
-       would otherwise never see.
-       Isaac, 2026-09-19: "BOOK A CALL BUTTON *REQUIRES* THE CONTACT FORM
-       (because we dont get them from CAL i dont think)". So there is no bare
-       link to cal.com on this page — the ONLY way to reach the booking page is
-       by submitting this form, and the submit button IS the Book a Call button.
-
-       THE FLOW: submit → Formspree stores it and emails Isaac → `_next`
-       forwards to cal.com. The contact is captured BEFORE the booking, so
-       someone who fills this in and never picks a time is still a lead.
-       ⛔ NEVER point this action at cal.com directly — that is what it replaced.
-       ⛔ Cal's own booking questions are NOT a reason to delete this form: cal
-       fires only on a completed booking, this fires on SUBMIT. `lead.js`
-       carries name and email through as prefill so nobody types them twice.
-       ⚠ Formspree's free tier has a monthly submission cap. If bookings stop
-       arriving, check the quota before debugging the form. ══ -->
-  <section id="book">
-    <div class="wrap">
-      <p class="eyebrow">Book a call</p>
-      <p class="lede">Tell me how the business runs and I&rsquo;ll tell you where the first box goes.</p>
-
-      <div class="book-form">
-      <form class="lead-form" action="https://formspree.io/f/xbgllvry" method="POST">
-        <!-- THE EVENT: "AI Transformation Discovery Call" (Isaac, 2026-09-19).
-             ⚠ Other pages still point at the older `ai-agents-for-your-business`
-             slug, deliberately — they sell DIFFERENT calls. Do not sweep-replace. -->
-        <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-transformation-discovery-call">
-        <div class="lead-row">
-          <label class="lead-field"><span>Your name</span>
-            <input type="text" name="name" autocomplete="name" required placeholder="Your name">
-          </label>
-          <label class="lead-field"><span>Email</span>
-            <input type="email" name="email" autocomplete="email" required placeholder="you@company.com">
-          </label>
-        </div>
-        <label class="lead-field"><span>Company</span>
-          <input type="text" name="company" autocomplete="organization" required placeholder="Company name, or the website">
-        </label>
-        <label class="lead-field"><span>Roughly what does the business do a year?</span>
-          <select name="revenue" required>
-            <option value="">Pick a range</option>
-            <option>Under $500K</option>
-            <option>$500K &ndash; $2M</option>
-            <option>$2M &ndash; $10M</option>
-            <option>$10M &ndash; $50M</option>
-            <option>Over $50M</option>
-          </select>
-        </label>
-        <label class="lead-field"><span>What would you want looked at first?</span>
-          <input type="text" name="focus" placeholder="One line is fine">
-        </label>
-        <button class="cta-primary" type="submit">Book a call &rarr;</button>
-      </form>
-      </div>
+      <p class="door-exit">Rather talk first? <button class="link-btn" type="button" data-buy="call">Book a call</button> &mdash; no purchase, and I&rsquo;ll tell you if the answer is nothing.</p>
     </div>
   </section>
 
@@ -402,8 +345,108 @@
      way the deck reveals them slide by slide. It degrades OPEN: the hiding CSS
      is scoped to `html.js` and reveal.js is what adds that class, so no script
      means nothing is ever hidden. -->
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     THE CAPTURE MODAL.  Isaac, 2026-09-20: "contact form is now unnecessary
+     here, and should be a pop up once they click buy, because we prefill the
+     cart. so its like buy -> ok fill this -> heres the prefilled cart" and
+     "also consent to contact is important right there. 'fill this, sign this'
+     and then we have unlocked AI messaging..."
+
+     ⛔ THE CAPTURE STILL HAPPENS BEFORE THE HANDOFF, which was the whole point
+     of the form and has not changed: submit posts to Formspree FIRST, then
+     `_next` forwards to Stripe or cal. Someone who fills this in and abandons
+     the checkout is still a lead. That was Isaac's own catch on 2026-09-19
+     ("because we dont get them from CAL i dont think") and it survives the
+     redesign intact.
+
+     ⛔ TWO DIFFERENT CONSENTS, IN TWO DIFFERENT PLACES, DELIBERATELY:
+       1. CONTACT consent — here. Unbundled, UNCHECKED, and its exact wording is
+          submitted alongside it (see the hidden `consent_text`).
+       2. TERMS acceptance — at STRIPE, not here. Stripe Checkout collects and
+          records terms-of-service acceptance natively; re-asking on this page
+          would be a second signature for the same thing, recorded worse.
+
+     ⛔ CONSENT IS REQUIRED FOR THE CALL AND OPTIONAL FOR A PURCHASE, AND THAT
+     IS NOT AN OVERSIGHT. Contacting a customer about the thing they just bought
+     is transactional and needs no marketing consent; CONDITIONING A SALE on
+     marketing consent is the thing GDPR specifically treats as invalid
+     ("freely given"). For the call there is no other basis to contact them, so
+     it is required there. `capture.js` flips `required` per intent.
+
+     ⛔ AND THE CONSENT *STRING* IS SUBMITTED, NOT JUST A BOOLEAN. A stored
+     "yes" with no record of what was agreed to is worth nothing in a dispute.
+     `consent_text` carries the exact sentence and `consent_version` dates it —
+     change the wording, bump the version.
+
+     ⚠ NOT LEGAL ADVICE. One thing worth knowing before "AI messaging" means
+     SMS or voice rather than email: in the US, automated calls and texts to a
+     mobile need PRIOR EXPRESS WRITTEN CONSENT under the TCPA and carry
+     statutory damages per message. Email consent does not cover them. If the
+     channel widens, this wording has to widen with it — and that is Isaac's
+     call, not an agent's.
+     ══════════════════════════════════════════════════════════════════════════ -->
+<dialog class="capture" id="capture" aria-labelledby="capture-title">
+  <form class="lead-form" method="POST" action="https://formspree.io/f/xbgllvry">
+    <button class="capture-x" type="button" data-close aria-label="Close">&times;</button>
+
+    <p class="eyebrow" id="capture-eyebrow">Start</p>
+    <h2 id="capture-title">Before the checkout</h2>
+    <p class="lede" id="capture-lede">So the cart arrives filled in and I know whose business it is.</p>
+
+    <!-- `_next` is rewritten on submit by capture.js to the intent's real
+         destination, carrying the email through as prefill. The static value
+         is the CALL page so that a no-JS submit still lands somewhere real. -->
+    <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-transformation-discovery-call">
+    <input type="hidden" name="intent" value="call">
+    <input type="hidden" name="consent_version" value="2026-09-20">
+    <input type="hidden" name="consent_text" value="">
+
+    <div class="lead-row">
+      <label class="lead-field"><span>Your name</span>
+        <input type="text" name="name" autocomplete="name" required placeholder="Your name">
+      </label>
+      <label class="lead-field"><span>Email</span>
+        <input type="email" name="email" autocomplete="email" required placeholder="you@company.com">
+      </label>
+    </div>
+    <label class="lead-field"><span>Company</span>
+      <input type="text" name="company" autocomplete="organization" required placeholder="Company name, or the website">
+    </label>
+
+    <!-- QUALIFICATION — the call only. A buyer answers these in the onboarding
+         intake instead (funnel-design §4), because five fields in front of a
+         $3,000 button is friction on the step that can least afford it. -->
+    <div class="qualify">
+      <label class="lead-field"><span>Roughly what does the business do a year?</span>
+        <select name="revenue">
+          <option value="">Pick a range</option>
+          <option>Under $500K</option>
+          <option>$500K &ndash; $2M</option>
+          <option>$2M &ndash; $10M</option>
+          <option>$10M &ndash; $50M</option>
+          <option>Over $50M</option>
+        </select>
+      </label>
+      <label class="lead-field"><span>What would you want looked at first?</span>
+        <input type="text" name="focus" placeholder="One line is fine">
+      </label>
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" name="consent" value="yes">
+      <span id="consent-copy">I agree that Isaac can contact me by email about this enquiry and about
+      the AI transformation work. Some follow-up may be sent by his AI assistant.
+      I can opt out at any time.</span>
+    </label>
+
+    <button class="cta-primary" type="submit" id="capture-submit">Continue &rarr;</button>
+    <p class="door-fine" id="capture-fine">You will not be charged on this step.</p>
+  </form>
+</dialog>
+
 <script src="reveal.js"></script>
 <script src="vsl.js"></script>
-<script src="lead.js"></script>
+<script src="capture.js"></script>
 </body>
 </html>
