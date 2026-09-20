@@ -332,6 +332,107 @@ document**, because it is where a founding client becomes a retained one.
 
 ---
 
+## 4b. ⭐ DAY 75 — THE RENEWAL, AND WHY IT IS NOT OPTIONAL
+
+It is not nurture. It is the moment the trial ends and $2,000/month begins, and nothing owned it.
+
+⛔ **THE VIDEO ALREADY PROMISES THIS CONVERSATION:** *"And stop is a real answer at every step which
+means you are never paying me to keep going for the sake of it."* **An auto-renew with no
+conversation contradicts that line.** The touch is what makes the copy true.
+
+⇒ **AND THE FRAMEWORK ALREADY CONTAINS IT.** Slide 4's fifth step is **DECIDE — map more, implement,
+or stop.** At the end of the term those are exactly the three options, applied to the ENGAGEMENT
+instead of to a process. The renewal IS the DECIDE step one level up.
+
+### THE SEQUENCE (*USER*, 2026-09-20: *"send them a notice on the last 30 days and then another at 2 weeks, and then i also ask them if theyve renwed and try to sell them on continuity"*)
+
+```
+day  0   $3,000 charged · subscription opens with the trial
+day 60   NOTICE 1 — 30 days out. "your term ends on the Nth. it continues at
+                    $2,000 per cycle from then. we will cover it in session six."
+day 75   SESSION 6 — THE DECIDE SESSION. Notice 2 is this session's agenda, so the
+                    14-day notice and the conversation are ONE event, not two.
+day 91   billing begins
+```
+
+⭐ **THIS SEQUENCE SETTLES THE A/B QUESTION IN §2 — TAKE A, AUTO-CONTINUE.** The only real objection
+to auto-renew was the surprise charge, and two notices plus a conversation removes it completely.
+What is left is default-continue instead of default-churn, for no added risk. **The notices are what
+make auto-renew safe.**
+
+### ⭐ WHAT IS BEING SOLD AT THE RENEWAL IS *HARDENING*, NOT "MORE"
+
+Foundation is COMPLETE at the end of the term — that is the phase they bought, and the deck states
+its result: *"key workflows are understood and meaningfully AI-integrated."* What comes next is a
+different and larger thing: **map across · integrate across · custom implementations**, ending in
+the closed harness. ⇒ the continuity pitch is **PHASE TWO**, not continuation, and `hormozi-continuity`'s
+rule is advertise the BONUS not the membership. The bonus is that the next phase exists and they are
+now positioned for it.
+
+⚠ **THE STRUCTURE IS TEXTBOOK-CORRECT ALREADY, INCLUDING ITS KNOWN WEAKNESS.** `hormozi-continuity`:
+*"Nobody wants to make a recurring commitment to something they haven't tried"* — the founding term
+IS the trial, and "discount up front, term starts after" is that skill's method #1. It also names
+that method's cost: *delays cash, higher churn risk.* **That churn risk concentrates entirely at the
+end of the term**, which is the whole reason this section exists.
+
+---
+
+## 4c. THE CADENCE — bill every 4 weeks, meet every 2
+
+*USER*: *"billing every 4 weeks is fine if we are also meeting every 2 weeks imo lets figure it out"*
+
+**IT WORKS OUT EXACTLY, AND THAT IS WHAT MAKES IT HONEST:**
+
+| | per year | sessions | **per session** |
+|---|---|---|---|
+| monthly | 12 × $2,000 = $24,000 | 24 | **$1,000** |
+| every 4 weeks | 13 × $2,000 = $26,000 | 26 | **$1,000** |
+
+⇒ **THE 8.3% IS NOT A PRICE RISE — IT IS 8.3% MORE DELIVERY, PAID FOR AT THE IDENTICAL RATE.** And
+*"every two weeks"* is a better promise than *"twice a month"*, which silently drifts between 8 and
+20 days apart depending on the month.
+
+**THE UNIT:** `1 CYCLE = 4 weeks = 2 sessions = $2,000`
+
+### ⏸ OPEN, AND IT IS A RENAME: THE TERM STOPS BEING 90 DAYS
+
+```
+3 cycles = 12 weeks = 6 sessions = $3,000
+```
+
+That is exactly the six sessions *USER* specified, and every number divides. **90 days does not** —
+six sessions at two-week spacing covers 70 days and leaves three ragged weeks. So adopting the
+cadence makes it **The 12-Week Founding Partnership**, and 12-week is arguably the stronger interval
+anyway. ⛔ **CHEAP TO DECIDE NOW, EXPENSIVE LATER** — the name is on the button, the Stripe product,
+the receipt and the onboarding page, and §0b's law is one name in every place.
+
+---
+
+## 4d. THE CANCEL FLOW — the reason is required, and Stripe does it natively
+
+*USER*: *"the cancel flow has to ask them for a reason why."*
+
+Stripe's Customer Portal has a **cancellation survey with a required reason** and can offer **pause
+instead of cancel** as a save — both native, no build. The webhook carries the reason out, which is
+what triggers the exit conversation. `hormozi-continuity` puts recovery at a third to half of
+cancellers; **at three clients the REASON is worth more than the save.**
+
+```
+too expensive
+not enough value yet
+we got what we needed            ← ⭐ a SUCCESS that looks like churn
+internal change — budget or priorities
+too slow
+I couldn't give it the time      ← a DELIVERY-MODEL signal, not a value one
+other → free text
+```
+
+⛔ **"WE GOT WHAT WE NEEDED" MUST BE ITS OWN REASON.** Folded into a generic "no longer needed" it
+reads as failure, and the wrong thing gets changed in response. It is the difference between an
+offer that under-delivers and one that completes.
+
+---
+
 ## 5. WHAT IS ALREADY TRUE (no decisions needed)
 
 - **The video never states a price.** The cascade runs $38,000 → *not even that* → *not even half*
@@ -350,4 +451,6 @@ document**, because it is where a founding client becomes a retained one.
 2. **Call primary or checkout primary** (§1's tension).
 3. **The real cap number** — how many clients at once, which is what makes the scarcity true.
 4. Whether `draw-the-box` **replaces** the climb video currently on the page, or both live there.
-5. Trial-continuation (A) or re-sale (B) in §2.
+5. ✅ **CLOSED by §4b — trial-continuation (A).** The notice sequence is what makes it safe.
+6. ⏸ **THE RENAME** — 90-Day or 12-Week Founding Partnership (§4c). Decide before the name ships.
+7. ⏸ The **AI-alignment score**'s definition (§0b) — a client is buying it.
