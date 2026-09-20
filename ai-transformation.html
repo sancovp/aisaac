@@ -149,13 +149,87 @@
     <div class="wrap">
       <p class="eyebrow">Here&rsquo;s the actual value</p>
       <h2>Not an AI toy. A continuously improving map of what is worth doing next.</h2>
+      <!-- ══ SIX GLYPHS, NOT SIX PARAGRAPHS.  Isaac, 2026-09-20: "i dont like
+           this bento or gallery or whatever... something where people are like
+           ohhh i get it oh ok / not reading everything like a nerd. we have to
+           *control what they believe and disbelieve* inside of here."
+
+           ⛔ THE PICTURE CARRIES THE CLAIM; THE WORDS ONLY CONFIRM IT. This was
+           six bordered text cells with a tick — a spec sheet, which asks to be
+           READ and therefore hands the reader the job of deciding what to
+           believe. A glyph is believed before it is parsed, so each one DRAWS
+           its own claim and the label lands on a belief already formed:
+             map      — boxes wired together      (work has a shape)
+             ranking  — one bar picked out        (not everything matters)
+             search   — a lens over the options   (it already exists)
+             compare  — three measures, read off  (paths are measurable)
+             route    — stops in order, rising    (there is an order)
+             loop     — a cycle that climbs       (it keeps paying)
+
+           Inline SVG in token colours only (RULE 02 §5); no icon font, no
+           Lottie, no runtime dependency, no network request. Each glyph draws
+           itself as its beat lands, one at a time, so the section delivers ONE
+           belief per scroll instead of six at once. ══ -->
       <ul class="stack">
-        <li><strong>Mapped operations</strong><span>Know how work actually happens.</span></li>
-        <li><strong>Prioritized opportunities</strong><span>Focus on the workflows that matter.</span></li>
-        <li><strong>Researched solutions</strong><span>Know what already exists before building.</span></li>
-        <li><strong>Cost / time / risk analysis</strong><span>Compare realistic implementation paths.</span></li>
-        <li><strong>Implementation roadmap</strong><span>Buy, integrate, build &mdash; in the right order.</span></li>
-        <li><strong>Ongoing refinement</strong><span>Keep mapping only while the next cycle is valuable.</span></li>
+        <li>
+          <svg class="g" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect x="23" y="6" width="18" height="12" rx="3"/>
+            <path d="M32 18v9"/>
+            <path d="M13 44V33a6 6 0 0 1 6-6h26a6 6 0 0 1 6 6v11"/>
+            <rect x="4" y="44" width="18" height="12" rx="3"/>
+            <rect class="af" x="42" y="44" width="18" height="12" rx="3"/>
+          </svg>
+          <strong>Mapped operations</strong><span>Know how work actually happens.</span>
+        </li>
+        <li>
+          <svg class="g" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M6 55h52"/>
+            <rect x="10" y="37" width="11" height="18" rx="2.5"/>
+            <rect x="26" y="29" width="11" height="26" rx="2.5"/>
+            <rect class="af" x="42" y="15" width="11" height="40" rx="2.5"/>
+            <path class="a" d="M47.5 4v6"/>
+            <path class="a" d="M43.5 8l4 4 4-4"/>
+          </svg>
+          <strong>Prioritized opportunities</strong><span>Focus on the workflows that matter.</span>
+        </li>
+        <li>
+          <svg class="g" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect x="5" y="9" width="16" height="16" rx="3"/>
+            <rect x="26" y="9" width="16" height="16" rx="3"/>
+            <rect x="5" y="30" width="16" height="16" rx="3"/>
+            <rect class="af" x="26" y="30" width="16" height="16" rx="3"/>
+            <circle class="a" cx="42" cy="40" r="13"/>
+            <path class="a" d="M51.5 49.5L59 57"/>
+          </svg>
+          <strong>Researched solutions</strong><span>Know what already exists before building.</span>
+        </li>
+        <li>
+          <svg class="g" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M14 8v48M32 8v48M50 8v48"/>
+            <circle cx="14" cy="40" r="4.5"/>
+            <circle cx="32" cy="26" r="4.5"/>
+            <circle class="af" cx="50" cy="18" r="4.5"/>
+            <path class="a" d="M8 51h48"/>
+          </svg>
+          <strong>Cost / time / risk analysis</strong><span>Compare realistic implementation paths.</span>
+        </li>
+        <li>
+          <svg class="g" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M8 49C20 49 18 33 30 33S44 17 56 17"/>
+            <circle cx="8" cy="49" r="3.6"/>
+            <circle cx="30" cy="33" r="3.6"/>
+            <circle class="af" cx="56" cy="17" r="5"/>
+          </svg>
+          <strong>Implementation roadmap</strong><span>Buy, integrate, build &mdash; in the right order.</span>
+        </li>
+        <li>
+          <svg class="g" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M50 21A21 21 0 1 0 53 33"/>
+            <path class="a" d="M39 20h12V8"/>
+            <path class="a" d="M22 39l7-8 6 6 8-11"/>
+          </svg>
+          <strong>Ongoing refinement</strong><span>Keep mapping only while the next cycle is valuable.</span>
+        </li>
       </ul>
       <p class="lede">Fewer bad bets, faster wins, and a business that becomes progressively more AI&#8209;integrated.</p>
       <!-- L3 — the level they do not expect, and the strongest of the three
@@ -192,6 +266,46 @@
        ⛔ DEGRADES OPEN: `html:not(.js)` collapses the track to normal flow
        with every rung visible and every strike drawn.
        ══════════════════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════════════════════
+       THE LEDGER.  Isaac, 2026-09-20: "this whole part is not clear enough.
+       its not clear WHAT ITEMS amount to that much. MAXIMIZE DISPLAY OF
+       KNOWLEDGE AND MAXIMIZE PAIN."
+
+       ⛔ AN ANCHOR WITH NOTHING UNDER IT IS A NUMBER, NOT A CLAIM. The page
+       asserted $38,000+ and the reader had no way to see what was being
+       priced, so the figure was asking to be taken on trust — which is the
+       one thing a cold buyer will not extend. Every line below is a thing
+       that gets DELIVERED, named, and the anchor then sums something visible.
+
+       THE PAIN IS THE COLUMN ON THE RIGHT: each line names WHO ELSE you would
+       have to hire to get it. Eight items, eight specialists, eight
+       engagements, eight invoices, none of whom talk to each other — that is
+       the cost the anchor is measured against, and it is felt rather than
+       argued.
+
+       ⛔ NO PER-LINE DOLLAR FIGURES. Pricing is Isaac's alone (RULE 00 law 1,
+       OFFERS ARE FROZEN) and the deck prices the BUNDLE at $38,000+, not the
+       parts. Inventing eight numbers that happen to total it would be a
+       fabricated receipt. The slot is here the moment he sets them.
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section class="ledger-sec">
+    <div class="wrap">
+      <p class="eyebrow">What that actually includes</p>
+      <h2>Eight deliverables. Every one of them is normally its own engagement.</h2>
+      <ul class="ledger">
+        <li><b>The process map</b><span>Every department, role and system &mdash; how the work actually happens, drawn.</span><i>A process consultant</i></li>
+        <li><b>Opportunity analysis</b><span>Where AI genuinely helps, and where it does not.</span><i>An AI strategy consultant</i></li>
+        <li><b>An AI&#8209;alignment score on every step</b><span>Which steps are actually automatable, step by step, not department by department.</span><i>Nobody sells this</i></li>
+        <li><b>Independent solution research</b><span>What already exists and already solves it &mdash; before anything gets built.</span><i>An analyst, or weeks of your own</i></li>
+        <li><b>Cost / time / risk comparison</b><span>Realistic implementation paths, compared against each other.</span><i>A technical architect</i></li>
+        <li><b>The recommendation</b><span>What to do, in what order, and what to leave alone.</span><i>A consultant who will not say &ldquo;nothing&rdquo;</i></li>
+        <li><b>The integration pathway</b><span>How it lands inside the systems you already run.</span><i>A systems integrator</i></li>
+        <li><b>Custom implementation options</b><span>Agents built for the steps nothing on the market covers.</span><i>A development shop</i></li>
+      </ul>
+      <p class="lede">Every cycle, on every process we map. That is the thing being priced below.</p>
+    </div>
+  </section>
+
   <section class="cascade-sec">
     <div class="cascade-pin">
       <div class="wrap">

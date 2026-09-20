@@ -38,6 +38,7 @@
   var TRACKS = [
     ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],
     ['.stack-sec',   '.stack > li',   0.05, 0.75, 'stack'],
+    ['.ledger-sec',  '.ledger > li',  0.04, 0.80, 'stack', 26],
     ['.cascade-sec', '.cascade > li', 0.06, 0.70, 'cascade'],
     ['.faq-sec',     '.faq details',  0.02, 0.96, 'solo']
   ];
@@ -53,7 +54,9 @@
     // ⛔ THE TRACK'S HEIGHT IS DERIVED FROM ITS ITEM COUNT, never typed. The
     // FAQ has twenty answers and the cost table has six; one hardcoded height
     // would either rush the FAQ or strand the reader in an empty cost track.
-    var perItem = t[4] === 'solo' ? 62 : 34;          // vh of scroll per beat
+    // vh of scroll per beat — a track may override it (t[5]); the ledger runs
+    // eight beats and would otherwise be the longest section on the page.
+    var perItem = t[5] || (t[4] === 'solo' ? 62 : 34);
     track.style.setProperty('--track', (100 + items.length * perItem) + 'vh');
 
     /* ⛔ THE SOLO TRACK NEEDS A REEL, OR THE WALK ONLY SHOWS ITS MIDDLE.

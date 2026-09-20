@@ -1288,23 +1288,92 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 
 /* ── THE STACK — slide 7's six checks ─────────────────────────────────────── */
 .stack-sec { padding: var(--sec-y) 1.25rem; }
+/* ⛔ GLYPHS, NOT A BENTO. This was a bordered 2×3 of text cells with a tick —
+   which reads as a spec table, and a spec table asks to be READ. The picture
+   has to carry the claim so the label lands on a belief already formed. No
+   cell borders: the boxes made six ideas look like one inventory. */
 .stack {
-  list-style: none; margin: 2.25rem 0; padding: 0;
-  display: grid; gap: 1px; background: var(--glass-border);
-  border: 1px solid var(--glass-border); border-radius: var(--r-card);
-  overflow: hidden;
+  list-style: none; margin: 3rem 0 2.5rem; padding: 0;
+  display: grid; gap: 3rem 2rem; grid-template-columns: 1fr;
+  /* ⛔ RESET THE LEGACY `.stack` ABOVE (line ~551, a different component that
+     shares the name): it carries a border, a radius and overflow:hidden, and
+     since this rule never redeclared them the glyph grid kept rendering
+     inside a card — the exact box this change exists to remove. */
+  border: 0; border-radius: 0; overflow: visible; background: none;
 }
 .stack > li {
-  background: var(--void); padding: 1.25rem 1.5rem;
-  display: grid; gap: 0.3rem;
+  margin: 0; padding: 0; background: none; border: 0;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 0.9rem;
 }
-.stack > li::before {
-  content: '✓'; color: var(--mercury-blue);
-  font-size: 0.9rem; line-height: 1;
+.stack .g {
+  width: 72px; height: 72px; flex: none;
+  fill: none; stroke: var(--text-2); stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round;
 }
-.stack > li strong { color: var(--text-1); font-weight: 500; font-size: 1rem; }
-.stack > li span { color: var(--text-2); font-size: 0.92rem; line-height: 1.6; }
-@media (min-width: 720px) { .stack { grid-template-columns: 1fr 1fr; } }
+/* the accent marks the ANSWER in each glyph — the picked bar, the found cell,
+   the last stop. One accent per picture, so the eye lands where the claim is. */
+.stack .g .a { stroke: var(--mercury-blue); }
+.stack .g .af { stroke: var(--mercury-blue); fill: rgba(125, 211, 252, 0.14); }
+.stack > li strong { color: var(--text-1); font-weight: 500; font-size: 1.02rem; }
+.stack > li span {
+  color: var(--text-3); font-size: 0.9rem; line-height: 1.6; max-width: 24ch;
+}
+@media (min-width: 640px) { .stack { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .stack { grid-template-columns: repeat(3, 1fr); } }
+
+/* EACH GLYPH DRAWS ITSELF AS ITS BEAT LANDS — one belief per scroll, which is
+   the whole reason the section is a track. 200 exceeds every path length here,
+   so one dasharray covers all of them. */
+html.js .stack > li .g > * { stroke-dasharray: 200; stroke-dashoffset: 200; }
+html.js .stack > li.on .g > * {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 760ms cubic-bezier(.22,.61,.36,1) 140ms;
+}
+html.js .stack > li .g .af { fill-opacity: 0; }
+html.js .stack > li.on .g .af { fill-opacity: 1; transition: fill-opacity 500ms ease 600ms; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .stack > li .g > * { stroke-dasharray: none; stroke-dashoffset: 0; }
+  html.js .stack > li .g .af { fill-opacity: 1; }
+}
+
+/* ── THE LEDGER — what the $38,000 anchor is actually made of ─────────────
+   Three columns: the deliverable, what it is, and WHO ELSE you would hire for
+   it. The third column is the pain and it is deliberately the quietest type
+   on the row — it should register as a running tally of other people's
+   invoices, not shout. ZERO new colours or type: --text-1/-2/-3, --micro and
+   --glass-border are the existing vocabulary. */
+.ledger-sec { padding: var(--sec-y) 1.25rem; }
+.ledger { list-style: none; margin: 2.75rem 0 2rem; padding: 0; }
+.ledger > li {
+  display: grid; grid-template-columns: 1fr; gap: 0.35rem;
+  padding: 1.15rem 0; border-bottom: 1px solid var(--glass-border);
+}
+.ledger > li:first-child { border-top: 1px solid var(--glass-border); }
+.ledger > li b { color: var(--text-1); font-weight: 500; font-size: 1.02rem; }
+.ledger > li span { color: var(--text-2); font-size: 0.93rem; line-height: 1.65; }
+.ledger > li i {
+  font-style: normal; font-family: var(--micro); font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3);
+}
+@media (min-width: 900px) {
+  .ledger > li {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr) minmax(0, 0.6fr);
+    gap: 0 2rem; align-items: baseline;
+  }
+  .ledger > li i { text-align: right; }
+}
+/* one deliverable per beat — the list is the knowledge, and it is DISPLAYED,
+   not summarised */
+html.js .ledger > li { opacity: 0; transform: translateY(18px); }
+html.js .ledger > li.on {
+  opacity: 1; transform: none;
+  transition: opacity 460ms cubic-bezier(.22,.61,.36,1),
+              transform 460ms cubic-bezier(.22,.61,.36,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .ledger > li { opacity: 1 !important; transform: none !important; }
+}
 
 /* ── THE THREE DOORS ──────────────────────────────────────────────────────── */
 .offer-sec { padding: var(--sec-y) 1.25rem; }
@@ -1692,12 +1761,14 @@ html.js .cascade .struck.on > b::after {
    ══════════════════════════════════════════════════════════════════════════ */
 html.js .cost-sec,
 html.js .stack-sec,
+html.js .ledger-sec,
 html.js .cascade-sec,
 html.js .faq-sec {
   position: relative; height: var(--track, 300vh); padding: 0;
 }
 html.js .cost-sec > .wrap,
 html.js .stack-sec > .wrap,
+html.js .ledger-sec > .wrap,
 html.js .faq-sec > .wrap,
 html.js .cascade-pin {
   position: sticky; top: 0; min-height: 100vh;
@@ -1706,9 +1777,11 @@ html.js .cascade-pin {
 }
 html.js .cost-sec > .wrap,
 html.js .stack-sec > .wrap,
+html.js .ledger-sec > .wrap,
 html.js .faq-sec > .wrap { width: 100%; max-width: none; }
 html.js .cost-sec > .wrap > *,
 html.js .stack-sec > .wrap > *,
+html.js .ledger-sec > .wrap > *,
 html.js .faq-sec > .wrap > * { max-width: var(--wrap); width: 100%; margin-left: auto; margin-right: auto; }
 
 /* the items themselves arrive as their beat lands */
@@ -1760,11 +1833,12 @@ html.js .faq details.on summary { color: var(--mercury-blue); }
 html.js .faq details:not(.on) > p { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  html.js .cost-sec, html.js .stack-sec, html.js .cascade-sec, html.js .faq-sec {
+  html.js .cost-sec, html.js .stack-sec, html.js .ledger-sec,
+  html.js .cascade-sec, html.js .faq-sec {
     height: auto !important; padding: var(--sec-y) 1.25rem !important;
   }
   html.js .cost-sec > .wrap, html.js .stack-sec > .wrap,
-  html.js .faq-sec > .wrap, html.js .cascade-pin {
+  html.js .ledger-sec > .wrap, html.js .faq-sec > .wrap, html.js .cascade-pin {
     position: static !important; min-height: 0; padding: 0;
   }
   html.js .cost > li, html.js .stack > li { opacity: 1 !important; transform: none !important; }
