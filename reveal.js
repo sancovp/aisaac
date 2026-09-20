@@ -42,7 +42,13 @@
      still land one at a time, they just do not each cost a screen of scroll.
      The pinned tracks are reserved for the ARGUMENT — cost, value, ledger,
      cascade, FAQ — where the pace IS the persuasion. */
-  var REVEAL_ON_ENTER = ['.frame > li', '.boxes > li', '.method > li', '.arc > li'];
+  var REVEAL_ON_ENTER = [
+    '.frame-dia .fnode',   // the rail's five stops
+    '.boxes > li',         // the three states of the same four boxes
+    '.method-dia .mnode',  // the loop's five nodes
+    '.arc-dia .stop',      // the climb's seven stages
+    '.arc > li'            // the detail blocks under the climb
+  ];
 
   var TRACKS = [
     ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],

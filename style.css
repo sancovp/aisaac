@@ -1337,98 +1337,113 @@ html.js .stack > li.on .g .af { fill-opacity: 1; transition: fill-opacity 500ms 
   html.js .stack > li .g .af { fill-opacity: 1; }
 }
 
-/* ══ SLIDES 1 · 2 · 4 · 5 — THE DECK'S METHOD, restored 2026-09-20 ════════
-   These four sections had never been built. ZERO new colours and zero new
-   type: --text-1/-2/-3, --micro, --display, --mercury-blue, --glass-border
-   and --r-card are the whole palette, exactly as RULE 02's restraint law
-   requires. Every string in the markup is the deck verbatim. */
+/* ══ SLIDES 1 · 2 · 4 · 5 — THE DECK'S METHOD, DRAWN ═══════════════════════
+   Isaac, 2026-09-20: "it looks like garbage and is unclear in the sections
+   you added because you just copied bad placeholder slides and stuff. show
+   it dude."
+   (Superseded, kept: these four sections shipped as a pill row, three text
+   cards, a numbered list and three bullet blocks — the slides TRANSCRIBED.
+   A transcription of a slide is not the slide: the deck's pictures carry the
+   argument and the text only names it, so copying the text ships the labels
+   and drops the claim. Every one is now an actual drawing.)
+   Inline SVG, token colours only (RULE 02 §5). No icon font, no runtime dep. */
 
-/* SLIDE 1 — the five-step framework, as a chain you read left to right */
+/* THE SHARED DIAGRAM SURFACE — one set of defaults for all four pictures. */
+.dia { display: block; width: 100%; height: auto; overflow: visible; }
+.dia text {
+  font-family: var(--body); fill: var(--text-2);
+  text-anchor: middle; dominant-baseline: middle;
+}
+.dia .arw path {
+  fill: none; stroke: var(--text-3); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── SLIDE 1 — THE RAIL. The claim is the ORDER, so one track, five stops. ── */
 .frame-sec { padding: var(--sec-y) 1.25rem; }
-.frame {
-  list-style: none; margin: 2rem 0; padding: 0;
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem 0.6rem;
+.frame-dia { margin: 2.75rem 0 2rem; }
+.frame-dia .rail { stroke: var(--glass-border); stroke-width: 2; }
+.frame-dia .fnode circle {
+  fill: var(--void); stroke: var(--glass-border); stroke-width: 2;
 }
-.frame > li { margin: 0; display: flex; align-items: center; gap: 0.85rem; }
-.frame > li b {
-  font-family: var(--micro); font-size: 0.8rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-1);
-  border: 1px solid var(--glass-border); border-radius: var(--r-sm);
-  padding: 0.7rem 1.1rem; white-space: nowrap;
+.frame-dia .fnode .glyph {
+  fill: none; stroke: var(--text-2); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
 }
-.frame > li:not(:last-child)::after {
-  content: '→'; color: var(--mercury-blue); font-size: 1rem;
+.frame-dia .fnode text {
+  font-size: 15px; fill: var(--text-1); letter-spacing: 0.01em;
 }
-html.js .frame > li { opacity: 0; transform: translateY(12px); }
-html.js .frame > li.on {
-  opacity: 1; transform: none;
-  transition: opacity 420ms cubic-bezier(.22,.61,.36,1),
-              transform 420ms cubic-bezier(.22,.61,.36,1);
-}
+/* the last move is where the work ends up, so it is the one that is lit */
+.frame-dia .fnode:last-of-type circle { stroke: var(--mercury-blue); }
+.frame-dia .fnode:last-of-type .glyph { stroke: var(--mercury-blue); fill: rgba(125,211,252,0.14); }
 
-/* SLIDE 2 — UNCLEAR | MAPPED | AI-READY. The three states sit side by side
-   because the slide's whole argument is the COMPARISON. */
+/* ── SLIDE 2 — THE SAME FOUR BOXES, THREE TIMES. Reading down IS the argument. */
 .box-sec { padding: var(--sec-y) 1.25rem; }
-.boxes {
-  list-style: none; margin: 2.5rem 0 2rem; padding: 0;
-  display: grid; grid-template-columns: 1fr; gap: 1.25rem;
-}
-.boxes > li {
-  margin: 0; padding: 1.5rem;
-  border: 1px solid var(--glass-border); border-radius: var(--r-card);
-  background: var(--glass-bg);
-}
+.boxes { list-style: none; margin: 2.75rem 0 2rem; padding: 0; display: grid; gap: 2.25rem; }
+.boxes > li { margin: 0; display: grid; gap: 0.75rem; }
 .box-state {
   font-family: var(--micro); font-size: 0.74rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-3); margin: 0 0 0.9rem;
+  text-transform: uppercase; color: var(--text-3); margin: 0;
 }
-.box-flow {
-  font-family: var(--mono); font-size: 0.95rem; line-height: 1.7;
-  color: var(--text-2); margin: 0;
-}
-/* the third state is the destination, so it carries the accent edge — the
-   same device the founding door uses, and for the same reason */
-.boxes > li.box-ready { border-color: rgba(125, 211, 252, 0.35); }
-.boxes > li.box-ready .box-state,
-.boxes > li.box-ready .box-flow { color: var(--text-1); }
-.boxes > li.box-unclear .box-flow { color: var(--text-3); letter-spacing: 0.12em; }
-@media (min-width: 860px) { .boxes { grid-template-columns: repeat(3, 1fr); } }
-html.js .boxes > li { opacity: 0; transform: translateY(16px); }
-html.js .boxes > li.on {
-  opacity: 1; transform: none;
-  transition: opacity 460ms cubic-bezier(.22,.61,.36,1),
-              transform 460ms cubic-bezier(.22,.61,.36,1);
-}
+.box-note { color: var(--text-2); font-size: 0.92rem; line-height: 1.65; margin: 0; }
+.boxes .bx rect { fill: none; stroke: var(--text-3); stroke-width: 2; }
+.boxes .bx text { font-size: 17px; fill: var(--text-2); }
+/* UNCLEAR: the boxes are not drawable yet, so they are not drawn — dashed,
+   dim, and holding a question instead of a step */
+.box-unclear .bx rect { stroke-dasharray: 7 7; stroke: var(--text-3); opacity: 0.5; }
+.box-unclear .bx text { font-size: 24px; fill: var(--text-3); opacity: 0.75; }
+.box-unclear .arw path { stroke-dasharray: 6 6; opacity: 0.5; }
+/* MAPPED: the same four, now solid and named */
+.box-mapped .bx rect { stroke: var(--text-2); }
+.box-mapped .bx text { fill: var(--text-1); }
+/* AI-READY: two of the four replaced — and only two */
+.box-ready .bx rect { stroke: var(--text-2); }
+.box-ready .bx text { fill: var(--text-1); }
+.box-ready .swap rect { stroke: var(--mercury-blue); fill: rgba(125, 211, 252, 0.12); }
+.box-ready .swap .spark { fill: var(--mercury-blue); stroke: none; }
 
-/* SLIDE 4 — the five-step method, numbered by the counter so the ORDER is
-   the thing the eye gets first */
+/* ── SLIDE 4 — THE LOOP. A list cannot say "repeat"; the return arc can. ── */
 .method-sec { padding: var(--sec-y) 1.25rem; }
-.method { list-style: none; margin: 2.5rem 0 2rem; padding: 0; counter-reset: m; }
-.method > li {
-  counter-increment: m; margin: 0;
-  display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.2rem 1.25rem;
-  padding: 1.1rem 0; border-bottom: 1px solid var(--glass-border);
+.method-dia { margin: 2.75rem 0 2rem; }
+.method-dia .mnode circle {
+  fill: var(--void); stroke: var(--glass-border); stroke-width: 2;
 }
-.method > li:first-child { border-top: 1px solid var(--glass-border); }
-.method > li::before {
-  content: counter(m, decimal-leading-zero);
-  grid-row: 1 / span 2;
-  font-family: var(--micro); font-size: 0.82rem; color: var(--mercury-blue);
-  padding-top: 0.2rem;
+.method-dia .num {
+  font-family: var(--micro); font-size: 15px; fill: var(--mercury-blue);
 }
-.method > li b { color: var(--text-1); font-weight: 500; font-size: 1.05rem; }
-.method > li span { color: var(--text-2); font-size: 0.95rem; line-height: 1.65; }
-html.js .method > li { opacity: 0; transform: translateY(16px); }
-html.js .method > li.on {
-  opacity: 1; transform: none;
-  transition: opacity 460ms cubic-bezier(.22,.61,.36,1),
-              transform 460ms cubic-bezier(.22,.61,.36,1);
+.method-dia .nm { font-size: 16px; fill: var(--text-1); }
+.method-dia .sub { font-size: 12.5px; fill: var(--text-3); }
+.method-dia .loop path {
+  fill: none; stroke: var(--mercury-blue); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; opacity: 0.75;
+}
+.method-dia .loop text {
+  font-family: var(--micro); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; fill: var(--mercury-blue);
 }
 
-/* SLIDE 5 — FOUNDATION → HARDENING → CLOSURE. Three phases, seven stages,
-   each phase closing on its RESULT line, which is how the slide reads. */
+/* ── SLIDE 5 — THE CLIMB. Seven stages rising through three bands. ── */
 .arc-sec { padding: var(--sec-y) 1.25rem; }
-.arc { list-style: none; margin: 2.5rem 0 2rem; padding: 0; display: grid; gap: 1.25rem; }
+.arc-dia { margin: 2.75rem 0 2.5rem; }
+.arc-dia .band rect {
+  fill: rgba(255, 255, 255, 0.022); stroke: var(--glass-border); stroke-width: 1;
+}
+.arc-dia .band rect.last { stroke: rgba(125, 211, 252, 0.35); }
+.arc-dia .slope {
+  fill: none; stroke: var(--text-3); stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.arc-dia .stop circle { fill: var(--void); stroke: var(--text-2); stroke-width: 2.5; }
+.arc-dia .stop text { font-size: 14px; fill: var(--text-2); }
+.arc-dia .stop.peak circle { stroke: var(--mercury-blue); fill: rgba(125,211,252,0.18); }
+.arc-dia .stop.peak text { fill: var(--text-1); font-size: 15px; }
+.arc-dia .bandname text {
+  font-family: var(--micro); font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; fill: var(--text-3);
+}
+
+/* the detail under the climb — the stage rows and their CHIPS */
+.arc { list-style: none; margin: 0 0 2rem; padding: 0; display: grid; gap: 1.25rem; }
 .arc > li {
   margin: 0; padding: 1.75rem;
   border: 1px solid var(--glass-border); border-radius: var(--r-card);
@@ -1442,12 +1457,19 @@ html.js .method > li.on {
   font-family: var(--display); font-size: clamp(1.15rem, 2vw, 1.5rem);
   color: var(--text-1); line-height: 1.3; margin: 0 0 1.4rem;
 }
-.arc > li > ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
-.arc > li > ul > li {
-  margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.25rem;
-}
+.arc > li > ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.arc > li > ul > li { margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
 .arc > li > ul > li b { color: var(--text-1); font-weight: 500; font-size: 0.98rem; }
-.arc > li > ul > li span { color: var(--text-3); font-size: 0.88rem; line-height: 1.6; }
+/* ⛔ CHIPS, NOT A MIDDOT RUN. Six items separated by · read as one long
+   sentence and scan as noise; as discrete marks they read as an inventory,
+   which is what they are. */
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chips > i {
+  font-style: normal; font-family: var(--micro); font-size: 0.7rem;
+  letter-spacing: 0.04em; color: var(--text-3);
+  border: 1px solid var(--glass-border); border-radius: var(--r-sm);
+  padding: 0.32rem 0.6rem; white-space: nowrap;
+}
 .arc-own {
   margin: 1.3rem 0 0; padding-top: 1.1rem;
   border-top: 1px solid var(--glass-border);
@@ -1461,18 +1483,35 @@ html.js .method > li.on {
   text-transform: uppercase; color: var(--text-3); line-height: 1.7;
 }
 @media (min-width: 900px) {
-  .arc > li > ul > li { grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr); gap: 0 1.5rem; align-items: baseline; }
-}
-html.js .arc > li { opacity: 0; transform: translateY(20px); }
-html.js .arc > li.on {
-  opacity: 1; transform: none;
-  transition: opacity 500ms cubic-bezier(.22,.61,.36,1),
-              transform 500ms cubic-bezier(.22,.61,.36,1);
+  .arc > li > ul > li { grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr); gap: 0 1.5rem; align-items: baseline; }
 }
 
+/* ── THE PICTURES DRAW THEMSELVES AS THEY ARRIVE ────────────────────────── */
+/* ⛔ OPACITY ONLY ON THE SVG GROUPS — NEVER `transform`. Each node is placed
+   by its own `transform="translate(x,y)"` PRESENTATION ATTRIBUTE, and a CSS
+   `transform` on the same element REPLACES that attribute rather than adding
+   to it. Animating transform here collapsed all five method nodes onto one
+   point at the origin — measured, and it looked exactly like a broken build. */
+html.js .frame-dia .fnode,
+html.js .method-dia .mnode,
+html.js .arc-dia .stop { opacity: 0; }
+html.js .frame-dia .fnode.on,
+html.js .method-dia .mnode.on,
+html.js .arc-dia .stop.on {
+  opacity: 1;
+  transition: opacity 460ms cubic-bezier(.22,.61,.36,1);
+}
+html.js .boxes > li, html.js .arc > li { opacity: 0; transform: translateY(16px); }
+html.js .boxes > li.on, html.js .arc > li.on {
+  opacity: 1; transform: none;
+  transition: opacity 460ms cubic-bezier(.22,.61,.36,1),
+              transform 460ms cubic-bezier(.22,.61,.36,1);
+}
 @media (prefers-reduced-motion: reduce) {
-  html.js .frame > li, html.js .boxes > li,
-  html.js .method > li, html.js .arc > li {
+  html.js .frame-dia .fnode, html.js .method-dia .mnode, html.js .arc-dia .stop {
+    opacity: 1 !important;   /* ⛔ no transform reset here — see the note above */
+  }
+  html.js .boxes > li, html.js .arc > li {
     opacity: 1 !important; transform: none !important;
   }
 }

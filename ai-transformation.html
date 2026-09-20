@@ -149,13 +149,38 @@
   <section class="frame-sec">
     <div class="wrap">
       <p class="eyebrow">The framework</p>
-      <ol class="frame">
-        <li><b>Map</b></li>
-        <li><b>Prioritize</b></li>
-        <li><b>Use what exists</b></li>
-        <li><b>Implement</b></li>
-        <li><b>Customize</b></li>
-      </ol>
+      <h2>Five moves, in this order, every time.</h2>
+      <!-- ⛔ A RAIL, NOT A ROW OF WORDS. The claim of slide 1 is the ORDER, so
+           the order is what is drawn: one track, five stops, left to right. -->
+      <svg class="dia frame-dia" viewBox="0 0 1000 150" role="img"
+           aria-label="Map, then prioritize, then use what exists, then implement, then customize">
+        <line class="rail" x1="60" y1="52" x2="940" y2="52"/>
+        <g class="fnode" data-step="0" transform="translate(60,52)">
+          <circle r="27"/>
+          <g class="glyph"><rect x="-11" y="-9" width="22" height="18" rx="2"/><path d="M-3-9V9M-11 1h22"/></g>
+          <text y="58">Map</text>
+        </g>
+        <g class="fnode" data-step="1" transform="translate(280,52)">
+          <circle r="27"/>
+          <g class="glyph"><path d="M-10 9V3M-1 9V-3M8 9V-9"/></g>
+          <text y="58">Prioritize</text>
+        </g>
+        <g class="fnode" data-step="2" transform="translate(500,52)">
+          <circle r="27"/>
+          <g class="glyph"><rect x="-11" y="-9" width="22" height="18" rx="3"/><path d="M-5 0l4 4 7-8"/></g>
+          <text y="58">Use what exists</text>
+        </g>
+        <g class="fnode" data-step="3" transform="translate(720,52)">
+          <circle r="27"/>
+          <g class="glyph"><circle r="6"/><path d="M0-12v4M0 12v-4M-12 0h4M12 0h-4"/></g>
+          <text y="58">Implement</text>
+        </g>
+        <g class="fnode" data-step="4" transform="translate(940,52)">
+          <circle r="27"/>
+          <g class="glyph"><path d="M0-11l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></g>
+          <text y="58">Customize</text>
+        </g>
+      </svg>
       <p class="lede">The goal is not more AI. The goal is a more capable business.</p>
     </div>
   </section>
@@ -164,18 +189,55 @@
     <div class="wrap">
       <p class="eyebrow">The premise</p>
       <h2>You can&rsquo;t automate a box you can&rsquo;t draw.</h2>
+      <!-- ⛔ DRAW THE BOXES. The slide's whole argument is that the SAME four
+           steps pass through three states, so the same four boxes are drawn
+           three times and only their treatment changes: undrawable, drawn,
+           then two of them replaced. Reading the three rows down the page IS
+           the argument; no sentence has to make it. -->
       <ul class="boxes">
         <li class="box-unclear">
           <p class="box-state">Unclear</p>
-          <p class="box-flow">? &rarr; ? &rarr; ? &rarr; ?</p>
+          <svg class="dia" viewBox="0 0 760 92" role="img" aria-label="Four unknown steps">
+            <g class="bx">
+              <rect x="6" y="18" width="150" height="56" rx="8"/><text x="81" y="53">?</text>
+              <rect x="204" y="18" width="150" height="56" rx="8"/><text x="279" y="53">?</text>
+              <rect x="402" y="18" width="150" height="56" rx="8"/><text x="477" y="53">?</text>
+              <rect x="600" y="18" width="150" height="56" rx="8"/><text x="675" y="53">?</text>
+            </g>
+            <g class="arw"><path d="M162 46h36M360 46h36M558 46h36"/></g>
+          </svg>
         </li>
         <li class="box-mapped">
           <p class="box-state">Mapped</p>
-          <p class="box-flow">Receive &rarr; Review &rarr; Check &rarr; Approve</p>
+          <svg class="dia" viewBox="0 0 760 92" role="img" aria-label="Receive, review, check, approve">
+            <g class="bx">
+              <rect x="6" y="18" width="150" height="56" rx="8"/><text x="81" y="52">Receive</text>
+              <rect x="204" y="18" width="150" height="56" rx="8"/><text x="279" y="52">Review</text>
+              <rect x="402" y="18" width="150" height="56" rx="8"/><text x="477" y="52">Check</text>
+              <rect x="600" y="18" width="150" height="56" rx="8"/><text x="675" y="52">Approve</text>
+            </g>
+            <g class="arw"><path d="M162 46h30l-6-5m6 5l-6 5M360 46h30l-6-5m6 5l-6 5M558 46h30l-6-5m6 5l-6 5"/></g>
+          </svg>
         </li>
         <li class="box-ready">
           <p class="box-state">AI&#8209;ready</p>
-          <p class="box-flow">Replace only the steps that are worth replacing.</p>
+          <svg class="dia" viewBox="0 0 760 92" role="img"
+               aria-label="Review and check replaced; receive and approve kept">
+            <g class="bx">
+              <rect x="6" y="18" width="150" height="56" rx="8"/><text x="81" y="52">Receive</text>
+              <rect x="600" y="18" width="150" height="56" rx="8"/><text x="675" y="52">Approve</text>
+            </g>
+            <g class="bx swap">
+              <rect x="204" y="18" width="150" height="56" rx="8"/><text x="279" y="52">Review</text>
+              <rect x="402" y="18" width="150" height="56" rx="8"/><text x="477" y="52">Check</text>
+              <path class="spark" d="M340-2l2.4 6.4L349 7l-6.6 2.6L340 16l-2.4-6.4L331 7l6.6-2.6z"
+                    transform="translate(0,16)"/>
+              <path class="spark" d="M538-2l2.4 6.4L547 7l-6.6 2.6L538 16l-2.4-6.4L529 7l6.6-2.6z"
+                    transform="translate(0,16)"/>
+            </g>
+            <g class="arw"><path d="M162 46h30l-6-5m6 5l-6 5M360 46h30l-6-5m6 5l-6 5M558 46h30l-6-5m6 5l-6 5"/></g>
+          </svg>
+          <p class="box-note">Replace only the steps that are worth replacing.</p>
         </li>
       </ul>
       <p class="lede">Your business has to know what it is doing if you want AI to know what to do in your business.</p>
@@ -186,13 +248,45 @@
     <div class="wrap">
       <p class="eyebrow">The method</p>
       <h2>Make the next useful part of the business legible. Decide. Repeat.</h2>
-      <ol class="method">
-        <li><b>Discover</b><span>Choose a job or function.</span></li>
-        <li><b>Map</b><span>How does work actually happen?</span></li>
-        <li><b>Analyze</b><span>Find the highest&#8209;value workflows.</span></li>
-        <li><b>Research</b><span>What already solves them?</span></li>
-        <li><b>Decide</b><span>Map more, implement, or stop.</span></li>
-      </ol>
+      <!-- ⛔ IT IS A LOOP AND IT IS DRAWN AS ONE. The slide ends "Decide.
+           Repeat." and a numbered list cannot say "repeat" — the return arc
+           can, and it is the only part of the picture that carries a word. -->
+      <svg class="dia method-dia" viewBox="0 0 1000 250" role="img"
+           aria-label="Discover, map, analyze, research, decide — then repeat">
+        <g class="mnode" data-step="0" transform="translate(90,54)">
+          <circle r="30"/><text class="num" y="7">01</text>
+          <text class="nm" y="62">Discover</text>
+          <text class="sub" y="84">Choose a job</text><text class="sub" y="102">or function.</text>
+        </g>
+        <g class="mnode" data-step="1" transform="translate(295,54)">
+          <circle r="30"/><text class="num" y="7">02</text>
+          <text class="nm" y="62">Map</text>
+          <text class="sub" y="84">How does work</text><text class="sub" y="102">actually happen?</text>
+        </g>
+        <g class="mnode" data-step="2" transform="translate(500,54)">
+          <circle r="30"/><text class="num" y="7">03</text>
+          <text class="nm" y="62">Analyze</text>
+          <text class="sub" y="84">Find the highest-</text><text class="sub" y="102">value workflows.</text>
+        </g>
+        <g class="mnode" data-step="3" transform="translate(705,54)">
+          <circle r="30"/><text class="num" y="7">04</text>
+          <text class="nm" y="62">Research</text>
+          <text class="sub" y="84">What already</text><text class="sub" y="102">solves them?</text>
+        </g>
+        <g class="mnode" data-step="4" transform="translate(910,54)">
+          <circle r="30"/><text class="num" y="7">05</text>
+          <text class="nm" y="62">Decide</text>
+          <text class="sub" y="84">Map more,</text><text class="sub" y="102">implement, or stop.</text>
+        </g>
+        <g class="arw">
+          <path d="M126 54h139M331 54h139M536 54h139M741 54h139"/>
+        </g>
+        <g class="loop">
+          <path d="M910 160v28a22 22 0 0 1-22 22H112a22 22 0 0 1-22-22v-98"/>
+          <path class="head" d="M83 97l7-9 7 9"/>
+          <text x="500" y="228">repeat</text>
+        </g>
+      </svg>
       <p class="lede">Each cycle produces a clearer map and a better next decision.</p>
     </div>
   </section>
@@ -201,14 +295,38 @@
     <div class="wrap">
       <p class="eyebrow">Complete AI transformation</p>
       <h2>From individual workflows to a coherent, AI&#8209;enabled business.</h2>
+      <!-- ⛔ IT IS A CLIMB, SO IT CLIMBS. Seven stages rising through three
+           bands — the picture states the shape of the whole engagement before
+           a single detail is read, and the detail below hangs off it. -->
+      <svg class="dia arc-dia" viewBox="0 0 1000 330" role="img"
+           aria-label="Seven stages rising through foundation, hardening and closure">
+        <g class="band">
+          <rect x="30" y="30" width="370" height="250" rx="12"/>
+          <rect x="450" y="30" width="360" height="250" rx="12"/>
+          <rect class="last" x="855" y="30" width="115" height="250" rx="12"/>
+        </g>
+        <path class="slope" d="M90 262 215 232 340 202 500 162 625 132 750 102 905 52"/>
+        <g class="stop" data-step="0"><circle cx="90" cy="262" r="9"/><text x="90" y="240">Map</text></g>
+        <g class="stop" data-step="1"><circle cx="215" cy="232" r="9"/><text x="215" y="210">Implement</text></g>
+        <g class="stop" data-step="2"><circle cx="340" cy="202" r="9"/><text x="340" y="180">Iterate</text></g>
+        <g class="stop" data-step="3"><circle cx="500" cy="162" r="9"/><text x="500" y="140">Map across</text></g>
+        <g class="stop" data-step="4"><circle cx="625" cy="132" r="9"/><text x="625" y="110">Integrate across</text></g>
+        <g class="stop" data-step="5"><circle cx="750" cy="102" r="9"/><text x="750" y="80">Custom builds</text></g>
+        <g class="stop peak" data-step="6"><circle cx="905" cy="52" r="12"/><text x="905" y="28">Closed harness</text></g>
+        <g class="bandname">
+          <text x="215" y="305">Foundation</text>
+          <text x="630" y="305">Hardening</text>
+          <text x="912" y="305">Closure</text>
+        </g>
+      </svg>
       <ol class="arc">
         <li>
           <p class="arc-phase">Foundation</p>
           <p class="arc-aim">Make individual parts of the business AI&#8209;integrated.</p>
           <ul>
-            <li><b>1 Map</b><span>Jobs &amp; roles &middot; SOPs &middot; Workflows &middot; Steps &middot; Systems &middot; Cost / time / risk</span></li>
-            <li><b>2 Implement</b><span>Keep &middot; Buy existing &middot; Configure &middot; Connect &middot; AI&#8209;augment</span></li>
-            <li><b>3 Iterate</b><span>Expand to new roles &middot; Find the next opportunities &middot; Continuously improve</span></li>
+            <li><b>1 Map</b><span class="chips"><i>Jobs &amp; roles</i><i>SOPs</i><i>Workflows</i><i>Steps</i><i>Systems</i><i>Cost / time / risk</i></span></li>
+            <li><b>2 Implement</b><span class="chips"><i>Keep</i><i>Buy existing</i><i>Configure</i><i>Connect</i><i>AI&#8209;augment</i></span></li>
+            <li><b>3 Iterate</b><span class="chips"><i>Expand to new roles</i><i>Find the next opportunities</i><i>Continuously improve</i></span></li>
           </ul>
           <p class="arc-result">Key workflows are understood and meaningfully AI&#8209;integrated.</p>
         </li>
@@ -216,9 +334,9 @@
           <p class="arc-phase">Hardening</p>
           <p class="arc-aim">Connect and strengthen the whole.</p>
           <ul>
-            <li><b>4 Map across</b><span>Data dependencies &middot; System handoffs &middot; Permissions &middot; Failure propagation &middot; Overlaps &amp; gaps &middot; Organization&#8209;wide view</span></li>
-            <li><b>5 Integrate across</b><span>Integrate systems &middot; Unify business state &middot; Add observability &middot; Implement controls &middot; Establish verification &middot; Harden for scale</span></li>
-            <li><b>6 Custom implementations</b><span>Solve unique needs &middot; Leverage accumulated knowledge &middot; Integrate deeply &middot; Fill strategic gaps &middot; Create durable advantages</span></li>
+            <li><b>4 Map across</b><span class="chips"><i>Data dependencies</i><i>System handoffs</i><i>Permissions</i><i>Failure propagation</i><i>Overlaps &amp; gaps</i><i>Organization&#8209;wide view</i></span></li>
+            <li><b>5 Integrate across</b><span class="chips"><i>Integrate systems</i><i>Unify business state</i><i>Add observability</i><i>Implement controls</i><i>Establish verification</i><i>Harden for scale</i></span></li>
+            <li><b>6 Custom implementations</b><span class="chips"><i>Solve unique needs</i><i>Leverage accumulated knowledge</i><i>Integrate deeply</i><i>Fill strategic gaps</i><i>Create durable advantages</i></span></li>
           </ul>
           <p class="arc-result">A connected, resilient, and scalable AI&#8209;enabled operation.</p>
         </li>
@@ -226,7 +344,7 @@
           <p class="arc-phase">Closure</p>
           <p class="arc-aim">Operate as a coherent AI&#8209;enabled organization.</p>
           <ul>
-            <li><b>7 Closed harness</b><span>Unified operating environment &middot; Governance, permissions and audit &middot; End&#8209;to&#8209;end observability &middot; Reliable escalation and recovery &middot; Designed for long&#8209;term operation</span></li>
+            <li><b>7 Closed harness</b><span class="chips"><i>Unified operating environment</i><i>Governance, permissions and audit</i><i>End&#8209;to&#8209;end observability</i><i>Reliable escalation and recovery</i><i>Designed for long&#8209;term operation</i></span></li>
           </ul>
           <p class="arc-own">Ownership options, depending on the solution: <b>client&#8209;owned</b> &middot; <b>licensed (our platform)</b> &middot; <b>hybrid</b></p>
           <p class="arc-result">A self&#8209;contained, governed AI operating system for your business.</p>
