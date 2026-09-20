@@ -1192,25 +1192,45 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    ⛔ The collapse rule follows the base rule, deliberately — same trap
    .book-duo documents above: a grid-template-columns written after the
    breakpoint wins at equal specificity and silently defeats the collapse. */
-/* ⛔ THE COLUMNS ARE CENTRED, NOT TOP-ALIGNED. The film is a 16:9 band about
-   355px tall and the person column is ~900px (a full-width portrait plus two
-   paragraphs), so `align-items: start` left a 545px EMPTY HOLE under the video
-   — measured at 1440×900, and it was the largest void on the page. Centring
-   splits that difference into breathing room on both sides of the film
-   instead of one dead quarter-screen. */
-.hero-duo {
-  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
-  gap: 3rem; align-items: center; margin-top: 2.5rem;
-}
+/* ⛔ THE FILM AND THE PERSON ARE STACKED, NOT PAIRED SIDE BY SIDE.
+   They were two columns of one grid row, and that arrangement CANNOT balance:
+   a 16:9 film in a 631px column is 355px tall, while a full-width portrait
+   plus two paragraphs is ~898px. Top-aligned, that left a 545px hole under
+   the film; centred, it left 271px above AND 272px below it. Both measured,
+   both wrong — the geometry has no good value because the premise is wrong.
+
+   Stacked, each element gets the width it deserves: the FILM runs the full
+   container and becomes 1100×619 — the dominant object on the page, which is
+   what a page built around a VSL is for — and the PERSON sits beneath it as a
+   portrait-and-bio row. Isaac's ruling ("my photo needs to be the thing on
+   the site") is kept: the portrait is large and immediately under the film,
+   not shrunk to a byline thumb. */
+.hero-duo { margin-top: 2.5rem; }
 .hero-duo > * { min-width: 0; }
-.hero-duo .portrait-frame { width: 100%; border-radius: var(--r-card); margin-bottom: 1.25rem; }
+.hero-duo .vsl { width: 100%; }
+
+.hero-duo .booker {
+  display: grid; grid-template-columns: 260px minmax(0, 1fr);
+  gap: 0 2.5rem; align-items: start; margin-top: 2.5rem;
+}
+.hero-duo .booker > * { grid-column: 2; }
+/* ⛔ `grid-row: 1 / -1` DOES NOT WORK HERE. The bio's rows are IMPLICIT (no
+   grid-template-rows), and `-1` only names the last EXPLICIT line — so the
+   portrait landed in row 1 alone, sized that row to its own 325px, and shoved
+   the bio text 230px down the column. Span a count instead. */
+.hero-duo .portrait-frame {
+  grid-column: 1; grid-row: 1 / span 20;
+  width: 100%; border-radius: var(--r-card); margin-bottom: 0;
+}
 .hero-duo .booker-who { margin-bottom: 1.5rem; }
 .hero-duo .lede { font-size: 0.95rem; line-height: 1.75; margin-bottom: 0.9rem; }
 .hero-duo .lede:last-child { margin-bottom: 0; }
 @media (max-width: 900px) {
-  /* On a phone the film leads and the person follows it — the film is what
-     the page is for, and the portrait is what confirms who made it. */
-  .hero-duo { grid-template-columns: 1fr; gap: 2rem; }
+  /* On a phone the film still leads and the person still follows — that is
+     now the desktop order too, so only the portrait row has to collapse. */
+  .hero-duo .booker { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-duo .booker > * { grid-column: 1; }
+  .hero-duo .portrait-frame { grid-row: auto; max-width: 260px; }
 }
 
 /* .vsl-ui — the film's own controls. ⛔ THE NATIVE BAR PRINTS THE RUNTIME and
@@ -1710,7 +1730,12 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
    can see how far they have come; the ones ahead are dim. `open` is set on the
    native <details>, so keyboard and screen-reader behaviour is unchanged. */
 html.js .faq {
-  border-top: 0; max-height: 78vh; overflow: hidden; position: relative;
+  /* ⛔ THE WINDOW IS CAPPED IN PIXELS, NOT ONLY IN vh. At 78vh alone a tall
+     viewport (1400px) opened the window to 1092px and showed SEVENTEEN of the
+     twenty questions at once — which is a list being skimmed, not a walk being
+     taken, and the whole mechanism silently stops meaning anything. The cap
+     keeps the stage showing the same handful of beats at any screen height. */
+  border-top: 0; max-height: min(78vh, 640px); overflow: hidden; position: relative;
   /* the questions dissolve at the top and bottom of the window instead of
      being guillotined by the overflow edge — the stage reads as a stage */
   -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
