@@ -68,17 +68,42 @@
        The list itself has to move, so the open answer is always in the same
        place and the stage is a window onto it. The wrapper is built HERE
        rather than in the HTML so that no-JS keeps a plain, complete FAQ. */
-    var reel = null;
+    /* ⛔ SOLO IS A DECK, NOT A LIST.  Isaac, 2026-09-20: "needs to go ONE AT A
+       TIME and become the thing on the screen."  A reel that slid twenty
+       summaries past a window still showed nine of them, and nine competing
+       questions is a list being skimmed — the reader picks what to attend to,
+       which is the opposite of controlling what they believe. Every question
+       is now stacked in the SAME PLACE and only the live one is rendered, at
+       display size, so the current question IS the screen. Built here rather
+       than in the HTML so no-JS still gets a plain, complete, readable FAQ. */
+    var reel = null, count = null, bar = null;
     if (t[4] === 'solo') {
       var box = items[0].parentNode;
       reel = document.createElement('div');
       reel.className = 'faq-reel';
       while (box.firstChild) reel.appendChild(box.firstChild);
       box.appendChild(reel);
+
+      /* the counter is the WALK made visible: it says how many are left, so
+         the reader knows the section ends and keeps going to find out. */
+      count = document.createElement('p');
+      count.className = 'faq-count';
+      count.innerHTML = '<b>01</b><span>/ ' + items.length + '</span>' +
+                        '<span class="faq-bar"><i></i></span>';
+      box.parentNode.insertBefore(count, box);
+      bar = count.querySelector('.faq-bar i');
+
+      /* a click cannot help here and CAN strand the reader on a blank stage:
+         toggling `open` off would hide the only visible card until the next
+         scroll frame repaints it. The scroll position is the only control. */
+      box.addEventListener('click', function (e) {
+        if (e.target.closest('summary')) e.preventDefault();
+      });
     }
 
     driven.push({ el: track, items: items, a: t[2], b: t[3], mode: t[4],
                   reel: reel, box: reel && reel.parentNode, last: -1,
+                  count: count && count.querySelector('b'), bar: bar,
                   punch: track.querySelector('.cascade-punch') });
   });
 
@@ -133,21 +158,26 @@
          it. Recomputed only when the current index actually changes (or after
          a resize), because reading offsetTop forces layout and doing it every
          scroll frame would cost a reflow per frame for nothing. */
-      if (d.reel && (cur !== d.last || remeasure)) {
-        d.last = cur;
-        var pick = d.items[cur < 0 ? 0 : cur];
-        var shift = (d.box.clientHeight - pick.offsetHeight) / 2 - pick.offsetTop;
+      /* ⛔ THE DECK NEEDS A HEIGHT, because every card is absolutely
+         positioned and an absolute child cannot size its parent. Measured
+         from the TALLEST card with its answer open, so no card is ever
+         clipped and the stage never jumps between beats. */
+      if (d.reel && remeasure) {
+        var tallest = 0;
+        d.items.forEach(function (el) {
+          var was = el.open;
+          el.open = true;
+          if (el.scrollHeight > tallest) tallest = el.scrollHeight;
+          el.open = was;
+        });
+        d.reel.style.setProperty('--faq-h', Math.ceil(tallest) + 'px');
+      }
 
-        /* ⛔ CLAMP, OR THE STAGE SHOWS EMPTINESS AT BOTH ENDS. Centring alone
-           pushes the reel DOWN for the first few questions (blank above) and
-           drags it up past the last one (blank below) — the first screen of
-           the walk was a 380px void for exactly this reason. Clamped, the
-           live answer drifts from the top of the stage to the middle over the
-           first few beats and settles; the stage is never part empty. */
-        var floor = Math.min(0, d.box.clientHeight - d.reel.offsetHeight);
-        if (shift > 0) shift = 0;
-        if (shift < floor) shift = floor;
-        d.reel.style.setProperty('--shift', Math.round(shift) + 'px');
+      if (d.reel && cur !== d.last) {
+        d.last = cur;
+        var n1 = (cur < 0 ? 0 : cur) + 1;
+        if (d.count) d.count.textContent = n1 < 10 ? '0' + n1 : String(n1);
+        if (d.bar) d.bar.style.width = (n1 / d.items.length * 100) + '%';
       }
 
       if (d.punch) d.punch.classList.toggle('on', p >= d.b + (1 - d.b) * 0.45);

@@ -1802,35 +1802,68 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
    open and lit; the ones already read recede but stay legible so the reader
    can see how far they have come; the ones ahead are dim. `open` is set on the
    native <details>, so keyboard and screen-reader behaviour is unchanged. */
+/* ⛔ ONE QUESTION IS THE SCREEN.  Isaac: "needs to go ONE AT A TIME and become
+   the thing on the screen."
+   (Superseded, kept: this was a 640px WINDOW with a sliding reel and a
+   soft mask. It still showed nine questions at once with one of them open —
+   and nine competing questions is a list being skimmed. Dimming the other
+   eight does not fix it: they are still on screen, still legible, still
+   offering the reader a choice about where to look. The window is gone.)
+   Every card is stacked in the same place; only the live one renders. */
 html.js .faq {
-  /* ⛔ THE WINDOW IS CAPPED IN PIXELS, NOT ONLY IN vh. At 78vh alone a tall
-     viewport (1400px) opened the window to 1092px and showed SEVENTEEN of the
-     twenty questions at once — which is a list being skimmed, not a walk being
-     taken, and the whole mechanism silently stops meaning anything. The cap
-     keeps the stage showing the same handful of beats at any screen height. */
-  border-top: 0; max-height: min(78vh, 640px); overflow: hidden; position: relative;
-  /* the questions dissolve at the top and bottom of the window instead of
-     being guillotined by the overflow edge — the stage reads as a stage */
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
-          mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  border-top: 0; position: relative;
+  max-height: none; overflow: visible;
+  -webkit-mask-image: none; mask-image: none;
 }
-/* THE REEL — built by reveal.js, never present in the HTML. It carries the
-   whole list and slides so the open answer is always at the same height. */
+/* THE DECK — built by reveal.js, never present in the HTML. --faq-h is
+   measured from the tallest card so nothing is clipped and the stage never
+   jumps as the beats change. */
 html.js .faq-reel {
-  transform: translateY(var(--shift, 0px));
-  transition: transform 620ms cubic-bezier(.22,.61,.36,1);
-  will-change: transform;
+  position: relative; min-height: var(--faq-h, 320px);
+  transform: none; transition: none;
 }
-/* ⛔ THE UNREAD QUESTIONS ARE DIM, NEVER ILLEGIBLE. At 0.18 the whole column
-   read as grey noise — and since the walk shows ~10 questions at a time with
-   one open, that meant nine tenths of the screen was unreadable smudge. The
-   questions ahead are part of the argument: seeing "What if I need to stop?"
-   coming is what makes someone keep walking. */
-html.js .faq details { opacity: 0.34; transition: opacity 380ms ease; }
-html.js .faq details.past { opacity: 0.55; }
-html.js .faq details.on { opacity: 1; }
-html.js .faq details.on summary { color: var(--mercury-blue); }
-html.js .faq details:not(.on) > p { display: none; }
+html.js .faq details {
+  position: absolute; left: 0; right: 0; top: 0;
+  border-bottom: 0; opacity: 0; transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity 400ms cubic-bezier(.22,.61,.36,1),
+              transform 400ms cubic-bezier(.22,.61,.36,1);
+}
+html.js .faq details.on { opacity: 1; transform: none; pointer-events: auto; }
+
+/* THE QUESTION IS THE HEADLINE OF ITS OWN SCREEN, not a row in a list. */
+html.js .faq summary {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.7rem, 3.3vw, 2.5rem); line-height: 1.18;
+  color: var(--text-1); padding: 0; margin: 0 0 1.4rem;
+  cursor: default;
+}
+/* no +/× affordance: the scroll is the only control, so an affordance that
+   suggests clicking would be lying about what moves the page */
+html.js .faq summary::after { display: none; }
+html.js .faq summary:hover { color: var(--text-1); }
+html.js .faq details p {
+  font-size: clamp(1rem, 1.35vw, 1.14rem); line-height: 1.75;
+  color: var(--text-2); max-width: 60ch; margin: 0;
+}
+
+/* THE COUNTER — the walk made visible. It tells the reader the section is
+   finite and how far in they are, which is what keeps them walking. */
+.faq-count {
+  display: flex; align-items: center; gap: 0.85rem;
+  font-family: var(--micro); font-size: 0.74rem; letter-spacing: 0.1em;
+  color: var(--text-3); margin: 0 0 2rem;
+}
+.faq-count b { color: var(--mercury-blue); font-weight: 600; font-size: 0.86rem; }
+.faq-bar {
+  flex: 1; max-width: 240px; height: 2px; border-radius: 2px;
+  background: var(--glass-border); position: relative; overflow: hidden;
+}
+.faq-bar i {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 0;
+  background: var(--mercury-blue);
+  transition: width 420ms cubic-bezier(.22,.61,.36,1);
+}
 
 @media (prefers-reduced-motion: reduce) {
   html.js .cost-sec, html.js .stack-sec, html.js .ledger-sec,
@@ -1842,11 +1875,15 @@ html.js .faq details:not(.on) > p { display: none; }
     position: static !important; min-height: 0; padding: 0;
   }
   html.js .cost > li, html.js .stack > li { opacity: 1 !important; transform: none !important; }
-  html.js .faq {
-    max-height: none; overflow: visible;
-    -webkit-mask-image: none; mask-image: none;
+  html.js .faq { max-height: none; overflow: visible; }
+  html.js .faq-reel { min-height: 0 !important; }
+  /* the deck collapses back into an ordinary readable list */
+  html.js .faq details {
+    position: static !important; opacity: 1 !important; transform: none !important;
+    pointer-events: auto; border-bottom: 1px solid var(--glass-border);
   }
-  html.js .faq-reel { transform: none !important; transition: none; }
-  html.js .faq details { opacity: 1 !important; }
-  html.js .faq details:not(.on) > p { display: block; }
+  html.js .faq summary { font-family: var(--body); font-size: 1rem; margin: 0; }
+  html.js .faq summary::after { display: block; }
+  html.js .faq details p { display: block; }
+  .faq-count { display: none; }
 }
