@@ -444,16 +444,39 @@ reads:
 
 Honest, protective, and it keeps the strong half of the promise — which was never the session count.
 
-### ⏸ FEE OR FORFEIT — *USER*'s call; they cost differently to RUN
+### ✅ RULED — FEE **AND** THE WRITTEN SUBSTITUTE. A MISS COSTS A CONVERSATION, NEVER A DELIVERABLE
 
-| | mechanism cost | |
-|---|---|---|
-| **forfeit** — miss it, it is spent | **none.** self-enforcing, nothing to collect | harsher |
-| **fee + reschedule** — *USER*'s stated choice | needs a payment path: the card on file charged one-off, or an invoice someone has to chase | relationship-preserving |
+*USER*, 2026-09-20: *"if they miss a session they can send us a written explanation of what they
+wouldve wanted to say, and we will provide them a written response with the work attached just the
+same."* **48h notice confirmed.**
 
-Recommended for founding clients: **fee + reschedule**, charged to the card Stripe already holds
-from checkout — so there is nothing to chase. ⛔ **THE FEE AMOUNT IS AN OFFER TERM AND IS *USER*'S
-ALONE.** For reference only, the cadence math in §4c puts a session at **$1,000**.
+⭐ **THIS IS CONSISTENT WITH WHAT THE OFFER ALREADY CLAIMS, WHICH IS WHY IT WORKS.** The video says
+*"the analysis and research happen on my time instead of yours"* — **the session was never where the
+work happens.** It is where the INPUT and the DECISION happen. Give the input in writing, get the
+output in writing; the work itself is unchanged.
+
+| it buys | |
+|---|---|
+| **the guarantee survives a miss** | §0b promises every mapped process returns with all seven. Under a bare fee a missed session threatens that. Under this, the mapping continues — **a miss costs a conversation, not a deliverable** |
+| **the fee becomes a PRICE, not a penalty** | writing a full response is genuinely MORE work than talking for an hour, so the fee is the surcharge on a more expensive delivery mode. True, and a far better thing to say out loud |
+| **it is a remarkable term** | most consultants bill the no-show and deliver nothing. *"Miss it and you still get the work"* is repeatable |
+
+⛔ **THE WRITTEN INPUT NEEDS A STRUCTURE OR IT CANNOT BE WORKED FROM.** Two sentences do not produce
+a map. It is the same questions the session would have asked — which makes it **a form**.
+
+⭐ **AND THAT FORM'S SECOND USE IS WORTH MORE THAN ITS FIRST: SEND IT BEFORE EVERY SESSION, NOT ONLY
+MISSED ONES.** Then a session opens with their input already in hand instead of spending its first
+twenty minutes collecting it. **The miss-handler improves the whole delivery model.**
+
+⚠ **THE FEE IS WHAT STOPS ASYNC BECOMING THE DEFAULT.** With a free written substitute, a client who
+would rather write simply never attends — and the live session is where the *"yes, that is my
+business"* moment happens, which is where retention and the phase-two sell actually live
+(`business-context`). **So the fee must be non-trivial**, and it is doing load-bearing work rather
+than punishing anyone.
+
+⛔ **THE FEE AMOUNT IS AN OFFER TERM AND IS *USER*'S ALONE.** For reference only, §4c's cadence math
+puts a session at **$1,000**. Charge it to the card Stripe already holds from checkout, so there is
+nothing to chase.
 
 ---
 
