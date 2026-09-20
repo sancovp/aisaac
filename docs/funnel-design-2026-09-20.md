@@ -164,6 +164,64 @@ is NOT decided.**
 
 ---
 
+## 1b. THE FAQ — the accordion at the bottom (*USER*, 2026-09-20)
+
+> *"add a small FAQ section at the bottom, FAQ accordion like we always see in funnels. explain all
+> these obstacles and overcomes there. 'What if i [obstacle]?' '[overcome we made]'"*
+
+**TWO DIFFERENT LISTS, AND THE ORDER MATTERS.** The video already walks the deck's ten obstacles —
+repeating them at the top of the FAQ wastes the slot. **What blocks the BUTTON is transactional**:
+what am I actually committing to. Those go first. The strategic ten go after, for the skimmer who
+scrolled past the video.
+
+⛔ **THE FAQ IS WHERE OBJECTIONS GO THAT WOULD PLANT DOUBT IF THEY WERE IN THE MAIN COPY.**
+"Is implementation included?" must be answered SOMEWHERE — slide 13 says *"Implementation is
+separate when you decide something is worth doing"* — but it does not belong next to the button.
+
+### A — THE COMMITMENT (first, because these block the click)
+
+| | |
+|---|---|
+| **What if I miss a session?** | Send me what you would have said in writing and you get the written response with the work attached, exactly as if we had met. There is a rescheduling fee, because writing it up takes longer than talking — but you never lose the work. Cancel 48 hours ahead and there is no fee at all. |
+| **What if I need to stop?** | Stop is a real answer at every step. Cancel any time, from your own billing page. I will ask you why, because that is the most useful thing I get from anyone who leaves. |
+| **What happens at the end of the twelve weeks?** | It continues at $2,000 per cycle, and we decide that together in session six rather than letting it happen to you. You will have had a 30-day notice and a 14-day notice before that conversation. |
+| **Is implementation included?** | No. Implementation is separate, and only when you decide something is worth doing. What you are buying is knowing what is worth doing — and there is no month where I need you to buy anything else. |
+| **How much of my time does this actually take?** | Two sessions per four-week cycle. The mapping and the research happen between them, on my time. |
+| **What if the answer is a $40 tool I could have bought myself?** | I will tell you that. It has already happened and it will happen again. You are paying me to know which one, not to build something. |
+| **What if the answer is to do nothing?** | Then I say so and we stop. Decide has a real stop in it — sometimes the honest answer is that the next round is not worth your money. |
+| **Who owns what we build?** | Depends on the solution. Client-owned, licensed through my platform, or hybrid — decided per thing, not up front. |
+| **Why is it sold out?** | Because it is. The founding price is limited to a real number of clients and the system stops accepting them at that number. It reopens on the date shown. |
+| **Do I have to buy to talk to you?** | No. Book a call. |
+
+### B — THE TEN OBSTACLES (the deck's own, slide 3, in *"what if"* form)
+
+Each one is already written on the deck with its own SOLUTION line — these are those, verbatim in
+substance.
+
+| | |
+|---|---|
+| **What if we don't really know all the ways work gets done?** | That is the normal starting position and it is the first thing we fix. We map the business and make the work legible. You cannot automate a box you cannot draw. |
+| **What if my people don't want to change?** | We start small and show value before asking anyone to trust it. Resistance is usually a reasonable response to a previous initiative that failed. |
+| **What if our tools don't talk to each other?** | That is the integrate-across stage. Unify the data, then the handoffs stop being manual. |
+| **What if nothing is documented?** | Then documenting it IS the work of the first twelve weeks, and it is the thing everything else depends on. |
+| **What if we're not sure what the payoff is?** | Every process comes back with cost, time and risk on each path, so you can compare them honestly instead of guessing. |
+| **What if it makes a mistake?** | Controls, verification and human oversight are part of the design, not added after. The steps that need a human keep one. |
+| **What if we're already too busy?** | That is the reason to bring someone external. The research happens on my time; your people are needed for two sessions a cycle. |
+| **What if we try to do too much at once?** | We do not. It is one part of the business at a time, easiest and highest-impact first, proved before it scales. |
+| **What if there are too many vendors to compare?** | Independent research on what already exists, compared against your needs, is one of the seven things every mapped process comes back with. |
+| **What if it works now but not in a year?** | That is what the closure phase is for — governance, observability and a system designed to keep running. |
+
+### AUTHORING NOTES
+
+- **First question = the most common blocker, not the most flattering.** Missed sessions and
+  stopping come first because they are what someone hesitates over with a card in hand.
+- **Last question is the easiest yes** — *"Do I have to buy to talk to you?" "No."*
+- **Every answer is short.** An FAQ answer that runs long reads as defensive and re-opens the doubt.
+- ⛔ **Every answer above is already true of the design in this document.** Nothing here invents a
+  term. If an answer ever stops matching §0–§4, the FAQ is the lie, not the design.
+
+---
+
 ## 2. THE STRIPE MECHANICS — this is native, no custom program is needed
 
 *USER*: *"So you sign up for that exact process somehow through stripe... or we have a program that
