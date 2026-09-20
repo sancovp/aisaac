@@ -35,6 +35,15 @@
      `first`/`last` are fractions of the track's travel: content starts
      arriving at `first` and the final item lands by `last`, leaving a breath
      at each end so a section is never mid-reveal as it pins or releases. */
+  /* ⛔ THE DECK'S METHOD SECTIONS ARE NOT PINNED TRACKS. Slides 1·2·4·5 are
+     COMPREHENSION beats — the framework, the box, the method, the arc — and
+     pinning all four would have added 8.5 screens to a page already running
+     32. They reveal on entry instead (see REVEAL_ON_ENTER below): the beats
+     still land one at a time, they just do not each cost a screen of scroll.
+     The pinned tracks are reserved for the ARGUMENT — cost, value, ledger,
+     cascade, FAQ — where the pace IS the persuasion. */
+  var REVEAL_ON_ENTER = ['.frame > li', '.boxes > li', '.method > li', '.arc > li'];
+
   var TRACKS = [
     ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],
     ['.stack-sec',   '.stack > li',   0.05, 0.75, 'stack'],
@@ -196,6 +205,32 @@
   window.addEventListener('resize', function () { remeasure = true; onScroll(); });
   window.addEventListener('load', paint);
   paint();
+
+  /* ── THE DECK'S METHOD SECTIONS — revealed as they come into view, each
+     item a beat behind the last. Same `.on` class the tracks use, so one
+     CSS rule covers both mechanisms and there is no second vocabulary. ── */
+  if ('IntersectionObserver' in window) {
+    var stepIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function () { el.classList.add('on'); },
+                   parseInt(el.getAttribute('data-step'), 10) * 130);
+        stepIo.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+    REVEAL_ON_ENTER.forEach(function (sel) {
+      [].slice.call(document.querySelectorAll(sel)).forEach(function (el, i) {
+        el.setAttribute('data-step', i);
+        stepIo.observe(el);
+      });
+    });
+  } else {
+    REVEAL_ON_ENTER.forEach(function (sel) {
+      [].slice.call(document.querySelectorAll(sel))
+        .forEach(function (el) { el.classList.add('on'); });
+    });
+  }
 
   /* ── THE DOORS still arrive on entry rather than on a track. They are the
      DESTINATION: once someone has walked the whole argument, the two buttons
