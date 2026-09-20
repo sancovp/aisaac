@@ -15,14 +15,19 @@
  * Stripe page is still a lead. That was the original reason the form existed
  * and the redesign does not get to lose it.
  *
- * ⛔ CONSENT IS REQUIRED FOR THE CALL AND OPTIONAL FOR A PURCHASE. Contacting
- * a customer about their own purchase is transactional; conditioning a SALE on
- * marketing consent is what GDPR treats as not freely given. For the call
- * there is no other lawful basis to contact them, so it is required there.
+ * ⛔ ONE CONSENT PER CHANNEL, AND NOT ONE OF THEM IS REQUIRED.
+ * (Superseded, kept: this said "required for the call, optional for a
+ * purchase" until the channels were split out. It is now optional everywhere,
+ * for two reasons that both bind: "not a condition of purchase" is a REQUIRED
+ * element of US prior-express-written consent, and a sale gated on marketing
+ * consent is not freely given under GDPR. Replying to somebody's own enquiry
+ * is transactional and needs no permission at all.)
  *
- * ⛔ THE CONSENT STRING IS SUBMITTED WITH THE TICK. A stored boolean with no
- * record of what was agreed to is worth nothing later. The exact sentence goes
- * out in `consent_text`, dated by `consent_version` in the markup.
+ * ⛔ THE AUDIT RECORD IS THE POINT, NOT THE TICK. `consent_record` submits the
+ * EXACT SENTENCE of every box they ticked, with a timestamp, the page and the
+ * wording version, as JSON. A stored boolean that cannot say what was agreed
+ * to is worth nothing in a dispute — and for SMS and voice, where damages are
+ * per message, that record is the entire evidentiary position.
  *
  * Degrades honestly: no JS → the buttons are inert, but the dialog's form is
  * still a real Formspree form whose static `_next` is the booking page, so a
@@ -37,9 +42,11 @@
   var form     = dlg.querySelector('.lead-form');
   var next     = form.querySelector('input[name="_next"]');
   var intent   = form.querySelector('input[name="intent"]');
-  var cText    = form.querySelector('input[name="consent_text"]');
-  var consent  = form.querySelector('input[name="consent"]');
-  var cCopy    = document.getElementById('consent-copy');
+  var cRecord  = form.querySelector('input[name="consent_record"]');
+  var cVersion = form.querySelector('input[name="consent_version"]');
+  var boxes    = [].slice.call(form.querySelectorAll('[data-consent]'));
+  var phoneFld = form.querySelector('.phone-field');
+  var phone    = form.querySelector('input[name="phone"]');
   var qualify  = dlg.querySelector('.qualify');
   var eyebrow  = document.getElementById('capture-eyebrow');
   var title    = document.getElementById('capture-title');
@@ -99,9 +106,10 @@
     qualify.hidden = !isCall;
     form.elements.revenue.required = isCall;
 
-    // required for the call, optional for a purchase — see the header
-    consent.required = isCall;
-    dlg.classList.toggle('consent-required', isCall);
+    // ⛔ NO CONSENT IS EVER REQUIRED, ON EITHER PATH. "Not a condition of
+    //    purchase" is a required element of US prior-express-written consent,
+    //    and a sale gated on marketing consent is not freely given under GDPR.
+    //    Replying to someone's own enquiry is transactional and needs none.
 
     dlg.showModal();
     var first = form.querySelector('input[name="name"]');
@@ -118,11 +126,42 @@
   // area, so a click landing on it rather than on the form means outside
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 
+  /* ⛔ THE PHONE FIELD EXISTS ONLY WHEN A PHONE CONSENT IS TICKED, and is
+     required only then. Asking for a mobile nobody consented to use is
+     collecting data with no basis; asking for none while they tick "text me"
+     is a consent that names no number, which under US rules is not one. */
+  function syncPhone() {
+    var wanted = boxes.some(function (b) {
+      return b.checked && b.hasAttribute('data-needs-phone');
+    });
+    phoneFld.hidden = !wanted;
+    phone.required = wanted;
+    if (!wanted) phone.value = '';
+  }
+  form.addEventListener('change', function (e) {
+    if (e.target.hasAttribute && e.target.hasAttribute('data-consent')) syncPhone();
+  });
+
   form.addEventListener('submit', function (e) {
     var d = DEST[current];
 
-    // ⛔ record WHAT they agreed to, not just that they did
-    cText.value = consent.checked ? (cCopy.textContent || '').replace(/\s+/g, ' ').trim() : '';
+    /* ⛔ THE AUDIT RECORD — the exact sentence of every ticked box, dated.
+       A stored "yes" that cannot say what was agreed to is worth nothing in a
+       dispute, and for SMS and voice it is the whole evidentiary point. */
+    var granted = {};
+    boxes.forEach(function (b) {
+      if (!b.checked) return;
+      var span = b.parentNode.querySelector('span');
+      granted[b.getAttribute('data-consent')] =
+        (span ? span.textContent : '').replace(/\s+/g, ' ').trim();
+    });
+    cRecord.value = JSON.stringify({
+      version: cVersion ? cVersion.value : '',
+      at: new Date().toISOString(),
+      page: location.href.split('#')[0],
+      intent: current,
+      granted: granted
+    });
 
     // a checkout with no URL yet must not silently post into nowhere
     if (d.prefill === 'stripe' && !d.url) {
