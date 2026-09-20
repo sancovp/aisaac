@@ -30,8 +30,13 @@
      ⇒ THE SPEC IS NOW `docs/funnel-design-2026-09-20.md`. Read it before
      changing anything here; every block below is specified there.
 
-     THE SHAPE:  headline · subheadline · video | photo · the stack ·
-                 THREE DOORS · the form · the FAQ
+     THE SHAPE, AND IT IS THE DECK'S OWN ORDER:
+       headline · subheadline · video | photo
+       slide 6  the DIY cost anchor, itemised, summing to $29K–$220K
+       slide 7  what you actually get — the six checks
+       slides 8–11  THE CASCADE:  $38,000 → $19,000 → $9,000, struck as it falls
+       slides 12–13 "and I'm still not charging that" → THE DOORS
+       the form · the FAQ
 
      THE WORDS ARE HIS. Headline and subheadline are slide 1 of his own sales
      deck, verbatim. The stack is slide 7. The FAQ's second half is slide 3's
@@ -103,12 +108,46 @@
     </div>
   </section>
 
-  <!-- ══ THE STACK — slide 7 of the deck, "Here's the Actual Value", verbatim.
-       It is on the page as well as in the video because people scroll past
-       video. Six checks, each one thing they hold at the end. ══ -->
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SLIDES 6 → 13, IN THE DECK'S OWN ORDER. THIS IS THE CASCADE.
+
+       ⛔ THE BUG THIS REPLACES, NAMED SO IT IS NOT REBUILT: the page carried
+       slide 7 and slide 13 and NOTHING BETWEEN THEM. Six features in a grid,
+       then prices in cards, with no anchor, no sum and no descent — so the
+       heading "And I'm still not charging that" was the punchline of a
+       cascade the page never ran. Isaac, 2026-09-20: "it just starts.... from
+       what? it doesnt make sense... you have seen a value stack right?"
+       He is right: that was a PRICING TABLE, not a value stack. A value stack
+       itemises, SUMS, and only then reveals the price against the sum.
+
+       ⛔ EVERY NUMBER BELOW IS THE DECK'S OWN — references/sales-deck/
+       DECK-EXTRACTION.md, slides 6, 7, 8, 9, 10, 11, 12, 13. Nothing is
+       invented. The deck does NOT itemise the $38,000, so no per-line value is
+       attached to the six checks; the itemised anchor is slide 6's real cost
+       table, which is what the deck itself anchors with.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- ══ SLIDE 6 — the DIY cost anchor. Five real lines that SUM. ══ -->
+  <section class="cost-sec">
+    <div class="wrap">
+      <p class="eyebrow">All the regular costs</p>
+      <h2>What companies normally spend trying to figure this out on their own.</h2>
+      <ul class="cost">
+        <li><span>Internal team time</span><b>$2K&ndash;$10K+ <i>/ mo</i></b></li>
+        <li><span>Consultants</span><b>$10K&ndash;$50K+</b></li>
+        <li><span>Trial and error</span><b>$2K&ndash;$10K+</b></li>
+        <li><span>Integration work</span><b>$5K&ndash;$50K+</b></li>
+        <li><span>Lost opportunity</span><b>$10K&ndash;$100K+</b></li>
+        <li class="cost-total"><span>Typical first six months</span><b>$29K&ndash;$220K+</b></li>
+      </ul>
+      <p class="lede">Time, people, tools, mistakes, and the things you never got to.</p>
+    </div>
+  </section>
+
+  <!-- ══ SLIDE 7 — what you actually get, against that. ══ -->
   <section class="stack-sec">
     <div class="wrap">
-      <p class="eyebrow">What you end up holding</p>
+      <p class="eyebrow">Here&rsquo;s the actual value</p>
       <h2>Not an AI toy. A continuously improving map of what is worth doing next.</h2>
       <ul class="stack">
         <li><strong>Mapped operations</strong><span>Know how work actually happens.</span></li>
@@ -119,61 +158,53 @@
         <li><strong>Ongoing refinement</strong><span>Keep mapping only while the next cycle is valuable.</span></li>
       </ul>
       <p class="lede">Fewer bad bets, faster wins, and a business that becomes progressively more AI&#8209;integrated.</p>
-      <!-- L3 — the level they do not expect, and the strongest of the three.
-           `funnel-design-2026-09-20.md` §0b: the video already told them they
-           are the bottleneck; this is the line that says the bottleneck gets
-           mapped too. It is explicit here deliberately, not implied. -->
+      <!-- L3 — the level they do not expect, and the strongest of the three
+           (funnel-design §0b). Said out loud here, never implied. -->
       <p class="lede"><strong>And that includes your own job.</strong> You are on the map too &mdash; it is usually the least written-down role in the company, and the one holding the most.</p>
     </div>
   </section>
 
+  <!-- ══ SLIDES 8–12 — THE CASCADE. This is the setup the page was missing,
+       and it is why the next heading lands. Each rung is struck as the next
+       arrives, exactly as the deck reveals them one slide at a time. ══ -->
+  <section class="cascade-sec">
+    <div class="wrap">
+      <p class="eyebrow">So what&rsquo;s a fair price for this?</p>
+      <h2>Process mapping, opportunity analysis, solution research, and ongoing advisory.</h2>
+      <ol class="cascade">
+        <li><b>$38,000+</b><span>Market rate &mdash; a reasonable anchor for the first three months of this level of work.</span></li>
+        <li class="struck"><b>$19,000+</b><span>But it&rsquo;s not even that price. It&rsquo;s not even half that.</span></li>
+        <li class="struck"><b>$9,000+</b><span>It&rsquo;s not even half <em>that</em>.</span></li>
+      </ol>
+    </div>
+  </section>
+
   <!-- ══════════════════════════════════════════════════════════════════════
-       THE THREE DOORS.  §1 of the funnel design.
+       SLIDE 13 — THE DOORS. Now "and I'm still not charging that" has its
+       setup directly above it and means something.
 
        ⛔ THE FOUNDING DEAL IS PRIMARY AND THE RETAINER'S JOB IS TO PRICE IT.
-       $3,000 for three months against $2,000/month is only legible when both
-       are on screen. The expensive option exists so the cheap one can be read.
+       ⛔ THE CALL IS THE EXIT, NOT A PEER — never the word FREE beside a price.
+       ⛔ SOLD OUT: add `sold-out` to the <li>. The card STAYS, struck, with the
+       reopen date in `.door-note`. A removed card teaches nothing; a struck one
+       proves the cap was real (funnel-design §3).
+       ⛔ THE CAP IS ENFORCED BY STRIPE, NOT BY THIS PAGE, and the system must
+       be the only door or the counter lies.
 
-       ⛔ THE CALL IS THE EXIT, NOT A PEER — smaller, last, lower contrast, and
-       worded "rather talk first?" NEVER the word FREE next to a price: a free
-       thing beside a $2,000 thing is not a downsell, it is the obvious choice,
-       and it takes the price with it.
-
-       ⛔ SOLD OUT: when the founding cap is reached, the card STAYS ON THE PAGE
-       struck through, with the reopen date. A removed card teaches nothing; a
-       struck one proves the cap was real and makes the retainer the obvious
-       move. Add `sold-out` to the <li> and fill `.door-note`.
-       Isaac, 2026-09-20: "if they do then that part of the site's offer stack
-       just goes to SOLD OUT and you have to buy a la carte."
-
-       ⛔ THE CAP IS ENFORCED BY STRIPE, NOT DISPLAYED BY THIS PAGE. A Payment
-       Link takes a completed-sessions limit and honours it atomically, so
-       there is no race and no bookmarked-URL hole. This page only shows it.
-       ⛔ AND THE SYSTEM MUST BE THE ONLY DOOR — a founding term sold by email
-       makes the counter lie while showing a true-looking number.
-
-       ⏸ UNBUILT, AND *USER* OWNS BOTH:
-         · STRIPE_FOUNDING_URL / STRIPE_RETAINER_URL — the two links below are
-           `#` placeholders. The Stripe products do not exist yet; creating
-           live payment objects on his account is his, not an agent's.
-         · THE CAP NUMBER — `data-cap` below is unset. The remaining-count text
-           is hardcoded here for now and becomes a fetch once the function
-           exists (§2 of the design: a real cart needs one serverless function
-           because a static page cannot hold a Stripe secret key).
+       ⏸ UNBUILT AND *USER*'S: the two hrefs are `#`. The Stripe products do not
+       exist; creating live payment objects on his account is his. The cap
+       number is unset in `data-cap`.
        ══════════════════════════════════════════════════════════════════════ -->
   <section id="offer" class="offer-sec">
     <div class="wrap">
-      <p class="eyebrow">Two ways in</p>
-      <h2>And I&rsquo;m still not charging that.</h2>
+      <h2 class="cascade-punch">And I&rsquo;m still not charging that.</h2>
 
       <ul class="doors" data-cap="">
         <li class="door door-primary">
           <p class="door-name">The 90&#8209;Day Founding Partnership</p>
           <p class="door-price">$3,000<span>three months</span></p>
           <p class="door-what">Six working sessions. Every process we map comes back with the research, the analysis, an AI&#8209;alignment score on every step, the services that already solve it, the recommendation, the integration pathway, and your custom implementation options.</p>
-          <!-- ⛔ THE DISCLOSURE GOES ON THE BUTTON, NOT IN THE TERMS.
-               §2 of the design: trial-continuation is only honest if the
-               continuation is stated where the money is. -->
+          <!-- ⛔ THE DISCLOSURE GOES ON THE BUTTON, NOT IN THE TERMS (§2). -->
           <a class="cta-primary" href="#">Start &mdash; $3,000 &rarr;</a>
           <p class="door-fine">Continues at $2,000 per cycle after the three months. Cancel any time.</p>
           <p class="door-note">The founding price is limited to a real number of clients. When they are taken it closes until the next opening.</p>

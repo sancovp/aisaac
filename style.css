@@ -1384,3 +1384,55 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 }
 .faq details p a { color: var(--mercury-blue); border-bottom: 1px solid rgba(125,211,252,0.25); }
 @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
+
+
+/* ── SLIDE 6 — THE DIY COST ANCHOR. Itemised, and it SUMS. ───────────────── */
+.cost-sec { padding: var(--sec-y) 1.25rem; }
+.cost {
+  list-style: none; margin: 2.25rem 0 1.75rem; padding: 0; max-width: 46rem;
+  border-top: 1px solid var(--glass-border);
+}
+.cost > li {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem;
+  padding: 0.95rem 0; border-bottom: 1px solid var(--glass-border);
+}
+.cost > li > span { color: var(--text-2); font-size: 0.97rem; }
+.cost > li > b {
+  font-family: var(--mono); font-size: 0.92rem; font-weight: 500;
+  color: var(--text-1); white-space: nowrap;
+}
+.cost > li > b > i { color: var(--text-3); font-style: normal; font-size: 0.82rem; }
+/* the total is the anchor — it is the number the cascade is measured against */
+.cost .cost-total { border-bottom: 0; padding-top: 1.3rem; }
+.cost .cost-total > span { color: var(--text-1); font-size: 1.02rem; }
+.cost .cost-total > b {
+  font-family: var(--display); font-size: clamp(1.5rem, 3.6vw, 2.1rem);
+  color: var(--mercury-rose); letter-spacing: -0.01em;
+}
+
+/* ── SLIDES 8–11 — THE CASCADE. ⛔ THIS IS THE SETUP THE PAGE WAS MISSING.
+   Without it "and I'm still not charging that" is a punchline with no joke
+   in front of it. Each rung is struck as the next arrives, which is what the
+   deck does one slide at a time. ─────────────────────────────────────────── */
+.cascade-sec { padding: var(--sec-y) 1.25rem calc(var(--sec-y) * 0.4); }
+.cascade { list-style: none; margin: 2.5rem 0 0; padding: 0; max-width: 46rem; }
+.cascade > li {
+  display: grid; grid-template-columns: minmax(0, auto) 1fr;
+  align-items: baseline; gap: 0.4rem 1.5rem; padding: 0.85rem 0;
+}
+.cascade > li > b {
+  font-family: var(--display); font-size: clamp(2rem, 5.5vw, 3.2rem);
+  color: var(--text-1); line-height: 1; letter-spacing: -0.02em;
+}
+.cascade > li > span { color: var(--text-2); font-size: 0.95rem; line-height: 1.7; }
+.cascade > li > span em { color: var(--text-1); font-style: italic; }
+/* struck = superseded by the rung below it */
+.cascade .struck > b {
+  color: var(--text-3);
+  text-decoration: line-through; text-decoration-thickness: 3px;
+  text-decoration-color: var(--mercury-rose);
+}
+@media (max-width: 620px) { .cascade > li { grid-template-columns: 1fr; } }
+
+/* the punch line sits directly above the doors and is the cascade's last rung */
+.cascade-punch { margin-bottom: 2.25rem; }
