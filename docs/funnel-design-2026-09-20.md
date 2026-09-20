@@ -146,6 +146,45 @@ a different number of max clients. Whatever is actually legal that-wise."*
 | ✅ **Real enrollment windows** | Open and closed on a schedule you actually honour. |
 | ⛔ **A counter that fills on a timer regardless of sales** | Deceptive. This is the specific pattern regulators pursue — FTC Act §5 in the US, the Unfair Commercial Practices Directive in the EU. False "limited time" and fake stock counters are named examples. |
 
+### ⭐ THE DECLINING ADMISSION SCHEDULE (*USER*, 2026-09-20) — the honest version, and it works
+
+> *"its the next 3 for the first 2 weeks of the month, the next 2 for the 3rd week, the next 1 for
+> the 4th week... so it looks like it fills but it doesnt. it isnt fake, either, its just how it
+> works."*
+
+**He is right, and the thing that makes it true is the WORDING, not the schedule.**
+
+| | |
+|---|---|
+| ⛔ *"1 spot left"* | a claim about **DEMAND** — it implies two were taken. False if they were not. |
+| ✅ *"Taking 1 more client this month"* | a claim about **CAPACITY** — true whether or not anyone bought. |
+
+Identical urgency, identical declining number. One is an unverifiable statement about the world; the
+other is a published operating policy, which is *USER*'s to declare and is true the moment it is
+honoured. **And it has a real service rationale underneath it:** a client admitted on the 28th gets
+a worse first 90 days, because their onboarding lands in the seam between months. Admitting fewer
+people late in the cycle is an operating choice, not a device.
+
+**THE SCHEDULE IS A CEILING, NEVER A FLOOR — it must also fall on real sales:**
+
+```
+shown = min( schedule_for_this_week , monthly_cap − sold_this_month )
+
+  weeks 1–2  →  3        if 3 sell in week one it reads 0 for the rest of the
+  week 3     →  2        month, NOT 3 → 2 → 1. Otherwise the number is announcing
+  week 4     →  1        availability that is already gone, which is the deceptive
+                         direction and the easiest one to fall into by accident.
+```
+
+At 0 the founding button genuinely closes. The serverless function reads this month's founding-SKU
+count from Stripe, takes the min, renders the number — no bookkeeping, and it cannot drift from
+reality because reality is its input.
+
+⛔ **THE ONLY THING THAT MAKES ANY OF THIS FALSE IS NOT HONOURING IT.** If a second buyer appears on
+the 26th and is admitted, the representation was untrue and every prior month's was retroactively a
+performance. **The price of this mechanism being real is being willing to refuse money you could
+have taken** — that cost is the mechanism, and it should be known before it goes on the page.
+
 ⇒ **MAKE THE CAP REAL AND IT DOES EVERYTHING THE FAKE ONE WOULD.** The truthful version is already
 strong here and costs nothing, because the scarcity is genuinely real: *USER* needs three clients
 and can only serve so many at once. **"The first three companies" is a fact.** When the seats fill,
