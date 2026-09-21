@@ -47,15 +47,16 @@
     '.boxes > li',         // the three states of the same four boxes
     '.method-dia .mnode',  // the loop's five nodes
     '.arc-dia .stop',      // the climb's seven stages
-    '.arc > li'            // the detail blocks under the climb
+    '.arc > li',           // the detail blocks under the climb
+    '.climb-dia',          // slide 3's chasms, drawn as the section arrives
+    '.obst > li'           // the ten obstacles, one at a time
   ];
 
   var TRACKS = [
     ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],
     ['.stack-sec',   '.stack > li',   0.05, 0.75, 'stack'],
     ['.ledger-sec',  '.ledger > li',  0.04, 0.80, 'stack', 26],
-    ['.cascade-sec', '.cascade > li', 0.06, 0.70, 'cascade'],
-    ['.faq-sec',     '.faq details',  0.02, 0.96, 'solo']
+    ['.cascade-sec', '.cascade > li', 0.06, 0.70, 'cascade']
   ];
 
   var driven = [];
@@ -66,67 +67,17 @@
     var items = [].slice.call(track.querySelectorAll(t[1]));
     if (!items.length) return;
 
-    // ⛔ THE TRACK'S HEIGHT IS DERIVED FROM ITS ITEM COUNT, never typed. The
-    // FAQ has twenty answers and the cost table has six; one hardcoded height
-    // would either rush the FAQ or strand the reader in an empty cost track.
-    // vh of scroll per beat — a track may override it (t[5]); the ledger runs
-    // eight beats and would otherwise be the longest section on the page.
-    var perItem = t[5] || (t[4] === 'solo' ? 62 : 34);
+    // ⛔ THE TRACK'S HEIGHT IS DERIVED FROM ITS ITEM COUNT, never typed — a
+    // hardcoded height either rushes a long section or strands the reader in
+    // an empty one. vh of scroll per beat; a track may override it (t[5]).
+    var perItem = t[5] || 34;
     track.style.setProperty('--track', (100 + items.length * perItem) + 'vh');
 
-    /* ⛔ THE SOLO TRACK NEEDS A REEL, OR THE WALK ONLY SHOWS ITS MIDDLE.
-       Twenty questions in a fixed-height window is a list the live answer
-       slides OUT of: measured at 1440×900, items 15–20 sat below the box
-       entirely — the last one 1082px down, fully off-screen — so the forced
-       walk displayed roughly its middle third and nothing else. Centring the
-       BOX (`justify-content: center`) cannot fix that; it centres all twenty.
-       The list itself has to move, so the open answer is always in the same
-       place and the stage is a window onto it. The wrapper is built HERE
-       rather than in the HTML so that no-JS keeps a plain, complete FAQ. */
-    /* ⛔ SOLO IS A DECK, NOT A LIST.  Isaac, 2026-09-20: "needs to go ONE AT A
-       TIME and become the thing on the screen."  A reel that slid twenty
-       summaries past a window still showed nine of them, and nine competing
-       questions is a list being skimmed — the reader picks what to attend to,
-       which is the opposite of controlling what they believe. Every question
-       is now stacked in the SAME PLACE and only the live one is rendered, at
-       display size, so the current question IS the screen. Built here rather
-       than in the HTML so no-JS still gets a plain, complete, readable FAQ. */
-    var reel = null, count = null, bar = null;
-    if (t[4] === 'solo') {
-      var box = items[0].parentNode;
-      reel = document.createElement('div');
-      reel.className = 'faq-reel';
-      while (box.firstChild) reel.appendChild(box.firstChild);
-      box.appendChild(reel);
-
-      /* the counter is the WALK made visible: it says how many are left, so
-         the reader knows the section ends and keeps going to find out. */
-      count = document.createElement('p');
-      count.className = 'faq-count';
-      count.innerHTML = '<b>01</b><span>/ ' + items.length + '</span>' +
-                        '<span class="faq-bar"><i></i></span>';
-      box.parentNode.insertBefore(count, box);
-      bar = count.querySelector('.faq-bar i');
-
-      /* a click cannot help here and CAN strand the reader on a blank stage:
-         toggling `open` off would hide the only visible card until the next
-         scroll frame repaints it. The scroll position is the only control. */
-      box.addEventListener('click', function (e) {
-        if (e.target.closest('summary')) e.preventDefault();
-      });
-    }
-
     driven.push({ el: track, items: items, a: t[2], b: t[3], mode: t[4],
-                  reel: reel, box: reel && reel.parentNode, last: -1,
-                  count: count && count.querySelector('b'), bar: bar,
                   punch: track.querySelector('.cascade-punch') });
   });
 
   if (!driven.length) { root.classList.remove('js'); return; }
-
-  // set by the resize listener: every reel re-measures on the next paint,
-  // because a width change re-wraps the answers and moves every offsetTop
-  var remeasure = true;
 
   function paint() {
     ticking = false;
@@ -137,67 +88,15 @@
 
       var n = d.items.length;
       var span = (d.b - d.a) / Math.max(1, n - (d.mode === 'cascade' ? 0 : 1));
-      var cur = -1;
 
       d.items.forEach(function (el, i) {
-        var at   = d.a + i * span;
-        var next = d.a + (i + 1) * span;
-        var live = p >= at;
-
-        if (d.mode === 'solo') {
-          /* ⛔ ONE AT A TIME, AND IT OPENS ITSELF. The FAQ is not a list you
-             skim past — each question arrives, opens, is read, and hands over
-             to the next. `open` is set rather than a class so the native
-             <details> semantics (and its accessibility) stay intact. */
-          /* ⛔ THE FIRST QUESTION IS OPEN ON ARRIVAL. With `live` gated on
-             `p >= a`, the opening screen of the FAQ showed twenty dim
-             summaries, nothing open and a 380px hole — the single worst
-             screen on the page, and it was the one that introduced a
-             thirteen-screen section. Item 0 is current from the top of the
-             track; the walk starts already underway. */
-          var isCurrent = i === 0
-            ? (p < d.a + span)
-            : (live && (i === n - 1 || p < next));
-          if (isCurrent) cur = i;
-          el.open = isCurrent;
-          el.classList.toggle('on', isCurrent);
-          el.classList.toggle('past', live && !isCurrent);
-        } else {
-          el.classList.toggle('on', live);
-          el.classList.toggle('past', live && p >= next);
-        }
+        var live = p >= d.a + i * span;
+        el.classList.toggle('on', live);
+        el.classList.toggle('past', live && p >= d.a + (i + 1) * span);
       });
-
-      /* ⛔ SLIDE THE REEL SO THE LIVE ANSWER NEVER MOVES. The open question is
-         held at the vertical middle of the stage and the list travels under
-         it. Recomputed only when the current index actually changes (or after
-         a resize), because reading offsetTop forces layout and doing it every
-         scroll frame would cost a reflow per frame for nothing. */
-      /* ⛔ THE DECK NEEDS A HEIGHT, because every card is absolutely
-         positioned and an absolute child cannot size its parent. Measured
-         from the TALLEST card with its answer open, so no card is ever
-         clipped and the stage never jumps between beats. */
-      if (d.reel && remeasure) {
-        var tallest = 0;
-        d.items.forEach(function (el) {
-          var was = el.open;
-          el.open = true;
-          if (el.scrollHeight > tallest) tallest = el.scrollHeight;
-          el.open = was;
-        });
-        d.reel.style.setProperty('--faq-h', Math.ceil(tallest) + 'px');
-      }
-
-      if (d.reel && cur !== d.last) {
-        d.last = cur;
-        var n1 = (cur < 0 ? 0 : cur) + 1;
-        if (d.count) d.count.textContent = n1 < 10 ? '0' + n1 : String(n1);
-        if (d.bar) d.bar.style.width = (n1 / d.items.length * 100) + '%';
-      }
 
       if (d.punch) d.punch.classList.toggle('on', p >= d.b + (1 - d.b) * 0.45);
     });
-    remeasure = false;
   }
 
   var ticking = false;
@@ -208,7 +107,7 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', function () { remeasure = true; onScroll(); });
+  window.addEventListener('resize', onScroll);
   window.addEventListener('load', paint);
   paint();
 
