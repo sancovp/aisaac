@@ -57,17 +57,28 @@
      climb, not part of the picture. */
   var REVEAL_ON_ENTER = ['.arc > li'];
 
-  /* PHASED STAGES — the scroll selects a STATE rather than adding items.
-     [ track, stage element, how many states, vh of scroll per state ] */
-  var PHASED = [
-    ['.box-sec', '.box-stage', 3, 66]
+  /* ⛔ THE DIAGRAMS PLAY ON A CLOCK, NOT ON SCROLL DISTANCE.
+     Isaac, 2026-09-20: "scrolling at normal speed just blows past
+     everything. i dont even see everything spawn."
+     (Superseded, kept: they were position-mapped — beat i fired at
+     fraction i/n of the track's travel. That only works if the reader
+     scrolls at the speed the author imagined. One ordinary flick is
+     1000+px, so every beat fired within a few frames of the last and the
+     whole sequence was over before it was seen. Making the tracks longer
+     does not fix it either; it just moves the cliff.)
+     A section now PLAYS when it arrives: entering it starts a fixed
+     ~2s timeline and the animation runs at its own pace no matter how
+     fast the page was moving. The sections stay pinned so the reader is
+     held there long enough to watch it. */
+  var PLAY_ON_ENTER = [
+    ['.frame-sec',  '.frame-dia .fnode'],
+    ['.box-sec',    '.box-dia .cell'],
+    ['.climb-sec',  '.obst > li'],
+    ['.method-sec', '.method-dia .mnode'],
+    ['.arc-sec',    '.arc-dia .stop']
   ];
 
   var TRACKS = [
-    ['.frame-sec',   '.frame-dia .fnode',  0.12, 0.86, 'stack', 30],
-    ['.climb-sec',   '.obst > li',         0.22, 0.94, 'stack', 20],
-    ['.method-sec',  '.method-dia .mnode', 0.12, 0.82, 'stack', 30],
-    ['.arc-sec',     '.arc-dia .stop',     0.10, 0.80, 'stack', 26],
     ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],
     ['.stack-sec',   '.stack > li',   0.05, 0.75, 'stack'],
     ['.ledger-sec',  '.ledger > li',  0.04, 0.80, 'stack', 26],
@@ -92,17 +103,45 @@
                   punch: track.querySelector('.cascade-punch') });
   });
 
-  var phased = [];
-  PHASED.forEach(function (t) {
-    var track = document.querySelector(t[0]);
-    if (!track) return;
-    var stage = track.querySelector(t[1]);
-    if (!stage) return;
-    track.style.setProperty('--track', (100 + t[2] * t[3]) + 'vh');
-    phased.push({ el: track, stage: stage, n: t[2], last: -1 });
+  /* stagger index for every played item, set once */
+  PLAY_ON_ENTER.forEach(function (t) {
+    var sec = document.querySelector(t[0]);
+    if (!sec) return;
+    [].slice.call(sec.querySelectorAll(t[1])).forEach(function (el, i) {
+      el.style.setProperty('--i', i);
+    });
   });
 
-  if (!driven.length && !phased.length) { root.classList.remove('js'); return; }
+  /* ⛔ THE TIMELINE STARTS WHEN THE SECTION REACHES THE MIDDLE OF THE SCREEN,
+     and never restarts (a replay on re-entry would animate behind a reader
+     who has already gone past).
+     ⛔ NOT A `threshold`. An IntersectionObserver threshold is a fraction of
+     the TARGET's own area, and these sections are two-plus viewports tall —
+     so `threshold: 0.45` can never be reached and the section NEVER PLAYS.
+     Measured: the box section is 2.3 screens, so at most 43% of it is ever
+     on screen. A negative rootMargin asks the right question instead — does
+     this element overlap the middle 40% of the viewport — and is height-
+     independent. */
+  if ('IntersectionObserver' in window) {
+    var playIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('play');
+        playIo.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '-30% 0px -30% 0px' });
+    PLAY_ON_ENTER.forEach(function (t) {
+      var sec = document.querySelector(t[0]);
+      if (sec) playIo.observe(sec);
+    });
+  } else {
+    PLAY_ON_ENTER.forEach(function (t) {
+      var sec = document.querySelector(t[0]);
+      if (sec) sec.classList.add('play');
+    });
+  }
+
+  if (!driven.length) { root.classList.remove('js'); return; }
 
   function paint() {
     ticking = false;
@@ -123,33 +162,7 @@
       if (d.punch) d.punch.classList.toggle('on', p >= d.b + (1 - d.b) * 0.45);
     });
 
-    /* ⛔ --p IS THE SCRUB HEAD. Publishing the track's own 0→1 progress as a
-       custom property lets CSS draw a line, sweep an arc or advance a meter
-       CONTINUOUSLY with the scroll, instead of snapping on a class. That
-       continuity is what reads as hi-tech; a class toggle always reads as a
-       web page reacting. Custom properties inherit, so everything inside the
-       section can use it with no extra wiring. */
-    scrub.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      var travel = el.offsetHeight - window.innerHeight;
-      var p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
-      el.style.setProperty('--p', p.toFixed(4));
-    });
-
-    phased.forEach(function (d) {
-      var r = d.el.getBoundingClientRect();
-      var travel = d.el.offsetHeight - window.innerHeight;
-      var p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
-      var ph = Math.floor((p - 0.06) / (0.88 / d.n));
-      if (ph < 0) ph = 0;
-      if (ph > d.n - 1) ph = d.n - 1;
-      if (ph !== d.last) { d.last = ph; d.stage.setAttribute('data-phase', ph); }
-    });
   }
-
-  // every pinned section publishes --p, phased ones included
-  var scrub = driven.map(function (d) { return d.el; })
-                    .concat(phased.map(function (d) { return d.el; }));
 
   var ticking = false;
   function onScroll() {

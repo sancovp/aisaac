@@ -1377,9 +1377,11 @@ html.js .stack > li.on .g .af { fill-opacity: 1; transition: fill-opacity 500ms 
 .frame-dia .fnode:last-of-type circle { stroke: var(--mercury-blue); }
 .frame-dia .fnode:last-of-type .glyph { stroke: var(--mercury-blue); fill: rgba(125,211,252,0.14); }
 
-/* ── SLIDE 2 — ONE SET OF BOXES, TRANSFORMING UNDER THE SCROLL ──────────
-   `data-phase` is set by reveal.js from scroll position; every part of a
-   cell crossfades between states, so pushing the page scrubs the change. */
+/* ── SLIDE 2 — ONE SET OF BOXES, TRANSFORMING ON ITS OWN CLOCK ──────────
+   A single 2.6s timeline walks the four boxes through all three states:
+   undrawable → drawn → two of them replaced. It was driven by `data-phase`
+   off scroll position, which meant a fast scroll skipped the middle state
+   entirely — and the middle state is the whole argument. */
 .box-sec { padding: var(--sec-y) 1.25rem; }
 .box-stage { margin: 2.5rem 0 0; }
 .box-states {
@@ -1388,49 +1390,51 @@ html.js .stack > li.on .g .af { fill-opacity: 1; transition: fill-opacity 500ms 
   font-family: var(--micro); font-size: 0.74rem; letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.box-states > li {
-  margin: 0; color: var(--text-3); opacity: 0.35;
-  transition: opacity 420ms ease, color 420ms ease;
-}
-.box-stage[data-phase="0"] .box-states > li:nth-child(1),
-.box-stage[data-phase="1"] .box-states > li:nth-child(2),
-.box-stage[data-phase="2"] .box-states > li:nth-child(3) {
-  opacity: 1; color: var(--mercury-blue);
-}
+.box-states > li { margin: 0; color: var(--text-3); opacity: 0.3; }
 .box-dia { max-width: 1000px; }
-.box-dia .cell rect { fill: none; stroke-width: 2; transition: all 520ms cubic-bezier(.22,.61,.36,1); }
-/* ⛔ TWO RECTS, NOT ONE ANIMATED DASH. `stroke-dasharray` does not interpolate
-   between "dashed" and "solid" in a way any browser renders smoothly, so the
-   undrawable box and the drawn box are separate shapes that CROSSFADE — which
-   is also the truer statement: one is replaced by the other. */
+.box-dia .cell rect { fill: none; stroke-width: 2; }
+/* ⛔ TWO RECTS, NOT ONE ANIMATED DASH. `stroke-dasharray` does not
+   interpolate between dashed and solid in any browser, so the undrawable box
+   and the drawn box are separate shapes that CROSSFADE — which is also the
+   truer statement: one is REPLACED by the other. */
 .box-dia .cell .ghost { stroke: var(--text-3); stroke-dasharray: 7 7; opacity: 0.55; }
 .box-dia .cell .solid { stroke: var(--text-2); opacity: 0; }
-.box-dia .cell text { transition: opacity 400ms ease; }
-.box-dia .cell .q { font-size: 24px; fill: var(--text-3); opacity: 0.8; }
+.box-dia .cell .q  { font-size: 24px; fill: var(--text-3); opacity: 0.8; }
 .box-dia .cell .nm { font-size: 17px; fill: var(--text-1); opacity: 0; }
-.box-dia .cell .spark { fill: var(--mercury-blue); stroke: none; opacity: 0; transition: opacity 400ms ease 240ms; }
-.box-dia .arw path { opacity: 0.45; transition: opacity 420ms ease; }
-
-.box-stage[data-phase="1"] .cell .ghost,
-.box-stage[data-phase="2"] .cell .ghost { opacity: 0; }
-.box-stage[data-phase="1"] .cell .solid,
-.box-stage[data-phase="2"] .cell .solid { opacity: 1; }
-.box-stage[data-phase="1"] .cell .q,
-.box-stage[data-phase="2"] .cell .q { opacity: 0; }
-.box-stage[data-phase="1"] .cell .nm,
-.box-stage[data-phase="2"] .cell .nm { opacity: 1; }
-.box-stage[data-phase="1"] .arw path,
-.box-stage[data-phase="2"] .arw path { opacity: 1; }
-/* and only two of the four are replaced — that is the claim */
-.box-stage[data-phase="2"] .cell.swap .solid {
-  stroke: var(--mercury-blue); fill: rgba(125, 211, 252, 0.13);
-}
-.box-stage[data-phase="2"] .cell.swap .spark { opacity: 1; }
+.box-dia .cell .spark { fill: var(--mercury-blue); stroke: none; opacity: 0; }
+.box-dia .arw path { opacity: 0.4; }
 .box-note {
   color: var(--text-2); font-size: 0.92rem; line-height: 1.65;
-  margin: 1.5rem 0 0; opacity: 0; transition: opacity 420ms ease 200ms;
+  margin: 1.5rem 0 0; opacity: 0;
 }
-.box-stage[data-phase="2"] .box-note { opacity: 1; }
+
+@keyframes boxGhostOut { 0%, 26% { opacity: .55 } 38%, 100% { opacity: 0 } }
+@keyframes boxSolidIn  { 0%, 26% { opacity: 0 }   38%, 100% { opacity: 1 } }
+@keyframes boxQOut     { 0%, 24% { opacity: .8 }  34%, 100% { opacity: 0 } }
+@keyframes boxNameIn   { 0%, 28% { opacity: 0 }   40%, 100% { opacity: 1 } }
+@keyframes boxArrows   { 0%, 26% { opacity: .4 }  42%, 100% { opacity: 1 } }
+@keyframes boxSwap {
+  0%, 62%   { stroke: #94a3b8; fill: rgba(125,211,252,0) }
+  78%, 100% { stroke: #7dd3fc; fill: rgba(125,211,252,0.13) }
+}
+@keyframes boxSpark { 0%, 66% { opacity: 0 } 82%, 100% { opacity: 1 } }
+@keyframes boxNote  { 0%, 72% { opacity: 0 } 88%, 100% { opacity: 1 } }
+/* the three labels light in turn, so the state has a NAME while it is showing */
+@keyframes boxLit1 { 0%, 24% { opacity: 1; color: #7dd3fc } 34%, 100% { opacity: .3; color: #6c7c92 } }
+@keyframes boxLit2 { 0%, 26% { opacity: .3; color: #6c7c92 } 38%, 60% { opacity: 1; color: #7dd3fc } 72%, 100% { opacity: .3; color: #6c7c92 } }
+@keyframes boxLit3 { 0%, 64% { opacity: .3; color: #6c7c92 } 78%, 100% { opacity: 1; color: #7dd3fc } }
+
+.play .box-dia .cell .ghost { animation: boxGhostOut 2600ms linear both; }
+.play .box-dia .cell .solid { animation: boxSolidIn  2600ms linear both; }
+.play .box-dia .cell .q     { animation: boxQOut     2600ms linear both; }
+.play .box-dia .cell .nm    { animation: boxNameIn   2600ms linear both; }
+.play .box-dia .arw path    { animation: boxArrows   2600ms linear both; }
+.play .box-dia .cell.swap .solid { animation: boxSolidIn 2600ms linear both, boxSwap 2600ms linear both; }
+.play .box-dia .cell.swap .spark { animation: boxSpark 2600ms linear both; }
+.play .box-note { animation: boxNote 2600ms linear both; }
+.play .box-states > li:nth-child(1) { animation: boxLit1 2600ms linear both; }
+.play .box-states > li:nth-child(2) { animation: boxLit2 2600ms linear both; }
+.play .box-states > li:nth-child(3) { animation: boxLit3 2600ms linear both; }
 
 /* ── SLIDE 3 — THE CLIMB ACROSS FIVE CHASMS, and the ten obstacles ──────── */
 .climb-sec { padding: var(--sec-y) 1.25rem; }
@@ -1506,9 +1510,31 @@ html.js .climb-dia .chasm path,
 html.js .climb-dia .ground path { opacity: 0; }
 html.js .climb-dia.on .chasm path,
 html.js .climb-dia.on .ground path { opacity: 1; transition: opacity 600ms ease 120ms; }
+/* ⛔ EVERY TIMELINE OFF, EVERY END STATE ON. The pictures ARE the argument;
+   only their arrival was motion, so nothing of the argument is lost here. */
 @media (prefers-reduced-motion: reduce) {
-  html.js .obst > li { opacity: 1 !important; transform: none !important; }
-  html.js .climb-dia .chasm path, html.js .climb-dia .ground path { opacity: 1 !important; }
+  .frame-dia .rail, .method-dia .arw path, .method-dia .loop path,
+  .arc-dia .slope, .climb-dia .ground path, .climb-dia .chasm path {
+    stroke-dasharray: none !important; stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .method-dia .loop .head, .method-dia .loop text { opacity: 1 !important; animation: none !important; }
+  html.js .frame-dia .fnode, html.js .method-dia .mnode,
+  html.js .arc-dia .stop, html.js .obst > li {
+    opacity: 1 !important; transform: none !important; animation: none !important;
+  }
+  /* ⛔ the pop lives on the CIRCLE, never the group — so the reset does too */
+  html.js .frame-dia .fnode circle, html.js .method-dia .mnode circle,
+  html.js .arc-dia .stop circle { transform: none !important; animation: none !important; }
+  /* the box reads its FINAL state with no timeline */
+  .box-dia .cell .ghost, .box-dia .cell .q, .box-dia .cell .solid,
+  .box-dia .cell .nm, .box-dia .cell .spark, .box-dia .arw path,
+  .box-note, .box-states > li { animation: none !important; }
+  .box-dia .cell .ghost, .box-dia .cell .q { opacity: 0 !important; }
+  .box-dia .cell .solid, .box-dia .cell .nm, .box-dia .arw path,
+  .box-note, .box-states > li { opacity: 1 !important; }
+  .box-dia .cell.swap .solid { stroke: var(--mercury-blue) !important; fill: rgba(125,211,252,0.13) !important; }
+  .box-dia .cell.swap .spark { opacity: 1 !important; }
 }
 
 /* ── SLIDE 4 — THE LOOP. A list cannot say "repeat"; the return arc can. ── */
@@ -1595,15 +1621,24 @@ html.js .climb-dia.on .ground path { opacity: 1; transition: opacity 600ms ease 
   .arc > li > ul > li { grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr); gap: 0 1.5rem; align-items: baseline; }
 }
 
-/* ══ THE SCRUB — the lines DRAW under the scroll ══════════════════════════
-   Isaac: "it should feel hi-tech… it should feel like OH."
-   Every pinned section publishes its own 0→1 progress as --p (reveal.js).
-   A dash offset driven by --p means the stroke is literally being drawn by
-   the reader's scroll — the page behaves like a transport, not like a thing
-   that reacts once when it comes into view. `stroke-dasharray` is set a
-   little longer than each path so nothing can wrap.
-   ⛔ NO `transition` ON THESE — a transition would lag the scrub and the
-   whole effect (your push moves the line NOW) is gone. */
+/* ══ THE TIMELINE — the diagrams PLAY when you arrive ═════════════════════
+   Isaac: "scrolling at normal speed just blows past everything. i dont even
+   see everything spawn."
+   (Superseded, kept: every beat here was mapped to a fraction of its track's
+   scroll travel, and the lines were drawn by a --p scrub head. That reads
+   beautifully at the speed the author scrolls and vanishes at any other: an
+   ordinary flick is over 1000px, so the whole sequence fired inside a few
+   frames. Lengthening the track only moves the cliff further down.)
+   Each section now runs a FIXED ~2s timeline the moment it is 45% on screen,
+   so the animation takes the same time whatever the reader's wheel did, and
+   the section stays pinned long enough to be watched. */
+
+@keyframes diaFade   { from { opacity: 0 } to { opacity: 1 } }
+@keyframes diaPop    { from { transform: scale(0.4) } to { transform: scale(1) } }
+@keyframes diaDraw   { from { stroke-dashoffset: var(--len) } to { stroke-dashoffset: 0 } }
+@keyframes diaRise   { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+
+/* every drawable line starts undrawn and is drawn BY THE TIMELINE */
 .frame-dia .rail,
 .method-dia .arw path,
 .method-dia .loop path,
@@ -1611,85 +1646,65 @@ html.js .climb-dia.on .ground path { opacity: 1; transition: opacity 600ms ease 
 .climb-dia .ground path,
 .climb-dia .chasm path {
   stroke-dasharray: var(--len, 1000);
-  stroke-dashoffset: calc(var(--len, 1000) * (1 - var(--p, 1)));
+  stroke-dashoffset: var(--len, 1000);
 }
-.frame-dia .rail            { --len: 900; }
-.method-dia .arw path       { --len: 620; }
-/* ⛔ THE RETURN ARC CLOSES LAST. It was drawing alongside the chain, so the
-   loop came back before the last two steps had even arrived — the picture
-   said "repeat" while the thing to repeat was still being built. Its scrub
-   is remapped to start at 62% of the track. */
-.method-dia .loop path {
-  --len: 1000;
-  stroke-dashoffset: calc(1000 * (1 - clamp(0, (var(--p, 1) - 0.62) * 2.7, 1)));
-}
-.arc-dia .slope             { --len: 900; }
-.climb-dia .ground path     { --len: 360; }
-.climb-dia .chasm path      { --len: 400; }
-/* the loop's arrowhead and its word land only once the arc has come back */
-.method-dia .loop .head, .method-dia .loop text {
-  stroke-dasharray: none; stroke-dashoffset: 0;
-  opacity: clamp(0, (var(--p, 1) - 0.88) * 9, 1);
-}
+.frame-dia .rail        { --len: 900; }
+.method-dia .arw path   { --len: 620; }
+.method-dia .loop path  { --len: 1000; }
+.arc-dia .slope         { --len: 900; }
+.climb-dia .ground path { --len: 360; }
+.climb-dia .chasm path  { --len: 400; }
+.method-dia .loop .head, .method-dia .loop text { opacity: 0; }
 
-/* ── THE PICTURES DRAW THEMSELVES AS THEY ARRIVE ────────────────────────── */
-/* ⛔ OPACITY ONLY ON THE SVG GROUPS — NEVER `transform`. Each node is placed
-   by its own `transform="translate(x,y)"` PRESENTATION ATTRIBUTE, and a CSS
-   `transform` on the same element REPLACES that attribute rather than adding
-   to it. Animating transform here collapsed all five method nodes onto one
-   point at the origin — measured, and it looked exactly like a broken build. */
+/* the nodes start absent; --i is their stagger index, set once by reveal.js */
 html.js .frame-dia .fnode,
 html.js .method-dia .mnode,
 html.js .arc-dia .stop { opacity: 0; }
-html.js .frame-dia .fnode.on,
-html.js .method-dia .mnode.on,
-html.js .arc-dia .stop.on {
-  opacity: 1;
-  transition: opacity 380ms cubic-bezier(.22,.61,.36,1);
-}
-/* ⛔ THE POP GOES ON THE CIRCLE, NEVER THE GROUP. The <g> is placed by its
-   own transform="translate()" attribute and a CSS transform REPLACES that —
-   scaling the group teleports every node to the origin (measured). The
-   circle carries no transform attribute, so it is free to be scaled. */
 html.js .frame-dia .fnode circle,
 html.js .method-dia .mnode circle,
 html.js .arc-dia .stop circle {
-  transform-box: fill-box; transform-origin: center;
-  transform: scale(0.45);
+  transform-box: fill-box; transform-origin: center; transform: scale(0.4);
 }
-html.js .frame-dia .fnode.on circle,
-html.js .method-dia .mnode.on circle,
-html.js .arc-dia .stop.on circle {
-  transform: scale(1);
-  transition: transform 520ms cubic-bezier(.34,1.56,.64,1);
+
+/* ── SLIDE 1, the rail: the track draws, then the five stops land ── */
+.play .frame-dia .rail { animation: diaDraw 820ms ease-out both; }
+.play .frame-dia .fnode {
+  animation: diaFade 360ms ease-out both calc(240ms + var(--i) * 170ms);
 }
-html.js .arc > li { opacity: 0; transform: translateY(16px); }
-html.js .arc > li.on {
-  opacity: 1; transform: none;
-  transition: opacity 460ms cubic-bezier(.22,.61,.36,1),
-              transform 460ms cubic-bezier(.22,.61,.36,1);
+.play .frame-dia .fnode circle {
+  animation: diaPop 520ms cubic-bezier(.34,1.56,.64,1) both calc(240ms + var(--i) * 170ms);
 }
-@media (prefers-reduced-motion: reduce) {
-  /* the scrub IS motion — without it every line is simply already drawn */
-  .frame-dia .rail, .method-dia .arw path, .method-dia .loop path,
-  .arc-dia .slope, .climb-dia .ground path, .climb-dia .chasm path {
-    stroke-dasharray: none !important; stroke-dashoffset: 0 !important;
-  }
-  .method-dia .loop .head, .method-dia .loop text { opacity: 1 !important; }
-  html.js .frame-dia .fnode, html.js .method-dia .mnode, html.js .arc-dia .stop {
-    opacity: 1 !important;   /* ⛔ no transform reset on the GROUP — see the note above */
-  }
-  /* the pop lives on the circle, so the reset does too */
-  html.js .frame-dia .fnode circle, html.js .method-dia .mnode circle,
-  html.js .arc-dia .stop circle { transform: none !important; }
-  html.js .arc > li { opacity: 1 !important; transform: none !important; }
-  /* no JS → no data-phase, so the stage must read as the FINAL state */
-  html.js .box-dia .cell .ghost, html.js .box-dia .cell .q { opacity: 0; }
-  html.js .box-dia .cell .solid, html.js .box-dia .cell .nm,
-  html.js .box-dia .arw path, html.js .box-note { opacity: 1; }
-  html.js .box-dia .cell.swap .solid { stroke: var(--mercury-blue); fill: rgba(125,211,252,0.13); }
-  html.js .box-dia .cell.swap .spark { opacity: 1; }
-  html.js .box-states > li { opacity: 1; }
+
+/* ── SLIDE 4, the loop: chain draws, stops land, THEN the arc comes back ── */
+.play .method-dia .arw path { animation: diaDraw 900ms ease-out both 120ms; }
+.play .method-dia .mnode {
+  animation: diaFade 360ms ease-out both calc(200ms + var(--i) * 160ms);
+}
+.play .method-dia .mnode circle {
+  animation: diaPop 520ms cubic-bezier(.34,1.56,.64,1) both calc(200ms + var(--i) * 160ms);
+}
+/* ⛔ THE RETURN ARC CLOSES LAST — it says "repeat", and it cannot say that
+   before the thing to repeat has finished arriving (the fifth stop lands at
+   840ms). Its delay is not a taste; it is that ordering. */
+.play .method-dia .loop path { animation: diaDraw 760ms ease-in-out both 1080ms; }
+.play .method-dia .loop .head { animation: diaFade 300ms ease-out both 1780ms; }
+.play .method-dia .loop text  { animation: diaFade 400ms ease-out both 1840ms; }
+
+/* ── SLIDE 5, the climb: the slope rises, then the seven stages land ── */
+.play .arc-dia .slope { animation: diaDraw 1100ms ease-out both 80ms; }
+.play .arc-dia .stop {
+  animation: diaFade 340ms ease-out both calc(280ms + var(--i) * 130ms);
+}
+.play .arc-dia .stop circle {
+  animation: diaPop 480ms cubic-bezier(.34,1.56,.64,1) both calc(280ms + var(--i) * 130ms);
+}
+
+/* ── SLIDE 3, the chasms: the ground draws, then each bridge is thrown ── */
+.play .climb-dia .ground path { animation: diaDraw 700ms ease-out both 100ms; }
+.play .climb-dia .chasm path  { animation: diaDraw 900ms ease-out both 620ms; }
+html.js .obst > li { opacity: 0; }
+.play .obst > li {
+  animation: diaRise 420ms cubic-bezier(.22,.61,.36,1) both calc(900ms + var(--i) * 95ms);
 }
 
 /* ── THE LEDGER — what the $38,000 anchor is actually made of ─────────────
@@ -2114,11 +2129,18 @@ html.js .cascade .struck.on > b::after {
    ⛔ COLLAPSES COMPLETELY without JS or under reduced-motion: no track, no
    pin, everything visible. See the two blocks at the end.
    ══════════════════════════════════════════════════════════════════════════ */
+/* ⛔ HOLD LONG ENOUGH TO BE WATCHED. The timeline runs ~2s whatever the
+   scroll did, so a pinned section must stay on screen at least that long.
+   --track is typed here because these no longer derive a height from an
+   item count. ⛔ ONLY the diagram-only sections are pinned: climb and arc
+   carry long lists under their pictures and cannot fit a 100vh stage. */
+html.js .frame-sec  { --track: 200vh; }
+html.js .box-sec    { --track: 230vh; }
+html.js .method-sec { --track: 210vh; }
+
 html.js .frame-sec,
 html.js .box-sec,
-html.js .climb-sec,
 html.js .method-sec,
-html.js .arc-sec,
 html.js .cost-sec,
 html.js .stack-sec,
 html.js .ledger-sec,
@@ -2127,9 +2149,7 @@ html.js .cascade-sec {
 }
 html.js .frame-sec > .wrap,
 html.js .box-sec > .wrap,
-html.js .climb-sec > .wrap,
 html.js .method-sec > .wrap,
-html.js .arc-sec > .wrap,
 html.js .cost-sec > .wrap,
 html.js .stack-sec > .wrap,
 html.js .ledger-sec > .wrap,
@@ -2140,17 +2160,13 @@ html.js .cascade-pin {
 }
 html.js .frame-sec > .wrap,
 html.js .box-sec > .wrap,
-html.js .climb-sec > .wrap,
 html.js .method-sec > .wrap,
-html.js .arc-sec > .wrap,
 html.js .cost-sec > .wrap,
 html.js .stack-sec > .wrap,
 html.js .ledger-sec > .wrap { width: 100%; max-width: none; }
 html.js .frame-sec > .wrap > *,
 html.js .box-sec > .wrap > *,
-html.js .climb-sec > .wrap > *,
 html.js .method-sec > .wrap > *,
-html.js .arc-sec > .wrap > *,
 html.js .cost-sec > .wrap > *,
 html.js .stack-sec > .wrap > *,
 html.js .ledger-sec > .wrap > * { max-width: var(--wrap); width: 100%; margin-left: auto; margin-right: auto; }
