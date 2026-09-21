@@ -42,17 +42,32 @@
      still land one at a time, they just do not each cost a screen of scroll.
      The pinned tracks are reserved for the ARGUMENT — cost, value, ledger,
      cascade, FAQ — where the pace IS the persuasion. */
-  var REVEAL_ON_ENTER = [
-    '.frame-dia .fnode',   // the rail's five stops
-    '.boxes > li',         // the three states of the same four boxes
-    '.method-dia .mnode',  // the loop's five nodes
-    '.arc-dia .stop',      // the climb's seven stages
-    '.arc > li',           // the detail blocks under the climb
-    '.climb-dia',          // slide 3's chasms, drawn as the section arrives
-    '.obst > li'           // the ten obstacles, one at a time
+  /* ⛔ THE METHOD SECTIONS ARE DRIVEN STAGES NOW, NOT ENTRY FADES.
+     Isaac, 2026-09-20: "sections like this need to scroll thru and become
+     animated, show exactly what we are going to do… it should feel hi-tech…
+     it should feel like OH."
+     (Superseded, kept: these four were revealed on entry to save page
+     length. An entry fade plays once, at whatever moment the section
+     happens to cross the fold, and the reader is a bystander to it. A
+     DRIVEN stage makes the scroll the transport: the line draws as you
+     push, the nodes land under your thumb, the boxes change while you
+     hold them. That is the whole difference between a page that has
+     animation on it and a page that feels like an instrument.)
+     Only `.arc > li` stays an entry fade — it is the detail text UNDER the
+     climb, not part of the picture. */
+  var REVEAL_ON_ENTER = ['.arc > li'];
+
+  /* PHASED STAGES — the scroll selects a STATE rather than adding items.
+     [ track, stage element, how many states, vh of scroll per state ] */
+  var PHASED = [
+    ['.box-sec', '.box-stage', 3, 66]
   ];
 
   var TRACKS = [
+    ['.frame-sec',   '.frame-dia .fnode',  0.12, 0.86, 'stack', 30],
+    ['.climb-sec',   '.obst > li',         0.22, 0.94, 'stack', 20],
+    ['.method-sec',  '.method-dia .mnode', 0.12, 0.82, 'stack', 30],
+    ['.arc-sec',     '.arc-dia .stop',     0.10, 0.80, 'stack', 26],
     ['.cost-sec',    '.cost > li',    0.05, 0.75, 'stack'],
     ['.stack-sec',   '.stack > li',   0.05, 0.75, 'stack'],
     ['.ledger-sec',  '.ledger > li',  0.04, 0.80, 'stack', 26],
@@ -77,7 +92,17 @@
                   punch: track.querySelector('.cascade-punch') });
   });
 
-  if (!driven.length) { root.classList.remove('js'); return; }
+  var phased = [];
+  PHASED.forEach(function (t) {
+    var track = document.querySelector(t[0]);
+    if (!track) return;
+    var stage = track.querySelector(t[1]);
+    if (!stage) return;
+    track.style.setProperty('--track', (100 + t[2] * t[3]) + 'vh');
+    phased.push({ el: track, stage: stage, n: t[2], last: -1 });
+  });
+
+  if (!driven.length && !phased.length) { root.classList.remove('js'); return; }
 
   function paint() {
     ticking = false;
@@ -97,7 +122,34 @@
 
       if (d.punch) d.punch.classList.toggle('on', p >= d.b + (1 - d.b) * 0.45);
     });
+
+    /* ⛔ --p IS THE SCRUB HEAD. Publishing the track's own 0→1 progress as a
+       custom property lets CSS draw a line, sweep an arc or advance a meter
+       CONTINUOUSLY with the scroll, instead of snapping on a class. That
+       continuity is what reads as hi-tech; a class toggle always reads as a
+       web page reacting. Custom properties inherit, so everything inside the
+       section can use it with no extra wiring. */
+    scrub.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var travel = el.offsetHeight - window.innerHeight;
+      var p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
+      el.style.setProperty('--p', p.toFixed(4));
+    });
+
+    phased.forEach(function (d) {
+      var r = d.el.getBoundingClientRect();
+      var travel = d.el.offsetHeight - window.innerHeight;
+      var p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
+      var ph = Math.floor((p - 0.06) / (0.88 / d.n));
+      if (ph < 0) ph = 0;
+      if (ph > d.n - 1) ph = d.n - 1;
+      if (ph !== d.last) { d.last = ph; d.stage.setAttribute('data-phase', ph); }
+    });
   }
+
+  // every pinned section publishes --p, phased ones included
+  var scrub = driven.map(function (d) { return d.el; })
+                    .concat(phased.map(function (d) { return d.el; }));
 
   var ticking = false;
   function onScroll() {

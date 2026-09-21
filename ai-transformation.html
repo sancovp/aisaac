@@ -189,57 +189,56 @@
     <div class="wrap">
       <p class="eyebrow">The premise</p>
       <h2>You can&rsquo;t automate a box you can&rsquo;t draw.</h2>
-      <!-- ⛔ DRAW THE BOXES. The slide's whole argument is that the SAME four
-           steps pass through three states, so the same four boxes are drawn
-           three times and only their treatment changes: undrawable, drawn,
-           then two of them replaced. Reading the three rows down the page IS
-           the argument; no sentence has to make it. -->
-      <ul class="boxes">
-        <li class="box-unclear">
-          <p class="box-state">Unclear</p>
-          <svg class="dia" viewBox="0 0 760 92" role="img" aria-label="Four unknown steps">
-            <g class="bx">
-              <rect x="6" y="18" width="150" height="56" rx="8"/><text x="81" y="53">?</text>
-              <rect x="204" y="18" width="150" height="56" rx="8"/><text x="279" y="53">?</text>
-              <rect x="402" y="18" width="150" height="56" rx="8"/><text x="477" y="53">?</text>
-              <rect x="600" y="18" width="150" height="56" rx="8"/><text x="675" y="53">?</text>
-            </g>
-            <g class="arw"><path d="M162 46h36M360 46h36M558 46h36"/></g>
-          </svg>
-        </li>
-        <li class="box-mapped">
-          <p class="box-state">Mapped</p>
-          <svg class="dia" viewBox="0 0 760 92" role="img" aria-label="Receive, review, check, approve">
-            <g class="bx">
-              <rect x="6" y="18" width="150" height="56" rx="8"/><text x="81" y="52">Receive</text>
-              <rect x="204" y="18" width="150" height="56" rx="8"/><text x="279" y="52">Review</text>
-              <rect x="402" y="18" width="150" height="56" rx="8"/><text x="477" y="52">Check</text>
-              <rect x="600" y="18" width="150" height="56" rx="8"/><text x="675" y="52">Approve</text>
-            </g>
-            <g class="arw"><path d="M162 46h30l-6-5m6 5l-6 5M360 46h30l-6-5m6 5l-6 5M558 46h30l-6-5m6 5l-6 5"/></g>
-          </svg>
-        </li>
-        <li class="box-ready">
-          <p class="box-state">AI&#8209;ready</p>
-          <svg class="dia" viewBox="0 0 760 92" role="img"
-               aria-label="Review and check replaced; receive and approve kept">
-            <g class="bx">
-              <rect x="6" y="18" width="150" height="56" rx="8"/><text x="81" y="52">Receive</text>
-              <rect x="600" y="18" width="150" height="56" rx="8"/><text x="675" y="52">Approve</text>
-            </g>
-            <g class="bx swap">
-              <rect x="204" y="18" width="150" height="56" rx="8"/><text x="279" y="52">Review</text>
-              <rect x="402" y="18" width="150" height="56" rx="8"/><text x="477" y="52">Check</text>
-              <path class="spark" d="M340-2l2.4 6.4L349 7l-6.6 2.6L340 16l-2.4-6.4L331 7l6.6-2.6z"
-                    transform="translate(0,16)"/>
-              <path class="spark" d="M538-2l2.4 6.4L547 7l-6.6 2.6L538 16l-2.4-6.4L529 7l6.6-2.6z"
-                    transform="translate(0,16)"/>
-            </g>
-            <g class="arw"><path d="M162 46h30l-6-5m6 5l-6 5M360 46h30l-6-5m6 5l-6 5M558 46h30l-6-5m6 5l-6 5"/></g>
-          </svg>
-          <p class="box-note">Replace only the steps that are worth replacing.</p>
-        </li>
-      </ul>
+      <!-- ⛔ ONE SET OF BOXES THAT TRANSFORMS UNDER THE SCROLL.
+           Isaac, 2026-09-20: "sections like this need to scroll thru and
+           become animated… it should feel like OH."
+           (Superseded, kept: this was THREE static rows of four boxes, one
+           per state. Three rows shows you three pictures and asks you to
+           infer that they are the same four boxes; one row that CHANGES
+           shows you the change itself. The inference was the thing that was
+           not landing.)
+           The scroll position drives `data-phase` — undrawable, drawn, two
+           of them replaced — and every part of the cell crossfades between
+           them, so scrolling scrubs the transformation rather than paging
+           past snapshots. -->
+      <div class="box-stage" data-phase="0">
+        <ol class="box-states">
+          <li>Unclear</li><li>Mapped</li><li>AI&#8209;ready</li>
+        </ol>
+        <svg class="dia box-dia" viewBox="0 0 760 104" role="img"
+             aria-label="Four steps: unknown, then named, then two of them replaced by AI">
+          <g class="cell" transform="translate(6,24)">
+            <rect class="ghost" width="150" height="56" rx="8"/>
+            <rect class="solid" width="150" height="56" rx="8"/>
+            <text class="q" x="75" y="30">?</text>
+            <text class="nm" x="75" y="29">Receive</text>
+          </g>
+          <g class="cell swap" transform="translate(204,24)">
+            <rect class="ghost" width="150" height="56" rx="8"/>
+            <rect class="solid" width="150" height="56" rx="8"/>
+            <text class="q" x="75" y="30">?</text>
+            <text class="nm" x="75" y="29">Review</text>
+            <path class="spark" d="M136-4l2.6 7L146 5.6l-7.4 2.6L136 15l-2.6-6.8L126 5.6l7.4-2.6z"/>
+          </g>
+          <g class="cell swap" transform="translate(402,24)">
+            <rect class="ghost" width="150" height="56" rx="8"/>
+            <rect class="solid" width="150" height="56" rx="8"/>
+            <text class="q" x="75" y="30">?</text>
+            <text class="nm" x="75" y="29">Check</text>
+            <path class="spark" d="M136-4l2.6 7L146 5.6l-7.4 2.6L136 15l-2.6-6.8L126 5.6l7.4-2.6z"/>
+          </g>
+          <g class="cell" transform="translate(600,24)">
+            <rect class="ghost" width="150" height="56" rx="8"/>
+            <rect class="solid" width="150" height="56" rx="8"/>
+            <text class="q" x="75" y="30">?</text>
+            <text class="nm" x="75" y="29">Approve</text>
+          </g>
+          <g class="arw">
+            <path d="M162 52h30l-6-5m6 5l-6 5M360 52h30l-6-5m6 5l-6 5M558 52h30l-6-5m6 5l-6 5"/>
+          </g>
+        </svg>
+        <p class="box-note">Replace only the steps that are worth replacing.</p>
+      </div>
       <p class="lede">Your business has to know what it is doing if you want AI to know what to do in your business.</p>
     </div>
   </section>

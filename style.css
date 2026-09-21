@@ -1377,30 +1377,60 @@ html.js .stack > li.on .g .af { fill-opacity: 1; transition: fill-opacity 500ms 
 .frame-dia .fnode:last-of-type circle { stroke: var(--mercury-blue); }
 .frame-dia .fnode:last-of-type .glyph { stroke: var(--mercury-blue); fill: rgba(125,211,252,0.14); }
 
-/* ── SLIDE 2 — THE SAME FOUR BOXES, THREE TIMES. Reading down IS the argument. */
+/* ── SLIDE 2 — ONE SET OF BOXES, TRANSFORMING UNDER THE SCROLL ──────────
+   `data-phase` is set by reveal.js from scroll position; every part of a
+   cell crossfades between states, so pushing the page scrubs the change. */
 .box-sec { padding: var(--sec-y) 1.25rem; }
-.boxes { list-style: none; margin: 2.75rem 0 2rem; padding: 0; display: grid; gap: 2.25rem; }
-.boxes > li { margin: 0; display: grid; gap: 0.75rem; }
-.box-state {
+.box-stage { margin: 2.5rem 0 0; }
+.box-states {
+  list-style: none; margin: 0 0 2rem; padding: 0;
+  display: flex; gap: 2.25rem;
   font-family: var(--micro); font-size: 0.74rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-3); margin: 0;
+  text-transform: uppercase;
 }
-.box-note { color: var(--text-2); font-size: 0.92rem; line-height: 1.65; margin: 0; }
-.boxes .bx rect { fill: none; stroke: var(--text-3); stroke-width: 2; }
-.boxes .bx text { font-size: 17px; fill: var(--text-2); }
-/* UNCLEAR: the boxes are not drawable yet, so they are not drawn — dashed,
-   dim, and holding a question instead of a step */
-.box-unclear .bx rect { stroke-dasharray: 7 7; stroke: var(--text-3); opacity: 0.5; }
-.box-unclear .bx text { font-size: 24px; fill: var(--text-3); opacity: 0.75; }
-.box-unclear .arw path { stroke-dasharray: 6 6; opacity: 0.5; }
-/* MAPPED: the same four, now solid and named */
-.box-mapped .bx rect { stroke: var(--text-2); }
-.box-mapped .bx text { fill: var(--text-1); }
-/* AI-READY: two of the four replaced — and only two */
-.box-ready .bx rect { stroke: var(--text-2); }
-.box-ready .bx text { fill: var(--text-1); }
-.box-ready .swap rect { stroke: var(--mercury-blue); fill: rgba(125, 211, 252, 0.12); }
-.box-ready .swap .spark { fill: var(--mercury-blue); stroke: none; }
+.box-states > li {
+  margin: 0; color: var(--text-3); opacity: 0.35;
+  transition: opacity 420ms ease, color 420ms ease;
+}
+.box-stage[data-phase="0"] .box-states > li:nth-child(1),
+.box-stage[data-phase="1"] .box-states > li:nth-child(2),
+.box-stage[data-phase="2"] .box-states > li:nth-child(3) {
+  opacity: 1; color: var(--mercury-blue);
+}
+.box-dia { max-width: 1000px; }
+.box-dia .cell rect { fill: none; stroke-width: 2; transition: all 520ms cubic-bezier(.22,.61,.36,1); }
+/* ⛔ TWO RECTS, NOT ONE ANIMATED DASH. `stroke-dasharray` does not interpolate
+   between "dashed" and "solid" in a way any browser renders smoothly, so the
+   undrawable box and the drawn box are separate shapes that CROSSFADE — which
+   is also the truer statement: one is replaced by the other. */
+.box-dia .cell .ghost { stroke: var(--text-3); stroke-dasharray: 7 7; opacity: 0.55; }
+.box-dia .cell .solid { stroke: var(--text-2); opacity: 0; }
+.box-dia .cell text { transition: opacity 400ms ease; }
+.box-dia .cell .q { font-size: 24px; fill: var(--text-3); opacity: 0.8; }
+.box-dia .cell .nm { font-size: 17px; fill: var(--text-1); opacity: 0; }
+.box-dia .cell .spark { fill: var(--mercury-blue); stroke: none; opacity: 0; transition: opacity 400ms ease 240ms; }
+.box-dia .arw path { opacity: 0.45; transition: opacity 420ms ease; }
+
+.box-stage[data-phase="1"] .cell .ghost,
+.box-stage[data-phase="2"] .cell .ghost { opacity: 0; }
+.box-stage[data-phase="1"] .cell .solid,
+.box-stage[data-phase="2"] .cell .solid { opacity: 1; }
+.box-stage[data-phase="1"] .cell .q,
+.box-stage[data-phase="2"] .cell .q { opacity: 0; }
+.box-stage[data-phase="1"] .cell .nm,
+.box-stage[data-phase="2"] .cell .nm { opacity: 1; }
+.box-stage[data-phase="1"] .arw path,
+.box-stage[data-phase="2"] .arw path { opacity: 1; }
+/* and only two of the four are replaced — that is the claim */
+.box-stage[data-phase="2"] .cell.swap .solid {
+  stroke: var(--mercury-blue); fill: rgba(125, 211, 252, 0.13);
+}
+.box-stage[data-phase="2"] .cell.swap .spark { opacity: 1; }
+.box-note {
+  color: var(--text-2); font-size: 0.92rem; line-height: 1.65;
+  margin: 1.5rem 0 0; opacity: 0; transition: opacity 420ms ease 200ms;
+}
+.box-stage[data-phase="2"] .box-note { opacity: 1; }
 
 /* ── SLIDE 3 — THE CLIMB ACROSS FIVE CHASMS, and the ten obstacles ──────── */
 .climb-sec { padding: var(--sec-y) 1.25rem; }
@@ -1565,6 +1595,43 @@ html.js .climb-dia.on .ground path { opacity: 1; transition: opacity 600ms ease 
   .arc > li > ul > li { grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr); gap: 0 1.5rem; align-items: baseline; }
 }
 
+/* ══ THE SCRUB — the lines DRAW under the scroll ══════════════════════════
+   Isaac: "it should feel hi-tech… it should feel like OH."
+   Every pinned section publishes its own 0→1 progress as --p (reveal.js).
+   A dash offset driven by --p means the stroke is literally being drawn by
+   the reader's scroll — the page behaves like a transport, not like a thing
+   that reacts once when it comes into view. `stroke-dasharray` is set a
+   little longer than each path so nothing can wrap.
+   ⛔ NO `transition` ON THESE — a transition would lag the scrub and the
+   whole effect (your push moves the line NOW) is gone. */
+.frame-dia .rail,
+.method-dia .arw path,
+.method-dia .loop path,
+.arc-dia .slope,
+.climb-dia .ground path,
+.climb-dia .chasm path {
+  stroke-dasharray: var(--len, 1000);
+  stroke-dashoffset: calc(var(--len, 1000) * (1 - var(--p, 1)));
+}
+.frame-dia .rail            { --len: 900; }
+.method-dia .arw path       { --len: 620; }
+/* ⛔ THE RETURN ARC CLOSES LAST. It was drawing alongside the chain, so the
+   loop came back before the last two steps had even arrived — the picture
+   said "repeat" while the thing to repeat was still being built. Its scrub
+   is remapped to start at 62% of the track. */
+.method-dia .loop path {
+  --len: 1000;
+  stroke-dashoffset: calc(1000 * (1 - clamp(0, (var(--p, 1) - 0.62) * 2.7, 1)));
+}
+.arc-dia .slope             { --len: 900; }
+.climb-dia .ground path     { --len: 360; }
+.climb-dia .chasm path      { --len: 400; }
+/* the loop's arrowhead and its word land only once the arc has come back */
+.method-dia .loop .head, .method-dia .loop text {
+  stroke-dasharray: none; stroke-dashoffset: 0;
+  opacity: clamp(0, (var(--p, 1) - 0.88) * 9, 1);
+}
+
 /* ── THE PICTURES DRAW THEMSELVES AS THEY ARRIVE ────────────────────────── */
 /* ⛔ OPACITY ONLY ON THE SVG GROUPS — NEVER `transform`. Each node is placed
    by its own `transform="translate(x,y)"` PRESENTATION ATTRIBUTE, and a CSS
@@ -1578,21 +1645,51 @@ html.js .frame-dia .fnode.on,
 html.js .method-dia .mnode.on,
 html.js .arc-dia .stop.on {
   opacity: 1;
-  transition: opacity 460ms cubic-bezier(.22,.61,.36,1);
+  transition: opacity 380ms cubic-bezier(.22,.61,.36,1);
 }
-html.js .boxes > li, html.js .arc > li { opacity: 0; transform: translateY(16px); }
-html.js .boxes > li.on, html.js .arc > li.on {
+/* ⛔ THE POP GOES ON THE CIRCLE, NEVER THE GROUP. The <g> is placed by its
+   own transform="translate()" attribute and a CSS transform REPLACES that —
+   scaling the group teleports every node to the origin (measured). The
+   circle carries no transform attribute, so it is free to be scaled. */
+html.js .frame-dia .fnode circle,
+html.js .method-dia .mnode circle,
+html.js .arc-dia .stop circle {
+  transform-box: fill-box; transform-origin: center;
+  transform: scale(0.45);
+}
+html.js .frame-dia .fnode.on circle,
+html.js .method-dia .mnode.on circle,
+html.js .arc-dia .stop.on circle {
+  transform: scale(1);
+  transition: transform 520ms cubic-bezier(.34,1.56,.64,1);
+}
+html.js .arc > li { opacity: 0; transform: translateY(16px); }
+html.js .arc > li.on {
   opacity: 1; transform: none;
   transition: opacity 460ms cubic-bezier(.22,.61,.36,1),
               transform 460ms cubic-bezier(.22,.61,.36,1);
 }
 @media (prefers-reduced-motion: reduce) {
+  /* the scrub IS motion — without it every line is simply already drawn */
+  .frame-dia .rail, .method-dia .arw path, .method-dia .loop path,
+  .arc-dia .slope, .climb-dia .ground path, .climb-dia .chasm path {
+    stroke-dasharray: none !important; stroke-dashoffset: 0 !important;
+  }
+  .method-dia .loop .head, .method-dia .loop text { opacity: 1 !important; }
   html.js .frame-dia .fnode, html.js .method-dia .mnode, html.js .arc-dia .stop {
-    opacity: 1 !important;   /* ⛔ no transform reset here — see the note above */
+    opacity: 1 !important;   /* ⛔ no transform reset on the GROUP — see the note above */
   }
-  html.js .boxes > li, html.js .arc > li {
-    opacity: 1 !important; transform: none !important;
-  }
+  /* the pop lives on the circle, so the reset does too */
+  html.js .frame-dia .fnode circle, html.js .method-dia .mnode circle,
+  html.js .arc-dia .stop circle { transform: none !important; }
+  html.js .arc > li { opacity: 1 !important; transform: none !important; }
+  /* no JS → no data-phase, so the stage must read as the FINAL state */
+  html.js .box-dia .cell .ghost, html.js .box-dia .cell .q { opacity: 0; }
+  html.js .box-dia .cell .solid, html.js .box-dia .cell .nm,
+  html.js .box-dia .arw path, html.js .box-note { opacity: 1; }
+  html.js .box-dia .cell.swap .solid { stroke: var(--mercury-blue); fill: rgba(125,211,252,0.13); }
+  html.js .box-dia .cell.swap .spark { opacity: 1; }
+  html.js .box-states > li { opacity: 1; }
 }
 
 /* ── THE LEDGER — what the $38,000 anchor is actually made of ─────────────
@@ -2017,12 +2114,22 @@ html.js .cascade .struck.on > b::after {
    ⛔ COLLAPSES COMPLETELY without JS or under reduced-motion: no track, no
    pin, everything visible. See the two blocks at the end.
    ══════════════════════════════════════════════════════════════════════════ */
+html.js .frame-sec,
+html.js .box-sec,
+html.js .climb-sec,
+html.js .method-sec,
+html.js .arc-sec,
 html.js .cost-sec,
 html.js .stack-sec,
 html.js .ledger-sec,
 html.js .cascade-sec {
   position: relative; height: var(--track, 300vh); padding: 0;
 }
+html.js .frame-sec > .wrap,
+html.js .box-sec > .wrap,
+html.js .climb-sec > .wrap,
+html.js .method-sec > .wrap,
+html.js .arc-sec > .wrap,
 html.js .cost-sec > .wrap,
 html.js .stack-sec > .wrap,
 html.js .ledger-sec > .wrap,
@@ -2031,9 +2138,19 @@ html.js .cascade-pin {
   display: flex; flex-direction: column; justify-content: center;
   padding: 3rem 1.25rem;
 }
+html.js .frame-sec > .wrap,
+html.js .box-sec > .wrap,
+html.js .climb-sec > .wrap,
+html.js .method-sec > .wrap,
+html.js .arc-sec > .wrap,
 html.js .cost-sec > .wrap,
 html.js .stack-sec > .wrap,
 html.js .ledger-sec > .wrap { width: 100%; max-width: none; }
+html.js .frame-sec > .wrap > *,
+html.js .box-sec > .wrap > *,
+html.js .climb-sec > .wrap > *,
+html.js .method-sec > .wrap > *,
+html.js .arc-sec > .wrap > *,
 html.js .cost-sec > .wrap > *,
 html.js .stack-sec > .wrap > *,
 html.js .ledger-sec > .wrap > * { max-width: var(--wrap); width: 100%; margin-left: auto; margin-right: auto; }
@@ -2072,12 +2189,17 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
    paced; the FAQ is an ordinary accordion the reader opens at will. */
 
 @media (prefers-reduced-motion: reduce) {
+  html.js .frame-sec, html.js .box-sec, html.js .climb-sec,
+  html.js .method-sec, html.js .arc-sec,
   html.js .cost-sec, html.js .stack-sec, html.js .ledger-sec,
   html.js .cascade-sec {
     height: auto !important; padding: var(--sec-y) 1.25rem !important;
   }
   html.js .cost-sec > .wrap, html.js .stack-sec > .wrap,
-  html.js .ledger-sec > .wrap, html.js .cascade-pin {
+  html.js .ledger-sec > .wrap, html.js .cascade-pin,
+  html.js .frame-sec > .wrap, html.js .box-sec > .wrap,
+  html.js .climb-sec > .wrap, html.js .method-sec > .wrap,
+  html.js .arc-sec > .wrap {
     position: static !important; min-height: 0; padding: 0;
   }
   html.js .cost > li, html.js .stack > li { opacity: 1 !important; transform: none !important; }
