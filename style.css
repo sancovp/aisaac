@@ -1745,6 +1745,45 @@ html.js .ledger > li.on {
   html.js .ledger > li { opacity: 1 !important; transform: none !important; }
 }
 
+/* ══ THE SIMPLE PAGE — ai-transformation.html ═════════════════════════════
+   Four things and one action: the claim, the video, the person, book a call.
+   Reuses the existing vocabulary (.claim/.wrap/.eyebrow/.lede/.artifact-frame
+   /.booker/.portrait-frame/.cta-primary); these declarations are LAYOUT only,
+   zero new colours and zero new type. The full funnel lives on
+   ai-transformation-full.html and shares this stylesheet untouched. */
+
+/* ⛔ THE FILM IS THE PAGE — full container width, nothing beside it. On the
+   full page it shared a row with the portrait and could never be bigger than
+   half; here it is 1100 x 619 and it is the only thing on screen. */
+.solo-vsl { width: 100%; margin: 2.5rem 0 0; }
+
+.solo-cta { margin: 2.5rem 0 0; }
+.solo-cta .cta-primary { display: inline-block; }
+.solo-cta .door-fine { max-width: 46ch; }
+
+.about-sec { padding: var(--sec-y) 1.25rem; border-top: 1px solid var(--glass-border); }
+/* same portrait-beside-bio row the hero used, kept because it works: the
+   photo is large and immediately beside who is speaking */
+.solo-booker {
+  display: grid; grid-template-columns: 260px minmax(0, 1fr);
+  gap: 0 2.5rem; align-items: start;
+}
+.solo-booker > * { grid-column: 2; }
+/* ⛔ `grid-row: 1 / -1` DOES NOT SPAN IMPLICIT ROWS — it would size row 1 to
+   the portrait alone and shove the bio down its column. Span a count. */
+.solo-booker .portrait-frame {
+  grid-column: 1; grid-row: 1 / span 20;
+  width: 100%; border-radius: var(--r-card); margin-bottom: 0;
+}
+.solo-booker .booker-who { margin-bottom: 1.5rem; }
+.solo-booker .lede { font-size: 0.95rem; line-height: 1.75; margin-bottom: 0.9rem; }
+.solo-booker .lede:last-child { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .solo-booker { grid-template-columns: 1fr; gap: 1.5rem; }
+  .solo-booker > * { grid-column: 1; }
+  .solo-booker .portrait-frame { grid-row: auto; max-width: 260px; }
+}
+
 /* ── THE THREE DOORS ──────────────────────────────────────────────────────── */
 .offer-sec { padding: var(--sec-y) 1.25rem; }
 .doors {
