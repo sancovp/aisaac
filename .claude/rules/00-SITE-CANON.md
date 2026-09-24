@@ -1,104 +1,105 @@
 # RULE 00 — THE SITE CANON (nobody edits this site without reading their sources)
 
-**The law (Isaac, 2026-08-07, verbatim intent): NOBODY MAY EDIT THE SITE WITHOUT BEING
-TOLD WHAT TO READ TO PUT THERE.** An agent editing any page reads that page's canonical
-sources FIRST and puts THEIR content there — never its own summary, never an
-orchestrator's paraphrase, never invented copy. If a surface's source row below is
+**THE LAW: NOBODY MAY EDIT THE SITE WITHOUT BEING TOLD WHAT TO READ TO PUT THERE.** An agent editing
+any page reads that page's canonical sources FIRST and puts THEIR content there — never its own
+summary, never an orchestrator's paraphrase, never invented copy. If a surface's source row below is
 missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
-## Hard laws (apply to every page, before any source)
+## WHAT IS PUBLIC
 
-1. **OFFERS ARE FROZEN.** Prices, products, tiers, session lengths, guarantees,
-   paid-CTA wording: Isaac only. Source of truth = `main:pricing.html` verbatim.
-   Discrepancies (arithmetic, collisions) are EVIDENCE for a `FOR ISAAC` report block —
-   never resolved by an agent. (Order of 2026-08-07: "STOP CHANGING MY OFFERS.")
-2. **Lore firewall at the door.** Top-of-funnel pages: zero canon-internal vocabulary.
-   The inner register lives in `inside/` only (reachable from system.html, never from
-   the door). Isaac's PERSONAL pages may carry his real register — plain statement
-   first, flavor after, never as prerequisite vocabulary.
-3. **No uncashed claims.** A claim ships with its receipt or ships as a labeled IOU.
-   No fabricated numbers, no uptime claims nobody verified, no fake dashboards
-   (world-slots stay empty until real footage exists).
-4. **Voice** = `~/aios-research/GARAGE-LAB-LAUNCH-STRATEGY.md` §1c: scoreboard readings
-   not verdicts ("is losing, not is a loser"); shown never claimed; punch at the
-   discourse never at names; arrogance budget == receipt balance.
-5. Layout system = the `_templates/` + `style.css` skeleton; relative in-page paths;
-   absolute SITE_ORIGIN (`https://sancovp.github.io/aisaac`) only in canonical/og.
+**One page is presented: `ai-transformation.html`.** It is four things and one action — the claim ·
+the video (`assets/vsl.mp4`, full width, its runtime never stated) · who you would be talking to ·
+book a call. No prices, no checkout, no scroll choreography. Its wordmark is a `<span>`, never a link:
+the page has exactly one exit, the booking form.
+
+**The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
+slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the
+FAQ), linked from nothing. It comes back by swapping the two filenames. Every other page exists and is
+not being presented; the laws below govern each page whenever it is.
+
+## HARD LAWS (every page, before any source)
+
+1. **OFFERS ARE FROZEN.** Prices, products, tiers, session lengths, guarantees, paid-CTA wording:
+   Isaac only. Source of truth = `main:pricing.html` verbatim. Discrepancies (arithmetic, collisions)
+   are EVIDENCE for a `FOR ISAAC` report block — never resolved by an agent.
+2. **LORE FIREWALL AT THE DOOR.** Top-of-funnel pages: zero canon-internal vocabulary. The inner
+   register lives in `inside/` only (reachable from system.html, never from the door). Isaac's
+   PERSONAL pages may carry his real register — plain statement first, flavor after, never as
+   prerequisite vocabulary.
+3. **NO UNCASHED CLAIMS.** A claim ships with its receipt or ships as a labeled IOU. No fabricated
+   numbers, no uptime claims nobody verified, no fake dashboards (world-slots stay empty until real
+   footage exists).
+4. **VOICE:** scoreboard readings, not verdicts ("is losing", never "is a loser") · shown, never
+   claimed · punch at the discourse, never at names · the arrogance budget equals the receipt balance.
+5. **LAYOUT** = the `_templates/` + `style.css` skeleton · relative in-page paths · the absolute
+   SITE_ORIGIN (`https://sancovp.github.io/aisaac`) only in canonical/og.
+6. **ONE NAME: Isaac.** Every customer-visible surface — logo, footer, `<title>`, `og:title`, prose —
+   says it, and nothing else appears in the chrome. The legal entity (Ribcage Solutions, Inc.) never
+   appears on the site; it lives in `docs/`, the contracts and the Stripe statement. `AIsaac` is the
+   repository and the URL path, never a brand on a page. ⏸ OPEN, *USER*'s: whether `TWI` is retired
+   or stands beside the name (`Isaac — TWI` is still the `<title>` of 26 pages).
+7. **EVERY SURFACE ANSWERS ITS OWN OF THE BUYER'S FIVE QUESTIONS.** Marketing is mostly organization:
+   the organized thing should feel like finding a treasure trove. (a) does it LOOK LIKE the
+   information is real, useful, what I need · (b) is there a lot, is it organized, will I get
+   everything I need even without knowing what that is · (c) what should I expect, and is this what I
+   expected · (d) what are the guarantees · (e) can I afford this relative to how the guarantees
+   change my life. (a)(b)(c) are the free surfaces' job — the door, blog/tags, repos, notes; (d)(e)
+   are the offer layer — pricing, Isaac-authored, frozen.
+8. **SAFE, THEN WHERE-NEXT.** Every page tests against one recognition: the information here is safe,
+   and I want the next part. A visitor does not go back and read it all unless an offer makes them
+   pause; they convert, or pause and then convert or leave.
+9. **THE RATCHET LAW OF NAVIGATION.** A funnel is a series of ratcheted options: the visitor can find
+   no move except the sanctioned ones. Every page's visible exits ARE its sanctioned moves — design each
+   exit set deliberately. On the full site: the brand button → `isaac.html` (the hub) · `index.html`
+   is the entrypoint only, one-way, with no nav route back to it (browser-back only). On the public
+   page: the booking form is the one exit.
+10. **THE BRANDED-FILTER LAW.** Every browse or filter surface filters by Isaac's framework concepts,
+    never by generic categories. The corpus index files every piece under the seven levels of agent
+    engineering (the flagship: `lab/explainer.html` → `blog/levels-overview.html`) plus the
+    cross-cutting concepts. The vocabulary and every assignment live in `tools/tags.py`, whose four
+    laws bind: the seven levels are the spine · door register only (law 2) · no orphan tags and 1–3
+    tags per post, both checked at build time · ONE corpus, ONE tag index. When a surface sorts, it
+    sorts by the framework.
+11. **THE ENGINEER DESCENT (full site).** It is a landing for cave-teams and dark-factory and ends at
+    dark-factory's README, which ends in a clone command. `build.html` reuses the dark-factory and
+    cave-teams README copy — the best zero-lore public text in the ecosystem — and never paraphrases
+    over it. dark-factory's one-liner: *"no human is in the loop; what stops it shipping garbage is
+    three independent gates ending in a controlled experiment."*
+12. **HERO FIRST (full site).** The site is about Isaac and what he thinks; the funnel sits
+    downstream. Funnel category = simulations-and-world-loops. The h1 scoreboard line returns only
+    when a scoreboard page is published.
 
 ## THE SOURCE MAP — per surface, what you READ to know what goes there
 
+⛔ **SOURCES NOT ON THIS MACHINE.** `~/aios-research/`, `~/repo/garage-lab/`, `~/repo/dark-factory/`
+and `/agent/` exist neither on this host nor in its containers. A surface whose sources are only
+there is BLOCKED: report it and edit nothing on it (law above). Where they live is ⏸ OPEN, *USER*'s.
+Paths below marked ✓ resolve here.
+
 | surface | canonical sources (READ THESE, in order) |
 |---|---|
-| **the whole funnel** (IA, what sells, the ladder) | `~/aios-research/FLYWHEEL.md` (THE SPINE) · `~/aios-research/THE-CLINIC-MAP.md` (Isaac's operating-structure ruling) · `~/aios-research/THE-OFFER-AND-FUNNEL.md` (the concrete money offer) · `~/aios-research/ME2C-FUNNEL.md` (creator side) |
-| **positioning / category** | `~/aios-research/GARAGE-LAB-LAUNCH-STRATEGY.md` §0 (simulations-and-world-loops ruling: "iteration doesn't compound; worlds compound"), §1 (legibility grammar), §1b (content pipeline), §1c (voice) |
-| **index.html / the door** | the two rows above + `~/aios-research/SITE-CEO-BRANCH-REVIEW.md` (live decisions incl. hero-first) |
-| **isaac.html (the hero site)** | `GARAGE-LAB-LAUNCH-STRATEGY.md` §1c · `~/aios-research/HJ-GAUGE-SPEC.md` (the theses) · `~/repo/garage-lab/CATALOG.md` + `INDEX.md` (the receipts) · `~/repo/garage-lab/CLAIM-AUDIT.md` (the honest claim board) · myth flavor ONLY from `~/repo/sra-git/research/ssri/SANCTUARY-MYTH-ORIGIN.md` Part V |
+| **the whole funnel** (IA, what sells, the ladder) | `~/aios-research/FLYWHEEL.md` (THE SPINE) · `~/aios-research/THE-CLINIC-MAP.md` (the operating-structure ruling) · ✓ `~/claude_code/video-aios/references/content-plan/THE-OFFER-AND-FUNNEL.md` (the concrete money offer) · `~/aios-research/ME2C-FUNNEL.md` (creator side) |
+| **positioning / category** | `~/aios-research/GARAGE-LAB-LAUNCH-STRATEGY.md` §0 (simulations and world loops: iteration does not compound; worlds compound), §1 (legibility grammar), §1b (content pipeline), §1c (voice — law 4) |
+| **index.html / the door** | the two rows above + `~/aios-research/SITE-CEO-BRANCH-REVIEW.md` (live decisions, incl. hero-first) |
+| **isaac.html (the hero site)** | `GARAGE-LAB-LAUNCH-STRATEGY.md` §1c · `~/aios-research/HJ-GAUGE-SPEC.md` (the theses) · `~/repo/garage-lab/CATALOG.md` + `INDEX.md` (the receipts) · `~/repo/garage-lab/CLAIM-AUDIT.md` (the honest claim board) · myth flavor ONLY from ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/SANCTUARY-MYTH-ORIGIN.md` Part V |
 | **pricing.html** | `main:pricing.html` VERBATIM + Isaac. No other source exists. |
-| **rung pages (learn/build/run)** | the funnel row (FLYWHEEL/CLINIC-MAP/OFFER-AND-FUNNEL) for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
+| **rung pages (learn/build/run)** | the funnel row for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
 | **watch.html / world demos** | real run receipts ONLY: cave-teams live tests (`test_live_skillcraft.py` runs), future footage per `GARAGE-LAB-LAUNCH-STRATEGY.md` §1b. Never generated numbers. |
-| **blog/ + notes/ (field notes)** | the posts' own content (conform layout only) · new notes draw from `~/repo/garage-lab/CATALOG.md` entries (receipted patterns) · **the tag vocabulary + every post's tags = `tools/tags.py`, the single source both generators read — a new post is TAGGED THERE or the build fails** |
-| **inside/ (the lored register)** | `SANCTUARY-MYTH-ORIGIN.md` · `HJ-GAUGE-SPEC.md` · the train doc — this is the ONE place the inner register ships |
-| **patterns.html (the architectures)** | the page shows named SYSTEM STRUCTURES, not working disciplines (Isaac's correction, 2026-08-08). READ, in order: `~/repo/cave-teams/curriculum/TOPOLOGY-DIAGRAMS.md` (every verified topology + its run receipt) · `~/repo/cave-teams/cave_teams/*.py` MODULE HEADERS (`blackboard · season · gameworld · gauntlet · skillcraft · darkfactory · evolve · npc · agentdir` — each docstring states its structure precisely; those statements are what the entries render) · `~/repo/dark-factory/README.md` + `docs/*.svg` · `/agent/skills/compile-claude-code-component/reference.md` (the 7 primitives + control levels) · `~/repo/garage-lab/CATALOG.md` **architectural entries only** (the worlds/racetrack pass) · the public READMEs of any repo linked. **THE COMPILER WING** (added 2026-08-08 on Isaac's "what about from chaincompiler?"): `~/repo/sra-git/base/chaincompiler/` — `README.md` (§Why · §the one idea · §the loop · §the stack · §SkillTree · §the formal spec) · `REBUILD-SPEC.md` · `FEDERATION.md` · the package READMEs and MODULE HEADERS for `rulecatcher · honeyc · accc · corcc · sccc · chainaios (bandit·gba·hba·cog·construct) · glyphsteer · si · framework · skillchain-compiler` · `chains/skill2framework.chain` · `.claude/skills/bandit-chain-system`. **Runs-in links ship only for repos AND PATHS that return 200 UNAUTHENTICATED** — `dark-factory`, `world-of-skillcraft` and `garage-lab` are private today, so their entries say "the lab"; and `personacc`, `personapack` and `goldenreq` exist in the monorepo but NOT in the public `chaincompiler` repo, so nothing on the page may be built on them. The monorepo's own four SVGs are LIGHT-themed and must not be dropped onto the void — unlike the self-maintaining repository's, which are dark and ship unaltered. **THE v3 FULL SWEEP** (2026-08-08 — 35 → 81 entries, two new groups): read, in addition, **the composition substrate** — `sancovp/universal-chain-ontology` (`uco/core.py`) + `sancovp/sdna` (`sdna/{sdna,ariadne,poimandres,chain_ontology}.py`) + `cave-teams/cave_teams/{sdna_bridge,links,concurrent,chain_ontology}.py`; **the agent harness** — `sancovp/cave` (`cave/core/{cave_agent,state_reader,hooks,channel,automation,calendar,config_snapshots,dna}.py`, `core/mixins/{hook_router,anatomy}.py`, `core/loops/base.py`, `HOOK_ARCHITECTURE.md`); **the edit sidecar** — `sancovp/codenose` (`hooks/`, `codenose/util_deps/*`) plus its receiving-end rule; **the concept store** — `sancovp/carton-mcp` (`add_concept_tool.py`, `sm_gate.py`, `observation_worker_daemon.py`, `carton_kv.py`, `network_gateway.py`, `carton_quota.py`, `aut_deducer.py`, `server_fastmcp.py`, `UARL_SPEC.md`); **the tree engine** — `sancovp/skilltree` (`src/skilltree/{cohere,federation,tome}.py`, default branch `master`); and the PRIVATE **symbolic reasoner** + **structure engine** in `~/repo/sra-git/base/`, whose entries therefore say "the lab". Branch names differ per repo (`master` for cave/codenose/skilltree/sdna, `main` for chaincompiler/carton-mcp/uco/cave-teams) — deep links must use the right one and be re-verified, not assumed. |
+| **blog/ + notes/ (field notes)** | the posts' own content (conform layout only) · new notes draw from `~/repo/garage-lab/CATALOG.md` entries (receipted patterns) · **the tag vocabulary and every post's tags = `tools/tags.py`, the single source both generators read — a new post is TAGGED THERE or the build fails** |
+| **inside/ (the lored register)** | ✓ `SANCTUARY-MYTH-ORIGIN.md` · `HJ-GAUGE-SPEC.md` · the top-level design — the ONE place the inner register ships |
+| **patterns.html (the architectures)** | the page shows named SYSTEM STRUCTURES, not working disciplines. READ, in order: cave-teams' topology diagrams with their run receipts · ✓ `~/claude_code/cave-teams/cave_teams/*.py` MODULE HEADERS (`blackboard · season · gameworld · gauntlet · skillcraft · darkfactory · evolve · npc · agentdir` — each docstring states its structure; those statements are what the entries render) · `~/repo/dark-factory/README.md` + `docs/*.svg` · ✓ the `compile-claude-code-component` skill's `reference.md` (the 7 primitives + control levels) · `~/repo/garage-lab/CATALOG.md` **architectural entries only** · the public READMEs of any repo linked. **THE COMPILER WING:** ✓ `~/claude_code/sanctuary-revolution-alpha/base/chaincompiler/` — `README.md` (§Why · §the one idea · §the loop · §the stack · §SkillTree · §the formal spec) · `REBUILD-SPEC.md` · `FEDERATION.md` · the package READMEs and MODULE HEADERS for `rulecatcher · honeyc · accc · corcc · sccc · chainaios (bandit·gba·hba·cog·construct) · glyphsteer · si · framework · skillchain-compiler` · `chains/skill2framework.chain` · `.claude/skills/bandit-chain-system`. **THE COMPOSITION SUBSTRATE** — `sancovp/universal-chain-ontology` (`uco/core.py`) + `sancovp/sdna` (`sdna/{sdna,ariadne,poimandres,chain_ontology}.py`) + `cave-teams/cave_teams/{sdna_bridge,links,concurrent,chain_ontology}.py`; **THE AGENT HARNESS** — `sancovp/cave` (`cave/core/{cave_agent,state_reader,hooks,channel,automation,calendar,config_snapshots,dna}.py`, `core/mixins/{hook_router,anatomy}.py`, `core/loops/base.py`, `HOOK_ARCHITECTURE.md`); **THE EDIT SIDECAR** — `sancovp/codenose` (`hooks/`, `codenose/util_deps/*`) plus its receiving-end rule; **THE CONCEPT STORE** — `sancovp/carton-mcp` (`add_concept_tool.py`, `sm_gate.py`, `observation_worker_daemon.py`, `carton_kv.py`, `network_gateway.py`, `carton_quota.py`, `aut_deducer.py`, `server_fastmcp.py`, `UARL_SPEC.md`); **THE TREE ENGINE** — `sancovp/skilltree` (`src/skilltree/{cohere,federation,tome}.py`); and the PRIVATE **symbolic reasoner** + **structure engine** in the canonical home's `base/`, whose entries say "the lab". **Runs-in links ship only for repos AND PATHS that return 200 UNAUTHENTICATED** — `dark-factory`, `world-of-skillcraft` and `garage-lab` are private, so their entries say "the lab"; `personacc`, `personapack` and `goldenreq` exist in the monorepo but NOT in the public `chaincompiler` repo, so nothing on the page may be built on them. The monorepo's own four SVGs are LIGHT-themed and never go on the void; the self-maintaining repository's are dark and ship unaltered. Branch names differ per repo (`master` for cave · codenose · skilltree · sdna; `main` for chaincompiler · carton-mcp · uco · cave-teams) — every deep link uses the right one and is re-verified, never assumed. |
 | **audience/market claims** | `~/aios-research/WAVE-STATE-BRIEF.md` · `~/aios-research/reports/` — cite or omit |
-| **archetype/rung strategy** (why the site is shaped this way) | `~/repo/sra-git/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m/§7m-bis (Dudjom→Hormozi transition; Mipham-with-a-door = free-the-WHAT / paid-the-how-I) |
+| **archetype/rung strategy** (why the site is shaped this way) | ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m / §7m-bis (the Dudjom → Hormozi transition; Mipham-with-a-door = free-the-WHAT / paid-the-how-I) |
 
-## Decision log (rulings that bind edits; newest first)
+## OPEN — *USER*'s
 
-- 2026-08-08 (Isaac, verbatim — the buyer's five questions; every surface answers its
-  own): "most of marketing is actually organization and if it feels like the organized
-  thing is the occurrence of 'you finding the organized treasure trove of xyz' then you
-  go 'omg omg omg'... a) does it LOOK LIKE the information isnt bullshit, is useful, is
-  what i need? b) is there a lot? is it really organized? am i going to get everything
-  i need even tho i dont know what that means? c) so what should i expect? is this what
-  i expect i should expect? d) ok what are the guarantees e) can i afford this relative
-  to the way the guarantees change my life?" — a/b/c = the free surfaces' job (door,
-  blog/tags, repos, notes); d/e = the OFFER layer (pricing — Isaac authors, frozen).
+- whether `TWI` is retired or stands beside the name (law 6)
+- where the sources marked absent above live
+- the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
 
-- 2026-08-08 (Isaac, verbatim): "in the blog search, we have by tags, but those tags
-  are not by extremely important concept in my system so it doesnt feel as branded as
-  it could... shouldnt you be able to search for like the 7 levels of agent engineering
-  itself as a filter? ... this kind of unbrandedness is rampant." **THE BRANDED-FILTER
-  LAW: every browse/filter surface filters by HIS FRAMEWORK CONCEPTS, never by generic
-  categories.** The corpus index now files all 64 pieces under the seven levels of
-  agent engineering (the flagship framework, `lab/explainer.html` →
-  `blog/levels-overview.html`) plus the cross-cutting concepts. Vocabulary and
-  assignments: `tools/tags.py`, whose four laws bind — the seven levels are the spine ·
-  door register only (law 2 above) · no orphan tags and 1–3 tags per post, both checked
-  mechanically at build time · ONE corpus, ONE tag index. Unbrandedness elsewhere is
-  the same defect: when a surface sorts, it sorts by the framework.
+## MAINTENANCE
 
-- 2026-08-08 (Isaac, verbatim, on first seeing the rebuild): "it's this 'okay okay, i
-  get it, theres a thing, where do i go next?' thats the mark of a real funnel. Human
-  recognition that the info there is safe and they want the next part. They wont go
-  back and really read it all unless you put an offer that makes them pause. Either
-  they convert or pause and then either convert or leave. Thats it." — every page
-  tests against this: safe + where-next.
-
-- 2026-08-07 (later): **THE PRODUCT-LANDING RULING (Isaac): the site's main job is to
-  be an AWESOME LANDING PAGE for cave-teams and dark-factory.** The engineer descent
-  ends at dark-factory's README (which literally ends in a clone command — the door's
-  original promise, now cashable). Source-map addition: **build.html ← dark-factory
-  README (github.com/sancovp/dark-factory) + cave-teams README — reuse THEIR copy;
-  they are the best zero-lore public text in the ecosystem; do not paraphrase over
-  them.** dark-factory's one-liner is wave-answer-grade: "no human is in the loop;
-  what stops it shipping garbage is three independent gates ending in a controlled
-  experiment."
-
-- 2026-08-07 (late): **THE RATCHET LAW OF NAVIGATION (Isaac, verbatim): "fundamentally
-  a funnel is a series of ratcheted options such that the avatar can't figure out how
-  to do anything except sanctioned moves."** Consequences: top-left/brand button →
-  isaac.html (the hub); index.html = ENTRYPOINT ONLY, one-way — no nav routes back to
-  it after first pass (browser-back only); every page's visible exits ARE its
-  sanctioned moves — nav is a grammar, design each page's exit set deliberately.
-
-- 2026-08-07: hero site FIRST (Isaac: the site is about him + what he thinks, funnel
-  downstream) · offers frozen · funnel category = simulations-and-world-loops ·
-  h1 policy: the scoreboard line returns only when a scoreboard page is published.
-- Open (SITE-CEO-BRANCH-REVIEW.md §4): custom domain · repo-name L3 exception ·
-  watch.html build · merge-source deletions.
-
-## Maintenance
-
-This rule is the unification point. Every new ruling about site content lands HERE the
-same session (decision log) or in the source map. An edit made without reading this
-file's sources is a defect regardless of how good it looks.
+This rule is the unification point. A ruling about site content REWRITES this rule the same session —
+into the law, the source-map row or the OPEN item it touches, stated as current truth, never appended
+as a dated entry. An edit made without reading this file's sources is a defect regardless of how good
+it looks.
