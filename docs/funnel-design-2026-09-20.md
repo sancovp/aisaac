@@ -580,7 +580,9 @@ offer that under-delivers and one that completes.
 1. **The domain.**
 2. **Call primary or checkout primary** (§1's tension).
 3. **The real cap number** — how many clients at once, which is what makes the scarcity true.
-4. Whether `draw-the-box` **replaces** the climb video currently on the page, or both live there.
+4. ✅ **CLOSED — `draw-the-box` REPLACED the climb video and is live.** `assets/vsl.mp4` is the
+   deck spoken, 273.9 s, serving from Pages at 20,505,634 bytes. It names the product (AI
+   transformation partnership) twice and speaks no price.
 5. ✅ **CLOSED by §4b — trial-continuation (A).** The notice sequence is what makes it safe.
 6. ⏸ **THE RENAME** — 90-Day or 12-Week Founding Partnership (§4c). Decide before the name ships.
 7. ⏸ The **AI-alignment score**'s definition (§0b) — a client is buying it.
