@@ -30,7 +30,7 @@
 
      THE WHOLE PAGE IS SIX THINGS:
        the claim · the video · what I do (the loop) · what you get (stage
-       one's map) · who you will be talking to · book a call (the black
+       one's map) · who helps you · book a call (the black
        band closes on it)
      There is exactly ONE action on it. No prices, no checkout, no scroll
      choreography — every one of those was a decision the visitor had to make
@@ -95,12 +95,13 @@
        silent, it has no runtime to hide, and it plays forever, so it gets no
        controls. Reduced motion: vsl.js stops it on its poster and hands back
        the controls. -->
-  <!-- THE PINNED PAIR (*USER*'s ruling): "What I do" scrolls fully into view, then stays pinned
-       while "What you get" slides up over it like a sheet laid on top. The pair is wrapped so the
-       pin releases when "What you get" ends — it never shows through later sections. stack.js
-       measures the pin point (when What I do's BOTTOM is on screen, so nothing is lost under it). -->
-  <div class="pin-pair">
-  <section class="bp-sec bp-band what-sec">
+  <!-- THE PINNED STACK (*USER*'s ruling): each section scrolls fully into view, then stays
+       pinned while the next slides up over it like a sheet laid on top — What I do → What you get
+       → Who helps you. The wrapper ends the pins with the stack, so nothing shows through later
+       sections. stack.js measures each pin point (once the section's BOTTOM is on screen, so
+       nothing is covered unread). -->
+  <div class="pin-stack">
+  <section class="bp-sec bp-band what-sec pin">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">What I do</span></p>
       <h2>I take a business from one person managing everything to an organization that runs &mdash; then you start the next one.</h2>
@@ -138,7 +139,7 @@
        levels "stringly · harnessed stringly · full logic" are rendered at the door as "a plain
        prompt, a guided prompt, or fully built logic". Rebuilds and audits are NOT stage one: the
        SOP map diagnoses whether they are needed, and they become customizations. -->
-  <section class="bp-sec what-get">
+  <section class="bp-sec what-get pin sheet">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">What you get</span></p>
       <h2>Stage one maps your whole business before anything gets built.</h2>
@@ -181,11 +182,10 @@
       </div>
     </div>
   </section>
-  </div>
 
-  <section class="bp-sec">
+  <section class="bp-sec who-sec sheet">
     <div class="wrap">
-      <p class="eyebrow"><span class="pill">Who you&rsquo;ll be talking to</span></p>
+      <p class="eyebrow"><span class="pill">Who helps you</span></p>
       <div class="bp-card about-card">
         <div class="bp-split about-split">
           <div class="bp-cell">
@@ -213,6 +213,7 @@
       </div>
     </div>
   </section>
+  </div>
 
   <section class="bp-sec bp-ink bp-close">
     <div class="wrap">

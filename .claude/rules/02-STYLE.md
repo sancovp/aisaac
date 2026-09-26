@@ -58,16 +58,17 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right —
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
-10. **The pinned pair** (`.pin-pair`, `stack.js`, *USER*'s ruling): "What I do" scrolls fully into
-   view and STAYS, and "What you get" slides up over it like a sheet laid on top — opaque paper
-   carrying its own blueprint columns, an ink edge on top, at least a screen tall. The pin point
-   is MEASURED (`min(nav height, viewport − section height)`), so a section taller than the screen
-   pins only once its bottom is visible and nothing is covered unread. The wrapper ends the pin
-   with the pair, so the pinned section never shows through later ones. JS off: normal scroll.
+10. **The pinned stack** (`.pin-stack`, `stack.js`, *USER*'s ruling): What I do → What you get →
+   Who helps you. Each `.pin` scrolls fully into view and STAYS while the next `.sheet` slides up
+   over it like a sheet laid on top — opaque paper carrying its own blueprint columns, an ink edge
+   on top, at least a screen tall. Each pin point is MEASURED (`min(nav height, viewport − section
+   height)`), so a section taller than the screen pins only once its bottom is visible and nothing
+   is covered unread. The wrapper ends every pin with the stack, so no pinned section shows through
+   later ones. JS off: normal scroll.
 11. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
    outlined square beside a card label — never an emoji (they render differently per device).
 12. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
-   only in the films, the parcels, the pinned pair (driven by the reader's own scroll), and
+   only in the films, the parcels, the pinned stack (driven by the reader's own scroll), and
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 

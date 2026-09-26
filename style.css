@@ -1893,18 +1893,23 @@ body { position: relative; }            /* so the layer spans the whole document
   font-family: var(--mono); font-size: 0.86rem; font-weight: 600; color: var(--ink);
 }
 
-/* ── THE PINNED PAIR — What I do pins, What you get slides over it ──────── */
-.pin-pair { position: relative; }
-.pin-pair .what-sec { position: sticky; top: var(--pin-top, 0px); z-index: 0; }
-/* the sliding sheet: opaque paper carrying its own blueprint columns, an ink edge on
-   top so it reads as a sheet laid over, and at least a screen tall so the covered
-   section is off screen when the pin lets go */
-.pin-pair .what-get {
-  position: relative; z-index: 1;
+/* ── THE PINNED STACK — What I do → What you get → Who helps you ────────────
+   Each .pin scrolls fully into view and then STAYS (sticky, its top measured by
+   stack.js), and the next .sheet slides up over it: opaque paper carrying its own
+   blueprint columns, an ink edge on top, at least a screen tall — so when the
+   stack ends and the pins let go, everything under the last sheet is already off
+   screen. Later siblings paint above earlier ones. */
+.pin-stack { position: relative; }
+.pin-stack > .pin { position: sticky; top: var(--pin-top, 0px); }
+.pin-stack > .sheet {
   background: var(--bp-columns), var(--paper);
   border-top: 1px solid var(--ink);
   min-height: calc(100vh - var(--nav-h, 0px));
 }
+.pin-stack > .sheet:not(.pin) { position: relative; }
+.pin-stack > :nth-child(1) { z-index: 0; }
+.pin-stack > :nth-child(2) { z-index: 1; }
+.pin-stack > :nth-child(3) { z-index: 2; }
 
 /* ── what you get — stage one's map ─────────────────────────────────────── */
 .what-get h2 { max-width: 26ch; margin: 0 0 2.2rem; }
