@@ -114,6 +114,11 @@
      outline and a strip of tape. Drawn here, not the emoji, so it is the same on every device. */
   --pkg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><g stroke='%23000' stroke-width='1' stroke-linejoin='round'><polygon points='10,2 18,6 10,10 2,6' fill='%23ffe26b'/><polygon points='2,6 10,10 10,18 2,14' fill='%23ffd43b'/><polygon points='18,6 10,10 10,18 18,14' fill='%23e6b400'/></g><polygon points='5.2,4.4 6.8,3.6 14.8,7.6 13.2,8.4' fill='%23fff6c9'/></svg>");
   --line: #e6e6e6;             /* the faint blueprint columns */
+  --bp-columns:
+    linear-gradient(var(--line), var(--line)) calc(50% - 550px) 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% - 183px) 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% + 183px) 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% + 550px) 0 / 1px 100% no-repeat;
   --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   --void: #ffffff;
   --glass-bg: rgba(0,0,0,0.02);
@@ -213,11 +218,7 @@ body {
    them and the columns only show on plain paper. */
 body::before {
   content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    linear-gradient(var(--line), var(--line)) calc(50% - 550px) 0 / 1px 100% no-repeat,
-    linear-gradient(var(--line), var(--line)) calc(50% - 183px) 0 / 1px 100% no-repeat,
-    linear-gradient(var(--line), var(--line)) calc(50% + 183px) 0 / 1px 100% no-repeat,
-    linear-gradient(var(--line), var(--line)) calc(50% + 550px) 0 / 1px 100% no-repeat;
+  background: var(--bp-columns);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -1892,11 +1893,32 @@ body { position: relative; }            /* so the layer spans the whole document
   font-family: var(--mono); font-size: 0.86rem; font-weight: 600; color: var(--ink);
 }
 
+/* ── THE PINNED PAIR — What I do pins, What you get slides over it ──────── */
+.pin-pair { position: relative; }
+.pin-pair .what-sec { position: sticky; top: var(--pin-top, 0px); z-index: 0; }
+/* the sliding sheet: opaque paper carrying its own blueprint columns, an ink edge on
+   top so it reads as a sheet laid over, and at least a screen tall so the covered
+   section is off screen when the pin lets go */
+.pin-pair .what-get {
+  position: relative; z-index: 1;
+  background: var(--bp-columns), var(--paper);
+  border-top: 1px solid var(--ink);
+  min-height: calc(100vh - var(--nav-h, 0px));
+}
+
 /* ── what you get — stage one's map ─────────────────────────────────────── */
 .what-get h2 { max-width: 26ch; margin: 0 0 2.2rem; }
 .get-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .get-bottom { grid-template-columns: 1.35fr 1fr; }
-.get-k { font-family: var(--mono); font-weight: 600; color: var(--ink); margin: 0 0 0.6rem; }
+.get-k { font-family: var(--mono); font-weight: 600; color: var(--ink); margin: 0; }
+/* the icon tile, Bugster's way: a line icon in a small outlined square beside the label */
+.get-head { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.8rem; }
+.get-ico {
+  flex: none; display: grid; place-items: center; width: 38px; height: 38px;
+  border: 1px solid var(--ink); border-radius: var(--r-sm); background: var(--paper);
+}
+.get-ico svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.6;
+               stroke-linecap: round; stroke-linejoin: round; }
 .get-v { color: var(--text-2); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 46ch; }
 .get-list {
   list-style: none; margin: 0.2rem 0 0; padding: 0;

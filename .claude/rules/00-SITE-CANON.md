@@ -20,7 +20,8 @@ prompt, a guided prompt, or fully built logic" · the AI teams you could run · 
 business's health — website, marketing, reviews, speed to lead, after-hours support, lead
 generation, lead nurture, content presence — and its SOPs, which diagnose whether rebuilds or audits
 are needed; those become customizations, never stage one) · who you would be talking to ·
-book a call. No prices, no checkout, no scroll choreography. Its wordmark is a `<span>`, never a link:
+book a call. No prices, no checkout; the ONE scroll choreography is the pinned pair (What I do stays
+while What you get slides over it — RULE 02 §10). Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
 **THE HEADLINE AND SUBHEADLINE ARE *USER*'S, FROZEN LIKE THE OFFER** — the deck's slide 1, the
