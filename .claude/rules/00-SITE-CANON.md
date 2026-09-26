@@ -71,9 +71,12 @@ words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then t
 and operators running the model (his GoHighLevel setup; membership on Skool), joined by email until
 its Skool link exists. It also gives away, free: THE AUTONOMY LADDER (his automation theory — the
 worker · management · you triad, grades 1–4, trust earned per area and never transferred) and the
-TWELVE B2B BOOTCAMP frameworks, with one button to all of them as AI skills (a PLACEHOLDER link until
+B2B BOOTCAMP (the Sanctuary–Wasteland map, then twelve frameworks); BUILD AN AIOS (the anatomy of
+an AIOS and the law under it, from ChainCompiler); THE LEVELS of ChainCompiler (the gate → AC → CoR →
+SC → SkillTree → GBA → COG → HBA); and TOME (the six stages that publish any AIOS as a framework) —
+with one button to all of them as AI skills (a PLACEHOLDER link until
 the skills repo exists). The opt-in lands on `framework-worksheet.html` — THE FRAMEWORK ITSELF, a
-printable worksheet of the seven parts plus the health check (a draft; his questions, the layout
+printable worksheet of the seven parts, the autonomy ladder and the health check (a draft; his questions, the layout
 drafted). Linked from nothing and `noindex`, because his own ordering rule stands: *the
 education/community product is downstream of a successful operating business, never a substitute
 for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on his word. It carries
@@ -90,10 +93,10 @@ not being presented; the laws below govern each page whenever it is.
 1. **OFFERS ARE FROZEN.** Prices, products, tiers, session lengths, guarantees, paid-CTA wording:
    Isaac only. Source of truth = `main:pricing.html` verbatim. Discrepancies (arithmetic, collisions)
    are EVIDENCE for a `FOR ISAAC` report block — never resolved by an agent.
-2. **LORE FIREWALL AT THE DOOR.** Top-of-funnel pages: zero canon-internal vocabulary. The inner
-   register lives in `inside/` only (reachable from system.html, never from the door). Isaac's
-   PERSONAL pages may carry his real register — plain statement first, flavor after, never as
-   prerequisite vocabulary.
+2. **LORE IS ALLOWED, ON EVERY PAGE.** The Sanctuary register — the cosmology (Wasteland · CAVE ·
+   Sanctuary), the myth's vocabulary — may appear anywhere, the door included. It is written plain
+   first and lore after, and never as prerequisite vocabulary (RULE 01's register): a visitor who
+   knows none of it still follows the page. `inside/` stays the home of the fully lored register.
 3. **NO UNCASHED CLAIMS.** A claim ships with its receipt or ships as a labeled IOU. No fabricated
    numbers, no uptime claims nobody verified, no fake dashboards (world-slots stay empty until real
    footage exists). **A statistic ships only with a named, findable study behind it** (who, what,
@@ -157,7 +160,7 @@ Paths below marked ✓ resolve here.
 | **index.html / the door** | the two rows above + `~/aios-research/SITE-CEO-BRANCH-REVIEW.md` (live decisions, incl. hero-first) |
 | **isaac.html (the hero site)** | `GARAGE-LAB-LAUNCH-STRATEGY.md` §1c · `~/aios-research/HJ-GAUGE-SPEC.md` (the theses) · `~/repo/garage-lab/CATALOG.md` + `INDEX.md` (the receipts) · `~/repo/garage-lab/CLAIM-AUDIT.md` (the honest claim board) · myth flavor ONLY from ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/SANCTUARY-MYTH-ORIGIN.md` Part V |
 | **isaac-wostrel-rubin.html (his personal page)** | ✓ `isaac.html` (the content it started from — the beliefs, the story, the open rows, verbatim) · ✓ `ssri/papers/flat-vs-tree.html` (the paper — only its own sentences) · ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/arrow-book/` — `MANUSCRIPT.md`'s title page and Chapter One (the passages), `front-matter/` (the mark, `assets/sanc-mark-white.png`, byte-identical), and the book's own gates: nothing from `sgc/`, no practice text, nothing from the raw autobiography corpus · `gh api repos/sancovp/<repo> .description` (each repo card's words) · every repo linked returns 200 unauthenticated |
-| **framework.html (the DIY framework + community funnel)** | ✓ `docs/the-transformation-method-2026-09-17.md` §1 (the seven parts, his questions) + §1a (the central test, the two shapes of a business that fails it) — never §1a-bis's cascade, never §1c–§1f · ✓ `~/claude_code/sanctuary-revolution-alpha/application/jobworld/avi-jw/docs/autonomy-framework/AUTONOMY-MANIFESTO.md` §II.2–II.4 (the autonomy ladder; its canon copy `~/autonomy-framework` is outside the world dir) · ✓ `b2b-bootcamp/` — twelve of sixteen files; OUT: the cosmology (lore at the door), the origin story (personal), the pitch script, and `human-vs-ai-comparison.md` (its statistics name no source, law 3) · ✓ `docs/business-context-2026-09-15-first-client.md` (the ordering rule that keeps it unpresented) · *USER*'s own description of the community (owners + operators on his model, his GoHighLevel, Skool) — the Skool link, the price and what the GHL access includes are his, OPEN |
+| **framework.html (the DIY framework + community funnel)** | ✓ `docs/the-transformation-method-2026-09-17.md` §1 (the seven parts, his questions) + §1a (the central test, the two shapes of a business that fails it) — never §1a-bis's cascade, never §1c–§1f · ✓ `~/claude_code/sanctuary-revolution-alpha/application/jobworld/avi-jw/docs/autonomy-framework/AUTONOMY-MANIFESTO.md` §II.2–II.4 (the autonomy ladder; its canon copy `~/autonomy-framework` is outside the world dir) · ✓ `b2b-bootcamp/` — thirteen of sixteen files, the SANCTUARY–WASTELAND cosmology leading them as the map; OUT: the origin story (personal), the pitch script, and `human-vs-ai-comparison.md` (its statistics name no source, law 3) · ✓ `~/claude_code/sanctuary-revolution-alpha/base/chaincompiler/` (public, MIT) — `DIETC-AIOS-REBUILD.md` §1–§5 (the AIOS template → BUILD AN AIOS) · `README.md` § The stack, § The formal spec, changelog v0.1.34–v0.1.36 (GBA · COG · HBA → THE LEVELS) · `chains/skill2framework.chain` + `skills/skill2framework/*` (the six stages → TOME) · ✓ `docs/business-context-2026-09-15-first-client.md` (the ordering rule that keeps it unpresented) · *USER*'s own description of the community (owners + operators on his model, his GoHighLevel, Skool) — the Skool link, the price and what the GHL access includes are his, OPEN |
 | **pricing.html** | `main:pricing.html` VERBATIM + Isaac. No other source exists. |
 | **rung pages (learn/build/run)** | the funnel row for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
 | **watch.html / world demos** | real run receipts ONLY: cave-teams live tests (`test_live_skillcraft.py` runs), future footage per `GARAGE-LAB-LAUNCH-STRATEGY.md` §1b. Never generated numbers. |

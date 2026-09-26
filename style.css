@@ -2742,3 +2742,11 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
   .ws-scroll { overflow: visible; }
   .ws-table { min-width: 0; }
 }
+/* the AIOS anatomy, the ChainCompiler levels, TOME — the ladder rows and arrow-node steps, reused */
+.fw-grades li { grid-template-columns: 7.5rem 15rem 1fr; }
+.fw-grades code { font-family: var(--mono); font-size: 0.85em; color: var(--ink); overflow-wrap: anywhere; }
+.fw-cosmos strong { color: var(--ink); font-weight: 600; }
+.fw-cosmos .get-v { max-width: 90ch; }
+.fw-repo { margin-top: 1.4rem; }
+.fw-tome .get-v { margin-top: 0.3rem; }
+@media (max-width: 900px) { .fw-grades li { grid-template-columns: 1fr; } }
