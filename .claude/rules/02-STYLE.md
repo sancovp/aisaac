@@ -29,8 +29,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
      section's hue says what it is about: **red** the problem · **gold** the framework · **violet**
      the theory · **cyan** what you build · **green** growth and community. A tinted section
      (`.bp-sec.tinted.tint-<hue>`) gets a soft ground (`--tint-<hue>-bg`), a 4px top edge in its
-     accent (`--tint-<hue>`, ≥5.4:1 on its ground), and the accent on its label, its card headings
-     and its numerals; the white cards sit on the tint, and that contrast is what separates the
+     accent (`--tint-<hue>`, ≥5.4:1 on its ground), and the accent on its label, its card headings,
+     its numerals, its icons and its card nodes — the section's tab (the square at the head of its
+     label) is FILLED in the accent, and so are the nodes where its cards' dividers meet their edges; the white cards sit on the tint, and that contrast is what separates the
      sections. Utility sections (how it works · who it's for · questions · the story) stay plain or
      grain, so a colour always means something. Used on `framework.html`, `framework-worksheet.html`
      and `isaac-wostrel-rubin.html`. ⛔ **`ai-transformation.html` stays BLACK AND WHITE** (*USER*'s
@@ -108,7 +109,11 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    stay closed, and nothing opens on scroll — an opening tree pushes the pinned section's bottom
    away while the reader is mid-section.
 12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
-   outlined square beside a card label — never an emoji (they render differently per device).
+   outlined square beside a card label — never an emoji (they render differently per device). Every
+   card, step and group on `framework.html` carries one naming what it IS (a megaphone for PSA, a
+   stethoscope for SCREENING…), so a grid of cards reads as distinct things, not a jumble; a ladder
+   row carries a small inline one (`.fw-ico`) inheriting its label's colour. In a tinted section
+   the icons take the accent.
 13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
    only in the films (the VSL's silent autoplay included), the parcels, the pinned stack (driven by the reader's own scroll), and
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
