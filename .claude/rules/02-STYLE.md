@@ -22,8 +22,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    - **the parcels' yellows** (`--pkg`, drawn inside the token: ink outline, three yellow faces,
      a strip of tape) — the only other colour, and it lives only on the parcels (§3).
    - **the leak tree's branch labels** (§11), each wearing its meaning on the LABEL and its tick,
-     never on the sentence: *but* and *instead of* in `--signal` (the problem, the old way) · *so we*
-     in `--leak-act #b45309` (amber — yellow text is unreadable on white; 5.0:1) · *so that you* in
+     never on the sentence: *but* and *before* in `--signal` (the problem, where you are) · *so we*
+     in `--leak-act #b45309` (amber — yellow text is unreadable on white; 5.0:1) · *after* in
      `--leak-good #15803d` (green, 5.0:1). The numbers stay ink.
    Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
@@ -90,8 +90,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    pinned section shows through later ones. JS off: normal scroll.
 11. **The leak tree** (`.leak`, a native `<details>`): closed, one row — the item in mono and its
    one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
-   each branch — the numbers (with its source in small mono beneath) · but · so we · instead of · so that
-   you (in ink, the dream) — it ENDS on the dream. Labels coloured per §1. No JS; keyboard-operable; the open is a 180ms fade that
+   each branch — the numbers (with its source in small mono beneath) · but · *Before, you're* · so we · *After,
+   you* (in ink, the dream) — BEFORE and AFTER frame the fix, and it ENDS on the dream. Each label is
+   the opening words of its sentence. Labels coloured per §1. No JS; keyboard-operable; the open is a 180ms fade that
    reduced motion drops. The FIRST tree ships open, so the visitor sees what a row holds; the rest
    stay closed, and nothing opens on scroll — an opening tree pushes the pinned section's bottom
    away while the reader is mid-section.

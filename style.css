@@ -1999,13 +1999,13 @@ body { position: relative; }            /* so the layer spans the whole document
 }
 .leak-tree .leak-dream { color: var(--ink); font-weight: 500; }
 /* each branch wears its meaning, on the LABEL and its TICK only — the sentence stays readable ink:
-   but = the problem (red) · so we = the action (amber) · instead of = the bad path (red) ·
-   so that you = the dream (green). The numbers stay ink. */
+   but = the problem (red) · before = where you are (red) · so we = the action (amber) ·
+   after = the dream (green). The numbers stay ink. */
 /* ⛔ scoped under .leak-tree, or `.leak-tree p span` (more specific) keeps every label ink */
-.leak-tree .leak-but span, .leak-tree .leak-instead span { color: var(--signal); }
+.leak-tree .leak-but span, .leak-tree .leak-before span { color: var(--signal); }
 .leak-tree .leak-we span { color: var(--leak-act); }
 .leak-tree .leak-dream span { color: var(--leak-good); }
-.leak-tree .leak-but::before, .leak-tree .leak-instead::before { border-top-color: var(--signal); border-top-width: 2px; }
+.leak-tree .leak-but::before, .leak-tree .leak-before::before { border-top-color: var(--signal); border-top-width: 2px; }
 .leak-tree .leak-we::before { border-top-color: var(--leak-act); border-top-width: 2px; }
 .leak-tree .leak-dream::before { border-top-color: var(--leak-good); border-top-width: 2px; }
 .leak-tree cite {

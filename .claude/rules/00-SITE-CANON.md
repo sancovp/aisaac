@@ -23,7 +23,7 @@ needs from it — his "stringly · harnessed stringly · full logic" rendered at
 prompt, a guided prompt, or fully built logic" · the AI teams you could run · and we also map the
 business's health — website, marketing, reviews, speed to lead, after-hours support, lead
 generation, lead nurture, content presence — each opening into a LEAK TREE in *USER*'s structure:
-the numbers · but · so we · instead of · so that you (ending on the dream) — and its SOPs, which diagnose whether rebuilds
+the numbers · but · before · so we · after (ending on the dream) — and its SOPs, which diagnose whether rebuilds
 or audits are needed; those become customizations, never stage one) · what it becomes (a silent loop on top — `assets/what-it-becomes-loop.mp4`, source
 `video-aios/draw-the-box/becomes/`: one agent → agents wired across the org → one giant agent →
 the CEO alone again, which is its first frame — then the deck's slide 5 arc — Foundation · Hardening · Closure, each with its RESULT verbatim — slide 3's "Fragmented.
