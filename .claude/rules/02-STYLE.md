@@ -40,7 +40,11 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 4. **The card** (`.bp-card`): paper, a 1px ink outline, radius `--r-bp` 28px. Inside it,
    **hairline dividers** (`.bp-rule` across, `.bp-split` down) — and a small square **NODE**
    (11px, paper fill, ink outline) wherever a divider meets the card's edge, like the handles a
-   diagram editor shows on a selected shape. Nodes appear ONLY at those junctions.
+   diagram editor shows on a selected shape. Nodes appear ONLY at those junctions — and, where the
+   cells are the STEPS OF ONE SEQUENCE (What it becomes: 1 · Foundation → 2 · Hardening → 3 ·
+   Closure), as a larger node carrying an arrow (`.step-arrow`) at the middle of each divider
+   between steps, turned to point down when the steps stack on a phone. A sequence's two ends sit
+   on a RAIL under it (`.becomes-rail`): where it starts, one long ink arrow, where it ends.
 5. **The label:** `.eyebrow` = a square node, a short ink connector, then the text; on the
    presented page the text sits in a hairline **pill** (`.eyebrow > .pill`). Sentence case, never
    all caps. One per section, never above every heading.

@@ -2010,7 +2010,7 @@ body { position: relative; }            /* so the layer spans the whole document
 
 /* ⛔ restate the stack AFTER the column counts above, or the 3-up survives onto phones */
 @media (max-width: 900px) {
-  .get-top, .get-bottom, .becomes-fromto { grid-template-columns: 1fr; }
+  .get-top, .get-bottom { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) { .leak summary { flex-direction: column; gap: 0.15rem; } }
 
@@ -2020,15 +2020,42 @@ body { position: relative; }            /* so the layer spans the whole document
   margin: 0.9rem 0 0; padding-top: 0.7rem; border-top: 1px solid var(--line);
   font-family: var(--mono); font-size: 0.84rem; font-weight: 600; color: var(--ink); line-height: 1.5;
 }
-.becomes-fromto { grid-template-columns: 1fr 1fr; }
 .becomes-state { margin: 0.2rem 0 0; font-size: 1.15rem; line-height: 1.5; color: var(--text-2); }
-.becomes-fromto .bp-cell + .bp-cell .becomes-state { color: var(--ink); font-weight: 500; }
+.rail-to .becomes-state { color: var(--ink); font-weight: 500; }
+/* the stages read as ONE sequence: an arrow node sits on each divider between them, mid-height —
+   the same square node the dividers carry at the card's edge, now pointing the way */
+.becomes-steps > .bp-cell { position: relative; }
+.step-arrow {
+  position: absolute; left: -14px; top: 50%; transform: translateY(-50%); z-index: 1;
+  width: 27px; height: 27px; display: grid; place-items: center;
+  background: var(--paper); border: 1px solid var(--ink);
+  font-family: var(--mono); font-size: 0.9rem; line-height: 1; color: var(--ink);
+}
+/* the rail under the stages: where it starts at one end, where it ends at the other, and one
+   long ink arrow between them, spanning the whole sequence */
+.becomes-rail { display: grid; grid-template-columns: minmax(0, 22ch) 1fr minmax(0, 22ch); align-items: center; gap: 1.6rem; }
+.rail-to { text-align: right; }
+.rail-line { position: relative; height: 0; border-top: 1px solid var(--ink); }
+.rail-line::before { content: ""; position: absolute; left: -5px; top: -6px; width: 9px; height: 9px;
+  background: var(--paper); border: 1px solid var(--ink); }
+.rail-line::after { content: ""; position: absolute; right: -1px; top: -6px;
+  border-left: 11px solid var(--ink); border-top: 5.5px solid transparent; border-bottom: 5.5px solid transparent; }
 .becomes-terminus p {
   margin: 0; max-width: 40ch; font-family: var(--mono); font-weight: 700;
   font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.35; letter-spacing: -0.02em; color: var(--ink);
 }
-/* ⛔ AFTER `.becomes-fromto`'s own column rule, or its two columns survive onto phones */
-@media (max-width: 900px) { .becomes-fromto { grid-template-columns: 1fr; } }
+/* ⛔ AFTER the rail's and the steps' own rules, or their desktop layout survives onto phones.
+   Stacked, the arrows turn to point DOWN and sit on the hairline between the stages; the rail
+   runs top to bottom. */
+@media (max-width: 900px) {
+  .step-arrow { left: 50%; top: -14px; transform: translateX(-50%) rotate(90deg); }
+  .becomes-rail { grid-template-columns: 1fr; gap: 0.9rem; }
+  .rail-to { text-align: left; }
+  .rail-line { height: 40px; width: 0; margin-left: 5px; border-top: 0; border-left: 1px solid var(--ink); }
+  .rail-line::before { left: -6px; top: -5px; }
+  .rail-line::after { right: auto; top: auto; left: -6px; bottom: -1px;
+    border-left: 5.5px solid transparent; border-right: 5.5px solid transparent; border-top: 11px solid var(--ink); border-bottom: 0; }
+}
 
 /* ── who you'll be talking to ───────────────────────────────────────────── */
 .about-split { grid-template-columns: 300px minmax(0, 1fr); }
