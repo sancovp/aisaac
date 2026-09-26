@@ -103,6 +103,14 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 
+14. **The personal page's own pieces** (`isaac-wostrel-rubin.html`, `.me-*` · `.paper-*` · `.book-*`
+   · `.repo*`): the paper card (its abstract's sentences left, status right) · the BOOK COVER — the
+   one card that ink FILLS, because it is the book's own object, like a film, carrying the book's
+   mark in its own colours · the contents list set in mono by the chapters' glyphs · the passages
+   as quotations with an ink rule, inside a card (on the bare sheet the parcels cross them) · one
+   outlined card per repository, the whole card the link, two to a row (ten repos, five even rows).
+   The seven beliefs reuse the leak tree: *The claim* in ink, *The receipt* in green.
+
 ## The density gradient (still law)
 
 `body[data-depth="0|1|2|3"]` overrides `--sec-y --claim-y --h1-size --h1-measure --h2-size
