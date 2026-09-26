@@ -67,9 +67,10 @@ rebuild, never the output. `isaac.html` is the older personal page, left as it i
 
 **Built, not yet presented: `framework.html`** — *USER*'s concept of a traditional lead-magnet
 funnel: the FREE AI Transformation Framework (the method's §1 procedure and §1a central test, in his
-words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then the COMMUNITY of owners
-and operators running the model (his GoHighLevel setup; membership on Skool), joined by email until
-its Skool link exists. It also gives away, free: THE AUTONOMY LADDER (his automation theory — the
+words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then the FREE COMMUNITY of owners
+and operators running the model (on Skool), inside which his GoHighLevel setup is the paid offer —
+*USER*'s structure: the community is free and GHL is sold inside it. Joined by email until its Skool
+link exists. It also gives away, free: THE AUTONOMY LADDER (his automation theory — the
 worker · management · you triad, grades 1–4, trust earned per area and never transferred) and the
 B2B BOOTCAMP (the Sanctuary–Wasteland map, then twelve frameworks); BUILD AN AIOS (the anatomy of
 an AIOS and the law under it, from ChainCompiler); THE LEVELS of ChainCompiler (the gate → AC → CoR →
@@ -172,7 +173,7 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- `framework.html`: the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link and price · what "use my GHL" gives a member · the framework's delivery (a document to send on each opt-in) · when it goes live
+- `framework.html`: the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it (price, plan, what a member gets; whether it is sold as a white-label SaaS under HighLevel's SaaS Mode) · the framework's delivery (a document to send on each opt-in) · when it goes live
 
 - where the sources marked absent above live
 - the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
