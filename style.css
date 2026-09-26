@@ -106,6 +106,13 @@
   --signal-deep: #b30500;      /* the book buttons' hover */
   --leak-act: #b45309;         /* the leak tree's "so we" — amber, 5.0:1 on paper (yellow text is unreadable on white) */
   --leak-good: #15803d;        /* the leak tree's "so that you" — green, 5.0:1 on paper */
+  /* SECTION TINTS (RULE 02 §1) — a section's hue says what it is about. bg = the section's ground,
+     the bare name = its accent (top edge · label · card headings); every accent ≥5.4:1 on its ground */
+  --tint-red-bg: #fdeeec;    --tint-red: #c20500;      /* the problem */
+  --tint-gold-bg: #fff4e6;   --tint-gold: #a44a06;     /* the framework */
+  --tint-violet-bg: #f3eeff; --tint-violet: #6a2fd6;   /* the theory */
+  --tint-cyan-bg: #e9f7fd;   --tint-cyan: #075985;     /* what you build */
+  --tint-green-bg: #eaf6ee;  --tint-green: #116b33;    /* growth, community */
   /* THE LOOP'S OWN PALETTE — used ONLY as the separators of the four levels, so the list and the
      film beside it share one colour code: gold = the CEO's orb, cyan / violet = the first two
      worker cards. Bars, never text. */
@@ -2750,3 +2757,25 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
 .fw-repo { margin-top: 1.4rem; }
 .fw-tome .get-v { margin-top: 0.3rem; }
 @media (max-width: 900px) { .fw-grades li { grid-template-columns: 1fr; } }
+
+/* ══ SECTION TINTS (RULE 02 §1, *USER*'s ruling: the sections must be told apart by colour) ═══════
+   A tinted section trades the grain for a soft ground in its hue, a 4px top edge in its accent, and
+   carries the accent on its label and its card headings. The white cards sit on the tint — that
+   contrast is what separates the sections. Hue = meaning: red the problem · gold the framework ·
+   violet the theory · cyan what you build · green growth and community. Utility sections stay plain. */
+.tint-red    { --t-bg: var(--tint-red-bg);    --t-ac: var(--tint-red); }
+.tint-gold   { --t-bg: var(--tint-gold-bg);   --t-ac: var(--tint-gold); }
+.tint-violet { --t-bg: var(--tint-violet-bg); --t-ac: var(--tint-violet); }
+.tint-cyan   { --t-bg: var(--tint-cyan-bg);   --t-ac: var(--tint-cyan); }
+.tint-green  { --t-bg: var(--tint-green-bg);  --t-ac: var(--tint-green); }
+.bp-sec.tinted { background-color: var(--t-bg); background-image: none;
+  border-top: 4px solid var(--t-ac); border-bottom: 1px solid var(--ink); }
+.tinted .eyebrow { color: var(--t-ac); }
+.tinted .eyebrow::before {
+  background:
+    linear-gradient(var(--t-ac), var(--t-ac)) 11px 50% / calc(100% - 11px) 1px no-repeat,
+    linear-gradient(var(--paper), var(--paper)) 1px 1px / 9px 9px no-repeat,
+    linear-gradient(var(--t-ac), var(--t-ac)) 0 0 / 11px 11px no-repeat;
+}
+.tinted .eyebrow > .pill { border-color: var(--t-ac); color: var(--t-ac); font-weight: 600; }
+.tinted .get-k, .tinted .fw-g, .tinted .fw-n, .tinted .repo-name, .tinted .toc-n { color: var(--t-ac); }

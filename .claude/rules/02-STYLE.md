@@ -25,6 +25,15 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
      never on the sentence: *but* and *before* in `--signal` (the problem, where you are) · *so we*
      in `--leak-act #b45309` (amber — yellow text is unreadable on white; 5.0:1) · *after* in
      `--leak-good #15803d` (green, 5.0:1). The numbers stay ink.
+   - **the SECTION TINTS** (*USER*'s ruling: the sections must be told apart by colour) — a
+     section's hue says what it is about: **red** the problem · **gold** the framework · **violet**
+     the theory · **cyan** what you build · **green** growth and community. A tinted section
+     (`.bp-sec.tinted.tint-<hue>`) gets a soft ground (`--tint-<hue>-bg`), a 4px top edge in its
+     accent (`--tint-<hue>`, ≥5.4:1 on its ground), and the accent on its label, its card headings
+     and its numerals; the white cards sit on the tint, and that contrast is what separates the
+     sections. Utility sections (how it works · who it's for · questions · the story) stay plain or
+     grain, so a colour always means something. Used on `framework.html` and
+     `isaac-wostrel-rubin.html`.
    Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
@@ -52,9 +61,10 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 5. **The label:** `.eyebrow` = a square node, a short ink connector, then the text; on the
    presented page the text sits in a hairline **pill** (`.eyebrow > .pill`). Sentence case, never
    all caps. One per section, never above every heading.
-6. **The bands alternate:** plain paper (columns show) · **grain** (`.bp-band`: paper with the
-   `--grain` noise tooth, ink rules top and bottom) · **ink** (`.bp-ink`: the one black band,
-   reserved for the final action).
+6. **The bands:** plain paper (columns show) · **grain** (`.bp-band`: paper with the
+   `--grain` noise tooth, ink rules top and bottom) · **tinted** (§1's section tints, which
+   replace the grain wherever a section has a meaning to colour) · **ink** (`.bp-ink`: the one
+   black band, reserved for the final action). Two sections of the same kind are never adjacent.
 7. **The button** (`.cta-primary`): paper, 1px ink outline, radius 14px, Geist Mono 600; it
    INVERTS on hover (ink fill, paper text). On the ink band it is the same button inverted.
    **Any button that books the call is red instead** (§1).

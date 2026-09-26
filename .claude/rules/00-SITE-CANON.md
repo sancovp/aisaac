@@ -173,7 +173,7 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- `framework.html`: the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it (price, plan, what a member gets; whether it is sold as a white-label SaaS under HighLevel's SaaS Mode) · the framework's delivery (a document to send on each opt-in) · when it goes live
+- `framework.html`: the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
 
 - where the sources marked absent above live
 - the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions

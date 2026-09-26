@@ -93,7 +93,7 @@ TOC = [("1", "→"), ("2", "A → B"), ("3", "A → 1 → 2 → 3 → B"), ("4",
        ("", "Afterword: the status report"), ("", "The map")]
 toc = '\n'.join(f'                <li><span class="toc-n">{n}</span><span class="toc-t">{html.escape(t)}</span></li>' for n, t in TOC)
 
-V = '2026-09-26p'
+V = '2026-09-26q'
 page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -161,7 +161,7 @@ page = f'''<!doctype html>
   </section>
 
   <!-- THE PAPER — its own abstract's words, its own status line; linked, never re-hosted here -->
-  <section class="bp-sec bp-band" id="paper">
+  <section class="bp-sec tinted tint-cyan" id="paper">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">The paper</span></p>
       <h2>Flat versus Tree: Why Agent Skills Need a Graph</h2>
@@ -189,7 +189,7 @@ page = f'''<!doctype html>
   <!-- THE BOOK — a PREVIEW: the title page, the contents, five passages of Chapter One. The book is
        in its final draft; nothing from the sealed part, no practice text, nothing from the raw
        autobiography corpus (the book's own gates, research/ssri/ship/arrow-book). -->
-  <section class="bp-sec" id="book">
+  <section class="bp-sec tinted tint-violet" id="book">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">The book</span></p>
       <h2>The Sanctuary System &mdash; a preview</h2>
@@ -225,7 +225,7 @@ page = f'''<!doctype html>
 
   <!-- WHAT I THINK — the seven beliefs from isaac.html, each opening to its receipt (the leak-tree
        component: the claim in ink, the receipt in green) -->
-  <section class="bp-sec bp-band" id="think">
+  <section class="bp-sec tinted tint-gold" id="think">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">What I think</span></p>
       <h2>Seven things I believe, and what makes each one more than an opinion.</h2>
@@ -242,7 +242,7 @@ page = f'''<!doctype html>
 
   <!-- THE CODE — every repo here answered 200 unauthenticated when this page was built; each
        description is the repository's own GitHub description -->
-  <section class="bp-sec" id="code">
+  <section class="bp-sec tinted tint-green" id="code">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">The code</span></p>
       <h2>A hundred-plus public repositories. Ten to start with.</h2>
@@ -275,7 +275,7 @@ page = f'''<!doctype html>
     </div>
   </section>
 
-  <section class="bp-sec">
+  <section class="bp-sec tinted tint-red">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">What I owe</span></p>
       <h2>The open rows, stated by me before anyone else gets to.</h2>
