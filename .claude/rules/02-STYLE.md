@@ -54,7 +54,7 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark.
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
    hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the
-   wordmark `TWI: Transforming the World, Incorporated` on the left (a `<span>`, never a link) and
+   wordmark `Transformations With Isaac` on the left (a `<span>`, never a link) and
    the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right —
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
