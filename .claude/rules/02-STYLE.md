@@ -118,6 +118,11 @@ a system face breaks the monospace grid.
   (the About card kept its desktop grid on phones this way — measure `scrollWidth` at 390px), or
   a hard-coded background that ignores the tokens (the booking dialog did). Look at the page at
   1440 and at 390, and open the dialog, before calling a style change done.
+- ⛔ The presented page links `style.css`, `vsl.js` and `stack.js` with a `?v=` version: bump it in
+  the SAME commit as any change to those files, or returning visitors — and the verification
+  browser — keep the old file and the change looks unmade. A replaced image gets a NEW filename
+  for the same reason. Before judging a change on screen, check the computed value, not the
+  screenshot.
 
 ## What "high-end" means here, testably
 
