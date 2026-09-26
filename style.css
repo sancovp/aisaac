@@ -104,6 +104,8 @@
   --ink: #000000;
   --signal: #e10600;           /* BOOK A CALL, everywhere. Paper text on it = 4.97:1 */
   --signal-deep: #b30500;      /* the book buttons' hover */
+  --leak-act: #b45309;         /* the leak tree's "so we" — amber, 5.0:1 on paper (yellow text is unreadable on white) */
+  --leak-good: #15803d;        /* the leak tree's "so that you" — green, 5.0:1 on paper */
   /* THE LOOP'S OWN PALETTE — used ONLY as the separators of the four levels, so the list and the
      film beside it share one colour code: gold = the CEO's orb, cyan / violet = the first two
      worker cards. Bars, never text. */
@@ -1996,6 +1998,16 @@ body { position: relative; }            /* so the layer spans the whole document
   margin-bottom: 0.1rem;
 }
 .leak-tree .leak-dream { color: var(--ink); font-weight: 500; }
+/* each branch wears its meaning, on the LABEL and its TICK only — the sentence stays readable ink:
+   but = the problem (red) · so we = the action (amber) · instead of = the bad path (red) ·
+   so that you = the dream (green). The numbers stay ink. */
+/* ⛔ scoped under .leak-tree, or `.leak-tree p span` (more specific) keeps every label ink */
+.leak-tree .leak-but span, .leak-tree .leak-instead span { color: var(--signal); }
+.leak-tree .leak-we span { color: var(--leak-act); }
+.leak-tree .leak-dream span { color: var(--leak-good); }
+.leak-tree .leak-but::before, .leak-tree .leak-instead::before { border-top-color: var(--signal); border-top-width: 2px; }
+.leak-tree .leak-we::before { border-top-color: var(--leak-act); border-top-width: 2px; }
+.leak-tree .leak-dream::before { border-top-color: var(--leak-good); border-top-width: 2px; }
 .leak-tree cite {
   display: block; margin-top: 0.25rem; font-style: normal;
   font-family: var(--mono); font-size: 0.7rem; color: var(--text-3);

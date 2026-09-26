@@ -14,13 +14,17 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    two places, both *USER*'s rulings:
    - **`--signal #e10600` = BOOK A CALL, everywhere** — the top bar's button and every
      `.cta-primary[data-buy="call"]`, on paper and on the ink band alike (paper text on it =
-     4.97:1; hover `--signal-deep #b30500`). Nothing else is red.
+     4.97:1; hover `--signal-deep #b30500`). Nothing else is red, except the leak tree's two warning labels (below).
    - **the loop's own palette as the level separators** — `--loop-gold #ff8c1f` (the CEO's orb:
      Solo and Solo again), `--loop-cyan #1abfff` (Org), `--loop-violet #9e6bff` (Automation), as
      3px bars between the four levels only, so the list and the film beside it share one colour
      code. Bars, never text.
    - **the parcels' yellows** (`--pkg`, drawn inside the token: ink outline, three yellow faces,
      a strip of tape) — the only other colour, and it lives only on the parcels (§3).
+   - **the leak tree's branch labels** (§11), each wearing its meaning on the LABEL and its tick,
+     never on the sentence: *but* and *instead of* in `--signal` (the problem, the old way) · *so we*
+     in `--leak-act #b45309` (amber — yellow text is unreadable on white; 5.0:1) · *so that you* in
+     `--leak-good #15803d` (green, 5.0:1). The numbers stay ink.
    Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
@@ -86,8 +90,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    pinned section shows through later ones. JS off: normal scroll.
 11. **The leak tree** (`.leak`, a native `<details>`): closed, one row — the item in mono and its
    one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
-   each branch — the numbers (with its source in small mono beneath) · but · so we · so that you
-   (in ink, the dream) · instead of. No JS; keyboard-operable; the open is a 180ms fade that
+   each branch — the numbers (with its source in small mono beneath) · but · so we · instead of · so that
+   you (in ink, the dream) — it ENDS on the dream. Labels coloured per §1. No JS; keyboard-operable; the open is a 180ms fade that
    reduced motion drops. The FIRST tree ships open, so the visitor sees what a row holds; the rest
    stay closed, and nothing opens on scroll — an opening tree pushes the pinned section's bottom
    away while the reader is mid-section.
