@@ -1891,9 +1891,9 @@ body { position: relative; }            /* so the layer spans the whole document
 .hero-art { min-width: 0; align-self: stretch; overflow: hidden; display: flex; align-items: center;
   border-top-right-radius: calc(var(--r-bp) - 1px); }
 .hero-art img { display: block; width: 130%; max-width: none; height: auto; }
-/* who it's for — a mono key, then the avatar in prose */
-.hero-for { margin: 0; padding: 1rem 0 0; border-top: 1px solid var(--line); max-width: 54ch;
-  font-size: 0.95rem; line-height: 1.6; color: var(--text-2); }
+/* who it's for — heads the film: a mono key, then the avatar in prose */
+.hero-for { margin: 0 0 1.4rem; max-width: 72ch;
+  font-size: 1rem; line-height: 1.6; color: var(--text-2); }
 .hero-for-k { display: block; margin-bottom: 0.3rem; font-family: var(--mono); font-size: 0.72rem;
   font-weight: 600; letter-spacing: 0.02em; color: var(--ink); }
 @media (max-width: 900px) {

@@ -59,13 +59,13 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    key press ANYWHERE on the page (except one that opens the booking form) turns the sound on and
    restarts the film. From then the visitor owns it. Reduced motion: no autoplay.
 8b. **The hero** (`.hero-split`, bugster.dev's shape): one card; the copy on the left — pill, the h1
-   in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the who-it's-for
-   block (a mono key over the avatar in prose, a `--line` hairline above), the red Book a call; the
-   drawing on the right with NO divider between them, bleeding off the card's right edge (the cell
-   clips it to the card's corner). The drawing sits on the card's exact white (#fff, measured at its
-   corners) and carries the characters of the site's own films (the owner with the gold orb, the
-   cyan agents, the black wires), never stock art. Under a hairline, the VSL runs the card's full width. On a phone it stacks:
-   copy, drawing, film.
+   in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the red Book a
+   call; the drawing on the right with NO divider between them, bleeding off the card's right edge
+   (the cell clips it to the card's corner). The drawing sits on the card's exact white (#fff,
+   measured at its corners) and carries the characters of the site's own films (the owner with the
+   gold orb, the cyan agents, the black wires), never stock art. Under a hairline, the film's sheet: the WHO IT'S FOR
+   block first (`.hero-for`, a mono key over the avatar in prose), then the VSL at the card's full
+   width. On a phone it stacks: copy, drawing, who it's for, film.
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
    hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the
    wordmark `Transformations With Isaac` on the left (a `<span>`, never a link) and
