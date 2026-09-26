@@ -62,8 +62,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the who-it's-for
    block (a mono key over the avatar in prose, a `--line` hairline above), the red Book a call; the
    drawing on the right with NO divider between them, bleeding off the card's right edge (the cell
-   clips it to the card's corner). The drawing is a render on white, never an illustration from
-   outside the system. Under a hairline, the VSL runs the card's full width. On a phone it stacks:
+   clips it to the card's corner). The drawing sits on the card's exact white (#fff, measured at its
+   corners) and carries the characters of the site's own films (the owner with the gold orb, the
+   cyan agents, the black wires), never stock art. Under a hairline, the VSL runs the card's full width. On a phone it stacks:
    copy, drawing, film.
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
    hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the

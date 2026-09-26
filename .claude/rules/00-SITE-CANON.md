@@ -10,8 +10,9 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 **One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
 action — the hero (the claim, who it is for and the red Book a call on the left; the drawing
-`assets/hero-business.webp` on the right, rendered by `video-aios/draw-the-box/loop/render_hero_still.py`
-from the loop's own scene: one owner beside rows of identical workers that run off the card's edge) ·
+`assets/hero-owner.webp` on the right — the owner leaning back while his company of people and cyan
+agents works on its own, wired together, one line running to him; the characters of the "What it
+becomes" loop; made from `docs/hero-image-prompt.md`, source `docs/hero-refs/twi_atm_ceo_ez.png`) ·
 the video (`assets/vsl.mp4`, full width under the hero, STARTING WITH SOUND where the browser allows it, else
 silent until the visitor's first click turns the sound on — RULE 02 §8; its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under

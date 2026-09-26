@@ -1317,11 +1317,12 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   display: inline-flex; align-items: center; gap: 0.6rem;
   padding: 0.95rem 1.5rem; border: 1px solid var(--ink); border-radius: 14px;
   background: var(--paper); color: var(--ink); cursor: pointer;
-  font-family: var(--mono); font-weight: 600; font-size: 0.95rem;
+  font-family: var(--mono); font-weight: 600; font-size: 0.95rem; white-space: nowrap;
   transition: background 160ms ease, color 160ms ease;
 }
 .vsl-sound:hover, .vsl-sound:focus-visible { background: var(--ink); color: var(--paper); }
 .vsl-sound svg { width: 20px; height: 20px; fill: currentColor; }
+@media (max-width: 600px) { .vsl-sound { padding: 0.55rem 0.9rem; font-size: 0.8rem; gap: 0.4rem; } .vsl-sound svg { width: 16px; height: 16px; } }
 .artifact-frame.vsl.is-preview .vsl-ui { opacity: 0; pointer-events: none; }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -1885,11 +1886,11 @@ body { position: relative; }            /* so the layer spans the whole document
 /* the split: copy left, the drawing right — no divider between them (bugster.dev's
    hero: one sheet, the picture sitting on it), and the drawing bleeds off the
    card's right edge, clipped to the card's corner, because the rows never end */
-.hero-split { display: grid; grid-template-columns: 1.45fr 1fr; align-items: center; }
+.hero-split { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; }
 .hero-copy { min-width: 0; padding: clamp(1.6rem, 3.4vw, 3rem); }
 .hero-art { min-width: 0; align-self: stretch; overflow: hidden; display: flex; align-items: center;
   border-top-right-radius: calc(var(--r-bp) - 1px); }
-.hero-art img { display: block; width: 165%; max-width: none; height: auto; }
+.hero-art img { display: block; width: 130%; max-width: none; height: auto; }
 /* who it's for — a mono key, then the avatar in prose */
 .hero-for { margin: 0; padding: 1rem 0 0; border-top: 1px solid var(--line); max-width: 54ch;
   font-size: 0.95rem; line-height: 1.6; color: var(--text-2); }

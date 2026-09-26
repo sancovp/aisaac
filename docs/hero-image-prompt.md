@@ -59,6 +59,7 @@ faces
 
 ---
 
-**When it comes back:** save it into this repo, and it replaces `assets/hero-business.webp`. The
-agent flattens it on white, checks the corners read #FFFFFF, crops to the content, and places it
-so the owner is fully in view on desktop and on a phone.
+**What it made:** `docs/hero-refs/twi_atm_ceo_ez.png` (1672×941). Shipped as
+`assets/hero-owner.webp` (1600×900): every channel ≥ 246 lifted to 255 so the ground is the card's
+exact white, then resized. A new version gets a NEW filename, never the old one — a browser holds
+the old file under its old name and shows it instead.
