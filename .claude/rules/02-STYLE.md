@@ -10,9 +10,16 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 1. **Palette — paper and ink, nothing else.** `--paper #fff` · `--ink #000` (true black, never a
    tinted near-black) · `--text-2 #3d3d3d` · `--text-3 #6b6b6b` (the lightest text allowed, 5.3:1)
    · `--line #e6e6e6` (the blueprint columns). Every legacy accent token name (`--mercury-*`,
-   `--amber`) resolves to ink or a grey, so no page can carry a colour. **THE ONE COLOUR is
-   `--signal #e10600`, and it belongs to the top bar's BOOK A CALL button alone** (paper text on
-   it = 4.97:1). Every other colour on a page comes from media (the films, the portrait).
+   `--amber`) resolves to ink or a grey, so no page can carry a colour. Colour enters in exactly
+   two places, both *USER*'s rulings:
+   - **`--signal #e10600` = BOOK A CALL, everywhere** — the top bar's button and every
+     `.cta-primary[data-buy="call"]`, on paper and on the ink band alike (paper text on it =
+     4.97:1; hover `--signal-deep #b30500`). Nothing else is red.
+   - **the loop's own palette as the level separators** — `--loop-gold #ff8c1f` (the CEO's orb:
+     Solo and Solo again), `--loop-cyan #1abfff` (Org), `--loop-violet #9e6bff` (Automation), as
+     3px bars between the four levels only, so the list and the film beside it share one colour
+     code. Bars, never text.
+   Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
    `geist-mono-var.woff2`, SIL OFL 1.1, licence beside them). **Geist Mono 700** carries every
@@ -32,6 +39,7 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    reserved for the final action).
 7. **The button** (`.cta-primary`): paper, 1px ink outline, radius 14px, Geist Mono 600; it
    INVERTS on hover (ink fill, paper text). On the ink band it is the same button inverted.
+   **Any button that books the call is red instead** (§1).
 8. **Frames** (`.artifact-frame`, `.portrait-frame`): paper, 1px ink outline, radius 22px, no glass,
    no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark.
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a

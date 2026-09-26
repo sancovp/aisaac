@@ -91,7 +91,7 @@
   <section class="bp-sec bp-band what-sec">
     <div class="wrap">
       <p class="eyebrow"><span class="pill">What I do</span></p>
-      <h2>I take a business from one person doing everything to an organization that runs &mdash; then you start the next one.</h2>
+      <h2>I take a business from one person managing everything to an organization that runs &mdash; then you start the next one.</h2>
 
       <div class="bp-card bp-split">
         <div class="bp-cell">
@@ -105,12 +105,15 @@
         </div>
         <div class="bp-cell what-levels">
           <p class="what-levels-head">The levels of your business</p>
-          <ol class="what-steps">
-            <li><span>1 &middot; Solo</span> You figure the processes out.</li>
-            <li><span>2 &middot; Org</span> You teach people those processes &mdash; but the solo you still knows how the machine should run, so you have to reify it into them, and you keep doing that.</li>
-            <li><span>3 &middot; Automation</span> Eventually you build AI that takes the load off those workers.</li>
-            <li><span>4 &middot; Solo again</span> Now the workers can run level 2 without being managed by level 1, so you go solo again, on the next thing.</li>
-          </ol>
+          <!-- a plain container, not an <ol>: the level numbers are in the labels, and an
+               ordered list pastes as "1. 2 · Org". The label is a block, so copied text
+               breaks cleanly between it and its sentence. -->
+          <div class="what-steps" role="list">
+            <div role="listitem" class="lvl lvl-solo"><span>1 &middot; Solo</span>You figure the processes out.</div>
+            <div role="listitem" class="lvl lvl-org"><span>2 &middot; Org</span>You teach people those processes &mdash; but the solo you still knows how the machine should run, so you have to reify it into them, and you keep doing that.</div>
+            <div role="listitem" class="lvl lvl-auto"><span>3 &middot; Automation</span>Eventually you build AI that takes the load off those workers.</div>
+            <div role="listitem" class="lvl lvl-again"><span>4 &middot; Solo again</span>Now the workers can run level 2 without being managed by level 1, so you go solo again, on the next thing.</div>
+          </div>
         </div>
       </div>
     </div>
