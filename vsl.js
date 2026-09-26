@@ -98,12 +98,15 @@
     else if (frame.requestFullscreen) frame.requestFullscreen();
   });
 
-  /* THE FILM AUTOPLAYS, MUTED (*USER*'s ruling) — browsers only allow a silent
-   * autoplay, so the page plays it silent while it is on screen and pauses it
-   * when it scrolls away. "Watch with sound" is the way in: it unmutes and
-   * starts the film from the top. After that the visitor owns the film — it is
-   * never paused by scrolling again. Reduced motion: no autoplay; the first
-   * play starts with sound. */
+  /* THE FILM STARTS WITH SOUND (*USER*'s ruling) — as far as a browser allows.
+   * Chrome and Safari refuse sound before the visitor's first click, tap or
+   * key press (the autoplay policy; no page can override it). So: ask for
+   * sound first. If the browser refuses, the film plays silently while it is
+   * on screen, and the visitor's FIRST gesture anywhere on the page — or
+   * "Watch with sound" on the film — turns the sound on and starts it from
+   * the top. A click that opens the booking form is not taken for it (the
+   * film would talk over the form). After that the visitor owns the film:
+   * scrolling never pauses it. Reduced motion: no autoplay at all. */
   function setMuted(m) {
     v.muted = m;
     frame.classList.toggle('is-muted', m);
@@ -116,37 +119,51 @@
     setMuted(false);
     return;
   }
-  setMuted(true);
-  frame.classList.add('is-preview');
-  var sound = document.createElement('button');
-  sound.type = 'button';
-  sound.className = 'vsl-sound';
-  sound.innerHTML =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>' +
-    'Watch with sound';
-  frame.appendChild(sound);
 
+  var sound, gestures = ['pointerup', 'touchend', 'keydown'];
   function withSound(e) {
-    if (e) { e.preventDefault(); e.stopImmediatePropagation(); }
+    if (e && e.currentTarget !== document) { e.preventDefault(); e.stopImmediatePropagation(); }
+    if (!frame.classList.contains('is-preview')) return;
     frame.classList.remove('is-preview');
-    sound.remove();
+    if (sound) sound.remove();
     v.removeEventListener('click', withSound, true);
+    gestures.forEach(function (g) { document.removeEventListener(g, onGesture, true); });
     setMuted(false);
     v.currentTime = 0;
     v.play();
   }
-  sound.addEventListener('click', withSound);
-  v.addEventListener('click', withSound, true);   // a click on the silent film = the same way in
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      if (!frame.classList.contains('is-preview')) return;
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-        else v.pause();
-      });
-    }, { threshold: 0.35 }).observe(frame);
-  } else {
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  function onGesture(e) {
+    if (e.target.closest && e.target.closest('[data-buy], dialog, .vsl-sound')) return;
+    withSound();
   }
+  function silentPreview() {
+    setMuted(true);
+    frame.classList.add('is-preview');
+    sound = document.createElement('button');
+    sound.type = 'button';
+    sound.className = 'vsl-sound';
+    sound.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>' +
+      'Watch with sound';
+    frame.appendChild(sound);
+    sound.addEventListener('click', withSound);
+    v.addEventListener('click', withSound, true);   // a click on the silent film = the same way in
+    gestures.forEach(function (g) { document.addEventListener(g, onGesture, true); });
+
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (!frame.classList.contains('is-preview')) return;
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { var q = v.play(); if (q && q.catch) q.catch(function () {}); }
+          else v.pause();
+        });
+      }, { threshold: 0.35 }).observe(frame);
+    }
+  }
+
+  setMuted(false);
+  var tried = v.play();
+  if (tried && tried.then) tried.then(function () {}, silentPreview);
+  else if (v.paused) silentPreview();
 })();

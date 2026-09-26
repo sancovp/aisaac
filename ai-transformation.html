@@ -85,10 +85,11 @@
         <div class="bp-rule"></div>
         <div class="bp-pad">
           <!-- ⛔ The runtime is never stated — vsl.js draws controls with no clock.
-               It AUTOPLAYS MUTED (*USER*'s ruling) while it is on screen; "Watch with
-               sound" unmutes it and starts it from the top. Reduced motion: no autoplay. -->
+               It STARTS WITH SOUND where the browser allows it; where the browser refuses
+               sound before a click, it plays silently and the first click anywhere (or
+               "Watch with sound") turns the sound on from the top — vsl.js. -->
           <div class="artifact-frame vsl solo-vsl">
-            <video controls autoplay muted preload="auto" playsinline
+            <video controls preload="auto" playsinline
                    poster="assets/vsl-poster.jpg" width="1920" height="1080">
               <source src="assets/vsl.mp4" type="video/mp4">
               Your browser cannot play this video.

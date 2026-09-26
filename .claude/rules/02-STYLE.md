@@ -52,9 +52,12 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    **Any button that books the call is red instead** (§1).
 8. **Frames** (`.artifact-frame`, `.portrait-frame`): paper, 1px ink outline, radius 22px, no glass,
    no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark. **The VSL
-   autoplays muted** while it is on screen (paused when scrolled away) with its controls hidden and
-   ONE paper button on its centre, `Watch with sound` (`.vsl-sound`, inverts to ink on hover): it
-   unmutes and restarts the film, and from then the visitor owns it. Reduced motion: no autoplay.
+   starts WITH SOUND** wherever the browser allows it. Where the browser refuses sound before the
+   visitor's first click (Chrome's and Safari's autoplay policy), it plays silently while on screen
+   (paused when scrolled away), its controls hidden and ONE paper button on its centre,
+   `Watch with sound` (`.vsl-sound`, inverts to ink on hover) — and the visitor's first click, tap or
+   key press ANYWHERE on the page (except one that opens the booking form) turns the sound on and
+   restarts the film. From then the visitor owns it. Reduced motion: no autoplay.
 8b. **The hero** (`.hero-split`, bugster.dev's shape): one card; the copy on the left — pill, the h1
    in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the who-it's-for
    block (a mono key over the avatar in prose, a `--line` hairline above), the red Book a call; the
