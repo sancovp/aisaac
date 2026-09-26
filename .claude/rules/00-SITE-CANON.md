@@ -17,6 +17,12 @@ your business in *USER*'s words: solo · org · automation · solo again) · who
 book a call. No prices, no checkout, no scroll choreography. Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
+**THE HEADLINE AND SUBHEADLINE ARE *USER*'S, FROZEN LIKE THE OFFER** — the deck's slide 1, the
+same pair the page's `<title>` and meta description carry: **"AI Transformation That Actually
+Works."** / **"From manual processes to a more capable, efficient, and resilient business."** An
+agent never rewrites them, never merges deck lines into a new subheadline, and never swaps in an
+"avatar + problem" line of its own; a proposed change is asked, not shipped.
+
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
 slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the
 FAQ), linked from nothing. It comes back by swapping the two filenames. Every other page exists and is
