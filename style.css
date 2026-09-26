@@ -1308,6 +1308,21 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   position: absolute; inset: 0 auto 0 0; width: 0;
   background: var(--paper); border-radius: var(--r-sm);
 }
+/* "Watch with sound" — the silent autoplay's one way in: a paper button on
+   the film's centre that inverts to ink on hover, the same button the page
+   uses everywhere (RULE 02 §7). While the film is a silent preview its own
+   controls stay hidden, so the only thing to press is this. */
+.vsl-sound {
+  position: absolute; left: 50%; top: 50%; z-index: 3; transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.95rem 1.5rem; border: 1px solid var(--ink); border-radius: 14px;
+  background: var(--paper); color: var(--ink); cursor: pointer;
+  font-family: var(--mono); font-weight: 600; font-size: 0.95rem;
+  transition: background 160ms ease, color 160ms ease;
+}
+.vsl-sound:hover, .vsl-sound:focus-visible { background: var(--ink); color: var(--paper); }
+.vsl-sound svg { width: 20px; height: 20px; fill: currentColor; }
+.artifact-frame.vsl.is-preview .vsl-ui { opacity: 0; pointer-events: none; }
 
 /* ══════════════════════════════════════════════════════════════════════════
    THE FUNNEL BLOCKS — the stack, the three doors, the FAQ.
@@ -1863,10 +1878,28 @@ body { position: relative; }            /* so the layer spans the whole document
 }
 
 /* ── the hero ──────────────────────────────────────────────────────────── */
-.bp-hero { padding: clamp(2.5rem, 6vw, 5rem) 1.5rem var(--sec-y); }
-.bp-hero h1 { font-size: clamp(1.9rem, 4.3vw, 3.5rem); max-width: 22ch; line-height: 1.08; }
-.bp-hero h1 span { display: block; color: var(--text-2); }
-.bp-hero .lede { margin-bottom: 0; }
+.bp-hero { padding: clamp(1.2rem, 3vw, 2.2rem) 1.5rem var(--sec-y); }
+.bp-hero h1 { font-size: clamp(2.2rem, 4vw, 3.7rem); line-height: 1.04; letter-spacing: -0.035em; margin-bottom: 1.2rem; }
+.bp-hero h1 span { color: var(--text-3); }
+.bp-hero .lede { margin-bottom: 1.3rem; max-width: 52ch; }
+/* the split: copy left, the drawing right — no divider between them (bugster.dev's
+   hero: one sheet, the picture sitting on it), and the drawing bleeds off the
+   card's right edge, clipped to the card's corner, because the rows never end */
+.hero-split { display: grid; grid-template-columns: 1.45fr 1fr; align-items: center; }
+.hero-copy { min-width: 0; padding: clamp(1.6rem, 3.4vw, 3rem); }
+.hero-art { min-width: 0; align-self: stretch; overflow: hidden; display: flex; align-items: center;
+  border-top-right-radius: calc(var(--r-bp) - 1px); }
+.hero-art img { display: block; width: 165%; max-width: none; height: auto; }
+/* who it's for — a mono key, then the avatar in prose */
+.hero-for { margin: 0; padding: 1rem 0 0; border-top: 1px solid var(--line); max-width: 54ch;
+  font-size: 0.95rem; line-height: 1.6; color: var(--text-2); }
+.hero-for-k { display: block; margin-bottom: 0.3rem; font-family: var(--mono); font-size: 0.72rem;
+  font-weight: 600; letter-spacing: 0.02em; color: var(--ink); }
+@media (max-width: 900px) {
+  .hero-split { grid-template-columns: 1fr; }
+  .hero-art { border-top-right-radius: 0; }
+  .hero-art img { width: 135%; }
+}
 /* ⛔ THE FILM IS THE PAGE — it fills the card's lower sheet edge to edge */
 .solo-vsl { width: 100%; margin: 0; border-radius: var(--r-lg); }
 .solo-cta { margin: 2rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }

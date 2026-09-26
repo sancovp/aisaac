@@ -9,8 +9,11 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 **One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
-action — the claim ·
-the video (`assets/vsl.mp4`, full width, its runtime never stated) · what I do (the loop
+action — the hero (the claim, who it is for and the red Book a call on the left; the drawing
+`assets/hero-business.webp` on the right, rendered by `video-aios/draw-the-box/loop/render_hero_still.py`
+from the loop's own scene: one owner beside rows of identical workers that run off the card's edge) ·
+the video (`assets/vsl.mp4`, full width under the hero, AUTOPLAYING MUTED while on screen, with
+"Watch with sound" as the way in; its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
 reduced motion; source `video-aios/draw-the-box/loop/` — and under it ONE blurb, the four levels of
 your business in *USER*'s words: solo · org · automation · solo again) · what you get (STAGE ONE's
@@ -29,11 +32,20 @@ book a call. No prices, no checkout; the ONE scroll choreography is the pinned s
 get → What it becomes → Who helps you, each staying while the next slides over it — RULE 02 §10). Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
-**THE HEADLINE AND SUBHEADLINE ARE *USER*'S, FROZEN LIKE THE OFFER** — the deck's slide 1, the
-same pair the page's `<title>` and meta description carry: **"AI Transformation That Actually
-Works."** / **"From manual processes to a more capable, efficient, and resilient business."** An
-agent never rewrites them, never merges deck lines into a new subheadline, and never swaps in an
-"avatar + problem" line of its own; a proposed change is asked, not shipped.
+**THE HEADLINE IS BUILT, NOT WRITTEN — Hormozi's MAGIC formula** (the `hormozi-headline-formula`
+skill): **G**oal + **A**vatar, and no invented **M**agnet, **I**nterval or discount, because the
+offer is frozen. The hero states, and the `<title>`, meta description and og tags repeat:
+- **h1:** "Turn your business into software that runs without you." — the goal, which is *USER*'s
+  terminus (software that knows when to call outside to humans, `docs/the-transformation-method-2026-09-17.md`)
+- **lede:** "I map how every department runs, find what AI should take over, and build it — until the
+  business runs itself and calls you only when a human is needed."
+- **who it's for:** "Owners of established businesses who are still the one who knows how everything
+  runs — and franchisors and multi-location operators whose model runs in many places." — the two
+  avatars of `docs/business-context-2026-09-15-first-client.md` (the owner/operator, the model owner).
+  No revenue floor is printed (the ~$2M disqualifier in `docs/niche-selection-2026-09-16.md` is the
+  call's filter, not the page's).
+A change to any of the three is *USER*'s ruling; an agent rewriting them rebuilds all three from the
+formula and the two docs above, never from its own taste.
 
 **PRESUPPOSE THE OUTCOME.** Page copy speaks as if the visitor is already being helped: the
 section on Isaac is "Who helps you" — never a conditional like "who you'd be talking to", which

@@ -97,4 +97,56 @@
     if (document.fullscreenElement) document.exitFullscreen();
     else if (frame.requestFullscreen) frame.requestFullscreen();
   });
+
+  /* THE FILM AUTOPLAYS, MUTED (*USER*'s ruling) — browsers only allow a silent
+   * autoplay, so the page plays it silent while it is on screen and pauses it
+   * when it scrolls away. "Watch with sound" is the way in: it unmutes and
+   * starts the film from the top. After that the visitor owns the film — it is
+   * never paused by scrolling again. Reduced motion: no autoplay; the first
+   * play starts with sound. */
+  function setMuted(m) {
+    v.muted = m;
+    frame.classList.toggle('is-muted', m);
+    muteBtn.setAttribute('aria-label', m ? 'Unmute' : 'Mute');
+  }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    v.removeAttribute('autoplay');
+    v.pause();
+    setMuted(false);
+    return;
+  }
+  setMuted(true);
+  frame.classList.add('is-preview');
+  var sound = document.createElement('button');
+  sound.type = 'button';
+  sound.className = 'vsl-sound';
+  sound.innerHTML =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>' +
+    'Watch with sound';
+  frame.appendChild(sound);
+
+  function withSound(e) {
+    if (e) { e.preventDefault(); e.stopImmediatePropagation(); }
+    frame.classList.remove('is-preview');
+    sound.remove();
+    v.removeEventListener('click', withSound, true);
+    setMuted(false);
+    v.currentTime = 0;
+    v.play();
+  }
+  sound.addEventListener('click', withSound);
+  v.addEventListener('click', withSound, true);   // a click on the silent film = the same way in
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (!frame.classList.contains('is-preview')) return;
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.35 }).observe(frame);
+  } else {
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
 })();

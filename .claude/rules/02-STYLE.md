@@ -51,7 +51,17 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    INVERTS on hover (ink fill, paper text). On the ink band it is the same button inverted.
    **Any button that books the call is red instead** (§1).
 8. **Frames** (`.artifact-frame`, `.portrait-frame`): paper, 1px ink outline, radius 22px, no glass,
-   no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark.
+   no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark. **The VSL
+   autoplays muted** while it is on screen (paused when scrolled away) with its controls hidden and
+   ONE paper button on its centre, `Watch with sound` (`.vsl-sound`, inverts to ink on hover): it
+   unmutes and restarts the film, and from then the visitor owns it. Reduced motion: no autoplay.
+8b. **The hero** (`.hero-split`, bugster.dev's shape): one card; the copy on the left — pill, the h1
+   in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the who-it's-for
+   block (a mono key over the avatar in prose, a `--line` hairline above), the red Book a call; the
+   drawing on the right with NO divider between them, bleeding off the card's right edge (the cell
+   clips it to the card's corner). The drawing is a render on white, never an illustration from
+   outside the system. Under a hairline, the VSL runs the card's full width. On a phone it stacks:
+   copy, drawing, film.
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
    hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the
    wordmark `Transformations With Isaac` on the left (a `<span>`, never a link) and
@@ -74,7 +84,7 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
    outlined square beside a card label — never an emoji (they render differently per device).
 13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
-   only in the films, the parcels, the pinned stack (driven by the reader's own scroll), and
+   only in the films (the VSL's silent autoplay included), the parcels, the pinned stack (driven by the reader's own scroll), and
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 
