@@ -30,7 +30,7 @@
 
      THE WHOLE PAGE IS FIVE THINGS:
        the claim · the video · what I do (the loop) · who you would be
-       talking to · book a call
+       talking to · book a call (the black band closes on it)
      There is exactly ONE action on it. No prices, no checkout, no scroll
      choreography — every one of those was a decision the visitor had to make
      before the only decision that matters.
@@ -44,26 +44,35 @@
 
 <main id="main">
 
-  <section class="claim">
+  <!-- THE BLUEPRINT SYSTEM (RULE 02): each section is a card drawn on a
+       drafting sheet — ink outline, hairline dividers, a square node where a
+       divider meets the edge. Bands alternate paper → grain → paper → ink. -->
+  <section class="bp-hero">
     <div class="wrap">
-      <p class="eyebrow">AI Transformation</p>
-      <h1>You Either Pay For People's Skills And Hope Money Falls Out, <span>Or You're Still Doing It All Yourself.</span></h1>
-      <p class="lede">Find what is worth doing. Then do it. The goal is not more AI &mdash; it is a more capable business.</p>
+      <div class="bp-card">
+        <div class="bp-pad">
+          <p class="eyebrow"><span class="pill">AI Transformation</span></p>
+          <h1>You Either Pay For People's Skills And Hope Money Falls Out, <span>Or You're Still Doing It All Yourself.</span></h1>
+          <p class="lede">Find what is worth doing. Then do it. The goal is not more AI &mdash; it is a more capable business.</p>
+        </div>
+        <div class="bp-rule"></div>
+        <div class="bp-pad">
+          <!-- ⛔ THE VIDEO IS THE PAGE. It runs the card's full width and nothing
+               competes with it. ⛔ The runtime is never stated — naming it is a
+               reason to leave (Isaac, 2026-09-18); vsl.js draws controls with no clock. -->
+          <div class="artifact-frame vsl solo-vsl">
+            <video controls preload="metadata" playsinline
+                   poster="assets/vsl-poster.jpg" width="1920" height="1080">
+              <source src="assets/vsl.mp4" type="video/mp4">
+              Your browser cannot play this video.
+            </video>
+          </div>
 
-      <!-- ⛔ THE VIDEO IS THE PAGE. It runs full width and nothing competes
-           with it. ⛔ The runtime is never stated — naming it is a reason to
-           leave (Isaac, 2026-09-18); vsl.js draws controls with no clock. -->
-      <div class="artifact-frame vsl solo-vsl">
-        <video controls preload="metadata" playsinline
-               poster="assets/vsl-poster.jpg" width="1920" height="1080">
-          <source src="assets/vsl.mp4" type="video/mp4">
-          Your browser cannot play this video.
-        </video>
-      </div>
-
-      <div class="solo-cta" id="book">
-        <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
-        <p class="door-fine">No purchase. If the answer for your business is to do nothing, I will tell you that.</p>
+          <div class="solo-cta" id="book">
+            <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
+            <p class="door-fine">No purchase. If the answer for your business is to do nothing, I will tell you that.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -75,46 +84,59 @@
        silent, it has no runtime to hide, and it plays forever, so it gets no
        controls. Reduced motion: vsl.js stops it on its poster and hands back
        the controls. -->
-  <section class="about-sec what-sec">
+  <section class="bp-sec bp-band what-sec">
     <div class="wrap">
-      <p class="eyebrow">What I do</p>
+      <p class="eyebrow"><span class="pill">What I do</span></p>
       <h2>I take a business from one person doing everything to an organization that runs &mdash; then you start the next one.</h2>
 
-      <div class="artifact-frame what-loop">
-        <video autoplay muted loop playsinline preload="metadata" data-loop
-               poster="assets/what-i-do-loop-poster.jpg" width="1280" height="720"
-               aria-label="A CEO turns each process into a card that becomes a worker; the cards stamp identical workers into departments, then whole businesses are stamped across the map, and the CEO starts again on new ground">
-          <source src="assets/what-i-do-loop.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="what-levels">
-        <p class="what-levels-head">The levels of your business</p>
-        <ol class="what-steps">
-          <li><span>1 &middot; Solo</span> You figure the processes out.</li>
-          <li><span>2 &middot; Org</span> You teach people those processes &mdash; but the solo you still knows how the machine should run, so you have to reify it into them, and you keep doing that.</li>
-          <li><span>3 &middot; Automation</span> Eventually you build AI that takes the load off those workers.</li>
-          <li><span>4 &middot; Solo again</span> Now the workers can run level 2 without being managed by level 1, so you go solo again, on the next thing.</li>
-        </ol>
+      <div class="bp-card bp-split">
+        <div class="bp-cell">
+          <div class="artifact-frame what-loop">
+            <video autoplay muted loop playsinline preload="metadata" data-loop
+                   poster="assets/what-i-do-loop-poster.jpg" width="1280" height="720"
+                   aria-label="A CEO turns each process into a card that becomes a worker; the cards stamp identical workers into departments, then whole businesses are stamped across the map, and the CEO starts again on new ground">
+              <source src="assets/what-i-do-loop.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="bp-cell what-levels">
+          <p class="what-levels-head">The levels of your business</p>
+          <ol class="what-steps">
+            <li><span>1 &middot; Solo</span> You figure the processes out.</li>
+            <li><span>2 &middot; Org</span> You teach people those processes &mdash; but the solo you still knows how the machine should run, so you have to reify it into them, and you keep doing that.</li>
+            <li><span>3 &middot; Automation</span> Eventually you build AI that takes the load off those workers.</li>
+            <li><span>4 &middot; Solo again</span> Now the workers can run level 2 without being managed by level 1, so you go solo again, on the next thing.</li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="about-sec">
+  <section class="bp-sec">
     <div class="wrap">
-      <div class="booker solo-booker">
-        <div class="portrait-frame">
-          <img src="assets/isaac-portrait.jpg" alt="Isaac" width="960" height="1200">
+      <p class="eyebrow"><span class="pill">Who you&rsquo;d be talking to</span></p>
+      <div class="bp-card bp-split about-split">
+        <div class="bp-cell">
+          <div class="portrait-frame">
+            <img src="assets/isaac-portrait.jpg" alt="Isaac" width="960" height="1200">
+          </div>
         </div>
-        <p class="booker-who"><strong>Isaac</strong><span>sancovp</span></p>
-        <p class="eyebrow">Who you&rsquo;d be talking to</p>
-        <p class="lede">I map how your business currently runs &mdash; department by department, role by role, system by system. Then I find where AI helps by saving you money or time. <strong>You cannot automate a box you cannot draw.</strong></p>
-        <p class="lede">I do two sessions per month, mapping out the pains or processes you want help with. I recommend AI services from other providers, different architecture and implementation designs, and give you a 0-to-1 roadmap for turning your business into a system of SOPs with AI integrations. I also build custom integrations. Book a call for either.</p>
+        <div class="bp-cell">
+          <p class="booker-who"><strong>Isaac</strong><span>sancovp</span></p>
+          <p class="lede">I map how your business currently runs &mdash; department by department, role by role, system by system. Then I find where AI helps by saving you money or time. <strong>You cannot automate a box you cannot draw.</strong></p>
+          <p class="lede">I do two sessions per month, mapping out the pains or processes you want help with. I recommend AI services from other providers, different architecture and implementation designs, and give you a 0-to-1 roadmap for turning your business into a system of SOPs with AI integrations. I also build custom integrations. Book a call for either.</p>
+        </div>
       </div>
+    </div>
+  </section>
 
+  <section class="bp-sec bp-ink bp-close">
+    <div class="wrap">
+      <h2>Find what is worth doing. Then do it.</h2>
       <div class="solo-cta">
         <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
       </div>
+      <p class="door-fine">No purchase. If the answer for your business is to do nothing, I will tell you that.</p>
     </div>
   </section>
 

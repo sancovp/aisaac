@@ -1,6 +1,6 @@
 # AIsaac Site — TWI
 
-Static site at sancovp.github.io/aisaac/. GitHub Pages. Mercurial Cyberglass theme.
+Static site at sancovp.github.io/aisaac/. GitHub Pages. The Blueprint System (white paper, black ink, Geist — `.claude/rules/02-STYLE.md`).
 
 ## The Sanctuary System IS Everything
 

@@ -1,122 +1,70 @@
-# RULE 02 — THE STYLE (Mercury Glass // Living Instrument)
+# RULE 02 — THE STYLE (the Blueprint System)
 
-**The ruling (2026-08-07, CEO-decided per Isaac's delegation "come up with whatever
-style this should be"):** the site keeps and ELEVATES Builder A's Mercurial-cyberglass
-base. The look is **a living instrument, not a brochure** — the visual register of an
-observatory reading a running world. Nothing here is decoration; every visual choice
-serves RULE 01's deducibility mechanics.
+**The ruling (*USER*):** the site is drawn like a diagram on a drafting sheet — the reference is
+bugster.dev, taken in **white and black** instead of its off-white and lime, with the stark
+black bands Palantir uses. Nothing here is decoration; every visual choice serves RULE 01's
+deducibility mechanics: the page looks like an engineer's working drawing of a running system.
 
 ## The language
 
-1. **Base (KEEP, already law in style.css):** `--void` near-black · glass panels ·
-   ONE accent (`--mercury-blue`) · JetBrains Mono for receipts/labels · Inter for UI ·
-   self-hosted fonts, zero external requests · three breakpoints declared once.
-2. **Display voice (ADD):** one OFL display serif (Fraunces preferred; Spectral
-   acceptable), self-hosted woff2, used ONLY for: h1/h2 claims, the myth-register
-   lines, pull-quotes. Everything else stays Inter/Mono. This is the single biggest
-   de-generic move; it separates the voice of the claims from the voice of the chrome.
-3. **The density gradient (ADD — depth made visible):** the DOOR is spacious (huge
-   type, few elements, one action); each descent level gets visually denser (tighter
-   leading, more mono, more hairline rules, data-table energy at the code-adjacent
-   depths). A visitor FEELS the descent. Implement as a per-page `data-depth="0|1|2|3"`
-   attribute on <body> with token overrides — no per-page CSS.
-4. **Instrument details:** hairline rules (`--glass-border`) as the structural line
-   language · mono micro-labels (already in use: "THE RECEIPT") · live-data styling
-   (pulse/glow) is RESERVED for genuinely live/running things — a static element
-   styled as live is the fake-dashboard sin in CSS form.
-5. **Restraint laws:** no new colors, ever, without editing THIS rule · no gradients
-   beyond the existing glass shine · no stock imagery, no emoji in chrome · motion
-   ONLY inside the world engine + micro-transitions ≤200ms; `prefers-reduced-motion`
-   respected everywhere · diagrams are inline SVG in token colors only.
+1. **Palette — paper and ink, nothing else.** `--paper #fff` · `--ink #000` (true black, never a
+   tinted near-black) · `--text-2 #3d3d3d` · `--text-3 #6b6b6b` (the lightest text allowed, 5.3:1)
+   · `--line #e6e6e6` (the blueprint columns). Every legacy accent token name (`--mercury-*`,
+   `--amber`) resolves to ink or a grey, so no page can carry a colour. The only colour on a page
+   comes from media (the films, the portrait). **No new colours, ever, without editing THIS rule.**
+2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
+   `geist-mono-var.woff2`, SIL OFL 1.1, licence beside them). **Geist Mono 700** carries every
+   claim (h1), every number, every button and every label; **Geist** carries the prose and the h2
+   section heads (600). No other face on a presented page.
+3. **The drafting sheet:** four faint vertical BLUEPRINT COLUMNS run the height of the page at
+   the container's edges and its thirds (`body::before`); a band with its own ground covers them.
+4. **The card** (`.bp-card`): paper, a 1px ink outline, radius `--r-bp` 28px. Inside it,
+   **hairline dividers** (`.bp-rule` across, `.bp-split` down) — and a small square **NODE**
+   (11px, paper fill, ink outline) wherever a divider meets the card's edge, like the handles a
+   diagram editor shows on a selected shape. Nodes appear ONLY at those junctions.
+5. **The label:** `.eyebrow` = a square node, a short ink connector, then the text; on the
+   presented page the text sits in a hairline **pill** (`.eyebrow > .pill`). Sentence case, never
+   all caps. One per section, never above every heading.
+6. **The bands alternate:** plain paper (columns show) · **grain** (`.bp-band`: paper with the
+   `--grain` noise tooth, ink rules top and bottom) · **ink** (`.bp-ink`: the one black band,
+   reserved for the final action).
+7. **The button** (`.cta-primary`): paper, 1px ink outline, radius 14px, Geist Mono 600; it
+   INVERTS on hover (ink fill, paper text). On the ink band it is the same button inverted.
+8. **Frames** (`.artifact-frame`, `.portrait-frame`): paper, 1px ink outline, radius 22px, no glass,
+   no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark.
+9. **Restraint:** no gradients, no glass blur, no glow, no shadows · motion only in the films and
+   in ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
+   (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 
-## Mechanical quality gates (tools/style_qa.py — run before any style commit)
+## The density gradient (still law)
 
-- WCAG AA contrast computed from the actual token values for every text/bg pair.
-- Zero inline `style=` attributes; zero page `<style>` over 20 lines (existing law).
-- Single h1 per page; every `<img>` has width/height; og:image exists per page-type.
-- No font-family declarations outside style.css; no hex colors outside the token block.
+`body[data-depth="0|1|2|3"]` overrides `--sec-y --claim-y --h1-size --h1-measure --h2-size
+--lede-size --lh-lede --lh-prose --rule-a --micro --r-card`: the door (0) is spacious, each descent
+denser, depth 3 (inside/ and patterns.html) tightest. `--rule-a` is the hairline alpha on paper
+(0.12 → 0.22 as you descend). No per-page CSS.
 
-## Implementation record (2026-08-07 — what shipped against this rule)
+## The closed vocabulary (still law)
 
-- **Display serif = Fraunces**, SIL OFL 1.1, self-hosted at
-  `assets/fonts/fraunces-latin-var.woff2` (67 KB; licence beside it). SOFT and
-  WONK axes pinned flat; `wght` + `opsz` left variable so optical sizing tracks
-  the type size from one file. Applied to `h1`, `h2`, `.note blockquote`
-  (pull-quotes) and `.myth`. Nothing else.
-- **Density gradient** = `body[data-depth="0|1|2|3"]` overriding
-  `--sec-y --claim-y --h1-size --h1-measure --h2-size --lede-size --lh-lede
-  --lh-prose --rule-a --micro --r-card`. Depth 1 IS the `:root` default, so a
-  page with no attribute renders as before. The gradient survives the 900px
-  breakpoint rather than flattening. Applied: 0 = door (index/watch) ·
-  1 = system/isaac/rungs · 2 = blog + notes · 3 = inside/ **and
-  patterns.html** (2026-08-08 — the catalog wall is the densest surface on
-  the site. Depth is a DENSITY token, not an access level: patterns is
-  public, indexed and in the nav, and shares depth 3 with `inside/` only
-  because both are read at the same tightness).
-- **`.data-table` gained links and a provenance column (2026-08-08).** The
-  table existed for one blog post; patterns.html is 57 rows of it. Two
-  declarations added, ZERO new colours and zero new block vocabulary:
-  `.data-table a` is the identical colour pair `.note a` already carries
-  (a bare `a` is `color: inherit` sitewide, so a table link was invisible),
-  and `.data-table td:last-child` takes `--micro`, which is the token the
-  density gradient already flips to mono at depth 2+ — so the "runs in"
-  column speaks the receipt voice for free at the depth it ships at. It
-  carries no `color`, deliberately, so `.data-table a` still wins inside it.
-- **`--text-3` corrected `#64748b` → `#6c7c92`.** The §"mechanical quality
-  gates" contrast check found the old value at 4.29:1 on `--void` and 4.07:1 on
-  glass — under AA, on the token that carries fineprint, the footer and every
-  provenance line. Moved the smallest step along the existing slate ramp to
-  clear AA on both (4.80 / 4.55). Same ramp, corrected — logged here because
-  the restraint law requires any palette change to edit this rule.
-- **The brand tag pills (2026-08-08).** `.eyebrow a` + `.eyebrow { flex-wrap }`.
-  ZERO new colours and zero new block vocabulary: the eyebrow is already the mono
-  uppercase label voice, so a pill is that voice plus a `--glass-border` hairline
-  at `--r-sm`, and the hover border reuses `.rung:hover`'s existing rgba —
-  deliberately, because the filter row and the pills are the same control and
-  must light up the same way. Nothing else in the file gained a selector.
-- **`.arch*` + `.disc` — the architecture entry (2026-08-08, patterns v2).**
-  patterns.html stopped being a 57-row table and became 25 named system
-  STRUCTURES, each carrying a diagram; a table row cannot hold a diagram, so
-  the row became an entry (name · one sentence · structure · moves ·
-  receipt). ZERO new colours and zero new type: `.arch-dia` is `.note pre`'s
-  declaration set, `.arch-runs` / `.disc-in` are the `.receipt-k` mono label
-  voice, and the entry separator is `--glass-border`, so the whole block
-  densifies with the depth gradient for free. **Two diagram methods, both
-  deliberate:** (a) five entries carry the source repository's OWN svg,
-  copied into `assets/` and referenced as `<img>` — the build.html precedent,
-  where an artifact island is a receipt and reskinning it destroys the proof;
-  (b) the other twenty carry ASCII in `.arch-dia`. ASCII rather than inline
-  SVG because the self-hosted mono is subset to latin-1, so a box-drawing
-  glyph falls back to a system face mid-diagram and breaks the grid — and
-  twenty hand-drawn SVGs is a maintenance surface nobody keeps true. §5's
-  "diagrams are inline SVG in token colors only" therefore reads: inline SVG
-  is the rule for diagrams the site DRAWS; a repository's own diagram ships
-  unaltered, and an ASCII structure diagram lives inside the closed `<pre>`
-  vocabulary. Nothing here declares a colour or a typeface.
-- **patterns v3 (2026-08-08) added ZERO style surface.** The page grew from 35
-  entries to 81 and from six groups to eight, and it needed no new selector, no
-  new colour, no new type and no new block: every entry is the `.arch` /
-  `.arch-what` / `.arch-dia` / `.arch-moves` / `.arch-runs` vocabulary v2
-  declared, and the two new group headers are ordinary `<section>` + `h2` +
-  `.receipts-lede`. That is the test of a closed vocabulary — doubling the
-  content twice over should cost the stylesheet nothing. One authoring law
-  logged for the next scribe: **`.arch-dia` content is PURE ASCII, 0x20–0x7E
-  only.** A middle dot slipped in as a list separator during v3 and was
-  removed; it is inside latin-1, but the diagram grammar declared in the page's
-  own legend is ASCII, and one glyph that falls back to a system face breaks the
-  monospace grid the whole method depends on.
-- **`.receipts-lede` unscoped (2026-08-08).** It existed only as
-  `.receipts .receipts-lede`, so the identical class on the corpus-index section
-  blurbs rendered as unstyled body copy. Added the unscoped base; the `.receipts`
-  variant is untouched.
-- **Not a colour change but worth knowing:** `--black`, `--grey`,
-  `--grey-light` and `--accent` were referenced across the posts and defined
-  NOWHERE, and `.post-nav` was used 40 times and defined nowhere. Retiring the
-  inline styles resolved all of them onto real tokens and real classes.
+A page is built from the classes `style.css` already declares; doubling the content must cost
+the stylesheet nothing. `.data-table a` carries the link colour; `.data-table td:last-child` takes
+`--micro`. The architecture entry (`.arch` · `.arch-what` · `.arch-dia` · `.arch-moves` ·
+`.arch-runs`) holds patterns.html: a repository's own diagram ships unaltered as an `<img>`, and
+an `.arch-dia` structure diagram is **PURE ASCII, 0x20–0x7E only** — one glyph that falls back to
+a system face breaks the monospace grid.
+
+## Mechanical quality gates (`tools/style_qa.py` — run before any style commit, read its output)
+
+- WCAG AA contrast computed from the actual token values for every text/background pair.
+- Zero inline `style=` attributes; zero page `<style>` over 20 lines.
+- Single h1 per page; every `<img>` has width/height; og:image exists per page type.
+- No font-family declarations outside style.css; no hex colours outside the token block.
+- ⛔ The gate does NOT see: a rule that loses the cascade to a later one of equal specificity
+  (the About card kept its desktop grid on phones this way — measure `scrollWidth` at 390px), or
+  a hard-coded background that ignores the tokens (the booking dialog did). Look at the page at
+  1440 and at 390, and open the dialog, before calling a style change done.
 
 ## What "high-end" means here, testably
 
-A stranger screenshots any page: it reads as one designed object with the door's
-signature (void + glass + serif claims + mono receipts). No page could be mistaken for
-a template default, a Notion export, or a generic SaaS landing page. The door's first
-viewport contains: the running world, one serif claim, one Enter. Nothing else.
+A stranger screenshots any presented page: it reads as one drafted object — white sheet, black
+ink, mono claims, outlined cards with nodes on their dividers. It could not be mistaken for a
+template default, a Notion export, or a generic SaaS landing page.

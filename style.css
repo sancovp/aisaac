@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════════════════════
    AISAAC — THE ONE STYLESHEET
-   Mercurial cyberglass. Single source of truth for the whole site.
+   The Blueprint System (RULE 02): paper, ink, Geist. Single source of truth for the whole site.
 
    REBUILD SPEC §2.1. Rules that govern this file:
      · No other stylesheet ships, except the deliberately-foreign artifact
@@ -77,37 +77,56 @@
                  U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Geist + Geist Mono — THE BLUEPRINT VOICE (RULE 02). SIL OFL 1.1; the licence
+   ships beside them at assets/fonts/geist-OFL.txt. Variable weight, one file each.
+   Geist Mono carries every claim, number and button; Geist carries the prose. */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/geist-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/geist-mono-var.woff2') format('woff2');
+}
+
 /* ── Tokens ─────────────────────────────────────────────────────────────── */
+/* THE BLUEPRINT PALETTE (RULE 02): white paper, black ink, two greys, and
+   nothing else. The old token NAMES are kept because 80+ pages spend them —
+   every accent name now resolves to ink, so no page can carry a colour. */
 :root {
-  --void: #04040e;
-  --glass-bg: rgba(255,255,255,0.035);
-  --glass-border: rgba(255,255,255,var(--rule-a));
-  --glass-shine: rgba(255,255,255,0.05);
-  --blur: 20px;
-  --mercury-blue: #7dd3fc;
-  --mercury-violet: #a78bfa;
-  --mercury-chrome: #c0c0c0;
-  --mercury-teal: #5eead4;
-  --mercury-rose: #fda4af;
-  --amber: #fbbf24;            /* DEPRECATED — dead theme. Do not use on new pages. */
-  --text-1: #e2e8f0;
-  --text-2: #94a3b8;
-  /* --text-3 was #64748b (slate-500): 4.29:1 on --void and 4.07:1 on a glass
-     panel — both under WCAG AA 4.5, and it is the token carrying fineprint,
-     the footer, provenance lines and .rung-d, all at 0.72-0.77rem. Nudged 16%
-     along the existing slate ramp toward --text-2, the smallest step that
-     clears AA on BOTH backgrounds (4.80 / 4.55). Not a new colour — the same
-     ramp, corrected. G1 in tools/style_qa.py is what caught it and is what
-     keeps it honest if anyone moves --void or --glass-bg. */
-  --text-3: #6c7c92;
-  --ok: #4ade80;
-  --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 16px;
+  --paper: #ffffff;
+  --ink: #000000;
+  --line: #e6e6e6;             /* the faint blueprint columns */
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --void: #ffffff;
+  --glass-bg: rgba(0,0,0,0.02);
+  --glass-border: rgba(0,0,0,var(--rule-a));
+  --glass-shine: rgba(255,255,255,0);
+  --blur: 0px;
+  --mercury-blue: #000000;
+  --mercury-violet: #3d3d3d;
+  --mercury-chrome: #555555;
+  --mercury-teal: #000000;
+  --mercury-rose: #3d3d3d;
+  --amber: #000000;            /* DEPRECATED — dead theme. Do not use on new pages. */
+  --text-1: #000000;
+  --text-2: #3d3d3d;
+  --text-3: #6b6b6b;           /* 5.3:1 on paper — the lightest text allowed */
+  --ok: #1f7a3a;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-bp: 28px;                /* the blueprint card */
   --wrap: 1100px;              /* the one container width (breakpoint 1) */
-  --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
-  --display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono', 'SF Mono', ui-monospace, monospace;
+  --display: 'Geist Mono', 'SF Mono', ui-monospace, monospace;
 
   /* ── THE DENSITY GRADIENT (RULE 02 §3) ────────────────────────────────
      Depth made visible. Every one of these is overridden by the
@@ -124,7 +143,7 @@
   --lede-size: 0.98rem;
   --lh-lede: 1.85;             /* leading tightens as you descend */
   --lh-prose: 1.9;
-  --rule-a: 0.07;              /* hairline alpha — rules get MORE present deeper */
+  --rule-a: 0.14;              /* hairline alpha — rules get MORE present deeper */
   --micro: var(--body);        /* micro-labels flip to mono at depth 2+ */
   --r-card: var(--r-lg);       /* glass rounds off toward instrument-panel */
 }
@@ -137,15 +156,15 @@ body[data-depth="0"] {
   --sec-y: 7rem; --claim-y: 7rem;
   --h1-size: clamp(2.8rem, 7.5vw, 5.4rem); --h1-measure: 16ch;
   --h2-size: clamp(1.7rem, 3.6vw, 2.6rem);
-  --lede-size: 1.1rem; --lh-lede: 1.95; --lh-prose: 1.95;
-  --rule-a: 0.05;
+  --lede-size: 1.1rem; --lh-lede: 1.7; --lh-prose: 1.8;
+  --rule-a: 0.12;
 }
 body[data-depth="2"] {
   --sec-y: 4rem; --claim-y: 4rem;
   --h1-size: clamp(1.9rem, 4vw, 2.9rem); --h1-measure: 24ch;
   --h2-size: clamp(1.3rem, 2.4vw, 1.75rem);
   --lede-size: 0.94rem; --lh-lede: 1.76; --lh-prose: 1.82;
-  --rule-a: 0.10;
+  --rule-a: 0.18;
   --micro: var(--mono);
   --r-card: var(--r-md);
 }
@@ -154,7 +173,7 @@ body[data-depth="3"] {
   --h1-size: clamp(1.7rem, 3.2vw, 2.4rem); --h1-measure: 26ch;
   --h2-size: clamp(1.2rem, 2vw, 1.5rem);
   --lede-size: 0.9rem; --lh-lede: 1.66; --lh-prose: 1.72;
-  --rule-a: 0.13;
+  --rule-a: 0.22;
   --micro: var(--mono);
   --r-card: var(--r-sm);
 }
@@ -177,39 +196,18 @@ body {
 }
 @keyframes page-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Nebula background */
+/* THE BLUEPRINT COLUMNS (RULE 02) — four faint vertical rules down the whole
+   page, at the container's edges and its thirds, like a drafting sheet. They
+   sit behind everything, so a band with its own ground (grain, ink) covers
+   them and the columns only show on plain paper. */
 body::before {
-  content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  background:
-    radial-gradient(ellipse 900px 700px at 15% 25%, rgba(167,139,250,0.07), transparent),
-    radial-gradient(ellipse 700px 500px at 85% 15%, rgba(125,211,252,0.05), transparent),
-    radial-gradient(ellipse 1000px 600px at 55% 85%, rgba(139,92,246,0.04), transparent),
-    radial-gradient(ellipse 500px 400px at 5% 95%, rgba(94,234,212,0.03), transparent);
-}
-
-/* Starfield */
-body::after {
   content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background-image:
-    radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 92px 58px, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1.5px 1.5px at 155px 82px, rgba(125,211,252,0.9), transparent),
-    radial-gradient(1px 1px at 48px 110px, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 180px 35px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.5px 1.5px at 70px 145px, rgba(167,139,250,0.7), transparent),
-    radial-gradient(1px 1px at 210px 115px, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1px 1px at 35px 175px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(2px 2px at 130px 10px, rgba(125,211,252,0.5), transparent),
-    radial-gradient(1px 1px at 250px 65px, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1px 1px at 110px 190px, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.5px 1.5px at 280px 140px, rgba(167,139,250,0.5), transparent),
-    radial-gradient(1px 1px at 60px 40px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 145px 165px, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1.5px 1.5px at 230px 20px, rgba(94,234,212,0.6), transparent);
-  background-size: 320px 230px;
-  animation: star-drift 80s linear infinite;
+  background:
+    linear-gradient(var(--line), var(--line)) calc(50% - 550px) 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% - 183px) 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% + 183px) 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% + 550px) 0 / 1px 100% no-repeat;
 }
-@keyframes star-drift { from { transform: translateY(0); } to { transform: translateY(-220px); } }
 
 a { color: inherit; text-decoration: none; }
 img, video, iframe { max-width: 100%; }
@@ -235,14 +233,12 @@ a:focus-visible, button:focus-visible {
   border-bottom: 1px solid var(--glass-border);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   position: sticky; top: 0; z-index: 100;
-  background: rgba(4,4,14,0.85);
+  background: rgba(255,255,255,0.92);
   flex-wrap: wrap;
 }
 .logo {
-  font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--mono); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em;
+  flex-shrink: 0; color: var(--ink);
 }
 .nav-links {
   display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap;
@@ -253,11 +249,11 @@ a:focus-visible, button:focus-visible {
 .nav-cta {
   font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
-  color: #000; background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
-  padding: 0.5rem 1.2rem; border-radius: var(--r-sm); transition: all 0.3s;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--ink);
+  padding: 0.5rem 1.2rem; border-radius: var(--r-sm); transition: background 0.15s, color 0.15s;
   display: inline-block;
 }
-.nav-cta:hover { filter: brightness(1.2); transform: translateY(-1px); }
+.nav-cta:hover { background: var(--ink); color: var(--paper); }
 
 /* The hamburger is PROGRESSIVE ENHANCEMENT, in the safe direction:
    nav.js stamps data-nav="collapsed" on the header. With JS off, no
@@ -309,13 +305,19 @@ section { padding: var(--sec-y) 1.5rem; }
 
 /* ══ Typography ═════════════════════════════════════════════════════════ */
 .eyebrow, .tag {         /* .tag = legacy alias */
-  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--mercury-blue); margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 0.8rem;
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0;
+  color: var(--ink); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0;
 }
+/* the node and its connector: a square, a short line, then the pill */
 .eyebrow::before, .tag::before {
-  content: ''; display: block; width: 2rem; height: 1px; background: var(--mercury-blue);
+  content: ''; display: block; width: 3.1rem; height: 11px; flex: none;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 11px 50% / calc(100% - 11px) 1px no-repeat,
+    linear-gradient(var(--paper), var(--paper)) 1px 1px / 9px 9px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 0 / 11px 11px no-repeat;
 }
+
 /* THE BRAND TAG PILLS (vocabulary + assignments: tools/tags.py). A post declares
    which of the framework concepts it belongs to, right in the eyebrow row, and
    each pill links back to that concept's section on the corpus index. No new
@@ -338,25 +340,18 @@ section { padding: var(--sec-y) 1.5rem; }
    and the stems thin out under a transparent fill. */
 h1 {
   font-family: var(--display);
-  font-weight: 650; font-size: var(--h1-size); line-height: 1.06;
-  letter-spacing: -0.015em; margin-bottom: 1.5rem; max-width: var(--h1-measure);
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet), var(--mercury-chrome));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: hue-breathe 6s ease-in-out infinite alternate;
+  font-weight: 700; font-size: var(--h1-size); line-height: 1.08;
+  letter-spacing: -0.035em; margin-bottom: 1.5rem; max-width: var(--h1-measure);
+  color: var(--ink);
 }
-@keyframes hue-breathe { to { filter: hue-rotate(15deg) brightness(1.1); } }
 /* FIX: an <h1><span> had no rule at all, so the second clause inherited the
    same transparent fill and read as one run-on line on five pages. */
-h1 span, h1 .accent {
-  -webkit-text-fill-color: var(--mercury-teal);
-  color: var(--mercury-teal);
-}
+h1 span, h1 .accent { color: var(--ink); }
 
 h2 {
-  font-family: var(--display);
-  font-weight: 600; font-size: var(--h2-size); line-height: 1.18;
-  letter-spacing: -0.01em; margin-bottom: 1.4rem; max-width: 30ch;
+  font-family: var(--body);
+  font-weight: 600; font-size: var(--h2-size); line-height: 1.15;
+  letter-spacing: -0.025em; margin-bottom: 1.4rem; max-width: 30ch;
   color: var(--text-1);
 }
 /* h3/h4 are chrome, not claims — they stay in Inter. */
@@ -396,12 +391,9 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 .portrait { margin: 0; justify-self: end; width: 100%; max-width: 340px; }
 .portrait-frame {
   position: relative; aspect-ratio: 4 / 5; width: 100%;
-  border: 1px solid var(--glass-border); border-radius: var(--r-card);
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--ink); border-radius: var(--r-lg);
+  background: var(--paper);
   overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(125,211,252,0.04), 0 18px 60px rgba(0,0,0,0.45),
-              inset 0 1px 0 var(--glass-shine);
 }
 .portrait-frame > img {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -414,18 +406,15 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
 
 /* ══ CTAs ═══════════════════════════════════════════════════════════════ */
 .cta-primary, .cta-big {   /* .cta-big = legacy alias */
-  font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: #000;
-  background: linear-gradient(135deg, var(--mercury-blue), var(--mercury-violet));
-  padding: 1rem 2.4rem; border-radius: var(--r-sm);
-  display: inline-block; transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(125,211,252,0.2);
+  font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink); background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 0.95rem 1.6rem; border-radius: var(--r-md);
+  display: inline-block; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
 }
-.cta-primary:hover, .cta-big:hover {
-  filter: brightness(1.2); transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(125,211,252,0.3);
-}
+.cta-primary:hover, .cta-big:hover { background: var(--ink); color: var(--paper); }
 .cta-secondary {
   font-size: 0.78rem; color: var(--text-3);
   border-bottom: 1px solid var(--text-3); padding-bottom: 2px; transition: color 0.2s;
@@ -438,13 +427,10 @@ h4 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.4rem; color: var(--t
   position: relative;
   aspect-ratio: 16 / 9;
   width: 100%;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r-card);
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--ink);
+  border-radius: var(--r-lg);
+  background: var(--paper);
   overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(125,211,252,0.04), 0 18px 60px rgba(0,0,0,0.45),
-              inset 0 1px 0 var(--glass-shine);
 }
 .artifact-frame > iframe,
 .artifact-frame > video,
@@ -1134,9 +1120,9 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   border-radius: var(--r-sm); padding: 0.75rem 0.9rem; transition: border-color .2s;
 }
 .lead-field input::placeholder { color: var(--text-3); }
-.lead-field input:focus, .lead-field select:focus { outline: none; border-color: rgba(125,211,252,0.4); }
+.lead-field input:focus, .lead-field select:focus { outline: none; border-color: var(--ink); }
 .lead-field select option { background: var(--void); color: var(--text-1); }
-.lead-form .cta-primary { border: none; cursor: pointer; margin-top: 0.6rem; }
+.lead-form .cta-primary { cursor: pointer; margin-top: 0.6rem; }
 @media (max-width: 900px) { .lead-row { grid-template-columns: 1fr; } }
 
 /* .vsl — the video in the landing page's hero slot. A 16:9 film fills the
@@ -1255,10 +1241,10 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .vsl-ui button {
   flex: none; width: 30px; height: 30px; padding: 0;
   display: grid; place-items: center;
-  background: none; border: 0; cursor: pointer; color: var(--text-2);
+  background: none; border: 0; cursor: pointer; color: rgba(255,255,255,0.8);
   transition: color 120ms ease;
 }
-.vsl-ui button:hover { color: var(--text-1); }
+.vsl-ui button:hover { color: var(--paper); }
 .vsl-ui svg { width: 20px; height: 20px; fill: currentColor; }
 .vsl-icon-pause, .vsl-icon-quiet { display: none; }
 .is-playing .vsl-icon-play { display: none; }
@@ -1267,12 +1253,12 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
 .is-muted .vsl-icon-quiet { display: block; }
 .vsl-track {
   flex: 1 1 auto; height: 4px; border-radius: var(--r-sm); cursor: pointer;
-  background: var(--glass-border); position: relative; touch-action: none;
+  background: rgba(255,255,255,0.3); position: relative; touch-action: none;
 }
-.vsl-track:focus-visible { outline: 2px solid var(--mercury-blue); outline-offset: 4px; }
+.vsl-track:focus-visible { outline: 2px solid var(--paper); outline-offset: 4px; }
 .vsl-fill {
   position: absolute; inset: 0 auto 0 0; width: 0;
-  background: var(--mercury-blue); border-radius: var(--r-sm);
+  background: var(--paper); border-radius: var(--r-sm);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -1745,64 +1731,109 @@ html.js .ledger > li.on {
   html.js .ledger > li { opacity: 1 !important; transform: none !important; }
 }
 
-/* ══ THE SIMPLE PAGE — ai-transformation.html ═════════════════════════════
-   Five things and one action: the claim, the video, what I do, the person,
-   book a call.
-   Reuses the existing vocabulary (.claim/.wrap/.eyebrow/.lede/.artifact-frame
-   /.booker/.portrait-frame/.cta-primary); these declarations are LAYOUT only,
-   zero new colours and zero new type. The full funnel lives on
-   ai-transformation-full.html and shares this stylesheet untouched. */
+/* ══ THE SIMPLE PAGE — ai-transformation.html, in THE BLUEPRINT SYSTEM ═══════
+   RULE 02. The page is drawn like a diagram on a drafting sheet: big cards
+   with an ink outline, hairline dividers inside them, and a small square NODE
+   wherever a divider meets the card's edge — the handles a diagram editor
+   shows on a selected shape. Bands alternate: plain paper (the blueprint
+   columns show through), GRAIN (paper with a noise tooth), and INK (black,
+   the one inverted band, for the final action). Nothing else on the page is
+   decorated. */
 
-/* ⛔ THE FILM IS THE PAGE — full container width, nothing beside it. On the
-   full page it shared a row with the portrait and could never be bigger than
-   half; here it is 1100 x 619 and it is the only thing on screen. */
-.solo-vsl { width: 100%; margin: 2.5rem 0 0; }
-
-.solo-cta { margin: 2.5rem 0 0; }
-.solo-cta .cta-primary { display: inline-block; }
-.solo-cta .door-fine { max-width: 46ch; }
-
-.about-sec { padding: var(--sec-y) 1.25rem; border-top: 1px solid var(--glass-border); }
-/* same portrait-beside-bio row the hero used, kept because it works: the
-   photo is large and immediately beside who is speaking */
-.solo-booker {
-  display: grid; grid-template-columns: 260px minmax(0, 1fr);
-  gap: 0 2.5rem; align-items: start;
+/* the pill: a label in a hairline capsule, sitting on the eyebrow's connector */
+.eyebrow > .pill {
+  border: 1px solid var(--ink); border-radius: 999px;
+  padding: 0.38rem 0.9rem; background: var(--paper); line-height: 1;
 }
-.solo-booker > * { grid-column: 2; }
-/* ⛔ `grid-row: 1 / -1` DOES NOT SPAN IMPLICIT ROWS — it would size row 1 to
-   the portrait alone and shove the bio down its column. Span a count. */
-.solo-booker .portrait-frame {
-  grid-column: 1; grid-row: 1 / span 20;
-  width: 100%; border-radius: var(--r-card); margin-bottom: 0;
+
+/* ── the bands ─────────────────────────────────────────────────────────── */
+.bp-sec { padding: var(--sec-y) 1.5rem; }
+.bp-band { background-color: var(--paper); background-image: var(--grain);
+           border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.bp-ink  { background: var(--ink); color: var(--paper); }
+.bp-ink h2 { color: var(--paper); }
+.bp-ink .lede { color: rgba(255,255,255,0.72); }
+.bp-ink .door-fine { color: rgba(255,255,255,0.72); }
+.bp-ink .cta-primary { background: var(--ink); color: var(--paper); border-color: var(--paper); }
+.bp-ink .cta-primary:hover { background: var(--paper); color: var(--ink); }
+
+/* ── the card ──────────────────────────────────────────────────────────── */
+.bp-card {
+  position: relative; background: var(--paper);
+  border: 1px solid var(--ink); border-radius: var(--r-bp);
 }
-.solo-booker .booker-who { margin-bottom: 1.5rem; }
-.solo-booker .lede { font-size: 0.95rem; line-height: 1.75; margin-bottom: 0.9rem; }
-.solo-booker .lede:last-child { margin-bottom: 0; }
+.bp-pad { padding: clamp(1.6rem, 4vw, 3.4rem); }
+/* a horizontal divider across the card, a node at each end on the outline */
+.bp-rule { position: relative; height: 0; border-top: 1px solid var(--ink); }
+.bp-rule::before, .bp-rule::after, .bp-split > .bp-cell + .bp-cell::before,
+.bp-split > .bp-cell + .bp-cell::after {
+  content: ''; position: absolute; width: 11px; height: 11px;
+  background: var(--paper); border: 1px solid var(--ink); z-index: 1;
+}
+.bp-rule::before { left: -6px; top: -6px; }
+.bp-rule::after  { right: -6px; top: -6px; }
+/* a card split into two cells by a vertical divider, nodes top and bottom */
+.bp-split { display: grid; grid-template-columns: 1.35fr 1fr; }
+.bp-split > .bp-cell { position: relative; min-width: 0; padding: clamp(1.4rem, 3vw, 2.6rem); }
+.bp-split > .bp-cell + .bp-cell { border-left: 1px solid var(--ink); }
+.bp-split > .bp-cell + .bp-cell::before { left: -6px; top: -6px; }
+.bp-split > .bp-cell + .bp-cell::after  { left: -6px; bottom: -6px; }
 @media (max-width: 900px) {
-  .solo-booker { grid-template-columns: 1fr; gap: 1.5rem; }
-  .solo-booker > * { grid-column: 1; }
-  .solo-booker .portrait-frame { grid-row: auto; max-width: 260px; }
+  .bp-split { grid-template-columns: 1fr; }
+  .bp-split > .bp-cell + .bp-cell { border-left: 0; border-top: 1px solid var(--ink); }
+  .bp-split > .bp-cell + .bp-cell::before { left: -6px; top: -6px; }
+  .bp-split > .bp-cell + .bp-cell::after  { left: auto; right: -6px; top: -6px; bottom: auto; }
 }
 
-/* WHAT I DO — the loop plus its four stations. Layout only: the frame is the
-   existing .artifact-frame, the labels are the .eyebrow mono voice, the rules
-   are --glass-border. Zero new colours, zero new type. */
-.what-sec h2 { max-width: 30ch; margin: 0 0 2.25rem; }
-.what-loop > video { object-fit: contain; background: var(--void); }
-/* the levels read as ONE blurb under the loop — a short stacked list, never four standalone cells */
-.what-levels { max-width: 68ch; margin: 2rem 0 0; }
-.what-levels-head { margin: 0 0 0.9rem; color: var(--text-1); font-weight: 500; }
-.what-steps { list-style: none; margin: 0; padding: 0; }
+/* ── the hero ──────────────────────────────────────────────────────────── */
+.bp-hero { padding: clamp(2.5rem, 6vw, 5rem) 1.5rem var(--sec-y); }
+.bp-hero h1 { font-size: clamp(1.9rem, 4.3vw, 3.5rem); max-width: 22ch; line-height: 1.08; }
+.bp-hero h1 span { display: block; color: var(--text-2); }
+.bp-hero .lede { margin-bottom: 0; }
+/* ⛔ THE FILM IS THE PAGE — it fills the card's lower sheet edge to edge */
+.solo-vsl { width: 100%; margin: 0; border-radius: var(--r-lg); }
+.solo-cta { margin: 2rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
+.solo-cta .cta-primary { display: inline-block; }
+.solo-cta .door-fine { max-width: 46ch; margin: 0; }
+
+/* ── what I do ─────────────────────────────────────────────────────────── */
+.what-sec h2 { max-width: 26ch; margin: 0 0 2.2rem; }
+.what-loop { border-radius: var(--r-lg); }
+/* the loop sits centred in its cell, level with the middle of the levels list */
+.what-sec .bp-split > .bp-cell:first-child { display: flex; align-items: center; }
+.what-loop > video { object-fit: contain; background: var(--ink); }
+.what-levels-head { font-family: var(--mono); font-weight: 600; margin: 0 0 1rem; color: var(--ink); }
+.what-steps { list-style: none; margin: 0; padding: 0; counter-reset: lvl; }
 .what-steps li {
-  border-top: 1px solid var(--glass-border); padding: 0.75rem 0;
-  color: var(--text-2); font-size: 0.95rem; line-height: 1.65;
+  border-top: 1px solid var(--line); padding: 0.85rem 0;
+  color: var(--text-2); font-size: 0.95rem; line-height: 1.6;
 }
+.what-steps li:first-child { border-top: 1px solid var(--ink); }
 .what-steps li span {
-  font-family: var(--mono); font-size: 0.7rem;           /* the .eyebrow voice */
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-blue);
-  margin-right: 0.4rem;
+  display: block; margin-bottom: 0.2rem;
+  font-family: var(--mono); font-size: 0.86rem; font-weight: 600; color: var(--ink);
 }
+
+/* ── who you'd be talking to ───────────────────────────────────────────── */
+.about-split { grid-template-columns: 300px minmax(0, 1fr); }
+.about-split .portrait-frame { width: 100%; aspect-ratio: 4 / 5; }
+.about-split .booker-who { margin-bottom: 1.2rem; }
+.about-split .booker-who strong { font-family: var(--mono); font-size: 1.15rem; color: var(--ink); }
+.about-split .lede { font-size: 0.98rem; line-height: 1.75; margin-bottom: 1rem; max-width: 58ch; }
+.about-split .lede:last-child { margin-bottom: 0; }
+/* ⛔ this must restate the stack: `.about-split` comes after `.bp-split`'s own 900px
+   rule, so without it the 300px portrait column survives onto phones and the
+   page scrolls sideways (measured: 459px of page on a 390px screen). */
+@media (max-width: 900px) {
+  .about-split { grid-template-columns: 1fr; }
+  .about-split .portrait-frame { max-width: 260px; }
+}
+
+/* ── the final action ──────────────────────────────────────────────────── */
+.bp-close { text-align: center; }
+.bp-close h2 { margin: 0 auto 1.2rem; max-width: 22ch; font-family: var(--mono); font-weight: 700; letter-spacing: -0.035em; }
+.bp-close .solo-cta { justify-content: center; }
+.bp-close .door-fine { text-align: center; }
 
 /* ── THE THREE DOORS ──────────────────────────────────────────────────────── */
 .offer-sec { padding: var(--sec-y) 1.25rem; }
@@ -2117,10 +2148,10 @@ html.js .cascade .struck.on > b::after {
      until it was screenshotted at full size. */
   inset: 0; margin: auto;
   width: min(560px, calc(100vw - 2rem)); max-height: calc(100vh - 3rem);
-  padding: 0; border: 1px solid var(--glass-border); border-radius: var(--r-card);
-  background: #0a0a18; color: var(--text-1); overflow: auto;
+  padding: 0; border: 1px solid var(--ink); border-radius: var(--r-bp);
+  background: var(--paper); color: var(--text-1); overflow: auto;
 }
-.capture::backdrop { background: rgba(4,4,14,0.82); backdrop-filter: blur(6px); }
+.capture::backdrop { background: rgba(255,255,255,0.82); backdrop-filter: blur(4px); }
 .capture .lead-form { padding: 2.25rem; position: relative; }
 .capture h2 { font-size: clamp(1.4rem, 3vw, 1.85rem); margin: 0.35rem 0 0.6rem; }
 .capture .lede { margin-bottom: 1.75rem; }
@@ -2142,7 +2173,7 @@ html.js .cascade .struck.on > b::after {
   color: var(--text-2); font-size: 0.86rem; line-height: 1.6; cursor: pointer;
 }
 .consent input { margin-top: 0.22rem; flex: none; width: 1rem; height: 1rem; accent-color: var(--mercury-blue); }
-.consent:hover { border-color: rgba(125,211,252,0.3); }
+.consent:hover { border-color: var(--ink); }
 /* the call path REQUIRES it, so it is marked as required rather than the
    viewer discovering it on submit */
 .capture.consent-required .consent::after {
@@ -2155,7 +2186,7 @@ html.js .cascade .struck.on > b::after {
 /* a button that has to look like a text link (the call exit) */
 .link-btn {
   background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
-  color: var(--mercury-blue); border-bottom: 1px solid rgba(125,211,252,0.25);
+  color: var(--ink); border-bottom: 1px solid var(--glass-border);
 }
 .link-btn:hover { border-bottom-color: var(--mercury-blue); }
 
