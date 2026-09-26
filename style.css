@@ -1794,23 +1794,32 @@ html.js .ledger > li.on {
 }
 
 /* ── THE PARCELS (*USER*'s ruling) — a little easter egg ─────────────────────
-   TWO parcels, no more: one starts at the top of the page, one at the bottom, and
-   each drifts the page's full length and back, forever. They ride only the two
-   INNER blueprint columns (never the outer ones, beside the cards), and they live
-   IN THE PAGE, not the viewport — scrolling passes them like anything else. The
-   layer sits behind everything (z -1), so cards and bands cover them and a parcel
-   only shows crossing a gap. Phones (the inner columns sit at the screen edge
-   there) and reduced motion: none. */
+   Five parcels on each of the two INNER blueprint columns (never the outer ones,
+   beside the cards). The page is cut into five equal stretches and each parcel
+   shuttles back and forth inside ITS OWN stretch — so two parcels can never meet,
+   anywhere — at staggered phases, so there is always one somewhere to catch. They
+   live IN THE PAGE, not the viewport: scrolling passes them, they never follow it.
+   The layer sits behind everything (z -1), so a parcel only shows crossing a gap.
+   Phones (the inner columns sit at the screen edge there) and reduced motion: none. */
 body { position: relative; }            /* so the layer spans the whole document */
 .bp-parcels { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bp-parcels .lane { position: absolute; top: 0; bottom: 0; width: 0; }
+.bp-parcels .lane:nth-child(1) { left: calc(50% - 183px); }
+.bp-parcels .lane:nth-child(2) { left: calc(50% + 183px); }
 .bp-parcels i {
-  position: absolute; top: 0; width: 18px; height: 18px; margin-left: -9px;
+  position: absolute; left: -9px; width: 18px; height: 18px;
   background: var(--pkg) center / contain no-repeat;
-  animation: parcel-run 110s ease-in-out infinite alternate;
+  animation: parcel-shuttle 24s ease-in-out infinite alternate;
+  animation-delay: var(--d);
 }
-.bp-parcels i:nth-child(1) { left: calc(50% - 183px); }
-.bp-parcels i:nth-child(2) { left: calc(50% + 183px); animation-direction: alternate-reverse; }
-@keyframes parcel-run { from { top: 0; } to { top: calc(100% - 18px); } }
+/* each parcel's own stretch: from --a to --b, a fifth of the page apart */
+.bp-parcels i:nth-child(1) { --a: 0%;  --b: 20%;  --d: 0s; }
+.bp-parcels i:nth-child(2) { --a: 20%; --b: 40%;  --d: -9s; }
+.bp-parcels i:nth-child(3) { --a: 40%; --b: 60%;  --d: -17s; }
+.bp-parcels i:nth-child(4) { --a: 60%; --b: 80%;  --d: -5s; }
+.bp-parcels i:nth-child(5) { --a: 80%; --b: 100%; --d: -13s; }
+.bp-parcels .lane:nth-child(2) i { animation-direction: alternate-reverse; animation-duration: 29s; }
+@keyframes parcel-shuttle { from { top: var(--a); } to { top: calc(var(--b) - 18px); } }
 @media (max-width: 900px), (prefers-reduced-motion: reduce) { .bp-parcels { display: none; } }
 
 /* ── the bands ─────────────────────────────────────────────────────────── */

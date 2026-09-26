@@ -29,13 +29,14 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    section heads (600). No other face on a presented page.
 3. **The drafting sheet:** four faint vertical BLUEPRINT COLUMNS run the height of the page at
    the container's edges and its thirds (`body::before`); a band with its own ground covers them.
-   **THE PARCELS** (`.bp-parcels`, *USER*'s ruling — a little easter egg, candy): exactly TWO
-   isometric yellow packages, one on each INNER column — never the outer columns beside the
-   cards. One starts at the top of the page, one at the bottom, and each drifts the page's full
-   length and back, forever (110 s a pass, eased at the turns). They live IN THE PAGE, not the
-   viewport: scrolling passes them like any other content, they never follow it. The layer sits
-   behind everything, so a parcel only shows crossing a gap between cards. Drawn, never the 📦
-   emoji. Off on phones (the inner columns sit at the screen edge there) and under reduced motion.
+   **THE PARCELS** (`.bp-parcels`, *USER*'s ruling — a little easter egg, candy): isometric
+   yellow packages on the two INNER columns only — never the outer columns beside the cards. Five
+   per column: the page is cut into five equal stretches and each parcel shuttles back and forth
+   inside its OWN stretch (24 s / 29 s a pass, eased, staggered phases), so two parcels can never
+   meet anywhere and one is always somewhere to catch. They live IN THE PAGE, not the viewport:
+   scrolling passes them, they never follow it. The layer sits behind everything, so a parcel only
+   shows crossing a gap between cards. Drawn, never the 📦 emoji. Off on phones (the inner columns
+   sit at the screen edge there) and under reduced motion.
 4. **The card** (`.bp-card`): paper, a 1px ink outline, radius `--r-bp` 28px. Inside it,
    **hairline dividers** (`.bp-rule` across, `.bp-split` down) — and a small square **NODE**
    (11px, paper fill, ink outline) wherever a divider meets the card's edge, like the handles a
