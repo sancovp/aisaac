@@ -46,8 +46,10 @@ not being presented; the laws below govern each page whenever it is.
    SITE_ORIGIN (`https://sancovp.github.io/aisaac`) only in canonical/og.
 6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
    `TWI: Transforming the World, Incorporated` — the company's name, and the only name in the
-   chrome. The person the visitor would talk to is **Isaac**: the about card, the footer and the
-   prose say it. The legal entity (Ribcage Solutions, Inc.) never appears on the site; it lives in
+   chrome. The person the visitor would talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
+   about card names him so, and the footer and the prose say Isaac. His background ("How I got
+   here") states only facts he gave: AI since 2023, agents for a film production company,
+   philosophy and ontologies, what he has built, the Digital Twin of an Organization he is building. The legal entity (Ribcage Solutions, Inc.) never appears on the site; it lives in
    `docs/`, the contracts and the Stripe statement. `AIsaac` is the repository and the URL path,
    never a brand on a page.
 7. **EVERY SURFACE ANSWERS ITS OWN OF THE BUYER'S FIVE QUESTIONS.** Marketing is mostly organization:

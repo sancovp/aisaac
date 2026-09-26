@@ -1852,6 +1852,15 @@ html.js .ledger > li.on {
 .about-split .booker-who strong { font-family: var(--mono); font-size: 1.15rem; color: var(--ink); }
 .about-split .lede { font-size: 0.98rem; line-height: 1.75; margin-bottom: 1rem; max-width: 58ch; }
 .about-split .lede:last-child { margin-bottom: 0; }
+/* the About card holds the split AND, under a divider, the story — so the split is
+   no longer the card itself and must not draw a second outline */
+.about-card .about-split { border: 0; }
+.about-story { padding-top: clamp(1.4rem, 3vw, 2.4rem); }
+.about-story-head { font-family: var(--mono); font-weight: 600; color: var(--ink); margin: 0 0 0.9rem; }
+.about-story p:not(.about-story-head) {
+  max-width: 68ch; color: var(--text-2); font-size: 0.98rem; line-height: 1.75; margin: 0 0 0.9rem;
+}
+.about-story p:last-child { margin-bottom: 0; }
 /* ⛔ this must restate the stack: `.about-split` comes after `.bp-split`'s own 900px
    rule, so without it the 300px portrait column survives onto phones and the
    page scrolls sideways (measured: 459px of page on a 390px screen). */
