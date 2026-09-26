@@ -16,6 +16,18 @@
  * (set in the HTML) and everything works, runtime and all. A film nobody can
  * play is a worse failure than a film whose length shows.
  */
+/* The silent loops (`video[data-loop]`) autoplay muted and carry no controls.
+ * A visitor who asked for reduced motion gets them stopped on their poster,
+ * with the native controls handed back so they can still choose to play. */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('video[data-loop]').forEach(function (v) {
+    v.removeAttribute('autoplay');
+    v.pause();
+    v.setAttribute('controls', '');
+  });
+})();
+
 (function () {
   var frame = document.querySelector('.artifact-frame.vsl');
   if (!frame) return;

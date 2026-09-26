@@ -28,8 +28,9 @@
      checkout doors, the FAQ. It is simply not linked from anywhere. Bring
      it back by swapping the filenames; nothing else needs to change.
 
-     THE WHOLE PAGE IS FOUR THINGS:
-       the claim · the video · who you would be talking to · book a call
+     THE WHOLE PAGE IS FIVE THINGS:
+       the claim · the video · what I do (the loop) · who you would be
+       talking to · book a call
      There is exactly ONE action on it. No prices, no checkout, no scroll
      choreography — every one of those was a decision the visitor had to make
      before the only decision that matters.
@@ -64,6 +65,33 @@
         <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
         <p class="door-fine">No purchase. If the answer for your business is to do nothing, I will tell you that.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO — the bootstrap cycle, drawn: solo → org → automated org +
+       solo → automated orgs. The loop is `video-aios/draw-the-box/loop/`
+       (build_reproduce.py); it is silent, it has no runtime to hide, and it
+       plays forever, so it gets no controls. Reduced motion: vsl.js stops it
+       on its poster and hands back the controls. -->
+  <section class="about-sec what-sec">
+    <div class="wrap">
+      <p class="eyebrow">What I do</p>
+      <h2>I take a business from one person doing everything to an organization that runs &mdash; then you start the next one.</h2>
+
+      <div class="artifact-frame what-loop">
+        <video autoplay muted loop playsinline preload="metadata" data-loop
+               poster="assets/what-i-do-loop-poster.jpg" width="1280" height="720"
+               aria-label="A founder works alone, hires a team, the team is automated, and the founder moves on to start another">
+          <source src="assets/what-i-do-loop.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <ol class="what-steps">
+        <li><span>Solo</span>You do all the work yourself.</li>
+        <li><span>Org</span>You hire, and the work spreads across people.</li>
+        <li><span>Automated</span>Every role gets its AI, and the organization keeps running.</li>
+        <li><span>Again</span>You are free to start the next one.</li>
+      </ol>
     </div>
   </section>
 

@@ -7,9 +7,11 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## WHAT IS PUBLIC
 
-**One page is presented: `ai-transformation.html`.** It is four things and one action — the claim ·
-the video (`assets/vsl.mp4`, full width, its runtime never stated) · who you would be talking to ·
-book a call. No prices, no checkout, no scroll choreography. Its wordmark is a `<span>`, never a link:
+**One page is presented: `ai-transformation.html`.** It is five things and one action — the claim ·
+the video (`assets/vsl.mp4`, full width, its runtime never stated) · what I do (the bootstrap loop
+`assets/what-i-do-loop.mp4` — solo → org → automated → again — silent, autoplaying, looping, no
+controls, stopped on its poster under reduced motion; source `video-aios/draw-the-box/loop/`) · who
+you would be talking to · book a call. No prices, no checkout, no scroll choreography. Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
