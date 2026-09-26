@@ -84,7 +84,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
    each branch — the numbers (with its source in small mono beneath) · but · so we · so that you
    (in ink, the dream) · instead of. No JS; keyboard-operable; the open is a 180ms fade that
-   reduced motion drops.
+   reduced motion drops. The FIRST tree ships open, so the visitor sees what a row holds; the rest
+   stay closed, and nothing opens on scroll — an opening tree pushes the pinned section's bottom
+   away while the reader is mid-section.
 12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
    outlined square beside a card label — never an emoji (they render differently per device).
 13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
