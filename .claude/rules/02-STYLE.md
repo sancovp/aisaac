@@ -19,6 +19,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
      Solo and Solo again), `--loop-cyan #1abfff` (Org), `--loop-violet #9e6bff` (Automation), as
      3px bars between the four levels only, so the list and the film beside it share one colour
      code. Bars, never text.
+   - **the parcels' yellows** (`--pkg`, drawn inside the token: ink outline, three yellow faces,
+     a strip of tape) — the only other colour, and it lives only on the parcels (§3).
    Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
@@ -27,6 +29,11 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    section heads (600). No other face on a presented page.
 3. **The drafting sheet:** four faint vertical BLUEPRINT COLUMNS run the height of the page at
    the container's edges and its thirds (`body::before`); a band with its own ground covers them.
+   **THE PARCELS ride them** (`.bp-parcels`, *USER*'s ruling): little isometric yellow packages,
+   three per column, moving slowly up or down (lanes alternate like conveyors, 46–67 s a pass,
+   each lane offset so none march in step). The layer is fixed and sits BEHIND everything, so
+   every card and band covers it — a parcel only shows in the gaps, or peeking past a card's edge.
+   Drawn, never the 📦 emoji (it renders differently on every device). Reduced motion: removed.
 4. **The card** (`.bp-card`): paper, a 1px ink outline, radius `--r-bp` 28px. Inside it,
    **hairline dividers** (`.bp-rule` across, `.bp-split` down) — and a small square **NODE**
    (11px, paper fill, ink outline) wherever a divider meets the card's edge, like the handles a
@@ -48,8 +55,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right —
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
-10. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion only in the films and
-   in ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
+10. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
+   only in the films, the parcels, and ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 
 ## The density gradient (still law)
