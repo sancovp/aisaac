@@ -72,7 +72,9 @@ and operators running the model (on Skool), inside which his GoHighLevel setup i
 *USER*'s structure: the community is free and GHL is sold inside it. Joined by email until its Skool
 link exists. It also gives away, free: THE AUTONOMY LADDER (his automation theory — the
 worker · management · you triad, grades 1–4, trust earned per area and never transferred) and the
-B2B BOOTCAMP (the Sanctuary–Wasteland map, then twelve frameworks); BUILD AN AIOS (the anatomy of
+B2B BOOTCAMP (for operators: the Sanctuary–Wasteland map, then the client's path in four steps —
+PSA → SCREENING → the CLINIC·DOCTOR close → LIFE — then the tools behind it grouped by job: build the
+offer · position it · aim it); BUILD AN AIOS (the anatomy of
 an AIOS and the law under it, from ChainCompiler); THE LEVELS of ChainCompiler (the gate → AC → CoR →
 SC → SkillTree → GBA → COG → HBA); and TOME (the six stages that publish any AIOS as a framework) —
 with one button to all of them as AI skills (a PLACEHOLDER link until

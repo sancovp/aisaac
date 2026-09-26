@@ -93,7 +93,7 @@ TOC = [("1", "→"), ("2", "A → B"), ("3", "A → 1 → 2 → 3 → B"), ("4",
        ("", "Afterword: the status report"), ("", "The map")]
 toc = '\n'.join(f'                <li><span class="toc-n">{n}</span><span class="toc-t">{html.escape(t)}</span></li>' for n, t in TOC)
 
-V = '2026-09-26q'
+V = '2026-09-26s'
 page = f'''<!doctype html>
 <html lang="en">
 <head>

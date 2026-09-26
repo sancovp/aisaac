@@ -32,8 +32,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
      accent (`--tint-<hue>`, ≥5.4:1 on its ground), and the accent on its label, its card headings
      and its numerals; the white cards sit on the tint, and that contrast is what separates the
      sections. Utility sections (how it works · who it's for · questions · the story) stay plain or
-     grain, so a colour always means something. Used on `framework.html` and
-     `isaac-wostrel-rubin.html`.
+     grain, so a colour always means something. Used on `framework.html`, `framework-worksheet.html`
+     and `isaac-wostrel-rubin.html`. ⛔ **`ai-transformation.html` stays BLACK AND WHITE** (*USER*'s
+     ruling) — no section tints there; greys may be added to it later, never a hue.
    Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,

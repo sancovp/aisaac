@@ -2779,3 +2779,16 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
 }
 .tinted .eyebrow > .pill { border-color: var(--t-ac); color: var(--t-ac); font-weight: 600; }
 .tinted .get-k, .tinted .fw-g, .tinted .fw-n, .tinted .repo-name, .tinted .toc-n { color: var(--t-ac); }
+/* the bootcamp: the map, then the client's path as four arrowed steps, then the tools grouped by job */
+.fw-path { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fw-path-head { padding-bottom: 0; }
+.fw-path > .bp-cell { padding-top: 1.1rem; }
+.fw-step-k { margin: 0; font-family: var(--mono); font-weight: 700; font-size: 0.82rem; color: var(--ink); }
+.tinted .fw-step-k { color: var(--t-ac); }
+.fw-step-t { margin: 0.25rem 0 0.5rem; font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+.fw-tools-k { margin: 2.4rem 0 1rem; }
+.fw-group { margin: 0 0 0.9rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line);
+  font-family: var(--mono); font-weight: 700; font-size: 1.02rem; color: var(--ink); }
+.fw-part .get-k + .get-v { margin-bottom: 0.9rem; }
+.fw-part .get-v:last-child { margin-bottom: 0; }
+@media (max-width: 900px) { .fw-path { grid-template-columns: 1fr; } }
