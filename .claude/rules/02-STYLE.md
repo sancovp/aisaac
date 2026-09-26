@@ -59,15 +59,21 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
 10. **The pinned stack** (`.pin-stack`, `stack.js`, *USER*'s ruling): What I do → What you get →
-   Who helps you. Each `.pin` scrolls fully into view and STAYS while the next `.sheet` slides up
+   What it becomes → Who helps you. Each `.pin` scrolls fully into view and STAYS while the next `.sheet` slides up
    over it like a sheet laid on top — opaque paper carrying its own blueprint columns, an ink edge
    on top, at least a screen tall. Each pin point is MEASURED (`min(nav height, viewport − section
    height)`), so a section taller than the screen pins only once its bottom is visible and nothing
-   is covered unread. The wrapper ends every pin with the stack, so no pinned section shows through
-   later ones. JS off: normal scroll.
-11. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
+   is covered unread. A pinned section that changes height (a reader opening a leak tree) is
+   re-measured on the spot (`ResizeObserver`). The wrapper ends every pin with the stack, so no
+   pinned section shows through later ones. JS off: normal scroll.
+11. **The leak tree** (`.leak`, a native `<details>`): closed, one row — the item in mono and its
+   one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
+   each branch — the numbers (with its source in small mono beneath) · but · so we · so that you
+   (in ink, the dream) · instead of. No JS; keyboard-operable; the open is a 180ms fade that
+   reduced motion drops.
+12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
    outlined square beside a card label — never an emoji (they render differently per device).
-12. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
+13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
    only in the films, the parcels, the pinned stack (driven by the reader's own scroll), and
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.

@@ -1,6 +1,6 @@
 /* stack.js — THE PINNED STACK on ai-transformation.html (RULE 02 §10).
  *
- * What I do → What you get → Who helps you: each `.pin` is position:sticky and the next
+ * What I do → What you get → What it becomes → Who helps you: each `.pin` is position:sticky and the next
  * section slides up over it. A sticky top of the nav's height would pin a section TALLER
  * than the screen with its bottom off-screen, covering its last lines before anyone read
  * them. So each pin point is measured: min(nav height, viewport − section height) — it
@@ -25,4 +25,10 @@
   measure();
   window.addEventListener('resize', measure);
   window.addEventListener('load', measure);
+  // a pinned section changes height when a reader opens one of its trees (<details>) —
+  // re-measure then too, or it pins against its old height and covers what just opened
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(measure);
+    for (var j = 0; j < pins.length; j++) ro.observe(pins[j]);
+  }
 })();

@@ -1910,6 +1910,7 @@ body { position: relative; }            /* so the layer spans the whole document
 .pin-stack > :nth-child(1) { z-index: 0; }
 .pin-stack > :nth-child(2) { z-index: 1; }
 .pin-stack > :nth-child(3) { z-index: 2; }
+.pin-stack > :nth-child(4) { z-index: 3; }
 
 /* ── what you get — stage one's map ─────────────────────────────────────── */
 .what-get h2 { max-width: 26ch; margin: 0 0 2.2rem; }
@@ -1925,24 +1926,70 @@ body { position: relative; }            /* so the layer spans the whole document
 .get-ico svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.6;
                stroke-linecap: round; stroke-linejoin: round; }
 .get-v { color: var(--text-2); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 46ch; }
-.get-list {
-  list-style: none; margin: 0.2rem 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem 1.5rem;
+/* THE LEAKS — each health item is a disclosure that opens into its tree (*USER*'s structure):
+   the numbers · but · so we · so that you · instead of. Closed, it shows the item and its one
+   hook; open, a vertical ink trunk with a tick to each branch — the blueprint drawing a tree. */
+.leaks { border-top: 1px solid var(--ink); margin-top: 0.4rem; }
+.leak { border-bottom: 1px solid var(--line); }
+.leak summary {
+  list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 0.9rem;
+  padding: 0.8rem 1.8rem 0.8rem 0; position: relative;
 }
-.get-list li {
-  position: relative; padding-left: 1.3rem;
-  color: var(--text-2); font-size: 0.95rem; line-height: 1.5;
+.leak summary::-webkit-details-marker { display: none; }
+.leak summary::after {
+  content: '+'; position: absolute; right: 0.2rem; top: 0.7rem;
+  font-family: var(--mono); font-size: 1.05rem; color: var(--ink);
 }
-/* each item marked with the blueprint's own node — a small square in ink */
-.get-list li::before {
-  content: ''; position: absolute; left: 0; top: 0.42em; width: 8px; height: 8px;
-  border: 1px solid var(--ink); background: var(--paper);
+.leak[open] summary::after { content: '\2212'; }
+.leak summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.leak-name { font-family: var(--mono); font-weight: 600; color: var(--ink); flex: none; }
+.leak-hook { color: var(--text-3); font-size: 0.86rem; }
+.leak-tree { margin: 0.1rem 0 1.1rem 0.35rem; border-left: 1px solid var(--ink); }
+.leak-tree p {
+  position: relative; margin: 0; padding: 0.45rem 0 0.45rem 1.35rem;
+  color: var(--text-2); font-size: 0.92rem; line-height: 1.6;
 }
+.leak-tree p::before {                                   /* the branch tick */
+  content: ''; position: absolute; left: 0; top: 1.05rem; width: 0.9rem; border-top: 1px solid var(--ink);
+}
+.leak-tree p span {
+  display: block; font-family: var(--mono); font-size: 0.74rem; font-weight: 600; color: var(--ink);
+  margin-bottom: 0.1rem;
+}
+.leak-tree .leak-dream { color: var(--ink); font-weight: 500; }
+.leak-tree cite {
+  display: block; margin-top: 0.25rem; font-style: normal;
+  font-family: var(--mono); font-size: 0.7rem; color: var(--text-3);
+}
+.leak-tree cite i { font-style: italic; }
+@media (prefers-reduced-motion: no-preference) {
+  .leak[open] .leak-tree { animation: leak-open 180ms ease-out; }
+}
+@keyframes leak-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+/* the health cell carries the trees, so it takes the wider column */
+.get-bottom { grid-template-columns: 1.8fr 1fr; }
+
 /* ⛔ restate the stack AFTER the column counts above, or the 3-up survives onto phones */
 @media (max-width: 900px) {
-  .get-top, .get-bottom { grid-template-columns: 1fr; }
+  .get-top, .get-bottom, .becomes-fromto { grid-template-columns: 1fr; }
 }
-@media (max-width: 600px) { .get-list { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .leak summary { flex-direction: column; gap: 0.15rem; } }
+
+/* ── what it becomes — the destination ─────────────────────────────────── */
+.becomes-sec h2 { max-width: 30ch; margin: 0 0 2.2rem; }
+.becomes-result {
+  margin: 0.9rem 0 0; padding-top: 0.7rem; border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 0.84rem; font-weight: 600; color: var(--ink); line-height: 1.5;
+}
+.becomes-fromto { grid-template-columns: 1fr 1fr; }
+.becomes-state { margin: 0.2rem 0 0; font-size: 1.15rem; line-height: 1.5; color: var(--text-2); }
+.becomes-fromto .bp-cell + .bp-cell .becomes-state { color: var(--ink); font-weight: 500; }
+.becomes-terminus p {
+  margin: 0; max-width: 40ch; font-family: var(--mono); font-weight: 700;
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.35; letter-spacing: -0.02em; color: var(--ink);
+}
+/* ⛔ AFTER `.becomes-fromto`'s own column rule, or its two columns survive onto phones */
+@media (max-width: 900px) { .becomes-fromto { grid-template-columns: 1fr; } }
 
 /* ── who you'll be talking to ───────────────────────────────────────────── */
 .about-split { grid-template-columns: 300px minmax(0, 1fr); }

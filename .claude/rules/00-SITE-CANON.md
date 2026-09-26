@@ -8,7 +8,7 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 ## WHAT IS PUBLIC
 
 **One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
-the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is six things and one
+the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
 action — the claim ·
 the video (`assets/vsl.mp4`, full width, its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
@@ -18,10 +18,15 @@ map, in *USER*'s structure: every department in priority and why · every piece 
 needs from it — his "stringly · harnessed stringly · full logic" rendered at the door as "a plain
 prompt, a guided prompt, or fully built logic" · the AI teams you could run · and we also map the
 business's health — website, marketing, reviews, speed to lead, after-hours support, lead
-generation, lead nurture, content presence — and its SOPs, which diagnose whether rebuilds or audits
-are needed; those become customizations, never stage one) · who helps you (Isaac) ·
+generation, lead nurture, content presence — each opening into a LEAK TREE in *USER*'s structure:
+the numbers · but · so we · so that you · instead of — and its SOPs, which diagnose whether rebuilds
+or audits are needed; those become customizations, never stage one) · what it becomes (the deck's
+slide 5 arc — Foundation · Hardening · Closure, each with its RESULT verbatim — slide 3's "Fragmented.
+Manual. Reactive. Unclear." → "More capability. Less friction. Real results.", and *USER*'s terminus:
+software that knows when to call outside to humans; the datafication cascade is NOT said, it is an
+open ruling in `docs/the-transformation-method-2026-09-17.md` §1a-bis) · who helps you (Isaac) ·
 book a call. No prices, no checkout; the ONE scroll choreography is the pinned stack (What I do → What you
-get → Who helps you, each staying while the next slides over it — RULE 02 §10). Its wordmark is a `<span>`, never a link:
+get → What it becomes → Who helps you, each staying while the next slides over it — RULE 02 §10). Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
 **THE HEADLINE AND SUBHEADLINE ARE *USER*'S, FROZEN LIKE THE OFFER** — the deck's slide 1, the
@@ -50,7 +55,10 @@ not being presented; the laws below govern each page whenever it is.
    prerequisite vocabulary.
 3. **NO UNCASHED CLAIMS.** A claim ships with its receipt or ships as a labeled IOU. No fabricated
    numbers, no uptime claims nobody verified, no fake dashboards (world-slots stay empty until real
-   footage exists).
+   footage exists). **A statistic ships only with a named, findable study behind it** (who, what,
+   year — and its scope when it is small, e.g. "411 Locals, 85 businesses, 2016"), cited BY NAME on
+   the page and never linked (law 9: the page has one exit). A figure whose primary source cannot be
+   found does not ship, however often it is quoted elsewhere.
 4. **VOICE:** scoreboard readings, not verdicts ("is losing", never "is a loser") · shown, never
    claimed · punch at the discourse, never at names · the arrogance budget equals the receipt balance.
 5. **LAYOUT** = the `_templates/` + `style.css` skeleton · relative in-page paths · the absolute
