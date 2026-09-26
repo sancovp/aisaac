@@ -111,6 +111,13 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    outlined card per repository, the whole card the link, two to a row (ten repos, five even rows).
    The seven beliefs reuse the leak tree: *The claim* in ink, *The receipt* in green.
 
+15. **The framework funnel's own pieces** (`framework.html`, `.fw-*` · `.nav-get`): its top-bar
+   button is INK (`.nav-get`), because red means Book a call and this page's action is the opt-in ·
+   the opt-in form sits IN the hero beside the lead magnet shown as the thing (its contents page,
+   drawn as a sheet of letter-size paper, outlined, no shadow) · the seven parts as outlined cards
+   with a big grey numeral, the seventh (the question) full width · the FAQ reuses the leak tree ·
+   the three steps reuse the arrow nodes (§4).
+
 ## The density gradient (still law)
 
 `body[data-depth="0|1|2|3"]` overrides `--sec-y --claim-y --h1-size --h1-measure --h2-size

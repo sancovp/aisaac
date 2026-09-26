@@ -65,6 +65,16 @@ BUILT, not hand-edited: `python3 tools/build_personal.py` pulls the book passage
 by line range and lifts the booking dialog whole from `ai-transformation.html`; edit the script,
 rebuild, never the output. `isaac.html` is the older personal page, left as it is and not presented.
 
+**Built, not yet presented: `framework.html`** — *USER*'s concept of a traditional lead-magnet
+funnel: the FREE AI Transformation Framework (the method's §1 procedure and §1a central test, in his
+words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then the COMMUNITY of owners
+and operators running the model (his GoHighLevel setup; membership on Skool), joined by email until
+its Skool link exists. Linked from nothing and `noindex`, because his own ordering rule stands: *the
+education/community product is downstream of a successful operating business, never a substitute
+for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on his word. It carries
+no price, no tier, and not the datafication cascade (an open ruling). Its button is INK: red means
+Book a call.
+
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
 slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the
 FAQ), linked from nothing. It comes back by swapping the two filenames. Every other page exists and is
@@ -142,6 +152,7 @@ Paths below marked ✓ resolve here.
 | **index.html / the door** | the two rows above + `~/aios-research/SITE-CEO-BRANCH-REVIEW.md` (live decisions, incl. hero-first) |
 | **isaac.html (the hero site)** | `GARAGE-LAB-LAUNCH-STRATEGY.md` §1c · `~/aios-research/HJ-GAUGE-SPEC.md` (the theses) · `~/repo/garage-lab/CATALOG.md` + `INDEX.md` (the receipts) · `~/repo/garage-lab/CLAIM-AUDIT.md` (the honest claim board) · myth flavor ONLY from ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/SANCTUARY-MYTH-ORIGIN.md` Part V |
 | **isaac-wostrel-rubin.html (his personal page)** | ✓ `isaac.html` (the content it started from — the beliefs, the story, the open rows, verbatim) · ✓ `ssri/papers/flat-vs-tree.html` (the paper — only its own sentences) · ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/arrow-book/` — `MANUSCRIPT.md`'s title page and Chapter One (the passages), `front-matter/` (the mark, `assets/sanc-mark-white.png`, byte-identical), and the book's own gates: nothing from `sgc/`, no practice text, nothing from the raw autobiography corpus · `gh api repos/sancovp/<repo> .description` (each repo card's words) · every repo linked returns 200 unauthenticated |
+| **framework.html (the DIY framework + community funnel)** | ✓ `docs/the-transformation-method-2026-09-17.md` §1 (the seven parts, his questions) + §1a (the central test, the two shapes of a business that fails it) — never §1a-bis's cascade, never §1c–§1f · ✓ `docs/business-context-2026-09-15-first-client.md` (the ordering rule that keeps it unpresented) · *USER*'s own description of the community (owners + operators on his model, his GoHighLevel, Skool) — the Skool link, the price and what the GHL access includes are his, OPEN |
 | **pricing.html** | `main:pricing.html` VERBATIM + Isaac. No other source exists. |
 | **rung pages (learn/build/run)** | the funnel row for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
 | **watch.html / world demos** | real run receipts ONLY: cave-teams live tests (`test_live_skillcraft.py` runs), future footage per `GARAGE-LAB-LAUNCH-STRATEGY.md` §1b. Never generated numbers. |
@@ -152,6 +163,8 @@ Paths below marked ✓ resolve here.
 | **archetype/rung strategy** (why the site is shaped this way) | ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m / §7m-bis (the Dudjom → Hormozi transition; Mipham-with-a-door = free-the-WHAT / paid-the-how-I) |
 
 ## OPEN — *USER*'s
+
+- `framework.html`: the community's Skool link and price · what "use my GHL" gives a member · the framework's delivery (a document to send on each opt-in) · when it goes live
 
 - where the sources marked absent above live
 - the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
