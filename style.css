@@ -1790,21 +1790,18 @@ html.js .ledger > li.on {
    are --glass-border. Zero new colours, zero new type. */
 .what-sec h2 { max-width: 30ch; margin: 0 0 2.25rem; }
 .what-loop > video { object-fit: contain; background: var(--void); }
-.what-steps {
-  list-style: none; margin: 2rem 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem;
-}
+/* the levels read as ONE blurb under the loop — a short stacked list, never four standalone cells */
+.what-levels { max-width: 68ch; margin: 2rem 0 0; }
+.what-levels-head { margin: 0 0 0.9rem; color: var(--text-1); font-weight: 500; }
+.what-steps { list-style: none; margin: 0; padding: 0; }
 .what-steps li {
-  border-top: 1px solid var(--glass-border); padding-top: 0.9rem;
-  color: var(--text-2); font-size: 0.92rem; line-height: 1.6;
+  border-top: 1px solid var(--glass-border); padding: 0.75rem 0;
+  color: var(--text-2); font-size: 0.95rem; line-height: 1.65;
 }
 .what-steps li span {
-  display: block; margin-bottom: 0.35rem;
-  font-family: var(--mono); font-size: 0.65rem;          /* the .eyebrow voice */
-  letter-spacing: 0.15em; text-transform: uppercase; color: var(--mercury-blue);
-}
-@media (max-width: 900px) {
-  .what-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  font-family: var(--mono); font-size: 0.7rem;           /* the .eyebrow voice */
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--mercury-blue);
+  margin-right: 0.4rem;
 }
 
 /* ── THE THREE DOORS ──────────────────────────────────────────────────────── */
