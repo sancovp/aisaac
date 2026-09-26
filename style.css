@@ -1892,6 +1892,31 @@ body { position: relative; }            /* so the layer spans the whole document
   font-family: var(--mono); font-size: 0.86rem; font-weight: 600; color: var(--ink);
 }
 
+/* ── what you get — stage one's map ─────────────────────────────────────── */
+.what-get h2 { max-width: 26ch; margin: 0 0 2.2rem; }
+.get-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.get-bottom { grid-template-columns: 1.35fr 1fr; }
+.get-k { font-family: var(--mono); font-weight: 600; color: var(--ink); margin: 0 0 0.6rem; }
+.get-v { color: var(--text-2); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 46ch; }
+.get-list {
+  list-style: none; margin: 0.2rem 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem 1.5rem;
+}
+.get-list li {
+  position: relative; padding-left: 1.3rem;
+  color: var(--text-2); font-size: 0.95rem; line-height: 1.5;
+}
+/* each item marked with the blueprint's own node — a small square in ink */
+.get-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.42em; width: 8px; height: 8px;
+  border: 1px solid var(--ink); background: var(--paper);
+}
+/* ⛔ restate the stack AFTER the column counts above, or the 3-up survives onto phones */
+@media (max-width: 900px) {
+  .get-top, .get-bottom { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) { .get-list { grid-template-columns: 1fr; } }
+
 /* ── who you'd be talking to ───────────────────────────────────────────── */
 .about-split { grid-template-columns: 300px minmax(0, 1fr); }
 .about-split .portrait-frame { width: 100%; aspect-ratio: 4 / 5; }

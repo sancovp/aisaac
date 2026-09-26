@@ -8,12 +8,18 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 ## WHAT IS PUBLIC
 
 **One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
-the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is five things and one
+the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is six things and one
 action — the claim ·
 the video (`assets/vsl.mp4`, full width, its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
 reduced motion; source `video-aios/draw-the-box/loop/` — and under it ONE blurb, the four levels of
-your business in *USER*'s words: solo · org · automation · solo again) · who you would be talking to ·
+your business in *USER*'s words: solo · org · automation · solo again) · what you get (STAGE ONE's
+map, in *USER*'s structure: every department in priority and why · every piece of software and what AI
+needs from it — his "stringly · harnessed stringly · full logic" rendered at the door as "a plain
+prompt, a guided prompt, or fully built logic" · the AI teams you could run · and we also map the
+business's health — website, marketing, reviews, speed to lead, after-hours support, lead
+generation, lead nurture, content presence — and its SOPs, which diagnose whether rebuilds or audits
+are needed; those become customizations, never stage one) · who you would be talking to ·
 book a call. No prices, no checkout, no scroll choreography. Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
