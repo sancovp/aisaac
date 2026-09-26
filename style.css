@@ -2696,3 +2696,49 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
   .fw-form .lead-row { grid-template-columns: 1fr; gap: 0; }
   .nav-get { padding: 0.6rem 0.8rem; font-size: 0.72rem; }
 }
+/* the autonomy ladder — the triad across, then the grades as rows */
+.fw-also { margin: 1.2rem 0 0; }
+.fw-grades { list-style: none; margin: 0; padding: 0; }
+.fw-grades li { display: grid; grid-template-columns: 6rem 15rem 1fr; gap: 0.4rem 1.2rem; align-items: baseline;
+  padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+.fw-g { font-family: var(--mono); font-weight: 700; color: var(--ink); }
+.fw-g-t { font-family: var(--mono); font-weight: 600; font-size: 0.92rem; color: var(--ink); }
+.fw-g-d { color: var(--text-2); line-height: 1.6; }
+.fw-rule-line { margin: 1.2rem 0 0; font-size: 1.02rem; line-height: 1.6; color: var(--text-2); }
+.fw-rule-line strong { color: var(--ink); }
+.fw-h2b { margin-top: 3.2rem; }
+.fw-sub { margin: -0.6rem 0 1.6rem; max-width: 60ch; color: var(--text-2); line-height: 1.6; }
+@media (max-width: 900px) { .fw-grades li { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE WORKSHEET (framework-worksheet.html) — the lead magnet itself: fill-in tables and lines.
+   It prints: under @media print the chrome drops out and the cards lose nothing.
+   ══════════════════════════════════════════════════════════════════════════ */
+.ws-by { margin: 1rem 0 0; font-family: var(--mono); font-size: 0.8rem; color: var(--text-3); }
+.ws .fw-big { margin-top: 0; }
+.ws-choice { margin: 0.5rem 0; line-height: 1.6; color: var(--ink); }
+.ws-box { display: inline-block; width: 0.95rem; height: 0.95rem; border: 1px solid var(--ink); vertical-align: -2px; margin-right: 0.45rem; }
+.ws-scroll { overflow-x: auto; margin-top: 1rem; }
+.ws-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.86rem; }
+.ws-table th { text-align: left; font-family: var(--mono); font-weight: 600; font-size: 0.74rem; color: var(--ink);
+  padding: 0.55rem 0.6rem; border: 1px solid var(--ink); background: var(--paper); vertical-align: bottom; }
+.ws-table td { height: 2.6rem; padding: 0.4rem 0.6rem; border: 1px solid var(--ink); }
+.ws-yn, .ws-c { text-align: center; color: var(--text-3); font-family: var(--mono); white-space: nowrap; }
+.ws-c { font-size: 1.1rem; }
+.ws-ladder { min-width: 760px; }
+.ws-qs li { font-weight: 500; color: var(--ink); }
+.ws-lines { margin: 0.4rem 0 1.4rem; }
+.ws-lines span { display: block; height: 2.2rem; border-bottom: 1px solid var(--text-3); }
+.ws-lines-tall span { height: 2.8rem; }
+.ws-checks { list-style: none; margin: 0.8rem 0 0; padding: 0; }
+.ws-checks li { display: flex; gap: 0.2rem; padding: 0.55rem 0; border-bottom: 1px solid var(--line); line-height: 1.55; color: var(--text-2); }
+.ws-checks .ws-box { flex: none; margin-top: 0.25rem; }
+@media print {
+  .nav, .bp-parcels, .ws-next, .footer { display: none; }
+  body::before { display: none; }
+  .bp-band { background: var(--paper); border: 0; }
+  .bp-sec { padding: 0.6rem 0; }
+  .ws-part { break-inside: avoid-page; }
+  .ws-scroll { overflow: visible; }
+  .ws-table { min-width: 0; }
+}

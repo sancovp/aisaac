@@ -116,7 +116,10 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    the opt-in form sits IN the hero beside the lead magnet shown as the thing (its contents page,
    drawn as a sheet of letter-size paper, outlined, no shadow) · the seven parts as outlined cards
    with a big grey numeral, the seventh (the question) full width · the FAQ reuses the leak tree ·
-   the three steps reuse the arrow nodes (§4).
+   the three steps reuse the arrow nodes (§4) · the AUTONOMY LADDER: the three roles across a split,
+   then the grades as rows (grade · its state in mono · what it means) · the bootcamp frameworks as
+   the same outlined cards. THE WORKSHEET (`framework-worksheet.html`, `.ws-*`): fill-in tables with
+   ink rules, writing lines, square tick boxes — and it PRINTS (the chrome drops out under print).
 
 ## The density gradient (still law)
 
