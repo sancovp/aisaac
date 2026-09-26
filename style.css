@@ -1811,8 +1811,8 @@ html.js .ledger > li.on {
 }
 
 /* ── THE PARCELS (*USER*'s ruling) — a little easter egg ─────────────────────
-   Five parcels on each of the two INNER blueprint columns (never the outer ones,
-   beside the cards). The page is cut into five equal stretches and each parcel
+   Ten parcels on each of the two INNER blueprint columns (never the outer ones,
+   beside the cards). The page is cut into ten equal stretches and each parcel
    shuttles back and forth inside ITS OWN stretch — so two parcels can never meet,
    anywhere — at staggered phases, so there is always one somewhere to catch. They
    live IN THE PAGE, not the viewport: scrolling passes them, they never follow it.
@@ -1826,16 +1826,21 @@ body { position: relative; }            /* so the layer spans the whole document
 .bp-parcels i {
   position: absolute; left: -9px; width: 18px; height: 18px;
   background: var(--pkg) center / contain no-repeat;
-  animation: parcel-shuttle 24s ease-in-out infinite alternate;
+  animation: parcel-shuttle 12s ease-in-out infinite alternate;
   animation-delay: var(--d);
 }
-/* each parcel's own stretch: from --a to --b, a fifth of the page apart */
-.bp-parcels i:nth-child(1) { --a: 0%;  --b: 20%;  --d: 0s; }
-.bp-parcels i:nth-child(2) { --a: 20%; --b: 40%;  --d: -9s; }
-.bp-parcels i:nth-child(3) { --a: 40%; --b: 60%;  --d: -17s; }
-.bp-parcels i:nth-child(4) { --a: 60%; --b: 80%;  --d: -5s; }
-.bp-parcels i:nth-child(5) { --a: 80%; --b: 100%; --d: -13s; }
-.bp-parcels .lane:nth-child(2) i { animation-direction: alternate-reverse; animation-duration: 29s; }
+/* each parcel's own stretch: from --a to --b, a tenth of the page apart */
+.bp-parcels i:nth-child(1) { --a: 0%;  --b: 10%;  --d: 0s; }
+.bp-parcels i:nth-child(2) { --a: 10%; --b: 20%;  --d: -7s; }
+.bp-parcels i:nth-child(3) { --a: 20%; --b: 30%;  --d: -3s; }
+.bp-parcels i:nth-child(4) { --a: 30%; --b: 40%;  --d: -10s; }
+.bp-parcels i:nth-child(5) { --a: 40%; --b: 50%;  --d: -5s; }
+.bp-parcels i:nth-child(6) { --a: 50%; --b: 60%;  --d: -1s; }
+.bp-parcels i:nth-child(7) { --a: 60%; --b: 70%;  --d: -8s; }
+.bp-parcels i:nth-child(8) { --a: 70%; --b: 80%;  --d: -4s; }
+.bp-parcels i:nth-child(9) { --a: 80%; --b: 90%;  --d: -11s; }
+.bp-parcels i:nth-child(10) { --a: 90%; --b: 100%; --d: -6s; }
+.bp-parcels .lane:nth-child(2) i { animation-direction: alternate-reverse; animation-duration: 14.5s; }
 @keyframes parcel-shuttle { from { top: var(--a); } to { top: calc(var(--b) - 18px); } }
 @media (max-width: 900px), (prefers-reduced-motion: reduce) { .bp-parcels { display: none; } }
 

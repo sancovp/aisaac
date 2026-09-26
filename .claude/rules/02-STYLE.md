@@ -30,9 +30,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 3. **The drafting sheet:** four faint vertical BLUEPRINT COLUMNS run the height of the page at
    the container's edges and its thirds (`body::before`); a band with its own ground covers them.
    **THE PARCELS** (`.bp-parcels`, *USER*'s ruling — a little easter egg, candy): isometric
-   yellow packages on the two INNER columns only — never the outer columns beside the cards. Five
-   per column: the page is cut into five equal stretches and each parcel shuttles back and forth
-   inside its OWN stretch (24 s / 29 s a pass, eased, staggered phases), so two parcels can never
+   yellow packages on the two INNER columns only — never the outer columns beside the cards. Ten
+   per column: the page is cut into ten equal stretches and each parcel shuttles back and forth
+   inside its OWN stretch (12 s / 14.5 s a pass, eased, staggered phases), so two parcels can never
    meet anywhere and one is always somewhere to catch. They live IN THE PAGE, not the viewport:
    scrolling passes them, they never follow it. The layer sits behind everything, so a parcel only
    shows crossing a gap between cards. Drawn, never the 📦 emoji. Off on phones (the inner columns
