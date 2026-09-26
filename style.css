@@ -1793,36 +1793,25 @@ html.js .ledger > li.on {
   padding: 0.38rem 0.9rem; background: var(--paper); line-height: 1;
 }
 
-/* ── THE PARCELS (*USER*'s ruling) ──────────────────────────────────────────
-   Little packages riding the four blueprint columns, up and down, slowly, the whole
-   page long. The layer is fixed and sits BEHIND everything (z -1, after the columns),
-   so every card and band covers it and a parcel only shows in the gaps between them.
-   Lanes alternate direction like conveyors; each lane carries three parcels spread
-   evenly by negative delays, and each lane its own offset (--o) so no two lanes march
-   in step. The page never loads empty. Reduced motion: gone. */
-.bp-parcels { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-.bp-parcels .lane { position: absolute; top: 0; bottom: 0; width: 18px; margin-left: -9px; }
-.bp-parcels .lane:nth-child(1) { left: calc(50% - 550px); }
-.bp-parcels .lane:nth-child(2) { left: calc(50% - 183px); }
-.bp-parcels .lane:nth-child(3) { left: calc(50% + 183px); }
-.bp-parcels .lane:nth-child(4) { left: calc(50% + 550px); }
+/* ── THE PARCELS (*USER*'s ruling) — a little easter egg ─────────────────────
+   TWO parcels, no more: one starts at the top of the page, one at the bottom, and
+   each drifts the page's full length and back, forever. They ride only the two
+   INNER blueprint columns (never the outer ones, beside the cards), and they live
+   IN THE PAGE, not the viewport — scrolling passes them like anything else. The
+   layer sits behind everything (z -1), so cards and bands cover them and a parcel
+   only shows crossing a gap. Phones (the inner columns sit at the screen edge
+   there) and reduced motion: none. */
+body { position: relative; }            /* so the layer spans the whole document */
+.bp-parcels { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .bp-parcels i {
-  position: absolute; left: 0; top: 0; width: 18px; height: 18px;
+  position: absolute; top: 0; width: 18px; height: 18px; margin-left: -9px;
   background: var(--pkg) center / contain no-repeat;
-  animation: parcel-down var(--dur) linear infinite;
-  animation-delay: calc(var(--dur) * (var(--k) + var(--o)) * -1);
+  animation: parcel-run 110s ease-in-out infinite alternate;
 }
-.bp-parcels .lane.up i { animation-name: parcel-up; }
-.bp-parcels .lane:nth-child(1) { --dur: 52s; --o: 0; }
-.bp-parcels .lane:nth-child(2) { --dur: 67s; --o: 0.14; }
-.bp-parcels .lane:nth-child(3) { --dur: 58s; --o: 0.53; }
-.bp-parcels .lane:nth-child(4) { --dur: 46s; --o: 0.81; }
-.bp-parcels i:nth-child(1) { --k: 0.05; }
-.bp-parcels i:nth-child(2) { --k: 0.38; }
-.bp-parcels i:nth-child(3) { --k: 0.71; }
-@keyframes parcel-down { from { transform: translateY(-30px); } to { transform: translateY(calc(100vh + 30px)); } }
-@keyframes parcel-up   { from { transform: translateY(calc(100vh + 30px)); } to { transform: translateY(-30px); } }
-@media (prefers-reduced-motion: reduce) { .bp-parcels { display: none; } }
+.bp-parcels i:nth-child(1) { left: calc(50% - 183px); }
+.bp-parcels i:nth-child(2) { left: calc(50% + 183px); animation-direction: alternate-reverse; }
+@keyframes parcel-run { from { top: 0; } to { top: calc(100% - 18px); } }
+@media (max-width: 900px), (prefers-reduced-motion: reduce) { .bp-parcels { display: none; } }
 
 /* ── the bands ─────────────────────────────────────────────────────────── */
 .bp-sec { padding: var(--sec-y) 1.5rem; }

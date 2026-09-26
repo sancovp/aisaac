@@ -29,11 +29,13 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    section heads (600). No other face on a presented page.
 3. **The drafting sheet:** four faint vertical BLUEPRINT COLUMNS run the height of the page at
    the container's edges and its thirds (`body::before`); a band with its own ground covers them.
-   **THE PARCELS ride them** (`.bp-parcels`, *USER*'s ruling): little isometric yellow packages,
-   three per column, moving slowly up or down (lanes alternate like conveyors, 46–67 s a pass,
-   each lane offset so none march in step). The layer is fixed and sits BEHIND everything, so
-   every card and band covers it — a parcel only shows in the gaps, or peeking past a card's edge.
-   Drawn, never the 📦 emoji (it renders differently on every device). Reduced motion: removed.
+   **THE PARCELS** (`.bp-parcels`, *USER*'s ruling — a little easter egg, candy): exactly TWO
+   isometric yellow packages, one on each INNER column — never the outer columns beside the
+   cards. One starts at the top of the page, one at the bottom, and each drifts the page's full
+   length and back, forever (110 s a pass, eased at the turns). They live IN THE PAGE, not the
+   viewport: scrolling passes them like any other content, they never follow it. The layer sits
+   behind everything, so a parcel only shows crossing a gap between cards. Drawn, never the 📦
+   emoji. Off on phones (the inner columns sit at the screen edge there) and under reduced motion.
 4. **The card** (`.bp-card`): paper, a 1px ink outline, radius `--r-bp` 28px. Inside it,
    **hairline dividers** (`.bp-rule` across, `.bp-split` down) — and a small square **NODE**
    (11px, paper fill, ink outline) wherever a divider meets the card's edge, like the handles a
