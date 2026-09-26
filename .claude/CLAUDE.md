@@ -23,6 +23,10 @@ Not a product. The totality. A way to run your life so everything compounds. Eve
 
 ## Page Inventory (19 pages + 27 blog posts)
 
+### Presented (the two pages the site shows — `.claude/rules/00-SITE-CANON.md` § WHAT IS PUBLIC)
+- `ai-transformation.html` — TWI's business page: one action, book a call
+- `isaac-wostrel-rubin.html` — Isaac's personal page: the paper, the book preview, the beliefs, the repos (BUILT by `tools/build_personal.py`)
+
 ### Router
 - `index.html` — 4-funnel survey (Sanctuary System / B2B / Wantrepreneur / PAIAB)
 
