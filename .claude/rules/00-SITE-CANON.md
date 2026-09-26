@@ -23,8 +23,9 @@ prompt, a guided prompt, or fully built logic" · the AI teams you could run · 
 business's health — website, marketing, reviews, speed to lead, after-hours support, lead
 generation, lead nurture, content presence — each opening into a LEAK TREE in *USER*'s structure:
 the numbers · but · so we · so that you · instead of — and its SOPs, which diagnose whether rebuilds
-or audits are needed; those become customizations, never stage one) · what it becomes (the deck's
-slide 5 arc — Foundation · Hardening · Closure, each with its RESULT verbatim — slide 3's "Fragmented.
+or audits are needed; those become customizations, never stage one) · what it becomes (a silent loop on top — `assets/what-it-becomes-loop.mp4`, source
+`video-aios/draw-the-box/becomes/`: one agent → agents wired across the org → one giant agent →
+the CEO alone again, which is its first frame — then the deck's slide 5 arc — Foundation · Hardening · Closure, each with its RESULT verbatim — slide 3's "Fragmented.
 Manual. Reactive. Unclear." → "More capability. Less friction. Real results.", and *USER*'s terminus:
 software that knows when to call outside to humans; the datafication cascade is NOT said, it is an
 open ruling in `docs/the-transformation-method-2026-09-17.md` §1a-bis) · who helps you (Isaac) ·
