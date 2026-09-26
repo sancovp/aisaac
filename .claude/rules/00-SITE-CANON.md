@@ -19,7 +19,7 @@ needs from it — his "stringly · harnessed stringly · full logic" rendered at
 prompt, a guided prompt, or fully built logic" · the AI teams you could run · and we also map the
 business's health — website, marketing, reviews, speed to lead, after-hours support, lead
 generation, lead nurture, content presence — and its SOPs, which diagnose whether rebuilds or audits
-are needed; those become customizations, never stage one) · who you would be talking to ·
+are needed; those become customizations, never stage one) · who you will be talking to ·
 book a call. No prices, no checkout; the ONE scroll choreography is the pinned pair (What I do stays
 while What you get slides over it — RULE 02 §10). Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
@@ -29,6 +29,10 @@ same pair the page's `<title>` and meta description carry: **"AI Transformation 
 Works."** / **"From manual processes to a more capable, efficient, and resilient business."** An
 agent never rewrites them, never merges deck lines into a new subheadline, and never swaps in an
 "avatar + problem" line of its own; a proposed change is asked, not shipped.
+
+**PRESUPPOSE THE CALL.** Page copy speaks as if the visitor is already booking: "who you'll be
+talking to", never the conditional "who you'd be talking to" — the conditional keeps the call
+hypothetical (the marketing register's presupposition and future-pacing).
 
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
 slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the
@@ -53,7 +57,7 @@ not being presented; the laws below govern each page whenever it is.
    SITE_ORIGIN (`https://sancovp.github.io/aisaac`) only in canonical/og.
 6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
    `Transformations With Isaac` — the company's name (TWI), and the only name in the chrome; the
-   hero's pill reads just `TWI`. The person the visitor would talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
+   hero's pill reads just `TWI`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
    about card names him so, and the footer and the prose say Isaac. His background ("How I got
    here") states only facts he gave: AI since 2023, agents for a film production company,
    philosophy and ontologies, what he has built, the Digital Twin of an Organization he is building. The legal entity (Ribcage Solutions, Inc.) never appears on the site; it lives in

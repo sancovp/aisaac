@@ -1939,7 +1939,7 @@ body { position: relative; }            /* so the layer spans the whole document
 }
 @media (max-width: 600px) { .get-list { grid-template-columns: 1fr; } }
 
-/* ── who you'd be talking to ───────────────────────────────────────────── */
+/* ── who you'll be talking to ───────────────────────────────────────────── */
 .about-split { grid-template-columns: 300px minmax(0, 1fr); }
 .about-split .portrait-frame { width: 100%; aspect-ratio: 4 / 5; }
 .about-split .booker-who { margin-bottom: 1.2rem; }
