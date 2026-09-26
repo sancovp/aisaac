@@ -7,7 +7,9 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## WHAT IS PUBLIC
 
-**One page is presented: `ai-transformation.html`.** It is five things and one action — the claim ·
+**One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
+the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is five things and one
+action — the claim ·
 the video (`assets/vsl.mp4`, full width, its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
 reduced motion; source `video-aios/draw-the-box/loop/` — and under it ONE blurb, the four levels of
@@ -36,11 +38,12 @@ not being presented; the laws below govern each page whenever it is.
    claimed · punch at the discourse, never at names · the arrogance budget equals the receipt balance.
 5. **LAYOUT** = the `_templates/` + `style.css` skeleton · relative in-page paths · the absolute
    SITE_ORIGIN (`https://sancovp.github.io/aisaac`) only in canonical/og.
-6. **ONE NAME: Isaac.** Every customer-visible surface — logo, footer, `<title>`, `og:title`, prose —
-   says it, and nothing else appears in the chrome. The legal entity (Ribcage Solutions, Inc.) never
-   appears on the site; it lives in `docs/`, the contracts and the Stripe statement. `AIsaac` is the
-   repository and the URL path, never a brand on a page. ⏸ OPEN, *USER*'s: whether `TWI` is retired
-   or stands beside the name (`Isaac — TWI` is still the `<title>` of 26 pages).
+6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
+   `TWI: Transforming the World, Incorporated` — the company's name, and the only name in the
+   chrome. The person the visitor would talk to is **Isaac**: the about card, the footer and the
+   prose say it. The legal entity (Ribcage Solutions, Inc.) never appears on the site; it lives in
+   `docs/`, the contracts and the Stripe statement. `AIsaac` is the repository and the URL path,
+   never a brand on a page.
 7. **EVERY SURFACE ANSWERS ITS OWN OF THE BUYER'S FIVE QUESTIONS.** Marketing is mostly organization:
    the organized thing should feel like finding a treasure trove. (a) does it LOOK LIKE the
    information is real, useful, what I need · (b) is there a lot, is it organized, will I get
@@ -96,7 +99,6 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- whether `TWI` is retired or stands beside the name (law 6)
 - where the sources marked absent above live
 - the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
 

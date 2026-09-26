@@ -38,8 +38,12 @@
 
 <a class="skip-link" href="#book">Skip to booking</a>
 
-<header class="nav">
-  <span class="logo">Isaac</span>
+<!-- THE TOP BAR — glass, sticky, never scrolls away, so the booking button is
+     always on screen. Its wordmark is a <span>, never a link: the page's one
+     exit is still the booking form. -->
+<header class="nav nav-glass">
+  <span class="logo">TWI: Transforming the World, Incorporated</span>
+  <button class="nav-book" type="button" data-buy="call">Book a call</button>
 </header>
 
 <main id="main">

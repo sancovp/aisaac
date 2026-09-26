@@ -10,8 +10,10 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 1. **Palette — paper and ink, nothing else.** `--paper #fff` · `--ink #000` (true black, never a
    tinted near-black) · `--text-2 #3d3d3d` · `--text-3 #6b6b6b` (the lightest text allowed, 5.3:1)
    · `--line #e6e6e6` (the blueprint columns). Every legacy accent token name (`--mercury-*`,
-   `--amber`) resolves to ink or a grey, so no page can carry a colour. The only colour on a page
-   comes from media (the films, the portrait). **No new colours, ever, without editing THIS rule.**
+   `--amber`) resolves to ink or a grey, so no page can carry a colour. **THE ONE COLOUR is
+   `--signal #e10600`, and it belongs to the top bar's BOOK A CALL button alone** (paper text on
+   it = 4.97:1). Every other colour on a page comes from media (the films, the portrait).
+   **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
    `geist-mono-var.woff2`, SIL OFL 1.1, licence beside them). **Geist Mono 700** carries every
    claim (h1), every number, every button and every label; **Geist** carries the prose and the h2
@@ -32,7 +34,13 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    INVERTS on hover (ink fill, paper text). On the ink band it is the same button inverted.
 8. **Frames** (`.artifact-frame`, `.portrait-frame`): paper, 1px ink outline, radius 22px, no glass,
    no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark.
-9. **Restraint:** no gradients, no glass blur, no glow, no shadows · motion only in the films and
+9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
+   hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the
+   wordmark `TWI: Transforming the World, Incorporated` on the left (a `<span>`, never a link) and
+   the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right —
+   the visitor can never not see the button. On a phone the wordmark wraps; the button never
+   leaves the screen.
+10. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion only in the films and
    in ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 
