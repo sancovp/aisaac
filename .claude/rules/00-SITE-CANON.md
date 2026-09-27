@@ -87,7 +87,8 @@ video-aios's STREAMER FORK (`video-aios/DESIGN.md` §A.-1.2: his footage as it i
 around him as this site's own Blueprint System cards, lists, diagrams and lit-up emphasis, the film moving between the room, the corner circle and full-frame explainers); each video plays when its section scrolls
 into view, the scroll holds on the section while it plays, and the text below stays as the reference.
 The scripts: `docs/framework-video-scripts.md` (seven — the top, the autonomy ladder, the bootcamp,
-build an AIOS, the levels, TOME, the community). ASPIRATIONAL until he records them; the player and
+build an AIOS, the levels, TOME, the community), made in `video-aios/framework-videos/` — the autonomy
+ladder is drafted there on a stand-in voice; the recordings are his, and ASPIRATIONAL until he makes them; the player and
 the scroll control are built when the first recording exists. Linked from nothing and `noindex`, because his own ordering rule stands: *the
 education/community product is downstream of a successful operating business, never a substitute
 for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on his word. It carries
