@@ -10,9 +10,10 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 **One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
 action — the hero (the claim and the red Book a call on the left; on the right the HERO LOOP
-`assets/hero-loop.mp4` (poster `assets/hero-loop-poster.jpg`) — the drawing alive: the owner leaning
-back while his company of people and cyan agents works on its own, wired together, light running along
-the wires, one line running to him; the characters of the "What it becomes" loop; silent, autoplaying,
+`assets/hero-loop-2.mp4` (poster `assets/hero-loop-2-poster.jpg`) — the drawing alive: the owner leaning
+back while his company of people and cyan agents works on its own, wired together — signals run along
+the wires, documents and messages pass between the desks, and the money flows back down the one line
+to him; the characters of the "What it becomes" loop; silent, autoplaying,
 looping, no controls, stopped on its poster under reduced motion; *USER*'s video, its white lifted to the
 card's #fff and its sound dropped. The still it animates, `assets/hero-owner.webp`, was made from
 `docs/hero-image-prompt.md`, source `docs/hero-refs/twi_atm_ceo_ez.png`) ·
