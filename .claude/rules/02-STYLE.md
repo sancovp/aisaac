@@ -34,8 +34,12 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
      label) is FILLED in the accent, and so are the nodes where its cards' dividers meet their edges; the white cards sit on the tint, and that contrast is what separates the
      sections. Utility sections (how it works · who it's for · questions · the story) stay plain or
      grain, so a colour always means something. Used on `framework.html`, `framework-worksheet.html`
-     and `isaac-wostrel-rubin.html`. ⛔ **`ai-transformation.html` stays BLACK AND WHITE** (*USER*'s
-     ruling) — no section tints there; greys may be added to it later, never a hue.
+     and `isaac-wostrel-rubin.html`. ⛔ **`ai-transformation.html` has NO tinted SECTIONS** (*USER*'s
+     ruling) — its sections stay black and white; the hue there lives only in TINTED CELLS
+     (`.bp-cell.cell-tint.tint-<hue>`: the cell on its hue's soft ground, its heading and icon in the
+     accent, a corner cell taking the card's radius), in exactly two places — What you get's cards
+     (every department gold · every piece of software cyan · the AI teams violet · your SOPs green)
+     and What it becomes' stages (Foundation gold → Hardening cyan → Closure violet).
    Every other colour on a page comes from media (the films, the portrait).
    **No new colours, ever, without editing THIS rule.**
 2. **Type — Geist + Geist Mono**, one family, self-hosted (`assets/fonts/geist-var.woff2`,
@@ -105,10 +109,12 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
    each branch — the numbers (with its source in small mono beneath) · but · *Before, you're* · so we · *After,
    you* (in ink, the dream) — BEFORE and AFTER frame the fix, and it ENDS on the dream. Each label is
-   the opening words of its sentence. Labels coloured per §1. No JS; keyboard-operable; the open is a 180ms fade that
+   the opening words of its sentence. Labels coloured per §1. Keyboard-operable; the open is a 180ms fade that
    reduced motion drops. The FIRST tree ships open, so the visitor sees what a row holds; the rest
    stay closed, and nothing opens on scroll — an opening tree pushes the pinned section's bottom
-   away while the reader is mid-section.
+   away while the reader is mid-section. With a MOUSE a tree OPENS ON HOVER (*USER*'s ruling;
+   `stack.js`): pointing at a row opens it, leaving closes a tree hover opened, a click pins it open
+   and a second click closes it; a tree already open is never closed by hover; touch keeps the tap.
 12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
    outlined square beside a card label — never an emoji (they render differently per device). Every
    card, step and group on `framework.html` carries one naming what it IS (a megaphone for PSA, a

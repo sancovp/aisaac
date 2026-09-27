@@ -32,3 +32,22 @@
     for (var j = 0; j < pins.length; j++) ro.observe(pins[j]);
   }
 })();
+
+/* THE LEAK TREES OPEN ON HOVER (*USER*'s ruling) — with a mouse only (a touch screen keeps the tap):
+   pointing at a row opens its tree, leaving closes a tree hover opened; a click PINS it open (and a
+   second click closes it, the native toggle). A tree that was already open is never closed by hover. */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll('details.leak').forEach(function (d) {
+    d.addEventListener('mouseenter', function () {
+      if (!d.open) { d.open = true; d.dataset.hoverOpen = '1'; }
+    });
+    d.addEventListener('mouseleave', function () {
+      if (d.dataset.hoverOpen) { d.open = false; delete d.dataset.hoverOpen; }
+    });
+    var s = d.querySelector('summary');
+    if (s) s.addEventListener('click', function (e) {
+      if (d.dataset.hoverOpen) { e.preventDefault(); delete d.dataset.hoverOpen; }
+    });
+  });
+})();

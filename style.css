@@ -1974,6 +1974,18 @@ body { position: relative; }            /* so the layer spans the whole document
 .get-ico svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.6;
                stroke-linecap: round; stroke-linejoin: round; }
 .get-v { color: var(--text-2); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 46ch; }
+/* a TINTED CELL (*USER*'s ruling on ai-transformation.html): the card's cell on its hue's soft ground,
+   its heading and icon in the accent — the What you get cards (department gold · software cyan · AI
+   teams violet · SOPs green) and the What it becomes stages (gold → cyan → violet). A tinted cell at
+   the card's corner takes the corner's radius, so the ground never squares off the outline. */
+.cell-tint { background: var(--t-bg); }
+.cell-tint .get-k { color: var(--t-ac); }
+.cell-tint .get-ico { border-color: var(--t-ac); }
+.cell-tint .get-ico svg { stroke: var(--t-ac); }
+.bp-card > .bp-split:first-child > .cell-tint:first-child { border-top-left-radius: calc(var(--r-bp) - 1px); }
+.bp-card > .bp-split:first-child > .cell-tint:last-child { border-top-right-radius: calc(var(--r-bp) - 1px); }
+.bp-card > .bp-split:last-child > .cell-tint:first-child { border-bottom-left-radius: calc(var(--r-bp) - 1px); }
+.bp-card > .bp-split:last-child > .cell-tint:last-child { border-bottom-right-radius: calc(var(--r-bp) - 1px); }
 /* THE LEAKS — each health item is a disclosure that opens into its tree (*USER*'s structure):
    the numbers · but · so we · so that you · instead of. Closed, it shows the item and its one
    hook; open, a vertical ink trunk with a tick to each branch — the blueprint drawing a tree. */
@@ -2030,6 +2042,11 @@ body { position: relative; }            /* so the layer spans the whole document
 /* ⛔ restate the stack AFTER the column counts above, or the 3-up survives onto phones */
 @media (max-width: 900px) {
   .get-top, .get-bottom { grid-template-columns: 1fr; }
+  /* stacked, a corner cell spans both corners of its edge and the inner cells none */
+  .bp-card > .bp-split:first-child > .cell-tint:first-child { border-top-right-radius: calc(var(--r-bp) - 1px); }
+  .bp-card > .bp-split:first-child > .cell-tint:last-child:not(:first-child) { border-top-right-radius: 0; }
+  .bp-card > .bp-split:last-child > .cell-tint:last-child { border-bottom-left-radius: calc(var(--r-bp) - 1px); }
+  .bp-card > .bp-split:last-child > .cell-tint:first-child:not(:last-child) { border-bottom-left-radius: 0; }
 }
 @media (max-width: 600px) { .leak summary { flex-direction: column; gap: 0.15rem; } }
 
