@@ -84,7 +84,7 @@ drafted). ⭐ ITS SHAPE (*USER*'s ruling): **a funnel of funnels** — every sec
 four beats, *these pains → this problem → this solution → this unique way*, carried by a short VIDEO
 OF ISAAC SAYING IT (people watch him, not illustrations) — shot in his desk chair and edited in
 video-aios's STREAMER FORK (`video-aios/DESIGN.md` §A.-1.2: his footage as it is, the explainers overlaid
-around him, the film moving between the room, the corner circle and full-frame explainers); each video plays when its section scrolls
+around him as this site's own Blueprint System cards, lists, diagrams and lit-up emphasis, the film moving between the room, the corner circle and full-frame explainers); each video plays when its section scrolls
 into view, the scroll holds on the section while it plays, and the text below stays as the reference.
 The scripts: `docs/framework-video-scripts.md` (seven — the top, the autonomy ladder, the bootcamp,
 build an AIOS, the levels, TOME, the community). ASPIRATIONAL until he records them; the player and
