@@ -8,8 +8,8 @@ stays below it as the reference for skimmers.
 
 **How to record (the streamer format — `video-aios/DESIGN.md` §A.-1.2):** sit in your desk chair,
 camera at eye level, landscape, framed from mid-chest up with room above your head and to both
-sides. The background is removed in the edit, so behind you: a plain wall, nothing moving, no window.
-Light from the front, not behind. Wear a solid colour that is not the wall's colour. Use the best
+sides — the explainers are overlaid in that space, so keep it clear. Your room stays in the shot as it
+is; keep what's behind you still. Light from the front, not behind. Use the best
 microphone you have — your voice is the whole soundtrack. One take per script; if a line goes wrong,
 pause and say it again — the edit cuts on your words. Read each line as written: one line per
 breath, no line relies on its punctuation.
