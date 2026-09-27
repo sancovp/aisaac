@@ -6,9 +6,13 @@ this solution → this unique way**, then hands the viewer to the next section. 
 section scrolls into view, the scroll holds on the section while it plays, and the section's text
 stays below it as the reference for skimmers.
 
-**How to record:** talking head, or talking over the section on screen — either works. One take per
-script is fine. Aim for the times given; every script is written to be said out loud, one line per
-breath (no line relies on its punctuation), so read it as written.
+**How to record (the streamer format — `video-aios/DESIGN.md` §A.-1.2):** sit in your desk chair,
+camera at eye level, landscape, framed from mid-chest up with room above your head and to both
+sides. The background is removed in the edit, so behind you: a plain wall, nothing moving, no window.
+Light from the front, not behind. Wear a solid colour that is not the wall's colour. Use the best
+microphone you have — your voice is the whole soundtrack. One take per script; if a line goes wrong,
+pause and say it again — the edit cuts on your words. Read each line as written: one line per
+breath, no line relies on its punctuation.
 
 **Sources:** the method (`docs/the-transformation-method-2026-09-17.md` §1, §1a) · the autonomy
 framework (avi-jw `AUTONOMY-MANIFESTO.md` §II.2–II.4) · the bootcamp (`b2b-bootcamp/`) · ChainCompiler

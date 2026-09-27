@@ -82,7 +82,9 @@ the skills repo exists). The opt-in lands on `framework-worksheet.html` — THE 
 printable worksheet of the seven parts, the autonomy ladder and the health check (a draft; his questions, the layout
 drafted). ⭐ ITS SHAPE (*USER*'s ruling): **a funnel of funnels** — every section runs the same
 four beats, *these pains → this problem → this solution → this unique way*, carried by a short VIDEO
-OF ISAAC SAYING IT (people watch him, not illustrations); each video plays when its section scrolls
+OF ISAAC SAYING IT (people watch him, not illustrations) — shot in his desk chair and edited in
+video-aios's STREAMER FORK (`video-aios/DESIGN.md` §A.-1.2: his matted footage, the explainers drawn
+around him, the film moving between the room, the corner circle and full-frame explainers); each video plays when its section scrolls
 into view, the scroll holds on the section while it plays, and the text below stays as the reference.
 The scripts: `docs/framework-video-scripts.md` (seven — the top, the autonomy ladder, the bootcamp,
 build an AIOS, the levels, TOME, the community). ASPIRATIONAL until he records them; the player and
