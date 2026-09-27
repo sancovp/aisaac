@@ -80,7 +80,13 @@ SC → SkillTree → GBA → COG → HBA); and TOME (the six stages that publish
 with one button to all of them as AI skills (a PLACEHOLDER link until
 the skills repo exists). The opt-in lands on `framework-worksheet.html` — THE FRAMEWORK ITSELF, a
 printable worksheet of the seven parts, the autonomy ladder and the health check (a draft; his questions, the layout
-drafted). Linked from nothing and `noindex`, because his own ordering rule stands: *the
+drafted). ⭐ ITS SHAPE (*USER*'s ruling): **a funnel of funnels** — every section runs the same
+four beats, *these pains → this problem → this solution → this unique way*, carried by a short VIDEO
+OF ISAAC SAYING IT (people watch him, not illustrations); each video plays when its section scrolls
+into view, the scroll holds on the section while it plays, and the text below stays as the reference.
+The scripts: `docs/framework-video-scripts.md` (seven — the top, the autonomy ladder, the bootcamp,
+build an AIOS, the levels, TOME, the community). ASPIRATIONAL until he records them; the player and
+the scroll control are built when the first recording exists. Linked from nothing and `noindex`, because his own ordering rule stands: *the
 education/community product is downstream of a successful operating business, never a substitute
 for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on his word. It carries
 no price, no tier, and not the datafication cascade (an open ruling). Its button is INK: red means
@@ -175,7 +181,7 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- `framework.html`: the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
+- `framework.html`: the seven section videos (scripts written, `docs/framework-video-scripts.md`; recording is his) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
 
 - where the sources marked absent above live
 - the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
