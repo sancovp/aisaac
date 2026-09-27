@@ -1904,7 +1904,7 @@ body { position: relative; }            /* so the layer spans the whole document
 .hero-copy { min-width: 0; padding: clamp(1.6rem, 3.4vw, 3rem); }
 .hero-art { min-width: 0; align-self: stretch; overflow: hidden; display: flex; align-items: center;
   border-top-right-radius: calc(var(--r-bp) - 1px); }
-.hero-art img { display: block; width: 130%; max-width: none; height: auto; }
+.hero-art img, .hero-art video { display: block; width: 130%; max-width: none; height: auto; }
 /* who it's for — heads the film: a mono key, then the avatar in prose */
 .hero-for { margin: 0 0 1.4rem; max-width: 72ch;
   font-size: 1rem; line-height: 1.6; color: var(--text-2); }
@@ -1913,7 +1913,7 @@ body { position: relative; }            /* so the layer spans the whole document
 @media (max-width: 900px) {
   .hero-split { grid-template-columns: 1fr; }
   .hero-art { border-top-right-radius: 0; }
-  .hero-art img { width: 135%; }
+  .hero-art img, .hero-art video { width: 135%; }
 }
 /* ⛔ THE FILM IS THE PAGE — it fills the card's lower sheet edge to edge */
 .solo-vsl { width: 100%; margin: 0; border-radius: var(--r-lg); }
