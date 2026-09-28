@@ -190,7 +190,9 @@ key lives in the Worker's secrets, never in a page. Adding one edits the relay's
 **REFERRAL PARTNERS ride direction ①.** The partner network is REFERRAL ONLY: agencies send clients and
 *USER* delivers (partners delivering the mapping themselves is a later model, not yet designed). A partner's
 link carries `?ref=<code>`; the site keeps the code for the visitor's return visits, and the relay passes it
-with every submission so the GoHighLevel contact carries its partner — attribution the commission is paid on.
+with every submission so the GoHighLevel contact carries its partner — attribution the commission is paid on. The
+working commission: a flat **$1,000 per referred client who closes**, paid after their first payment clears
+(the numbers are *USER*'s and still moving).
 
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
 automation updates it by COMMITTING to `main`; Cloudflare republishes. Its triggers: CRONS (a schedule) ·
@@ -235,7 +237,7 @@ Paths below marked ✓ resolve here.
 
 - hosting: the Cloudflare account, the three domains and the repo connected in Pages (§ HOSTING AND AUTOMATIONS) · the GoHighLevel account and plan · the A2P 10DLC texting registration (the legal entity and its EIN) · which of his own systems receive events, and where they are reachable
 - where the sources marked absent above live
-- the referral terms: the commission, one-time or recurring, the attribution window, when payouts happen
+- the referral terms: the final commission (working: $1,000 flat per closed client), the attribution window
 - the repo-name L3 exception · the watch.html build · merge-source deletions
 
 ## MAINTENANCE
