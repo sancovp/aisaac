@@ -142,8 +142,10 @@ not being presented; the laws below govern each page whenever it is.
    origin only in canonical/og and `_next` — `https://iwantaiformybusiness.com` (clean paths, no `.html`) on
    the four business pages, `https://sancovp.github.io/aisaac` on every other page · every form action is
    the relay, `https://iwantaiformybusiness.com/api/lead`.
-6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
-   `AI Transformations With Isaac` — the company's name (TWI), and the only name in the chrome; the
+6. **THE NAMES: the company in the chrome, Isaac in person.** **TWI** (Transformations With Isaac) is
+   Isaac's own brand and the holding company over everything he sells — his channel is TWI. **AiTWI**
+   (AI Transformations With Isaac) is THIS business, one company under TWI. The business pages' top-bar
+   wordmark is `AI Transformations With Isaac`, the only name in the chrome; the
    hero's pill names who the page is for: `Business Owners:`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
    about card names him so, and the footer and the prose say Isaac. His background ("How I got
    here") states only facts he gave: AI since 2023, agents for a film production company,
