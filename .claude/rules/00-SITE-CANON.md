@@ -17,7 +17,7 @@ to him; the characters of the "What it becomes" loop; silent, autoplaying,
 looping, no controls, stopped on its poster under reduced motion; *USER*'s video, its white lifted to the
 card's #fff and its sound dropped. The still it animates, `assets/hero-owner.webp`, was made from
 `docs/hero-image-prompt.md`, source `docs/hero-refs/twi_atm_ceo_ez.png`) ·
-the video (`assets/vsl.mp4` until it moves to YouTube — the VSL is HOSTED ON YOUTUBE, UNLISTED, *USER*'s upload, and embedded here with YouTube's own controls hidden and `vsl.js`'s drawn over it, so the runtime is still never shown; full width under the hero, headed by the WHO IT'S FOR line, STARTING WITH SOUND where the browser allows it, else
+the video (HOSTED ON YOUTUBE, UNLISTED — `RfLhKVoWAAU`, *USER*'s upload of the streamer-shell VSL, `video-aios/framework-videos` `Vsl` — embedded with YouTube's own controls hidden and `vsl.js`'s drawn over it, so the runtime is still never shown; full width under the hero, headed by the WHO IT'S FOR line, STARTING WITH SOUND where the browser allows it, else
 silent until the visitor's first click turns the sound on — RULE 02 §8; its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
 reduced motion; source `video-aios/draw-the-box/loop/` — and under it ONE blurb, the four levels of

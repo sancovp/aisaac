@@ -28,12 +28,10 @@
   });
 })();
 
-(function () {
-  var frame = document.querySelector('.artifact-frame.vsl');
-  if (!frame) return;
-  var v = frame.querySelector('video');
-  if (!v) return;
-
+/* THE PLAYER drives `v` — the page's <video>, or a YouTube embed behind the same face (youtube(), below):
+ * the VSL is hosted on YouTube, unlisted, and plays here with YouTube's own controls hidden, so the
+ * runtime is never shown there either. */
+function drive(frame, v) {
   v.removeAttribute('controls');          // JS is here, so take the clock away
   frame.classList.add('vsl-custom');
 
@@ -166,4 +164,72 @@
   var tried = v.play();
   if (tried && tried.then) tried.then(function () {}, silentPreview);
   else if (v.paused) silentPreview();
+}
+
+/* A YOUTUBE EMBED WEARING THE <video> FACE drive() uses: play · pause · paused · muted · currentTime ·
+ * duration · the play/pause/timeupdate events · click (taken by a clear layer over the iframe, which also
+ * keeps YouTube's own hover bar and "more videos" off the film). play() resolves when YouTube reports it
+ * playing and rejects when the browser refused (sound before a gesture), which is how drive() falls back
+ * to the silent preview. Without JS the iframe plays on its own, YouTube's click-to-play. */
+function youtube(frame, iframe, ready) {
+  var hit = document.createElement('div');
+  hit.style.cssText = 'position:absolute;inset:0;z-index:1;cursor:pointer;background:transparent';
+  iframe.insertAdjacentElement('afterend', hit);
+  var on = {}, state = -1, player;
+  var emit = function (t) { (on[t] || []).forEach(function (fn) { fn({ type: t }); }); };
+  var v = {
+    removeAttribute: function () {}, setAttribute: function () {},
+    get paused() { return state !== 1 && state !== 3; },
+    get muted() { return player.isMuted(); },
+    set muted(m) { if (m) player.mute(); else player.unMute(); },
+    get currentTime() { return player.getCurrentTime(); },
+    set currentTime(t) { player.seekTo(t, true); },
+    get duration() { return player.getDuration(); },
+    pause: function () { player.pauseVideo(); },
+    play: function () {
+      player.playVideo();
+      return new Promise(function (ok, no) {
+        var t0 = Date.now();
+        (function check() {
+          if (state === 1) return ok();
+          if (Date.now() - t0 > 1800) return no(new Error('refused'));
+          setTimeout(check, 150);
+        })();
+      });
+    },
+    addEventListener: function (t, fn, cap) {
+      if (t === 'click') return hit.addEventListener(t, fn, cap);
+      (on[t] = on[t] || []).push(fn);
+    },
+    removeEventListener: function (t, fn, cap) {
+      if (t === 'click') return hit.removeEventListener(t, fn, cap);
+      on[t] = (on[t] || []).filter(function (x) { return x !== fn; });
+    },
+  };
+  var boot = function () {
+    player = new YT.Player(iframe, { events: {
+      onReady: function () { setInterval(function () { if (state === 1) emit('timeupdate'); }, 250); ready(v); },
+      onStateChange: function (e) {
+        state = e.data;
+        // the film burns in its own captions; YouTube's (auto-shown while muted) would double them
+        if (state === 1) { try { player.unloadModule('captions'); } catch (err) {} emit('play'); }
+        if (state === 2 || state === 0) emit('pause');
+      },
+    } });
+  };
+  if (window.YT && window.YT.Player) return boot();
+  var prev = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = function () { if (prev) prev(); boot(); };
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+}
+
+(function () {
+  var frame = document.querySelector('.artifact-frame.vsl');
+  if (!frame) return;
+  var video = frame.querySelector('video');
+  if (video) return drive(frame, video);
+  var iframe = frame.querySelector('iframe[data-youtube]');
+  if (iframe) youtube(frame, iframe, function (v) { drive(frame, v); });
 })();

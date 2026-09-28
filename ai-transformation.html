@@ -97,11 +97,11 @@
                sound before a click, it plays silently and the first click anywhere (or
                "Watch with sound") turns the sound on from the top — vsl.js. -->
           <div class="artifact-frame vsl solo-vsl">
-            <video controls preload="auto" playsinline
-                   poster="assets/vsl-poster.jpg" width="1920" height="1080">
-              <source src="assets/vsl.mp4" type="video/mp4">
-              Your browser cannot play this video.
-            </video>
+            <!-- the VSL is hosted on YouTube, unlisted (RfLhKVoWAAU); vsl.js drives it with YouTube's controls
+                 hidden, so the runtime is never shown. Without JS it is YouTube's own click-to-play. -->
+            <iframe data-youtube="RfLhKVoWAAU" title="Transformations With Isaac — the video" width="1920" height="1080"
+                    src="https://www.youtube-nocookie.com/embed/RfLhKVoWAAU?enablejsapi=1&amp;controls=0&amp;cc_load_policy=0&amp;rel=0&amp;playsinline=1&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0&amp;modestbranding=1"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="eager"></iframe>
           </div>
         </div>
       </div>
@@ -537,7 +537,7 @@
   </form>
 </dialog>
 
-<script src="vsl.js?v=2026-09-26t"></script>
+<script src="vsl.js?v=2026-09-28d"></script>
 <script src="stack.js?v=2026-09-27c"></script>
 <script src="ref.js?v=2026-09-28a"></script>
 <script src="capture.js?v=2026-09-28a"></script>
