@@ -17,7 +17,7 @@ to him; the characters of the "What it becomes" loop; silent, autoplaying,
 looping, no controls, stopped on its poster under reduced motion; *USER*'s video, its white lifted to the
 card's #fff and its sound dropped. The still it animates, `assets/hero-owner.webp`, was made from
 `docs/hero-image-prompt.md`, source `docs/hero-refs/twi_atm_ceo_ez.png`) ·
-the video (`assets/vsl.mp4`, full width under the hero, headed by the WHO IT'S FOR line, STARTING WITH SOUND where the browser allows it, else
+the video (`assets/vsl.mp4` until it moves to YouTube — the VSL is HOSTED ON YOUTUBE, UNLISTED, *USER*'s upload, and embedded here with YouTube's own controls hidden and `vsl.js`'s drawn over it, so the runtime is still never shown; full width under the hero, headed by the WHO IT'S FOR line, STARTING WITH SOUND where the browser allows it, else
 silent until the visitor's first click turns the sound on — RULE 02 §8; its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
 reduced motion; source `video-aios/draw-the-box/loop/` — and under it ONE blurb, the four levels of
@@ -139,7 +139,9 @@ not being presented; the laws below govern each page whenever it is.
 4. **VOICE:** scoreboard readings, not verdicts ("is losing", never "is a loser") · shown, never
    claimed · punch at the discourse, never at names · the arrogance budget equals the receipt balance.
 5. **LAYOUT** = the `_templates/` + `style.css` skeleton · relative in-page paths · the absolute
-   SITE_ORIGIN (`https://iwantaiformybusiness.com`) only in canonical/og, form actions and `_next`.
+   origin only in canonical/og and `_next` — `https://iwantaiformybusiness.com` (clean paths, no `.html`) on
+   the four business pages, `https://sancovp.github.io/aisaac` on every other page · every form action is
+   the relay, `https://iwantaiformybusiness.com/api/lead`.
 6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
    `Transformations With Isaac` — the company's name (TWI), and the only name in the chrome; the
    hero's pill names who the page is for: `Business Owners:`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
@@ -181,11 +183,14 @@ not being presented; the laws below govern each page whenever it is.
 
 ## HOSTING AND AUTOMATIONS — the site's two directions
 
-THE SITE IS LIVE AT `https://iwantaiformybusiness.com`. Every form posts to its relay
-(`https://iwantaiformybusiness.com/api/lead` — absolute, so the old GitHub Pages copy at
-`sancovp.github.io/aisaac`, still built from the same `main`, posts there too); the relay's destination list
-holds Formspree (the lead emails, unchanged) until GoHighLevel joins it. Every canonical, og and `_next` URL
-is the address.
+THE BUSINESS IS LIVE AT `https://iwantaiformybusiness.com` — and ONLY the business: the landing page (its
+home), the framework page and its worksheet, and the partners page, with their scripts and media; any other
+address there goes to the home. EVERYTHING ELSE — the personal page, the blog, the notes, the older pages —
+stays at `https://sancovp.github.io/aisaac` (GitHub Pages, from the same `main`), where the blog publisher
+keeps publishing. Every form, on either site, posts to the relay (`https://iwantaiformybusiness.com/api/lead`);
+its destination list holds Formspree (the lead emails, unchanged) until GoHighLevel joins it.
+⏸ OPEN (*USER*'s): an "Isaac" domain of his own for the personal page (and whether any other page joins the
+business domain).
 
 **THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), bought at Cloudflare's
 registrar and attached to the Worker with `www.iwantaiformybusiness.com` (which 301s to it). The presented
@@ -197,7 +202,8 @@ routes — `worker.js` already sends it to the address.
 builds and deploys it on every push to `main`; there is no build step and no GitHub workflow. `wrangler.jsonc`
 is its settings; `worker.js` runs FIRST on every request: the other domains (and `www`) → a 301 to
 `iwantaiformybusiness.com` on the same path · `POST /api/lead` and `POST /api/stripe` → the relay · `/` → the
-presented page · everything else → the repo's files. `.assetsignore` keeps what is not the site off the
+presented page · the business pages, their scripts and `assets/` → the repo's files · any other address →
+the home. `.assetsignore` keeps what is not the site off the
 domain: every dot-file (the rules), `docs/`, `_templates/`, `tools/`, `scripts/`, the Worker's own source.
 THE RELAY'S FILES: `functions/api/lead.js` (forms) · `functions/api/stripe.js` (payments) · `lib/relay.js`
 (the destination list and the push, shared) · `ref.js` (the partner code). Secrets live in the Worker's

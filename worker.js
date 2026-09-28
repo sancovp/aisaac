@@ -4,7 +4,9 @@
  *   one address   every other domain we own (and www) → https://iwantaiformybusiness.com, same path, 301
  *   the relay     POST /api/lead   (every form)  · POST /api/stripe (Stripe's payment webhook)
  *   the home      /  →  the presented page, ai-transformation.html
- *   the files     everything else, from the repo (.assetsignore keeps the rules, docs and tooling out)
+ *   THE BUSINESS ONLY — this domain serves the Blueprint business pages (the landing page, the framework and
+ *                 its worksheet, the partners page), their scripts and their media; any other address → the
+ *                 home. The rest of the old site stays at sancovp.github.io/aisaac.
  *
  * The relay's handlers live in functions/api/*.js and lib/relay.js; secrets (DESTINATIONS,
  * STRIPE_WEBHOOK_SECRET) live in the Worker's settings, never in a file.
@@ -13,6 +15,13 @@ import { onRequestPost as lead } from './functions/api/lead.js';
 import { onRequestPost as stripe } from './functions/api/stripe.js';
 
 const PRIMARY = 'iwantaiformybusiness.com';
+/** what this domain serves: its pages (with or without .html), their scripts, and the media under assets/ */
+const PAGES = ['/ai-transformation', '/framework', '/framework-worksheet', '/partners'];
+const FILES = ['/style.css', '/vsl.js', '/stack.js', '/ref.js', '/capture.js'];
+const served = (path) => {
+  const page = path.replace(/\.html$/, '').replace(/\/$/, '');
+  return PAGES.includes(page) || FILES.includes(path) || path.startsWith('/assets/');
+};
 const REDIRECT_HOSTS = [
   'www.iwantaiformybusiness.com',
   'runmybusinessonai.com', 'www.runmybusinessonai.com',
@@ -35,6 +44,8 @@ export default {
     if (url.pathname === '/') {
       return env.ASSETS.fetch(new Request(new URL('/ai-transformation', url), request));
     }
+
+    if (!served(url.pathname)) return Response.redirect(`${url.origin}/`, 302);
 
     return ranged(request, await env.ASSETS.fetch(request));
   },
