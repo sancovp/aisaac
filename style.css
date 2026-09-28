@@ -1941,14 +1941,16 @@ body { position: relative; }            /* so the layer spans the whole document
   font-family: var(--mono); font-size: 0.86rem; font-weight: 600; color: var(--ink);
 }
 
-/* ── THE PINNED STACK — What I do → What you get → Who helps you ────────────
-   Each .pin scrolls fully into view and then STAYS (sticky, its top measured by
-   stack.js), and the next .sheet slides up over it: opaque paper carrying its own
-   blueprint columns, an ink edge on top, at least a screen tall — so when the
-   stack ends and the pins let go, everything under the last sheet is already off
-   screen. Later siblings paint above earlier ones. */
+/* ── THE PINNED STACK — What I do → What you get → What it becomes → Who helps you ──
+   Each .pin sticks under the nav as its top reaches it; while it is read, stack.js moves
+   its content at half the scroll speed until its last line is on screen, and the next
+   .sheet arrives exactly then and slides up over it: opaque paper carrying its own
+   blueprint columns, an ink edge on top, at least a screen tall — so when the stack ends
+   and the pins let go, everything under the last sheet is already off screen. Sticky only
+   once stack.js runs (.is-live); without it the sections just scroll. Later siblings paint
+   above earlier ones. */
 .pin-stack { position: relative; }
-.pin-stack > .pin { position: sticky; top: var(--pin-top, 0px); }
+.pin-stack.is-live > .pin { position: sticky; top: var(--pin-top, 0px); }
 .pin-stack > .sheet {
   background: var(--bp-columns), var(--paper);
   border-top: 1px solid var(--ink);

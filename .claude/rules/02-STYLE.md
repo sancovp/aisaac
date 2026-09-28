@@ -98,13 +98,16 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
 10. **The pinned stack** (`.pin-stack`, `stack.js`, *USER*'s ruling): What I do → What you get →
-   What it becomes → Who helps you. Each `.pin` scrolls fully into view and STAYS while the next `.sheet` slides up
-   over it like a sheet laid on top — opaque paper carrying its own blueprint columns, an ink edge
-   on top, at least a screen tall. Each pin point is MEASURED (`min(nav height, viewport − section
-   height)`), so a section taller than the screen pins only once its bottom is visible and nothing
-   is covered unread. A pinned section that changes height (a reader opening a leak tree) is
-   re-measured on the spot (`ResizeObserver`). The wrapper ends every pin with the stack, so no
-   pinned section shows through later ones. JS off: normal scroll.
+   What it becomes → Who helps you. **THE HOLD IS WHILE YOU READ, NEVER AFTER.** Each `.pin` sticks
+   under the nav the moment its top reaches it; from then the reader's scroll moves its content at
+   HALF SPEED until its last line is on screen, so a section cannot be flicked past. The next `.sheet`
+   (opaque paper carrying its own blueprint columns, an ink edge on top, at least a screen tall) is
+   timed to arrive exactly then — its top margin is the extra scroll the slowdown costs — and slides
+   up over a section that has just been read; nothing ever sits frozen waiting to be covered. A
+   section that fits the screen has nothing to slow, so the next sheet simply slides over it. A pinned
+   section that changes height (a reader opening a leak tree) is re-measured on the spot
+   (`ResizeObserver`). The wrapper ends every pin with the stack, so no pinned section shows through
+   later ones. The pins go sticky only once `stack.js` runs (`.is-live`): JS off, normal scroll.
 11. **The leak tree** (`.leak`, a native `<details>`): closed, one row — the item in mono and its
    one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
    each branch — the numbers (with its source in small mono beneath) · but · *Before, you're* · so we · *After,
