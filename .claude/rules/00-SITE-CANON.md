@@ -192,7 +192,11 @@ key lives in the Worker's secrets, never in a page. Adding one edits the relay's
 link carries `?ref=<code>`; the site keeps the code for the visitor's return visits, and the relay passes it
 with every submission so the GoHighLevel contact carries its partner — attribution the commission is paid on. The
 working commission: a flat **$1,000 per referred client who closes**, paid after their first payment clears
-(the numbers are *USER*'s and still moving).
+(the numbers are *USER*'s and still moving). Sales close on a call and are PAID THROUGH STRIPE, so the payment
+is the trigger: Stripe's webhook reaches the relay (`/api/stripe`), which finds the GoHighLevel contact by the
+payer's email — a referred client's first payment marks the deal won and records "pay <partner> $1,000"; a
+refund cancels an unpaid one; an email that matches no contact is flagged for *USER* to match. No GHL
+affiliate module: the partner lives on the contact, the commission in one workflow, payouts by hand monthly.
 
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
 automation updates it by COMMITTING to `main`; Cloudflare republishes. Its triggers: CRONS (a schedule) ·
