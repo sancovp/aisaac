@@ -170,6 +170,36 @@ not being presented; the laws below govern each page whenever it is.
     downstream. Funnel category = simulations-and-world-loops. The h1 scoreboard line returns only
     when a scoreboard page is published.
 
+## HOSTING AND AUTOMATIONS — the site's two directions
+
+⏳ ASPIRATIONAL until the Cloudflare account exists; today the site is served by GitHub Pages from `main`.
+
+**THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), with
+`runmybusinessonai.com` and `iwantaiinmybusiness.com` redirecting to it; all three bought at Cloudflare's
+registrar. The presented page is its home; `framework.html` lives at `/framework`. When it goes live, law
+5's SITE_ORIGIN, every canonical/og URL and every form's `_next` move to it in one commit.
+
+**THE HOST:** Cloudflare Pages, connected to this repo — a push to `main` republishes the site. There is no
+build step and no GitHub workflow.
+
+**DIRECTION ① — LEADS, the world → GoHighLevel (push only).** Every form on the site posts to THE RELAY, a
+Cloudflare Worker: it checks the submission, labels it (which page, which form), and pushes it by webhook to
+each destination on its list — GoHighLevel first (the CRM; its own Workflows run everything after: pipeline,
+texts, calls, email, speed to lead, AI chat/voice). A destination is any URL that accepts an HTTP POST; its
+key lives in the Worker's secrets, never in a page. Adding one edits the relay's list, never a page.
+
+**DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
+automation updates it by COMMITTING to `main`; Cloudflare republishes. Its triggers: CRONS (a schedule) ·
+EVENTS from GoHighLevel (a workflow's outbound webhook → the relay → the automation: a deal won, a review)
+· EVENTS from *USER*'s own systems (a build shipped, a paper or post finished). The automations run AI where
+the change needs writing, on *USER*'s machine or a server — never inside the relay. The existing instance is
+cave-unicorn's nightly blog publisher (`application/cave-unicorn`, `fire_site_publish`). Automations write
+DATA a page renders (the `tools/build_*.py` pattern) rather than hand-editing layout, and every law above
+binds an automated commit exactly as it binds an agent's.
+
+**THE BUSINESS RUNS ON GOHIGHLEVEL; THE WEBSITE STAYS HERE.** The site is not ported into GHL's page builder:
+its design system, films and scroll choreography live in this repo under git.
+
 ## THE SOURCE MAP — per surface, what you READ to know what goes there
 
 ⛔ **SOURCES NOT ON THIS MACHINE.** `~/aios-research/`, `~/repo/garage-lab/`, `~/repo/dark-factory/`
@@ -198,8 +228,10 @@ Paths below marked ✓ resolve here.
 
 - `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
 
+- hosting: the Cloudflare account, the three domains and the repo connected in Pages (§ HOSTING AND AUTOMATIONS) · the GoHighLevel account and plan · the A2P 10DLC texting registration (the legal entity and its EIN) · which of his own systems receive events, and where they are reachable
+- whether automated prose commits straight to `main` or waits for his yes
 - where the sources marked absent above live
-- the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
+- the repo-name L3 exception · the watch.html build · merge-source deletions
 
 ## MAINTENANCE
 
