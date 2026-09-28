@@ -36,6 +36,31 @@ export default {
       return env.ASSETS.fetch(new Request(new URL('/ai-transformation', url), request));
     }
 
-    return env.ASSETS.fetch(request);
+    return ranged(request, await env.ASSETS.fetch(request));
   },
 };
+
+/** VIDEO NEEDS BYTE RANGES: Safari will not play a <video> whose server answers a Range request with the
+ *  whole file (200) instead of the slice (206), and the assets binding answers 200 when the Worker runs
+ *  first. So a Range request for a whole-file answer is cut here: `bytes=a-b`, `bytes=a-`, `bytes=-n`.
+ *  Files are ≤ 25 MB (Cloudflare's per-asset limit), so the slice is taken in memory. */
+async function ranged(request, res) {
+  const range = request.headers.get('Range');
+  if (!range || res.status !== 200 || request.method !== 'GET') return res;
+  const m = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+  if (!m || (m[1] === '' && m[2] === '')) return res;
+  const buf = await res.arrayBuffer();
+  const size = buf.byteLength;
+  let start, end;
+  if (m[1] === '') { start = Math.max(0, size - Number(m[2])); end = size - 1; }
+  else { start = Number(m[1]); end = m[2] === '' ? size - 1 : Math.min(Number(m[2]), size - 1); }
+  const headers = new Headers(res.headers);
+  headers.set('Accept-Ranges', 'bytes');
+  if (start >= size || start > end) {
+    headers.set('Content-Range', `bytes */${size}`);
+    return new Response(null, { status: 416, headers });
+  }
+  headers.set('Content-Range', `bytes ${start}-${end}/${size}`);
+  headers.set('Content-Length', String(end - start + 1));
+  return new Response(buf.slice(start, end + 1), { status: 206, headers });
+}
