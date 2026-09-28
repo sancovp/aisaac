@@ -15,13 +15,11 @@
  * Stripe page is still a lead. That was the original reason the form existed
  * and the redesign does not get to lose it.
  *
- * ⛔ ONE CONSENT PER CHANNEL, AND NOT ONE OF THEM IS REQUIRED.
- * (Superseded, kept: this said "required for the call, optional for a
- * purchase" until the channels were split out. It is now optional everywhere,
- * for two reasons that both bind: "not a condition of purchase" is a REQUIRED
- * element of US prior-express-written consent, and a sale gated on marketing
- * consent is not freely given under GDPR. Replying to somebody's own enquiry
- * is transactional and needs no permission at all.)
+ * ⛔ ONE OPTIONAL CONSENT — AI texts and calls (recording included) — and a line saying email replies
+ * come either way. Nothing is required: "not a condition of purchase" is a required element of US
+ * prior-express-written consent, and a sale gated on marketing consent is not freely given under GDPR.
+ * Replying to somebody's own enquiry is transactional and needs no permission at all. The reasons the
+ * box is one box, not four, are written above the fieldset in the page.
  *
  * ⛔ THE AUDIT RECORD IS THE POINT, NOT THE TICK. `consent_record` submits the
  * EXACT SENTENCE of every box they ticked, with a timestamp, the page and the
@@ -126,7 +124,7 @@
   // area, so a click landing on it rather than on the form means outside
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 
-  /* ⛔ THE PHONE FIELD EXISTS ONLY WHEN A PHONE CONSENT IS TICKED, and is
+  /* ⛔ THE PHONE FIELD EXISTS ONLY WHEN THE AI-CONTACT CONSENT IS TICKED, and is
      required only then. Asking for a mobile nobody consented to use is
      collecting data with no basis; asking for none while they tick "text me"
      is a consent that names no number, which under US rules is not one. */

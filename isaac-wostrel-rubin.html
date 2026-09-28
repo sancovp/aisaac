@@ -368,7 +368,7 @@
          is the CALL page so that a no-JS submit still lands somewhere real. -->
     <input type="hidden" name="_next" value="https://cal.com/aisaac/ai-transformation-discovery-call">
     <input type="hidden" name="intent" value="call">
-    <input type="hidden" name="consent_version" value="2026-09-20">
+    <input type="hidden" name="consent_version" value="2026-09-28">
 
     <div class="lead-row">
       <label class="lead-field"><span>Your name</span>
@@ -402,81 +402,50 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════
-         THE CONSENTS — ONE PER CHANNEL. Isaac, 2026-09-20: "add all the
-         consents we need. SMS, voice, etc... We make and/or recommend AI SMS
-         text services. Do you consent to us contacting you through them which
-         also demos what we can do for you? Etc just ask that repeatedly"
-
-         ⭐ THE FRAME IS HIS AND IT IS THE RIGHT ONE: the outreach IS the demo.
-         That is `anti-case-study.md` applied to the opt-in — "never fake case
-         studies, the system IS the proof." Saying yes to the AI text is how
-         they see the AI text.
-
-         ⛔ ONE TICK PER CHANNEL, NEVER ONE TICK FOR ALL OF THEM. Bundled
-         consent is invalid consent — under GDPR because it is not specific,
-         and under US telecom rules because email permission has never covered
-         an automated call. They are separate boxes because they are
-         separate permissions.
-
-         ⛔ EVERY BOX IS OPTIONAL AND THE PAGE SAYS SO OUT LOUD. Two reasons,
-         both load-bearing: "not a condition of purchase" is a REQUIRED element
-         of prior express written consent in the US, and conditioning a sale on
-         marketing consent is what GDPR treats as not freely given. Replying to
-         someone's own enquiry is transactional and needs none of these.
-
-         ⛔ SMS AND VOICE CARRY THE REAL EXPOSURE. US TCPA wants prior express
-         WRITTEN consent for automated/AI calls and texts to a mobile, with
-         statutory damages per message — so those two boxes name the automation
-         explicitly, name the number, and carry the frequency, the rates and
-         the STOP instruction. Recording is a FOURTH consent because a dozen
-         states require all-party consent before a call may be recorded.
-
-         ⚠ NOT LEGAL ADVICE, AND THE RULES HERE MOVE. Before this goes live
-         with real SMS or voice, the specifics want checking by someone who
-         does this for a living — and the operational half has to be real too:
-         STOP must actually unsubscribe, HELP must actually answer, and a
-         revocation must be honoured promptly by whatever sends the messages.
-         A perfect checkbox in front of a system that ignores STOP is worse
-         than no checkbox.
+         THE CONSENT — ONE BOX FOR AI CONTACT, AND A LINE FOR EMAIL.
+         ⭐ THE OUTREACH IS THE DEMO (*USER*'s frame): saying yes to the AI text
+         and the AI call is how they see what we build — `anti-case-study.md`
+         applied to the opt-in.
+         · EMAIL NEEDS NO BOX: replying to someone's own enquiry is
+           transactional, and US email law is opt-out. The note says it
+           plainly, AI-written replies included.
+         · TEXTS AND AI CALLS SHARE ONE BOX: US law wants prior express WRITTEN
+           consent for automated/AI calls and texts to a mobile, and one
+           checkbox can carry both. What the carriers' A2P 10DLC review checks
+           is that it is unticked, NOT bundled with the terms, and carries the
+           SMS disclosures — automated, frequency, rates, STOP/HELP — so those
+           stay word for word. If a review ever asks for SMS on its own box,
+           split it out; nothing else changes.
+         · RECORDING RIDES IN THE SAME BOX, and the voice agent also SAYS the
+           call is recorded when it starts — that announcement is what the
+           all-party-consent states rely on.
+         · NOT REQUIRED, OUT LOUD: "not a condition of purchase" is a required
+           element of prior express written consent, and a sale gated on
+           marketing consent is not freely given (GDPR).
+         ⚠ NOT LEGAL ADVICE. The operational half has to be real before any
+         AI text or call goes out: STOP must unsubscribe, HELP must answer, a
+         revocation must be honoured promptly, and the voice agent must say it
+         is an AI and that the call is recorded. A perfect checkbox in front of
+         a system that ignores STOP is worse than none.
          ══════════════════════════════════════════════════════════════════ -->
     <fieldset class="consents">
       <legend>How may I contact you?</legend>
-      <p class="consents-note">Tick whatever you are happy with. <strong>None of these is
-      required</strong> &mdash; I will reply to your enquiry either way.</p>
+      <p class="consents-note">I will reply to your enquiry <strong>by email</strong> either way
+        &mdash; some replies may be written by my AI assistant. The box below is optional.</p>
 
       <label class="consent">
-        <input type="checkbox" name="consent_email" value="yes" data-consent="email">
-        <span>I agree that Isaac can <strong>email</strong> me about this enquiry and about the
-        AI transformation work. Some replies may be written by his AI assistant.</span>
+        <input type="checkbox" name="consent_ai_contact" value="yes" data-consent="ai_contact" data-needs-phone>
+        <span>We build and recommend <strong>AI text-messaging and AI voice agents</strong>, so being
+        contacted by them is also the demo. I consent to receiving texts and calls from them at the
+        number below. Messages and calls may be automated and AI-generated; the voice agent will say
+        it is an AI, and calls may be recorded so the transcript can be used to map my business. Not
+        a condition of purchase. Message frequency varies. Message and data rates may apply. Reply
+        STOP to opt out, HELP for help.</span>
       </label>
 
-      <label class="consent">
-        <input type="checkbox" name="consent_sms" value="yes" data-consent="sms" data-needs-phone>
-        <span>We build and recommend <strong>AI text-messaging</strong> services. I consent to
-        being contacted on one at the number below &mdash; which is also the demo.
-        Messages may be automated and AI-generated. Not a condition of purchase.
-        Frequency varies. Message and data rates may apply. Reply STOP to opt out,
-        HELP for help.</span>
-      </label>
-
-      <label class="consent">
-        <input type="checkbox" name="consent_voice" value="yes" data-consent="voice" data-needs-phone>
-        <span>We build and recommend <strong>AI voice agents</strong>. I consent to receiving
-        calls from one at the number below &mdash; which is also the demo. Calls may be
-        automated and AI-generated, and the agent will say it is an AI.
-        Not a condition of purchase.</span>
-      </label>
-
-      <label class="consent">
-        <input type="checkbox" name="consent_recording" value="yes" data-consent="recording">
-        <span>Those calls may be <strong>recorded</strong> so the transcript can be used to map
-        my business. Separate from the above because many states require everyone on
-        a call to agree before it is recorded.</span>
-      </label>
-
-      <!-- revealed only when SMS or voice is ticked, and required only then -->
+      <!-- revealed only when the AI-contact box is ticked, and required only then -->
       <label class="lead-field phone-field" hidden>
-        <span>Mobile number <em>&mdash; for the text and voice consents above</em></span>
+        <span>Mobile number <em>&mdash; for the texts and calls above</em></span>
         <input type="tel" name="phone" autocomplete="tel" placeholder="+1 555 000 0000">
       </label>
     </fieldset>
