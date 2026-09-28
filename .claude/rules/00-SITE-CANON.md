@@ -30,7 +30,7 @@ generation, lead nurture, content presence — each opening into a LEAK TREE in 
 the numbers · but · before · so we · after (ending on the dream) — and its SOPs, which diagnose whether rebuilds
 or audits are needed; those become customizations, never stage one) · what it becomes (a silent loop on top — `assets/what-it-becomes-loop.mp4`, source
 `video-aios/draw-the-box/becomes/`: one agent → agents wired across the org → one giant agent →
-the CEO alone again, which is its first frame — then the deck's slide 5 arc — Foundation · Hardening · Closure, each with its RESULT verbatim — slide 3's "Fragmented.
+the CEO alone again, which is its first frame — then the deck's slide 5 arc as ONE CLIMB (*USER*'s ruling): `assets/becomes-mountain.webp`, a mountain whose three ledges are Foundation · Hardening · Closure, each flying its stage's colour, with the city of closed businesses at the summit (made from `docs/becomes-mountain-image-prompt.md`, source `docs/hero-refs/twi_atm_guys_roadmap.png`), and under it each stage's name with its RESULT verbatim — slide 3's "Fragmented.
 Manual. Reactive. Unclear." → "More capability. Less friction. Real results.", and *USER*'s terminus:
 software that knows when to call outside to humans; the datafication cascade is NOT said, it is an
 open ruling in `docs/the-transformation-method-2026-09-17.md` §1a-bis) · who helps you (Isaac) ·

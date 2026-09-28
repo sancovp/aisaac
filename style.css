@@ -2673,6 +2673,8 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
 .fw-hero h1 { max-width: 24ch; margin-bottom: 1.2rem; }
 .fw-hero .lede { max-width: 60ch; margin-bottom: 0; }
 .fw-art { display: block; width: 100%; height: auto; }
+/* the climb (What it becomes): the mountain, edge to edge in the card, on the card's exact white */
+.becomes-climb { display: block; width: 100%; height: auto; }
 /* the opt-in as ONE row under the film: name · email · the button */
 .fw-form { max-width: none; }
 .fw-form .lead-row { grid-template-columns: 1fr 1fr auto; align-items: end; }
