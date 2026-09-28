@@ -181,22 +181,27 @@ not being presented; the laws below govern each page whenever it is.
 
 ## HOSTING AND AUTOMATIONS — the site's two directions
 
-⏳ The relay is BUILT and tested locally (Cloudflare's own dev server, a stand-in destination); it goes live
-when the Cloudflare account exists. Until then GitHub Pages serves the site from `main` and the forms post to
-Formspree with the same fields — THE CUTOVER is one commit: every form's `action` → `/api/lead`, and law 5's
-origin → the new address.
+⏳ THE CUTOVER IS UNDER WAY. The Cloudflare Worker `aisaac` builds and deploys from `main`; GitHub Pages
+still serves `sancovp.github.io/aisaac` from the same `main`, and the forms still post to Formspree with the
+same fields until the domain is attached — then THE CUTOVER is one commit: every form's `action` →
+`/api/lead`, and law 5's origin → the new address.
 
 **THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), with
 `runmybusinessonai.com` and `iwantaiinmybusiness.com` redirecting to it; all three bought at Cloudflare's
 registrar. The presented page is its home; `framework.html` lives at `/framework`. When it goes live, law
 5's SITE_ORIGIN, every canonical/og URL and every form's `_next` move to it in one commit.
 
-**THE HOST:** Cloudflare Pages, connected to this repo — a push to `main` republishes the site AND the relay
-(Pages runs every file in `functions/` as server code at its path). There is no build step and no GitHub
-workflow. THE FILES: `functions/api/lead.js` (forms) · `functions/api/stripe.js` (payments) · `lib/relay.js`
-(the destination list and the push, shared) · `ref.js` (the partner code). Secrets live in Cloudflare's
+**THE HOST:** a Cloudflare WORKER WITH STATIC ASSETS, named `aisaac`, connected to this repo — Cloudflare
+builds and deploys it on every push to `main`; there is no build step and no GitHub workflow. `wrangler.jsonc`
+is its settings; `worker.js` runs FIRST on every request: the other domains (and `www`) → a 301 to
+`iwantaiformybusiness.com` on the same path · `POST /api/lead` and `POST /api/stripe` → the relay · `/` → the
+presented page · everything else → the repo's files. `.assetsignore` keeps what is not the site off the
+domain: every dot-file (the rules), `docs/`, `_templates/`, `tools/`, `scripts/`, the Worker's own source.
+THE RELAY'S FILES: `functions/api/lead.js` (forms) · `functions/api/stripe.js` (payments) · `lib/relay.js`
+(the destination list and the push, shared) · `ref.js` (the partner code). Secrets live in the Worker's
 settings — `DESTINATIONS` (the list, JSON) and `STRIPE_WEBHOOK_SECRET` — and locally in `.dev.vars`, which git
-ignores.
+ignores; `npx wrangler dev` runs the whole thing on this machine. No file over 25 MB can be served (Cloudflare's
+per-asset limit): a video past it is re-encoded before it ships.
 
 **DIRECTION ① — LEADS, the world → GoHighLevel (push only).** Every form on the site posts to THE RELAY, a
 Cloudflare Worker: it drops bots (the `_gotcha` trap) and bad emails, labels the submission (which form, which

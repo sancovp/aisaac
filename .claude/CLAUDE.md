@@ -157,4 +157,6 @@ cave_discord (`discord_announce` in unicorn config).
 ```bash
 git add . && git commit -m "message" && git push
 ```
-GitHub Pages deploys automatically from main branch.
+Every push to main deploys twice: GitHub Pages (sancovp.github.io/aisaac) and the Cloudflare Worker `aisaac`
+(worker.js + wrangler.jsonc — the site's home once iwantaiformybusiness.com is attached). `.claude/rules/00-SITE-CANON.md`
+§ HOSTING AND AUTOMATIONS.

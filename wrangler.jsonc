@@ -1,0 +1,13 @@
+{
+  // The site on Cloudflare: a Worker with static assets (worker.js runs first on every request).
+  // Cloudflare builds and deploys it on every push to main. Secrets are set in the Worker's settings.
+  "name": "aisaac",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page"
+  }
+}

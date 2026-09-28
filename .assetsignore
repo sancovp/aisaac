@@ -1,0 +1,13 @@
+# What the Worker never serves (gitignore syntax): the rules, dot-files, the internal docs, templates,
+# tooling, and the Worker's own source and settings. Everything else in the repo is the site.
+.*
+docs/
+_templates/
+tools/
+scripts/
+functions/
+lib/
+worker.js
+wrangler.jsonc
+node_modules/
+*.py
