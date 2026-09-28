@@ -187,6 +187,10 @@ Cloudflare Worker: it checks the submission, labels it (which page, which form),
 each destination on its list — GoHighLevel first (the CRM; its own Workflows run everything after: pipeline,
 texts, calls, email, speed to lead, AI chat/voice). A destination is any URL that accepts an HTTP POST; its
 key lives in the Worker's secrets, never in a page. Adding one edits the relay's list, never a page.
+**REFERRAL PARTNERS ride direction ①.** The partner network is REFERRAL ONLY: agencies send clients and
+*USER* delivers (partners delivering the mapping themselves is a later model, not yet designed). A partner's
+link carries `?ref=<code>`; the site keeps the code for the visitor's return visits, and the relay passes it
+with every submission so the GoHighLevel contact carries its partner — attribution the commission is paid on.
 
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
 automation updates it by COMMITTING to `main`; Cloudflare republishes. Its triggers: CRONS (a schedule) ·
@@ -231,6 +235,7 @@ Paths below marked ✓ resolve here.
 
 - hosting: the Cloudflare account, the three domains and the repo connected in Pages (§ HOSTING AND AUTOMATIONS) · the GoHighLevel account and plan · the A2P 10DLC texting registration (the legal entity and its EIN) · which of his own systems receive events, and where they are reachable
 - where the sources marked absent above live
+- the referral terms: the commission, one-time or recurring, the attribution window, when payouts happen
 - the repo-name L3 exception · the watch.html build · merge-source deletions
 
 ## MAINTENANCE
