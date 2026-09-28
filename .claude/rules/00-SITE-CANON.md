@@ -186,10 +186,12 @@ still serves `sancovp.github.io/aisaac` from the same `main`, and the forms stil
 same fields until the domain is attached — then THE CUTOVER is one commit: every form's `action` →
 `/api/lead`, and law 5's origin → the new address.
 
-**THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), with
-`runmybusinessonai.com` and `iwantaiinmybusiness.com` redirecting to it; all three bought at Cloudflare's
-registrar. The presented page is its home; `framework.html` lives at `/framework`. When it goes live, law
-5's SITE_ORIGIN, every canonical/og URL and every form's `_next` move to it in one commit.
+**THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), bought at Cloudflare's
+registrar and attached to the Worker with `www.iwantaiformybusiness.com` (which 301s to it). The presented
+page is its home; `framework.html` lives at `/framework`. A redirect domain (`runmybusinessonai.com`,
+`iwantaiinmybusiness.com` were proposed, not bought) joins by being bought, then added to `wrangler.jsonc`'s
+routes — `worker.js` already sends it to the address. At the cutover, law 5's SITE_ORIGIN, every
+canonical/og URL and every form's `_next` move to the address in one commit.
 
 **THE HOST:** a Cloudflare WORKER WITH STATIC ASSETS, named `aisaac`, connected to this repo — Cloudflare
 builds and deploys it on every push to `main`; there is no build step and no GitHub workflow. `wrangler.jsonc`

@@ -4,6 +4,13 @@
   "name": "aisaac",
   "main": "worker.js",
   "compatibility_date": "2026-09-01",
+  // the domains (Cloudflare makes their DNS and certificates). A redirect domain is added here once it is bought;
+  // worker.js already sends it to the address.
+  "routes": [
+    { "pattern": "iwantaiformybusiness.com", "custom_domain": true },
+    { "pattern": "www.iwantaiformybusiness.com", "custom_domain": true }
+  ],
+  "workers_dev": true,
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
