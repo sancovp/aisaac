@@ -191,8 +191,9 @@ key lives in the Worker's secrets, never in a page. Adding one edits the relay's
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
 automation updates it by COMMITTING to `main`; Cloudflare republishes. Its triggers: CRONS (a schedule) ·
 EVENTS from GoHighLevel (a workflow's outbound webhook → the relay → the automation: a deal won, a review)
-· EVENTS from *USER*'s own systems (a build shipped, a paper or post finished). The automations run AI where
-the change needs writing, on *USER*'s machine or a server — never inside the relay. The existing instance is
+· EVENTS from *USER*'s own systems (a build shipped, a paper or post finished). What a trigger fires is ONE
+thing, an automation, and an automation may itself be an AI run (an agent that writes the change and commits
+it) or plain code — the same slot either way. It runs on *USER*'s machine or a server, never inside the relay. The existing instance is
 cave-unicorn's nightly blog publisher (`application/cave-unicorn`, `fire_site_publish`). Automations write
 DATA a page renders (the `tools/build_*.py` pattern) rather than hand-editing layout, and every law above
 binds an automated commit exactly as it binds an agent's.
