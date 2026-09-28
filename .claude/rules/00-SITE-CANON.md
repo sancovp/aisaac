@@ -35,7 +35,7 @@ Manual. Reactive. Unclear." → "More capability. Less friction. Real results.",
 software that knows when to call outside to humans; the datafication cascade is NOT said, it is an
 open ruling in `docs/the-transformation-method-2026-09-17.md` §1a-bis) · who helps you (Isaac) ·
 book a call. No prices, no checkout; the ONE scroll choreography is the pinned stack (What I do → What you
-get → What it becomes → Who helps you, each held at half speed while it is read, then the next slides over it — RULE 02 §10). Its wordmark is a `<span>`, never a link:
+get → What it becomes → Who helps you, each held at half speed while it is read, then the next slides over it, under a ceiling on how fast a wheel can scroll the page — RULE 02 §10). Its wordmark is a `<span>`, never a link:
 the page has exactly one exit, the booking form.
 
 **THE HEADLINE IS BUILT, NOT WRITTEN — Hormozi's MAGIC formula** (the `hormozi-headline-formula`

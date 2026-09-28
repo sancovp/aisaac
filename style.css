@@ -2034,10 +2034,7 @@ body { position: relative; }            /* so the layer spans the whole document
   font-family: var(--mono); font-size: 0.7rem; color: var(--text-3);
 }
 .leak-tree cite i { font-style: italic; }
-@media (prefers-reduced-motion: no-preference) {
-  .leak[open] .leak-tree { animation: leak-open 180ms ease-out; }
-}
-@keyframes leak-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+/* a tree GROWS open (its height, eased) — stack.js, which also holds hover to a rest before opening */
 /* the health cell carries the trees, so it takes the wider column */
 .get-bottom { grid-template-columns: 1.8fr 1fr; }
 

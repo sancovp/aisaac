@@ -106,16 +106,27 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    up over a section that has just been read; nothing ever sits frozen waiting to be covered. A
    section that fits the screen has nothing to slow, so the next sheet simply slides over it. A pinned
    section that changes height (a reader opening a leak tree) is re-measured on the spot
-   (`ResizeObserver`). The wrapper ends every pin with the stack, so no pinned section shows through
-   later ones. The pins go sticky only once `stack.js` runs (`.is-live`): JS off, normal scroll.
+   (`ResizeObserver`). The slow read moves the STICKY POINT itself (`--pin-top` rises from the nav to
+   nav − the overflow), never a transform — the browser releases a sticky section by its real box, so a
+   transformed one lets go while the sheet meant to cover it is still below it, and the section under
+   it shows through the gap. The wrapper ends every pin with the stack, so no pinned section shows
+   through later ones. The pins go sticky only once `stack.js` runs (`.is-live`): JS off, normal scroll.
+   **THE SCROLL SPEED HAS A CEILING** (*USER*'s ruling, the landing page only): a wheel or trackpad moves
+   the page at most 2,200 px a second (`stack.js`); below that it is the reader's own scroll, above it
+   the travel is spread out and never more than ~0.6 s of it is banked, so nothing coasts on after the
+   hand stops; a reversal turns at once. Touch keeps the phone's own scrolling; pinch-zoom, sideways
+   scroll and an open dialog are untouched.
 11. **The leak tree** (`.leak`, a native `<details>`): closed, one row — the item in mono and its
    one hook number in grey, a `+` at the right; open, an ink TRUNK down the left with a tick to
    each branch — the numbers (with its source in small mono beneath) · but · *Before, you're* · so we · *After,
    you* (in ink, the dream) — BEFORE and AFTER frame the fix, and it ENDS on the dream. Each label is
-   the opening words of its sentence. Labels coloured per §1. Keyboard-operable; the open is a 180ms fade that
-   reduced motion drops. The FIRST tree ships open, so the visitor sees what a row holds; the rest
+   the opening words of its sentence. Labels coloured per §1. Keyboard-operable; reduced motion drops the
+   grow and shrink. The FIRST tree ships open, so the visitor sees what a row holds; the rest
    stay closed, and nothing opens on scroll — an opening tree pushes the pinned section's bottom
-   away while the reader is mid-section. With a MOUSE a tree OPENS ON HOVER (*USER*'s ruling;
+   away while the reader is mid-section. Every open GROWS (its height, ~360ms eased; `stack.js`), and
+   UNHURRIED hover is the rule: a tree opens only when the pointer RESTS on its row (~260ms) — a cursor
+   passing over the list opens nothing — and a hover-opened tree closes ~320ms after the pointer leaves,
+   shrinking shut, so crossing the gap between rows never snaps it. With a MOUSE a tree OPENS ON HOVER (*USER*'s ruling;
    `stack.js`): pointing at a row opens it, leaving closes a tree hover opened, a click pins it open
    and a second click closes it; a tree already open is never closed by hover; touch keeps the tap.
 12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px
