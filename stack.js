@@ -61,6 +61,7 @@
   }, { passive: true });
   window.addEventListener('resize', measure);
   window.addEventListener('load', measure);
+  document.addEventListener('stack:measure', measure);   // a tree closed above the reader (below)
   // a pinned section changes height when a reader opens one of its trees (<details>) —
   // re-measure then too, or its slowed read ends before what just opened is on screen
   if (window.ResizeObserver) {
@@ -71,13 +72,19 @@
 
 /* THE LEAK TREES OPEN ON HOVER (*USER*'s ruling) — with a mouse only (a touch screen keeps the tap), and
    UNHURRIED: a tree opens only when the pointer RESTS on its row (OPEN_AFTER), so a cursor passing over
-   the list opens nothing, and it closes a moment after the pointer leaves (CLOSE_AFTER), so a pass
+   the list opens nothing — and never sooner than GAP after the last tree hover opened, so a cursor held
+   still while the page scrolls rows under it opens them one at a time, not in a burst — and it closes
+   a moment after the pointer leaves (CLOSE_AFTER), so a pass
    through the gap between rows does not snap it shut. Every open grows (the height, GROW ms, eased),
    whether hover or click opened it; a hover close shrinks. A click PINS a hover-opened tree open (a
    second click closes it, the native toggle). A tree that was already open is never closed by hover.
-   Reduced motion: no growing, the delays stay. */
+   Reduced motion: no growing, the delays stay.
+   A TREE THE READER HAS SCROLLED PAST CLOSES AGAIN — every open one but the first of its list (which
+   ships open and is left as the reader left it). Passed = its pinned section is covered by the next
+   sheet, or, outside the stack, it is above the screen. Closing it shortens the page ABOVE the reader,
+   so the scroll moves up by exactly what was removed, in the same frame: what is being read never moves. */
 (function () {
-  var OPEN_AFTER = 260, CLOSE_AFTER = 320, GROW = 360;
+  var OPEN_AFTER = 260, CLOSE_AFTER = 320, GROW = 360, GAP = 2000, lastHoverOpen = -Infinity;
   var moves = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   function tree(d) { return d.querySelector('.leak-tree'); }
   function frames(t, from) {
@@ -94,13 +101,46 @@
       }
     });
   });
+  var trees = Array.prototype.slice.call(document.querySelectorAll('details.leak'));
+  var nav = document.querySelector('.nav-glass'), queued = false;
+  function passed(d) {
+    var navH = nav ? nav.offsetHeight : 0, pin = d.closest('.pin');
+    if (pin && pin.nextElementSibling && pin.parentElement.classList.contains('is-live')) {
+      return pin.nextElementSibling.getBoundingClientRect().top <= navH + 1;
+    }
+    return d.getBoundingClientRect().bottom < navH;
+  }
+  function sweep() {
+    queued = false;
+    var shut = trees.filter(function (d) {
+      return d.open && d.parentElement.querySelector('details.leak') !== d && passed(d);
+    });
+    if (!shut.length) return;
+    var before = document.documentElement.scrollHeight;
+    shut.forEach(function (d) { delete d.dataset.hoverOpen; d.open = false; });
+    document.dispatchEvent(new Event('stack:measure'));
+    var removed = before - document.documentElement.scrollHeight;
+    if (removed) {
+      window.scrollBy({ top: -removed, behavior: 'instant' });
+      document.dispatchEvent(new Event('stack:measure'));   // re-place the pins at the new scroll
+    }
+  }
+  window.addEventListener('scroll', function () {
+    if (!queued) { queued = true; requestAnimationFrame(sweep); }
+  }, { passive: true });
   if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  document.querySelectorAll('details.leak').forEach(function (d) {
+  trees.forEach(function (d) {
     var openT, closeT;
     d.addEventListener('mouseenter', function () {
       clearTimeout(closeT);
       if (d.open) return;
-      openT = setTimeout(function () { if (!d.open) { d.dataset.hoverOpen = '1'; d.open = true; } }, OPEN_AFTER);
+      (function wait(ms) {
+        openT = setTimeout(function () {
+          var left = lastHoverOpen + GAP - Date.now();
+          if (left > 0) return wait(left);            // another tree opened by hover < GAP ago
+          if (!d.open) { d.dataset.hoverOpen = '1'; d.open = true; lastHoverOpen = Date.now(); }
+        }, ms);
+      })(OPEN_AFTER);
     });
     d.addEventListener('mouseleave', function () {
       clearTimeout(openT);

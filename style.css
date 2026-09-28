@@ -1186,6 +1186,19 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
    frame, so unlike .deck (whose slides were not all 16:9) it needs no
    per-item ratio; object-fit: cover would crop, so it is contain. */
 .artifact-frame.vsl > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--void); }
+/* The YouTube-hosted VSL wears none of YouTube's chrome. YouTube has no switch for its title bar (the
+   channel, the title), its link button or its logo, so: the player is CROPPED — taller than the frame
+   by --yt-crop at each end, the video (letterboxed to the frame's exact width) fills the frame, and
+   YouTube's bars sit in the cut-off ends; and a COVER (the film's own title card) lies over it whenever
+   it is not playing, which is when YouTube shows its pause and end screens. vsl.js drives the cover. */
+.artifact-frame.vsl { --yt-crop: 76px; }
+.artifact-frame.vsl > iframe[data-youtube] { inset: auto; left: 0; top: calc(-1 * var(--yt-crop)); height: calc(100% + 2 * var(--yt-crop)); }
+.vsl-cover {
+  position: absolute; inset: 0; z-index: 1;
+  background: var(--paper) url(assets/vsl-yt-poster.jpg) center / cover no-repeat;
+  transition: opacity 200ms ease;
+}
+.artifact-frame.vsl.is-yt-playing > .vsl-cover { opacity: 0; pointer-events: none; }
 
 /* .book-duo — the form, and the person you are booking, side by side
    (Isaac's order, 2026-09-16: the right half of the form band was empty).

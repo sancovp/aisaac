@@ -143,7 +143,7 @@ not being presented; the laws below govern each page whenever it is.
    the four business pages, `https://sancovp.github.io/aisaac` on every other page · every form action is
    the relay, `https://iwantaiformybusiness.com/api/lead`.
 6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
-   `Transformations With Isaac` — the company's name (TWI), and the only name in the chrome; the
+   `AI Transformations With Isaac` — the company's name (TWI), and the only name in the chrome; the
    hero's pill names who the page is for: `Business Owners:`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
    about card names him so, and the footer and the prose say Isaac. His background ("How I got
    here") states only facts he gave: AI since 2023, agents for a film production company,

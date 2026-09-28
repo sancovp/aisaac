@@ -172,10 +172,26 @@ function drive(frame, v) {
  * playing and rejects when the browser refused (sound before a gesture), which is how drive() falls back
  * to the silent preview. Without JS the iframe plays on its own, YouTube's click-to-play. */
 function youtube(frame, iframe, ready) {
+  // the cover (style.css .vsl-cover): the film's title card over the player whenever it is not playing,
+  // so YouTube's pause and end screens never show; the crop in style.css hides its title bar and buttons
+  var cover = document.createElement('div');
+  cover.className = 'vsl-cover';
+  iframe.insertAdjacentElement('afterend', cover);
   var hit = document.createElement('div');
   hit.style.cssText = 'position:absolute;inset:0;z-index:1;cursor:pointer;background:transparent';
-  iframe.insertAdjacentElement('afterend', hit);
-  var on = {}, state = -1, player;
+  cover.insertAdjacentElement('afterend', hit);
+  var on = {}, state = -1, player, lift = 0, CHROME_FADES = 4200;
+  // YouTube shows its own shading and a play/pause symbol for ~4 s after EVERY start and seek, so the
+  // cover drops back on each one and lifts only after CHROME_FADES of uninterrupted playing
+  function veil() {
+    clearTimeout(lift); lift = 0;
+    frame.classList.remove('is-yt-playing');
+    if (state === 1) arm();
+  }
+  function arm() {
+    if (lift || frame.classList.contains('is-yt-playing')) return;
+    lift = setTimeout(function () { lift = 0; if (state === 1) frame.classList.add('is-yt-playing'); }, CHROME_FADES);
+  }
   var emit = function (t) { (on[t] || []).forEach(function (fn) { fn({ type: t }); }); };
   var v = {
     removeAttribute: function () {}, setAttribute: function () {},
@@ -183,10 +199,11 @@ function youtube(frame, iframe, ready) {
     get muted() { return player.isMuted(); },
     set muted(m) { if (m) player.mute(); else player.unMute(); },
     get currentTime() { return player.getCurrentTime(); },
-    set currentTime(t) { player.seekTo(t, true); },
+    set currentTime(t) { player.seekTo(t, true); veil(); },
     get duration() { return player.getDuration(); },
     pause: function () { player.pauseVideo(); },
     play: function () {
+      if (state !== 1) veil();   // a play call on a playing film changes nothing on screen
       player.playVideo();
       return new Promise(function (ok, no) {
         var t0 = Date.now();
@@ -211,6 +228,10 @@ function youtube(frame, iframe, ready) {
       onReady: function () { setInterval(function () { if (state === 1) emit('timeupdate'); }, 250); ready(v); },
       onStateChange: function (e) {
         state = e.data;
+        // playing ⇒ the cover lifts once YouTube's own chrome has faded (veil/arm, above); paused, ended,
+        // not started ⇒ it returns; buffering leaves it as it is
+        if (state === 1) arm();
+        else if (state !== 3) veil();
         // the film burns in its own captions; YouTube's (auto-shown while muted) would double them
         if (state === 1) { try { player.unloadModule('captions'); } catch (err) {} emit('play'); }
         if (state === 2 || state === 0) emit('pause');

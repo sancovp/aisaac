@@ -81,7 +81,12 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    (paused when scrolled away), its controls hidden and ONE paper button on its centre,
    `Watch with sound` (`.vsl-sound`, inverts to ink on hover) — and the visitor's first click, tap or
    key press ANYWHERE on the page (except one that opens the booking form) turns the sound on and
-   restarts the film. From then the visitor owns it. Reduced motion: no autoplay.
+   restarts the film. From then the visitor owns it. Reduced motion: no autoplay. **The VSL hosted on
+   YouTube wears none of YouTube's chrome** (`vsl.js` · `.vsl-cover`): the player is cropped (taller than
+   the frame by `--yt-crop` at each end, so its title bar, channel, link button and logo fall outside),
+   and the film's own title card (`assets/vsl-yt-poster.jpg`) covers it whenever it is not playing and
+   for the ~4 s after every start or seek while YouTube's own shading fades; YouTube's captions are off
+   (the film burns in its own). The visitor only ever sees the film and this site's controls.
 8b. **The hero** (`.hero-split`, bugster.dev's shape): one card; the copy on the left — pill, the h1
    in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the red Book a
    call; the HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
@@ -93,7 +98,7 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    width. On a phone it stacks: copy, the loop, who it's for, film.
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
    hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the
-   wordmark `Transformations With Isaac` on the left (a `<span>`, never a link) and
+   wordmark `AI Transformations With Isaac` on the left (a `<span>`, never a link) and
    the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right —
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
@@ -126,7 +131,10 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    away while the reader is mid-section. Every open GROWS (its height, ~360ms eased; `stack.js`), and
    UNHURRIED hover is the rule: a tree opens only when the pointer RESTS on its row (~260ms) — a cursor
    passing over the list opens nothing — and a hover-opened tree closes ~320ms after the pointer leaves,
-   shrinking shut, so crossing the gap between rows never snaps it. With a MOUSE a tree OPENS ON HOVER (*USER*'s ruling;
+   shrinking shut, so crossing the gap between rows never snaps it; and never within 2 s of the last
+   tree hover opened, so a still cursor over a scrolling list opens them one at a time. A tree the
+   reader has SCROLLED PAST closes again (every one but the first of its list, which is left as the
+   reader left it) — the scroll is corrected by what was removed, so what is being read never moves. With a MOUSE a tree OPENS ON HOVER (*USER*'s ruling;
    `stack.js`): pointing at a row opens it, leaving closes a tree hover opened, a click pins it open
    and a second click closes it; a tree already open is never closed by hover; touch keeps the tap.
 12. **Icon tiles** (`.get-ico`): a line icon (Lucide shapes, ISC licence) in ink, in a 38px

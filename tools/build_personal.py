@@ -295,7 +295,7 @@ page = f'''<!doctype html>
       <div class="solo-cta">
         <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
       </div>
-      <p class="door-fine">Or read what the work looks like for a company: <a href="ai-transformation.html">Transformations With Isaac &rarr;</a></p>
+      <p class="door-fine">Or read what the work looks like for a company: <a href="ai-transformation.html">AI Transformations With Isaac &rarr;</a></p>
     </div>
   </section>
 
