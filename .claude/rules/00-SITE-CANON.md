@@ -70,8 +70,8 @@ by line range and lifts the booking dialog whole from `ai-transformation.html`; 
 rebuild, never the output. `isaac.html` is the older personal page, left as it is and not presented.
 
 **Built, not yet presented: `framework.html`** — *USER*'s concept of a traditional lead-magnet
-funnel. Its headline is MAGIC-built in *USER*'s shape (Goal + Container + his own use of it): h1 "Map your own
-business for AI with the 7-step framework I use with my clients." — the `<title>` and og tags repeat it. Its
+funnel. Its headline is MAGIC-built in *USER*'s shape (Goal + Container + his own use of it): h1 "Create an AI Transformation Map for any business with the 7-step framework I use with my clients." — the `<title>` and og tags repeat it, and the close says "Create your AI Transformation
+Map." Its
 order, top to bottom: the hero (headline · sub · the Top film · the opt-in as ONE row) · THE 7 STEPS · THE TEST ·
 the other free frameworks · how it works · the community · who it's for · questions · the close. The page is the FREE AI Transformation Framework (the method's §1 procedure and §1a central test, in his
 words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then the FREE COMMUNITY of owners
@@ -230,7 +230,6 @@ Paths below marked ✓ resolve here.
 - `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
 
 - hosting: the Cloudflare account, the three domains and the repo connected in Pages (§ HOSTING AND AUTOMATIONS) · the GoHighLevel account and plan · the A2P 10DLC texting registration (the legal entity and its EIN) · which of his own systems receive events, and where they are reachable
-- whether automated prose commits straight to `main` or waits for his yes
 - where the sources marked absent above live
 - the repo-name L3 exception · the watch.html build · merge-source deletions
 
