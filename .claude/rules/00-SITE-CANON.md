@@ -17,7 +17,7 @@ to him; the characters of the "What it becomes" loop; silent, autoplaying,
 looping, no controls, stopped on its poster under reduced motion; *USER*'s video, its white lifted to the
 card's #fff and its sound dropped. The still it animates, `assets/hero-owner.webp`, was made from
 `docs/hero-image-prompt.md`, source `docs/hero-refs/twi_atm_ceo_ez.png`) ·
-the video (HOSTED ON YOUTUBE, UNLISTED — `RfLhKVoWAAU`, *USER*'s upload of the streamer-shell VSL, `video-aios/framework-videos` `Vsl` — embedded with YouTube's own controls hidden and `vsl.js`'s drawn over it, so the runtime is still never shown; full width under the hero, headed by the WHO IT'S FOR line, STARTING WITH SOUND where the browser allows it, else
+the video (HOSTED ON YOUTUBE, UNLISTED — `RfLhKVoWAAU`, *USER*'s upload of the streamer-shell VSL, `video-aios/framework-videos` `Vsl` — embedded with YouTube's own chrome hidden (cropped and covered, RULE 02 §8) and `vsl.js`'s one control over it — MUTE: no clock, no scrub bar, no pause, like a sales video in a funnel; full width under the hero, headed by the WHO IT'S FOR line, STARTING WITH SOUND where the browser allows it, else
 silent until the visitor's first click turns the sound on — RULE 02 §8; its runtime never stated) · what I do (the loop
 `assets/what-i-do-loop.mp4` — silent, autoplaying, looping, no controls, stopped on its poster under
 reduced motion; source `video-aios/draw-the-box/loop/` — and under it ONE blurb, the four levels of
@@ -99,7 +99,7 @@ there first on a stand-in voice and a stand-in presenter so he sees how it will 
 then re-keyed to his own reading in one render; the recordings are his, and ASPIRATIONAL until he makes them. THE TOP
 FILM is on the page: `assets/framework-top.mp4` (poster `assets/framework-top-poster.jpg`, the title card), the
 prototype on the stand-in voice and WOOM's robot presenter, IN the hero between the sub and the opt-in, in the landing page's
-player (`vsl.js`: no runtime, starts with sound where the browser allows it, else silent with `Watch with sound`);
+player (`vsl.js`: mute is its only control — no runtime, no pause; it starts with sound where the browser allows it, else silent with `Watch with sound`);
 the other six films go in their sections the same way on *USER*'s word, and the scroll hold is built when his
 recordings exist. Linked from nothing and `noindex`, because his own ordering rule stands: *the
 education/community product is downstream of a successful operating business, never a substitute

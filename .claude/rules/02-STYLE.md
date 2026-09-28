@@ -75,13 +75,13 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    INVERTS on hover (ink fill, paper text). On the ink band it is the same button inverted.
    **Any button that books the call is red instead** (§1).
 8. **Frames** (`.artifact-frame`, `.portrait-frame`): paper, 1px ink outline, radius 22px, no glass,
-   no glow, no shadow. A film's own controls sit ON the film and stay light-on-dark. **The VSL
+   no glow, no shadow. A film plays like a sales video in a funnel: its ONLY control is MUTE — one round light-on-dark button in its corner (a click on the film toggles the sound too); no clock, no runtime, no scrub bar, no pause, no fullscreen (`vsl.js`). **The VSL
    starts WITH SOUND** wherever the browser allows it. Where the browser refuses sound before the
    visitor's first click (Chrome's and Safari's autoplay policy), it plays silently while on screen
    (paused when scrolled away), its controls hidden and ONE paper button on its centre,
    `Watch with sound` (`.vsl-sound`, inverts to ink on hover) — and the visitor's first click, tap or
    key press ANYWHERE on the page (except one that opens the booking form) turns the sound on and
-   restarts the film. From then the visitor owns it. Reduced motion: no autoplay. **The VSL hosted on
+   restarts the film. From then it runs to the end. Reduced motion: no autoplay — the film waits under one `Play the video` button that starts it with sound, once. **The VSL hosted on
    YouTube wears none of YouTube's chrome** (`vsl.js` · `.vsl-cover`): the player is cropped (taller than
    the frame by `--yt-crop` at each end, so its title bar, channel, link button and logo fall outside),
    and the film's own title card (`assets/vsl-yt-poster.jpg`) covers it whenever it is not playing and

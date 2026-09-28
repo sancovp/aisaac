@@ -1289,47 +1289,24 @@ a.rung:hover { border-color: rgba(125,211,252,0.25); background: rgba(125,211,25
   .hero-duo .portrait-frame { grid-row: auto; max-width: 260px; }
 }
 
-/* .vsl-ui — the film's own controls. ⛔ THE NATIVE BAR PRINTS THE RUNTIME and
-   no attribute suppresses it (controlsList has no token for the time display),
-   so vsl.js removes `controls` and draws these instead: play/pause, a seek
-   line, mute, fullscreen — and NO CLOCK. Isaac, 2026-09-18: "why the fuck
-   would you tell them how long the VSL is".
-   ZERO new colours or type: --text-1/-2, --mercury-blue, --glass-border and
-   --r-sm are all existing tokens. If JS is off the <video> keeps its own
-   `controls` and the film still plays. */
+/* .vsl-ui — the film's one control: MUTE, a round button in the corner. The player plays like a sales
+   video in a funnel (vsl.js): no clock, no scrub bar, no pause, no fullscreen — the native bar is removed
+   because it prints the runtime. A click on the film toggles the sound too. If JS is off the <video>
+   keeps its own `controls` and the film still plays. */
 .artifact-frame.vsl.vsl-custom > video { cursor: pointer; }
-.vsl-ui {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.7rem 0.9rem;
-  background: linear-gradient(to top, rgba(2,4,10,0.92), rgba(2,4,10,0));
-  opacity: 0; transition: opacity 160ms ease;
-}
-.artifact-frame.vsl:hover .vsl-ui,
-.artifact-frame.vsl:focus-within .vsl-ui,
-.artifact-frame.vsl:not(.is-playing) .vsl-ui { opacity: 1; }
+.vsl-ui { position: absolute; right: 0.9rem; bottom: 0.9rem; z-index: 2; }
 .vsl-ui button {
-  flex: none; width: 30px; height: 30px; padding: 0;
-  display: grid; place-items: center;
-  background: none; border: 0; cursor: pointer; color: rgba(255,255,255,0.8);
-  transition: color 120ms ease;
+  width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  background: rgba(2,4,10,0.55); color: rgba(255,255,255,0.85);
+  opacity: 0.8; transition: opacity 160ms ease, color 120ms ease;
 }
-.vsl-ui button:hover { color: var(--paper); }
-.vsl-ui svg { width: 20px; height: 20px; fill: currentColor; }
-.vsl-icon-pause, .vsl-icon-quiet { display: none; }
-.is-playing .vsl-icon-play { display: none; }
-.is-playing .vsl-icon-pause { display: block; }
+.vsl-ui button:hover, .vsl-ui button:focus-visible { opacity: 1; color: var(--paper); }
+.vsl-ui button:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; }
+.vsl-ui svg { width: 22px; height: 22px; fill: currentColor; }
+.vsl-icon-quiet { display: none; }
 .is-muted .vsl-icon-loud { display: none; }
 .is-muted .vsl-icon-quiet { display: block; }
-.vsl-track {
-  flex: 1 1 auto; height: 4px; border-radius: var(--r-sm); cursor: pointer;
-  background: rgba(255,255,255,0.3); position: relative; touch-action: none;
-}
-.vsl-track:focus-visible { outline: 2px solid var(--paper); outline-offset: 4px; }
-.vsl-fill {
-  position: absolute; inset: 0 auto 0 0; width: 0;
-  background: var(--paper); border-radius: var(--r-sm);
-}
 /* "Watch with sound" — the silent autoplay's one way in: a paper button on
    the film's centre that inverts to ink on hover, the same button the page
    uses everywhere (RULE 02 §7). While the film is a silent preview its own
