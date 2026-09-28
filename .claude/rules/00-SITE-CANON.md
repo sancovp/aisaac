@@ -139,7 +139,7 @@ not being presented; the laws below govern each page whenever it is.
 4. **VOICE:** scoreboard readings, not verdicts ("is losing", never "is a loser") · shown, never
    claimed · punch at the discourse, never at names · the arrogance budget equals the receipt balance.
 5. **LAYOUT** = the `_templates/` + `style.css` skeleton · relative in-page paths · the absolute
-   SITE_ORIGIN (`https://sancovp.github.io/aisaac`) only in canonical/og.
+   SITE_ORIGIN (`https://iwantaiformybusiness.com`) only in canonical/og, form actions and `_next`.
 6. **THE NAMES: TWI in the chrome, Isaac in person.** The top bar's wordmark is
    `Transformations With Isaac` — the company's name (TWI), and the only name in the chrome; the
    hero's pill names who the page is for: `Business Owners:`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
@@ -181,17 +181,17 @@ not being presented; the laws below govern each page whenever it is.
 
 ## HOSTING AND AUTOMATIONS — the site's two directions
 
-⏳ THE CUTOVER IS UNDER WAY. The Cloudflare Worker `aisaac` builds and deploys from `main`; GitHub Pages
-still serves `sancovp.github.io/aisaac` from the same `main`, and the forms still post to Formspree with the
-same fields until the domain is attached — then THE CUTOVER is one commit: every form's `action` →
-`/api/lead`, and law 5's origin → the new address.
+THE SITE IS LIVE AT `https://iwantaiformybusiness.com`. Every form posts to its relay
+(`https://iwantaiformybusiness.com/api/lead` — absolute, so the old GitHub Pages copy at
+`sancovp.github.io/aisaac`, still built from the same `main`, posts there too); the relay's destination list
+holds Formspree (the lead emails, unchanged) until GoHighLevel joins it. Every canonical, og and `_next` URL
+is the address.
 
 **THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), bought at Cloudflare's
 registrar and attached to the Worker with `www.iwantaiformybusiness.com` (which 301s to it). The presented
 page is its home; `framework.html` lives at `/framework`. A redirect domain (`runmybusinessonai.com`,
 `iwantaiinmybusiness.com` were proposed, not bought) joins by being bought, then added to `wrangler.jsonc`'s
-routes — `worker.js` already sends it to the address. At the cutover, law 5's SITE_ORIGIN, every
-canonical/og URL and every form's `_next` move to the address in one commit.
+routes — `worker.js` already sends it to the address. 
 
 **THE HOST:** a Cloudflare WORKER WITH STATIC ASSETS, named `aisaac`, connected to this repo — Cloudflare
 builds and deploys it on every push to `main`; there is no build step and no GitHub workflow. `wrangler.jsonc`

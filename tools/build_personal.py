@@ -101,12 +101,12 @@ page = f'''<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Isaac Wostrel-Rubin — papers, a book, and the code</title>
 <meta name="description" content="I build agent systems that run as worlds. My paper, a preview of my book, what I believe and the receipts, and the public repositories.">
-<link rel="canonical" href="https://sancovp.github.io/aisaac/isaac-wostrel-rubin.html">
+<link rel="canonical" href="https://iwantaiformybusiness.com/isaac-wostrel-rubin.html">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Isaac Wostrel-Rubin">
 <meta property="og:description" content="I build agent systems that run as worlds. My paper, a preview of my book, what I believe and the receipts, and the public repositories.">
-<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
-<meta property="og:url" content="https://sancovp.github.io/aisaac/isaac-wostrel-rubin.html">
+<meta property="og:image" content="https://iwantaiformybusiness.com/assets/og/home.png">
+<meta property="og:url" content="https://iwantaiformybusiness.com/isaac-wostrel-rubin.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="style.css?v={V}">

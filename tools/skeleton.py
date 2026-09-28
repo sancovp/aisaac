@@ -4,7 +4,7 @@ EVERY string here is pasted from A's templates, not invented. If A changes a
 template, change it here and re-run the generators — never hand-edit a page.
 
 A's PATH LAW (_templates/_head.html): the site deploys to a GitHub Pages PROJECT
-SUBPATH (https://sancovp.github.io/aisaac/), so in-page href/src are RELATIVE and
+SUBPATH (https://iwantaiformybusiness.com/), so in-page href/src are RELATIVE and
 only canonical/og URLs are absolute. `up` is "" at the repo root and "../" one
 level down. Root-absolute paths are forbidden sitewide.
 
@@ -15,7 +15,7 @@ A's class vocabulary (verified against style.css):
 
 import pathlib
 
-SITE_ORIGIN = "https://sancovp.github.io/aisaac"
+SITE_ORIGIN = "https://iwantaiformybusiness.com"
 
 _OG_DIR = pathlib.Path(__file__).resolve().parent.parent / "assets" / "og"
 

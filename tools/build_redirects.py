@@ -89,7 +89,7 @@ def stub(old, target):
 <meta http-equiv="refresh" content="0; url={dest}">
 <meta name="robots" content="noindex">
 <title>Moved — Isaac</title>
-<link rel="canonical" href="https://sancovp.github.io/aisaac/{key}">
+<link rel="canonical" href="https://iwantaiformybusiness.com/{key}">
 <link rel="icon" href="{up}assets/favicon.svg">
 <link rel="stylesheet" href="{up}style.css">
 </head>
