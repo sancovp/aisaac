@@ -2477,9 +2477,6 @@ html.js .cascade .struck.on > b::after {
 .consents-note strong { color: var(--text-2); }
 .consents .consent { margin: 0 0 0.6rem; }
 .consents .consent span strong { color: var(--text-1); font-weight: 500; }
-.phone-field { margin-top: 1rem; }
-.phone-field[hidden] { display: none; }
-.phone-field span em { color: var(--text-3); font-style: normal; text-transform: none; letter-spacing: 0; }
 
 
 /* ══════════════════════════════════════════════════════════════════════════

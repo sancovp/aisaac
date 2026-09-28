@@ -43,8 +43,6 @@
   var cRecord  = form.querySelector('input[name="consent_record"]');
   var cVersion = form.querySelector('input[name="consent_version"]');
   var boxes    = [].slice.call(form.querySelectorAll('[data-consent]'));
-  var phoneFld = form.querySelector('.phone-field');
-  var phone    = form.querySelector('input[name="phone"]');
   var qualify  = dlg.querySelector('.qualify');
   var eyebrow  = document.getElementById('capture-eyebrow');
   var title    = document.getElementById('capture-title');
@@ -124,22 +122,6 @@
   // area, so a click landing on it rather than on the form means outside
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 
-  /* ⛔ THE PHONE FIELD EXISTS ONLY WHEN THE AI-CONTACT CONSENT IS TICKED, and is
-     required only then. Asking for a mobile nobody consented to use is
-     collecting data with no basis; asking for none while they tick "text me"
-     is a consent that names no number, which under US rules is not one. */
-  function syncPhone() {
-    var wanted = boxes.some(function (b) {
-      return b.checked && b.hasAttribute('data-needs-phone');
-    });
-    phoneFld.hidden = !wanted;
-    phone.required = wanted;
-    if (!wanted) phone.value = '';
-  }
-  form.addEventListener('change', function (e) {
-    if (e.target.hasAttribute && e.target.hasAttribute('data-consent')) syncPhone();
-  });
-
   form.addEventListener('submit', function (e) {
     var d = DEST[current];
 
@@ -180,9 +162,11 @@
       var ref = form.elements.ref ? form.elements.ref.value : '';
       if (ref) q.push('client_reference_id=' + encodeURIComponent(ref));
     } else {
-      // cal.com asks name/email again; carry both so nobody types twice
+      // cal.com asks name, email and phone again; carry all three so nobody types twice
       if (name)  q.push('name='  + encodeURIComponent(name));
       if (email) q.push('email=' + encodeURIComponent(email));
+      var tel = (form.elements.phone && form.elements.phone.value || '').trim();
+      if (tel)   q.push('attendeePhoneNumber=' + encodeURIComponent(tel));
     }
 
     next.value = q.length
