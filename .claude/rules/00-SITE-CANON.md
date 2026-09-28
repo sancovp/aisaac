@@ -108,7 +108,10 @@ no price, no tier, and not the datafication cascade (an open ruling). Its button
 Book a call.
 
 **Built, not yet presented: `partners.html`** — the REFERRAL PARTNERS page (§ HOSTING AND AUTOMATIONS):
-the hero (agencies, $1,000 a client who signs, the application as one row) · how it works (send them → *USER*
+the hero (agencies, $1,000 a client who signs; then `assets/partners-hero.webp` at the card's full width — the
+partner introduces the owner, his business gets wired up with cyan agents, one gold coin rolls back to her;
+made from `docs/partners-hero-image-prompt.md`, source `docs/hero-refs/twi_atm_partners.png`; then the
+application as one row) · how it works (send them → *USER*
 takes it from there → $1,000) · two ways to refer (the link; the warm-intro form, its partner code filled by
 `ref.js`) · who it's for · the terms · the close. Linked from nothing and `noindex`; live on his word; its
 button is INK.
