@@ -27,3 +27,7 @@ simulator/backend/__pycache__/
 # Python bytecode (tools/)
 __pycache__/
 *.pyc
+
+# Cloudflare local dev (secrets + cache)
+.dev.vars
+.wrangler/

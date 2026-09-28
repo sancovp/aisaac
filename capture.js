@@ -177,6 +177,10 @@
     if (d.prefill === 'stripe') {
       // Stripe's own prefill param on a Payment Link
       if (email) q.push('prefilled_email=' + encodeURIComponent(email));
+      // the referral partner rides into Stripe too (ref.js put it on the form), so the
+      // commission matches even when the client pays with a different email
+      var ref = form.elements.ref ? form.elements.ref.value : '';
+      if (ref) q.push('client_reference_id=' + encodeURIComponent(ref));
     } else {
       // cal.com asks name/email again; carry both so nobody types twice
       if (name)  q.push('name='  + encodeURIComponent(name));

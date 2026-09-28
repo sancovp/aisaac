@@ -107,6 +107,12 @@ for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on h
 no price, no tier, and not the datafication cascade (an open ruling). Its button is INK: red means
 Book a call.
 
+**Built, not yet presented: `partners.html`** — the REFERRAL PARTNERS page (§ HOSTING AND AUTOMATIONS):
+the hero (agencies, $1,000 a client who signs, the application as one row) · how it works (send them → *USER*
+takes it from there → $1,000) · two ways to refer (the link; the warm-intro form, its partner code filled by
+`ref.js`) · who it's for · the terms · the close. Linked from nothing and `noindex`; live on his word; its
+button is INK.
+
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
 slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the
 FAQ), linked from nothing. It comes back by swapping the two filenames. Every other page exists and is
@@ -172,30 +178,43 @@ not being presented; the laws below govern each page whenever it is.
 
 ## HOSTING AND AUTOMATIONS — the site's two directions
 
-⏳ ASPIRATIONAL until the Cloudflare account exists; today the site is served by GitHub Pages from `main`.
+⏳ The relay is BUILT and tested locally (Cloudflare's own dev server, a stand-in destination); it goes live
+when the Cloudflare account exists. Until then GitHub Pages serves the site from `main` and the forms post to
+Formspree with the same fields — THE CUTOVER is one commit: every form's `action` → `/api/lead`, and law 5's
+origin → the new address.
 
 **THE ADDRESS:** `iwantaiformybusiness.com` (printed `IWantAIforMyBusiness.com`), with
 `runmybusinessonai.com` and `iwantaiinmybusiness.com` redirecting to it; all three bought at Cloudflare's
 registrar. The presented page is its home; `framework.html` lives at `/framework`. When it goes live, law
 5's SITE_ORIGIN, every canonical/og URL and every form's `_next` move to it in one commit.
 
-**THE HOST:** Cloudflare Pages, connected to this repo — a push to `main` republishes the site. There is no
-build step and no GitHub workflow.
+**THE HOST:** Cloudflare Pages, connected to this repo — a push to `main` republishes the site AND the relay
+(Pages runs every file in `functions/` as server code at its path). There is no build step and no GitHub
+workflow. THE FILES: `functions/api/lead.js` (forms) · `functions/api/stripe.js` (payments) · `lib/relay.js`
+(the destination list and the push, shared) · `ref.js` (the partner code). Secrets live in Cloudflare's
+settings — `DESTINATIONS` (the list, JSON) and `STRIPE_WEBHOOK_SECRET` — and locally in `.dev.vars`, which git
+ignores.
 
 **DIRECTION ① — LEADS, the world → GoHighLevel (push only).** Every form on the site posts to THE RELAY, a
-Cloudflare Worker: it checks the submission, labels it (which page, which form), and pushes it by webhook to
+Cloudflare Worker: it drops bots (the `_gotcha` trap) and bad emails, labels the submission (which form, which
+page, which partner), sends the visitor on to the form's `_next` (only this site, cal.com or Stripe checkout),
+and pushes it by webhook to
 each destination on its list — GoHighLevel first (the CRM; its own Workflows run everything after: pipeline,
 texts, calls, email, speed to lead, AI chat/voice). A destination is any URL that accepts an HTTP POST; its
 key lives in the Worker's secrets, never in a page. Adding one edits the relay's list, never a page.
 **REFERRAL PARTNERS ride direction ①.** The partner network is REFERRAL ONLY: agencies send clients and
 *USER* delivers (partners delivering the mapping themselves is a later model, not yet designed). A partner's
-link carries `?ref=<code>`; the site keeps the code for the visitor's return visits, and the relay passes it
+link carries `?ref=<code>`; `ref.js` keeps the code 90 days (a newer partner link replaces it) and puts it on
+every form, the checkout hand-off also carries it into Stripe as `client_reference_id`, and the relay passes it
 with every submission so the GoHighLevel contact carries its partner — attribution the commission is paid on. The
 working commission: a flat **$1,000 per referred client who closes**, paid after their first payment clears
 (the numbers are *USER*'s and still moving). Sales close on a call and are PAID THROUGH STRIPE, so the payment
-is the trigger: Stripe's webhook reaches the relay (`/api/stripe`), which finds the GoHighLevel contact by the
-payer's email — a referred client's first payment marks the deal won and records "pay <partner> $1,000"; a
-refund cancels an unpaid one; an email that matches no contact is flagged for *USER* to match. No GHL
+is the trigger: Stripe's webhook reaches the relay (`/api/stripe`), which proves the call came from Stripe (the
+signing secret, 5-minute window) and pushes one plain event — `payment` or `refund`, the payer's email, the
+amount, the partner code when Stripe carried it. GoHighLevel's workflow does the rest: it finds the contact by
+that email, a referred client's first payment marks the deal won and records "pay <partner> $1,000", a refund
+cancels an unpaid one, and an email that matches no contact is flagged for *USER* to match. An undelivered
+payment answers Stripe with an error, so Stripe retries it. No GHL
 affiliate module: the partner lives on the contact, the commission in one workflow, payouts by hand monthly.
 
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
@@ -226,6 +245,7 @@ Paths below marked ✓ resolve here.
 | **isaac.html (the hero site)** | `GARAGE-LAB-LAUNCH-STRATEGY.md` §1c · `~/aios-research/HJ-GAUGE-SPEC.md` (the theses) · `~/repo/garage-lab/CATALOG.md` + `INDEX.md` (the receipts) · `~/repo/garage-lab/CLAIM-AUDIT.md` (the honest claim board) · myth flavor ONLY from ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/SANCTUARY-MYTH-ORIGIN.md` Part V |
 | **isaac-wostrel-rubin.html (his personal page)** | ✓ `isaac.html` (the content it started from — the beliefs, the story, the open rows, verbatim) · ✓ `ssri/papers/flat-vs-tree.html` (the paper — only its own sentences) · ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/arrow-book/` — `MANUSCRIPT.md`'s title page and Chapter One (the passages), `front-matter/` (the mark, `assets/sanc-mark-white.png`, byte-identical), and the book's own gates: nothing from `sgc/`, no practice text, nothing from the raw autobiography corpus · `gh api repos/sancovp/<repo> .description` (each repo card's words) · every repo linked returns 200 unauthenticated |
 | **framework.html (the DIY framework + community funnel)** | ✓ `docs/the-transformation-method-2026-09-17.md` §1 (the seven parts, his questions) + §1a (the central test, the two shapes of a business that fails it) — never §1a-bis's cascade, never §1c–§1f · ✓ `~/claude_code/sanctuary-revolution-alpha/application/jobworld/avi-jw/docs/autonomy-framework/AUTONOMY-MANIFESTO.md` §II.2–II.4 (the autonomy ladder; its canon copy `~/autonomy-framework` is outside the world dir) · ✓ `b2b-bootcamp/` — thirteen of sixteen files, the SANCTUARY–WASTELAND cosmology leading them as the map; OUT: the origin story (personal), the pitch script, and `human-vs-ai-comparison.md` (its statistics name no source, law 3) · ✓ `~/claude_code/sanctuary-revolution-alpha/base/chaincompiler/` (public, MIT) — `DIETC-AIOS-REBUILD.md` §1–§5 (the AIOS template → BUILD AN AIOS) · `README.md` § The stack, § The formal spec, changelog v0.1.34–v0.1.36 (GBA · COG · HBA → THE LEVELS) · `chains/skill2framework.chain` + `skills/skill2framework/*` (the six stages → TOME) · ✓ `docs/business-context-2026-09-15-first-client.md` (the ordering rule that keeps it unpresented) · *USER*'s own description of the community (owners + operators on his model, his GoHighLevel, Skool) — the Skool link, the price and what the GHL access includes are his, OPEN |
+| **partners.html (the referral partners)** | ✓ this rule's § HOSTING AND AUTOMATIONS — REFERRAL PARTNERS (*USER*'s rulings: referral only, the working $1,000 flat per client who signs, paid after the first payment clears) · ✓ the avatar of `docs/business-context-2026-09-15-first-client.md` (who partners' clients are). No promise *USER* has not made. |
 | **pricing.html** | `main:pricing.html` VERBATIM + Isaac. No other source exists. |
 | **rung pages (learn/build/run)** | the funnel row for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
 | **watch.html / world demos** | real run receipts ONLY: cave-teams live tests (`test_live_skillcraft.py` runs), future footage per `GARAGE-LAB-LAUNCH-STRATEGY.md` §1b. Never generated numbers. |
