@@ -93,8 +93,12 @@ into view, the scroll holds on the section while it plays, and the text below st
 The scripts: `docs/framework-video-scripts.md` (seven — the top, the autonomy ladder, the bootcamp,
 build an AIOS, the levels, TOME, the community), made in `video-aios/framework-videos/` — each PROTOTYPED
 there first on a stand-in voice and a stand-in presenter so he sees how it will go (the autonomy ladder is),
-then re-keyed to his own reading in one render; the recordings are his, and ASPIRATIONAL until he makes them; the player and
-the scroll control are built when the first recording exists. Linked from nothing and `noindex`, because his own ordering rule stands: *the
+then re-keyed to his own reading in one render; the recordings are his, and ASPIRATIONAL until he makes them. THE TOP
+FILM is on the page: `assets/framework-top.mp4` (poster `assets/framework-top-poster.jpg`, the title card), the
+prototype on the stand-in voice and WOOM's robot presenter, in its own card under the hero, in the landing page's
+player (`vsl.js`: no runtime, starts with sound where the browser allows it, else silent with `Watch with sound`);
+the other six films go in their sections the same way on *USER*'s word, and the scroll hold is built when his
+recordings exist. Linked from nothing and `noindex`, because his own ordering rule stands: *the
 education/community product is downstream of a successful operating business, never a substitute
 for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on his word. It carries
 no price, no tier, and not the datafication cascade (an open ruling). Its button is INK: red means
@@ -189,7 +193,7 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- `framework.html`: the seven section videos (scripts written, `docs/framework-video-scripts.md`; recording is his) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
+- `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
 
 - where the sources marked absent above live
 - the custom domain · the repo-name L3 exception · the watch.html build · merge-source deletions
