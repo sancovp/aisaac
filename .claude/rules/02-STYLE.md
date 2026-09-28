@@ -136,8 +136,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 
 15. **The framework funnel's own pieces** (`framework.html`, `.fw-*` · `.nav-get`): its top-bar
    button is INK (`.nav-get`), because red means Book a call and this page's action is the opt-in ·
-   the opt-in form sits IN the hero beside the lead magnet shown as the thing (its contents page,
-   drawn as a sheet of letter-size paper, outlined, no shadow) · the seven parts as outlined cards
+   the hero is ONE column, one card cut by hairlines: the headline and the sub · the Top film at
+   the card's full width · the opt-in as ONE row (name · email · the button; stacked on a phone) · the 7 steps (the first section under the hero) as outlined cards
    with a big grey numeral, the seventh (the question) full width · the FAQ reuses the leak tree ·
    the three steps reuse the arrow nodes (§4) · the AUTONOMY LADDER: the three roles across a split,
    then the grades as rows (grade · its state in mono · what it means) · the bootcamp frameworks as

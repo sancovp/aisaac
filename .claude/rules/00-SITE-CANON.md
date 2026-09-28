@@ -70,7 +70,10 @@ by line range and lifts the booking dialog whole from `ai-transformation.html`; 
 rebuild, never the output. `isaac.html` is the older personal page, left as it is and not presented.
 
 **Built, not yet presented: `framework.html`** — *USER*'s concept of a traditional lead-magnet
-funnel: the FREE AI Transformation Framework (the method's §1 procedure and §1a central test, in his
+funnel. Its headline is MAGIC-built in *USER*'s shape (Goal + Container + his own use of it): h1 "Map your own
+business for AI with the 7-step framework I use with my clients." — the `<title>` and og tags repeat it. Its
+order, top to bottom: the hero (headline · sub · the Top film · the opt-in as ONE row) · THE 7 STEPS · THE TEST ·
+the other free frameworks · how it works · the community · who it's for · questions · the close. The page is the FREE AI Transformation Framework (the method's §1 procedure and §1a central test, in his
 words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then the FREE COMMUNITY of owners
 and operators running the model (on Skool), inside which his GoHighLevel setup is the paid offer —
 *USER*'s structure: the community is free and GHL is sold inside it. Joined by email until its Skool
@@ -95,7 +98,7 @@ build an AIOS, the levels, TOME, the community), made in `video-aios/framework-v
 there first on a stand-in voice and a stand-in presenter so he sees how it will go (the autonomy ladder is),
 then re-keyed to his own reading in one render; the recordings are his, and ASPIRATIONAL until he makes them. THE TOP
 FILM is on the page: `assets/framework-top.mp4` (poster `assets/framework-top-poster.jpg`, the title card), the
-prototype on the stand-in voice and WOOM's robot presenter, in its own card under the hero, in the landing page's
+prototype on the stand-in voice and WOOM's robot presenter, IN the hero between the sub and the opt-in, in the landing page's
 player (`vsl.js`: no runtime, starts with sound where the browser allows it, else silent with `Watch with sound`);
 the other six films go in their sections the same way on *USER*'s word, and the scroll hold is built when his
 recordings exist. Linked from nothing and `noindex`, because his own ordering rule stands: *the

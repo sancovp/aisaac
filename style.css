@@ -2681,11 +2681,13 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
   border-radius: var(--r-md); padding: 0.72rem 1.25rem; transition: background 0.15s, color 0.15s;
 }
 .nav-get:hover { background: var(--paper); color: var(--ink); }
-.fw-hero { grid-template-columns: 1.35fr 1fr; }
-.fw-hero h1 { margin-bottom: 1.2rem; }
-.fw-hero .lede { max-width: 52ch; margin-bottom: 1.6rem; }
-.fw-film { margin-top: clamp(1rem, 2.4vw, 1.6rem); }
-.fw-form .cta-primary { margin-top: 0.3rem; }
+.fw-hero h1 { max-width: 24ch; margin-bottom: 1.2rem; }
+.fw-hero .lede { max-width: 60ch; margin-bottom: 0; }
+/* the opt-in as ONE row under the film: name · email · the button */
+.fw-form { max-width: none; }
+.fw-form .lead-row { grid-template-columns: 1fr 1fr auto; align-items: end; }
+.fw-form .lead-field { margin-bottom: 0; }
+.fw-form .cta-primary { margin-top: 0; white-space: nowrap; }
 .fw-form .door-fine { margin-top: 0.8rem; }
 /* the lead magnet, shown as the thing: its contents page, drawn as a sheet of paper */
 .fw-doc-cell { display: flex; align-items: center; justify-content: center; }
@@ -2713,12 +2715,11 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
 .fw-comm .get-k, .fw-for .get-k { margin-top: 0; }
 .fw-comm .get-v + .get-k { margin-top: 1.2rem; }
 @media (max-width: 900px) {
-  .fw-hero { grid-template-columns: 1fr; }
+  .fw-form .lead-row { grid-template-columns: 1fr; gap: 1rem; }
   .fw-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
   .fw-grid { grid-template-columns: 1fr; }
-  .fw-form .lead-row { grid-template-columns: 1fr; gap: 0; }
   .nav-get { padding: 0.6rem 0.8rem; font-size: 0.72rem; }
 }
 /* the autonomy ladder — the triad across, then the grades as rows */
