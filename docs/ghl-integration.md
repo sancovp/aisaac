@@ -14,6 +14,11 @@ fields); the hand-built workflow "Website Lead Intake" there is not called by an
 
 ## 1. The split — who is responsible for what
 
+**GHL is the backmost backend; its screens are not used.** Everything in GHL is mirrored into our own database and the business is
+run from JobWorld's business console — agents and dashboards, nobody clicking — built first for our own use
+(`application/jobworld/DESIGN.md` § 9 in the monorepo). So the builders' door below (§ 6, the AI user and a browser tool) matters only
+for the few things GHL's API cannot do (the ring-you-first call, snapshots, SaaS plans).
+
 | GHL gives us (the CRM and the reach) | We keep ourselves (the brain and the glue) | Comes from elsewhere |
 |---|---|---|
 | people: contacts, notes, tags, custom fields | the website (Cloudflare Worker + static files) | **Stripe** — the money, the payment links, the payment webhook |
