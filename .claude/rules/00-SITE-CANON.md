@@ -235,7 +235,9 @@ cancels an unpaid one, and an email that matches no contact is flagged for *USER
 payment answers Stripe with an error, so Stripe retries it. THE STRIPE SIDE — the live webhook, the offer's
 products and payment links, the event contract (every payment carries `payment_id`, the key a destination dedupes
 on), the proof and the undo — is `docs/stripe-payments.md`. No GHL
-affiliate module: the partner lives on the contact, the commission in one workflow, payouts by hand monthly.
+affiliate module: the partner lives on the contact, the commission in one workflow, payouts by hand monthly. THE GHL SIDE — what GHL gives, what the site and relay keep, every connection and the keys that tie them
+(email · `payment_id` · the partner code · the consent record), and what GHL's API can and cannot write — is
+`docs/ghl-integration.md`.
 
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
 automation updates it by COMMITTING to `main`; Cloudflare republishes. Its triggers: CRONS (a schedule) ·
