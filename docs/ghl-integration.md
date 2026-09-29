@@ -149,7 +149,7 @@ the doors used below: `/api/emit-event` and `/api/events` (the event bus) · `/a
 
 | # | build | how | state |
 |---|---|---|---|
-| 1 | **THE FENCE** — a safe profile of the `ghl-api` skill and clients: delete, money-movement and mass-send operations do not exist for the agent; calling one returns "message your human user" | the generator filters by each operation's `kind` and `destructiveHint`; `call.sh` and the clients default to the safe profile; a texting operation also refuses without a consent record | ⏸ next |
+| 1 | **THE FENCE** — a safe profile of the `ghl-api` skill and clients: delete, money-movement and mass-send operations do not exist for the agent; calling one returns "message your human user" | the generator filters by each operation's `kind` and `destructiveHint`; `call.sh` and the clients default to the safe profile; a send of any kind also refuses without a recorded LEGAL BASIS (they contacted us · they consented · a cold email to a US business), and after the contact's do-not-disturb flags and our suppression list are checked (`research/outbound-channel-rules.md` § THE RULING); a basis is a custom field on the contact, written when it becomes true | ⏸ next |
 | 2 | the relay pushes every lead, payment, booking and reply to JobWorld's `/api/emit-event`, labeled with an `observation.process` | a destination in the relay's list, or a cave automation that reads it | ⏸ |
 | 3 | GHL (through the safe profile) is a default tool in every JobWorld box | one entry in `render.py`, the key in the box's `.secrets/`, like Instantly and Apollo | ⏸ |
 | 4 | patterns are harvested automatically | a nightly cave-calendar entry harvests any pattern with enough events; each new SOP goes through the review gate before it is kept | ⏸ |
