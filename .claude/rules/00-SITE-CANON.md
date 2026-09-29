@@ -232,7 +232,9 @@ signing secret, 5-minute window) and pushes one plain event — `payment` or `re
 amount, the partner code when Stripe carried it. GoHighLevel's workflow does the rest: it finds the contact by
 that email, a referred client's first payment marks the deal won and records "pay <partner> $1,000", a refund
 cancels an unpaid one, and an email that matches no contact is flagged for *USER* to match. An undelivered
-payment answers Stripe with an error, so Stripe retries it. No GHL
+payment answers Stripe with an error, so Stripe retries it. THE STRIPE SIDE — the live webhook, the offer's
+products and payment links, the event contract (every payment carries `payment_id`, the key a destination dedupes
+on), the proof and the undo — is `docs/stripe-payments.md`. No GHL
 affiliate module: the partner lives on the contact, the commission in one workflow, payouts by hand monthly.
 
 **DIRECTION ② — PUBLISHING, something happened → the site changes.** The site is files in this repo, so an
