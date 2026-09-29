@@ -130,7 +130,7 @@ log under its own name, can be removed in one click, and never runs as Isaac. Re
 | # | work | who | needs |
 |---|---|---|---|
 | 1 | ✅ the relay writes leads and payments into the CRM, per form (`lib/ghl.js`) | agent | done and live |
-| 2 | ✅ the `ghl-api` skill | agent | done |
+| 2 | ✅ the `ghl-api` skill — ONE skill, a folder per GHL domain (32 domains, 402 operations) generated from GHL's own MCP with MCPorter, `call.sh` to run any operation, and `house-rules/` (tokens, IDs, traps); a read, a write and a delete proven through it (`business-runtime/.claude/skills/ghl-api/`) | agent | done |
 | 3 | the AI user in GHL + the browser tool that drives GHL as that user | Isaac creates the user and signs in once; an agent builds the tool | Isaac's go |
 | 4 | Cal.com → the relay (a booking moves the deal to Booked; a no-show is flagged) | agent | Isaac: keep Cal.com or use GHL's calendar (recommended: keep Cal.com for now) |
 | 5 | narrow the sub-account token from all scopes to contacts, opportunities, conversations messages, custom fields | agent walks Isaac through it | — |
