@@ -75,6 +75,8 @@ flowchart TB
 | ④ | the lead replies, or a deal moves | GHL's outbound events → `/api/ghl` — **NOT BUILT; whether GHL charges for these is unverified** (`research/ghl.md` Q9) | verifies the call is GHL's, routes it | tells the agents, or updates the site's own records |
 | ⑤ | anything the agents should act on | the relay → the runtime | forwards the event | the agents write back through the API |
 
+**What each form is** (`intent`, labelled `form` on the contact): `call` and `partner-referral` — a business that may buy: contact, a deal at New lead, a note, the call task · `partner-apply` — an agency applying: contact tagged `partner`, a note, a "Review partner application" task, no deal, and the code it typed is not stored as an attribution · `framework` and `community-waitlist` — a free opt-in: contact with a tag and a note, no deal, no task.
+
 **The keys that tie the systems together** (a missing key is a broken link, never a guess):
 
 | key | joins | rule |

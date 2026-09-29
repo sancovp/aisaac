@@ -69,7 +69,7 @@ BUILT, not hand-edited: `python3 tools/build_personal.py` pulls the book passage
 by line range and lifts the booking dialog whole from `ai-transformation.html`; edit the script,
 rebuild, never the output. `isaac.html` is the older personal page, left as it is and not presented.
 
-**Built, not yet presented: `framework.html`** — *USER*'s concept of a traditional lead-magnet
+**Public, not linked from the landing page: `framework.html`** — *USER*'s concept of a traditional lead-magnet
 funnel. Its headline is MAGIC-built in *USER*'s shape (Goal + Container + his own use of it): h1 "Create an AI Transformation Map for any business with the 7-step framework I use with my clients." — the `<title>` and og tags repeat it, and the close says "Create your AI Transformation
 Map." Its
 order, top to bottom: the hero (headline · sub · the Top film · the opt-in as ONE row) · THE 7 STEPS · THE TEST ·
@@ -101,19 +101,19 @@ FILM is on the page: `assets/framework-top.mp4` (poster `assets/framework-top-po
 prototype on the stand-in voice and WOOM's robot presenter, IN the hero between the sub and the opt-in, in the landing page's
 player (`vsl.js`: mute is its only control — no runtime, no pause; it starts with sound where the browser allows it, else silent with `Watch with sound`);
 the other six films go in their sections the same way on *USER*'s word, and the scroll hold is built when his
-recordings exist. Linked from nothing and `noindex`, because his own ordering rule stands: *the
+recordings exist. Public and indexable since 2026-09-28 (his go), and linked from nothing — the landing page keeps its one exit — because his own ordering rule stands: *the
 education/community product is downstream of a successful operating business, never a substitute
-for one* (`docs/business-context-2026-09-15-first-client.md`). It goes live on his word. It carries
+for one* (`docs/business-context-2026-09-15-first-client.md`). It still carries two placeholders (the AI-skills button, the Skool link) and only its Top film. It carries
 no price, no tier, and not the datafication cascade (an open ruling). Its button is INK: red means
 Book a call.
 
-**Built, not yet presented: `partners.html`** — the REFERRAL PARTNERS page (§ HOSTING AND AUTOMATIONS):
+**Public, not linked from the landing page: `partners.html`** — the REFERRAL PARTNERS page (§ HOSTING AND AUTOMATIONS):
 the hero (agencies, $1,000 a client who signs; then `assets/partners-hero.webp` at the card's full width — the
 partner introduces the owner, his business gets wired up with cyan agents, one gold coin rolls back to her;
 made from `docs/partners-hero-image-prompt.md`, source `docs/hero-refs/twi_atm_partners.png`; then the
 application as one row) · how it works (send them → *USER*
 takes it from there → $1,000) · two ways to refer (the link; the warm-intro form, its partner code filled by
-`ref.js`) · who it's for · the terms · the close. Linked from nothing and `noindex`; live on his word; its
+`ref.js`) · who it's for · the terms · the close. Public and indexable since 2026-09-28 (his go), linked from nothing — partners are sent the link; its
 button is INK.
 
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
@@ -280,7 +280,7 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in) · when it goes live
+- `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in)
 
 - hosting: the Cloudflare account, the three domains and the repo connected in Pages (§ HOSTING AND AUTOMATIONS) · the GoHighLevel account and plan · the A2P 10DLC texting registration (the legal entity and its EIN) · which of his own systems receive events, and where they are reachable
 - where the sources marked absent above live
