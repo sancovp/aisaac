@@ -155,6 +155,7 @@ the doors used below: `/api/emit-event` and `/api/events` (the event bus) · `/a
 | 4 | patterns are harvested automatically | a nightly cave-calendar entry harvests any pattern with enough events; each new SOP goes through the review gate before it is kept | ⏸ |
 | 5 | outcomes attach to patterns | a reply, a booking or a payment in GHL is recorded on the pattern that produced it, so what worked harvests first | ⏸ — the pipes exist, the plumbing is not done |
 | 6 | **the test lane** — our own inbound lead handled by the CEO for a week | steps 1–3 first; then read the patterns that emerged and harvest one | ⏸ |
+| 7 | **the human as the CEO's employee** — what only a person may do (a LinkedIn or Instagram message from a person's own account) becomes a task the CEO assigns to a human seat, with the drafted message and the link prepared; the human carries it out in GHL's staff app; the reply lands in GHL and the CEO reads it | a GHL task with `assignedTo` the human (built: `lib/ghl.js` already creates tasks) · the fence binds a directive to a human as it binds the CEO's own actions | ⏸ |
 
 ⛔ **Not proven:** the CEO designing a business from a ping. B6's departments came from a setup and kiki's from defaults; what the
 data shows is the mechanism (B6: 5 patterns, 2 harvested skills; HealthWorld: 4 patterns, 0 harvested). The test lane is what
