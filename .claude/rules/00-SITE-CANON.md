@@ -210,7 +210,7 @@ domain: every dot-file (the rules), `docs/`, `_templates/`, `tools/`, `scripts/`
 THE RELAY'S FILES: `functions/api/lead.js` (forms) · `functions/api/stripe.js` (payments) · `lib/relay.js`
 (the destination list and the push, shared) · `ref.js` (the partner code). Secrets live in the Worker's
 settings — `DESTINATIONS` (the list, JSON) and `STRIPE_WEBHOOK_SECRET` — and locally in `.dev.vars`, which git
-ignores; `npx wrangler dev` runs the whole thing on this machine. No file over 25 MB can be served (Cloudflare's
+ignores; `npx wrangler dev` runs the whole thing on this machine. THE HOW — checking a deploy, adding a page or a domain, changing where leads go, the Stripe secret, running it locally — is the `cloudflare-site` skill. No file over 25 MB can be served (Cloudflare's
 per-asset limit): a video past it is re-encoded before it ships.
 
 **DIRECTION ① — LEADS, the world → GoHighLevel (push only).** Every form on the site posts to THE RELAY, a

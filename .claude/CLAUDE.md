@@ -159,4 +159,5 @@ git add . && git commit -m "message" && git push
 ```
 Every push to main deploys twice: GitHub Pages (sancovp.github.io/aisaac) and the Cloudflare Worker `aisaac`
 (worker.js + wrangler.jsonc — the site's home once iwantaiformybusiness.com is attached). `.claude/rules/00-SITE-CANON.md`
-§ HOSTING AND AUTOMATIONS.
+§ HOSTING AND AUTOMATIONS; how to operate it (is it live, add a page or domain, where leads go, secrets) is the
+`cloudflare-site` skill.
