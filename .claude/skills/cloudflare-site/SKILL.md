@@ -21,7 +21,9 @@ The law is `00-SITE-CANON.md` § HOSTING AND AUTOMATIONS (what is served where, 
 - THE RELAY — `functions/api/lead.js` (every form) · `functions/api/stripe.js` (Stripe's payment webhook) ·
   `lib/relay.js` (the destination list and the push). It pushes; it never stores and never sends mail.
 - SECRETS live in the Worker's settings, never in a file in git: `DESTINATIONS`, `STRIPE_WEBHOOK_SECRET` and `GHL_TOKEN`
-  (the CRM key; `lib/ghl.js` uses it — put it in with `bash -c 'read -rs -p "Token: " T; printf "%s" "$T" | npx wrangler secret put GHL_TOKEN'`, never by clipboard, never in chat).
+  (the CRM key; `lib/ghl.js` uses it — put it in with `bash -c 'read -rs -p "Token: " T; printf "%s" "$T" | npx wrangler secret put GHL_TOKEN'`, never by clipboard, never in chat). `GHL_AGENCY_TOKEN` (an agency-level Private Integration Token: sub-accounts, SaaS,
+  snapshots, users) lives ONLY in `.dev.vars` for agent work — never in the Worker, and never under the name `GHL_TOKEN`:
+  an agency token cannot read a sub-account's contacts, so swapping it in silently breaks the relay's CRM writes.
   Locally they are in `.dev.vars` (git-ignored). **Secrets are write-only on Cloudflare** — they cannot be
   read back — so `.dev.vars` is the copy you edit and re-put from.
 
