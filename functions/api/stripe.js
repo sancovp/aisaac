@@ -17,6 +17,7 @@
  * link. The whole contract: docs/stripe-payments.md §5.
  */
 import { push, json } from '../../lib/relay.js';
+import { recordPayment } from '../../lib/ghl.js';
 
 const TOLERANCE_S = 300;
 const enc = new TextEncoder();
@@ -79,14 +80,23 @@ export async function onRequestPost({ request, env }) {
   if (!n) return json({ ok: true, ignored: evt.type }); // answered, so Stripe stops retrying
 
   const { kind, amount, ...rest } = n;
-  const results = await push(env, kind, {
+  const event = {
     ...rest,
     amount: (amount || 0) / 100, // cents → dollars
     stripe_event: evt.id,
     stripe_object: evt.data?.object?.id || '',
     at: new Date((evt.created || Date.now() / 1000) * 1000).toISOString(),
-  });
-  const delivered = results.some((r) => r.ok);
-  // a 5xx makes Stripe retry later, which is what an undelivered payment needs
-  return json({ ok: delivered }, delivered ? 200 : 502);
+  };
+  const [results, crm] = await Promise.all([
+    push(env, kind, event),
+    recordPayment(env, { event: kind, ...event }).catch((e) => {
+      console.error('ghl payment', e.message);
+      return { ok: false };
+    }),
+  ]);
+  const delivered = results.some((r) => r.ok) || crm.ok === true;
+  // a 5xx makes Stripe retry later, which is what an undelivered payment needs — and a CRM write that FAILED
+  // (a token is set and the call errored) must retry too, since recordPayment is safe to run twice
+  const crmFailed = crm.ok === false;
+  return json({ ok: delivered && !crmFailed, crm: crm.ok === true }, delivered && !crmFailed ? 200 : 502);
 }

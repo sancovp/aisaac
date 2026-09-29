@@ -20,7 +20,8 @@ The law is `00-SITE-CANON.md` § HOSTING AND AUTOMATIONS (what is served where, 
   `lib/`, the Worker's own source. **No served file may exceed 25 MiB** (Cloudflare's per-asset limit).
 - THE RELAY — `functions/api/lead.js` (every form) · `functions/api/stripe.js` (Stripe's payment webhook) ·
   `lib/relay.js` (the destination list and the push). It pushes; it never stores and never sends mail.
-- SECRETS live in the Worker's settings, never in a file in git: `DESTINATIONS` and `STRIPE_WEBHOOK_SECRET`.
+- SECRETS live in the Worker's settings, never in a file in git: `DESTINATIONS`, `STRIPE_WEBHOOK_SECRET` and `GHL_TOKEN`
+  (the CRM key; `lib/ghl.js` uses it — put it in with `bash -c 'read -rs -p "Token: " T; printf "%s" "$T" | npx wrangler secret put GHL_TOKEN'`, never by clipboard, never in chat).
   Locally they are in `.dev.vars` (git-ignored). **Secrets are write-only on Cloudflare** — they cannot be
   read back — so `.dev.vars` is the copy you edit and re-put from.
 

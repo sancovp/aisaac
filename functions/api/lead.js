@@ -6,6 +6,7 @@
  * for a script, answers JSON.
  */
 import { push, json } from '../../lib/relay.js';
+import { recordLead } from '../../lib/ghl.js';
 
 // where a form may send the visitor afterwards: this site, the booking calendar, Stripe checkout
 const NEXT_HOSTS = ['iwantaiformybusiness.com', 'sancovp.github.io', 'cal.com', 'buy.stripe.com', 'checkout.stripe.com'];
@@ -56,10 +57,17 @@ export async function onRequestPost({ request, env }) {
   payload.submitted_at = new Date().toISOString();
   payload.country = request.cf?.country || '';
 
-  const results = await push(env, 'lead', payload);
-  const delivered = results.some((r) => r.ok);
+  // the webhook destinations and the CRM write run together; either one landing means the lead is not lost
+  const [results, crm] = await Promise.all([
+    push(env, 'lead', payload),
+    recordLead(env, payload).catch((e) => {
+      console.error('ghl lead', e.message);
+      return { ok: false };
+    }),
+  ]);
+  const delivered = results.some((r) => r.ok) || crm.ok === true;
   if (!delivered) console.error('lead not delivered', JSON.stringify(results));
 
   if (next) return Response.redirect(next, 303);
-  return json({ ok: delivered, results: results.map((r) => ({ name: r.name, ok: r.ok })) }, delivered ? 200 : 502);
+  return json({ ok: delivered, results: results.map((r) => ({ name: r.name, ok: r.ok })), crm: crm.ok === true }, delivered ? 200 : 502);
 }

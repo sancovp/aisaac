@@ -81,13 +81,16 @@ empty first invoice) is not sent.
 | AHT's advisory (existing) | as L2, at $1,000 | monthly `subscription_cycle` |
 | a refund | `refund` with the refunded amount | — |
 
-## 7. The destination's side — the GoHighLevel workflow (`ASPIRATIONAL:` until GHL joins the list)
+## 7. The CRM's side — the relay writes it (`lib/ghl.js`, BUILT)
 
-On `payment`: if the contact's last `payment_id` equals this one → stop (the duplicate) · find the contact by
-`email` (none → flag for *USER*) · mark the deal won · if the contact carries a partner and no commission is
-recorded yet → record "pay <partner> $1,000" and tag it · store `payment_id` on the contact. On `refund`:
-cancel an unpaid commission. A renewal (`subscription_cycle`) never records a commission. Until GHL is on
-the list, the stand-in destination receives the same events (a duplicate there is only a second email).
+The relay writes GoHighLevel itself through its API (`docs/ghl-integration.md`): it finds the contact by `email` (none →
+one is made, tagged `unmatched-payment`, with a task for *USER*) · skips the deal and the payment record if the contact's
+`last_payment_id` already equals this `payment_id` (the duplicate) · moves the deal to Won at the first payment's amount
+(a renewal, `subscription_cycle`, never touches it) · records `payment_id` on the contact · if the contact has a partner
+(the payment's `ref`, else the contact's `partner_code`) and no commission task exists yet (the tag
+`partner-commission-task`), creates "Pay partner <code> $1000" for *USER* and adds the tag — decided apart from the
+duplicate check, because the checkout copy carries the partner code and the invoice copy does not · a refund → a task.
+A GHL write that fails answers Stripe with a 502, so Stripe retries; the write is safe to run twice.
 
 ## 8. What exists now
 

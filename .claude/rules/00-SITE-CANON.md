@@ -209,7 +209,7 @@ the home. `.assetsignore` keeps what is not the site off the
 domain: every dot-file (the rules), `docs/`, `_templates/`, `tools/`, `scripts/`, the Worker's own source.
 THE RELAY'S FILES: `functions/api/lead.js` (forms) · `functions/api/stripe.js` (payments) · `lib/relay.js`
 (the destination list and the push, shared) · `ref.js` (the partner code). Secrets live in the Worker's
-settings — `DESTINATIONS` (the list, JSON) and `STRIPE_WEBHOOK_SECRET` — and locally in `.dev.vars`, which git
+settings — `DESTINATIONS` (the list, JSON), `STRIPE_WEBHOOK_SECRET` and `GHL_TOKEN` (a Private Integration Token) — and locally in `.dev.vars`, which git
 ignores; `npx wrangler dev` runs the whole thing on this machine. THE HOW — checking a deploy, adding a page or a domain, changing where leads go, the Stripe secret, running it locally — is the `cloudflare-site` skill. No file over 25 MB can be served (Cloudflare's
 per-asset limit): a video past it is re-encoded before it ships.
 
@@ -217,8 +217,9 @@ per-asset limit): a video past it is re-encoded before it ships.
 Cloudflare Worker: it drops bots (the `_gotcha` trap) and bad emails, labels the submission (which form, which
 page, which partner), sends the visitor on to the form's `_next` (only this site, cal.com or Stripe checkout),
 and pushes it by webhook to
-each destination on its list — GoHighLevel first (the CRM; its own Workflows run everything after: pipeline,
-texts, calls, email, speed to lead, AI chat/voice). A destination is any URL that accepts an HTTP POST; its
+each destination on its list, and WRITES THE CRM ITSELF through GoHighLevel's API (`lib/ghl.js`: the contact, the deal
+at New lead, the note, a call task; the text and the ring-you-first call are a later step behind a phone number and A2P) —
+GHL's API cannot create workflows, so what must be tested and changed quickly is code here. A destination is any URL that accepts an HTTP POST; its
 key lives in the Worker's secrets, never in a page. Adding one edits the relay's list, never a page.
 **REFERRAL PARTNERS ride direction ①.** The partner network is REFERRAL ONLY: agencies send clients and
 *USER* delivers (partners delivering the mapping themselves is a later model, not yet designed). A partner's
@@ -229,9 +230,9 @@ working commission: a flat **$1,000 per referred client who closes**, paid after
 (the numbers are *USER*'s and still moving). Sales close on a call and are PAID THROUGH STRIPE, so the payment
 is the trigger: Stripe's webhook reaches the relay (`/api/stripe`), which proves the call came from Stripe (the
 signing secret, 5-minute window) and pushes one plain event — `payment` or `refund`, the payer's email, the
-amount, the partner code when Stripe carried it. GoHighLevel's workflow does the rest: it finds the contact by
-that email, a referred client's first payment marks the deal won and records "pay <partner> $1,000", a refund
-cancels an unpaid one, and an email that matches no contact is flagged for *USER* to match. An undelivered
+amount, the partner code when Stripe carried it. The relay then writes the CRM (`lib/ghl.js`): it finds the contact by
+that email, a referred client's first payment marks the deal won and creates the task "pay <partner> $1,000", a refund
+creates a task to cancel an unpaid one, and an email that matches no contact is made a contact and flagged for *USER* to match. An undelivered
 payment answers Stripe with an error, so Stripe retries it. THE STRIPE SIDE — the live webhook, the offer's
 products and payment links, the event contract (every payment carries `payment_id`, the key a destination dedupes
 on), the proof and the undo — is `docs/stripe-payments.md`. No GHL

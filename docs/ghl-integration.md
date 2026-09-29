@@ -6,10 +6,11 @@ business logic should live. NOT deprecated, NOT skippable. The law it serves is 
 `cloudflare-site` skill; the vendor facts (plans, prices, what the API can do) are the business-runtime project's
 `research/ghl.md` (§ WHAT THE API EXPOSES).
 
-**Status:** the design below is ASPIRATIONAL except where marked BUILT. What exists today: the relay (`/api/lead`,
-`/api/stripe`) pushes each event by webhook to a destination list; the GHL sub-account "Ribcage Solutions" has a
-pipeline "TWI Sales", 8 contact fields and one hand-built workflow "Website Lead Intake". The relay does not yet
-write to GHL's API.
+**Status:** ① the lead and ② the payment are BUILT (`lib/ghl.js`, called by `functions/api/lead.js` and
+`functions/api/stripe.js`) and proven against the real sub-account with test records, which were then deleted. ③ Cal.com
+and ④ GHL's outbound events are NOT BUILT. The text to the lead and the ring-you-first call are not built: they wait on
+a phone number and the A2P registration. The GHL sub-account is "Ribcage Solutions" (pipeline "TWI Sales", 8 contact
+fields); the hand-built workflow "Website Lead Intake" there is not called by anything and can stay off.
 
 ## 1. The split — who is responsible for what
 
@@ -68,8 +69,8 @@ flowchart TB
 
 | # | event | who sends it | what the relay does | what lands in GHL |
 |---|---|---|---|---|
-| ① | a visitor submits a form | the site → `/api/lead` | drops bots and bad emails, labels the lead (form, page, partner), keeps the consent record | **upsert contact** (partner code, form, revenue, focus, page, consent record + version) · **create the deal** at New lead · an internal email · a task · **the text and the ring-you-first call, only if a consent record and a phone are present** |
-| ② | a payment or a refund | Stripe → `/api/stripe` (signed, 5-minute window) | reads `payment_id`, `billing_reason`, `ref` | **find the contact by email** (none → a task "unmatched payment") · skip if `last_payment_id` already equals this `payment_id` · save it · **deal → Won** · a partner code present and it is the first payment (`subscription_create` / `checkout`, never `subscription_cycle`) → a task "pay <partner> $1,000" · a refund → a task to cancel an unpaid commission |
+| ① BUILT | a visitor submits a form | the site → `/api/lead` | drops bots and bad emails, labels the lead (form, page, partner), keeps the consent record | **upsert contact** (partner code, form, revenue, focus, page, consent record + version) · **create the deal** at New lead · a note · a task "Call new lead now" for Isaac, due in 2 minutes · *(not built yet: **the text and the ring-you-first call, only if a consent record and a phone are present**)* |
+| ② BUILT | a payment or a refund | Stripe → `/api/stripe` (signed, 5-minute window) | reads `payment_id`, `billing_reason`, `ref` | **find the contact by email** (none → a task "unmatched payment") · skip if `last_payment_id` already equals this `payment_id` · save it · **deal → Won** · a partner code present and it is the first payment (`subscription_create` / `checkout`, never `subscription_cycle`) → a task "pay <partner> $1,000" · a refund → a task to cancel an unpaid commission |
 | ③ | a call is booked, or missed | Cal.com webhook → `/api/cal` — **NOT BUILT** | maps booking → the contact by email | deal → **Booked**; after the call **Showed**; a no-show starts the no-show follow-up |
 | ④ | the lead replies, or a deal moves | GHL's outbound events → `/api/ghl` — **NOT BUILT; whether GHL charges for these is unverified** (`research/ghl.md` Q9) | verifies the call is GHL's, routes it | tells the agents, or updates the site's own records |
 | ⑤ | anything the agents should act on | the relay → the runtime | forwards the event | the agents write back through the API |
@@ -96,11 +97,11 @@ only — loading one is done in the app). A hand-built workflow can be started f
 
 | need | who | state |
 |---|---|---|
-| a Private Integration Token for the sub-account (scopes: contacts, opportunities, conversations messages, custom fields) | Isaac creates it once; it goes only into the Worker's secret `GHL_TOKEN` and `.dev.vars` | ⏸ |
+| a Private Integration Token for the sub-account | Isaac created it (all scopes — narrow it to contacts, opportunities, conversations messages, custom fields once things settle); it lives only in the Worker's secret `GHL_TOKEN` and `.dev.vars` | ✅ |
 | a phone number in the sub-account | Isaac buys it | ⏸ |
 | the A2P registration (IRS CP 575 emailed to GHL's team) | Isaac | ⏸ |
 | the ring-you-first call workflow, built once | Isaac by hand, or with GHL's assistant | ⏸ |
-| the relay's GHL module (`lib/ghl.js`) + the payment and lead handlers | an agent | ⏸ |
+| the relay's GHL module (`lib/ghl.js`) + the payment and lead handlers | an agent | ✅ |
 | Cal.com → relay | an agent, after the calendar question below | ⏸ |
 
 **Open for Isaac:** keep Cal.com or move booking into GHL's calendar · whether the hand-built workflow "Website
@@ -108,6 +109,5 @@ Lead Intake" is switched off once the relay writes to GHL directly.
 
 ## 5. Proof and undo
 
-PROOF: send one test lead and one test payment through the live relay; read the contact, the deal and the task in
-GHL; send the same payment twice and confirm one task. UNDO: remove `GHL_TOKEN` from the Worker — the relay falls
+PROOF (done 2026-09-28 against the real sub-account, records deleted after): one lead → a contact with its 7 fields, a deal at New lead, a note and a task; the same sale sent as an invoice then a checkout, twice each → one deal Won at the first payment's amount, one "Pay partner" task; a renewal changed nothing about the deal; a refund → a task; an unknown payer → a contact tagged `unmatched-payment` and a task. UNDO: remove `GHL_TOKEN` from the Worker — the relay falls
 back to the webhook destinations it has today.
