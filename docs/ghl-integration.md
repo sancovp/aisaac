@@ -109,6 +109,36 @@ only — loading one is done in the app). A hand-built workflow can be started f
 **Open for Isaac:** keep Cal.com or move booking into GHL's calendar · whether the hand-built workflow "Website
 Lead Intake" is switched off once the relay writes to GHL directly.
 
+## 6. The plan — how an AI reaches everything in GHL, and the order of work
+
+**The goal (Isaac's):** an AI agent has ACCESS to everything in GHL, so nothing waits on him clicking. GHL splits into three
+layers with three different doors:
+
+| layer | the door | state |
+|---|---|---|
+| **DATA** — contacts, deals, tasks, texts, email, fields, calendars, invoices, products (≈570 API operations) | the public API with a sub-account token (`GHL_TOKEN`) | ✅ open; the relay uses it |
+| **AGENCY** — sub-accounts, SaaS plans, snapshots, users | the public API with an agency token (`GHL_AGENCY_TOKEN`, `.dev.vars` only) | ✅ token in place; nothing built on it yet |
+| **THE BUILDERS** — workflows, funnels, forms, page layouts | NOT the API (workflows are read-only there). The real screens, driven by a browser; GHL's own builder AI as a helper; or our own code as a GHL Marketplace app whose custom steps a workflow can call | ⏸ decision below |
+
+**The recommended door for the builders (not yet decided by Isaac):** a SEPARATE GHL user for the AI (Settings → My Staff,
+a limited role), signed in once in a browser tool that drives GHL's real screens — so anything the AI does appears in the audit
+log under its own name, can be removed in one click, and never runs as Isaac. Rejected: the reverse-engineered internal API
+(`research/ghl-workflow-builder-repo-map.md` — it logs in as a user, its evidence does not hold up, and it leaks secrets).
+
+**The order of work** (each row is a board row in the business-runtime project; the HOW is its `ghl-api` skill):
+
+| # | work | who | needs |
+|---|---|---|---|
+| 1 | ✅ the relay writes leads and payments into the CRM, per form (`lib/ghl.js`) | agent | done and live |
+| 2 | ✅ the `ghl-api` skill | agent | done |
+| 3 | the AI user in GHL + the browser tool that drives GHL as that user | Isaac creates the user and signs in once; an agent builds the tool | Isaac's go |
+| 4 | Cal.com → the relay (a booking moves the deal to Booked; a no-show is flagged) | agent | Isaac: keep Cal.com or use GHL's calendar (recommended: keep Cal.com for now) |
+| 5 | narrow the sub-account token from all scopes to contacts, opportunities, conversations messages, custom fields | agent walks Isaac through it | — |
+| 6 | speed to lead: an instant text and the ring-you-first call, only for a lead with a consent record and a phone | agent | a phone number in the sub-account and the A2P registration (Isaac's setup, already on his list) |
+| 7 | GHL's outbound events → the relay (a reply, a stage change), if GHL does not charge for them (`research/ghl.md` Q9) | agent | Q9 answered |
+| 8 | SaaS Mode: the three tiers as plans, the first snapshot | agent + Isaac | the tier prices (Isaac's) |
+| 9 | the framework's real PDF, its skills repo, an honest placeholder on the skills button meanwhile | agent | Isaac's word on which frameworks ship |
+
 ## 5. Proof and undo
 
 PROOF (done 2026-09-28 against the real sub-account, records deleted after): one lead → a contact with its 7 fields, a deal at New lead, a note and a task; the same sale sent as an invoice then a checkout, twice each → one deal Won at the first payment's amount, one "Pay partner" task; a renewal changed nothing about the deal; a refund → a task; an unknown payer → a contact tagged `unmatched-payment` and a task. UNDO: remove `GHL_TOKEN` from the Worker — the relay falls
