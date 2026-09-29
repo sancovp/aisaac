@@ -9,6 +9,12 @@
  *
  * Stripe events it listens for: checkout.session.completed (a payment link was paid) ·
  * invoice.paid (an invoice or a subscription month) · charge.refunded.
+ *
+ * ⛔ ONE PAYMENT CAN ARRIVE TWICE: a link checkout that creates an invoice (every subscription link) fires
+ * BOTH checkout.session.completed and invoice.paid for the same money. Both carry the same `payment_id`
+ * (the invoice id), and a destination dedupes on it — the relay keeps both, because the checkout event is
+ * the one with the partner `ref` and the invoice event is the only one for a subscription made outside a
+ * link. The whole contract: docs/stripe-payments.md §5.
  */
 import { push, json } from '../../lib/relay.js';
 
@@ -39,19 +45,25 @@ export async function verify(header, body, secret, now = Date.now() / 1000) {
   return sigs.some((s) => sameText(s, expected));
 }
 
+const idOf = (v) => (v && typeof v === 'object' ? v.id : v) || '';
+
 export function normalize(evt) {
   const o = evt.data?.object || {};
   switch (evt.type) {
     case 'checkout.session.completed':
-      if (o.payment_status !== 'paid') return null;
+      if (o.payment_status !== 'paid' || !o.amount_total) return null;
       return { kind: 'payment', email: o.customer_details?.email || o.customer_email || '',
-               name: o.customer_details?.name || '', amount: o.amount_total, currency: o.currency, ref: o.client_reference_id || '' };
+               name: o.customer_details?.name || '', amount: o.amount_total, currency: o.currency, ref: o.client_reference_id || '',
+               payment_id: idOf(o.invoice) || idOf(o.payment_intent) || o.id, source: 'checkout', billing_reason: 'checkout' };
     case 'invoice.paid':
+      if (!o.amount_paid) return null; // a trial's empty invoice is not a payment
       return { kind: 'payment', email: o.customer_email || '', name: o.customer_name || '',
-               amount: o.amount_paid, currency: o.currency, ref: '' };
+               amount: o.amount_paid, currency: o.currency, ref: '',
+               payment_id: o.id, source: 'invoice', billing_reason: o.billing_reason || '' };
     case 'charge.refunded':
       return { kind: 'refund', email: o.billing_details?.email || o.receipt_email || '',
-               name: o.billing_details?.name || '', amount: o.amount_refunded, currency: o.currency, ref: '' };
+               name: o.billing_details?.name || '', amount: o.amount_refunded, currency: o.currency, ref: '',
+               payment_id: idOf(o.payment_intent) || o.id, source: 'charge', billing_reason: '' };
     default:
       return null;
   }
