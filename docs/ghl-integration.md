@@ -139,6 +139,27 @@ log under its own name, can be removed in one click, and never runs as Isaac. Re
 | 8 | SaaS Mode: the three tiers as plans, the first snapshot | agent + Isaac | the tier prices (Isaac's) |
 | 9 | the framework's real PDF, its skills repo, an honest placeholder on the skills button meanwhile | agent | Isaac's word on which frameworks ship |
 
+## 7. JobWorld ↔ GHL — GHL is the CEO's world
+
+**The design** is `business-runtime/DESIGN.md` § 8a "GHL IS THE CEO'S WORLD"; this is its build list. JobWorld is a `CAVEHTTPServer`
+subclass (`JobworldHTTPServer` in `twi-jobworld/server/jobworld_server.py`, its agent `JobworldAgent(CAVEAgent)`), so it already has
+the doors used below: `/api/emit-event` and `/api/events` (the event bus) · `/api/automations` (the cave calendar) ·
+`/api/tasks` + `/api/ceo-review` (the review gate) · `/api/sop-patterns` + `.../harvest` (emergent SOPs → skills) ·
+`/api/departments` + `/api/agents` (make an employee or a department).
+
+| # | build | how | state |
+|---|---|---|---|
+| 1 | **THE FENCE** — a safe profile of the `ghl-api` skill and clients: delete, money-movement and mass-send operations do not exist for the agent; calling one returns "message your human user" | the generator filters by each operation's `kind` and `destructiveHint`; `call.sh` and the clients default to the safe profile; a texting operation also refuses without a consent record | ⏸ next |
+| 2 | the relay pushes every lead, payment, booking and reply to JobWorld's `/api/emit-event`, labeled with an `observation.process` | a destination in the relay's list, or a cave automation that reads it | ⏸ |
+| 3 | GHL (through the safe profile) is a default tool in every JobWorld box | one entry in `render.py`, the key in the box's `.secrets/`, like Instantly and Apollo | ⏸ |
+| 4 | patterns are harvested automatically | a nightly cave-calendar entry harvests any pattern with enough events; each new SOP goes through the review gate before it is kept | ⏸ |
+| 5 | outcomes attach to patterns | a reply, a booking or a payment in GHL is recorded on the pattern that produced it, so what worked harvests first | ⏸ — the pipes exist, the plumbing is not done |
+| 6 | **the test lane** — our own inbound lead handled by the CEO for a week | steps 1–3 first; then read the patterns that emerged and harvest one | ⏸ |
+
+⛔ **Not proven:** the CEO designing a business from a ping. B6's departments came from a setup and kiki's from defaults; what the
+data shows is the mechanism (B6: 5 patterns, 2 harvested skills; HealthWorld: 4 patterns, 0 harvested). The test lane is what
+would prove it.
+
 ## 5. Proof and undo
 
 PROOF (done 2026-09-28 against the real sub-account, records deleted after): one lead → a contact with its 7 fields, a deal at New lead, a note and a task; the same sale sent as an invoice then a checkout, twice each → one deal Won at the first payment's amount, one "Pay partner" task; a renewal changed nothing about the deal; a refund → a task; an unknown payer → a contact tagged `unmatched-payment` and a task. UNDO: remove `GHL_TOKEN` from the Worker — the relay falls
