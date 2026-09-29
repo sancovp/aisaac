@@ -91,13 +91,18 @@ the list, the stand-in destination receives the same events (a duplicate there i
 
 ## 8. What exists now
 
-| object | id | url |
+| object | id | url / state |
 |---|---|---|
-| P1 / its price | — | — |
-| P2 / its price | — | — |
-| L1 founding link | — | — |
-| L2 retainer link | — | — |
-| webhook endpoint | — | `https://iwantaiformybusiness.com/api/stripe` |
+| P1 "AI Transformation Partnership — Founding 90 Days" / $3,000 one-time | `prod_VLW9irRKLRXZTB` / `price_1UKp79C3GAOTArnDbwcwaLv0` | live |
+| P2 "AI Transformation Partnership — Monthly Retainer" / $2,000 a month | `prod_VLW9NOieOAjOfb` / `price_1UKp7FC3GAOTArnDJoOwrwge` | live |
+| L1 founding link | — | ⏸ *USER* makes it in the Stripe dashboard (§3's spec): an agent's live payment-link create was refused by the session's safety check |
+| L2 retainer link | — | ⏸ *USER*, as L1 |
+| webhook endpoint | `we_1UKp8BC3GAOTArnDQDgUVTF3` | enabled · `https://iwantaiformybusiness.com/api/stripe` · its secret in the Worker (`STRIPE_WEBHOOK_SECRET`) and `.dev.vars` |
+
+**PROVEN LIVE** (§10): an unsigned call → 400 · a correctly signed event of an ignored type → 200 `ignored` ·
+a wrong signature → 400. ⚠ A test request must send a browser-like or Stripe's own user-agent
+(`Stripe/1.0 (+https://stripe.com/docs/webhooks)`): Cloudflare answers a script's default one
+(`Python-urllib`) with 403 error 1010 before the Worker runs — Stripe's own calls pass.
 
 ## 9. The site's hand-off
 

@@ -73,6 +73,13 @@ into `.dev.vars` and `npx wrangler secret put STRIPE_WEBHOOK_SECRET`. The relay 
 (5-minute window) and pushes one plain `payment` or `refund` event, with the partner code when Stripe
 carried it. Creating the Payment Links and the endpoint is *USER*'s (live payment objects on his account).
 
+## Probing the live relay
+
+Cloudflare refuses a script's default user-agent (`Python-urllib`) with **403 error 1010** before the Worker
+runs; curl's passes. Send a real one — for `/api/stripe`, Stripe's own `Stripe/1.0
+(+https://stripe.com/docs/webhooks)` — or the probe measures Cloudflare, not the relay. The signed-probe
+recipe and what it proves: `docs/stripe-payments.md` §8/§10.
+
 ## Run it locally
 
 ```bash
