@@ -50,13 +50,13 @@
   var submit   = document.getElementById('capture-submit');
   var fine     = document.getElementById('capture-fine');
 
-  /* ⏸ THE TWO STRIPE URLS DO NOT EXIST YET.
-     Isaac creates the products; creating live payment objects on his account
-     is not an agent's to do. Paste the Payment Link URLs here and nothing else
-     needs to change — `prefill` appends Stripe's own `prefilled_email`. */
+  /* The two Stripe Payment Links (docs/stripe-payments.md §3 · §8): founding =
+     $3,000 today + $2,000/mo from day 91 on one subscription; retainer =
+     $2,000/mo. `prefill` appends Stripe's own `prefilled_email` and the
+     partner code as `client_reference_id`. */
   var DEST = {
-    founding: { url: '', prefill: 'stripe' },
-    retainer: { url: '', prefill: 'stripe' },
+    founding: { url: 'https://buy.stripe.com/bJe3cu7f54sG7237su3wQ02', prefill: 'stripe' },
+    retainer: { url: 'https://buy.stripe.com/fZu4gy7f5aR40DF6oq3wQ03', prefill: 'stripe' },
     call:     { url: 'https://cal.com/aisaac/ai-transformation-discovery-call', prefill: 'cal' }
   };
 

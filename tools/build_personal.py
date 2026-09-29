@@ -308,7 +308,7 @@ page = f'''<!doctype html>
 {dialog}
 
 <script src="vsl.js?v={V}"></script>
-<script src="capture.js?v=2026-09-28c"></script>
+<script src="capture.js?v=2026-09-28d"></script>
 </body>
 </html>
 '''

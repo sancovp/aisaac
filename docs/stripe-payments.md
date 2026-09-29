@@ -36,8 +36,8 @@ then $2,000/mo · THE RETAINER $2,000/mo.** Prices and names are *USER*'s; these
 | **L1 THE FOUNDING LINK** | subscription mode · line items P1 ×1 + P2 ×1 · `trial_period_days` **90** ⇒ the customer pays **$3,000 today**, and **$2,000/mo from day 91** until cancelled — the whole founding deal in one checkout |
 | **L2 THE RETAINER LINK** | P2 ×1 ⇒ **$2,000 today and monthly** |
 
-Both links: automatic tax ON (as the most recent existing link), billing address `auto`, Stripe's hosted
-confirmation page after payment. Both products take the à-la-carte product's tax code (`txcd_20060048`).
+Both links: automatic tax ON (as the most recent existing link), billing address `auto`, the phone number
+collected, Stripe's hosted confirmation page after payment. Both products take the à-la-carte product's tax code (`txcd_20060048`).
 The IDs and URLs, once made, are recorded in §8.
 
 ## 4. The webhook
@@ -95,8 +95,8 @@ the list, the stand-in destination receives the same events (a duplicate there i
 |---|---|---|
 | P1 "AI Transformation Partnership — Founding 90 Days" / $3,000 one-time | `prod_VLW9irRKLRXZTB` / `price_1UKp79C3GAOTArnDbwcwaLv0` | live |
 | P2 "AI Transformation Partnership — Monthly Retainer" / $2,000 a month | `prod_VLW9NOieOAjOfb` / `price_1UKp7FC3GAOTArnDJoOwrwge` | live |
-| L1 founding link | — | ⏸ *USER* makes it in the Stripe dashboard (§3's spec): an agent's live payment-link create was refused by the session's safety check |
-| L2 retainer link | — | ⏸ *USER*, as L1 |
+| L1 founding link | `plink_1UKpEtC3GAOTArnDZFn9YiAy` | live · https://buy.stripe.com/bJe3cu7f54sG7237su3wQ02 · P1 + P2, trial 90 days, automatic tax, phone collected |
+| L2 retainer link | `plink_1UKpEyC3GAOTArnDowO5738K` | live · https://buy.stripe.com/fZu4gy7f5aR40DF6oq3wQ03 · P2, automatic tax, phone collected |
 | webhook endpoint | `we_1UKp8BC3GAOTArnDQDgUVTF3` | enabled · `https://iwantaiformybusiness.com/api/stripe` · its secret in the Worker (`STRIPE_WEBHOOK_SECRET`) and `.dev.vars` |
 
 **PROVEN LIVE** (§10): an unsigned call → 400 · a correctly signed event of an ignored type → 200 `ignored` ·

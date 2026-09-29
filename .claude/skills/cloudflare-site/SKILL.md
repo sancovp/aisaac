@@ -71,7 +71,8 @@ In Stripe, add a webhook endpoint `https://iwantaiformybusiness.com/api/stripe` 
 `checkout.session.completed`, `invoice.paid` and `charge.refunded`; copy its signing secret (`whsec_…`)
 into `.dev.vars` and `npx wrangler secret put STRIPE_WEBHOOK_SECRET`. The relay checks the signature
 (5-minute window) and pushes one plain `payment` or `refund` event, with the partner code when Stripe
-carried it. Creating the Payment Links and the endpoint is *USER*'s (live payment objects on his account).
+carried it. The endpoint and both Payment Links exist; their IDs and URLs are in `docs/stripe-payments.md` §8,
+and `capture.js` `DEST` carries the two URLs. A new link is made only on *USER*'s word (a live payment object).
 
 ## Probing the live relay
 
