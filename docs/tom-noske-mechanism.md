@@ -142,6 +142,7 @@ When someone produces the pattern right, it can be READ PLAINLY — which is wha
 | 1 | **LIBERATED** — you have it | reached: read plainly, then held against *USER*'s instruments |
 | 2 | **ABLE TO TRANSMIT** — another person produces it right from what you hand them | not yet witnessed: the `teach-and-incidentally-sell` skill and the funnel re-cut are the transmission, and only a fresh reader producing it right closes it |
 | 3 | **ABLE TO REIFY TRANSMISSION TEACHINGS** — you make the teachings that transmit it | the compiled 81 for our own categories, reproducing |
+| ⇒ | **COMMUNITY — the closure over the three:** where others produce it right in front of each other (2 witnessed), the teachings reproduce without their maker (3), and the lineage lives | the free community `framework.html` ends on, after a working business |
 
 *(Fable's reading, G5: the orders run in the triad's order and repeat what this document already has —
 the system proven by its maker (1), the lineage proven by others (2), the reified teaching that
