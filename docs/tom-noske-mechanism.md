@@ -80,6 +80,10 @@ next") is the next video's ⟡, so the videos chain into the loop the digital-pr
 His own title names the trade-off the rows show: the product row has fewer views per video, and
 *getting less views will make you more money*.
 
+⇒ **Tom built his 81 incrementally, over years. Designed as one object and shipped ALL AT ONCE,
+compiled, the same 81 is GEOMETRIC YOUTUBE** — the channel shape defined at
+`video-aios/scripts/the-continuous-script.md` § GEOMETRIC YOUTUBE (§ THE PATTERN, COMPILED).
+
 ## 3. The video written in 3⁴ NOTATION — the decomposition operator, not the DONGSUM depth (G6: the closures are real; the counts are a reading, not load-bearing)
 
 ```
