@@ -104,6 +104,18 @@ is the same pattern done ALL AT ONCE: build the 27 so their invariant set implie
 ship what it emits together** — `video-aios/scripts/the-continuous-script.md` § GEOMETRIC YOUTUBE
 (§ THE PATTERN, COMPILED).
 
+### The closure, and the categories of the fourth layer
+
+The third layer of every three-layer thing is the SECRET, which is IDENTITY. Fully rolled up the 81 is
+**12 + 1**, and the 13th is its closure: **hero's journeys reproducing on the 3⁴ stack** — an HJ, then an
+Odyssey (a succession of HJs, `sanctuary-revolution-alpha/research/ssri/ARCHETYPE-COMPILER.md` §2), and up.
+⏸ *USER*'s "potentially": the fourth layer's CATEGORIES are the HJ-archetype exemplars of the Odyssey
+ladder of funnel archetypes (`sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m) — Dudjom · Ottley · Hormozi · Roger · Rudra/Acala · Shakyamuni, the
+middle rungs Gesar · Vimalakirti · Tangtong Gyalpo, the withholding positions Mipham · Patrul, and
+Socrates (CartON `Socrates_Go_To_Market`). **Tom sits on the HORMOZI rung** (Fable's reading, G5): the
+framework carries its receipts, his students' results are published, and the video is its own
+demonstration.
+
 ## 3. The video written in 3⁴ NOTATION — the decomposition operator (G6: the closures are real; the counts are a reading, not load-bearing)
 
 ```

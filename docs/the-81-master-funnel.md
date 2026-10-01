@@ -120,6 +120,15 @@ its departments, roles and processes are the 27, and the DTO, "a self-hosting me
 business, of your business" (`docs/the-transformation-method-2026-09-17.md` §1b), is its fourth layer.
 The offer sells clients the compiler this funnel has to be.)*
 
+## 6. WHERE THIS FUNNEL SITS ON THE ARCHETYPE LADDER
+
+If the fourth layer's categories are the HJ-archetype exemplars (`sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m; *USER*'s "potentially", kept as a
+candidate), the funnel's rung is already placed in that section: **sitting at MIPHAM** (restriction as
+positioning, *USER*'s own placement) **and operating DUDJOM → HORMOZI** (trust-me-because-the-receipts-
+are-public, moving to receipts built into the artifact). The free WHAT / paid how-I split is Mipham with
+a door. ⇒ the TWI map on camera is the HORMOZI-rung move itself, and §7l-bis already names it: a
+genesis artifact built by the system, about the system, whose own performance is its proof.
+
 ## OPEN — *USER*'s
 
 - **The identity line:** what an owner gets to be called at the finish line.
