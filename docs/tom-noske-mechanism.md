@@ -30,7 +30,7 @@ instruments are *USER*'s, read at their sources:
 | ⌘ 12 the name, last | the restatement: a product that is "ass pain medication" and content-compatible makes sales every day |
 | ♾ 13 | the video WAS one entity: the loop running on the viewer. "Watch this one next" re-enters as the next ⟡ |
 
-## 2. DONGSUM — the levels he explains, down to identity (G6: reaches depth 3, 3³ = 27; depth 4 is not earned)
+## 2. DONGSUM — the levels he explains, down to identity (G6 at depth 3 = one video; G7 at depth 4 = the channel)
 
 **OUTER = the content** (the teaching the viewer meets first) · **INNER = the product** (what sits
 inside the teaching, met incidentally) · **SECRET = the identity** (what anyone is really buying: to be
@@ -60,9 +60,25 @@ move in the transcript (weakest fits: the wife story, the sheet's live word of m
 | identity · inner | "you are an Iron Man" | the wife he didn't see: the human cost of the moment | everyone pays for a moment they can picture themselves in |
 | identity · secret | "you are capable of generating sales every day" | the loop placing the viewer | the free next video collects what is already decided |
 
-**Depth 4 (81 cells) is not reached.** It would need three distinct moves inside each of the 27; opened
-further, a cell gives repetition, not new moves (about 40 words a cell in a 3,300-word video). The
-constraint at the instrument's source decides it: a structure must carry real operators to earn its number.
+**Depth 4 (81 cells) is the SYSTEM, not the video.** Inside one video the 27 cells are the floor:
+opened further, a cell gives repetition, not new moves. The fourth factor is the video's PLACE in
+his whole channel: the same three levels at channel grain, each holding videos built to depth 3, so
+3 × 27 = 81. Sorted by title (G7 — titles only; the transcripts confirm or demote it):
+
+| channel level | videos | views | what it does in the loop | its biggest |
+|---|--:|--:|---|---|
+| OUTER — content (how content and a personal brand sell) | 32 | 290k | teaches the method; the viewer runs it on themselves | the magnetic personal brand (90k) · an audience of buyers (57k) |
+| INNER — product (offers, digital products, launches, free trainings, the $20k/month model) | 34 | 235k | the offer layer: free courses and trainings that hand over the next step | the easiest path to $20k/month (47k) · free trainings · the 43-minute offer launch |
+| SECRET — identity (his life, mindset, POV days, his journey, his students' results) | 55 | 440k | the finish line, shown: who you become; the most-watched row | the greatest year of your life (73k) · change your life so fast (59k) · the Audi |
+
+**THE FEEDBACK LOOP, at channel grain:** identity videos draw the widest audience (his life, the
+after-state) → content videos teach the method and hand the viewer the instrument → product videos
+and free trainings carry the offer → his students cross their finish lines → their results come back
+as identity videos (*$0 to $100k in 15 months* · *my students made $5M+* · *858 creators mentored* ·
+*burnt-out freelancer to $1M+/year*) → which draw the next audience. One video's ♾ ("watch this
+next") is the next video's ⟡, so the videos chain into the loop the digital-product video draws.
+His own title names the trade-off the rows show: the product row has fewer views per video, and
+*getting less views will make you more money*.
 
 ## 3. The video written in 3⁴ NOTATION — the decomposition operator, not the DONGSUM depth (G6: the closures are real; the counts are a reading, not load-bearing)
 
