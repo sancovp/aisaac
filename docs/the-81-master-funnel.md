@@ -135,6 +135,11 @@ is massively proven.** The Hormozi bar is mass proof up front (*USER*'s figure: 
 foreword) — so the climb is not a change of strategy, it is proof accumulating until the structure
 reifies.
 
+⇒ **for this funnel:** the three stacks are the Top film, the VSL and the TWI map, and **their closure is
+the launch**. The SYSTEM is self-proven (Dudjom: this business mapped by its own method); the LINEAGE is
+clients' results — AHT first — and the lineage, reproduced and massively proven, is what becomes the
+Hormozi. Designed as one object; released so the release performs the sequence.
+
 ## OPEN — *USER*'s
 
 - **The identity line:** what an owner gets to be called at the finish line.

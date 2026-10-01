@@ -115,7 +115,20 @@ middle rungs Gesar · Vimalakirti · Tangtong Gyalpo, the withholding positions 
 Socrates (CartON `Socrates_Go_To_Market`). **A self-generated proof starts you at DUDJOM** (the journey-explanation IS the framework, §7l); other
 people's proof — receipts — is what climbs, and **once the Dudjom structure is REIFIED it becomes a
 HORMOZI, because it is massively proven** (the Hormozi bar is mass proof up front — *USER*'s figure:
-700 testimonials as the foreword). **Tom sits on the HORMOZI rung** (Fable's reading, G5): the
+700 testimonials as the foreword).
+
+**THE SAME STRUCTURE AT TWO SCALES (*USER*'s worked examples):**
+- **The launch is the closure over three.** Hormozi's launch book closes over three earlier books; it
+  was written as ONE book and broken out so the release PERFORMS the sequence, and the "launch" landed
+  on the audience the three had already built. Three stacks ⇒ the fourth = their closure — and the launch
+  framework is the closure, because nothing else matters if you can never launch.
+- **The SYSTEM and the LINEAGE are the two halves of the complete proof at two grains.** Dudjom's system
+  is accomplished by Dudjom himself (self-generated proof, rung 1); the Dudjom LINEAGE is proven by others
+  attaining (*USER*'s figure: 15 disciples reaching jalu, the rainbow body). The lineage is the 13th
+  closure — hero's journeys reproducing in others — and the reified, massively proven lineage is the
+  Hormozi.
+- ⇒ **compiled all at once = designed as ONE object, released so the release performs the sequence**
+  (three stacks, then the closure that is the launch). **Tom sits on the HORMOZI rung** (Fable's reading, G5): the
 framework carries its receipts, his students' results are published, and the video is its own
 demonstration.
 
