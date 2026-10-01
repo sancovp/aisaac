@@ -162,7 +162,8 @@ them, each its own category, placed on the yana ladder
 | order | category | state |
 |---|---|---|
 | **81₁** | **THE BUSINESS — AiTWI, and *USER*'s identity as its founder.** Completable ON ITS OWN. Its identity row = TWI mapped by its own framework + the founder | this document |
-| **81₂** | **MEDITATION, or AI** — prompt engineering · agent engineering · the seven levels | ⏸ *USER*'s choice |
+| **81₂** | **AI** — prompt engineering · agent engineering · the seven levels | chosen |
+| **81₃** | **MEDITATION** — entered from inside the AI 81 (below), reified only once its mastery is proven | bridged, not reified |
 | unlocked | **the B2B bootcamp / ME2C layer** — opens once ONE business works (the ordering rule in `docs/business-context-2026-09-15-first-client.md` §8 is this unlock) | locked |
 | further | the buddhism angle, and more | — |
 
@@ -170,6 +171,14 @@ them, each its own category, placed on the yana ladder
 and the only thing left to ship is the journey itself, produced continuously — a crossing documented
 instead of a completed crossing's map left behind (the `completed_crossing` and `found_treasure_pov`
 invariants, battlespace §7l).
+
+**THE TRANSITION BETWEEN EXPONENTS (the MST): SECRET(81ₙ) = OUTER(81ₙ₊₁).** The identity row of one
+category is the doorway of the next — `Becoming(A→B) = TypeLift(Self(A))`, `Persona(B) = PublicForm(Self(A))`
+(`sanctuary-revolution-alpha/research/ssri/ARCHETYPE-COMPILER.md` §1) at category grain (Fable's
+reading, G5). Worked: the AI 81 goes into second brains; its practice is a daily mindfulness dump to
+your second brain — and "I teach meditation; if you want more, or are interested in Buddhism, it is on
+this playlist" is the meditation 81's content row, entered as a Geometric YouTube ray run forward. The
+next category enters as a practice and a pointer, not reified, and its own proof accumulates there.
 
 **THE TELOS:** unified, the categories ARE the Sanctuary System's program — what it does for you while
 you work on comprehending and realizing Sanctuary.
@@ -180,6 +189,5 @@ you work on comprehending and realizing Sanctuary.
 - **May TWI's own map be shown on camera, and which parts** (it is his business's internals).
 - **The founder identity piece** — 81₁'s identity row is *USER* as founder of AiTWI: whether it is drawn
   from the personal page (`isaac-wostrel-rubin.html`, which stays off the business domain today) or made new.
-- **81₂: meditation or AI.**
 - **May AHT be named** — a real client's finish line is the strongest identity cell there is
   (`business-context` §6.1, still open).
