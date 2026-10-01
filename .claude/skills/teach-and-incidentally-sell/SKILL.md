@@ -35,6 +35,16 @@ it is unexplained and nothing is left over. That is what "everything fits" means
 | CLOSE: his own finish line | the Ironman finisher photo, the $20,000 "for the photo", his wife at the rail | the deepest teaching (people buy the moment) told as HIS before/after, which is the content step of his own loop |
 | CLOSE: the offer | "watch this one next" | the loop's purchase step at price zero. The decision was made during the video, the offer costs nothing, so the viewer acts, and the next video starts the loop again |
 
+## THE THREE LEVELS (DONGSUM): product · content · identity
+
+Every piece explains three levels and gives each one an example that is an instance of it:
+**OUTER = the product** (what is sold) · **INNER = the content** (how the viewer comes to want it) ·
+**SECRET = the identity** (what anyone really buys: the name they get at the finish line — "you are an
+Iron Man"). Each level opens into its own outer/inner/secret (a 3×3 grid). The cell that does the
+selling is SECRET-of-SECRET: the viewer leaves already treating themselves as the person the product
+names, before any offer. The full grid for Tom's video, its 13-station map, its 3⁴ decomposition and
+its AC^AC reading: `docs/tom-noske-mechanism.md`. Build a new piece by filling that grid in first.
+
 ## THE VERBIAGE AND GRAMMAR
 
 - **Crude, sticky handles for concepts**: "ass pain medication", "content compatibility", "the content to
@@ -81,6 +91,9 @@ it"), built out. The framework funnel (`framework.html`, `docs/framework-video-s
 7. What is our own finish-line story?
 8. Is the offer free and the next step of the same loop?
 9. Do the points share one sentence template, and does each concept have a handle repeated at least three times?
+10. Are all nine DONGSUM cells (product · content · identity, each outer/inner/secret) filled with a real move from the draft?
+11. What name does the viewer get at the finish line, and where does the draft give it to them?
+12. Is every later section a closure over what came before (a `+` in 3⁴ notation), never a new peer topic?
 
 Any line that has to be answered "nowhere" means the piece sells instead of teaches. Rewrite that part.
 
