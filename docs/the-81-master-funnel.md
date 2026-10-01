@@ -122,12 +122,15 @@ The offer sells clients the compiler this funnel has to be.)*
 
 ## 6. WHERE THIS FUNNEL SITS ON THE ARCHETYPE LADDER
 
-If the fourth layer's categories are the HJ-archetype exemplars (`sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m; *USER*'s "potentially", kept as a
-candidate), the funnel's rung is already placed in that section: **sitting at MIPHAM** (restriction as
+The fourth layer's categories are the HJ-archetype exemplars (`sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m),
+and the funnel's rung is already placed in that section: **sitting at MIPHAM** (restriction as
 positioning, *USER*'s own placement) **and operating DUDJOM → HORMOZI** (trust-me-because-the-receipts-
 are-public, moving to receipts built into the artifact). The free WHAT / paid how-I split is Mipham with
-a door. ⇒ the TWI map on camera is the HORMOZI-rung move itself, and §7l-bis already names it: a
-genesis artifact built by the system, about the system, whose own performance is its proof.
+a door. ⇒ **the two halves of the complete proof land on the ladder IN ORDER:** a self-generated proof
+starts you at DUDJOM — the journey-explanation IS the framework (§7l) — so the TWI map on camera is the
+DUDJOM move, the genesis artifact §7l-bis names (built by the system, about the system, its own
+performance its proof). Other people's proof — real clients' results, built into the artifact as
+they land — is what climbs it to HORMOZI.
 
 ## OPEN — *USER*'s
 
