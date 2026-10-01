@@ -32,13 +32,14 @@ instruments are *USER*'s, read at their sources:
 
 ## 2. DONGSUM — the levels he explains, down to identity (G4: the triad holds at depth 2; deeper is not earned)
 
-**OUTER = the product** (what is sold) · **INNER = the content** (how a viewer comes to want it) ·
-**SECRET = the identity** (what anyone is really buying: to be named).
+**OUTER = the content** (the teaching the viewer meets first) · **INNER = the product** (what sits
+inside the teaching, met incidentally) · **SECRET = the identity** (what anyone is really buying: to be
+named). The order is the viewer's, and it is his loop's own order: content → purchase → finish line.
 
 | | outer | inner | secret |
 |---|---|---|---|
-| **OUTER — the product** | the five tests (what a product must be) | the grading he performs on the cream and his LUTs | his own product passes his own test on camera (LUTs off, on) |
-| **INNER — the content** | the wording: refrain ×13, handles repeated ×10, one sentence template | the viewer scores their own product and finds their own gap | the video is content about content that sells, so it is its own example |
+| **OUTER — the content** | the wording: refrain ×13, handles repeated ×10, one sentence template | the viewer scores their own product and finds their own gap | the video is content about content that sells, so it is its own example |
+| **INNER — the product** | the five tests (what a product must be) | the grading he performs on the cream and his LUTs | his own product passes his own test on camera (LUTs off, on) |
 | **SECRET — the identity** | the finish line: what the product makes a buyer able to say | "you are an Iron Man": a name given to you is what $20,000 bought | the viewer leaves already treating themselves as a creator who sells every day, before any offer |
 
 The bottom-right cell is the whole video. The offer (the next video, free) only collects an identity
@@ -57,7 +58,7 @@ VIDEO = ( ( 2 + 5·(3+1) ) +2 +1 +1 ) +1 +1
   +2         the five tests run again over the result, twice: over the cream, over his LUTs
   +1         run once more, over YOUR product: the handover
   +1         the gate over everything graded: show it or you can't sell it
-  ) +1       closure over the whole product layer: the finish line / the identity it is for
+  ) +1       closure over the content and product layers: the finish line / the identity they are for
   +1         closure that re-enters: the loop, the viewer inside it, "watch this next"
 ```
 
@@ -80,10 +81,11 @@ is left over: there are no peers, only closures.
 ## 5. What it means for this site
 
 - Our instrument is the 7-step AI Transformation Map (`docs/the-transformation-method-2026-09-17.md`).
-  Its OUTER examples are maps *USER* has made. Its SECRET-of-OUTER is **TWI's own business mapped by
-  its own framework**, on camera. That cell is what `.claude/rules/anti-case-study.md` asks for.
-- The INNER-of-INNER cell is the worksheet (`framework-worksheet.html`): the viewer runs the map on their
-  own business and finds their own gap.
+  The OUTER level is the teaching of it (the framework films, the page). Its INNER examples are maps
+  *USER* has made, and SECRET-of-INNER is **TWI's own business mapped by its own framework**, on
+  camera. That cell is what `.claude/rules/anti-case-study.md` asks for.
+- The INNER-of-OUTER cell is the worksheet (`framework-worksheet.html`): the viewer runs the map on
+  their own business and finds their own gap.
 - The SECRET row has to be written: what does an owner get to be called at the finish line? The
   landing page's h1 gives the outer form ("a business that runs without you"). The name a person
   receives at that moment is not yet stated anywhere on the site. ⏸ *USER*'s: the identity line.
