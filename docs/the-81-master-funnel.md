@@ -84,6 +84,12 @@ Tom's six invariants (`docs/tom-noske-mechanism.md` §2), checked against the tw
 | 5 | the finish line gives the viewer a name | — | — |
 | 6 | the free next step continues the loop | ✓ the email | ✓ the call |
 
+**THE FUNNEL STANDS AT 2 × 3³.** The fourth layer shows only across stacks: one 3³ cannot see it, two
+start to show the 81 (the table above IS that comparison — what the two share), and at three the
+triadic generator kicks in and layer 4 appears as the compiler of what ALL THREE share. ⇒ the third
+stack is the trigger, and since layer 4 compiles only the shared set, it cannot be appended: the three
+pieces are designed together so that all three keep all six — the "all at once" of Geometric YouTube.
+
 ⇒ **THE IDENTITY ROW IS EMPTY BECAUSE INVARIANTS 1, 2 AND 5 ARE MISSING, NOT BECAUSE A PIECE IS.** With
 three of six, the 27 cells cannot imply the compiler, so nothing emits the next piece and no finish
 line comes back. Adding a third piece that also lacks 1, 2 and 5 would leave the funnel exactly as

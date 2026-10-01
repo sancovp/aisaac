@@ -51,7 +51,10 @@ generate the next is not a fourth grid but the INVARIANT SET its 27 cells keep �
 is an instance of what it teaches · every example graded with one instrument, ours among them · the
 viewer runs it on themselves · every section a closure · the finish line names the viewer · the free
 next step continues the loop. A piece keeping all six emits the next one; a piece missing some cannot,
-however good its cells. Done all at once, this is GEOMETRIC YOUTUBE.
+however good its cells. The layer shows only across STACKS: one piece cannot see it, two start to show
+it (the invariants are what they share), and at three the triadic generator kicks in and the compiler
+appears — so build three pieces together, each keeping the full set. Done all at once, this is
+GEOMETRIC YOUTUBE.
 
 ## THE VERBIAGE AND GRAMMAR
 

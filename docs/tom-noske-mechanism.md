@@ -63,8 +63,12 @@ move in the transcript (weakest fits: the wife story, the sheet's live word of m
 **THE FOURTH LAYER IS NOT A FOURTH FACTOR. IT EMERGES FROM THE 27 AND IT IS A COMPILER.** The
 pattern is the 81 per system: the 3³ implies the 3⁴, and the fourth layer compiles to the degree the 27
 cells imply it through an INVARIANT SET. Inside one video the 27 are the floor (opened further a cell
-repeats itself); what sits above them is not more cells but the RULES every cell keeps. Tom's
-invariant set, read off the 27 (G6):
+repeats itself); what sits above them is not more cells but the RULES every cell keeps. **And the
+fourth layer shows only across STACKS:** one 3³ cannot see it · at 2 × 3³ the 81 starts to show,
+because an invariant is what two stacks SHARE · at 3 × 3³ the triadic generator kicks in — the three
+stacks fall into outer / inner / secret themselves — and layer 4 appears as the compiler of what all
+three share. ⚠ **The six below are read off ONE video, so they are CANDIDATES (G7)** until checked
+against two more of his videos (the magnetic-personal-brand video first). Tom's candidate invariant set:
 
 | # | the invariant | where the 27 keep it |
 |---|---|---|
