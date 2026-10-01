@@ -152,21 +152,34 @@ Hormozi. Designed as one object; released so the release performs the sequence.
 
 ## 8. THE LARGER VERSION — the closed 81 becomes the pattern for every category
 
-When this 81 closes, its compiler is the seed for every other category: the lift (station ↥ 11, +1 → 1),
+When an 81 closes, its compiler is the seed for the next category: the lift (station ↥ 11, +1 → 1),
 and the generative chain `3 → 3⁴ → (3⁴)ⁿ → hypergraph → reification → same generator again`
-(`sanctuary-revolution-alpha/research/ssri/h-mst-handoff/12_3POWER4_71_81_HYPERSTRUCTURE.md`). **One 81
-per category: (3⁴)ⁿ.** A category is a niche — the insurance agencies, title and escrow, the franchisors
-(`docs/niche-selection-2026-09-16.md`) — each compiled from the template this funnel closes, which is
-"category king of your niche" (`docs/the-transformation-method-2026-09-17.md` §1a-bis) done per
-category. The arrow-book already has the shape: a 13-chapter seed expands into 13 volumes and books
-crystallize inside them, each its own category in the same form, placed on the yana ladder
+(`sanctuary-revolution-alpha/research/ssri/h-mst-handoff/12_3POWER4_71_81_HYPERSTRUCTURE.md`). The
+arrow-book already has the shape: a 13-chapter seed expands into 13 volumes and books crystallize inside
+them, each its own category, placed on the yana ladder
 (`sanctuary-revolution-alpha/research/ssri/ship/arrow-book/CLAUDE.md` · its rules 23 and 24).
+
+| order | category | state |
+|---|---|---|
+| **81₁** | **THE BUSINESS — AiTWI, and *USER*'s identity as its founder.** Completable ON ITS OWN. Its identity row = TWI mapped by its own framework + the founder | this document |
+| **81₂** | **MEDITATION, or AI** — prompt engineering · agent engineering · the seven levels | ⏸ *USER*'s choice |
+| unlocked | **the B2B bootcamp / ME2C layer** — opens once ONE business works (the ordering rule in `docs/business-context-2026-09-15-first-client.md` §8 is this unlock) | locked |
+| further | the buddhism angle, and more | — |
+
+**THE REIFICATION GATE:** a category is reified only at a PROVEN level of mastery. Reify it before then
+and the only thing left to ship is the journey itself, produced continuously — a crossing documented
+instead of a completed crossing's map left behind (the `completed_crossing` and `found_treasure_pov`
+invariants, battlespace §7l).
+
+**THE TELOS:** unified, the categories ARE the Sanctuary System's program — what it does for you while
+you work on comprehending and realizing Sanctuary.
 
 ## OPEN — *USER*'s
 
 - **The identity line:** what an owner gets to be called at the finish line.
 - **May TWI's own map be shown on camera, and which parts** (it is his business's internals).
-- **Does the personal page (`isaac-wostrel-rubin.html`) join the identity row**, or stay off the
-  business funnel as `00-SITE-CANON` § WHAT IS PUBLIC places it today.
+- **The founder identity piece** — 81₁'s identity row is *USER* as founder of AiTWI: whether it is drawn
+  from the personal page (`isaac-wostrel-rubin.html`, which stays off the business domain today) or made new.
+- **81₂: meditation or AI.**
 - **May AHT be named** — a real client's finish line is the strongest identity cell there is
   (`business-context` §6.1, still open).
