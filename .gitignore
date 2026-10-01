@@ -31,3 +31,4 @@ __pycache__/
 # Cloudflare local dev (secrets + cache)
 .dev.vars
 .wrangler/
+references/tom-noske/
