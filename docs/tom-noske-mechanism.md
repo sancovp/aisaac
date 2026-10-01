@@ -132,6 +132,21 @@ HORMOZI, because it is massively proven** (the Hormozi bar is mass proof up fron
 framework carries its receipts, his students' results are published, and the video is its own
 demonstration.
 
+### Reading a correct 81 plainly is realization, at first order
+
+When someone produces the pattern right, it can be READ PLAINLY — which is what this study did with Tom
+— and reading it plainly makes the reader realized at FIRST ORDER. **The orders of realization:**
+
+| order | what it is | where we stand on Tom's pattern |
+|---|---|---|
+| 1 | **LIBERATED** — you have it | reached: read plainly, then held against *USER*'s instruments |
+| 2 | **ABLE TO TRANSMIT** — another person produces it right from what you hand them | not yet witnessed: the `teach-and-incidentally-sell` skill and the funnel re-cut are the transmission, and only a fresh reader producing it right closes it |
+| 3 | **ABLE TO REIFY TRANSMISSION TEACHINGS** — you make the teachings that transmit it | the compiled 81 for our own categories, reproducing |
+
+*(Fable's reading, G5: the orders run in the triad's order and repeat what this document already has —
+the system proven by its maker (1), the lineage proven by others (2), the reified teaching that
+reproduces (3), which is also the reification gate: a category is reified at order 3, never before.)*
+
 ## 3. The video written in 3⁴ NOTATION — the decomposition operator (G6: the closures are real; the counts are a reading, not load-bearing)
 
 ```
