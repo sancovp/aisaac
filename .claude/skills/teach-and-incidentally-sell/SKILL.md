@@ -46,6 +46,13 @@ themselves as the person the product names, before any offer. The full grid for 
 13-station map, its 3⁴ decomposition and its AC^AC reading: `docs/tom-noske-mechanism.md`. Build a new
 piece by filling that grid in first.
 
+**AND THE FOURTH LAYER IS A COMPILER THAT THE 27 IMPLY.** The 81 is per system: what makes one piece
+generate the next is not a fourth grid but the INVARIANT SET its 27 cells keep — Tom's six: the piece
+is an instance of what it teaches · every example graded with one instrument, ours among them · the
+viewer runs it on themselves · every section a closure · the finish line names the viewer · the free
+next step continues the loop. A piece keeping all six emits the next one; a piece missing some cannot,
+however good its cells. Done all at once, this is GEOMETRIC YOUTUBE.
+
 ## THE VERBIAGE AND GRAMMAR
 
 - **Crude, sticky handles for concepts**: "ass pain medication", "content compatibility", "the content to
@@ -95,6 +102,7 @@ it"), built out. The framework funnel (`framework.html`, `docs/framework-video-s
 10. Are all nine DONGSUM cells (content · product · identity, each outer/inner/secret) filled with a real move from the draft?
 11. What name does the viewer get at the finish line, and where does the draft give it to them?
 12. Is every later section a closure over what came before (a `+` in 3⁴ notation), never a new peer topic?
+13. Does it keep all six invariants, so that it emits the next piece? Name the one it is missing.
 
 Any line that has to be answered "nowhere" means the piece sells instead of teaches. Rewrite that part.
 

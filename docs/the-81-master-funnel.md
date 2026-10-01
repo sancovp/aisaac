@@ -11,9 +11,13 @@ this is a map, and it changes no page.
 `docs/framework-video-scripts.md` · `docs/niche-selection-2026-09-16.md` · `docs/pricing-decision-2026-09-16.md`
 · `video-aios/draw-the-box/script.md`.
 
-## 1. THE FOURTH FACTOR — the funnel's three rows, and the core piece in each
+## 1. THE THREE LEVELS AT FUNNEL GRAIN, AND THE PIECE THAT CARRIES EACH
 
-| channel row | what is in it today | its core piece | depth-3 cells (✓ · ◐ · —) |
+The fourth layer of an 81 is not a fourth factor laid over the three; it EMERGES from the 27 as a
+compiler, to the degree their invariant set implies it (`docs/tom-noske-mechanism.md` §2). So the
+rows below are what a compiled funnel WOULD emit, and §5 asks whether the pieces that exist imply it.
+
+| funnel row | what is in it today | its core piece | depth-3 cells (✓ · ◐ · —) |
 |---|---|---|---|
 | **OUTER — content** (the free teaching) | `framework.html` + the worksheet · seven section scripts (one film prototyped) · the blog · the free frameworks | **the framework Top film** (`docs/framework-video-scripts.md` §1) | 6 · 5 · 16 |
 | **INNER — product** (the offer) | `ai-transformation.html` · the call · the Founding Partnership / retainer (frozen) · GHL inside the community · `partners.html` | **the landing-page VSL** (`video-aios/draw-the-box/script.md`) | 14 · 4 · 9 |
@@ -67,11 +71,33 @@ No piece exists, so there is nothing to grade. What it must carry, by the patter
 outside to humans") · **inner** the name an owner gets at that moment ⏸ *USER*'s line, never invented ·
 **secret** the viewer leaving already treating themselves as that owner, with a free next step.
 
-## 5. THE FINDING — one piece fills the most cells
+## 5. THE FINDING — the invariant set is too thin to compile, and one piece supplies what is missing
 
-**TWI's own business, mapped by its own framework, on camera.** It is the identity row's core piece
-(*USER* mapping the business that makes the maps is the after-state shown, the anti-case-study rule
-cashed). And the same footage fills the empty cells the other two rows share:
+Tom's six invariants (`docs/tom-noske-mechanism.md` §2), checked against the two pieces that exist:
+
+| # | invariant | Top film | VSL |
+|---|---|---|---|
+| 1 | the piece is an instance of what it teaches | — | — |
+| 2 | every example graded with one instrument, ours among them | — | ◐ agency · developer · partner, but no real map |
+| 3 | the viewer runs the instrument on themselves | ✓ the SOP test | ✓ the binary · the ten obstacles |
+| 4 | every section a closure over the one before | ✓ pains → problem → solution → unique way | ✓ |
+| 5 | the finish line gives the viewer a name | — | — |
+| 6 | the free next step continues the loop | ✓ the email | ✓ the call |
+
+⇒ **THE IDENTITY ROW IS EMPTY BECAUSE INVARIANTS 1, 2 AND 5 ARE MISSING, NOT BECAUSE A PIECE IS.** With
+three of six, the 27 cells cannot imply the compiler, so nothing emits the next piece and no finish
+line comes back. Adding a third piece that also lacks 1, 2 and 5 would leave the funnel exactly as
+uncompiled.
+
+**THE COMPLETE PROOF = other people's proof ⊕ the self-demonstrating system.**
+
+| half | what it is here | status |
+|---|---|---|
+| the self-demonstrating system | **TWI's own business, mapped by its own framework, on camera** — supplies 1 (the funnel IS an instance of the map), 2 (ours graded with the same instrument) and 5 (the finish line shown) | not made |
+| other people's proof | a real client's map and result — AHT is the one that exists | ⏸ naming is *USER*'s (`business-context` §6.1) |
+
+⇒ the TWI map is the move because it is the half that is ours to make now, and it fills the empty
+cells the other two pieces share:
 
 | it fills | in the Top film | in the VSL |
 |---|---|---|
@@ -81,10 +107,12 @@ cashed). And the same footage fills the empty cells the other two rows share:
 | product·inner·outer / inner — examples graded, ours among them | ✓ ✓ | (inner already ✓) |
 | product·inner·secret — something happening live | ✓ | ✓ |
 
-⇒ **6 empty cells in the Top film, 3 empty and 1 partial in the VSL, and the identity row's core — from one recording.**
-Building the 81 all at once (Geometric YouTube) means designing that piece WITH the other two, so each
-row points at the others: the Top film teaches the test, the VSL grades the offer, the TWI map shows
-the finish line, and the finish line is what draws the next viewer to the Top film.
+⇒ **6 empty cells in the Top film, 3 empty and 1 partial in the VSL, and the identity row's core — from
+one recording.** Geometric YouTube builds it WITH the other two, so all three keep the same six
+invariants and the funnel compiles. *(Fable's reading, G5: the business's own 81 has the same shape —
+its departments, roles and processes are the 27, and the DTO, "a self-hosting metacompiler inside your
+business, of your business" (`docs/the-transformation-method-2026-09-17.md` §1b), is its fourth layer.
+The offer sells clients the compiler this funnel has to be.)*
 
 ## OPEN — *USER*'s
 

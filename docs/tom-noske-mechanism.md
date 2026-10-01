@@ -30,7 +30,7 @@ instruments are *USER*'s, read at their sources:
 | ⌘ 12 the name, last | the restatement: a product that is "ass pain medication" and content-compatible makes sales every day |
 | ♾ 13 | the video WAS one entity: the loop running on the viewer. "Watch this one next" re-enters as the next ⟡ |
 
-## 2. DONGSUM — the levels he explains, down to identity (G6 at depth 3 = one video; G7 at depth 4 = the channel)
+## 2. DONGSUM — the levels he explains, down to identity (G6: depth 3 = one video; the fourth layer = the compiler its invariants imply)
 
 **OUTER = the content** (the teaching the viewer meets first) · **INNER = the product** (what sits
 inside the teaching, met incidentally) · **SECRET = the identity** (what anyone is really buying: to be
@@ -60,10 +60,25 @@ move in the transcript (weakest fits: the wife story, the sheet's live word of m
 | identity · inner | "you are an Iron Man" | the wife he didn't see: the human cost of the moment | everyone pays for a moment they can picture themselves in |
 | identity · secret | "you are capable of generating sales every day" | the loop placing the viewer | the free next video collects what is already decided |
 
-**Depth 4 (81 cells) is the SYSTEM, not the video.** Inside one video the 27 cells are the floor:
-opened further, a cell gives repetition, not new moves. The fourth factor is the video's PLACE in
-his whole channel: the same three levels at channel grain, each holding videos built to depth 3, so
-3 × 27 = 81. Sorted by title (G7 — titles only; the transcripts confirm or demote it):
+**THE FOURTH LAYER IS NOT A FOURTH FACTOR. IT EMERGES FROM THE 27 AND IT IS A COMPILER.** The
+pattern is the 81 per system: the 3³ implies the 3⁴, and the fourth layer compiles to the degree the 27
+cells imply it through an INVARIANT SET. Inside one video the 27 are the floor (opened further a cell
+repeats itself); what sits above them is not more cells but the RULES every cell keeps. Tom's
+invariant set, read off the 27 (G6):
+
+| # | the invariant | where the 27 keep it |
+|---|---|---|
+| 1 | the piece is an instance of what it teaches | content · secret, all three |
+| 2 | every example is graded with one instrument, his own among them | product · inner · product · secret |
+| 3 | the viewer runs the instrument on themselves | content · inner |
+| 4 | every section is a closure over the one before | §3 below, every `+` |
+| 5 | the finish line gives the viewer a name | identity · inner |
+| 6 | the free next step continues the loop | identity · secret |
+
+⇒ **L4 = compile(1–6).** Any video that keeps all six emits the next one (6), turns its finish lines
+into content (5 + 1), and teaches the instrument that grades the next offer (2 + 3). **His channel is
+that compiler's OUTPUT, not a design laid over the videos.** Sorted by title (G7 — titles only; the
+transcripts confirm or demote it), the output falls into the same three levels:
 
 | channel level | videos | views | what it does in the loop | its biggest |
 |---|--:|--:|---|---|
@@ -80,11 +95,12 @@ next") is the next video's ⟡, so the videos chain into the loop the digital-pr
 His own title names the trade-off the rows show: the product row has fewer views per video, and
 *getting less views will make you more money*.
 
-⇒ **Tom built his 81 incrementally, over years. Designed as one object and shipped ALL AT ONCE,
-compiled, the same 81 is GEOMETRIC YOUTUBE** — the channel shape defined at
-`video-aios/scripts/the-continuous-script.md` § GEOMETRIC YOUTUBE (§ THE PATTERN, COMPILED).
+⇒ **Tom compiled his channel INCREMENTALLY, over years, one emitted video at a time. GEOMETRIC YOUTUBE
+is the same pattern done ALL AT ONCE: build the 27 so their invariant set implies the compiler, then
+ship what it emits together** — `video-aios/scripts/the-continuous-script.md` § GEOMETRIC YOUTUBE
+(§ THE PATTERN, COMPILED).
 
-## 3. The video written in 3⁴ NOTATION — the decomposition operator, not the DONGSUM depth (G6: the closures are real; the counts are a reading, not load-bearing)
+## 3. The video written in 3⁴ NOTATION — the decomposition operator (G6: the closures are real; the counts are a reading, not load-bearing)
 
 ```
 VIDEO = ( ( 2 + 5·(3+1) ) +2 +1 +1 ) +1 +1
