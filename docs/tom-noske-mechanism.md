@@ -30,7 +30,7 @@ instruments are *USER*'s, read at their sources:
 | ⌘ 12 the name, last | the restatement: a product that is "ass pain medication" and content-compatible makes sales every day |
 | ♾ 13 | the video WAS one entity: the loop running on the viewer. "Watch this one next" re-enters as the next ⟡ |
 
-## 2. DONGSUM — the levels he explains, down to identity (G4: the triad holds at depth 2; deeper is not earned)
+## 2. DONGSUM — the levels he explains, down to identity (G6: reaches depth 3, 3³ = 27; depth 4 is not earned)
 
 **OUTER = the content** (the teaching the viewer meets first) · **INNER = the product** (what sits
 inside the teaching, met incidentally) · **SECRET = the identity** (what anyone is really buying: to be
@@ -43,11 +43,28 @@ named). The order is the viewer's, and it is his loop's own order: content → p
 | **SECRET — the identity** | the finish line: what the product makes a buyer able to say | "you are an Iron Man": a name given to you is what $20,000 bought | the viewer leaves already treating themselves as a creator who sells every day, before any offer |
 
 The bottom-right cell is the whole video. The offer (the next video, free) only collects an identity
-the viewer has already taken on. Depth 2 (9 cells) is where every cell carries a real move; the file's
-own constraint ("a structure must carry enough actual functions to earn the mapping") forbids pushing
-this to 81.
+the viewer has already taken on.
 
-## 3. The video in 3⁴ notation (G6: the closures are real; the counts are a reading, not load-bearing)
+**Depth 3: each of the nine cells opens into its own outer / inner / secret**, every one a real line or
+move in the transcript (weakest fits: the wife story, the sheet's live word of mouth):
+
+| cell | outer | inner | secret |
+|---|---|---|---|
+| content · outer | the refrain "every single day" | the one sentence template | the crude handles that carry the concepts |
+| content · inner | "rank your own product" | the viewer's own scoring | the gap they find, never stated |
+| content · secret | "I'm making content about it right now" | LUTs off / on, on this camera | "you're watching because of a problem" — the viewer is the instance |
+| product · outer | the five tests named | each scale with its consequence pair | each owned object |
+| product · inner | the cream scored | his LUTs scored | the $9 sheet's word of mouth, happening live |
+| product · secret | his LUTs score 5/5 | shown working | never pitched: no price, no link |
+| identity · outer | the finisher photo | the announcer's line | "$20,000 for the photo" |
+| identity · inner | "you are an Iron Man" | the wife he didn't see: the human cost of the moment | everyone pays for a moment they can picture themselves in |
+| identity · secret | "you are capable of generating sales every day" | the loop placing the viewer | the free next video collects what is already decided |
+
+**Depth 4 (81 cells) is not reached.** It would need three distinct moves inside each of the 27; opened
+further, a cell gives repetition, not new moves (about 40 words a cell in a 3,300-word video). The
+constraint at the instrument's source decides it: a structure must carry real operators to earn its number.
+
+## 3. The video written in 3⁴ NOTATION — the decomposition operator, not the DONGSUM depth (G6: the closures are real; the counts are a reading, not load-bearing)
 
 ```
 VIDEO = ( ( 2 + 5·(3+1) ) +2 +1 +1 ) +1 +1
