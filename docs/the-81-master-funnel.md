@@ -130,7 +130,10 @@ a door. ⇒ **the two halves of the complete proof land on the ladder IN ORDER:*
 starts you at DUDJOM — the journey-explanation IS the framework (§7l) — so the TWI map on camera is the
 DUDJOM move, the genesis artifact §7l-bis names (built by the system, about the system, its own
 performance its proof). Other people's proof — real clients' results, built into the artifact as
-they land — is what climbs it to HORMOZI.
+they land — is what climbs it: **once the Dudjom structure is reified it BECOMES a Hormozi, because it
+is massively proven.** The Hormozi bar is mass proof up front (*USER*'s figure: 700 testimonials as the
+foreword) — so the climb is not a change of strategy, it is proof accumulating until the structure
+reifies.
 
 ## OPEN — *USER*'s
 

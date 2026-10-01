@@ -107,12 +107,15 @@ ship what it emits together** — `video-aios/scripts/the-continuous-script.md` 
 ### The closure, and the categories of the fourth layer
 
 The third layer of every three-layer thing is the SECRET, which is IDENTITY. Fully rolled up the 81 is
-**12 + 1**, and the 13th is its closure: **hero's journeys reproducing on the 3⁴ stack** — an HJ, then an
+**12 + 1** — the nine yanas plus the three expansions (the arrow-book's rule
+`23-nine-yana-registers`: 9 + 3 = 12, closing at 13) — and the 13th is its closure: **hero's journeys reproducing on the 3⁴ stack** — an HJ, then an
 Odyssey (a succession of HJs, `sanctuary-revolution-alpha/research/ssri/ARCHETYPE-COMPILER.md` §2), and up.
 **The fourth layer's CATEGORIES are the HJ-archetype exemplars** of the Odyssey ladder of funnel archetypes (`sanctuary-revolution-alpha/research/ssri/ship/SANCTUARY-WASTELAND-BATTLESPACE.md` §7m) — Dudjom · Ottley · Hormozi · Roger · Rudra/Acala · Shakyamuni, the
 middle rungs Gesar · Vimalakirti · Tangtong Gyalpo, the withholding positions Mipham · Patrul, and
 Socrates (CartON `Socrates_Go_To_Market`). **A self-generated proof starts you at DUDJOM** (the journey-explanation IS the framework, §7l); other
-people's proof — receipts — is what climbs. **Tom sits on the HORMOZI rung** (Fable's reading, G5): the
+people's proof — receipts — is what climbs, and **once the Dudjom structure is REIFIED it becomes a
+HORMOZI, because it is massively proven** (the Hormozi bar is mass proof up front — *USER*'s figure:
+700 testimonials as the foreword). **Tom sits on the HORMOZI rung** (Fable's reading, G5): the
 framework carries its receipts, his students' results are published, and the video is its own
 demonstration.
 
