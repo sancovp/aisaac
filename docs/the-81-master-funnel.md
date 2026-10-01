@@ -140,6 +140,28 @@ the launch**. The SYSTEM is self-proven (Dudjom: this business mapped by its own
 clients' results — AHT first — and the lineage, reproduced and massively proven, is what becomes the
 Hormozi. Designed as one object; released so the release performs the sequence.
 
+## 7. THE RELEASE SEQUENCE — designed as one object, released so the release performs it
+
+| # | step | state |
+|---|---|---|
+| 1 | **record the identity stack first** — TWI mapped by its own framework, on camera: the Dudjom genesis artifact and the only source of invariants 1, 2, 5 | does not exist |
+| 2 | **re-cut the Top film and the VSL around it, in the same pass** — the TWI map becomes the graded example and the self-instance inside both, so all three keep all six invariants and point at each other | both exist, 3 of 6 invariants |
+| 3 | **release in the triad's order:** the Top film (the test) → the VSL (the offer, graded) → the TWI map (the finish line) — identity LAST: recognition, never declaration | the VSL alone is live; `framework.html` is linked from nothing |
+| 4 | **the closure = the launch** — the one long-form piece that compiles the three: the seven-part method, the TWI map as its worked example, the arc to "software that knows when to call outside to humans", left behind free (§7l). It lands on the audience the three built *(Fable's candidate for the closure piece)* | not designed |
+| 5 | **the lineage, the 13th** — every client's map returns as an identity piece, AHT first; proof accumulates until the Dudjom structure reifies into the Hormozi | AHT unnamed |
+
+## 8. THE LARGER VERSION — the closed 81 becomes the pattern for every category
+
+When this 81 closes, its compiler is the seed for every other category: the lift (station ↥ 11, +1 → 1),
+and the generative chain `3 → 3⁴ → (3⁴)ⁿ → hypergraph → reification → same generator again`
+(`sanctuary-revolution-alpha/research/ssri/h-mst-handoff/12_3POWER4_71_81_HYPERSTRUCTURE.md`). **One 81
+per category: (3⁴)ⁿ.** A category is a niche — the insurance agencies, title and escrow, the franchisors
+(`docs/niche-selection-2026-09-16.md`) — each compiled from the template this funnel closes, which is
+"category king of your niche" (`docs/the-transformation-method-2026-09-17.md` §1a-bis) done per
+category. The arrow-book already has the shape: a 13-chapter seed expands into 13 volumes and books
+crystallize inside them, each its own category in the same form, placed on the yana ladder
+(`sanctuary-revolution-alpha/research/ssri/ship/arrow-book/CLAUDE.md` · its rules 23 and 24).
+
 ## OPEN — *USER*'s
 
 - **The identity line:** what an owner gets to be called at the finish line.
