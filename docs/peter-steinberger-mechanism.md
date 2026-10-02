@@ -51,7 +51,9 @@ builder, not a programmer.**
 - **Its value was the ASSEMBLY, not a new capability (*USER*'s reading, G5):** anyone who had already wired an
   agent to their channels with autonomy gained nothing from it; it went big because most people would not hook
   the pieces up themselves. And the money around it went to those who SET IT UP for others or sold the framework
-  for building on it — never to the tool. His own validation story is the same: he paid for his non-technical
+  for building on it — never to the tool. **And what it assembled was a PROMISE (autonomous AI), not a use:** in
+  *USER*'s experience, and by his account most users', it did nothing useful and ran up cost until tuned at
+  length — the magnet worked, the product did not, and that disillusionment is now common. His own validation story is the same: he paid for his non-technical
   friend's subscription and set it all up for him, and that is when the friend was hooked. ⇒ the market pays for
   the hook-up done for you and for the method, which is this business's offer and its channel play
   (`sanctuary-revolution-alpha/not-unified/business-runtime/DESIGN.md` §8l).
