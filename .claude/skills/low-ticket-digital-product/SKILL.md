@@ -3,7 +3,7 @@ name: low-ticket-digital-product
 category: understand
 description: "WHEN deciding whether anything (a template, sheet, worksheet, skill pack, prompt set, framework) can be sold as a low-ticket digital product, or choosing which of several to make, THEN score it on the five tests below before building it, and only build what scores high on all five. Also WHEN planning the content that sells such a product, run the content-to-sales loop."
 domain: marketing
-source: "Tom Noske, YouTube — five-step digital product framework (transcript: references/yt-transcripts/tom-noske-digital-products.md)"
+source: "Tom Noske, YouTube — five-step digital product framework (transcript: references/yt-transcripts/tom-noske-digital-products.md) · Maria Wendt's interview on her $22M funnel — pricing, the build, the machine (references/yt-transcripts/maria-wendt-1m-mo-manychat-funnel.md; study docs/maria-wendt-mechanism.md)"
 ---
 
 # Low-ticket digital product: the five tests
@@ -41,6 +41,20 @@ content (names a problem) → audience (drawn by that problem) → purchase
 People pay for the finish-line MOMENT, not for the gear. Tom's $20,000 Ironman was paid for the
 finisher photo and the announcer calling his name. So the product needs a visible finish line a
 buyer can picture themselves crossing, and every finish line becomes the next piece of content.
+
+## Price it, build it, send traffic to it (Maria Wendt — `docs/maria-wendt-mechanism.md`)
+
+- **The price gate.** An impulse buy lives below $97: $27–57 is the sweet spot, $27 the no-brainer start.
+  $197–997 is the DEAD ZONE: too much to buy on impulse, too little to pay for the sales infrastructure
+  (calls, objections) a considered buy needs. If it does not sell at $27, the problem is never the price —
+  it is the packaging, the message or the traffic.
+- **The ×10 test.** A good low-ticket product could sell at ten times its price; the gap is the point.
+- **Build in 2–5 hours, set up in 2 days, send traffic for 28.** One hyper-specific problem, never an
+  academy. A rough first version is fixed by its first hundred buyers, who say what is wrong.
+- **Straight to the checkout.** The content's call to action goes to the checkout page (a comment keyword
+  that DMs one link is the simplest form); no email capture, nurture sequence or webinar in front of a
+  low-ticket sale — it cools the buyer. Email the CUSTOMERS afterwards: repeat purchases are where it pays.
+- **Measure each piece by the money it makes**, with its own keyword, never by its views.
 
 ## How to run it
 

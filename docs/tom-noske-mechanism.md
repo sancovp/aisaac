@@ -68,7 +68,8 @@ fourth layer shows only across STACKS:** one 3³ cannot see it · at 2 × 3³ th
 because an invariant is what two stacks SHARE · at 3 × 3³ the triadic generator kicks in — the three
 stacks fall into outer / inner / secret themselves — and layer 4 appears as the compiler of what all
 three share. ⚠ **The six below are read off ONE video, so they are CANDIDATES (G7)** until checked
-against two more of his videos (the magnetic-personal-brand video first). Tom's candidate invariant set:
+against two more of his videos (the magnetic-personal-brand video first). Against a second CREATOR's stack, four of
+the six already hold (2, 3, 5, 6 — `docs/maria-wendt-mechanism.md` §4). Tom's candidate invariant set:
 
 | # | the invariant | where the 27 keep it |
 |---|---|---|

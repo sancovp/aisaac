@@ -51,7 +51,12 @@ generate the next is not a fourth grid but the INVARIANT SET its 27 cells keep �
 is an instance of what it teaches · every example graded with one instrument, ours among them · the
 viewer runs it on themselves · every section a closure · the finish line names the viewer · the free
 next step continues the loop. A piece keeping all six emits the next one; a piece missing some cannot,
-however good its cells. The layer shows only across STACKS: one piece cannot see it, two start to show
+however good its cells. Checked against a second creator's stack (Maria Wendt's interview and the channel
+around it, `docs/maria-wendt-mechanism.md` §4): **one instrument over every example, the viewer running it,
+the name at the finish line and the free next step hold in both**; "the piece is its own instance" and
+"every section a closure" hold only where the seller authors the whole piece. Two more candidates come from
+her machine: nothing stands between interest and the point of conversion, and every piece is measured by
+the money it makes. The layer shows only across STACKS: one piece cannot see it, two start to show
 it (the invariants are what they share), and at three the triadic generator kicks in and the compiler
 appears — so build three pieces together, each keeping the full set. Done all at once, this is
 GEOMETRIC YOUTUBE.
