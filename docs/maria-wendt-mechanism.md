@@ -123,6 +123,14 @@ the first million is the side effect.
   intentionally is the pass, and one pattern in one domain keeps the samples comparable, so each pass changes
   less until it closes (≗). It is the same loop as Tom's — one instrument graded on every example — and as
   this system's own construction sequence.
+- **The revenue ladder IS the compiler ladder (*USER*'s reading):** $0 → $1M = compiling the metacompiler (the
+  five ones) · $1M → $10M = HAVING it (her "sets you up for eight figures"; her second business at $80k in
+  month two) · $10M → $30M = knowing you have it (scaling the one machine: her ads at $10k a day, aiming for
+  $30k) · $30M → $100M = SATURATION, then verticalize (her plateau is the warm market spent; past the cold
+  market, new markets). Grades: the first two are in her words (G5); the last two are *USER*'s extension,
+  consistent with what she says about ads and plateaus (G7). The verticalize rung is this business's own
+  ascendance — the holdco rollups, one industry venture per industry
+  (`sanctuary-revolution-alpha/not-unified/business-runtime/DESIGN.md` §8 THE ASCENDANCE · §11a).
 - **It is *USER*'s order:** the first category (AiTWI and the founder identity) completed alone before a
   second is opened — `docs/tom-noske-mechanism.md` § the closure.
 
