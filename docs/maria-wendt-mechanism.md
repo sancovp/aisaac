@@ -17,7 +17,7 @@ Both are read below. Every identification is Fable's reading of the transcript a
 | ⫇ 4 monotone | each of the three adds one measure and loses none: content → money per piece · ads → landing page + AOV · email → customers, not leads |
 | ⩕ 5 local witnesses | every post carries its own keyword, so each piece reports its own money · ROAS 2.5 · 50% open rate · her six-month experiment (straight to checkout vs email first: checkout won) |
 | ≗ 6 closure | THE MACHINE: reel → comment a keyword → ManyChat sends one DM with one link → SamCart checkout. "If it's not easy, I don't do it" — nothing left to add |
-| ⊩ 7 the gate | price: impulse below $97 ($27–57 the sweet spot) · $197–997 the DEAD ZONE · high ticket moves at 497 · 897 · past 10,000, with friction at ~$3,000. The ⊬ is kept and named: not selling at $27 is never a pricing problem — it is packaging, messaging or traffic |
+| ⊩ 7 the gate | price: impulse below $97 ($27–57 the sweet spot) · $197–997 the DEAD ZONE · high ticket moves at $4,997 · $8,997 · $9,997 and past $10,000, with friction at ~$3,000 (the transcript prints them "4.97 · 8.97 · 97"). The ⊬ is kept and named: not selling at $27 is never a pricing problem — it is packaging, messaging or traffic |
 | ⫤ 8 reconstruction | the money maps both ways: AOV = 2.5 × the cost to acquire a customer, so $1 in returns $2.50; "elevator ads" — $5 a day, each sale's money fed back in, to $10,000 a day |
 | ⩭ 9 automorphism | the plateau is the same machine on a new market: the warm market is spent, the cold one ("Siberia") demands great creatives, a great page, a higher AOV — same machine, harder input |
 | ⊚ 10 reify, E(you)=you | the rule of the FIVE ONES (one problem · one target market · one offer · one platform · one year) and 2 days to build the product, 28 to send traffic to it — the machine becomes a rule a student runs |
@@ -110,7 +110,7 @@ Offers and pages are *USER*'s (`.claude/rules/00-SITE-CANON.md` HARD LAW 1); the
 - **The presented page already keeps invariant 7**: it has one exit, the booking form. Her rule for a call
   business: booked within 24–48 hours, closed within 24–48 hours, one in three. The speed-to-lead work
   (`docs/ghl-integration.md`) is that rule.
-- **⚠ $3,000 is where she says high ticket meets friction** (497 · 897 · past 10,000 move well). The frozen
+- **⚠ $3,000 is where she says high ticket meets friction** ($4,997 · $8,997 · $9,997 and past $10,000 move well). The frozen
   founding deal is $3,000 up front. A fact from one seller of low-ticket courses (G7), not a reason to move a
   frozen offer.
 - **⚠ framework.html asks for an email before the worksheet.** Her six-month test says collecting emails
