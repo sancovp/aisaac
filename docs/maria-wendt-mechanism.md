@@ -103,6 +103,24 @@ this notation's rule said as a habit.
   every example. The channel's instrument (the ten principles) is the method for finding what every guest
   shares; Maria's five ones are what she found running her own. Both are §18.5's supermeta, harvested.
 
+## 6b. The five ones, read for what they DO (*USER*'s reading; grade G5 — it maps, under the condition below)
+
+She sells the five ones as SPEED ("if speed is your metric") to a million. Her own sentences say what they
+actually do: the skills perfected selling ONE product are "exactly what sets you up" for the next stage
+(Masterson's *Ready, Fire, Aim*), taking longer at stage one makes the next stage take "10 times longer",
+and once the cold market is mastered "everything else is easy." So the five ones **supercompile one thing so
+the seller learns to metacompile the business game** — the fastest route to a metacompiled system, of which
+the first million is the side effect.
+- **Why one of everything compiles:** with one problem, market, offer and platform, every signal is about
+  the same object, so each "micro shift" lands and the loop converges (≗); five offers split the signal
+  and nothing closes.
+- **The witness is her second business:** after the low-ticket pivot it hit $80,000 in its second month and a
+  million-dollar month within about two years — the compiler from the first business, run on a new offer.
+- **The condition (why G5, not G1):** she never names the compiler; she says "skills" and "sets you up". The
+  wisdom is in her sentences and obscured by the speed framing, which measures the instance, not the compiler.
+- **It is *USER*'s order:** the first category (AiTWI and the founder identity) completed alone before a
+  second is opened — `docs/tom-noske-mechanism.md` § the closure.
+
 ## 7. What it means for this site — findings for *USER*, nothing changed
 
 Offers and pages are *USER*'s (`.claude/rules/00-SITE-CANON.md` HARD LAW 1); these are findings only.
