@@ -138,5 +138,12 @@ Offers and pages are *USER*'s (`.claude/rules/00-SITE-CANON.md` HARD LAW 1); the
 - **The five ones** are *USER*'s own order (AiTWI first, completable alone, before any second category).
 - **The keyword CTA** is the cheapest trackable call to action for the TWI channel: each film names one
   word, and each word reports what that film made (invariant 8).
+- **The retainer as the one thing — the math** (assumptions labelled; prices are *USER*'s): the funnel's point
+  of conversion becomes the booking page. A $1M year needs ~42 active clients at $2,000/mo, ~17 at $4,997,
+  ~8 at $9,997. Her ads rule allows spending 1/2.5 of the first payment to win a client: $1,200 at $3,000.
+  The binding limit is *USER*'s calls: at two sessions a client a month and ~80 call-hours a month, ~40
+  clients is the ceiling, so $2,000/mo caps the business near $960k a year with a full calendar — the
+  founder bottleneck she pivoted out of. The ceiling moves only with price or with sessions that do not
+  need him.
 - **The 90-day ramp** (once a week for four weeks, then twice, then up to five; miss one, start over) is a
   schedule *USER* can keep for the stock-clip videos — and, per §2, it is also the identity practice.
