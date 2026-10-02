@@ -118,6 +118,11 @@ the first million is the side effect.
   million-dollar month within about two years — the compiler from the first business, run on a new offer.
 - **The condition (why G5, not G1):** she never names the compiler; she says "skills" and "sets you up". The
   wisdom is in her sentences and obscured by the speed framing, which measures the instance, not the compiler.
+- **The real key, given away by "the more I post, the more I make" (*USER*'s reading):** she is factorizing one
+  domain. Volume supplies the samples, each keyword makes a sample its own witness (⩕), reading the analytics
+  intentionally is the pass, and one pattern in one domain keeps the samples comparable, so each pass changes
+  less until it closes (≗). It is the same loop as Tom's — one instrument graded on every example — and as
+  this system's own construction sequence.
 - **It is *USER*'s order:** the first category (AiTWI and the founder identity) completed alone before a
   second is opened — `docs/tom-noske-mechanism.md` § the closure.
 
