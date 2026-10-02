@@ -48,6 +48,13 @@ builder, not a programmer.**
 - **The personal agent becomes your operating system** — the one thing, in his words.
 - **Money is not how he won, and he says so:** the project loses him $10–20k a month; he joined a lab. Fame
   from working software is real; it is not a business model by itself. This is the gap our offer fills.
+- **Its value was the ASSEMBLY, not a new capability (*USER*'s reading, G5):** anyone who had already wired an
+  agent to their channels with autonomy gained nothing from it; it went big because most people would not hook
+  the pieces up themselves. And the money around it went to those who SET IT UP for others or sold the framework
+  for building on it — never to the tool. His own validation story is the same: he paid for his non-technical
+  friend's subscription and set it all up for him, and that is when the friend was hooked. ⇒ the market pays for
+  the hook-up done for you and for the method, which is this business's offer and its channel play
+  (`sanctuary-revolution-alpha/not-unified/business-runtime/DESIGN.md` §8l).
 - **Anti-slop is now a market reflex:** he blocks AI-written replies on sight, values typos, and says AI
   infographics "scream slop" within a week of novelty. The founder writes the words (Maria said the same).
 
