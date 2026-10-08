@@ -15,11 +15,13 @@
  * Stripe page is still a lead. That was the original reason the form existed
  * and the redesign does not get to lose it.
  *
- * ⛔ ONE OPTIONAL CONSENT — AI texts and calls (recording included) — and a line saying email replies
- * come either way. Nothing is required: "not a condition of purchase" is a required element of US
- * prior-express-written consent, and a sale gated on marketing consent is not freely given under GDPR.
- * Replying to somebody's own enquiry is transactional and needs no permission at all. The reasons the
- * box is one box, not four, are written above the fieldset in the page.
+ * ⛔ EVERY CONSENT WE MAY LEGALLY ASK FOR, EACH ITS OWN BOX — email · texts · calls · WhatsApp ·
+ * recording — unticked, none required, and a line saying the email reply comes either way. What an
+ * agent may do with the contact later is exactly what these granted (the call door refuses the
+ * rest), so a box not offered is a channel lost. Nothing is required: "not a condition of purchase"
+ * is a required element of US prior-express-written consent, and a sale gated on marketing consent
+ * is not freely given under GDPR. Why each box says what it says is written above the fieldset in
+ * the page; the plain forms elsewhere on the site run the same boxes through consent.js.
  *
  * ⛔ THE AUDIT RECORD IS THE POINT, NOT THE TICK. `consent_record` submits the
  * EXACT SENTENCE of every box they ticked, with a timestamp, the page and the

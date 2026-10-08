@@ -2477,6 +2477,9 @@ html.js .cascade .struck.on > b::after {
 .consents-note strong { color: var(--text-2); }
 .consents .consent { margin: 0 0 0.6rem; }
 .consents .consent span strong { color: var(--text-1); font-weight: 500; }
+/* the mobile field appears only when a box that needs it is ticked (consent.js) */
+.consents .phone-field { margin-top: 0.4rem; }
+.consents .phone-field[hidden] { display: none; }
 
 
 /* ══════════════════════════════════════════════════════════════════════════

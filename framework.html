@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://iwantaiformybusiness.com/framework">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=2026-09-28j">
+<link rel="stylesheet" href="style.css?v=2026-10-08">
 </head>
 <body data-depth="0">
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -83,6 +83,57 @@
               </label>
               <button class="cta-primary" type="submit">Send me the framework &rarr;</button>
             </div>
+            <!-- THE CONSENTS — every one we may legally ask for, each its own unticked box; why each
+                 says what it says is written above the booking dialog's fieldset in ai-transformation.html.
+                 consent.js records the exact sentence of every ticked box in consent_record. -->
+            <fieldset class="consents">
+              <legend>How may I contact you?</legend>
+              <p class="consents-note">The framework comes by email either way. Everything after it is your choice &mdash; every box below is optional: tick the ones you want.</p>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_email" value="yes" data-consent="email">
+                <span><strong>Email.</strong> I agree to receive emails from AI Transformations With Isaac
+                &mdash; about my enquiry and the work, and offers, news and new resources. Some may be written
+                by an AI assistant. I can unsubscribe at any time with the link in any email.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_sms" value="yes" data-consent="sms" data-needs-phone>
+                <span><strong>Texts.</strong> We build and recommend AI text-messaging, so this is also the
+                demo. I agree to receive texts from AI Transformations With Isaac at the mobile number I give,
+                including marketing texts, which may be automated and AI-generated. Not a condition of
+                purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out,
+                HELP for help.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_voice" value="yes" data-consent="voice" data-needs-phone>
+                <span><strong>Calls.</strong> We build and recommend AI voice agents, so this is also the
+                demo. I agree to receive calls from AI Transformations With Isaac at the mobile number I give,
+                including marketing calls, which may use an automated system, an artificial or prerecorded
+                voice, or an AI agent &mdash; the agent will say it is an AI. Not a condition of purchase.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_whatsapp" value="yes" data-consent="whatsapp" data-needs-phone>
+                <span><strong>WhatsApp.</strong> I agree to receive WhatsApp messages from AI Transformations
+                With Isaac at the mobile number I give, including offers and updates, which may be automated
+                and AI-generated. Reply STOP to opt out.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_recording" value="yes" data-consent="recording">
+                <span><strong>Recording.</strong> I agree that my calls with AI Transformations With Isaac may
+                be recorded and transcribed, and the transcript used to map my business. A box of its own,
+                because many states require everyone on a call to agree before it is recorded.</span>
+              </label>
+              <label class="lead-field phone-field" hidden>
+                <span>Mobile number &mdash; for the texts, calls and WhatsApp you ticked</span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="+1 555 000 0000">
+              </label>
+            </fieldset>
+            <input type="hidden" name="consent_version" value="2026-10-08">
+            <input type="hidden" name="consent_record" value="">
             <p class="door-fine">Free. It opens the moment you send this, and a copy comes by email. Nothing else unless you ask for it.</p>
           </form>
           <p class="fw-also"><a class="me-link" href="#frameworks">Also free: the autonomy ladder, the B2B bootcamp, how to build an AIOS &darr;</a></p>
@@ -370,6 +421,57 @@
                 <option>I run (or want to run) AI transformation for clients</option>
               </select>
             </label>
+            <!-- THE CONSENTS — every one we may legally ask for, each its own unticked box; why each
+                 says what it says is written above the booking dialog's fieldset in ai-transformation.html.
+                 consent.js records the exact sentence of every ticked box in consent_record. -->
+            <fieldset class="consents">
+              <legend>How may I contact you?</legend>
+              <p class="consents-note">The invite comes by email either way. Every box below is optional: tick the ones you want.</p>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_email" value="yes" data-consent="email">
+                <span><strong>Email.</strong> I agree to receive emails from AI Transformations With Isaac
+                &mdash; about my enquiry and the work, and offers, news and new resources. Some may be written
+                by an AI assistant. I can unsubscribe at any time with the link in any email.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_sms" value="yes" data-consent="sms" data-needs-phone>
+                <span><strong>Texts.</strong> We build and recommend AI text-messaging, so this is also the
+                demo. I agree to receive texts from AI Transformations With Isaac at the mobile number I give,
+                including marketing texts, which may be automated and AI-generated. Not a condition of
+                purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out,
+                HELP for help.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_voice" value="yes" data-consent="voice" data-needs-phone>
+                <span><strong>Calls.</strong> We build and recommend AI voice agents, so this is also the
+                demo. I agree to receive calls from AI Transformations With Isaac at the mobile number I give,
+                including marketing calls, which may use an automated system, an artificial or prerecorded
+                voice, or an AI agent &mdash; the agent will say it is an AI. Not a condition of purchase.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_whatsapp" value="yes" data-consent="whatsapp" data-needs-phone>
+                <span><strong>WhatsApp.</strong> I agree to receive WhatsApp messages from AI Transformations
+                With Isaac at the mobile number I give, including offers and updates, which may be automated
+                and AI-generated. Reply STOP to opt out.</span>
+              </label>
+
+              <label class="consent">
+                <input type="checkbox" name="consent_recording" value="yes" data-consent="recording">
+                <span><strong>Recording.</strong> I agree that my calls with AI Transformations With Isaac may
+                be recorded and transcribed, and the transcript used to map my business. A box of its own,
+                because many states require everyone on a call to agree before it is recorded.</span>
+              </label>
+              <label class="lead-field phone-field" hidden>
+                <span>Mobile number &mdash; for the texts, calls and WhatsApp you ticked</span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="+1 555 000 0000">
+              </label>
+            </fieldset>
+            <input type="hidden" name="consent_version" value="2026-10-08">
+            <input type="hidden" name="consent_record" value="">
             <button class="cta-primary" type="submit">Send me the invite &rarr;</button>
           </form>
         </div>
@@ -454,5 +556,6 @@
 <script src="stack.js?v=2026-09-28g"></script>
 <script src="vsl.js?v=2026-09-28h"></script>
 <script src="ref.js?v=2026-09-28a"></script>
+<script src="consent.js?v=2026-10-08"></script>
 </body>
 </html>

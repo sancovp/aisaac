@@ -182,6 +182,18 @@ not being presented; the laws below govern each page whenever it is.
 12. **HERO FIRST (full site).** The site is about Isaac and what he thinks; the funnel sits
     downstream. Funnel category = simulations-and-world-loops. The h1 scoreboard line returns only
     when a scoreboard page is published.
+13. **EVERY FORM THAT TAKES A PERSON'S OWN DETAILS ASKS FOR EVERY CONSENT WE MAY LEGALLY ASK FOR.**
+    What an agent may later do with a contact is exactly what its boxes granted — the call door refuses
+    the rest — so a box not offered is a channel lost. Five boxes, each its own, unticked, optional,
+    naming the seller and saying AI and marketing out loud: **email · texts · calls · WhatsApp ·
+    recording** (`data-consent` keys `email` `sms` `voice` `whatsapp` `recording`, the keys the call door
+    reads). The wording and the reasons for it live once, above the booking dialog's fieldset in
+    `ai-transformation.html`; every other form copies those five sentences word for word, carries
+    `consent_version` + `consent_record`, and loads `consent.js` (the dialog's record is `capture.js`'s),
+    which saves the exact sentence of every ticked box and reveals a required mobile field when texts,
+    calls or WhatsApp is ticked. A form about SOMEONE ELSE (the partner's warm-intro form) carries no
+    consent boxes — no one consents for another person. A change to the wording bumps `consent_version`
+    on every form the same commit.
 
 ## HOSTING AND AUTOMATIONS — the site's two directions
 

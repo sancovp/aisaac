@@ -93,7 +93,7 @@ TOC = [("1", "→"), ("2", "A → B"), ("3", "A → 1 → 2 → 3 → B"), ("4",
        ("", "Afterword: the status report"), ("", "The map")]
 toc = '\n'.join(f'                <li><span class="toc-n">{n}</span><span class="toc-t">{html.escape(t)}</span></li>' for n, t in TOC)
 
-V = '2026-09-26t'
+V = '2026-10-08'
 page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -308,7 +308,7 @@ page = f'''<!doctype html>
 {dialog}
 
 <script src="vsl.js?v={V}"></script>
-<script src="capture.js?v=2026-09-28d"></script>
+<script src="capture.js?v=2026-10-08"></script>
 </body>
 </html>
 '''
