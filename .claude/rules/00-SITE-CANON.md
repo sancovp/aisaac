@@ -186,8 +186,8 @@ not being presented; the laws below govern each page whenever it is.
     What an agent may later do with a contact is exactly what its boxes granted — the call door refuses
     the rest — so a box not offered is a channel lost. Five boxes, each its own, unticked, optional,
     naming the seller and saying AI and marketing out loud: **email · texts · calls · WhatsApp ·
-    recording** (`data-consent` keys `email` `sms` `voice` `whatsapp` `recording`, the keys the call door
-    reads). The wording and the reasons for it live once, above the booking dialog's fieldset in
+    recording** (`data-consent` keys `email` `sms` `voice` `whatsapp` `recording`; the call door reads the first
+    four, one per channel, and `recording` is for whatever records a call). The wording and the reasons for it live once, above the booking dialog's fieldset in
     `ai-transformation.html`; every other form copies those five sentences word for word, carries
     `consent_version` + `consent_record`, and loads `consent.js` (the dialog's record is `capture.js`'s),
     which saves the exact sentence of every ticked box and reveals a required mobile field when texts,
