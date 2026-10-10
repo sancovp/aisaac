@@ -1910,6 +1910,13 @@ body { position: relative; }            /* so the layer spans the whole document
 .solo-cta { margin: 2rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
 .solo-cta .cta-primary { display: inline-block; }
 .solo-cta .door-fine { max-width: 46ch; margin: 0; }
+/* THE HERO HEADSHOT (RULE 02 §8b): who the call is with, beside the button that books it — the face in the
+   portrait-frame's ink outline, the name and role in the about card's own type (.booker-who). The fine
+   print takes its own row under the pair. */
+.hero-who { display: flex; align-items: center; gap: 0.8rem; }
+.hero-who img { width: 56px; height: 56px; flex: none; display: block; object-fit: cover;
+  border: 1px solid var(--ink); border-radius: var(--r-sm); }
+.hero-copy .solo-cta .door-fine { flex-basis: 100%; }
 
 /* ── what I do ─────────────────────────────────────────────────────────── */
 .what-sec h2 { max-width: 26ch; margin: 0 0 2.2rem; }

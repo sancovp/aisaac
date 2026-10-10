@@ -89,7 +89,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    (the film burns in its own). The visitor only ever sees the film and this site's controls.
 8b. **The hero** (`.hero-split`, bugster.dev's shape): one card; the copy on the left — pill, the h1
    in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the red Book a
-   call; the HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
+   call and beside it THE HERO HEADSHOT (`.hero-who`: the 56px face in an ink outline at `--r-sm`, the
+   name and role in `.booker-who`'s type; the fine print on its own row under the pair); the HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
    drawing was) with NO divider between them, bleeding off the card's right edge (the cell clips it
    to the card's corner). It sits on the card's exact white (#fff — video luma 235, the legal white)
    and carries the characters of the site's own films (the owner with the gold orb, the cyan agents,

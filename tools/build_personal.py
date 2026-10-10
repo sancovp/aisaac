@@ -93,7 +93,7 @@ TOC = [("1", "→"), ("2", "A → B"), ("3", "A → 1 → 2 → 3 → B"), ("4",
        ("", "Afterword: the status report"), ("", "The map")]
 toc = '\n'.join(f'                <li><span class="toc-n">{n}</span><span class="toc-t">{html.escape(t)}</span></li>' for n, t in TOC)
 
-V = '2026-10-08'
+V = '2026-10-10'
 page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -153,7 +153,7 @@ page = f'''<!doctype html>
         </div>
         <div class="bp-cell me-portrait">
           <div class="portrait-frame">
-            <img src="assets/isaac-portrait.jpg" alt="Isaac Wostrel-Rubin" width="960" height="1200">
+            <img src="assets/isaac-headshot.jpg" alt="Isaac Wostrel-Rubin" width="960" height="1200">
           </div>
         </div>
       </div>

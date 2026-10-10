@@ -9,7 +9,9 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 **One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
-action — the hero (the claim and the red Book a call on the left; on the right the HERO LOOP
+action — the hero (the claim and the red Book a call on the left, with THE HERO HEADSHOT beside the button —
+Isaac's face, `assets/isaac-headshot-sm.jpg`, his name and "Founder of TWI", so the visitor sees who the call is
+with; on the right the HERO LOOP
 `assets/hero-loop-2.mp4` (poster `assets/hero-loop-2-poster.jpg`) — the drawing alive: the owner leaning
 back while his company of people and cyan agents works on its own, wired together — signals run along
 the wires, documents and messages pass between the desks, and the money flows back down the one line
@@ -163,7 +165,9 @@ not being presented; the laws below govern each page whenever it is.
    wordmark is the product's name (`JobWorld` on `jobworld.html`), its footer still the company's; the
    hero's pill names who the page is for: `Business Owners:`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
    about card names him so, and the footer and the prose say Isaac. His background ("How I got
-   here") states only facts he gave: AI since 2023, agents for a film production company,
+   here") states only facts he gave; his photo on every business page and the personal page is
+   `assets/isaac-headshot.jpg` (the about card) and its face crop `assets/isaac-headshot-sm.jpg` (the hero),
+   made from *USER*'s chosen headshot, an AI-generated image of his own: AI since 2023, agents for a film production company,
    philosophy and ontologies, what he has built, the Digital Twin of an Organization he is building. The legal entity (Ribcage Solutions, Inc.) never appears on the site; it lives in
    `docs/`, the contracts and the Stripe statement. `AIsaac` is the repository and the URL path,
    never a brand on a page.

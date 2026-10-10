@@ -33,7 +33,7 @@ page = f'''<!doctype html>
 <meta property="og:url" content="{URL}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=2026-10-08">
+<link rel="stylesheet" href="style.css?v=2026-10-10">
 </head>
 <body data-depth="0">
 <!-- BUILT by tools/build_jobworld.py — edit the script, then rebuild. The JobWorld product page:
@@ -68,6 +68,10 @@ page = f'''<!doctype html>
             <p class="lede">{DESC}</p>
             <div class="solo-cta" id="book">
               <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
+              <div class="hero-who">
+                <img src="assets/isaac-headshot-sm.jpg" alt="" width="240" height="240">
+                <p class="booker-who"><strong>Isaac Wostrel-Rubin</strong><span>Founder of TWI</span></p>
+              </div>
               <p class="door-fine">Bring one part of your business. We map it on the call, and I show you what its CEO does with it on day one.</p>
             </div>
           </div>
@@ -237,7 +241,7 @@ page = f'''<!doctype html>
         <div class="bp-split about-split">
           <div class="bp-cell">
             <div class="portrait-frame">
-              <img src="assets/isaac-portrait.jpg" alt="Isaac Wostrel-Rubin" width="960" height="1200">
+              <img src="assets/isaac-headshot.jpg" alt="Isaac Wostrel-Rubin" width="960" height="1200">
             </div>
           </div>
           <div class="bp-cell">
