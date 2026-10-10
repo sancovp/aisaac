@@ -16,7 +16,7 @@ fields); the hand-built workflow "Website Lead Intake" there is not called by an
 
 **GHL is the backmost backend; its screens are not used.** Everything in GHL is mirrored into our own database and the business is
 run from JobWorld's business console — agents and dashboards, nobody clicking — built first for our own use
-(`application/jobworld/DESIGN.md` § 9 in the monorepo). So the builders' door below (§ 6, the AI user and a browser tool) matters only
+(`application/jobworld/DESIGN.md` § 9 in the monorepo). So the web app's door below (§ 6, the CEO's browser, signed in as the user) matters only
 for the few things GHL's API cannot do (the ring-you-first call, snapshots, SaaS plans).
 
 | GHL gives us (the CRM and the reach) | We keep ourselves (the brain and the glue) | Comes from elsewhere |
@@ -125,10 +125,12 @@ layers with three different doors:
 | **AGENCY** — sub-accounts, SaaS plans, snapshots, users | the public API with an agency token (`GHL_AGENCY_TOKEN`, `.dev.vars` only) | ✅ token in place; nothing built on it yet |
 | **THE BUILDERS** — workflows, funnels, forms, page layouts | NOT the API (workflows are read-only there). The real screens, driven by a browser; GHL's own builder AI as a helper; or our own code as a GHL Marketplace app whose custom steps a workflow can call | ⏸ decision below |
 
-**The recommended door for the builders (not yet decided by Isaac):** a SEPARATE GHL user for the AI (Settings → My Staff,
-a limited role), signed in once in a browser tool that drives GHL's real screens — so anything the AI does appears in the audit
-log under its own name, can be removed in one click, and never runs as Isaac. Rejected: the reverse-engineered internal API
-(`research/ghl-workflow-builder-repo-map.md` — it logs in as a user, its evidence does not hold up, and it leaks secrets).
+**The door to GHL's screens:** the business's CEO drives GHL's web app in its browser, signed in AS THE USER — the
+business's own login, on its owner's authority, because the CEO is the owner's agent; there is no second identity for
+the AI. What the screens allow and the API does not is a skill of the CEO; what GHL blocks from browser automation (its AIs,
+its builders) is built as our own in JobWorld (`not-unified/business-runtime/ribcage/DESIGN.md` §8 in the monorepo).
+Rejected: the reverse-engineered internal API (`research/ghl-workflow-builder-repo-map.md` — it logs in as a user, its
+evidence does not hold up, and it leaks secrets).
 
 **The order of work** (each row is a board row in the business-runtime project; the HOW is its `ghl-api` skill):
 
@@ -136,7 +138,7 @@ log under its own name, can be removed in one click, and never runs as Isaac. Re
 |---|---|---|---|
 | 1 | ✅ the relay writes leads and payments into the CRM, per form (`lib/ghl.js`) | agent | done and live |
 | 2 | ✅ the `ghl-api` skill — ONE skill, a folder per GHL domain (32 domains, 402 operations) generated from GHL's own MCP with MCPorter, `call.sh` to run any operation, and `house-rules/` (tokens, IDs, traps); a read, a write and a delete proven through it (`business-runtime/.claude/skills/ghl-api/`) | agent | done |
-| 3 | the AI user in GHL + the browser tool that drives GHL as that user | Isaac creates the user and signs in once; an agent builds the tool | Isaac's go |
+| 3 | the CEO's browser in GHL's web app, signed in as the user — the A2P registration first | an agent builds it | the browser in the box (`application/jobworld/DESIGN.md` §1) |
 | 4 | Cal.com → the relay (a booking moves the deal to Booked; a no-show is flagged) | agent | Isaac: keep Cal.com or use GHL's calendar (recommended: keep Cal.com for now) |
 | 5 | narrow the sub-account token from all scopes to contacts, opportunities, conversations messages, custom fields | agent walks Isaac through it | — |
 | 6 | speed to lead: an instant text and the ring-you-first call, only for a lead with a consent record and a phone | agent | a phone number in the sub-account and the A2P registration (Isaac's setup, already on his list) |
