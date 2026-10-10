@@ -1,25 +1,11 @@
-# AIsaac — AI Transformation
+# aisaac — the site of AI Transformations With Isaac
 
-Your business, finally running the way you designed it.
+The business lives at **https://iwantaiformybusiness.com**: the landing page (book a call), the free
+framework (`/framework`), the referral partners page (`/partners`) and JobWorld (`/jobworld`, also the home
+of `app.iwantaiformybusiness.com`). Everything else — the personal page, the blog, the field notes — is at
+https://sancovp.github.io/aisaac.
 
-I find the workflow your team keeps rescuing by hand, turn it into a visible operating system, and install AI workers that execute it the same way every time. Your people stay. The process stops leaking. Your SOPs become executable.
+Every push to `main` deploys both: the Cloudflare Worker (`worker.js`, `wrangler.jsonc`) for the business
+domain and GitHub Pages for the rest. The laws for editing any page are in `.claude/rules/00-SITE-CANON.md`.
 
-## What I do
-
-1. **Make execution observable** — your workflow stops living in people's heads
-2. **Turn fires into diagnostics** — failures become process data, not blame
-3. **Move people into operator roles** — supervise and improve, not repeat
-4. **Compound the operating system** — one SOP at a time, the business gets more consistent
-
-## Open Source Tools
-
-- **[DocMagic](https://github.com/sancovp/docmagic)** — Repo-level causality scanner. Finds hidden connections, stale docs, and invisible coupling that make AI agents drift.
-- **[Sanctuary Revolution](https://github.com/sancovp/sanctuary-revolution-alpha)** — Compound intelligence system. Skills, flights, knowledge graphs, autonomous agents.
-
-## Site
-
-[sancovp.github.io/aisaac/](https://sancovp.github.io/aisaac/)
-
-## Book a call
-
-[cal.com/aisaac/ai-agents-for-your-business](https://cal.com/aisaac/ai-agents-for-your-business)
+Book a call: https://cal.com/aisaac/ai-transformation-discovery-call

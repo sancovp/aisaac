@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- THE SHARE CARD (og:image) — rendered at 1200×630 and screenshotted into assets/og/<page>.png.
+     One card per business page, its words the page's own <title> claim, drawn in the Blueprint System
+     (RULE 02): paper, ink outline, mono claim, the wordmark and the address. Pick the page with
+     ?p=home|jobworld|framework|partners. Lives in tools/, which the Worker never serves. -->
+<link rel="stylesheet" href="../style.css">
+<style>
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--paper); }
+  body::before, body::after { display: none !important; }
+  .og { box-sizing: border-box; width: 1200px; height: 630px; padding: 44px; }
+  .og-card { box-sizing: border-box; height: 100%; border: 1.5px solid var(--ink); border-radius: 28px;
+    display: grid; grid-template-columns: 1.2fr 1fr; overflow: hidden; position: relative; background: var(--paper); }
+  .og-copy { padding: 52px 0 96px 56px; display: flex; flex-direction: column; }
+  .og-h { font-family: var(--font-mono, 'Geist Mono'), monospace; font-weight: 700; font-size: 54px;
+    line-height: 1.06; letter-spacing: -0.04em; margin: 26px 0 0; color: var(--ink); }
+  .og-h span { color: var(--text-3); }
+  .og-foot { position: absolute; left: 56px; right: 44px; bottom: 40px; display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono, 'Geist Mono'), monospace; font-size: 18px; font-weight: 700; background: var(--paper); }
+  .og-foot i { font-style: normal; color: var(--text-3); font-weight: 500; }
+  .og-art { display: flex; align-items: center; overflow: hidden; padding-bottom: 60px; }
+  .og-art img { width: 135%; max-width: none; display: block; }
+  .og-card.text-only { grid-template-columns: 1fr; }
+  .og-card.text-only .og-h { font-size: 62px; max-width: 22ch; }
+</style>
+</head>
+<body>
+<div class="og">
+  <div class="og-card" id="card">
+    <div class="og-copy">
+      <p class="eyebrow"><span class="pill" id="pill"></span></p>
+      <h1 class="og-h" id="h"></h1>
+      <div class="og-foot"><span id="mark"></span><i>iwantaiformybusiness.com</i></div>
+    </div>
+    <div class="og-art" id="art"><img src="../assets/hero-loop-2-poster.jpg" alt=""></div>
+  </div>
+</div>
+<script>
+  var CARDS = {
+    home: { pill: 'Business Owners:', h: 'Turn your business into software <span>that runs without you.</span>',
+            mark: 'AI Transformations With Isaac', art: true },
+    jobworld: { pill: 'Business Owners:', h: 'Your company, <span>with an AI CEO in the chair.</span>',
+            mark: 'JobWorld', art: true },
+    framework: { pill: 'Free framework', h: 'Create an AI Transformation Map <span>for any business.</span>',
+            mark: 'AI Transformations With Isaac', art: false },
+    partners: { pill: 'Referral partners', h: 'Refer a business that needs AI. <span>Get $1,000 when they sign.</span>',
+            mark: 'AI Transformations With Isaac', art: false }
+  };
+  var c = CARDS[new URLSearchParams(location.search).get('p') || 'home'];
+  document.getElementById('pill').textContent = c.pill;
+  document.getElementById('h').innerHTML = c.h;
+  document.getElementById('mark').textContent = c.mark;
+  if (!c.art) { document.getElementById('art').remove(); document.getElementById('card').classList.add('text-only'); }
+</script>
+</body>
+</html>

@@ -56,6 +56,9 @@ CANON_FILES = {
     "index.html", "watch.html", "system.html", "isaac.html",
     "learn.html", "build.html", "run.html", "404.html",
     "patterns.html",
+    # the business domain's pages (00-SITE-CANON § HOSTING AND AUTOMATIONS) — the live ones
+    "ai-transformation.html", "framework.html", "framework-worksheet.html", "partners.html",
+    "jobworld.html", "isaac-wostrel-rubin.html",
 }
 # FROZEN — pricing.html is restored verbatim from main by Isaac's order of
 # 2026-08-07 ("STOP CHANGING MY OFFERS"). RULE 00 law 1 makes it his file

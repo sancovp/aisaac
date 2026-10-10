@@ -187,7 +187,11 @@ a system face breaks the monospace grid.
 
 - WCAG AA contrast computed from the actual token values for every text/background pair.
 - Zero inline `style=` attributes; zero page `<style>` over 20 lines.
-- Single h1 per page; every `<img>` has width/height; og:image exists per page type.
+- Single h1 per page; every `<img>` has width/height; og:image exists per page type. Each business page
+  shares its OWN card, `assets/og/twi-<page>.png` — drawn in this system (paper, ink outline, the page's
+  claim in mono, the wordmark, the address) by `tools/og-card.html?p=<page>` screenshotted at 1200×630;
+  a new business page gets a card there. The business pages (the landing page, framework, its worksheet,
+  partners, jobworld, the personal page) are CANON in the gate, so a violation on a live page fails it.
 - No font-family declarations outside style.css; no hex colours outside the token block.
 - ⛔ The gate does NOT see: a rule that loses the cascade to a later one of equal specificity
   (the About card kept its desktop grid on phones this way — measure `scrollWidth` at 390px), or

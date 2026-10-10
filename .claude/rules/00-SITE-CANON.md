@@ -116,6 +116,20 @@ takes it from there → $1,000) · two ways to refer (the link; the warm-intro f
 `ref.js`) · who it's for · the terms · the close. Public and indexable since 2026-09-28 (his go), linked from nothing — partners are sent the link; its
 button is INK.
 
+**Public, not linked from the landing page: `jobworld.html`** — THE JOBWORLD PRODUCT PAGE, at
+`/jobworld` on the business domain and the home of `app.iwantaiformybusiness.com` (the accounts app's root shows it).
+BUILT, not hand-edited: `python3 tools/build_jobworld.py` writes it and lifts the booking dialog whole from
+`ai-transformation.html`. Its top bar: the wordmark `JobWorld`, an INK `Sign in` (owners who already have a
+JobWorld, to `https://app.iwantaiformybusiness.com/sign-in` — the page's second sanctioned exit) and the red Book a
+call. Its order: the hero (h1 "Your company, with an AI CEO in the chair." — the product's own line, the title of
+every JobWorld · the lede from the VSL's box · the HERO LOOP · who it's for) · what it looks like running (the
+owner's own first night, `assets/jobworld-walkthrough-loop.mp4`, with the site section's blurb and three cells) ·
+the dashboard (`assets/jobworld-console-tour.mp4`) · it works while you watch (`assets/jobworld-agent-at-work.mp4`)
+— both on the DEMO business, labelled so on the page · where it stops (money · contact without a basis · your own
+AI) · how it grows (drafts and asks → you approve, it sends → it answers and books) · who helps you · book a call.
+No price, no name of anything behind the door, no client named. Every recording is checked frame by frame for
+those names before it ships.
+
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
 slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the
 FAQ), linked from nothing. It comes back by swapping the two filenames. Every other page exists and is
@@ -140,12 +154,13 @@ not being presented; the laws below govern each page whenever it is.
    claimed · punch at the discourse, never at names · the arrogance budget equals the receipt balance.
 5. **LAYOUT** = the `_templates/` + `style.css` skeleton · relative in-page paths · the absolute
    origin only in canonical/og and `_next` — `https://iwantaiformybusiness.com` (clean paths, no `.html`) on
-   the four business pages, `https://sancovp.github.io/aisaac` on every other page · every form action is
+   the business pages, `https://sancovp.github.io/aisaac` on every other page · every form action is
    the relay, `https://iwantaiformybusiness.com/api/lead`.
 6. **THE NAMES: the company in the chrome, Isaac in person.** **TWI** (Transformations With Isaac) is
    Isaac's own brand and the holding company over everything he sells — his channel is TWI. **AiTWI**
    (AI Transformations With Isaac) is THIS business, one company under TWI. The business pages' top-bar
-   wordmark is `AI Transformations With Isaac`, the only name in the chrome; the
+   wordmark is `AI Transformations With Isaac`, the only name in the chrome — except a PRODUCT's page, whose
+   wordmark is the product's name (`JobWorld` on `jobworld.html`), its footer still the company's; the
    hero's pill names who the page is for: `Business Owners:`. The person the visitor will talk to is **Isaac Wostrel-Rubin, Founder of TWI**: the
    about card names him so, and the footer and the prose say Isaac. His background ("How I got
    here") states only facts he gave: AI since 2023, agents for a film production company,
@@ -198,7 +213,7 @@ not being presented; the laws below govern each page whenever it is.
 ## HOSTING AND AUTOMATIONS — the site's two directions
 
 THE BUSINESS IS LIVE AT `https://iwantaiformybusiness.com` — and ONLY the business: the landing page (its
-home), the framework page and its worksheet, and the partners page, with their scripts and media; any other
+home), the framework page and its worksheet, the partners page and the JobWorld page, with their scripts and media; any other
 address there goes to the home. EVERYTHING ELSE — the personal page, the blog, the notes, the older pages —
 stays at `https://sancovp.github.io/aisaac` (GitHub Pages, from the same `main`), where the blog publisher
 keeps publishing. Every form, on either site, posts to the relay (`https://iwantaiformybusiness.com/api/lead`);
@@ -281,6 +296,7 @@ Paths below marked ✓ resolve here.
 | **isaac-wostrel-rubin.html (his personal page)** | ✓ `isaac.html` (the content it started from — the beliefs, the story, the open rows, verbatim) · ✓ `ssri/papers/flat-vs-tree.html` (the paper — only its own sentences) · ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/arrow-book/` — `MANUSCRIPT.md`'s title page and Chapter One (the passages), `front-matter/` (the mark, `assets/sanc-mark-white.png`, byte-identical), and the book's own gates: nothing from `sgc/`, no practice text, nothing from the raw autobiography corpus · `gh api repos/sancovp/<repo> .description` (each repo card's words) · every repo linked returns 200 unauthenticated |
 | **framework.html (the DIY framework + community funnel)** | ✓ `docs/the-transformation-method-2026-09-17.md` §1 (the seven parts, his questions) + §1a (the central test, the two shapes of a business that fails it) — never §1a-bis's cascade, never §1c–§1f · ✓ `~/claude_code/sanctuary-revolution-alpha/application/jobworld/avi-jw/docs/autonomy-framework/AUTONOMY-MANIFESTO.md` §II.2–II.4 (the autonomy ladder; its canon copy `~/autonomy-framework` is outside the world dir) · ✓ `b2b-bootcamp/` — thirteen of sixteen files, the SANCTUARY–WASTELAND cosmology leading them as the map; OUT: the origin story (personal), the pitch script, and `human-vs-ai-comparison.md` (its statistics name no source, law 3) · ✓ `~/claude_code/sanctuary-revolution-alpha/base/chaincompiler/` (public, MIT) — `DIETC-AIOS-REBUILD.md` §1–§5 (the AIOS template → BUILD AN AIOS) · `README.md` § The stack, § The formal spec, changelog v0.1.34–v0.1.36 (GBA · COG · HBA → THE LEVELS) · `chains/skill2framework.chain` + `skills/skill2framework/*` (the six stages → TOME) · ✓ `docs/business-context-2026-09-15-first-client.md` (the ordering rule that keeps it unpresented) · *USER*'s own description of the community (owners + operators on his model, his GoHighLevel, Skool) — the Skool link, the price and what the GHL access includes are his, OPEN |
 | **partners.html (the referral partners)** | ✓ this rule's § HOSTING AND AUTOMATIONS — REFERRAL PARTNERS (*USER*'s rulings: referral only, the working $1,000 flat per client who signs, paid after the first payment clears) · ✓ the avatar of `docs/business-context-2026-09-15-first-client.md` (who partners' clients are). No promise *USER* has not made. |
+| **jobworld.html (the JobWorld product page)** | ✓ `~/claude_code/sanctuary-revolution-alpha/not-unified/business-runtime/library/marketing/jobworld-walkthrough/` — `site-section.md` (the first-night section, verbatim), `vsl-your-ai-ceo.md` (the box · the arc · the close), `the-walkthrough.md` (what the recording shows, the redaction list) · ✓ `…/business-runtime/clients/aht/demo/CLAUDE.md` (what the two demo recordings show; the demo business is made up and is labelled so) · ✓ `…/business-runtime/DESIGN.md` §8a (the hard blocks: money, and contact without a basis) and §8e (the model account is the business's own) · ✓ `~/claude_code/sanctuary-revolution-alpha/application/jobworld/DESIGN.md` §1 and §9 (what a JobWorld is; the dashboard). No price, no tier, no name of anything behind the door. |
 | **pricing.html** | `main:pricing.html` VERBATIM + Isaac. No other source exists. |
 | **rung pages (learn/build/run)** | the funnel row for what each rung IS; product truth for jobworld surfaces from `~/aios-research/SYSTEM-ROLLUP.md` + the avi-jw rules (`/agent/.claude/rules/00,05,07`) — honest grades only |
 | **watch.html / world demos** | real run receipts ONLY: cave-teams live tests (`test_live_skillcraft.py` runs), future footage per `GARAGE-LAB-LAUNCH-STRATEGY.md` §1b. Never generated numbers. |

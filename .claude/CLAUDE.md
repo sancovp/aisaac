@@ -27,6 +27,11 @@ Not a product. The totality. A way to run your life so everything compounds. Eve
 - `ai-transformation.html` — TWI's business page: one action, book a call
 - `isaac-wostrel-rubin.html` — Isaac's personal page: the paper, the book preview, the beliefs, the repos (BUILT by `tools/build_personal.py`)
 
+### Public, linked from nothing (the business domain)
+- `framework.html` + `framework-worksheet.html` — the free framework funnel
+- `partners.html` — the referral partners page
+- `jobworld.html` — the JobWorld product page, also the home of app.iwantaiformybusiness.com (BUILT by `tools/build_jobworld.py`)
+
 ### Router
 - `index.html` — 4-funnel survey (Sanctuary System / B2B / Wantrepreneur / PAIAB)
 
