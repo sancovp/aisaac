@@ -100,7 +100,7 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 | the door's answers carried into the checkout's metadata | owed |
 | the one-time offer page after payment, and the no-thanks step | owed — its offers per avatar wait on §6 |
 | the order bump | owed — its add-on waits on §6 |
-| the weekly letter, and the frameworks and manuals sent on the learner's sign-up | owed — the sign-up is live; what it sends is not made |
+| the weekly letter, and the frameworks and manuals sent on the learner's sign-up | another agent's lane — the door owns only the sign-up, which is live |
 | the JobWorld page at the app's root, with Get JobWorld | live |
 | the bootcamp at `/bootcamp` | live |
 | the sign-in and sign-up | live |
@@ -123,8 +123,8 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 2. each avatar's CLOSER conversation, drafted with the skill, ending at the cart — done
 3. the cart funnel (§4): the plans page reading what the door sends · the answers into the checkout · the one-time
    offer page after payment · the order bump — each offer once *USER* names it
-4. the hand-holding behind the cart: the community's home, the weekly letter and what the sign-up sends, the retainer's
-   terms
+4. the hand-holding behind the cart: the community's home, the retainer's terms (the weekly letter and what the
+   sign-up sends are another agent's lane)
 5. pricing and the dashboard in the theme
 6. the pricing pass, and Stripe live
 7. the VSLs, when the twin exists

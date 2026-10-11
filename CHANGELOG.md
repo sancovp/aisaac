@@ -4,6 +4,11 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the newsletter is another agent's lane
+
+- Isaac: "another agent will handle the newsletter stuff btw". `docs/the-door.md` §5 and §7: the weekly letter and what
+  the learner's sign-up sends leave the door's owed work; the door owns only the sign-up.
+
 ## 2026-10-11 — the cart is a direct-response funnel: no done-with-you before payment, except for the B2B owner
 
 - Isaac: "i think the carts need to be figured out. there are some things they shouldnt see unless theyve already got a
