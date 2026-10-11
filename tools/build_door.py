@@ -53,11 +53,11 @@ def nxt(label, to, cls='cta-primary'):
 
 
 START = [
-    opt('I need JobWorld for my business', '', 'data-step="own-c" data-key="why" data-val="owner"', 'briefcase'),
+    opt('I need AI for my business', '', 'data-step="own-c" data-key="why" data-val="owner"', 'briefcase'),
     opt('I want to start an AI-native business', '', 'data-step="fnd-c" data-key="why" data-val="founder"', 'rocket'),
     opt('I want to learn how to use AI', '', 'data-step="lrn-c" data-key="why" data-val="learner"', 'cap'),
     opt('I want to learn to sell, market or run my operations', '', 'data-step="ent-c" data-key="why" data-val="entrepreneur"', 'trend'),
-    opt('I want to sell JobWorld to my clients', '', 'data-step="agc-c" data-key="why" data-val="agency"', 'users'),
+    opt('I want to sell AI to my clients', '', 'data-step="agc-c" data-key="why" data-val="agency"', 'users'),
 ]
 
 
@@ -88,7 +88,7 @@ OWN_O = [  # O — OVERVIEW: what they already tried, said back to them
     opt('Nothing yet', 'This is the first real try.', 'data-step="own-n" data-key="own_tried" data-val="nothing" data-reply="Then you start with a company that already knows how to work."', 'rocket', 'Next'),
 ]
 OWN_N = [  # the size: a seat is one JobWorld for one person in the org chart (jobworld DESIGN §6)
-    opt('Just me', 'One JobWorld, with me in the chair.', 'data-step="own-k" data-key="own_seats" data-val="1"', 'briefcase', 'Next'),
+    opt('Just me', 'Only me in the chair.', 'data-step="own-k" data-key="own_seats" data-val="1"', 'briefcase', 'Next'),
     opt('2 to 5 people', 'A seat for each person who runs a part.', 'data-step="own-k" data-key="own_seats" data-val="2-5"', 'users', 'Next'),
     opt('6 to 20 people', 'Departments with their own leads.', 'data-step="own-k" data-key="own_seats" data-val="6-20"', 'store', 'Next'),
     opt('More than 20', 'A whole org chart.', 'data-step="own-k" data-key="own_seats" data-val="21+"', 'trend', 'Next'),
@@ -381,17 +381,17 @@ page = f'''<!doctype html>
       <div class="door-dots" aria-hidden="true" data-dots></div>
     </div>
 {step('start', 1, '', 'Which one are you?', '', chr(10).join(START), first=True)}
-{step('own-c', 2, 'For your business', 'I need JobWorld for my business.', '', chr(10).join(OWN_C), of=10)}
-{step('own-l', 3, 'For your business', 'So here is what is happening inside it.', 'Every one you recognise is one JobWorld takes off you.', chr(10).join(OWN_L), of=10, mode='data-multi="own_pains"', after=nxt('That&rsquo;s me', 'own-o'))}
+{step('own-c', 2, 'For your business', 'I need AI for my business.', '', chr(10).join(OWN_C), of=10)}
+{step('own-l', 3, 'For your business', 'So here is what is happening inside it.', 'Every one you recognise can be taken off you.', chr(10).join(OWN_L), of=10, mode='data-multi="own_pains"', after=nxt('That&rsquo;s me', 'own-o'))}
 {step('own-o', 4, 'For your business', 'And you have already tried to fix it.', 'Here is what that looked like.', chr(10).join(OWN_O), of=10)}
-{step('own-n', 5, 'For your business', 'Your business is people, and each of them gets their own JobWorld.', 'This is the size of your company.', chr(10).join(OWN_N), of=10)}
+{step('own-n', 5, 'For your business', 'Your business is people.', 'This is the size of your company.', chr(10).join(OWN_N), of=10)}
 {step('own-k', 6, 'For your business', 'And here is where it goes from here.', 'If nothing changes.', '', of=10, after='<div class="door-vac" data-consequence="own"></div>' + nxt('Show me the other way', 'own-t'))}
 {step('own-t', 7, 'For your business', 'You expect another AI tool.', 'Here is what it actually is.', REVEAL, of=10, after=nxt('That&rsquo;s what I want', 'own-s'))}
 {step('own-s', 8, 'For your business', 'Here is where you will be.', '', '', of=10, after='<div class="door-vac" data-vacation="own"></div>' + nxt('That&rsquo;s what I want', 'own-e'))}
 {step('own-e', 9, 'For your business', 'Every owner has the same few doubts.', 'Each one already has its answer.', chr(10).join(OWN_E), of=10, mode='data-concerns="own_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'own-r'))}
 {step('own-r', 10, 'For your business', 'You are making the right call.', 'Your departments run without waiting on you, nothing goes out without your say, and everything they make stays yours.', chr(10).join(OWN_R), of=10, after=offer('own'))}
 {step('fnd-c', 2, 'Start a business', 'I want to start an AI-native business.', '', chr(10).join(FND_C), of=9)}
-{step('fnd-l', 3, 'Start a business', 'Here is what has been in the way.', 'Every one you recognise is one JobWorld removes.', chr(10).join(FND_L), of=9, mode='data-multi="fnd_pains"', after=nxt('That&rsquo;s me', 'fnd-o'))}
+{step('fnd-l', 3, 'Start a business', 'Here is what has been in the way.', 'Every one you recognise can be removed.', chr(10).join(FND_L), of=9, mode='data-multi="fnd_pains"', after=nxt('That&rsquo;s me', 'fnd-o'))}
 {step('fnd-o', 4, 'Start a business', 'And you have already tried to get it moving.', 'Here is what that looked like.', chr(10).join(FND_O), of=9)}
 {step('fnd-k', 5, 'Start a business', 'And here is where it goes from here.', 'If nothing changes.', '', of=9, after='<div class="door-vac" data-consequence="fnd"></div>' + nxt('Show me the other way', 'fnd-t'))}
 {step('fnd-t', 6, 'Start a business', 'You expect another AI tool.', 'Here is what it actually is.', REVEAL, of=9, after=nxt('That&rsquo;s what I want', 'fnd-s'))}
@@ -399,7 +399,7 @@ page = f'''<!doctype html>
 {step('fnd-e', 8, 'Start a business', 'Every founder has the same few doubts.', 'Each one already has its answer.', chr(10).join(FND_E), of=9, mode='data-concerns="fnd_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'fnd-r'))}
 {step('fnd-r', 9, 'Start a business', 'You are making the right call.', 'You start with a company that already knows how to work, it asks before anything goes out, and everything it makes is yours.', chr(10).join(FND_R), of=9, after=offer('fnd'))}
 {step('lrn-c', 2, 'Learn AI', 'I want to learn how to use AI.', '', chr(10).join(LRN_C), of=10)}
-{step('lrn-l', 3, 'Learn AI', 'Here is where it stops working for you.', 'Every one you recognise is one JobWorld fixes by doing it with you.', chr(10).join(LRN_L), of=10, mode='data-multi="lrn_pains"', after=nxt('That&rsquo;s me', 'lrn-o'))}
+{step('lrn-l', 3, 'Learn AI', 'Here is where it stops working for you.', 'Every one you recognise can be fixed.', chr(10).join(LRN_L), of=10, mode='data-multi="lrn_pains"', after=nxt('That&rsquo;s me', 'lrn-o'))}
 {step('lrn-o', 4, 'Learn AI', 'And you have already tried to learn it.', 'Here is how that went.', chr(10).join(LRN_O), of=10)}
 {step('lrn-k', 5, 'Learn AI', 'And here is where it goes from here.', 'If nothing changes.', '', of=10, after='<div class="door-vac" data-consequence="lrn"></div>' + nxt('Show me the other way', 'lrn-t'))}
 {step('lrn-t', 6, 'Learn AI', 'You expect another chatbot.', 'Here is what it actually is.', REVEAL, of=10, after=nxt('That&rsquo;s what I want', 'lrn-s'))}
@@ -416,15 +416,15 @@ page = f'''<!doctype html>
 {step('ent-f', 8, 'Grow your business', 'You need frameworks. Here they are.', 'Open any one. All of them, free, are on <a href="bootcamp" target="_blank" rel="noopener">the bootcamp page</a> &mdash; and every one runs inside JobWorld too.', chr(10).join(ENT_F), of=10, mode='data-concerns="ent_frameworks"', after=nxt('I want them run for me', 'ent-e'))}
 {step('ent-e', 9, 'Grow your business', 'Every entrepreneur has the same few doubts.', 'Each one already has its answer.', chr(10).join(ENT_E), of=10, mode='data-concerns="ent_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'ent-r'))}
 {step('ent-r', 10, 'Grow your business', 'You are making the right call.', 'You have the frameworks, and a system that runs them with you and for you.', chr(10).join(ENT_R), of=10, after=offer('ent'))}
-{step('agc-c', 2, 'Sell JobWorld', 'I want to sell JobWorld to my clients.', '', chr(10).join(AGC_C), of=10)}
-{step('agc-l', 3, 'Sell JobWorld', 'Here is what is hard about it now.', 'Every one you recognise is one JobWorld takes off your team.', chr(10).join(AGC_L), of=10, mode='data-multi="agc_pains"', after=nxt('That&rsquo;s me', 'agc-o'))}
-{step('agc-o', 4, 'Sell JobWorld', 'And you have already tried to solve it.', 'Here is what that looked like.', chr(10).join(AGC_O), of=10)}
-{step('agc-n', 5, 'Sell JobWorld', 'Every client gets their own JobWorld, under your name.', 'This is how many you start with.', chr(10).join(AGC_N), of=10)}
-{step('agc-k', 6, 'Sell JobWorld', 'And here is where it goes from here.', 'If nothing changes.', '', of=10, after='<div class="door-vac" data-consequence="agc"></div>' + nxt('Show me the other way', 'agc-t'))}
-{step('agc-t', 7, 'Sell JobWorld', 'You expect another tool to resell.', 'Here is what it actually is.', REVEAL, of=10, after=nxt('That&rsquo;s what I want', 'agc-s'))}
-{step('agc-s', 8, 'Sell JobWorld', 'Here is where you will be.', '', '', of=10, after='<div class="door-vac" data-vacation="agc"></div>' + nxt('That&rsquo;s what I want', 'agc-e'))}
-{step('agc-e', 9, 'Sell JobWorld', 'Every agency has the same few doubts.', 'Each one already has its answer.', chr(10).join(AGC_E), of=10, mode='data-concerns="agc_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'agc-r'))}
-{step('agc-r', 10, 'Sell JobWorld', 'You are making the right call.', 'Your clients get a company of AI working their business, under your name, billed by you.', chr(10).join(AGC_R), of=10, after=offer('agc'))}
+{step('agc-c', 2, 'Sell AI', 'I want to sell AI to my clients.', '', chr(10).join(AGC_C), of=10)}
+{step('agc-l', 3, 'Sell AI', 'Here is what is hard about it now.', 'Every one you recognise can be taken off your team.', chr(10).join(AGC_L), of=10, mode='data-multi="agc_pains"', after=nxt('That&rsquo;s me', 'agc-o'))}
+{step('agc-o', 4, 'Sell AI', 'And you have already tried to solve it.', 'Here is what that looked like.', chr(10).join(AGC_O), of=10)}
+{step('agc-n', 5, 'Sell AI', 'Your clients are your business.', 'This is how many you would bring.', chr(10).join(AGC_N), of=10)}
+{step('agc-k', 6, 'Sell AI', 'And here is where it goes from here.', 'If nothing changes.', '', of=10, after='<div class="door-vac" data-consequence="agc"></div>' + nxt('Show me the other way', 'agc-t'))}
+{step('agc-t', 7, 'Sell AI', 'You expect another tool to resell.', 'Here is what it actually is.', REVEAL, of=10, after=nxt('That&rsquo;s what I want', 'agc-s'))}
+{step('agc-s', 8, 'Sell AI', 'Here is where you will be.', '', '', of=10, after='<div class="door-vac" data-vacation="agc"></div>' + nxt('That&rsquo;s what I want', 'agc-e'))}
+{step('agc-e', 9, 'Sell AI', 'Every agency has the same few doubts.', 'Each one already has its answer.', chr(10).join(AGC_E), of=10, mode='data-concerns="agc_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'agc-r'))}
+{step('agc-r', 10, 'Sell AI', 'You are making the right call.', 'Your clients get a company of AI working their business, under your name, billed by you.', chr(10).join(AGC_R), of=10, after=offer('agc'))}
   </div>
 </main>
 
