@@ -96,7 +96,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    layers clipped at the button's bottom edge (the arm under the button, the claw over it while it presses). NOTHING
    shows at rest and nothing answers hover: a click plays one 1 s clip — up from behind, over the top, the press (the
    button dips), back out of sight — and the click reaches `capture.js` on the press frame, so the arm is what opens
-   the booking form. Reduced motion: no arm, the click goes straight through. The HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
+   the booking form. Reduced motion: no arm, the click goes straight through. The same arm sits behind the black
+   band's closing Book a call, and a MIRRORED one (`data-arm-press="down"`) behind the top bar's (§9). The HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
    drawing was) with NO divider between them, bleeding off the card's right edge (the cell clips it
    to the card's corner). It sits on the card's exact white (#fff — video luma 235, the legal white)
    and carries the characters of the site's own films (the owner with the gold orb, the cyan agents,
@@ -106,7 +107,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 9. **The top bar** (`.nav-glass`): the ONE glass surface — paper at 55% under a 16px blur, a
    hairline beneath, **sticky, so it never leaves the screen**. It carries exactly two things: the
    wordmark `AI Transformations With Isaac` on the left (a `<span>`, never a link) and
-   the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right —
+   the red **BOOK A CALL** button (`.nav-book`, `--signal`, inverts to ink on hover) on the right — the
+   arm press mirrored top to bottom behind it (§8b; no room above a button at the top of the screen, so the arm
+   comes down from behind it, pops out of its bottom edge and curls up to press it from below) —
    the visitor can never not see the button. On a phone the wordmark wraps; the button never
    leaves the screen.
 10. **The pinned stack** (`.pin-stack`, `stack.js`, *USER*'s ruling): What I do → What you get →

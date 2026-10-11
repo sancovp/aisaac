@@ -1921,8 +1921,9 @@ body { position: relative; }            /* so the layer spans the whole document
    at the button's bottom edge — the arm under the button, its claw over it while it presses — so at rest nothing
    shows. arm.js sizes and places them; the button dips on the frame the claw lands. */
 .arm-press { position: relative; display: inline-block; }
-.arm-press > .cta-primary { position: relative; z-index: 1; transition: transform 90ms, background-color 180ms, color 180ms; }
-.arm-press > .cta-primary.is-pressed { transform: translateY(4px) scale(0.98); }
+.arm-press > button { position: relative; z-index: 1; transition: transform 90ms, background-color 180ms, color 180ms; }
+.arm-press > button.is-pressed { transform: translateY(4px) scale(0.98); }
+.arm-press[data-arm-press="down"] > button.is-pressed { transform: translateY(-3px) scale(0.98); }
 .arm-clip { position: absolute; overflow: hidden; pointer-events: none; z-index: 0; }
 .arm-clip-front { z-index: 2; }
 .arm-sprite { display: block; background-repeat: no-repeat; opacity: 0; }

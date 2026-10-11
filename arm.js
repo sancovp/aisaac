@@ -4,7 +4,9 @@
  * re-sends the click, which capture.js answers as it always does. The button stays a real <button>.
  * The arm is two sprite sheets cut from one Blender render (docs/arm-press/): `back` (the whole arm) under the
  * button, `front` (forearm, head, claws) over it on the frames where the claw is in front of its face; both are
- * clipped at the button's bottom edge. Reduced motion: no arm; the click goes straight through. */
+ * clipped at the button's bottom edge. `data-arm-press="down"` mirrors it top to bottom — for a button with no room
+ * above it (the top bar's): the arm comes down from behind, pops out of the button's bottom edge and curls up to
+ * press its face, clipped at the button's top edge. Reduced motion: no arm; the click goes straight through. */
 (function () {
   'use strict';
   var META = {"cell":[264,270],"cols":12,"fps":24,"clips":{"strike":[0,24]},"front":[8,9,10,11,12,13,14,15,16,17,18],"button":{"top":193.9,"bottom":270.2,"left":2.6,"right":261.4}};
@@ -12,7 +14,7 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   document.querySelectorAll('[data-arm-press]').forEach(function (wrap) {
-    var button = wrap.querySelector('button');
+    var button = wrap.querySelector('button'), down = wrap.getAttribute('data-arm-press') === 'down';
     var back = document.createElement('span'), front = document.createElement('span');
     var clipB = document.createElement('span'), clipF = document.createElement('span');
     clipB.className = 'arm-clip'; clipF.className = 'arm-clip arm-clip-front';
@@ -30,9 +32,10 @@
     function place() {
       var b = META.button; s = button.offsetHeight / (b.bottom - b.top);
       var left = button.offsetLeft + button.offsetWidth / 2 - (b.left + b.right) / 2 * s;
-      var top = button.offsetTop + button.offsetHeight - ch * s;
+      var top = down ? button.offsetTop : button.offsetTop + button.offsetHeight - ch * s;
       [clipB, clipF].forEach(function (c) {
         c.style.left = left + 'px'; c.style.top = top + 'px';
+        c.style.transform = down ? 'scaleY(-1)' : '';
         c.style.width = cw * s + 'px'; c.style.height = ch * s + 'px';
       });
       [back, front].forEach(function (el) {
