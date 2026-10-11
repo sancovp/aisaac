@@ -146,7 +146,7 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 | the weekly letter, and the frameworks and manuals sent on the learner's sign-up | another agent's lane — the door owns only the sign-up, which is live |
 | the JobWorld page at the app's root, with Get JobWorld | live |
 | the bootcamp at `/bootcamp` — the B2B bootcamp, for any entrepreneur | live |
-| the second bootcamp — Isaac's own transformation framework | owed |
+| the transformation-framework bootcamp — Isaac's own framework, at `/framework` (the 7-step AI Transformation Map) | live |
 | the sign-in and sign-up | live |
 | pricing and the dashboard in the theme | owed |
 

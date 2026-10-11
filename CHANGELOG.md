@@ -4,6 +4,12 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the second bootcamp is `/framework`, already live
+
+- Corrects the entry below: the second bootcamp (Isaac's own transformation framework) was listed as owed; it is
+  `/framework`, the 7-step AI Transformation Map, live. The door doc's row now says so.
+- Files: `docs/the-door.md`.
+
 ## 2026-10-11 — the bootcamp is for any entrepreneur; a second bootcamp is owed
 
 - Isaac ruled: the bootcamp is for any entrepreneur; there should be another bootcamp, his specific transformation
