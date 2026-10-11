@@ -56,6 +56,19 @@ are *USER*'s to strike.
 x, y, z: what you need for your business and to sell to your clients* — our positioning differs, its words are never
 copied, GHL is never named. The features come from JobWorld's own design, never invented on the site.
 
+**THE OFFERS — one product per avatar, each a JobWorld** (the tiers: `application/jobworld/DESIGN.md` §2). Each
+conversation is the CLOSER that sells its avatar's offer, and its cart names it:
+
+| avatar | the offer | the product |
+|---|---|---|
+| owner | **JobWorld for your business** | the client JobWorld, a seat per person who runs part of it |
+| founder | **JobWorld for your new company** | the client JobWorld, one seat, the idea shaped with it |
+| learner | **JobWorld with my AI skills** | the client JobWorld carrying the compilation skills; beside it the free sign-up |
+| entrepreneur | **JobWorld with the frameworks** | the client JobWorld running the bootcamp's frameworks |
+| agency | **JobWorld Agency** | the agency JobWorld — it makes its clients' JobWorlds its own way, under its own name |
+
+What goes in each is the `OFFER` table in `tools/build_door.py`, shown at each cart.
+
 ## 4. The cart — a direct-response funnel, and everything in it is JobWorld
 
 **EVERY OFFER IS JOBWORLD, OR MORE ON JOBWORLD.** The front end is a JobWorld plan; the order bump, the one-time offer and
@@ -95,7 +108,7 @@ agency level** (Meta Business — the white label, each client its own business 
 | founder | JobWorld, one seat | +1 seat — for a partner | the agency level — start the business as a JobWorld agency | straight in |
 | learner | JobWorld | — | — | straight in |
 | entrepreneur | JobWorld | +1 seat — for whoever sells or delivers | the agency level — sell what the frameworks do, running in JobWorld, to clients | +1 seat |
-| agency | the agency level | +1 seat — on their own business | — | Single Business — run it in their own business first |
+| agency | JobWorld Agency | +1 seat — on their own business | — | JobWorld for your business — run it in their own business first |
 
 A seat's price comes with the pricing pass (§6); until then the seat is sold in Stripe's test mode at the direction's
 ~$20 a month.

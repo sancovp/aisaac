@@ -4,6 +4,19 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — one product-offer per avatar; no vendor name in the public code
+
+- Isaac ruled: the products made are each for a specific avatar — put them together into offers accordingly, so each
+  conversation is the CLOSER that sells its avatar's offer; and no comment in the public code names the CRM vendor.
+- The door's carts now name five offers, each a JobWorld (the client tier loaded per avatar; the agency tier for the
+  agency): JobWorld for your business · for your new company · with my AI skills · with the frameworks · JobWorld Agency.
+  Before, every cart said "Get JobWorld" (the agency's "Get the agency level"). §3 carries the table.
+- `lib/ghl.js` → `lib/crm.js` (`CrmError`), its importers and log labels, and the comments in it, the two relay functions,
+  `lib/relay.js` and `framework.html` no longer name the vendor. The Worker secret keeps its name (renaming it needs its
+  value set again).
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md` · `lib/crm.js` · `functions/api/{lead,stripe}.js` ·
+  `lib/relay.js` · `framework.html`.
+
 ## 2026-10-11 — the cart's steps filled from the rule: seats and the agency level
 
 - Isaac ruled the cart's offers are already decided by the rule (every offer is JobWorld or more on it) and are not to

@@ -30,6 +30,16 @@ V_CSS, V_ARM, V_DOOR = '2026-10-11k', '2026-10-11e', '2026-10-11e'
 ICONS = {'briefcase': '<rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>', 'rocket': '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>', 'cap': '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/><path d="M22 10v6"/>', 'trend': '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>', 'users': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', 'store': '<path d="M3 9 4.5 4h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>', 'monitor': '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/>', 'bot': '<rect width="16" height="12" x="4" y="8" rx="2"/><path d="M12 8V4H8"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>', 'megaphone': '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>', 'compass': '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>', 'code': '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>', 'dots': '<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>', 'phone': '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>', 'tag': '<path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r=".5"/>'}
 
 
+# each avatar's product-offer (the full table and the lines that go in each: OFFER, below)
+OFFER_NAME = {
+    'own': 'JobWorld for your business',
+    'fnd': 'JobWorld for your new company',
+    'lrn': 'JobWorld with my AI skills',
+    'ent': 'JobWorld with the frameworks',
+    'agc': 'JobWorld Agency',
+}
+
+
 def opt(label, sub, attrs, icon='dots', cta='Enter', cls=''):
     """one card of the survey (the June survey's shape: an icon, a title, a line, its call at the foot), pressed by the
     arm (arm.js, sized as for a button: data-arm-h), then door.js moves on"""
@@ -99,7 +109,7 @@ OWN_E = [  # E — EXPLAIN: each concern opens its answer
     pick('I am not technical', 'You talk to it. When something needs running, you get a button that runs it for you.', 'data-val="tech"', 'monitor'),
 ]
 OWN_R = [  # R — REINFORCE, at the cart; the B2B avatar is the one offered done-with-you (the retainer) before buying
-    opt('Get JobWorld', 'Your company, with an AI CEO in the chair — starting today.', f'data-go="{APP}/pricing" data-key="own_cart" data-val="get" data-cart="own"', 'rocket', 'See the plans'),
+    opt(f'Get {OFFER_NAME["own"]}', 'Your company, with an AI CEO in the chair — starting today.', f'data-go="{APP}/pricing" data-key="own_cart" data-val="get" data-cart="own"', 'rocket', 'See the plans'),
     opt('Set it up with Isaac', 'I map your business with you and we build it in, on a retainer.', 'data-buy="call" data-key="own_cart" data-val="call"', 'phone', 'Book a call', ' door-card-call'),
 ]
 
@@ -135,7 +145,7 @@ FND_E = [  # E — EXPLAIN
     pick('Whose AI is it?', 'Its seat is signed in with your own AI account. What it makes is kept in your own private repository.', 'data-val="whose"', 'bot'),
 ]
 FND_R = [  # R — REINFORCE, at the cart; the hand-holding for an individual is the community, free with JobWorld
-    opt('Get JobWorld', 'Your new company, with an AI CEO in the chair from day one. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="fnd_cart" data-val="get" data-cart="fnd"', 'rocket', 'See the plans'),
+    opt(f'Get {OFFER_NAME["fnd"]}', 'Your new company, with an AI CEO in the chair from day one. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="fnd_cart" data-val="get" data-cart="fnd"', 'rocket', 'See the plans'),
 ]
 
 # THE LEARNER'S CLOSER (avatar 3, "I want to learn how to use AI"). JobWorld carries the Claude compilation skills and
@@ -166,7 +176,7 @@ LRN_E = [  # E — EXPLAIN
     pick('Whose AI is it?', 'Its seat is signed in with your own AI account. You learn on the account you will keep using.', 'data-val="whose"', 'bot'),
 ]
 LRN_R = [  # R — REINFORCE, at the cart; then the free hand-holding
-    opt('Get JobWorld', 'Learn AI by running it — it does the work with you and shows you how.', f'data-go="{APP}/pricing" data-key="lrn_cart" data-val="get" data-cart="lrn"', 'rocket', 'See the plans'),
+    opt(f'Get {OFFER_NAME["lrn"]}', 'Learn AI by running it — it does the work with you and shows you how.', f'data-go="{APP}/pricing" data-key="lrn_cart" data-val="get" data-cart="lrn"', 'rocket', 'See the plans'),
     opt('Start free', 'The weekly letter, every framework and manual, and the community.', 'data-step="lrn-send" data-key="lrn_cart" data-val="free"', 'cap', 'Sign me up'),
 ]
 
@@ -206,7 +216,7 @@ ENT_E = [  # E — EXPLAIN
     pick('Will it touch my money?', 'Charging, invoicing, recording a payment, selling, pricing and buying do not exist for it. It messages you instead.', 'data-val="money"', 'tag'),
 ]
 ENT_R = [  # R — REINFORCE, at the cart (the front end only: done-with-you is offered after they buy, docs/the-door.md §4)
-    opt('Get JobWorld', 'The frameworks, run with you and for you. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="ent_cart" data-val="get" data-cart="ent"', 'rocket', 'See the plans'),
+    opt(f'Get {OFFER_NAME["ent"]}', 'The frameworks, run with you and for you. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="ent_cart" data-val="get" data-cart="ent"', 'rocket', 'See the plans'),
 ]
 
 # THE AGENCY'S CLOSER (avatar 5, "I want to sell JobWorld to my clients"). The cart is the agency level — Meta Business
@@ -244,13 +254,15 @@ AGC_E = [  # E — EXPLAIN
     pick('Will it act for my clients without asking?', 'Nothing reaches the world until they say so. It drafts, asks, and stops at the line they draw.', 'data-val="ask"', 'compass'),
     pick('Will it touch their money?', 'Charging, invoicing, recording a payment, selling, pricing and buying do not exist for it.', 'data-val="money"', 'tag'),
 ]
-AGC_R = [  # R — REINFORCE, at the cart (the agency level); tailoring with Isaac is offered after they buy (docs/the-door.md §4)
-    opt('Get the agency level', 'JobWorld under your own name, for your own clients &mdash; starting today.', f'data-go="{APP}/pricing" data-key="agc_cart" data-val="get" data-cart="agc" data-tier="meta"', 'rocket', 'See the plans'),
+AGC_R = [  # R — REINFORCE, at the cart (JobWorld Agency); tailoring with Isaac is offered after they buy (docs/the-door.md §4)
+    opt(f'Get {OFFER_NAME["agc"]}', 'JobWorld under your own name, for your own clients &mdash; starting today.', f'data-go="{APP}/pricing" data-key="agc_cart" data-val="get" data-cart="agc" data-tier="meta"', 'rocket', 'See the plans'),
 ]
 
 
-# THE OFFER — what each avatar gets, shown at its cart (docs/the-door.md §4): every offer is JobWorld or more on JobWorld;
-# no prices here (the plans page holds them). Each line is what is known to go in it now; lines are added as it is built up.
+# THE OFFERS — one product per avatar, each a JobWorld (docs/the-door.md §3–§4; the tiers are application/jobworld/DESIGN.md
+# §2): the owner's, founder's, learner's and entrepreneur's are the client JobWorld, each loaded for that avatar; the
+# agency's is the agency JobWorld, which makes client JobWorlds its own way. No prices here (the plans page holds them).
+# Each line is what is known to go in it now; lines are added as each offer is built up.
 OFFER = {
     'own': ['JobWorld for your business: an AI CEO in the chair, and its departments',
             'A seat for each person who runs part of the business',
@@ -272,7 +284,7 @@ OFFER = {
             'Its CEO and departments doing the selling, the marketing and the operations',
             'Nothing goes out without your say; your money never moves',
             'The JobWorld community, free'],
-    'agc': ['JobWorld&rsquo;s agency level: JobWorld under your own name',
+    'agc': ['A JobWorld that makes your clients&rsquo; JobWorlds &mdash; your way, under your own name',
             'Your name, logo, colours, domain and email &mdash; ours never shows',
             'Each client its own JobWorld, with its own login, under you',
             'Your clients pay you in your own Stripe; one monthly bill to us',
@@ -283,7 +295,7 @@ OFFER = {
 def offer(p):
     """the offer box at a cart: what they get, then the size their answers chose (door.js fills data-cart-sum)"""
     items = ''.join(f'<li>{x}</li>' for x in OFFER[p])
-    return (f'<div class="door-offer"><p class="door-offer-k">What you get</p><ul class="door-offer-list">{items}</ul>'
+    return (f'<div class="door-offer"><p class="door-offer-k">{OFFER_NAME[p]} &mdash; what you get</p><ul class="door-offer-list">{items}</ul>'
             f'<div class="door-cart-sum" data-cart-sum="{p}"></div></div>')
 
 
