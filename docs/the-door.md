@@ -56,6 +56,20 @@ are *USER*'s to strike.
 x, y, z: what you need for your business and to sell to your clients* — our positioning differs, its words are never
 copied, GHL is never named. The features come from JobWorld's own design, never invented on the site.
 
+**THE OFFERS — one per avatar, and JobWorld is the main product of every one** (no other product is offered; HealthWorld
+and PromptWorld are not part of the offers). Each is a Grand Slam offer built from the marketing skills: a MAGIC name, its
+core (the avatar's JobWorld — the client JobWorld, or for the agency the agency JobWorld, `application/jobworld/DESIGN.md`
+§2), and bonuses named for their benefit, each answering an objection its CLOSER labelled. Prices, a guarantee and
+scarcity are added when they exist. The words are the `OFFERS` table in `tools/build_door.py`.
+
+| avatar | the offer |
+|---|---|
+| owner | The AI CEO Install for Business Owners |
+| founder | The AI-Native Company Launch |
+| learner | The Learn-AI-by-Doing Fast Track |
+| entrepreneur | The Sell, Market &amp; Operate Accelerator |
+| agency | The White-Label AI Agency Launch |
+
 ## 4. The cart — a direct-response funnel, and everything in it is JobWorld
 
 **EVERY OFFER IS JOBWORLD, OR MORE ON JOBWORLD.** The front end is a JobWorld plan; the order bump, the one-time offer and

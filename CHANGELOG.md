@@ -4,6 +4,15 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — five offers built from the marketing skills, JobWorld the main product of each
+
+- Isaac ruled: JobWorld is the main product that appears in every offer; HealthWorld and PromptWorld are not part of the
+  offers; offers are built from the marketing skills (every Hormozi and Expert Secrets skill read whole).
+- Each cart now carries a Grand Slam offer: a MAGIC name (avatar + goal + container), a core that leads with JobWorld,
+  and bonuses named for their benefit, each answering an objection the conversation labelled — all things JobWorld does
+  or comes with. Replaced: the product-label names ("JobWorld for your business" …) and a plain checklist.
+- Files: `tools/build_door.py` → `door.html` · `style.css` · `docs/the-door.md`.
+
 ## 2026-10-11 — the five offer names taken back down
 
 - Isaac ruled the names were wrong: offers are named and built from the marketing skills (every Hormozi and Expert
