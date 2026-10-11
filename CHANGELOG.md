@@ -2,6 +2,19 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — THE DOOR's fifth card (sell JobWorld to my clients → tailor → book or the agency level); the features walked in the pipeline's format
+
+What changed: § WHAT IS PUBLIC adds the fifth card — "I want to sell JobWorld to my clients" → what do you do → do you want
+me to tailor it → book a call or buy the agency level (LAMAI's Meta Business, the white label) — and states that JobWorld's
+features are walked in the same socratic format (problem → "JobWorld solves it like this"), for the owner and for the
+agency, with GoHighLevel's public funnel as the reference for how a feature is said, its shape only: our positioning
+differs, its words are never copied, GHL is never named.
+Why — the owner's words: "we also will need to do the SAME format for the jobworld features themselves. you can reference
+the GHL funnel itself (ghl's funnel) even though that is about selling THEIR SAAS … Just understand our positioning is
+different. But we *DO* have white label. We do also need to ask "I want to sell JobWorld to my clients" -> what do you do
+etc -> do you want me to tailor it for you? -> book with me or buy agency level."
+Files: `.claude/rules/00-SITE-CANON.md` · this file.
+
 ## 2026-10-11 — THE DOOR's cards: four ways in, every one routing to JobWorld; the sales pipeline lives in the JobWorld part
 
 What changed: § WHAT IS PUBLIC names the door's four cards in the owner's words and each route — the features card into a

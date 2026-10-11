@@ -29,6 +29,17 @@ JOBWORLD, each by its own way (*USER*'s ruling). THE CARDS, in his words:
    compilation skills and teaches AI itself.
 4. **"I want to learn how to sell, market, or run my business operations"** → the frameworks (DOCTOR and the rest,
    `framework.html` and the bootcamp) → back to JobWorld, which does it for them.
+5. **"I want to sell JobWorld to my clients"** → what do you do (their business, who their clients are) → "do you want
+   me to tailor it for you?" → BOOK A CALL with *USER*, or BUY THE AGENCY LEVEL — LAMAI's META BUSINESS (the white label:
+   their own name, mark and colours on JobWorld for their clients; `application/lamai-saas/DESIGN.md` §2).
+**THE FEATURES IN THE SAME FORMAT (*USER*'s ruling).** JobWorld's features are walked the way the pipeline walks: each
+feature set up as the problem it solves, asked socratically, then "JobWorld solves it like this" — for the owner's own
+business AND for the agency selling it to clients. THE REFERENCE FOR HOW A FEATURE IS SAID is GoHighLevel's own public
+funnel (its sales pages: what it does, x · y · z, what you need for your business and to sell to your clients) — read for
+its SHAPE only: its positioning sells GHL's SaaS, ours is different (a company with an AI CEO in the chair, the owner's own
+AI, nothing reaching the world without them), its words never copied, and GHL is never named on a page (law 6 of the
+JobWorld page). We DO have what it sells agencies: the white label (Meta Business). The feature list itself is JobWorld's
+(`application/jobworld/DESIGN.md`), never invented here.
 EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL until the twin
 exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the twin · the VSL of each part · the feature→problem list
 the pipeline walks (JobWorld's own, `application/jobworld/DESIGN.md` §9, never invented here) · the seat's price (law 1).
