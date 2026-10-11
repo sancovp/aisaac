@@ -1917,6 +1917,15 @@ body { position: relative; }            /* so the layer spans the whole document
 .hero-who img { width: 56px; height: 56px; flex: none; display: block; object-fit: cover;
   border: 1px solid var(--ink); border-radius: var(--r-sm); }
 .hero-copy .solo-cta .door-fine { flex-basis: 100%; }
+/* THE ARM PRESS (RULE 02 §8b, arm.js): a robot arm lives behind the hero's Book a call. Its two layers are clipped
+   at the button's bottom edge — the arm under the button, its claw over it while it presses — so at rest nothing
+   shows. arm.js sizes and places them; the button dips on the frame the claw lands. */
+.arm-press { position: relative; display: inline-block; }
+.arm-press > .cta-primary { position: relative; z-index: 1; transition: transform 90ms, background-color 180ms, color 180ms; }
+.arm-press > .cta-primary.is-pressed { transform: translateY(4px) scale(0.98); }
+.arm-clip { position: absolute; overflow: hidden; pointer-events: none; z-index: 0; }
+.arm-clip-front { z-index: 2; }
+.arm-sprite { display: block; background-repeat: no-repeat; opacity: 0; }
 
 /* ── what I do ─────────────────────────────────────────────────────────── */
 .what-sec h2 { max-width: 26ch; margin: 0 0 2.2rem; }

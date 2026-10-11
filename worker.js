@@ -17,7 +17,7 @@ import { onRequestPost as stripe } from './functions/api/stripe.js';
 const PRIMARY = 'iwantaiformybusiness.com';
 /** what this domain serves: its pages (with or without .html), their scripts, and the media under assets/ */
 const PAGES = ['/ai-transformation', '/framework', '/framework-worksheet', '/partners', '/jobworld'];
-const FILES = ['/style.css', '/vsl.js', '/stack.js', '/ref.js', '/capture.js', '/consent.js'];
+const FILES = ['/style.css', '/vsl.js', '/stack.js', '/ref.js', '/capture.js', '/consent.js', '/arm.js'];
 const served = (path) => {
   const page = path.replace(/\.html$/, '').replace(/\/$/, '');
   return PAGES.includes(page) || FILES.includes(path) || path.startsWith('/assets/');

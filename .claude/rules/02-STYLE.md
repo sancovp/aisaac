@@ -90,7 +90,13 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
 8b. **The hero** (`.hero-split`, bugster.dev's shape): one card; the copy on the left — pill, the h1
    in Geist Mono 700 at up to 3.7rem with its second clause in `--text-3`, the lede, the red Book a
    call and beside it THE HERO HEADSHOT (`.hero-who`: the 56px face in an ink outline at `--r-sm`, the
-   name and role in `.booker-who`'s type; the fine print on its own row under the pair); the HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
+   name and role in `.booker-who`'s type; the fine print on its own row under the pair) and behind the button THE
+   ARM PRESS (`arm.js` · `.arm-press`/`.arm-clip`/`.arm-sprite`; source and re-render recipe `docs/arm-press/`): a
+   Blender-rendered robot arm — white links, ink joints, the loop palette's cyan claws, an ink outline — in two sprite
+   layers clipped at the button's bottom edge (the arm under the button, the claw over it while it presses). NOTHING
+   shows at rest and nothing answers hover: a click plays one 1 s clip — up from behind, over the top, the press (the
+   button dips), back out of sight — and the click reaches `capture.js` on the press frame, so the arm is what opens
+   the booking form. Reduced motion: no arm, the click goes straight through. The HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
    drawing was) with NO divider between them, bleeding off the card's right edge (the cell clips it
    to the card's corner). It sits on the card's exact white (#fff — video luma 235, the legal white)
    and carries the characters of the site's own films (the owner with the gold orb, the cyan agents,
@@ -145,7 +151,8 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    row carries a small inline one (`.fw-ico`) inheriting its label's colour. In a tinted section
    the icons take the accent.
 13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
-   only in the films (the VSL's silent autoplay included), the parcels, the pinned stack (driven by the reader's own scroll), and
+   only in the films (the VSL's silent autoplay included), the parcels, the pinned stack (driven by the reader's own scroll),
+   the arm press (§8b — only on a click, one second, gone after), and
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
    (the silent loops stop on their poster) · diagrams the site draws are inline SVG in ink.
 
