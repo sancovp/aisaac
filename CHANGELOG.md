@@ -6,9 +6,8 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 ## 2026-10-11 — each cart shows its offer
 
-- Isaac: "PUT THE BASE FUCKING PART OF THE OFFER IN EVERY SINGLE PART WE FUCKING KNWO IT GOES IN NOW ... I AM TRYING TO
-  ITERATIVELY BUILD UP EVERY SINGLE OFFER AT ONCE" · "PUT THE FUCKING THINGS I FUCKING TELL YOU IN THE WEBSITE. STOP
-  TRYING TO FINISH IT BEFORE YOU KNOW WHAT IT IS."
+- Isaac ruled: put the base of each offer into every place it is known to go, now — he builds every offer up
+  iteratively, all at once; what he says goes into the website as he says it, never held back until the whole is known.
 - Each avatar's cart screen now carries *What you get*: the lines known to go in its JobWorld (the owner's departments
   and seats; the founder's one seat and the idea shaped with it; the learner's compilation skills, letter, frameworks and
   manuals; the entrepreneur's frameworks running inside; the agency's white label, clients under them and own Stripe;
@@ -85,8 +84,8 @@ bootcamp is for entrepreneurs to learn from, inside avatar 4's conversation.
 What it replaced: the door as a Blueprint card with the film beneath; a door doc and canon that read the cards as routes to
 pages and the bootcamp as a sales-transformation page.
 Why — the owner's words: "imo make the survey glass morphic over *just* the video you ahve there. nothing else on the
-screen besides the top bar, the hero as glass morphic"; "STOP FUCKING MASHING THE AVATARS TOGETHER … EACH FUCKING THING
-**EVENTUALLY LEADS TO THE SAME CART PROCESS**. THE SALES PROCESS IS JUST ATTUNED TO THEM … have the avatar self select.
+screen besides the top bar, the hero as glass morphic"; and: the avatars are never to be mashed together — each one
+eventually leads to the same cart process, and the sales process is attuned to each … have the avatar self select.
 THEN, for each one, clarify why they are there, label the pains, etc the CLOSER process … IT IS NOT ABOUT SELLING AI
 TRANSFORMATION HERE. The b2b bootcamp is FOR ENTREPRENEURS to learn from."
 Files: `tools/build_door.py` · `door.html` · `style.css` · `.claude/rules/02-STYLE.md` · `.claude/rules/00-SITE-CANON.md` ·
@@ -137,8 +136,8 @@ the Stripe checkout), in the top bar, the hero and the closing band, beside Book
 from. Prices stay in Stripe, never on the page.
 What it replaced: a product page whose only actions were Book a call and Sign in — the canon had given it the landing
 page's one-exit law, so nobody could subscribe from it.
-Why — the owner's words: "the funnel page somehow is not a funnel, somehow goes to SIGN IN and BOOK A CALL … why doesnt it
-go to SIGN IN or let people fucking BUY THE FUCKING APPLICATION!?!!? … why cant they subscribe!?"
+Why — the owner's ruling: the funnel page was not a funnel — it led only to Sign in and Book a call; people must be able to
+buy the application and subscribe from it.
 Files: `tools/build_jobworld.py` · `jobworld.html` · `.claude/rules/00-SITE-CANON.md` · `docs/the-door.md` · this file.
 
 ## 2026-10-11 — `docs/the-door.md`: the door's whole design in one document
