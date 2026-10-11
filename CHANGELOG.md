@@ -4,6 +4,14 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the cart's steps filled from the rule: seats and the agency level
+
+- Isaac ruled the cart's offers are already decided by the rule (every offer is JobWorld or more on it) and are not to
+  be asked for one by one. §4 now carries each avatar's front end, order bump, one-time offer and downsell, built only
+  from seats and the agency level; the seat sells in Stripe test mode at the ~$20 direction until the pricing pass.
+  Before, those steps were listed as open questions for Isaac.
+- Files: `docs/the-door.md`.
+
 ## 2026-10-11 — each cart shows its offer
 
 - Isaac ruled: put the base of each offer into every place it is known to go, now — he builds every offer up

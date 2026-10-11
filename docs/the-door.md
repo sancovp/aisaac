@@ -86,9 +86,19 @@ the CLOSER ─▶ 1 FRONT END ─▶ 2 CHECKOUT ─▶ 3 ONE-TIME OFFER ─▶ 4
 **Each cart shows its offer:** under the cards, *What you get* — the lines known to go in that avatar's JobWorld (the
 `OFFER` table in `tools/build_door.py`), then the size their answers chose. Lines are added as each offer is built up.
 
-What exists to put on JobWorld today: **seats** (one JobWorld per person in the org chart, `application/jobworld/DESIGN.md`
-§6) and **the agency level** (Meta Business — the white label, each client its own business under them). Which goes at
-which step, per avatar, is *USER*'s (§6).
+What goes on JobWorld: **seats** (one JobWorld per person in the org chart, `application/jobworld/DESIGN.md` §6) and **the
+agency level** (Meta Business — the white label, each client its own business under them). Each step, per avatar:
+
+| avatar | front end | order bump | one-time offer, after payment | no thanks → |
+|---|---|---|---|---|
+| owner (B2B) | JobWorld with the seats they chose · or the retainer first | +1 seat — for whoever runs the busiest department | a seat for everyone on the team they told the door about | +1 seat instead of the whole team |
+| founder | JobWorld, one seat | +1 seat — for a partner | the agency level — start the business as a JobWorld agency | straight in |
+| learner | JobWorld | — | — | straight in |
+| entrepreneur | JobWorld | +1 seat — for whoever sells or delivers | the agency level — sell what the frameworks do, running in JobWorld, to clients | +1 seat |
+| agency | the agency level | +1 seat — on their own business | — | Single Business — run it in their own business first |
+
+A seat's price comes with the pricing pass (§6); until then the seat is sold in Stripe's test mode at the direction's
+~$20 a month.
 
 ## 5. One look for the rest
 
@@ -102,8 +112,8 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 | the front end: JobWorld only; the owner may start with the retainer | live |
 | the plans page reading what the door sends (the agency's plan first for `tier=meta`, the seats) | owed |
 | the door's answers carried into the checkout's metadata | owed |
-| the one-time offer page after payment, and the no-thanks step | owed — what goes on JobWorld there waits on §6 |
-| the order bump | owed — what goes on JobWorld there waits on §6 |
+| the one-time offer page after payment, and the no-thanks step (§4's table) | owed — next |
+| the order bump (§4's table) | owed — next |
 | the weekly letter, and the frameworks and manuals sent on the learner's sign-up | another agent's lane — the door owns only the sign-up, which is live |
 | the JobWorld page at the app's root, with Get JobWorld | live |
 | the bootcamp at `/bootcamp` | live |
@@ -118,9 +128,7 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
   $20 a seat, once a seat's cost and the SaaS's cost are measured (`sanctuary-revolution-alpha/application/lamai-saas` board
   § OPEN); Stripe goes live with it
 - the community's home (it is free with JobWorld; where it lives comes later); the retainer's terms for the B2B engagement
-- THE CART'S OFFERS (law 1 — the offers are *USER*'s), each JobWorld or more on it: the order bump · the one-time offer
-  after payment · the downsell after a no thanks, per avatar; and whether anything beyond seats and the agency level goes
-  on JobWorld
+- whether anything beyond seats and the agency level goes on JobWorld
 
 ## 7. The order of work
 
