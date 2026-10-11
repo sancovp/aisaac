@@ -109,7 +109,7 @@ OWN_E = [  # E — EXPLAIN: each concern opens its answer
     pick('I am not technical', 'You talk to it. When something needs running, you get a button that runs it for you.', 'data-val="tech"', 'monitor'),
 ]
 OWN_R = [  # R — REINFORCE, at the cart; the B2B avatar is the one offered done-with-you (the retainer) before buying
-    opt(f'Get {OFFER_NAME["own"]}', 'Your company, with an AI CEO in the chair — starting today.', f'data-go="{APP}/pricing" data-key="own_cart" data-val="get" data-cart="own"', 'rocket', 'See the plans'),
+    opt('Get JobWorld', 'Your company, with an AI CEO in the chair — starting today.', f'data-go="{APP}/pricing" data-key="own_cart" data-val="get" data-cart="own"', 'rocket', 'See the plans'),
     opt('Set it up with Isaac', 'I map your business with you and we build it in, on a retainer.', 'data-buy="call" data-key="own_cart" data-val="call"', 'phone', 'Book a call', ' door-card-call'),
 ]
 
@@ -145,7 +145,7 @@ FND_E = [  # E — EXPLAIN
     pick('Whose AI is it?', 'Its seat is signed in with your own AI account. What it makes is kept in your own private repository.', 'data-val="whose"', 'bot'),
 ]
 FND_R = [  # R — REINFORCE, at the cart; the hand-holding for an individual is the community, free with JobWorld
-    opt(f'Get {OFFER_NAME["fnd"]}', 'Your new company, with an AI CEO in the chair from day one. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="fnd_cart" data-val="get" data-cart="fnd"', 'rocket', 'See the plans'),
+    opt('Get JobWorld', 'Your new company, with an AI CEO in the chair from day one. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="fnd_cart" data-val="get" data-cart="fnd"', 'rocket', 'See the plans'),
 ]
 
 # THE LEARNER'S CLOSER (avatar 3, "I want to learn how to use AI"). JobWorld carries the Claude compilation skills and
@@ -176,7 +176,7 @@ LRN_E = [  # E — EXPLAIN
     pick('Whose AI is it?', 'Its seat is signed in with your own AI account. You learn on the account you will keep using.', 'data-val="whose"', 'bot'),
 ]
 LRN_R = [  # R — REINFORCE, at the cart; then the free hand-holding
-    opt(f'Get {OFFER_NAME["lrn"]}', 'Learn AI by running it — it does the work with you and shows you how.', f'data-go="{APP}/pricing" data-key="lrn_cart" data-val="get" data-cart="lrn"', 'rocket', 'See the plans'),
+    opt('Get JobWorld', 'Learn AI by running it — it does the work with you and shows you how.', f'data-go="{APP}/pricing" data-key="lrn_cart" data-val="get" data-cart="lrn"', 'rocket', 'See the plans'),
     opt('Start free', 'The weekly letter, every framework and manual, and the community.', 'data-step="lrn-send" data-key="lrn_cart" data-val="free"', 'cap', 'Sign me up'),
 ]
 
@@ -216,7 +216,7 @@ ENT_E = [  # E — EXPLAIN
     pick('Will it touch my money?', 'Charging, invoicing, recording a payment, selling, pricing and buying do not exist for it. It messages you instead.', 'data-val="money"', 'tag'),
 ]
 ENT_R = [  # R — REINFORCE, at the cart (the front end only: done-with-you is offered after they buy, docs/the-door.md §4)
-    opt(f'Get {OFFER_NAME["ent"]}', 'The frameworks, run with you and for you. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="ent_cart" data-val="get" data-cart="ent"', 'rocket', 'See the plans'),
+    opt('Get JobWorld', 'The frameworks, run with you and for you. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="ent_cart" data-val="get" data-cart="ent"', 'rocket', 'See the plans'),
 ]
 
 # THE AGENCY'S CLOSER (avatar 5, "I want to sell JobWorld to my clients"). The cart is the agency level — Meta Business
@@ -255,7 +255,7 @@ AGC_E = [  # E — EXPLAIN
     pick('Will it touch their money?', 'Charging, invoicing, recording a payment, selling, pricing and buying do not exist for it.', 'data-val="money"', 'tag'),
 ]
 AGC_R = [  # R — REINFORCE, at the cart (JobWorld Agency); tailoring with Isaac is offered after they buy (docs/the-door.md §4)
-    opt(f'Get {OFFER_NAME["agc"]}', 'JobWorld under your own name, for your own clients &mdash; starting today.', f'data-go="{APP}/pricing" data-key="agc_cart" data-val="get" data-cart="agc" data-tier="meta"', 'rocket', 'See the plans'),
+    opt('Get JobWorld', 'JobWorld under your own name, for your own clients &mdash; starting today.', f'data-go="{APP}/pricing" data-key="agc_cart" data-val="get" data-cart="agc" data-tier="meta"', 'rocket', 'See the plans'),
 ]
 
 
@@ -295,7 +295,7 @@ OFFER = {
 def offer(p):
     """the offer box at a cart: what they get, then the size their answers chose (door.js fills data-cart-sum)"""
     items = ''.join(f'<li>{x}</li>' for x in OFFER[p])
-    return (f'<div class="door-offer"><p class="door-offer-k">{OFFER_NAME[p]} &mdash; what you get</p><ul class="door-offer-list">{items}</ul>'
+    return (f'<div class="door-offer"><p class="door-offer-k">What you get</p><ul class="door-offer-list">{items}</ul>'
             f'<div class="door-cart-sum" data-cart-sum="{p}"></div></div>')
 
 

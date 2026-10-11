@@ -4,6 +4,13 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the five offer names taken back down
+
+- Isaac ruled the names were wrong: offers are named and built from the marketing skills (every Hormozi and Expert
+  Secrets skill), not as product labels. The carts say "Get JobWorld" again and §3's offers table is removed until each
+  avatar's product is confirmed and its offer is built (MAGIC name, stack, guarantee).
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md`.
+
 ## 2026-10-11 — one product-offer per avatar; no vendor name in the public code
 
 - Isaac ruled: the products made are each for a specific avatar — put them together into offers accordingly, so each
