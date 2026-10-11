@@ -195,8 +195,10 @@ not being presented; the laws below govern each page whenever it is.
 ## HARD LAWS (every page, before any source)
 
 1. **OFFERS ARE FROZEN.** Prices, products, tiers, session lengths, guarantees, paid-CTA wording:
-   Isaac only. Source of truth = `main:pricing.html` verbatim. Discrepancies (arithmetic, collisions)
-   are EVIDENCE for a `FOR ISAAC` report block — never resolved by an agent.
+   Isaac only. The door's offers are JobWorld or more on JobWorld (`docs/the-door.md` §3–§4, `03-FUNNEL-LAW.md`);
+   `main:pricing.html` verbatim is the source only for the older service lineup it shows, and never fills a door
+   offer. Discrepancies (arithmetic, collisions) are EVIDENCE for a `FOR ISAAC` report block — never resolved by an
+   agent.
 2. **LORE IS ALLOWED, ON EVERY PAGE.** The Sanctuary register — the cosmology (Wasteland · CAVE ·
    Sanctuary), the myth's vocabulary — may appear anywhere, the door included. It is written plain
    first and lore after, and never as prerequisite vocabulary (RULE 01's register): a visitor who

@@ -4,6 +4,13 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — law 1 and CLAUDE.md: the door's offers are JobWorld, not pricing.html
+
+- Both said `main:pricing.html` is the truth for every offer; Isaac ruled the offers are all JobWorld and that the
+  pricing.html lineup is not the current offer. Law 1 and `CLAUDE.md` now say the door's offers are JobWorld or more on
+  it, and pricing.html is the source only for the older service lineup it shows.
+- Files: `.claude/rules/00-SITE-CANON.md` · `CLAUDE.md`.
+
 ## 2026-10-11 — RULE 03, THE FUNNEL LAW
 
 - Isaac approved a site rule holding how the site sells, so a session starts from it instead of rediscovering it:
