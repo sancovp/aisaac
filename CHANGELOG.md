@@ -2,6 +2,24 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — the door is glass over the film; the model is self-select → each avatar's own CLOSER → one cart → hand-holding
+
+What changed: `door.html` is the agents' film full screen with only the top bar and one glass panel holding the survey
+cards (RULE 02 §13 names the door's own look). `docs/the-door.md` is rewritten to the model and the canon's door passage
+with it: the avatar self-selects; each avatar gets its own sales conversation, the CLOSER process (the new
+`hormozi-closer` skill); every one ends at the same cart — what that avatar needs inside JobWorld, the AI system that does
+it with them and for them; then the hand-holding — the community for individuals, a B2B retainer for businesses. The
+bootcamp is for entrepreneurs to learn from, inside avatar 4's conversation.
+What it replaced: the door as a Blueprint card with the film beneath; a door doc and canon that read the cards as routes to
+pages and the bootcamp as a sales-transformation page.
+Why — the owner's words: "imo make the survey glass morphic over *just* the video you ahve there. nothing else on the
+screen besides the top bar, the hero as glass morphic"; "STOP FUCKING MASHING THE AVATARS TOGETHER … EACH FUCKING THING
+**EVENTUALLY LEADS TO THE SAME CART PROCESS**. THE SALES PROCESS IS JUST ATTUNED TO THEM … have the avatar self select.
+THEN, for each one, clarify why they are there, label the pains, etc the CLOSER process … IT IS NOT ABOUT SELLING AI
+TRANSFORMATION HERE. The b2b bootcamp is FOR ENTREPRENEURS to learn from."
+Files: `tools/build_door.py` · `door.html` · `style.css` · `.claude/rules/02-STYLE.md` · `.claude/rules/00-SITE-CANON.md` ·
+`docs/the-door.md` · `ai-transformation.html` · `jobworld.html` · `bootcamp.html` · the build scripts · this file.
+
 ## 2026-10-11 — the door as cards (the June survey's shape); card 4 to the B2B frameworks page, built at /bootcamp
 
 What changed: the door is the question centered over a row of cards — an icon, a title, a line, "Enter →" — and every

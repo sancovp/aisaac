@@ -14,35 +14,18 @@ cyan agents, the black wires — `video-aios/draw-the-box/`), in the Blueprint S
 once had — `git show 9b26f427:index.html` (2026-06-10): "What brings you here? Four paths" as cards, a qualification flow
 under one of them (revenue · what's eating your time · how soon), step dots, the answers kept in `localStorage`, each
 result routing to its page — "it probably has everything already except the cool animations": take its logic, give it the
-animations. THE DOOR IS SHORT — one question, one card — and it is THE ROUTER BACK TO EVERYTHING: every card routes to
-JOBWORLD, each by its own way (*USER*'s ruling). THE CARDS, in his words:
-1. **"I need [JobWorld's features] for my business"** → JobWorld, the special way: A SALES PIPELINE inside the JobWorld
-   part — it asks what they need, qualifies it, leads them through every feature socratically ("so do you have xyz
-   problem?" — each feature set up as the problem it solves — "JobWorld solves it like this"), then "do you have [the list
-   of problems]? select from here… JobWorld solves all those! You need N seats. Do you want help integrating it with your
-   business?" — the seats are §6's (a JobWorld per seat), and the help is THE CONCIERGE PAGE, advertised exactly there. The
-   pipeline's shape is the leak tree's (*the numbers · but · before · so we · after*), one per feature; it is the funnel
-   page's own flow after the door, never the door's.
-2. **"I want to start an AI-native business"** → JobWorld.
-3. **"I want to learn how to use AI"** → "for…" → matched to his material and recommended — "I will send you an email with
-   everything, just sign up here" (a form: law 13's consent boxes, the relay) → JobWorld, which carries his Claude
-   compilation skills and teaches AI itself.
-4. **"I want to learn how to sell, market, or run my business operations"** → THE B2B FRAMEWORKS PAGE, `bootcamp.html`
-   at `/bootcamp` (the B2B bootcamp — PSA · SCREENING · CLINIC · DOCTOR · LIFE and the tools behind them — lifted whole
-   from `framework.html`'s `#bootcamp` by `python3 tools/build_bootcamp.py`), whose one way on is JobWorld, which does it
-   for them. ⛔ NEVER `framework.html` — that is the DIY transformation funnel, a different page for a different visitor.
-5. **"I want to sell JobWorld to my clients"** → what do you do (their business, who their clients are) → "do you want
-   me to tailor it for you?" → BOOK A CALL with *USER*, or BUY THE AGENCY LEVEL — LAMAI's META BUSINESS (the white label:
-   their own name, mark and colours on JobWorld for their clients; `application/lamai-saas/DESIGN.md` §2).
-**THE FEATURES IN THE SAME FORMAT (*USER*'s ruling).** JobWorld's features are walked the way the pipeline walks: each
-feature set up as the problem it solves, asked socratically, then "JobWorld solves it like this" — for the owner's own
-business AND for the agency selling it to clients. THE REFERENCE FOR HOW A FEATURE IS SAID is GoHighLevel's own public
-funnel (its sales pages: what it does, x · y · z, what you need for your business and to sell to your clients) — read for
-its SHAPE only: its positioning sells GHL's SaaS, ours is different (a company with an AI CEO in the chair, the owner's own
-AI, nothing reaching the world without them), its words never copied, and GHL is never named on a page (law 6 of the
-JobWorld page). We DO have what it sells agencies: the white label (Meta Business). The feature list itself is JobWorld's
-(`application/jobworld/DESIGN.md`), never invented here.
-EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL until the twin
+animations. THE MODEL (*USER*'s ruling; the whole design is `docs/the-door.md`): **THE AVATAR SELF-SELECTS; EACH AVATAR GETS
+ITS OWN SALES CONVERSATION, ATTUNED TO IT — the CLOSER process (the `hormozi-closer` skill: Clarify · Label · Overview ·
+Sell the vacation · Explain · Reinforce) — and EVERY ONE ENDS AT THE SAME CART: exactly what that avatar needs INSIDE
+JOBWORLD, the AI system they do it in themselves, with them and for them; THEN THE HAND-HOLDING, by who they are — the
+community for individuals, a B2B engagement on a retainer for businesses.** Never avatars mashed together; never one
+script for all; it is not selling AI transformation. THE FIVE AVATARS (the cards, in his words): the owner — "I need
+JobWorld for my business" · the founder — "I want to start an AI-native business" · the learner — "I want to learn how to
+use AI" · the entrepreneur who wants to grow — "I want to learn to sell, market or run my operations" (the B2B bootcamp,
+`/bootcamp`, is FOR ENTREPRENEURS TO LEARN FROM: need frameworks? → here they are → they are in JobWorld too → want that?)
+· the agency — "I want to sell JobWorld to my clients" (tailored on a call, or the agency level, the white label). THE
+DOOR'S LOOK: the agents' film full screen, and over it only the top bar and ONE GLASS PANEL holding the survey — the
+door's own look, not the Blueprint sheet. EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL until the twin
 exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the twin · the VSL of each part · the feature→problem list
 the pipeline walks (JobWorld's own, `application/jobworld/DESIGN.md` §9, never invented here) · the seat's price (law 1).
 THE DOOR IS BUILT and is the home: `door.html`, written by `python3 tools/build_door.py` (never edited by hand), with

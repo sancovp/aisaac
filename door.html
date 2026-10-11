@@ -13,24 +13,28 @@
 <meta property="og:url" content="https://iwantaiformybusiness.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=2026-10-11g">
+<link rel="stylesheet" href="style.css?v=2026-10-11h">
 </head>
-<body data-depth="0">
+<body data-depth="0" class="door-page">
 <!-- BUILT by tools/build_door.py — edit the script, then rebuild. THE DOOR: one question, five cards, every card to
      JobWorld by its own way (docs/the-door.md). The top bar carries only the wordmark: the door's exits are its cards. -->
 <header class="nav nav-glass">
   <span class="logo">AI Transformations With Isaac</span>
 </header>
 
-<main id="main">
-  <section class="bp-hero">
-    <div class="wrap">
-      <div class="bp-card">
-        <div class="bp-pad door-survey" data-door>
-            <div class="door-top">
-              <button class="door-back" type="button" data-back hidden>&larr; Back</button>
-              <div class="door-dots" aria-hidden="true"><span data-dot-n="1"></span><span data-dot-n="2"></span><span data-dot-n="3"></span></div>
-            </div>
+<!-- THE FILM: the agents' loop, full screen behind everything (the door's look: glass over the film) -->
+<video class="door-bg" autoplay muted loop playsinline preload="auto" data-loop
+       poster="assets/hero-loop-2-poster.jpg" width="1280" height="720"
+       aria-label="The owner leans back at his desk while his company of people and AI agents works on its own, wired together.">
+  <source src="assets/hero-loop-2.mp4" type="video/mp4">
+</video>
+
+<main id="main" class="door-stage">
+  <div class="door-glass door-survey" data-door>
+    <div class="door-top">
+      <button class="door-back" type="button" data-back hidden>&larr; Back</button>
+      <div class="door-dots" aria-hidden="true"><span data-dot-n="1"></span><span data-dot-n="2"></span><span data-dot-n="3"></span></div>
+    </div>
         <div class="door-step is-on" data-step-id="start" data-dot="1">
           <p class="eyebrow"><span class="pill">Start here</span></p>
           <h1 class="door-q">What brings you here?</h1>
@@ -143,18 +147,7 @@
 <span class="arm-press" data-arm-press data-arm-h="54"><button class="door-card" type="button" data-go="https://app.iwantaiformybusiness.com/pricing" data-key="tailor" data-val="agency-level"><span class="get-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r=".5"/></svg></span><span class="door-card-k">No &mdash; the agency level</span><span class="door-card-v">JobWorld under your own name, for your own clients.</span><span class="door-card-go">See the plans &rarr;</span></button></span>
           </div>
         </div>
-        </div>
-        <div class="bp-rule"></div>
-        <div class="door-film">
-          <video autoplay muted loop playsinline preload="auto" data-loop
-                 poster="assets/hero-loop-2-poster.jpg" width="1280" height="720"
-                 aria-label="The owner leans back at his desk while his company of people and AI agents works on its own, wired together.">
-            <source src="assets/hero-loop-2.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 </main>
 
 <dialog class="capture" id="capture" aria-labelledby="capture-title">

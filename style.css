@@ -2877,8 +2877,24 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
 .door-card.door-card-call .get-ico { background: var(--signal); border-color: var(--paper); }
 .door-card.door-card-call .get-ico svg { stroke: var(--paper); }
 .door-card.door-card-call:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
-.door-film { overflow: hidden; display: flex; justify-content: center; border-radius: 0 0 calc(var(--r-bp) - 1px) calc(var(--r-bp) - 1px); }
-.door-film video { display: block; width: min(100%, 980px); height: auto; }
+/* THE DOOR'S LOOK (*USER*'s ruling): the agents' film full screen, and over it only the top bar and ONE GLASS PANEL. The
+   glass is the door's own — the Blueprint sheet's columns are off on this page, and the panel and its cards are frosted. */
+body.door-page::before { display: none; }
+body.door-page { background: #fff; min-height: 100dvh; }
+.door-bg { position: fixed; inset: 0; width: 100vw; height: 100dvh; object-fit: cover; z-index: -1; }
+.door-stage { min-height: calc(100dvh - 70px); display: grid; place-items: center; padding: clamp(1rem, 4vw, 3rem) 1rem; }
+.door-glass { width: min(100%, 1180px); padding: clamp(1.3rem, 3.4vw, 2.6rem);
+  background: rgba(255,255,255,0.42); border: 1px solid rgba(255,255,255,0.7); border-radius: 30px;
+  backdrop-filter: blur(22px) saturate(1.5); -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.8); }
+.door-glass .door-card { background: rgba(255,255,255,0.55); border-color: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.door-glass .door-card:hover, .door-glass .door-card:focus-visible { background: var(--ink); border-color: var(--ink); }
+.door-glass .door-card.door-card-call { background: var(--signal); border-color: var(--signal); }
+.door-glass .get-ico { background: rgba(255,255,255,0.7); }
+.door-glass .lede, .door-glass .door-card-v { color: #2a2a2a; }
+.door-glass .consent, .door-glass .lead-field input { background: rgba(255,255,255,0.7); }
+@media (max-width: 600px) { .door-bg { object-position: 30% center; } .door-glass { border-radius: 22px; } }
 .door-survey .door-form { margin: 1.6rem auto 0; text-align: left; }
 .door-form .cta-primary { margin-top: 0.4rem; }
 @media (prefers-reduced-motion: reduce) { .door-step.is-on { animation: none; } }

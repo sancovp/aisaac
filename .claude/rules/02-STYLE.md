@@ -156,7 +156,9 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    stethoscope for SCREENING…), so a grid of cards reads as distinct things, not a jumble; a ladder
    row carries a small inline one (`.fw-ico`) inheriting its label's colour. In a tinted section
    the icons take the accent.
-13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows · motion
+13. **Restraint:** no gradients, no glass blur outside the top bar, no glow, no shadows — EXCEPT THE DOOR (`door.html`,
+   *USER*'s ruling): its look is its own — the agents' film full screen, and over it the top bar and ONE GLASS PANEL
+   (frosted, a soft shadow) holding the survey, its cards frosted too; the drafting sheet's columns are off there · motion
    only in the films (the VSL's silent autoplay included), the parcels, the pinned stack (driven by the reader's own scroll),
    the arm press (§8b — only on a click, one second, gone after), and
    ≤200ms colour flips that answer a hover · `prefers-reduced-motion` respected everywhere
