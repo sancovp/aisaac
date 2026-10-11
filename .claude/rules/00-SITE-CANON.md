@@ -122,7 +122,7 @@ and operators running the model (on Skool), inside which JobWorld is the paid of
 named, so the story is always JobWorld. Joined by email until its Skool
 link exists. It also gives away, free: THE AUTONOMY LADDER (his automation theory — the
 worker · management · you triad, grades 1–4, trust earned per area and never transferred) and the
-B2B BOOTCAMP (for operators: the Sanctuary–Wasteland map, then the client's path in four steps —
+B2B BOOTCAMP (for any entrepreneur: the Sanctuary–Wasteland map, then the client's path in four steps —
 PSA → SCREENING → the CLINIC·DOCTOR close → LIFE — then the tools behind it grouped by job: build the
 offer · position it · aim it); BUILD AN AIOS (the anatomy of
 an AIOS and the law under it, from ChainCompiler); THE LEVELS of ChainCompiler (the gate → AC → CoR →

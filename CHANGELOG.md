@@ -4,6 +4,16 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the bootcamp is for any entrepreneur; a second bootcamp is owed
+
+- Isaac ruled: the bootcamp is for any entrepreneur; there should be another bootcamp, his specific transformation
+  framework. Replaced: "How to sell and deliver AI transformation — run like a clinic. For operators: people who run AI
+  transformation for clients" — now "How to sell, market and run your business — like a clinic. For any entrepreneur."
+  on `/bootcamp` and in `framework.html`'s bootcamp section; the canon's framework passage likewise. The door doc lists
+  the second bootcamp as owed.
+- Files: `framework.html` · `tools/build_bootcamp.py` → `bootcamp.html` · `.claude/rules/00-SITE-CANON.md` ·
+  `docs/the-door.md`.
+
 ## 2026-10-11 — the community sells JobWorld; the backend is never named
 
 - Isaac ruled: the community with the paid offer inside it still happens, but the backend is fully wrapped, so it is

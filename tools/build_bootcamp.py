@@ -12,9 +12,9 @@ SITE = pathlib.Path(__file__).resolve().parent.parent
 fw = (SITE / 'framework.html').read_text()
 i = fw.index('  <!-- THE B2B BOOTCAMP'); j = fw.index('</section>', fw.index('id="bootcamp"')) + len('</section>')
 sec = fw[i:j]
-H2 = '<h2>How to sell and deliver AI transformation &mdash; run like a clinic.</h2>'
+H2 = '<h2>How to sell, market and run your business &mdash; like a clinic.</h2>'
 assert H2 in sec
-sec = sec.replace(H2, '<h1 class="sec-h1">How to sell and deliver AI transformation &mdash; run like a clinic.</h1>')
+sec = sec.replace(H2, '<h1 class="sec-h1">How to sell, market and run your business &mdash; like a clinic.</h1>')
 a = sec.index('      <div class="solo-cta fw-again">'); b = sec.index('</div>', sec.index('</p>', a)) + len('</div>')
 sec = sec[:a] + '''      <div class="solo-cta fw-again">
         <span class="arm-press" data-arm-press><a class="cta-primary" href="https://iwantaiformybusiness.com/jobworld">Or have it all run for you &rarr;</a></span>
@@ -22,8 +22,8 @@ sec = sec[:a] + '''      <div class="solo-cta fw-again">
       </div>''' + sec[b:]
 
 APP = 'https://app.iwantaiformybusiness.com'
-TITLE = 'The B2B bootcamp — how to sell and deliver AI transformation'
-DESC = 'For operators: diagnose before you prescribe, close like care, and keep the care going after the sale.'
+TITLE = 'The B2B bootcamp — how to sell, market and run your business'
+DESC = 'For any entrepreneur: diagnose before you prescribe, close like care, and keep the care going after the sale.'
 URL = 'https://iwantaiformybusiness.com/bootcamp'
 
 page = f'''<!doctype html>
