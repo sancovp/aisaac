@@ -19,8 +19,7 @@ filenames — nothing else has to change.**
 
 ## THE VIDEO AUDIT — three findings, all measured
 
-Isaac: *"This video is fucking awful. is this still the wrong video here? … I dont
-think we ever finished writing the new script?"*
+Isaac: the video was bad — was it still the wrong video, and had the new script ever been finished?
 
 **1. THE SITE IS SERVING THE WRONG FILM.** `assets/vsl.mp4` is **560.17s** and
 `video-aios/out/the-climb.mp4` is **560.167s** — the same film, re-encoded (98MB vs

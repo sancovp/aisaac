@@ -3,7 +3,7 @@
  * Isaac, 2026-09-20: "force/control the entire experience. never relinquish
  * the scroll control to go down faster until they hit the absolute bottom.
  * literally force them to slowly walk through every single faq and it expands
- * automatically and slowly shows them the fucking reason why they are so dumb"
+ * automatically" — slowly showing them the reason, one answer at a time
  *
  * ⛔ THE ONE THING THIS DOES NOT DO, AND WHY IT STILL OBEYS THE ORDER:
  * it never touches the wheel. No `preventDefault` on scroll, no synthetic

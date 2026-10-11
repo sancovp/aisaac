@@ -68,10 +68,8 @@ the beats on.
 ⛔ **AND THAT DISTINCTION IS A CORRECTION, NOT A NUANCE — IT COST A WHOLE BUILD.** This paragraph
 used to end *"and the mountain is a through-line strong enough to carry a long runtime without the
 viewer losing their place"*, and the-climb was built on exactly that: a ridge, five notched chasms
-and a gold summit carrying about twenty beats. **Isaac, 2026-09-17, on watching it:** *"WHY THE FUCK
-ARE YOU NOT PUTTING THE FUCKING ELEMENTS BEING TALKED ABOUT ON THE SCREEN!? STOP TRYING TO
-METAPHORICALLY SYMBOLICALLY REPRESENT THINGS"* and *"YOU NEED MORE ELEMENTS. EVERY SINGLE LITERAL
-THING MENTIONED NEEDS TO BE SHOWN."* The narration never says mountain, ridge, climb or summit, so
+and a gold summit carrying about twenty beats. **Isaac, 2026-09-17, on watching it:** put the elements being talked about on
+the screen, never a metaphorical or symbolic stand-in; more elements — every literal thing mentioned is shown. The narration never says mountain, ridge, climb or summit, so
 nothing on screen may. **The deck's mountain is the DECK's drawing of its own argument; it is not a
 licence for the film to draw an argument instead of drawing the things the argument is about.**
 
