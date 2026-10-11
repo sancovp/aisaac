@@ -43,9 +43,14 @@ JobWorld page). We DO have what it sells agencies: the white label (Meta Busines
 EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL until the twin
 exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the twin · the VSL of each part · the feature→problem list
 the pipeline walks (JobWorld's own, `application/jobworld/DESIGN.md` §9, never invented here) · the seat's price (law 1).
-Until the door is built, the presented page below stands at the home.
+THE DOOR IS BUILT and is the home: `door.html`, written by `python3 tools/build_door.py` (never edited by hand), with
+`door.js` — the five cards, the learn-AI flow (what for → the email sign-up with the five consent boxes → JobWorld), the
+sell-JobWorld flow (what do you do → tailored? → Book a call or the agency level), step dots and Back, the answers kept
+in `localStorage` (`twi_door`), every option pressed by the arm, every step sliding in. Card 1 leads to the JobWorld page
+until THE PIPELINE is built there; the agents' own transition animations and the VSLs come next. The landing page stays
+at `/ai-transformation`.
 
-**Until the door: one page is presented, `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
+**`ai-transformation.html` — the service's landing page, at `/ai-transformation`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
 action — the hero (the claim and the red Book a call on the left — behind it THE ARM PRESS (`arm.js`, RULE 02 §8b):
 a robot arm that is never seen until the button is clicked, then comes up from behind, reaches over and presses it,

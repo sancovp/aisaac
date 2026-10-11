@@ -102,8 +102,9 @@ exists; until then a part opens on its page as it is.
 
 ## 9. The order of work
 
-1. the themed sign-in lands and is deployed
-2. THE DOOR — the June survey's logic re-drawn in the theme, one question and five cards, the arm and the agents on every transition
+1. the themed sign-in lands and is deployed — DONE
+2. THE DOOR — DONE as the home (`door.html`, `tools/build_door.py`, `door.js`): five cards, the two flows, the arm on every
+   option, every step sliding in, the films' agents beside it; the agents' own animations on each transition come next
 3. THE PIPELINE in the JobWorld part — JobWorld's feature list in the leak-tree format, GHL's funnel read for its shape
 4. the concierge page and the buttons that close the loop
 5. card 3's email sign-up and card 4's route through the frameworks

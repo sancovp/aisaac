@@ -3,7 +3,7 @@
  *
  *   one address   every other domain we own (and www) → https://iwantaiformybusiness.com, same path, 301
  *   the relay     POST /api/lead   (every form)  · POST /api/stripe (Stripe's payment webhook)
- *   the home      /  →  the presented page, ai-transformation.html
+ *   the home      /  →  THE DOOR, door.html (the survey; the landing page stays at /ai-transformation)
  *   THE BUSINESS ONLY — this domain serves the Blueprint business pages (the landing page, the framework and
  *                 its worksheet, the partners page), their scripts and their media; any other address → the
  *                 home. The rest of the old site stays at sancovp.github.io/aisaac.
@@ -16,8 +16,8 @@ import { onRequestPost as stripe } from './functions/api/stripe.js';
 
 const PRIMARY = 'iwantaiformybusiness.com';
 /** what this domain serves: its pages (with or without .html), their scripts, and the media under assets/ */
-const PAGES = ['/ai-transformation', '/framework', '/framework-worksheet', '/partners', '/jobworld'];
-const FILES = ['/style.css', '/vsl.js', '/stack.js', '/ref.js', '/capture.js', '/consent.js', '/arm.js'];
+const PAGES = ['/door', '/ai-transformation', '/framework', '/framework-worksheet', '/partners', '/jobworld'];
+const FILES = ['/style.css', '/vsl.js', '/stack.js', '/ref.js', '/capture.js', '/consent.js', '/arm.js', '/door.js'];
 const served = (path) => {
   const page = path.replace(/\.html$/, '').replace(/\/$/, '');
   return PAGES.includes(page) || FILES.includes(path) || path.startsWith('/assets/');
@@ -42,7 +42,7 @@ export default {
     }
 
     if (url.pathname === '/') {
-      return env.ASSETS.fetch(new Request(new URL('/ai-transformation', url), request));
+      return env.ASSETS.fetch(new Request(new URL('/door', url), request));
     }
 
     if (!served(url.pathname)) return Response.redirect(`${url.origin}/`, 302);

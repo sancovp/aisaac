@@ -1921,9 +1921,9 @@ body { position: relative; }            /* so the layer spans the whole document
    at the button's bottom edge — the arm under the button, its claw over it while it presses — so at rest nothing
    shows. arm.js sizes and places them; the button dips on the frame the claw lands. */
 .arm-press { position: relative; display: inline-block; }
-.arm-press > button { position: relative; z-index: 1; transition: transform 90ms, background-color 180ms, color 180ms; }
-.arm-press > button.is-pressed { transform: translateY(4px) scale(0.98); }
-.arm-press[data-arm-press="down"] > button.is-pressed { transform: translateY(-3px) scale(0.98); }
+.arm-press > button, .arm-press > a { position: relative; z-index: 1; transition: transform 90ms, background-color 180ms, color 180ms; }
+.arm-press > button.is-pressed, .arm-press > a.is-pressed { transform: translateY(4px) scale(0.98); }
+.arm-press[data-arm-press="down"] > button.is-pressed, .arm-press[data-arm-press="down"] > a.is-pressed { transform: translateY(-3px) scale(0.98); }
 .arm-clip { position: absolute; overflow: hidden; pointer-events: none; z-index: 0; }
 .arm-clip-front { z-index: 2; }
 .arm-sprite { display: block; background-repeat: no-repeat; opacity: 0; }
@@ -2837,3 +2837,35 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
   stroke-linecap: round; stroke-linejoin: round; }
 .fw-part .get-head { margin-bottom: 0.3rem; }
 .bp-cell > .get-head:first-child, .bp-cell > .step-arrow + .get-head { margin-bottom: 0.5rem; }
+
+/* ═══ THE DOOR (door.html, tools/build_door.py; docs/the-door.md) ═══════════════════════════════════════════
+   One question, five cards. Each option is an outlined card-row the ARM PRESSES (arm.js); a step slides in from the
+   right as the last one leaves. Ink and paper only; red stays Book a call's. */
+.door-survey { display: flex; flex-direction: column; overflow-x: clip; }   /* .door is the old engine door's; clip: an arm at the edge never widens the page */
+.door-top { display: flex; align-items: center; justify-content: space-between; min-height: 2rem; margin-bottom: 0.8rem; }
+.door-back { font: 600 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3);
+  background: none; border: 0; padding: 0.3rem 0; cursor: pointer; }
+.door-back:hover { color: var(--ink); }
+.door-dots { display: flex; gap: 0.45rem; margin-left: auto; }
+.door-dots span { width: 9px; height: 9px; border: 1px solid var(--ink); background: var(--paper); transition: background 0.2s; }
+.door-dots span.done, .door-dots span.now { background: var(--ink); }
+.door-dots span.now { width: 22px; }
+.door-step { display: none; }
+.door-step.is-on { display: block; animation: door-in 420ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes door-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+.door-survey .door-q { font-family: var(--mono); font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  line-height: 1.05; letter-spacing: -0.035em; margin: 0.5rem 0 0.6rem; outline: none; }
+.door-opts { display: grid; gap: 0.7rem; margin-top: 1.2rem; }
+.door-opts > .arm-press { display: block; isolation: isolate; }   /* each card its own stack: the arm rises over the cards above it */
+.door-opt { display: block; width: 100%; text-align: left; cursor: pointer; background: var(--paper); color: var(--ink);
+  border: 1px solid var(--ink); border-radius: var(--r-md); padding: 0.95rem 1.15rem;
+  transition: background 0.15s, color 0.15s; }
+.door-opt:hover, .door-opt:focus-visible { background: var(--ink); color: var(--paper); }
+.door-opt:hover .door-opt-sub, .door-opt:focus-visible .door-opt-sub { color: var(--paper); }
+.door-opt-k { display: block; font: 700 0.98rem var(--mono); letter-spacing: -0.01em; }
+.door-opt-sub { display: block; font-size: 0.86rem; color: var(--text-3); margin-top: 0.25rem; }
+.door-opt.door-opt-call { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+.door-opt.door-opt-call .door-opt-sub { color: var(--paper); }
+.door-opt.door-opt-call:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
+.door-form .cta-primary { margin-top: 0.4rem; }
+@media (prefers-reduced-motion: reduce) { .door-step.is-on { animation: none; } }

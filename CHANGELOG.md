@@ -2,6 +2,20 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — THE DOOR is built and is the home
+
+What changed: `tools/build_door.py` writes `door.html`; `door.js` runs it — one question ("Why are you here?"), five cards,
+the learn-AI flow (what for → the email sign-up with the five consent boxes, the choice carried as `learn_for` → JobWorld),
+the sell-JobWorld flow (what do you do → tailored? → Book a call, or the agency level at the app's pricing), step dots and
+Back, the answers in `localStorage` (`twi_door`). Every option is pressed by the arm; each step slides in; the hero loop of
+the films' agents sits beside it. The worker serves it at `/` (the landing page stays at `/ai-transformation`); the style
+gate counts it as canon. `arm.js`'s link variant now stacks above its arm like a button does; each door card is its own
+stack so the arm rises over the cards above. Seen locally at 1440 and 390 (no sideways scroll); style gate PASS.
+What it replaced: the landing page at the home.
+Why — the owner's words: "i was asking because im still not seeing the survey btw".
+Files: `tools/build_door.py` · `door.html` · `door.js` · `style.css` · `worker.js` · `tools/style_qa.py` · `ai-transformation.html` ·
+`tools/build_jobworld.py` · `jobworld.html` · `.claude/rules/00-SITE-CANON.md` · `docs/the-door.md` · this file.
+
 ## 2026-10-11 — every primary button carries the arm press: Get JobWorld and the funnel page's Book a call too
 
 What changed: `arm.js` presses a link as well as a button (the replayed click follows it); `tools/build_jobworld.py` wraps
