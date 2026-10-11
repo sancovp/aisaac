@@ -4,6 +4,14 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the door tells; it never asks
+
+- Isaac ruled: the door is a hypnotic experience — it tells the visitor, and never asks the human. Every screen heading
+  was a question ("What do you want most right now?", "Anything holding you back?" …); all are now second-person
+  statements that presuppose where they are ("You built a business, and it still runs through you.", "Every owner has
+  the same few doubts.") and the visitor recognises themselves in the cards. §1 states it.
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md`.
+
 ## 2026-10-11 — Clarify and Label put back: the ruling was the process, not the copy
 
 - Isaac's ruling describes why a visitor comes (they want something and do not yet know how) and what Clarify and Label

@@ -27,7 +27,9 @@ the visitor ─▶ THE DOOR: the avatar picks itself
   after, and they pick · **Label** sets out what must be going on, and they name themselves in it · **Overview** what they
   have tried, said back · **Sell the vacation**, drawn from their answers · **Explain** each concern · **Reinforce** at the
   cart, where their offer is. This is the shape of each conversation; the words on each screen are written for that
-  avatar.
+  avatar. **The door TELLS them; it never asks.** Every screen is a statement in the second person that presupposes
+  where they are and where they are going, and the visitor only recognises themselves in it — a hypnotic experience,
+  never a questionnaire.
 - **Every conversation ends at the same cart: JobWorld**, set up with exactly what that avatar needs — they do it
   themselves (DIY) inside an AI system that does it with them and for them.
 - **Then the hand-holding, by who they are:** the community for individuals; a B2B engagement on a retainer for businesses.
