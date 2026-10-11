@@ -53,8 +53,8 @@ page = f'''<!doctype html>
 <header class="nav nav-glass">
   <span class="logo">JobWorld</span>
   <a class="nav-get" href="https://app.iwantaiformybusiness.com/sign-in">Sign in</a>
-  <a class="nav-get" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld</a>
-  <button class="nav-book" type="button" data-buy="call">Book a call</button>
+  <span class="arm-press" data-arm-press="down"><a class="nav-get" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld</a></span>
+  <span class="arm-press" data-arm-press="down"><button class="nav-book" type="button" data-buy="call">Book a call</button></span>
 </header>
 
 <main id="main">
@@ -68,8 +68,8 @@ page = f'''<!doctype html>
             <h1>Your company, <span>with an AI CEO in the chair.</span></h1>
             <p class="lede">{DESC}</p>
             <div class="solo-cta" id="book">
-              <a class="cta-primary" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld &rarr;</a>
-              <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
+              <span class="arm-press" data-arm-press><a class="cta-primary" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld &rarr;</a></span>
+              <span class="arm-press" data-arm-press><button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button></span>
               <div class="hero-who">
                 <img src="assets/isaac-headshot-sm.jpg" alt="" width="240" height="240">
                 <p class="booker-who"><strong>Isaac Wostrel-Rubin</strong><span>Founder of TWI</span></p>
@@ -259,8 +259,8 @@ page = f'''<!doctype html>
     <div class="wrap">
       <h2>A tool does what you click. A JobWorld runs your business the way you would.</h2>
       <div class="solo-cta">
-        <a class="cta-primary" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld &rarr;</a>
-        <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
+        <span class="arm-press" data-arm-press><a class="cta-primary" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld &rarr;</a></span>
+        <span class="arm-press" data-arm-press><button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button></span>
       </div>
       <p class="door-fine">Subscribe and sign in today, or book a call first — if the answer for your business is to do nothing, I will tell you that.</p>
     </div>
@@ -277,6 +277,7 @@ page = f'''<!doctype html>
 <script src="vsl.js?v=2026-09-28h"></script>
 <script src="ref.js?v=2026-09-28a"></script>
 <script src="capture.js?v=2026-10-08"></script>
+<script src="arm.js?v=2026-10-11c"></script>
 </body>
 </html>
 '''

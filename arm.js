@@ -14,7 +14,8 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   document.querySelectorAll('[data-arm-press]').forEach(function (wrap) {
-    var button = wrap.querySelector('button'), down = wrap.getAttribute('data-arm-press') === 'down';
+    // a <button> (Book a call: capture.js answers the replayed click) or an <a> (Get JobWorld: the replayed click follows its href)
+    var button = wrap.querySelector('button, a'), down = wrap.getAttribute('data-arm-press') === 'down';
     var back = document.createElement('span'), front = document.createElement('span');
     var clipB = document.createElement('span'), clipF = document.createElement('span');
     clipB.className = 'arm-clip'; clipF.className = 'arm-clip arm-clip-front';
@@ -60,7 +61,7 @@
         if (frame === HIT) {
           button.classList.add('is-pressed');
           setTimeout(function () { button.classList.remove('is-pressed'); }, 170);
-          passing = true; button.click(); passing = false;   // capture.js opens the booking form now
+          passing = true; button.click(); passing = false;   // capture.js opens the booking form now, or the link is followed
         }
         frame++;
       }

@@ -2,6 +2,15 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — every primary button carries the arm press: Get JobWorld and the funnel page's Book a call too
+
+What changed: `arm.js` presses a link as well as a button (the replayed click follows it); `tools/build_jobworld.py` wraps
+the funnel page's six primary buttons (Get JobWorld and Book a call in the top bar — mirrored — the hero and the close) and
+loads `arm.js`; the landing page's `arm.js` version bumped. RULE 02 §8b: every primary button carries the arm, the door's
+included; `docs/the-door.md` says so. Seen locally: the arm comes up, presses Get JobWorld, and the plans page opens.
+Why — the owner's words: "dont miss the robot arm buttons."
+Files: `arm.js` · `tools/build_jobworld.py` · `jobworld.html` · `ai-transformation.html` · `.claude/rules/02-STYLE.md` · `docs/the-door.md` · this file.
+
 ## 2026-10-11 — the JobWorld page is a funnel: Get JobWorld (the plans and the checkout) in the top bar, the hero and the close
 
 What changed: `tools/build_jobworld.py` puts an ink Get JobWorld, to `app.iwantaiformybusiness.com/pricing` (the plans and

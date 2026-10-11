@@ -97,7 +97,10 @@ deducibility mechanics: the page looks like an engineer's working drawing of a r
    shows at rest and nothing answers hover: a click plays one 1 s clip — up from behind, over the top, the press (the
    button dips), back out of sight — and the click reaches `capture.js` on the press frame, so the arm is what opens
    the booking form. Reduced motion: no arm, the click goes straight through. The same arm sits behind the black
-   band's closing Book a call, and a MIRRORED one (`data-arm-press="down"`) behind the top bar's (§9). The HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
+   band's closing Book a call, and a MIRRORED one (`data-arm-press="down"`) behind the top bar's (§9). **EVERY PRIMARY
+   BUTTON CARRIES THE ARM** (*USER*'s ruling) — Book a call and Get JobWorld alike, on every page that has them, the door's
+   cards and steps too: `arm.js` presses a `<button>` (the replayed click opens the booking form) or an `<a>` (the replayed
+   click follows its link). A new page loads `arm.js` and wraps its primary buttons in `.arm-press[data-arm-press]`. The HERO LOOP on the right (a silent looping `video[data-loop]`, styled exactly as the
    drawing was) with NO divider between them, bleeding off the card's right edge (the cell clips it
    to the card's corner). It sits on the card's exact white (#fff — video luma 235, the legal white)
    and carries the characters of the site's own films (the owner with the gold orb, the cyan agents,

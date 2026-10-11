@@ -74,7 +74,8 @@ need for your business, and to sell to your clients*). Read for its SHAPE only:
 ## 6. One theme
 
 Everything a visitor or owner sees wears the site's Blueprint System (RULE 02): white paper, black ink, Geist and Geist
-Mono, outlined cards with nodes on their dividers, the glass top bar, red only for Book a call. The accounts app is
+Mono, outlined cards with nodes on their dividers, the glass top bar, red only for Book a call. Every primary button —
+Book a call, Get JobWorld, the door's cards — carries THE ARM PRESS (RULE 02 §8b). The accounts app is
 served the site's own `style.css`; it never has a look of its own.
 
 | surface | in the theme |
