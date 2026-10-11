@@ -2,6 +2,20 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — the door as cards (the June survey's shape); card 4 to the B2B frameworks page, built at /bootcamp
+
+What changed: the door is the question centered over a row of cards — an icon, a title, a line, "Enter →" — and every
+sub-step is cards; the arm presses a card at its top edge (`arm.js`'s `data-arm-h`). Card 4 now lands on `bootcamp.html`
+(`/bootcamp`), the B2B frameworks lifted whole from `framework.html`'s `#bootcamp` by `tools/build_bootcamp.py`, whose one
+way on is JobWorld. The canon and `docs/the-door.md` say so, and that card 4 never goes to `framework.html`.
+What it replaced: a list of buttons beside the film; card 4 pointing at `framework.html` — the DIY funnel — because no B2B
+frameworks page existed and the one with "framework" in its name was taken without checking.
+Why — the owner's words: "the survey should be different. should be cards. look how we had it on aisaac"; "why did you link
+the *frameowkrs page* which is the DIY page instead of the b2b frameworks page?"
+Files: `tools/build_door.py` · `door.html` · `door.js` · `tools/build_bootcamp.py` · `bootcamp.html` · `arm.js` · `style.css` ·
+`worker.js` · `tools/style_qa.py` · `ai-transformation.html` · `tools/build_jobworld.py` · `jobworld.html` ·
+`.claude/rules/00-SITE-CANON.md` · `docs/the-door.md` · this file.
+
 ## 2026-10-11 — THE DOOR is built and is the home
 
 What changed: `tools/build_door.py` writes `door.html`; `door.js` runs it — one question ("Why are you here?"), five cards,

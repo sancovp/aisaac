@@ -2855,17 +2855,30 @@ html.js .cost > li.cost-total.on.past { opacity: 1; }
 @keyframes door-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
 .door-survey .door-q { font-family: var(--mono); font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 3.1rem);
   line-height: 1.05; letter-spacing: -0.035em; margin: 0.5rem 0 0.6rem; outline: none; }
-.door-opts { display: grid; gap: 0.7rem; margin-top: 1.2rem; }
-.door-opts > .arm-press { display: block; isolation: isolate; }   /* each card its own stack: the arm rises over the cards above it */
-.door-opt { display: block; width: 100%; text-align: left; cursor: pointer; background: var(--paper); color: var(--ink);
-  border: 1px solid var(--ink); border-radius: var(--r-md); padding: 0.95rem 1.15rem;
-  transition: background 0.15s, color 0.15s; }
-.door-opt:hover, .door-opt:focus-visible { background: var(--ink); color: var(--paper); }
-.door-opt:hover .door-opt-sub, .door-opt:focus-visible .door-opt-sub { color: var(--paper); }
-.door-opt-k { display: block; font: 700 0.98rem var(--mono); letter-spacing: -0.01em; }
-.door-opt-sub { display: block; font-size: 0.86rem; color: var(--text-3); margin-top: 0.25rem; }
-.door-opt.door-opt-call { background: var(--signal); border-color: var(--signal); color: var(--paper); }
-.door-opt.door-opt-call .door-opt-sub { color: var(--paper); }
-.door-opt.door-opt-call:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
+.door-survey .door-step { text-align: center; }
+.door-survey .door-step .eyebrow { justify-content: center; }
+.door-survey .lede { margin: 0 auto; }
+.door-survey .door-q { margin-left: auto; margin-right: auto; max-width: 22ch; }
+.sec-h1 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.08; }   /* a section heading promoted to a page's h1 keeps a heading's size */
+.door-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; margin-top: 2rem; text-align: left; }
+.door-opts > .arm-press { display: block; isolation: isolate; }   /* each card its own stack: the arm rises over its neighbours */
+.door-card { display: flex; flex-direction: column; gap: 0.55rem; width: 100%; height: 100%; text-align: left; cursor: pointer;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--ink); border-radius: var(--r-lg); padding: 1.15rem 1.1rem 1rem;
+  transition: background 0.15s, color 0.15s, transform 0.15s; }
+.door-card:hover, .door-card:focus-visible { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.door-card:hover .get-ico, .door-card:focus-visible .get-ico { background: var(--ink); border-color: var(--paper); }
+.door-card:hover .get-ico svg, .door-card:focus-visible .get-ico svg { stroke: var(--paper); }
+.door-card:hover .door-card-v, .door-card:focus-visible .door-card-v { color: var(--paper); }
+.door-card-k { font: 700 0.95rem/1.3 var(--mono); letter-spacing: -0.01em; }
+.door-card-v { font-size: 0.84rem; line-height: 1.55; color: var(--text-2); flex: 1; }
+.door-card-go { font: 600 0.66rem var(--mono); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+.door-card.door-card-call { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+.door-card.door-card-call .door-card-v { color: var(--paper); }
+.door-card.door-card-call .get-ico { background: var(--signal); border-color: var(--paper); }
+.door-card.door-card-call .get-ico svg { stroke: var(--paper); }
+.door-card.door-card-call:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
+.door-film { overflow: hidden; display: flex; justify-content: center; border-radius: 0 0 calc(var(--r-bp) - 1px) calc(var(--r-bp) - 1px); }
+.door-film video { display: block; width: min(100%, 980px); height: auto; }
+.door-survey .door-form { margin: 1.6rem auto 0; text-align: left; }
 .door-form .cta-primary { margin-top: 0.4rem; }
 @media (prefers-reduced-motion: reduce) { .door-step.is-on { animation: none; } }

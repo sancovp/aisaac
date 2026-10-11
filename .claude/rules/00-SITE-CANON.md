@@ -27,8 +27,10 @@ JOBWORLD, each by its own way (*USER*'s ruling). THE CARDS, in his words:
 3. **"I want to learn how to use AI"** → "for…" → matched to his material and recommended — "I will send you an email with
    everything, just sign up here" (a form: law 13's consent boxes, the relay) → JobWorld, which carries his Claude
    compilation skills and teaches AI itself.
-4. **"I want to learn how to sell, market, or run my business operations"** → the frameworks (DOCTOR and the rest,
-   `framework.html` and the bootcamp) → back to JobWorld, which does it for them.
+4. **"I want to learn how to sell, market, or run my business operations"** → THE B2B FRAMEWORKS PAGE, `bootcamp.html`
+   at `/bootcamp` (the B2B bootcamp — PSA · SCREENING · CLINIC · DOCTOR · LIFE and the tools behind them — lifted whole
+   from `framework.html`'s `#bootcamp` by `python3 tools/build_bootcamp.py`), whose one way on is JobWorld, which does it
+   for them. ⛔ NEVER `framework.html` — that is the DIY transformation funnel, a different page for a different visitor.
 5. **"I want to sell JobWorld to my clients"** → what do you do (their business, who their clients are) → "do you want
    me to tailor it for you?" → BOOK A CALL with *USER*, or BUY THE AGENCY LEVEL — LAMAI's META BUSINESS (the white label:
    their own name, mark and colours on JobWorld for their clients; `application/lamai-saas/DESIGN.md` §2).
@@ -44,7 +46,8 @@ EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the sam
 exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the twin · the VSL of each part · the feature→problem list
 the pipeline walks (JobWorld's own, `application/jobworld/DESIGN.md` §9, never invented here) · the seat's price (law 1).
 THE DOOR IS BUILT and is the home: `door.html`, written by `python3 tools/build_door.py` (never edited by hand), with
-`door.js` — the five cards, the learn-AI flow (what for → the email sign-up with the five consent boxes → JobWorld), the
+`door.js` — THE CARDS, the June survey's shape (the question centered over a row of cards, each an icon, a title, a
+line and its call at the foot; every sub-step cards too), the learn-AI flow (what for → the email sign-up with the five consent boxes → JobWorld), the
 sell-JobWorld flow (what do you do → tailored? → Book a call or the agency level), step dots and Back, the answers kept
 in `localStorage` (`twi_door`), every option pressed by the arm, every step sliding in. Card 1 leads to the JobWorld page
 until THE PIPELINE is built there; the agents' own transition animations and the VSLs come next. The landing page stays

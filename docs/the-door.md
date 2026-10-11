@@ -13,7 +13,9 @@ way in ends at **JobWorld**, each by its own path.
 
 ## 2. The survey
 
-- **One question, five cards.** The door stays short; anything longer belongs to the part a card opens.
+- **One question, five cards — CARDS, as the June survey had them:** the question centered over a row of cards, each an
+  icon, a title, one line and its call at the foot ("Enter →"); the sub-steps are cards too. The door stays short;
+  anything longer belongs to the part a card opens.
 - **Every transition is animated** with the site's own cast: THE ROBOT ARM (`arm.js`, source `docs/arm-press/`) and THE
   AGENTS of the films (the owner with the gold orb, the cyan agents, the black wires — `~/claude_code/video-aios/draw-the-box/`).
 - **Its logic is the survey the site already had** — `git show 9b26f427:index.html` (2026-06-10): the cards in a modal, a
@@ -29,7 +31,7 @@ way in ends at **JobWorld**, each by its own path.
 | 1 | **I need [JobWorld's features] for my business** | the JobWorld part, by THE PIPELINE (§4) |
 | 2 | **I want to start an AI-native business** | JobWorld |
 | 3 | **I want to learn how to use AI** | "for…" → matched to the material and recommended → "I'll send you everything by email — sign up here" (a form with law 13's five consent boxes, posted to the relay) → JobWorld, which carries the Claude compilation skills and teaches AI itself |
-| 4 | **I want to learn how to sell, market, or run my business operations** | the frameworks (DOCTOR and the rest — `framework.html`, the B2B bootcamp) → back to JobWorld, which does it for them |
+| 4 | **I want to learn how to sell, market, or run my business operations** | THE B2B FRAMEWORKS PAGE — `/bootcamp` (the B2B bootcamp: PSA · SCREENING · CLINIC · DOCTOR · LIFE and the tools behind them; built by `tools/build_bootcamp.py`) → back to JobWorld, which does it for them. Never `framework.html`, the DIY funnel |
 | 5 | **I want to sell JobWorld to my clients** | what do you do (the business, who its clients are) → do you want it tailored for you? → **book a call**, or **buy the agency level** — LAMAI's Meta Business, the white label (their own name, mark and colours on JobWorld for their clients; `sanctuary-revolution-alpha/application/lamai-saas/DESIGN.md` §2) |
 
 ## 4. The pipeline — the JobWorld part's own flow (card 1, and card 5's agency version)

@@ -31,9 +31,13 @@
     front.style.backgroundImage = 'url(assets/arm-press-front.webp)';
 
     function place() {
-      var b = META.button; s = button.offsetHeight / (b.bottom - b.top);
+      // a tall target (a survey card) is pressed by an arm sized as for a button: `data-arm-h` caps the height it scales to
+      var b = META.button, h = Math.min(button.offsetHeight, Number(wrap.getAttribute('data-arm-h')) || Infinity);
+      s = h / (b.bottom - b.top);
       var left = button.offsetLeft + button.offsetWidth / 2 - (b.left + b.right) / 2 * s;
-      var top = down ? button.offsetTop : button.offsetTop + button.offsetHeight - ch * s;
+      // a capped target (a card) is pressed at its TOP edge: the arm rises over the card as if a button of height h sat there
+      var face = h < button.offsetHeight ? button.offsetTop + h : button.offsetTop + button.offsetHeight;
+      var top = down ? button.offsetTop : face - ch * s;
       [clipB, clipF].forEach(function (c) {
         c.style.left = left + 'px'; c.style.top = top + 'px';
         c.style.transform = down ? 'scaleY(-1)' : '';

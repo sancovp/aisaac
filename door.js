@@ -36,7 +36,7 @@
   }
 
   door.addEventListener('click', function (e) {
-    var b = e.target.closest('.door-opt');
+    var b = e.target.closest('.door-card');
     if (!b || !door.contains(b)) return;
     var key = b.getAttribute('data-key'), val = b.getAttribute('data-val');
     if (key) { answers[key] = val; answers.at = new Date().toISOString(); keep(); }
