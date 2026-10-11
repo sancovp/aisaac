@@ -27,7 +27,13 @@ the visitor ─▶ THE DOOR: the avatar picks itself
   after, and they pick · **Label** sets out what must be going on, and they name themselves in it · **Overview** what they
   have tried, said back · **Sell the vacation**, drawn from their answers · **Explain** each concern · **Reinforce** at the
   cart, where their offer is. This is the shape of each conversation; the words on each screen are written for that
-  avatar. **The door TELLS them; it never asks.** Every screen is a statement in the second person that presupposes
+  avatar. **The survey only asks which one they are** (the SCREENING, `b2b-bootcamp/SCREENING-framework.md`), and each
+  conversation opens on the choice they made. **Two moves from the bootcamp carry the close:** where it ends if nothing
+  changes — each pain they ticked, carried to its end and left with them (DOCTOR's Consequences,
+  `b2b-bootcamp/DOCTOR-framework.md`) — and **the trick**: the expectation set ("you expect another AI tool"), then the
+  literal thing — the real JobWorld working on screen — so the meaning snaps into place (`b2b-bootcamp/JOKE-MEDICINE-structure.md`).
+  Then where they will be, their doubts answered, and the offer. Nothing on any screen is false: no invented number, no
+  invented scarcity. **The door TELLS them; it never asks.** Every screen is a statement in the second person that presupposes
   where they are and where they are going, and the visitor only recognises themselves in it — a hypnotic experience,
   never a questionnaire.
 - **Every conversation ends at the same cart: JobWorld**, set up with exactly what that avatar needs — they do it

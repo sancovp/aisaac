@@ -2927,6 +2927,11 @@ body.door-page { background: #fff; min-height: 100dvh; }
 .door-vac-now { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
 .door-vac-seats { margin: 1rem 0 0; font-size: 0.95rem; }
 .door-cart-sum { text-align: center; }
+/* THE REVEAL (docs/the-door.md §1): the real JobWorld working, inside the glass */
+.door-reveal { max-width: 860px; margin: 1.2rem auto 0; }
+.door-reveal video { display: block; width: 100%; height: auto; border: 1px solid var(--ink); border-radius: 18px; background: var(--paper); }
+.door-reveal-line { margin: 0.9rem 0 0.2rem; font-size: 1rem; line-height: 1.55; text-align: left; }
+.door-cost-list .door-vac-was { text-decoration: none; }
 /* THE OFFER at each cart (docs/the-door.md §4): what they get, as a checked list under the cards */
 .door-offer { max-width: 760px; margin: 1.4rem auto 0; text-align: left; border: 1px solid var(--ink); border-radius: 18px;
   padding: 1rem 1.2rem; background: rgba(255,255,255,0.85); }

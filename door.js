@@ -7,7 +7,8 @@
  * each card's answer in place. Each avatar's conversation keeps its answers under its own prefix (own · fnd · lrn · ent ·
  * agc): its destination screen (`[data-vacation="<prefix>"]`) is drawn from what the visitor said — what they tried
  * (`<prefix>_tried`), said back; every pain they ticked (`[data-multi="<prefix>_pains"]`), with how JobWorld ends it;
- * their seats or clients — and its cart card (`data-cart="<prefix>"`, `data-tier`) carries those to the plans page.
+ * their seats or clients; where it ends if nothing changes (`[data-consequence]`, each ticked pain's `data-cost`);
+ * the reveal (`video[data-reveal]`, the real JobWorld working, played when its screen opens) — and its cart card (`data-cart="<prefix>"`, `data-tier`) carries those to the plans page.
  * The arm presses first (arm.js replays
  * the click on its press frame), then this moves on. Each screen slides in (CSS); reduced motion: no slide. */
 (function () {
@@ -62,6 +63,13 @@
       esc(SIZE_LINE[p] || '') + '</p>';
     box.innerHTML = out;
   }
+  // WHERE IT ENDS (DOCTOR's Consequences): each pain they ticked, carried to where it goes if nothing changes
+  function drawConsequence(box, p) {
+    box.innerHTML = '<ul class="door-vac-list door-cost-list">' + pickedPains(p).map(function (c) {
+      return '<li><span class="door-vac-was">' + esc(c.querySelector('.door-card-k').textContent) + '</span>' +
+             '<span class="door-vac-now">' + esc(c.getAttribute('data-cost')) + '</span></li>';
+    }).join('') + '</ul>';
+  }
   function drawCartSum(box, p) {
     var n = door.querySelectorAll('[data-multi="' + p + '_pains"] .door-pick.is-picked').length;
     var size = sizeOf(p);
@@ -82,6 +90,12 @@
     back.hidden = trail.length < 2;
     var vac = on.querySelector('[data-vacation]'); if (vac) drawVacation(vac, vac.getAttribute('data-vacation'));
     var sum = on.querySelector('[data-cart-sum]'); if (sum) drawCartSum(sum, sum.getAttribute('data-cart-sum'));
+    var cost = on.querySelector('[data-consequence]'); if (cost) drawConsequence(cost, cost.getAttribute('data-consequence'));
+    // THE REVEAL: the real JobWorld plays the moment its screen opens, and stops when it closes
+    [].slice.call(door.querySelectorAll('video[data-reveal]')).forEach(function (v) {
+      if (on.contains(v) && !matchMedia('(prefers-reduced-motion: reduce)').matches) { v.play().catch(function () {}); }
+      else { v.pause(); }
+    });
     // the arm measures its button when shown: a screen that was hidden had no size
     window.dispatchEvent(new Event('resize'));
     var q = on.querySelector('.door-q');

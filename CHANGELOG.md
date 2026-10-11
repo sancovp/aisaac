@@ -4,6 +4,15 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the door does the trick: where it ends, then the reveal
+
+- Isaac ruled: the whole thing is a magic trick, and the door must sell as hard as marketing allows. Read whole: his
+  bootcamp (JOKE = MEDICINE = SALE, DOCTOR, CLINIC, SCREENING, PSA, MEDICINE, OFFERS, SNAKE OIL, OBVIOUSNESS PARADOX,
+  UNICORN, LIFE). Each conversation gains two screens after what they tried: where it ends if nothing changes (each
+  ticked pain carried to its end — DOCTOR's Consequences) and the reveal (the expectation, then the real JobWorld working
+  on screen — the agent-at-work recording, labelled a demo business). Nothing false is said: no number, no scarcity.
+- Files: `tools/build_door.py` → `door.html` · `door.js` · `style.css` · `docs/the-door.md`.
+
 ## 2026-10-11 — the survey only asks which one they are; each funnel opens on the choice
 
 - Isaac ruled: the survey asks which one they are and nothing else; every funnel then starts with the thing they chose.
