@@ -2,6 +2,12 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — `docs/the-door.md`: the door's whole design in one document
+
+What changed: the survey, its five ways in, the JobWorld pipeline (features walked socratically in the leak-tree shape, GHL's funnel as the reference for its shape only), the loop between the product and the service, the one theme, the VSLs, what is open and the order of work — gathered into `docs/the-door.md`; the source map's door row points at it.
+Why — the owner asked for the information gathered into a doc.
+Files: `docs/the-door.md` · `.claude/rules/00-SITE-CANON.md` · this file.
+
 ## 2026-10-11 — THE DOOR's fifth card (sell JobWorld to my clients → tailor → book or the agency level); the features walked in the pipeline's format
 
 What changed: § WHAT IS PUBLIC adds the fifth card — "I want to sell JobWorld to my clients" → what do you do → do you want
