@@ -4,6 +4,13 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the survey only asks which one they are; each funnel opens on the choice
+
+- Isaac ruled: the survey asks which one they are and nothing else; every funnel then starts with the thing they chose.
+  The first screen is now "Which one are you?" and the five choices, with no pill, no line and no sub-line on the cards;
+  each funnel's first screen is headed with the visitor's own choice ("I need JobWorld for my business." …).
+- Files: `tools/build_door.py` → `door.html`.
+
 ## 2026-10-11 — the door's first screen says plainly why they came
 
 - Isaac could not follow "Five kinds of people walk through this door. One of them is you." Replaced with "You came here
