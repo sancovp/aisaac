@@ -64,7 +64,8 @@ need for your business, and to sell to your clients*). Read for its SHAPE only:
 ## 5. The loop between the product and the service
 
 - **THE FUNNEL PAGE** — the JobWorld page (`jobworld.html`, built by `tools/build_jobworld.py`), the main page of
-  `app.iwantaiformybusiness.com` (live at its root). Its exits: Book a call · Sign in · the concierge page.
+  `app.iwantaiformybusiness.com` (live at its root). It is a funnel: a visitor can BUY from it. Its exits: Get JobWorld (the
+  plans and the Stripe checkout, `app.iwantaiformybusiness.com/pricing`) · Sign in · Book a call · the concierge page.
 - **THE CONCIERGE PAGE** — the coaching / done-with-you service: the business worked with *USER*. Advertised from the
   pipeline's help step and from the funnel page. Its exits: Book a call · the funnel page · sign-up.
 - **THE ACCOUNTS APP** (LAMAI — sign-in, sign-up, pricing, the dashboard) leads back to the funnel page and nowhere else.

@@ -173,9 +173,11 @@ sessions a month, the roadmap planned and implemented together, direct access to
 no price (law 1; "priced on the call"); and its address. Until ruled, the page is not built and the funnel page carries
 no button to it (law 00: a surface without its source row is a blocker, not a gap).
 `jobworld.html` is BUILT, not hand-edited: `python3 tools/build_jobworld.py` writes it and lifts the booking dialog whole from
-`ai-transformation.html`. Its top bar: the wordmark `JobWorld`, an INK `Sign in` (owners who already have a
-JobWorld, to `https://app.iwantaiformybusiness.com/sign-in` — the page's second sanctioned exit) and the red Book a
-call. Its order: the hero (h1 "Your company, with an AI CEO in the chair." — the product's own line, the title of
+`ai-transformation.html`. IT IS THE PRODUCT'S FUNNEL, SO A VISITOR CAN BUY FROM IT: its top bar carries the wordmark
+`JobWorld`, an INK `Sign in` (owners who already have one, `https://app.iwantaiformybusiness.com/sign-in`), an INK `Get
+JobWorld` (the plans and the checkout, `https://app.iwantaiformybusiness.com/pricing` — the prices live there, in
+Stripe, never on this page) and the red Book a call; the hero and the closing band each carry Get JobWorld beside Book a
+call. Its exits: Get JobWorld · Sign in · Book a call (· the concierge page, when it exists). Its order: the hero (h1 "Your company, with an AI CEO in the chair." — the product's own line, the title of
 every JobWorld · the lede from the VSL's box · the HERO LOOP · who it's for) · what it looks like running (the
 owner's own first night, `assets/jobworld-walkthrough-loop.mp4`, with the site section's blurb and three cells) ·
 the dashboard (`assets/jobworld-console-tour.mp4`) · it works while you watch (`assets/jobworld-agent-at-work.mp4`)
@@ -238,8 +240,8 @@ not being presented; the laws below govern each page whenever it is.
    exit set deliberately. On the full site: the brand button → `isaac.html` (the hub) · `index.html`
    is the entrypoint only, one-way, with no nav route back to it (browser-back only). On the public
    page: the booking form is the one exit. THE DOOR's exits are its avatars' parts and nothing else (the
-   way out is the same door). On THE FRONT LOOP (§ WHAT IS PUBLIC): the funnel page's exits are its booking
-   form, the sign-in and the concierge page; the concierge page's are its booking form, the funnel page and
+   way out is the same door). On THE FRONT LOOP (§ WHAT IS PUBLIC): the funnel page's exits are Get JobWorld (the
+   checkout), its booking form, the sign-in and the concierge page; the concierge page's are its booking form, the funnel page and
    the sign-up; the accounts app's pages lead back to the funnel page — nothing else.
 10. **THE BRANDED-FILTER LAW.** Every browse or filter surface filters by Isaac's framework concepts,
     never by generic categories. The corpus index files every piece under the seven levels of agent

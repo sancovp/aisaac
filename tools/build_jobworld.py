@@ -48,11 +48,12 @@ page = f'''<!doctype html>
 
 <a class="skip-link" href="#book">Skip to booking</a>
 
-<!-- THE TOP BAR: the product's name, the ink Sign in for owners who already have one (the page's
-     second sanctioned exit), and the red Book a call that never leaves the screen. -->
+<!-- THE TOP BAR: the product's name, the ink Sign in for owners who already have one, the ink Get JobWorld (the plans and
+     the checkout), and the red Book a call that never leaves the screen. -->
 <header class="nav nav-glass">
   <span class="logo">JobWorld</span>
   <a class="nav-get" href="https://app.iwantaiformybusiness.com/sign-in">Sign in</a>
+  <a class="nav-get" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld</a>
   <button class="nav-book" type="button" data-buy="call">Book a call</button>
 </header>
 
@@ -67,6 +68,7 @@ page = f'''<!doctype html>
             <h1>Your company, <span>with an AI CEO in the chair.</span></h1>
             <p class="lede">{DESC}</p>
             <div class="solo-cta" id="book">
+              <a class="cta-primary" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld &rarr;</a>
               <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
               <div class="hero-who">
                 <img src="assets/isaac-headshot-sm.jpg" alt="" width="240" height="240">
@@ -257,9 +259,10 @@ page = f'''<!doctype html>
     <div class="wrap">
       <h2>A tool does what you click. A JobWorld runs your business the way you would.</h2>
       <div class="solo-cta">
+        <a class="cta-primary" href="https://app.iwantaiformybusiness.com/pricing">Get JobWorld &rarr;</a>
         <button class="cta-primary" type="button" data-buy="call">Book a call &rarr;</button>
       </div>
-      <p class="door-fine">No purchase. If the answer for your business is to do nothing, I will tell you that.</p>
+      <p class="door-fine">Subscribe and sign in today, or book a call first — if the answer for your business is to do nothing, I will tell you that.</p>
     </div>
   </section>
 

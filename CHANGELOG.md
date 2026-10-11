@@ -2,6 +2,18 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — the JobWorld page is a funnel: Get JobWorld (the plans and the checkout) in the top bar, the hero and the close
+
+What changed: `tools/build_jobworld.py` puts an ink Get JobWorld, to `app.iwantaiformybusiness.com/pricing` (the plans and
+the Stripe checkout), in the top bar, the hero and the closing band, beside Book a call; the closing line no longer says
+"No purchase". The canon's JobWorld paragraph, law 9's loop and `docs/the-door.md` say the page is a funnel a visitor buys
+from. Prices stay in Stripe, never on the page.
+What it replaced: a product page whose only actions were Book a call and Sign in — the canon had given it the landing
+page's one-exit law, so nobody could subscribe from it.
+Why — the owner's words: "the funnel page somehow is not a funnel, somehow goes to SIGN IN and BOOK A CALL … why doesnt it
+go to SIGN IN or let people fucking BUY THE FUCKING APPLICATION!?!!? … why cant they subscribe!?"
+Files: `tools/build_jobworld.py` · `jobworld.html` · `.claude/rules/00-SITE-CANON.md` · `docs/the-door.md` · this file.
+
 ## 2026-10-11 — `docs/the-door.md`: the door's whole design in one document
 
 What changed: the survey, its five ways in, the JobWorld pipeline (features walked socratically in the leak-tree shape, GHL's funnel as the reference for its shape only), the loop between the product and the service, the one theme, the VSLs, what is open and the order of work — gathered into `docs/the-door.md`; the source map's door row points at it.
