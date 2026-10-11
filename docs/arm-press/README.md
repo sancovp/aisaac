@@ -10,3 +10,6 @@
   records the button's box in the cell; that data is inlined at the top of `arm.js`.
 - Re-render: open the .blend, render frames 1–24 to `frames/strike_NNN.png` (+ `front_strike_NNN.png` for 8–18),
   run `pack.py`, copy the two webps to `assets/` under NEW names, paste the new JSON into `arm.js`, bump its `?v=`.
+
+- `arm-press.blend` holds the SHIPPED clip (frames 1–24, keyed as above); its frames 6, 13 and 18 re-render pixel-identical to `assets/arm-press-back.webp`.
+- `first-try/` — the superseded first attempt, kept as a record: the arm standing BESIDE the button with idle/hover/press/release clips (`arm-button.blend`, `rigbutton.js`, its sheet and data, `pack.py`). Isaac ruled it wrong: nothing should show until the click.
