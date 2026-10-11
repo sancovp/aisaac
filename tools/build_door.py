@@ -55,7 +55,7 @@ START = [
     opt('I want to start an AI-native business', 'One that runs on AI from the first day.', 'data-step="fnd-c" data-key="why" data-val="founder"', 'rocket'),
     opt('I want to learn how to use AI', 'For your business, your work, or your own agents.', 'data-step="lrn-c" data-key="why" data-val="learner"', 'cap'),
     opt('I want to learn to sell, market or run my operations', 'The B2B frameworks I use &mdash; and JobWorld runs them with you.', 'data-step="ent-c" data-key="why" data-val="entrepreneur"', 'trend'),
-    opt('I want to sell JobWorld to my clients', 'Under your own name, or tailored for them by me.', 'data-step="agc-c" data-key="why" data-val="agency"', 'users'),
+    opt('I want to sell JobWorld to my clients', 'JobWorld under your own name, for your own clients.', 'data-step="agc-c" data-key="why" data-val="agency"', 'users'),
 ]
 
 
@@ -98,7 +98,7 @@ OWN_E = [  # E — EXPLAIN: each concern opens its answer
     pick('Whose AI is it?', 'Its seat is signed in with your own AI account, and it runs your company in your own words from the first hour.', 'data-val="whose"', 'bot'),
     pick('I am not technical', 'You talk to it. When something needs running, you get a button that runs it for you.', 'data-val="tech"', 'monitor'),
 ]
-OWN_R = [  # R — REINFORCE, at the cart; then the hand-holding (a business: the retainer, on a call)
+OWN_R = [  # R — REINFORCE, at the cart; the B2B avatar is the one offered done-with-you (the retainer) before buying
     opt('Get JobWorld', 'Your company, with an AI CEO in the chair — starting today.', f'data-go="{APP}/pricing" data-key="own_cart" data-val="get" data-cart="own"', 'rocket', 'See the plans'),
     opt('Set it up with Isaac', 'I map your business with you and we build it in, on a retainer.', 'data-buy="call" data-key="own_cart" data-val="call"', 'phone', 'Book a call', ' door-card-call'),
 ]
@@ -205,14 +205,13 @@ ENT_E = [  # E — EXPLAIN
     pick('Will it bother my customers?', 'It reaches a person only when they contacted you or consented to that channel — and it checks do-not-disturb before every send.', 'data-val="contact"', 'phone'),
     pick('Will it touch my money?', 'Charging, invoicing, recording a payment, selling, pricing and buying do not exist for it. It messages you instead.', 'data-val="money"', 'tag'),
 ]
-ENT_R = [  # R — REINFORCE, at the cart; the hand-holding: the community, or the retainer for a business
+ENT_R = [  # R — REINFORCE, at the cart (the front end only: done-with-you is offered after they buy, docs/the-door.md §4)
     opt('Get JobWorld', 'The frameworks, run with you and for you. The community comes with it, free.', f'data-go="{APP}/pricing" data-key="ent_cart" data-val="get" data-cart="ent"', 'rocket', 'See the plans'),
-    opt('Run it in my business with Isaac', 'For a business: we put the frameworks in together, on a retainer.', 'data-buy="call" data-key="ent_cart" data-val="call"', 'phone', 'Book a call', ' door-card-call'),
 ]
 
 # THE AGENCY'S CLOSER (avatar 5, "I want to sell JobWorld to my clients"). The cart is the agency level — Meta Business
 # (lamai-saas DESIGN §2): JobWorld under their own brand, each client its own business under them, paid in their own
-# Stripe; tailoring is a call with Isaac.
+# Stripe; tailoring it with Isaac is offered once they have bought (docs/the-door.md §4).
 AGC_C = [  # C — CLARIFY: what they do
     opt('A marketing or lead-generation agency', 'You run campaigns and leads for clients.', 'data-step="agc-l" data-key="agc_do" data-val="agency"', 'megaphone', 'Next'),
     opt('Consulting or coaching', 'You advise owners on how to run the business.', 'data-step="agc-l" data-key="agc_do" data-val="consulting"', 'compass', 'Next'),
@@ -223,7 +222,7 @@ AGC_L = [  # L — LABEL
     pick('Clients leave when results stall', 'Month three is when they start asking.', 'data-val="churn" data-solve="Each client gets a JobWorld working their business every day — results that do not wait on your team."', 'tag'),
     pick('Delivery does not scale past my team', 'Every new client means another hire.', 'data-val="scale" data-solve="Each client is its own business under you, with its own login and its own AI departments."', 'users'),
     pick('I resell tools under someone else&rsquo;s name', 'My clients see the vendor, not me.', 'data-val="brand" data-solve="Your name, logo, colours, domain and email — our mark never shows."', 'store'),
-    pick('Every client needs a custom setup', 'Onboarding eats the margin.', 'data-val="setup" data-solve="Tailor it once with me, then every client starts from your version."', 'code'),
+    pick('Every client needs a custom setup', 'Onboarding eats the margin.', 'data-val="setup" data-solve="Set your version up once, and every client starts from it."', 'code'),
     pick('My recurring revenue is thin', 'Projects end; retainers wobble.', 'data-val="mrr" data-solve="Your clients pay you in your own Stripe, every month; you pay us one monthly bill."', 'trend'),
 ]
 AGC_O = [  # O — OVERVIEW
@@ -241,13 +240,12 @@ AGC_N = [  # the size: how many clients they would put on it
 AGC_E = [  # E — EXPLAIN
     pick('Do my clients see your name?', 'No. Under your brand the header, the tab and the sign-up carry your name and mark; ours never shows.', 'data-val="brand"', 'store'),
     pick('Who bills my clients?', 'You do, through your own Stripe. You pay us one monthly bill.', 'data-val="bill"', 'tag'),
-    pick('Can each client be set up differently?', 'Each client is its own business with its own setup. Tailoring your version is a call with me.', 'data-val="setup"', 'code'),
+    pick('Can each client be set up differently?', 'Each client is its own business with its own setup, started from your version.', 'data-val="setup"', 'code'),
     pick('Will it act for my clients without asking?', 'Nothing reaches the world until they say so. It drafts, asks, and stops at the line they draw.', 'data-val="ask"', 'compass'),
     pick('Will it touch their money?', 'Charging, invoicing, recording a payment, selling, pricing and buying do not exist for it.', 'data-val="money"', 'tag'),
 ]
-AGC_R = [  # R — REINFORCE, at the cart (the agency level); the hand-holding: tailoring on a call
+AGC_R = [  # R — REINFORCE, at the cart (the agency level); tailoring with Isaac is offered after they buy (docs/the-door.md §4)
     opt('Get the agency level', 'JobWorld under your own name, for your own clients &mdash; starting today.', f'data-go="{APP}/pricing" data-key="agc_cart" data-val="get" data-cart="agc" data-tier="meta"', 'rocket', 'See the plans'),
-    opt('Tailor it with Isaac', 'We shape your version around what your clients need, on a call.', 'data-buy="call" data-key="agc_cart" data-val="call"', 'phone', 'Book a call', ' door-card-call'),
 ]
 
 
