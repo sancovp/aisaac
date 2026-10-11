@@ -24,10 +24,11 @@ JobWorld for my business" · the founder — "I want to start an AI-native busin
 use AI" · the entrepreneur who wants to grow — "I want to learn to sell, market or run my operations" (the B2B bootcamp,
 `/bootcamp`, is FOR ENTREPRENEURS TO LEARN FROM: need frameworks? → here they are → they are in JobWorld too → want that?)
 · the agency — "I want to sell JobWorld to my clients" (the agency level is Meta Business, the white label, on sale on the plans
-page; tailoring with *USER* comes after they buy). THE CART IS A DIRECT-RESPONSE FUNNEL (`docs/the-door.md` §4): front end →
-checkout and its order bump → the one-time offer after payment → no thanks → in; a visitor sees an offer only at the stage
-that earns it, and nobody is sold done-with-you before buying — except the B2B avatar, the owner, offered the retainer
-beside Get JobWorld. THE HAND-HOLDING: the community is free with JobWorld; the learner's free sign-up brings the
+page). THE CART IS A DIRECT-RESPONSE FUNNEL AND EVERYTHING IN IT IS JOBWORLD (`docs/the-door.md` §4): front end →
+checkout and its order bump → the one-time offer after payment → no thanks → in, and every offer is a JobWorld plan or
+more on JobWorld (seats, the agency level) — never a separate product, course, session or service bundled in. The one
+exception is the B2B start: the owner may begin with the retainer (*USER* inside the business) and is sold into JobWorld
+from inside. THE HAND-HOLDING: the community is free with JobWorld; the learner's free sign-up brings the
 weekly letter (the newsletter, made for people using JobWorld), every framework and manual, and the community where they
 share and help each other. THE
 DOOR'S LOOK: the agents' film full screen, and over it only the top bar and ONE GLASS PANEL holding the survey — the

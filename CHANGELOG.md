@@ -4,6 +4,18 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — every offer in the cart is JobWorld, or more on JobWorld
+
+- Isaac: "i just told you the offers earlier in this conversation. They are all jobworld. you can ONLY put more things on
+  jobworld. the only thing that is not ONLY jobworld plus more stuff is when they start b2b and i can sell them into
+  jobworld after getting inside".
+- Corrected: §4 said the one-time offer after payment was "this avatar's done-with-you" (the retainer, tailoring), and a
+  draft money model in the conversation filled the bump, upsell and downsell from `pricing.html`'s older lineup (the
+  Strategy Session, the School, Pre-built Automations, Custom Integrations). Now §4 states the bump, the one-time offer
+  and the downsell can only put more on JobWorld (today: seats, the agency level); the B2B owner alone may start with
+  the retainer and is sold into JobWorld from inside.
+- Files: `docs/the-door.md` · `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the newsletter is another agent's lane
 
 - Isaac: "another agent will handle the newsletter stuff btw". `docs/the-door.md` §5 and §7: the weekly letter and what
