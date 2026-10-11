@@ -372,7 +372,7 @@ page = f'''<!doctype html>
       <button class="door-back" type="button" data-back hidden>&larr; Back</button>
       <div class="door-dots" aria-hidden="true" data-dots></div>
     </div>
-{step('start', 1, 'Start here', 'Five kinds of people walk through this door.', 'One of them is you.', chr(10).join(START), first=True)}
+{step('start', 1, 'Start here', 'You came here to get something done with AI.', 'Start from where you are.', chr(10).join(START), first=True)}
 {step('own-c', 2, 'For your business', 'You built a business, and it still runs through you.', 'And right now you want one thing more than the rest.', chr(10).join(OWN_C), of=8)}
 {step('own-l', 3, 'For your business', 'So here is what is happening inside it.', 'Every one you recognise is one JobWorld takes off you.', chr(10).join(OWN_L), of=8, mode='data-multi="own_pains"', after=nxt('That&rsquo;s me', 'own-o'))}
 {step('own-o', 4, 'For your business', 'And you have already tried to fix it.', 'Here is what that looked like.', chr(10).join(OWN_O), of=8)}
@@ -386,7 +386,7 @@ page = f'''<!doctype html>
 {step('fnd-s', 5, 'Start a business', 'Here is where you will be.', '', '', of=7, after='<div class="door-vac" data-vacation="fnd"></div>' + nxt('That&rsquo;s what I want', 'fnd-e'))}
 {step('fnd-e', 6, 'Start a business', 'Every founder has the same few doubts.', 'Each one already has its answer.', chr(10).join(FND_E), of=7, mode='data-concerns="fnd_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'fnd-r'))}
 {step('fnd-r', 7, 'Start a business', 'You are making the right call.', 'You start with a company that already knows how to work, it asks before anything goes out, and everything it makes is yours.', chr(10).join(FND_R), of=7, after=offer('fnd'))}
-{step('lrn-c', 2, 'Learn AI', 'You want AI working for you, not just answering you.', 'And this is where you want it.', chr(10).join(LRN_C), of=8)}
+{step('lrn-c', 2, 'Learn AI', 'You want AI working for you, not just answering you.', 'Start with where you want it working.', chr(10).join(LRN_C), of=8)}
 {step('lrn-l', 3, 'Learn AI', 'Here is where it stops working for you.', 'Every one you recognise is one JobWorld fixes by doing it with you.', chr(10).join(LRN_L), of=8, mode='data-multi="lrn_pains"', after=nxt('That&rsquo;s me', 'lrn-o'))}
 {step('lrn-o', 4, 'Learn AI', 'And you have already tried to learn it.', 'Here is how that went.', chr(10).join(LRN_O), of=8)}
 {step('lrn-s', 5, 'Learn AI', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="lrn"></div>' + nxt('That&rsquo;s what I want', 'lrn-e'))}

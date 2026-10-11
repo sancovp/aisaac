@@ -4,6 +4,13 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the door's first screen says plainly why they came
+
+- Isaac could not follow "Five kinds of people walk through this door. One of them is you." Replaced with "You came here
+  to get something done with AI. Start from where you are."; the learner's "And this is where you want it." with "Start
+  with where you want it working." Every screen's text was then read in order as a visitor.
+- Files: `tools/build_door.py` → `door.html`.
+
 ## 2026-10-11 — the door tells; it never asks
 
 - Isaac ruled: the door is a hypnotic experience — it tells the visitor, and never asks the human. Every screen heading
