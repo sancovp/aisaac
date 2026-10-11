@@ -4,6 +4,14 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the ordering rule binds meta models, not info products
+
+- Isaac ruled: it is not that education and community must come after a successful business — META MODELS must; info
+  products and communities about how to do something, or of people doing it, are fine without one. Replaced in the
+  canon: "the education/community product is downstream of a successful operating business, never a substitute for
+  one", which kept `/framework` linked from nothing.
+- Files: `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the second bootcamp is `/framework`, already live
 
 - Corrects the entry below: the second bootcamp (Isaac's own transformation framework) was listed as owed; it is
