@@ -69,8 +69,9 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 
 | surface | state |
 |---|---|
-| the door, glass over the film | being built |
-| each avatar's CLOSER conversation | owed — next |
+| the door, glass over the film | live |
+| the owner's CLOSER conversation (avatar 1) | live — want → pains (pick many) → what you tried, said back → team size → the destination drawn from their answers → concerns, each opened → the cart (Get JobWorld, carrying the avatar and seats; or set it up with Isaac on a retainer) |
+| the other four avatars' CLOSER conversations | owed — next |
 | the JobWorld page at the app's root, with Get JobWorld | live |
 | the bootcamp at `/bootcamp` | live |
 | the sign-in and sign-up | live |

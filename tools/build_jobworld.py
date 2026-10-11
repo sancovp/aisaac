@@ -33,7 +33,7 @@ page = f'''<!doctype html>
 <meta property="og:url" content="{URL}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg">
-<link rel="stylesheet" href="style.css?v=2026-10-11h">
+<link rel="stylesheet" href="style.css?v=2026-10-11i">
 </head>
 <body data-depth="0">
 <!-- BUILT by tools/build_jobworld.py — edit the script, then rebuild. The JobWorld product page:

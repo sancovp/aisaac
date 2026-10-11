@@ -2898,3 +2898,27 @@ body.door-page { background: #fff; min-height: 100dvh; }
 .door-survey .door-form { margin: 1.6rem auto 0; text-align: left; }
 .door-form .cta-primary { margin-top: 0.4rem; }
 @media (prefers-reduced-motion: reduce) { .door-step.is-on { animation: none; } }
+/* THE DOOR'S CONVERSATIONS (door.js): a ticked card fills ink and wears a check · a concern shows its answer only once
+   opened · the Next row sits under the cards · the destination screen lists each pain they ticked → how JobWorld ends it. */
+.door-pick { position: relative; }
+.door-pick.is-picked { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.door-pick.is-picked .door-card-v { color: var(--paper); }
+.door-pick.is-picked .get-ico { background: var(--ink); border-color: var(--paper); }
+.door-pick.is-picked .get-ico svg { stroke: var(--paper); }
+.door-pick.is-picked::after { content: '✓'; position: absolute; top: 0.9rem; right: 1rem; font: 700 1rem var(--mono); }
+[data-concerns] .door-pick .door-card-v { display: none; }
+[data-concerns] .door-pick.is-open .door-card-v { display: block; }
+[data-concerns] .door-pick::after { content: '+'; position: absolute; top: 0.9rem; right: 1rem; font: 700 1rem var(--mono); }
+[data-concerns] .door-pick.is-open::after { content: '−'; }
+[data-concerns] .door-pick.is-open { background: rgba(255,255,255,0.85); color: var(--ink); }
+.door-next-row { display: flex; justify-content: center; margin-top: 1.5rem; }
+.door-vac { max-width: 760px; margin: 1.4rem auto 0; text-align: left; }
+.door-vac-reply { font-size: 1.02rem; line-height: 1.6; color: var(--ink); margin: 0 0 1rem; }
+.door-vac-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.door-vac-list li { display: grid; grid-template-columns: 1fr 1.4fr; gap: 1rem; padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.35); border-radius: var(--r-md); }
+.door-vac-was { font: 600 0.86rem/1.4 var(--mono); color: var(--text-3); text-decoration: line-through; }
+.door-vac-now { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
+.door-vac-seats { margin: 1rem 0 0; font-size: 0.95rem; }
+.door-cart-sum { text-align: center; }
+@media (max-width: 600px) { .door-vac-list li { grid-template-columns: 1fr; gap: 0.3rem; } }

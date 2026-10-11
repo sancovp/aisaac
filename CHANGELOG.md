@@ -2,6 +2,19 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — the owner's CLOSER conversation (avatar 1), live in the door
+
+What changed: card 1 ("I need JobWorld for my business") opens its own conversation in the glass panel, built with the
+`hormozi-closer` skill: Clarify (what they want most) → Label (the pains they tick; each one something JobWorld does, from
+its design) → Overview (what they tried, said back to them) → their team size (seats, one JobWorld per person) → Sell the
+vacation (a screen drawn from their answers: each pain crossed out beside how JobWorld ends it, their seats) → Explain (five
+concerns, each opening its answer — the JobWorld page's own "Where it stops") → Reinforce at the cart (Get JobWorld, carrying
+the avatar and seats to the plans page; or set it up with Isaac on a retainer). `door.js` gains pick-many lists, concerns
+that open in place, the destination and cart summaries, and dots sized to each conversation. Every word is a draft for the
+owner to strike. Seen locally at 1440 and 390, every screen; the cart lands on `/pricing?from=door&avatar=owner&seats=…`.
+Why — the owner's "ok go" to building each avatar's CLOSER, starting with the owner.
+Files: `tools/build_door.py` · `door.html` · `door.js` · `style.css` · `docs/the-door.md` · the pages whose stylesheet version moved · this file.
+
 ## 2026-10-11 — the door is glass over the film; the model is self-select → each avatar's own CLOSER → one cart → hand-holding
 
 What changed: `door.html` is the agents' film full screen with only the top bar and one glass panel holding the survey
