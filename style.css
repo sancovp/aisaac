@@ -2910,7 +2910,13 @@ body.door-page { background: #fff; min-height: 100dvh; }
 [data-concerns] .door-pick.is-open .door-card-v { display: block; }
 [data-concerns] .door-pick::after { content: '+'; position: absolute; top: 0.9rem; right: 1rem; font: 700 1rem var(--mono); }
 [data-concerns] .door-pick.is-open::after { content: '−'; }
-[data-concerns] .door-pick.is-open { background: rgba(255,255,255,0.85); color: var(--ink); }
+[data-concerns] .door-pick.is-open,
+[data-concerns] .door-pick.is-open:hover,
+[data-concerns] .door-pick.is-open:focus-visible { background: rgba(255,255,255,0.85); color: var(--ink); border-color: var(--ink); transform: none; }
+/* an opened card is being read: hover never inverts it (its answer would turn paper on paper) */
+[data-concerns] .door-pick.is-open .door-card-v { color: var(--ink); }
+[data-concerns] .door-pick.is-open .get-ico { background: var(--paper); border-color: var(--ink); }
+[data-concerns] .door-pick.is-open .get-ico svg { stroke: var(--ink); }
 .door-next-row { display: flex; justify-content: center; margin-top: 1.5rem; }
 .door-vac { max-width: 760px; margin: 1.4rem auto 0; text-align: left; }
 .door-vac-reply { font-size: 1.02rem; line-height: 1.6; color: var(--ink); margin: 0 0 1rem; }

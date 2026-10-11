@@ -4,8 +4,11 @@
  *
  * A card either opens a screen (`data-step`), leaves for its page (`data-go`), or opens the booking dialog (`data-buy`,
  * capture.js's). A list marked `data-multi="<key>"` is pick-many (its Next moves on); a list marked `data-concerns` opens
- * each card's answer in place. The destination screen (`[data-vacation]`) is drawn from what the visitor said: what they
- * tried, said back; every pain they ticked, with how JobWorld ends it; their seats. The arm presses first (arm.js replays
+ * each card's answer in place. Each avatar's conversation keeps its answers under its own prefix (own · fnd · lrn · ent ·
+ * agc): its destination screen (`[data-vacation="<prefix>"]`) is drawn from what the visitor said — what they tried
+ * (`<prefix>_tried`), said back; every pain they ticked (`[data-multi="<prefix>_pains"]`), with how JobWorld ends it;
+ * their seats or clients — and its cart card (`data-cart="<prefix>"`, `data-tier`) carries those to the plans page.
+ * The arm presses first (arm.js replays
  * the click on its press frame), then this moves on. Each screen slides in (CSS); reduced motion: no slide. */
 (function () {
   'use strict';
@@ -28,26 +31,43 @@
     dotsBox.innerHTML = h;
   }
 
-  // THE VACATION (S): what they tried said back, every pain they ticked with how JobWorld ends it, and their seats
-  function drawVacation(box) {
+  // the size a conversation asked for: the owner's seats, the agency's clients; the founder is one seat
+  function sizeOf(p) {
+    if (p === 'own' && answers.own_seats) return answers.own_seats === '1' ? 'one seat' : answers.own_seats + ' seats';
+    if (p === 'agc' && answers.agc_clients) return answers.agc_clients + ' clients';
+    if (p === 'fnd') return 'one seat';
+    return '';
+  }
+  var SIZE_LINE = {
+    own: ' — one JobWorld for each person who runs part of the business.',
+    agc: ' — each its own JobWorld, under your name.',
+    fnd: ' — you, with an AI CEO and its departments.'
+  };
+  function pickedPains(p) {
+    var picked = [].slice.call(door.querySelectorAll('[data-multi="' + p + '_pains"] .door-pick.is-picked'));
+    return picked.length ? picked : [].slice.call(door.querySelectorAll('[data-multi="' + p + '_pains"] .door-pick'));
+  }
+
+  // THE VACATION (S): what they tried said back, every pain they ticked with how JobWorld ends it, and their size
+  function drawVacation(box, p) {
     var out = '';
-    var tried = door.querySelector('.door-card[data-key="own_tried"][data-val="' + answers.own_tried + '"]');
+    var tried = door.querySelector('.door-card[data-key="' + p + '_tried"][data-val="' + answers[p + '_tried'] + '"]');
     if (tried) out += '<p class="door-vac-reply">' + esc(tried.getAttribute('data-reply')) + '</p>';
-    var picked = [].slice.call(door.querySelectorAll('[data-multi="own_pains"] .door-pick.is-picked'));
-    if (!picked.length) picked = [].slice.call(door.querySelectorAll('[data-multi="own_pains"] .door-pick'));
-    out += '<ul class="door-vac-list">' + picked.map(function (p) {
-      return '<li><span class="door-vac-was">' + esc(p.querySelector('.door-card-k').textContent) + '</span>' +
-             '<span class="door-vac-now">' + esc(p.getAttribute('data-solve')) + '</span></li>';
+    out += '<ul class="door-vac-list">' + pickedPains(p).map(function (c) {
+      return '<li><span class="door-vac-was">' + esc(c.querySelector('.door-card-k').textContent) + '</span>' +
+             '<span class="door-vac-now">' + esc(c.getAttribute('data-solve')) + '</span></li>';
     }).join('') + '</ul>';
-    var seats = answers.own_seats;
-    if (seats) out += '<p class="door-vac-seats"><strong>' + (seats === '1' ? 'One seat' : esc(seats) + ' seats') +
-      '</strong> — one JobWorld for each person who runs part of the business.</p>';
+    var size = sizeOf(p);
+    if (size) out += '<p class="door-vac-seats"><strong>' + esc(size.charAt(0).toUpperCase() + size.slice(1)) + '</strong>' +
+      esc(SIZE_LINE[p] || '') + '</p>';
     box.innerHTML = out;
   }
-  function drawCartSum(box) {
-    var n = door.querySelectorAll('[data-multi="own_pains"] .door-pick.is-picked').length;
-    box.innerHTML = '<p>' + (n ? n + ' thing' + (n > 1 ? 's' : '') + ' it takes off your plate' : 'Your departments, running') +
-      (answers.own_seats ? ' · ' + (answers.own_seats === '1' ? 'one seat' : esc(answers.own_seats) + ' seats') : '') + '.</p>';
+  function drawCartSum(box, p) {
+    var n = door.querySelectorAll('[data-multi="' + p + '_pains"] .door-pick.is-picked').length;
+    var size = sizeOf(p);
+    var what = { lrn: [' thing', ' it changes for you'], ent: [' stall', ' it clears'] }[p] || [' thing', ' it takes off your plate'];
+    box.innerHTML = '<p>' + (n ? n + what[0] + (n > 1 ? 's' : '') + what[1] : 'All of it, running') +
+      (size ? ' · ' + esc(size) : '') + '.</p>';
   }
 
   function show(id) {
@@ -60,8 +80,8 @@
     if (!on) return;
     drawDots(Number(on.getAttribute('data-dot')) || 1, Number(on.getAttribute('data-of')) || 3);
     back.hidden = trail.length < 2;
-    var vac = on.querySelector('[data-vacation]'); if (vac) drawVacation(vac);
-    var sum = on.querySelector('[data-cart-sum]'); if (sum) drawCartSum(sum);
+    var vac = on.querySelector('[data-vacation]'); if (vac) drawVacation(vac, vac.getAttribute('data-vacation'));
+    var sum = on.querySelector('[data-cart-sum]'); if (sum) drawCartSum(sum, sum.getAttribute('data-cart-sum'));
     // the arm measures its button when shown: a screen that was hidden had no size
     window.dispatchEvent(new Event('resize'));
     var q = on.querySelector('.door-q');
@@ -85,12 +105,12 @@
     if (list && list.hasAttribute('data-multi')) { b.classList.toggle('is-picked'); b.setAttribute('aria-pressed', b.classList.contains('is-picked')); return; }
     if (list && list.hasAttribute('data-concerns')) {
       b.classList.toggle('is-open'); b.setAttribute('aria-expanded', b.classList.contains('is-open'));
-      answers.own_concerns = [].slice.call(list.querySelectorAll('.is-open')).map(function (p) { return p.getAttribute('data-val'); });
+      answers[list.getAttribute('data-concerns')] = [].slice.call(list.querySelectorAll('.is-open')).map(function (p) { return p.getAttribute('data-val'); });
       keep(); return;
     }
     var key = b.getAttribute('data-key'), val = b.getAttribute('data-val');
     if (key) { answers[key] = val; keep(); }
-    if (key === 'for') {
+    if (key === 'lrn_for') {
       var f = door.querySelector('input[name="learn_for"]');
       if (f) f.value = val;
     }
@@ -98,7 +118,12 @@
     if (go) {
       // the cart: what the conversation decided rides along (the plans page ignores what it does not read)
       if (b.hasAttribute('data-cart')) {
-        var q = new URLSearchParams({ from: 'door', avatar: answers.why || '', seats: answers.own_seats || '' });
+        var p = b.getAttribute('data-cart');
+        var q = new URLSearchParams({ from: 'door', avatar: answers.why || '' });
+        if (answers[p + '_seats']) q.set('seats', answers[p + '_seats']);
+        if (p === 'fnd') q.set('seats', '1');
+        if (answers[p + '_clients']) q.set('clients', answers[p + '_clients']);
+        if (b.getAttribute('data-tier')) q.set('tier', b.getAttribute('data-tier'));
         go += (go.indexOf('?') < 0 ? '?' : '&') + q.toString();
       }
       location.href = go; return;

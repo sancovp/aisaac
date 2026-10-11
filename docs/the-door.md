@@ -47,10 +47,10 @@ are *USER*'s to strike.
 | avatar (the card) | Clarify — why they are here | where the conversation goes | the cart: what they need inside JobWorld | hand-holding |
 |---|---|---|---|---|
 | 1 **I need JobWorld for my business** — the owner | the business they run and what is eating their time | each feature as the pain it ends ("do you have this?" → "JobWorld does it like this"), the list, N seats (a seat = one JobWorld per person in the org chart, `application/jobworld/DESIGN.md` §6) | JobWorld with those departments and N seats | a B2B engagement on a retainer |
-| 2 **I want to start an AI-native business** — the founder | what they want to start | the business they picture, run from day one by an AI CEO | JobWorld, their new company in it | the community |
-| 3 **I want to learn how to use AI** — the learner | what for: their business · their work · building agents | what they tried, where they got stuck; "I'll send you the right material" (an email sign-up, law 13's consent boxes) | JobWorld — it carries the Claude compilation skills and teaches AI by doing it with them | the community |
-| 4 **I want to learn to sell, market or run my operations** — the entrepreneur who wants to grow | which of the three, and where it stalls | "need frameworks? here they are" — the B2B bootcamp (`/bootcamp`: PSA · SCREENING · CLINIC · DOCTOR · LIFE and the tools), for entrepreneurs to learn from — "and they are inside JobWorld too: want that?" | JobWorld, running those frameworks with them and for them | the community, or the retainer for a business |
-| 5 **I want to sell JobWorld to my clients** — the agency | what they do and who their clients are | "do you want it tailored for you?" | the agency level — LAMAI's Meta Business, the white label (their name, mark and colours on JobWorld for their clients; `sanctuary-revolution-alpha/application/lamai-saas/DESIGN.md` §2) | tailoring on a call with *USER* |
+| 2 **I want to start an AI-native business** — the founder | where they are starting from: an idea · a skill and no idea yet · only the will · leaving a job | JobWorld helps them make an idea it can run on its own, or helps them run the parts it cannot; one seat, the AI CEO and its departments as the team from day one | JobWorld, one seat, their new company in it | the community, free with JobWorld |
+| 3 **I want to learn how to use AI** — the learner | what for: their business · their work · building agents | where AI stops working for them, how they learned so far; JobWorld carries the Claude compilation skills and teaches AI by doing it with them | JobWorld | the free sign-up (law 13's consent boxes): the weekly letter — a version of the newsletter on what each change means for people using JobWorld — every framework and manual, and the community where they share and help each other |
+| 4 **I want to learn to sell, market or run my operations** — the entrepreneur who wants to grow | which of the three, and where it stalls | "you need frameworks — here they are": the B2B bootcamp's frameworks (PSA · SCREENING · CLINIC · DOCTOR · LIFE · MEDICINE · OFFERS, in `/bootcamp`'s words, the whole page linked), for entrepreneurs to learn from — "and every one runs inside JobWorld too: want that?" | JobWorld, running those frameworks with them and for them | the community, free; or the retainer, for a business |
+| 5 **I want to sell JobWorld to my clients** — the agency | what they do | what is hard now (churn · delivery that does not scale · another vendor's name · custom setups · thin recurring revenue), how many clients they would put on it | the agency level = **Meta Business** (`sanctuary-revolution-alpha/application/lamai-saas/DESIGN.md` §2), on sale on the plans page: JobWorld under their own name, logo, colours, domain and email; each client its own business under them; their clients paid in their own Stripe, one monthly bill to us | tailoring their version on a call with *USER* |
 
 **How a feature is said** (avatars 1 and 5): GoHighLevel's public funnel is the reference for its shape only — *it does
 x, y, z: what you need for your business and to sell to your clients* — our positioning differs, its words are never
@@ -59,7 +59,9 @@ copied, GHL is never named. The features come from JobWorld's own design, never 
 ## 4. The cart
 
 One cart for everyone: **Get JobWorld** → the plans and the Stripe checkout (`app.iwantaiformybusiness.com/pricing`). What
-each avatar's conversation decided (which departments, how many seats, the agency level) rides into it. The JobWorld page
+each avatar's conversation decided rides into it as the address's query: `from=door`, `avatar`, and `seats` (the owner's
+answer; the founder's one), `clients` and `tier=meta` (the agency). The plans page reads none of it yet: it shows both
+plans, Single Business first. The JobWorld page
 (`jobworld.html`, the app's root) is a funnel to the same cart: Get JobWorld · Sign in · Book a call.
 
 ## 5. One look for the rest
@@ -70,8 +72,9 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 | surface | state |
 |---|---|
 | the door, glass over the film | live |
-| the owner's CLOSER conversation (avatar 1) | live — want → pains (pick many) → what you tried, said back → team size → the destination drawn from their answers → concerns, each opened → the cart (Get JobWorld, carrying the avatar and seats; or set it up with Isaac on a retainer) |
-| the other four avatars' CLOSER conversations | owed — next |
+| the five CLOSER conversations, one per avatar, each with its own words and answers (`own` · `fnd` · `lrn` · `ent` · `agc`) | live — each: why they are here → the pains they tick → what they tried, said back → (their size) → the destination drawn from their answers → (the entrepreneur: the frameworks, each opened) → their concerns, each opened → the cart, and its hand-holding beside it |
+| the plans page reading what the door sends (the agency's plan first for `tier=meta`, the seats) | owed |
+| the weekly letter, and the frameworks and manuals sent on the learner's sign-up | owed — the sign-up is live; what it sends is not made |
 | the JobWorld page at the app's root, with Get JobWorld | live |
 | the bootcamp at `/bootcamp` | live |
 | the sign-in and sign-up | live |
@@ -84,13 +87,14 @@ wears the site's Blueprint System (RULE 02); every primary button carries the ar
 - THE PRICING PASS, later: the seat's price and the plans' — the direction is down, toward something like $297/mo plus about
   $20 a seat, once a seat's cost and the SaaS's cost are measured (`sanctuary-revolution-alpha/application/lamai-saas` board
   § OPEN); Stripe goes live with it
-- the community's home and terms; the retainer's terms for the B2B engagement
+- the community's home (it is free with JobWorld; where it lives comes later); the retainer's terms for the B2B engagement
 
 ## 7. The order of work
 
 1. the door as glass over the film — now
-2. each avatar's CLOSER conversation, drafted with the skill, ending at the cart
-3. the hand-holding offers on the far side of the cart (community · retainer)
+2. each avatar's CLOSER conversation, drafted with the skill, ending at the cart — done
+3. the hand-holding behind the cart: the community's home, the weekly letter and what the sign-up sends, the retainer's
+   terms; the plans page reading what the door sends
 4. pricing and the dashboard in the theme
 5. the pricing pass, and Stripe live
 6. the VSLs, when the twin exists

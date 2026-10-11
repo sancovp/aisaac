@@ -2,6 +2,24 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+
+## 2026-10-11 — the door's other four conversations: founder, learner, entrepreneur, agency
+
+- Each of the five cards now opens its own CLOSER conversation (the `hormozi-closer` skill), every one ending at Get
+  JobWorld. Before, cards 2 and 4 left for `/jobworld` and `/bootcamp`, and cards 3 and 5 ran short flows (what for →
+  email; what do you do → tailored?).
+- Isaac's answers, in his words: the community — "doesnt matter right now will be obvious later. sure could be included
+  with jobworld/free"; the founder — "jobworld helps them make an idea that jobworld can do autonomously, or help them
+  otherwise"; the learner — "they receive a version of the newsletter every week tailored to what it means for people
+  using jobworld imo, and they receive all our frameworks and manuals and its a community for sharing and helping each
+  other"; the agency level — "why dont you know what this is": it is LAMAI's Meta Business plan, already on sale.
+- `door.js` keeps each conversation's answers under its own prefix and draws each destination and cart line from them;
+  the cart carries `seats`, `clients`, `tier=meta`. Fixed on the way: an opened concern card turned its answer white on
+  white under the pointer (hover inverted it); the door's backdrop film got player controls under reduced motion
+  (`vsl.js` now skips a `data-backdrop` loop).
+- Files: `tools/build_door.py` → `door.html` · `door.js` · `style.css` · `vsl.js` · `docs/the-door.md` ·
+  `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the owner's CLOSER conversation (avatar 1), live in the door
 
 What changed: card 1 ("I need JobWorld for my business") opens its own conversation in the glass panel, built with the

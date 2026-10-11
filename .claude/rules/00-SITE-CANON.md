@@ -23,17 +23,20 @@ script for all; it is not selling AI transformation. THE FIVE AVATARS (the cards
 JobWorld for my business" · the founder — "I want to start an AI-native business" · the learner — "I want to learn how to
 use AI" · the entrepreneur who wants to grow — "I want to learn to sell, market or run my operations" (the B2B bootcamp,
 `/bootcamp`, is FOR ENTREPRENEURS TO LEARN FROM: need frameworks? → here they are → they are in JobWorld too → want that?)
-· the agency — "I want to sell JobWorld to my clients" (tailored on a call, or the agency level, the white label). THE
+· the agency — "I want to sell JobWorld to my clients" (the agency level is Meta Business, the white label, on sale on the plans
+page; tailoring is a call). THE HAND-HOLDING: the community is free with JobWorld; the learner's free sign-up brings the
+weekly letter (the newsletter, made for people using JobWorld), every framework and manual, and the community where they
+share and help each other. THE
 DOOR'S LOOK: the agents' film full screen, and over it only the top bar and ONE GLASS PANEL holding the survey — the
 door's own look, not the Blueprint sheet. EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL until the twin
 exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the twin · the VSL of each part · the feature→problem list
 the pipeline walks (JobWorld's own, `application/jobworld/DESIGN.md` §9, never invented here) · the seat's price (law 1).
 THE DOOR IS BUILT and is the home: `door.html`, written by `python3 tools/build_door.py` (never edited by hand), with
 `door.js` — THE CARDS, the June survey's shape (the question centered over a row of cards, each an icon, a title, a
-line and its call at the foot; every sub-step cards too), the learn-AI flow (what for → the email sign-up with the five consent boxes → JobWorld), the
-sell-JobWorld flow (what do you do → tailored? → Book a call or the agency level), step dots and Back, the answers kept
-in `localStorage` (`twi_door`), every option pressed by the arm, every step sliding in. Card 1 leads to the JobWorld page
-until THE PIPELINE is built there; the agents' own transition animations and the VSLs come next. The landing page stays
+line and its call at the foot; every sub-step cards too), and behind each of the five cards that avatar's own CLOSER
+conversation (`docs/the-door.md` §3), ending at the cart — the learner's beside its free sign-up with the five consent
+boxes; step dots and Back, the answers kept in `localStorage` (`twi_door`), every option pressed by the arm, every step
+sliding in. The agents' own transition animations and the VSLs come next. The landing page stays
 at `/ai-transformation`.
 
 **`ai-transformation.html` — the service's landing page, at `/ai-transformation`.** Above it rides the glass top bar (RULE 02 §9):

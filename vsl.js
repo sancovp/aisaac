@@ -12,13 +12,14 @@
  */
 /* The silent loops (`video[data-loop]`) autoplay muted and carry no controls.
  * A visitor who asked for reduced motion gets them stopped on their poster,
- * with the native controls handed back so they can still choose to play. */
+ * with the native controls handed back so they can still choose to play — except a
+ * backdrop (`data-backdrop`, the door's film behind the glass), which just stays on its poster. */
 (function () {
   if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.querySelectorAll('video[data-loop]').forEach(function (v) {
     v.removeAttribute('autoplay');
     v.pause();
-    v.setAttribute('controls', '');
+    if (!v.hasAttribute('data-backdrop')) v.setAttribute('controls', '');
   });
 })();
 
