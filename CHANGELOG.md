@@ -3,6 +3,19 @@
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
 
+
+## 2026-10-11 — the cart is a direct-response funnel: no done-with-you before payment, except for the B2B owner
+
+- Isaac: "i think the carts need to be figured out. there are some things they shouldnt see unless theyve already got a
+  plan in their cart, already paid, etc. you know? classic direct marketing funnels. why sell them into a done with you
+  before they buy it, etc. only the b2b goes straight to DWY (the retainer)".
+- Replaced: every conversation's last screen offered done-with-you beside Get JobWorld (the entrepreneur's retainer
+  call, the agency's tailoring call). Now only the owner (B2B) keeps the retainer there; the entrepreneur's and the
+  agency's done-with-you move to the one-time offer after payment. `docs/the-door.md` §4 is the funnel: front end →
+  checkout with its order bump → the one-time offer → no thanks → in. The offers at the bump, the founder's and learner's
+  one-time offer, and the downsell are Isaac's (law 1), listed open.
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md` · `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the door's other four conversations: founder, learner, entrepreneur, agency
 
 - Each of the five cards now opens its own CLOSER conversation (the `hormozi-closer` skill), every one ending at Get
