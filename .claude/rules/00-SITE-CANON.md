@@ -117,8 +117,9 @@ Map." Its
 order, top to bottom: the hero (headline · sub · the Top film · the opt-in as ONE row) · THE 7 STEPS · THE TEST ·
 the other free frameworks · how it works · the community · who it's for · questions · the close. The page is the FREE AI Transformation Framework (the method's §1 procedure and §1a central test, in his
 words: `docs/the-transformation-method-2026-09-17.md`) opted in by email, then the FREE COMMUNITY of owners
-and operators running the model (on Skool), inside which his GoHighLevel setup is the paid offer —
-*USER*'s structure: the community is free and GHL is sold inside it. Joined by email until its Skool
+and operators running the model (on Skool), inside which JobWorld is the paid offer —
+*USER*'s structure: the community is free and JobWorld is sold inside it; what runs underneath is fully wrapped and never
+named, so the story is always JobWorld. Joined by email until its Skool
 link exists. It also gives away, free: THE AUTONOMY LADDER (his automation theory — the
 worker · management · you triad, grades 1–4, trust earned per area and never transferred) and the
 B2B BOOTCAMP (for operators: the Sanctuary–Wasteland map, then the client's path in four steps —
@@ -372,7 +373,7 @@ Paths below marked ✓ resolve here.
 
 ## OPEN — *USER*'s
 
-- `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · the GoHighLevel offer sold inside it — *USER*'s structure: ONE snapshot for now (sellable monthly on HighLevel's App Marketplace, IP-protected) beside the affiliate link for operators, and SaaS Mode for owners; its price and plan are his · the framework's delivery (a document to send on each opt-in)
+- `framework.html`: his recordings of the seven section videos (scripts `docs/framework-video-scripts.md`; the Top prototype is on the page, the other six wait for his word) · the AI SKILLS REPO link (the "Get them all as AI skills" button is a placeholder) · the community's Skool link · JobWorld's price and plan inside the community (his) · the framework's delivery (a document to send on each opt-in)
 
 - hosting: the Cloudflare account, the three domains and the repo connected in Pages (§ HOSTING AND AUTOMATIONS) · the GoHighLevel account and plan · the A2P 10DLC texting registration (the legal entity and its EIN) · which of his own systems receive events, and where they are reachable
 - where the sources marked absent above live

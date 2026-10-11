@@ -4,6 +4,14 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the community sells JobWorld; the backend is never named
+
+- Isaac ruled: the community with the paid offer inside it still happens, but the backend is fully wrapped, so it is
+  never named — the story is JobWorld. Replaced on `framework.html`: "my GoHighLevel setup, offered inside the
+  community", the question "What is GoHighLevel, and why yours?" and its answers — now JobWorld, introduced where it is
+  first named. The site canon's framework passage and its OPEN line now say JobWorld is sold inside the community.
+- Files: `framework.html` · `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — law 1 and CLAUDE.md: the door's offers are JobWorld, not pricing.html
 
 - Both said `main:pricing.html` is the truth for every offer; Isaac ruled the offers are all JobWorld and that the
