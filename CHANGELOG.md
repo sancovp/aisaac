@@ -4,6 +4,14 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — Clarify and Label put back: the ruling was the process, not the copy
+
+- Isaac's ruling describes why a visitor comes (they want something and do not yet know how) and what Clarify and Label
+  do; it was an instruction at the level of the process, and the entry above printed it on the screens as copy
+  ("I don't know how to…", "Here is what must be happening"). Reverted to the screens before it. The door doc and the
+  `hormozi-closer` skill now state the process and say the words are written per avatar.
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md` · `.claude/skills/hormozi-closer/SKILL.md` (+ copy).
+
 ## 2026-10-11 — Clarify opens on "I don't know how to…"; Label shows what must be happening
 
 - Isaac ruled: each self-selected avatar is shown its exact CLOSER process — they come because they do not know how to

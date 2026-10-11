@@ -22,11 +22,12 @@ the visitor ─▶ THE DOOR: the avatar picks itself
 
 - **The avatar self-selects.** The door asks one question and the visitor picks the card that is them.
 - **Each avatar gets ITS OWN sales conversation, attuned to it** — never one script for all, never avatars mashed together.
-- **Every conversation SHOWS that avatar its own CLOSER process** (the `hormozi-closer` skill): they are here because
-  they do not know how to get what they want, so **Clarify** opens on *I don't know how to…* and they pick theirs ·
-  **Label** shows what must be happening, and they tick what is them · **Overview** what they have tried, said back ·
-  **Sell the vacation**, drawn from their answers · **Explain** each concern · **Reinforce** at the cart, where their
-  offer is.
+- **Every conversation SHOWS that avatar its own CLOSER process** (the `hormozi-closer` skill). A visitor comes because
+  they want something and do not yet know how to get it: **Clarify** sets out that avatar's options for what they are
+  after, and they pick · **Label** sets out what must be going on, and they name themselves in it · **Overview** what they
+  have tried, said back · **Sell the vacation**, drawn from their answers · **Explain** each concern · **Reinforce** at the
+  cart, where their offer is. This is the shape of each conversation; the words on each screen are written for that
+  avatar.
 - **Every conversation ends at the same cart: JobWorld**, set up with exactly what that avatar needs — they do it
   themselves (DIY) inside an AI system that does it with them and for them.
 - **Then the hand-holding, by who they are:** the community for individuals; a B2B engagement on a retainer for businesses.

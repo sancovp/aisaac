@@ -39,8 +39,9 @@ decision → satisfaction.**
 ## Applied to THE DOOR (iwantaiformybusiness.com; aisaac `docs/the-door.md`)
 
 - **The avatar self-selects first; then each avatar is SHOWN ITS OWN CLOSER**, attuned to it — never one script for all,
-  never avatars mashed together. They are there because they do not know how to get what they want: Clarify opens on
-  *I don't know how to…* with that avatar's options; Label shows what must be happening, and they label themselves.
+  never avatars mashed together. They come wanting something they do not yet know how to get: Clarify sets out that
+  avatar's options and they pick; Label sets out what must be going on, and they name themselves in it. This is the
+  shape of the conversation, never its copy — each screen's words are written for the avatar.
 - **Every CLOSER ends at the same cart:** exactly what that avatar needs INSIDE JobWorld — the AI system they do it in
   themselves, which works with them and for them.
 - **Then the hand-holding**, by who they are: the community for individuals · a B2B engagement on a retainer for businesses.
