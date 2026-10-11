@@ -4,6 +4,15 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — RULE 03, THE FUNNEL LAW
+
+- Isaac approved a site rule holding how the site sells, so a session starts from it instead of rediscovering it:
+  `.claude/rules/03-FUNNEL-LAW.md` — read every Hormozi and Expert Secrets skill, the value ladder, the whole bootcamp
+  and the door doc before copy; take a ruling as class logic and specialize it everywhere; hold the frame (the product
+  named only at the reveal); tell, never ask; one CLOSER-as-DOCTOR conversation per avatar with the trick; offers built
+  around JobWorld; check by reading as the visitor. The site canon and `CLAUDE.md` point at it.
+- Files: `.claude/rules/03-FUNNEL-LAW.md` · `.claude/rules/00-SITE-CANON.md` · `CLAUDE.md`.
+
 ## 2026-10-11 — the door's logic specialized to the JobWorld page and the bootcamp
 
 - Isaac ruled: apply the same principles to each site funnel — take the intended class logic and specialize it.

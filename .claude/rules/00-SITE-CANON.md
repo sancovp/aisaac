@@ -1,6 +1,8 @@
 # RULE 00 — THE SITE CANON (nobody edits this site without reading their sources)
 
-**THE LAW: NOBODY MAY EDIT THE SITE WITHOUT BEING TOLD WHAT TO READ TO PUT THERE.** An agent editing
+**THE LAW: NOBODY MAY EDIT THE SITE WITHOUT BEING TOLD WHAT TO READ TO PUT THERE.** **HOW THE SITE SELLS — the frame, telling, one conversation per
+avatar, the trick, offers built around JobWorld, and the reading check — is `03-FUNNEL-LAW.md`; read it and its read
+list before any copy.** An agent editing
 any page reads that page's canonical sources FIRST and puts THEIR content there — never its own
 summary, never an orchestrator's paraphrase, never invented copy. If a surface's source row below is
 missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
