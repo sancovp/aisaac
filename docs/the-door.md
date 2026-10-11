@@ -94,7 +94,9 @@ exists; until then a part opens on its page as it is.
 - the twin, and the VSL of each part
 - the concierge page's source: the existing service page reframed, or a new offer (the nearest frozen one is
   `pricing.html`'s "Retainer — Your AI CTO") — and its address
-- the seat's price, and the agency level's (law 1: offers are frozen)
+- THE PRICING PASS, later: the seat's price and the plans' — the direction is down, toward something like $297/mo plus about $20
+  a seat, once a seat's cost and the SaaS's cost are measured (`sanctuary-revolution-alpha/application/lamai-saas` board § OPEN);
+  until then the plans in Stripe stand, and the shape and the words are built without waiting on the numbers
 - the recommendations card 3 matches people to
 
 ## 9. The order of work
