@@ -4,6 +4,16 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the frame holds until the reveal: no JobWorld before it
+
+- Isaac ruled: the survey and everything before the reveal speak from the general position, because the visitor does
+  not yet know what JobWorld is — organize the information flow; it is frame mechanics.
+- Removed every visible "JobWorld" before the reveal: the survey's "I need JobWorld for my business" → "I need AI for my
+  business", "I want to sell JobWorld to my clients" → "I want to sell AI to my clients" (and the funnel openers that
+  echo them); the Label lines; the owner's size screen; the agency's size screen; the agency label "Sell JobWorld" →
+  "Sell AI". JobWorld is first named on the reveal. The door doc and the site canon state the rule and the new cards.
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md` · `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the door does the trick: where it ends, then the reveal
 
 - Isaac ruled: the whole thing is a magic trick, and the door must sell as hard as marketing allows. Read whole: his

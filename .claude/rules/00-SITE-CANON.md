@@ -19,11 +19,10 @@ ITS OWN SALES CONVERSATION, ATTUNED TO IT — the CLOSER process (the `hormozi-c
 Sell the vacation · Explain · Reinforce) — and EVERY ONE ENDS AT THE SAME CART: exactly what that avatar needs INSIDE
 JOBWORLD, the AI system they do it in themselves, with them and for them; THEN THE HAND-HOLDING, by who they are — the
 community for individuals, a B2B engagement on a retainer for businesses.** Never avatars mashed together; never one
-script for all; it is not selling AI transformation. THE FIVE AVATARS (the cards, in his words): the owner — "I need
-JobWorld for my business" · the founder — "I want to start an AI-native business" · the learner — "I want to learn how to
+script for all; it is not selling AI transformation. THE FIVE AVATARS (the cards, in his words): the owner — "I need AI for my business" · the founder — "I want to start an AI-native business" · the learner — "I want to learn how to
 use AI" · the entrepreneur who wants to grow — "I want to learn to sell, market or run my operations" (the B2B bootcamp,
 `/bootcamp`, is FOR ENTREPRENEURS TO LEARN FROM: need frameworks? → here they are → they are in JobWorld too → want that?)
-· the agency — "I want to sell JobWorld to my clients" (the agency level is Meta Business, the white label, on sale on the plans
+· the agency — "I want to sell AI to my clients" (the agency level is Meta Business, the white label, on sale on the plans
 page). THE CART IS A DIRECT-RESPONSE FUNNEL AND EVERYTHING IN IT IS JOBWORLD (`docs/the-door.md` §4): front end →
 checkout and its order bump → the one-time offer after payment → no thanks → in, and every offer is a JobWorld plan or
 more on JobWorld (seats, the agency level) — never a separate product, course, session or service bundled in. The one

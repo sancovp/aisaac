@@ -32,7 +32,10 @@ the visitor ─▶ THE DOOR: the avatar picks itself
   changes — each pain they ticked, carried to its end and left with them (DOCTOR's Consequences,
   `b2b-bootcamp/DOCTOR-framework.md`) — and **the trick**: the expectation set ("you expect another AI tool"), then the
   literal thing — the real JobWorld working on screen — so the meaning snaps into place (`b2b-bootcamp/JOKE-MEDICINE-structure.md`).
-  Then where they will be, their doubts answered, and the offer. Nothing on any screen is false: no invented number, no
+  Then where they will be, their doubts answered, and the offer. **The frame is held until the reveal:** the visitor
+  does not know what JobWorld is until the reveal names it, so every screen before it — the survey, the choice, what
+  they want, what is happening, what they tried, where it ends — speaks from where they already are, in their terms,
+  and never names the product; from the reveal on, JobWorld is the thing they have just seen. Nothing on any screen is false: no invented number, no
   invented scarcity. **The door TELLS them; it never asks.** Every screen is a statement in the second person that presupposes
   where they are and where they are going, and the visitor only recognises themselves in it — a hypnotic experience,
   never a questionnaire.
