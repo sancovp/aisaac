@@ -2,6 +2,23 @@
 
 What changed, what it replaced or corrected, and why. Appended, never edited; never served (`.assetsignore`).
 
+## 2026-10-11 — THE DOOR's cards: four ways in, every one routing to JobWorld; the sales pipeline lives in the JobWorld part
+
+What changed: § WHAT IS PUBLIC names the door's four cards in the owner's words and each route — the features card into a
+socratic sales pipeline (features as the problems they solve, the list, N seats, "help integrating?" where the concierge
+page is advertised), the AI-native-business card, the learn-AI card (matched, emailed, signed up — JobWorld teaches AI
+with the owner's Claude compilation skills), the sell/market/run card (the frameworks, then back to JobWorld). The door stays
+one question and one card; the pipeline is the part's own flow. OPEN narrowed to the twin, the VSLs, the feature→problem
+list (JobWorld's) and the seat's price.
+Why — the owner's words: "the questions can just be: I need [jobworld's features] for my business (goes to JW but a special
+way where we ask them questions, qualify what they need, lead them thru all the features, essentially a sales pipeline …),
+I want to start an AI native business (goes to JW), I want to learn how to use AI (then goes "for..." and matches them to
+my stuff and recommends it, i will send you an email with everything just sign up here…) … jobworld has my claude
+compilation skills, it can teahc them AI too … so yeah, all these route to JW in different ways, and another one is "i
+want to learn how to sell, market, or run my business operations" and that goes to the frameworks (DOCTOR etc) and goes
+back to JW (it does it for you)".
+Files: `.claude/rules/00-SITE-CANON.md` · this file.
+
 ## 2026-10-11 — THE DOOR: the home is a short, beautiful survey — why are you here, which avatar — animated with the arm and the films' agents, each part opening with a VSL
 
 What changed: `00-SITE-CANON.md` § WHAT IS PUBLIC states the home as THE DOOR — a survey in the Blueprint System, every

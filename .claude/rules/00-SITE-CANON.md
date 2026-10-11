@@ -14,12 +14,25 @@ cyan agents, the black wires — `video-aios/draw-the-box/`), in the Blueprint S
 once had — `git show 9b26f427:index.html` (2026-06-10): "What brings you here? Four paths" as cards, a qualification flow
 under one of them (revenue · what's eating your time · how soon), step dots, the answers kept in `localStorage`, each
 result routing to its page — "it probably has everything already except the cool animations": take its logic, give it the
-animations. The PARTS it opens are the avatars' pages — THE FRONT LOOP's two (the funnel page; the concierge page, § below)
-first — and EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL
-until the twin exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the survey's questions and avatars in his
-words (the old four — the Sanctuary System · I need AI in my business now · I want to make money with AI · I want to build
-AI agents — are the starting point; which stay, and what each lands in) · the twin · the VSL of each part. Until the door
-is built, the presented page below stands at the home.
+animations. THE DOOR IS SHORT — one question, one card — and it is THE ROUTER BACK TO EVERYTHING: every card routes to
+JOBWORLD, each by its own way (*USER*'s ruling). THE CARDS, in his words:
+1. **"I need [JobWorld's features] for my business"** → JobWorld, the special way: A SALES PIPELINE inside the JobWorld
+   part — it asks what they need, qualifies it, leads them through every feature socratically ("so do you have xyz
+   problem?" — each feature set up as the problem it solves — "JobWorld solves it like this"), then "do you have [the list
+   of problems]? select from here… JobWorld solves all those! You need N seats. Do you want help integrating it with your
+   business?" — the seats are §6's (a JobWorld per seat), and the help is THE CONCIERGE PAGE, advertised exactly there. The
+   pipeline's shape is the leak tree's (*the numbers · but · before · so we · after*), one per feature; it is the funnel
+   page's own flow after the door, never the door's.
+2. **"I want to start an AI-native business"** → JobWorld.
+3. **"I want to learn how to use AI"** → "for…" → matched to his material and recommended — "I will send you an email with
+   everything, just sign up here" (a form: law 13's consent boxes, the relay) → JobWorld, which carries his Claude
+   compilation skills and teaches AI itself.
+4. **"I want to learn how to sell, market, or run my business operations"** → the frameworks (DOCTOR and the rest,
+   `framework.html` and the bootcamp) → back to JobWorld, which does it for them.
+EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL until the twin
+exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the twin · the VSL of each part · the feature→problem list
+the pipeline walks (JobWorld's own, `application/jobworld/DESIGN.md` §9, never invented here) · the seat's price (law 1).
+Until the door is built, the presented page below stands at the home.
 
 **Until the door: one page is presented, `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
