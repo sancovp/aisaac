@@ -1,4 +1,4 @@
-/* /api/lead — every form on the site posts here (DIRECTION ①, the world → GoHighLevel).
+/* /api/lead — every form on the site posts here (DIRECTION ①, the world → the CRM).
  *
  * It takes the same fields the forms send today (so moving a form here changes only its
  * `action`), drops bots, labels the submission (which form, which page, which partner),
@@ -6,7 +6,7 @@
  * for a script, answers JSON.
  */
 import { push, json } from '../../lib/relay.js';
-import { recordLead } from '../../lib/ghl.js';
+import { recordLead } from '../../lib/crm.js';
 
 // where a form may send the visitor afterwards: this site, the booking calendar, Stripe checkout
 const NEXT_HOSTS = ['iwantaiformybusiness.com', 'sancovp.github.io', 'cal.com', 'buy.stripe.com', 'checkout.stripe.com'];
@@ -61,7 +61,7 @@ export async function onRequestPost({ request, env }) {
   const [results, crm] = await Promise.all([
     push(env, 'lead', payload),
     recordLead(env, payload).catch((e) => {
-      console.error('ghl lead', e.message);
+      console.error('crm lead', e.message);
       return { ok: false };
     }),
   ]);

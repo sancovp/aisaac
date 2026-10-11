@@ -3,7 +3,7 @@
  * Sales close on a call and are paid through Stripe, so a payment is the commission's
  * trigger. The relay proves the call came from Stripe (the signing secret), turns it into
  * one plain event — `payment` or `refund`, with the payer's email and the amount — and
- * pushes it. The destination (GoHighLevel's workflow) finds the contact by that email and
+ * pushes it. The CRM finds the contact by that email and
  * does the rest: a referred client's first payment → "pay <partner> $1,000"; a refund →
  * cancel an unpaid one; no contact → flagged for a person.
  *
@@ -17,7 +17,7 @@
  * link. The whole contract: docs/stripe-payments.md §5.
  */
 import { push, json } from '../../lib/relay.js';
-import { recordPayment } from '../../lib/ghl.js';
+import { recordPayment } from '../../lib/crm.js';
 
 const TOLERANCE_S = 300;
 const enc = new TextEncoder();
@@ -90,7 +90,7 @@ export async function onRequestPost({ request, env }) {
   const [results, crm] = await Promise.all([
     push(env, kind, event),
     recordPayment(env, { event: kind, ...event }).catch((e) => {
-      console.error('ghl payment', e.message);
+      console.error('crm payment', e.message);
       return { ok: false };
     }),
   ]);
