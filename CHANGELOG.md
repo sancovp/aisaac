@@ -4,6 +4,20 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the door's logic specialized to the JobWorld page and the bootcamp
+
+- Isaac ruled: apply the same principles to each site funnel — take the intended class logic and specialize it.
+- `/jobworld` now runs as the owner's funnel: the hero tells their position ("Your business still runs through you. It
+  does not have to."), then what is happening, what they tried, where it ends, and THE REVEAL — the first place JobWorld
+  is named — then the first night, the dashboard, where it stops, how it grows, who helps them, and the close with the
+  owner's offer and Get JobWorld. Replaced: a page that opened on the product's name and Get JobWorld in the top bar and
+  hero, before the visitor knew what it was. The top bar now carries the company's name, Sign in and Book a call.
+- `/bootcamp` no longer names JobWorld before it is introduced: "Or let JobWorld do it for you" → "Or have it all run for
+  you", and the top-bar link likewise; both lead to `/jobworld`, where the reveal names it. The landing page,
+  `/framework` and `/partners` name no product before introducing it.
+- Files: `tools/build_jobworld.py` → `jobworld.html` · `tools/build_bootcamp.py` → `bootcamp.html` ·
+  `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the frame holds until the reveal: no JobWorld before it
 
 - Isaac ruled: the survey and everything before the reveal speak from the general position, because the visitor does

@@ -170,18 +170,20 @@ sessions a month, the roadmap planned and implemented together, direct access to
 no price (law 1; "priced on the call"); and its address. Until ruled, the page is not built and the funnel page carries
 no button to it (law 00: a surface without its source row is a blocker, not a gap).
 `jobworld.html` is BUILT, not hand-edited: `python3 tools/build_jobworld.py` writes it and lifts the booking dialog whole from
-`ai-transformation.html`. IT IS THE PRODUCT'S FUNNEL, SO A VISITOR CAN BUY FROM IT: its top bar carries the wordmark
-`JobWorld`, an INK `Sign in` (owners who already have one, `https://app.iwantaiformybusiness.com/sign-in`), an INK `Get
-JobWorld` (the plans and the checkout, `https://app.iwantaiformybusiness.com/pricing` — the prices live there, in
-Stripe, never on this page) and the red Book a call; the hero and the closing band each carry Get JobWorld beside Book a
-call. Its exits: Get JobWorld · Sign in · Book a call (· the concierge page, when it exists). Its order: the hero (h1 "Your company, with an AI CEO in the chair." — the product's own line, the title of
-every JobWorld · the lede from the VSL's box · the HERO LOOP · who it's for) · what it looks like running (the
-owner's own first night, `assets/jobworld-walkthrough-loop.mp4`, with the site section's blurb and three cells) ·
-the dashboard (`assets/jobworld-console-tour.mp4`) · it works while you watch (`assets/jobworld-agent-at-work.mp4`)
-— both on the DEMO business, labelled so on the page · where it stops (money · contact without a basis · your own
-AI) · how it grows (drafts and asks → you approve, it sends → it answers and books) · who helps you · book a call.
-No price, no name of anything behind the door, no client named. Every recording is checked frame by frame for
-those names before it ships.
+`ai-transformation.html`. IT IS THE PRODUCT'S FUNNEL, BUILT ON THE DOOR'S LOGIC (`docs/the-door.md` §1, specialized to one
+long page for the B2B owner): the visitor's position first, and THE PRODUCT IS NOT NAMED UNTIL THE REVEAL. Its top bar
+carries the company's wordmark, an INK `Sign in` (owners who already have one, `https://app.iwantaiformybusiness.com/sign-in`)
+and the red Book a call — the B2B owner may start with the retainer from the first screen. Its order: the hero (h1 "Your
+business still runs through you. It does not have to." · Book a call · who it's for) · what is happening (the owner's
+pains, the door's own) · what you tried · where it ends if nothing changes · THE REVEAL ("You expect another AI tool.
+Here is what it actually is." — `assets/jobworld-agent-at-work.mp4`, the first place JobWorld is named) · what it looks
+like running (the owner's own first night, `assets/jobworld-walkthrough-loop.mp4`) · the dashboard
+(`assets/jobworld-console-tour.mp4`) — both demo recordings labelled so · where it stops (money · contact without a
+basis · your own AI) · how it grows · who helps you · the close: the owner's offer (the door's `OFFERS['own']`) with Get
+JobWorld (the plans and the checkout, `https://app.iwantaiformybusiness.com/pricing` — prices live there, in Stripe, never
+on this page) beside Book a call. Its exits: Book a call · Sign in · Get JobWorld (after the reveal) · the concierge page,
+when it exists. No price, no name of anything behind the door, no client named. Every recording is checked frame by
+frame for those names before it ships.
 
 **The full funnel is preserved, not presented:** `ai-transformation-full.html` (the thirteen deck
 slides, the driven diagrams, the cost anchor, the ledger, the price cascade, both checkout doors, the

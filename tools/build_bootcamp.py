@@ -17,8 +17,8 @@ assert H2 in sec
 sec = sec.replace(H2, '<h1 class="sec-h1">How to sell and deliver AI transformation &mdash; run like a clinic.</h1>')
 a = sec.index('      <div class="solo-cta fw-again">'); b = sec.index('</div>', sec.index('</p>', a)) + len('</div>')
 sec = sec[:a] + '''      <div class="solo-cta fw-again">
-        <span class="arm-press" data-arm-press><a class="cta-primary" href="https://iwantaiformybusiness.com/jobworld">Or let JobWorld do it for you &rarr;</a></span>
-        <p class="door-fine">Every framework on this page runs in JobWorld &mdash; its CEO and departments do the selling, the marketing and the operations.</p>
+        <span class="arm-press" data-arm-press><a class="cta-primary" href="https://iwantaiformybusiness.com/jobworld">Or have it all run for you &rarr;</a></span>
+        <p class="door-fine">Every framework on this page can run for you &mdash; an AI CEO and its departments doing the selling, the marketing and the operations.</p>
       </div>''' + sec[b:]
 
 APP = 'https://app.iwantaiformybusiness.com'
@@ -48,7 +48,7 @@ page = f'''<!doctype html>
      lands here; the one way on is JobWorld. -->
 <header class="nav nav-glass">
   <span class="logo">AI Transformations With Isaac</span>
-  <span class="arm-press" data-arm-press="down"><a class="nav-get" href="https://iwantaiformybusiness.com/jobworld">JobWorld</a></span>
+  <span class="arm-press" data-arm-press="down"><a class="nav-get" href="https://iwantaiformybusiness.com/jobworld">Have it run for you</a></span>
 </header>
 
 <main id="main">
