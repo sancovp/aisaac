@@ -4,6 +4,18 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — Clarify opens on "I don't know how to…"; Label shows what must be happening
+
+- Isaac ruled: each self-selected avatar is shown its exact CLOSER process — they come because they do not know how to
+  get what they want; Clarify sets out the options, and they label themselves.
+- All five Clarify screens now read "I don't know how to…" with that avatar's options (the owner's time back, growth
+  without hiring…; the founder's idea into a business…; the learner's AI in business, work, agents; the entrepreneur's
+  sell, market, run, all three; the agency's deliver AI, scale delivery, own product, keep clients). All five Label
+  screens read "Here is what must be happening. Which is you?". Replaced: Clarify asked what they want most, where they
+  start, what for, what to get better at, or what they do.
+- Files: `tools/build_door.py` → `door.html` · `docs/the-door.md` · `.claude/skills/hormozi-closer/SKILL.md` (and its
+  copy in `~/.claude/skills`).
+
 ## 2026-10-11 — five offers built from the marketing skills, JobWorld the main product of each
 
 - Isaac ruled: JobWorld is the main product that appears in every offer; HealthWorld and PromptWorld are not part of the

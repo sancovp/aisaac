@@ -66,11 +66,11 @@ START = [
 # JobWorld does (sanctuary-revolution-alpha/application/jobworld/DESIGN.md: the CEO and departments, the workflows on the
 # calendar, the console, the hot pages, the drafts it asks before sending, the repository, the seats); every concern's
 # answer is the JobWorld page's own "Where it stops" (jobworld.html) or what the console does (the RUN buttons).
-OWN_C = [  # C — CLARIFY: why they are here
-    opt('My time back', 'The business stops waiting on me for every decision.', 'data-step="own-l" data-key="own_want" data-val="time"', 'compass', 'Next'),
-    opt('Growth without hiring', 'More gets done with the people I have.', 'data-step="own-l" data-key="own_want" data-val="grow"', 'trend', 'Next'),
-    opt('Nothing falling through the cracks', 'Every lead and every task followed up.', 'data-step="own-l" data-key="own_want" data-val="cracks"', 'tag', 'Next'),
-    opt('AI that actually does the work', 'Not another chat window — work done.', 'data-step="own-l" data-key="own_want" data-val="ai"', 'bot', 'Next'),
+OWN_C = [  # C — CLARIFY: why they are here — what they do not know how to do yet
+    opt('&hellip; get my time back', 'The business waits on me for every decision.', 'data-step="own-l" data-key="own_want" data-val="time"', 'compass', 'Next'),
+    opt('&hellip; grow without hiring', 'More work, same people.', 'data-step="own-l" data-key="own_want" data-val="grow"', 'trend', 'Next'),
+    opt('&hellip; stop things falling through the cracks', 'Leads and tasks slip past us.', 'data-step="own-l" data-key="own_want" data-val="cracks"', 'tag', 'Next'),
+    opt('&hellip; get AI to actually do the work', 'Not another chat window &mdash; work done.', 'data-step="own-l" data-key="own_want" data-val="ai"', 'bot', 'Next'),
 ]
 OWN_L = [  # L — LABEL: they name the pains themselves (pick many); each carries how JobWorld ends it
     pick('Everything waits on me', 'I am the one who knows how it all runs.', 'data-val="bottleneck" data-solve="An AI CEO runs your departments and asks you only what it cannot know."', 'users'),
@@ -108,11 +108,11 @@ OWN_R = [  # R — REINFORCE, at the cart; the B2B avatar is the one offered don
 
 # THE FOUNDER'S CLOSER (avatar 2, "I want to start an AI-native business"). JobWorld helps them make an idea it can run
 # on its own, or helps them run the parts it cannot; one seat; the hand-holding is the community, free with JobWorld.
-FND_C = [  # C — CLARIFY: where they are starting from
-    opt('I have an idea', 'I know what I want to start.', 'data-step="fnd-l" data-key="fnd_start" data-val="idea"', 'rocket', 'Next'),
-    opt('I have a skill, not an idea yet', 'I know what I am good at, not what to sell.', 'data-step="fnd-l" data-key="fnd_start" data-val="skill"', 'compass', 'Next'),
-    opt('I have nothing yet but the will', 'I want my own thing, and AI is the way in.', 'data-step="fnd-l" data-key="fnd_start" data-val="will"', 'trend', 'Next'),
-    opt('I am leaving a job to do this', 'I need it working before the money runs out.', 'data-step="fnd-l" data-key="fnd_start" data-val="leaving"', 'briefcase', 'Next'),
+FND_C = [  # C — CLARIFY: why they are here — what they do not know how to do yet
+    opt('&hellip; turn my idea into a business', 'I know what I want to start.', 'data-step="fnd-l" data-key="fnd_start" data-val="idea"', 'rocket', 'Next'),
+    opt('&hellip; find the business to start', 'I know what I am good at, not what to sell.', 'data-step="fnd-l" data-key="fnd_start" data-val="skill"', 'compass', 'Next'),
+    opt('&hellip; start without money or a team', 'I have the will and not much else.', 'data-step="fnd-l" data-key="fnd_start" data-val="will"', 'trend', 'Next'),
+    opt('&hellip; make it work before I leave my job', 'I need it running before the money runs out.', 'data-step="fnd-l" data-key="fnd_start" data-val="leaving"', 'briefcase', 'Next'),
 ]
 FND_L = [  # L — LABEL
     pick('I do not know which idea will work', 'Every idea looks good until it has to sell.', 'data-val="which" data-solve="It shapes the idea with you into a business it can run on its own — or one it helps you run."', 'compass'),
@@ -143,10 +143,10 @@ FND_R = [  # R — REINFORCE, at the cart; the hand-holding for an individual is
 # THE LEARNER'S CLOSER (avatar 3, "I want to learn how to use AI"). JobWorld carries the Claude compilation skills and
 # teaches AI by doing it with them; the free sign-up is the hand-holding: the weekly letter (what it means for people
 # using JobWorld), every framework and manual, and the community where they share and help each other.
-LRN_C = [  # C — CLARIFY: what for
-    opt('For my business', 'Where AI goes in the business you run.', 'data-step="lrn-l" data-key="lrn_for" data-val="business"', 'store', 'Next'),
-    opt('For my work', 'Using AI in the job you do.', 'data-step="lrn-l" data-key="lrn_for" data-val="work"', 'monitor', 'Next'),
-    opt('To build my own AI agents', 'Agents, skills and the harnesses they run in.', 'data-step="lrn-l" data-key="lrn_for" data-val="agents"', 'bot', 'Next'),
+LRN_C = [  # C — CLARIFY: why they are here — what they do not know how to do yet
+    opt('&hellip; use AI in my business', 'Where it goes in the business I run.', 'data-step="lrn-l" data-key="lrn_for" data-val="business"', 'store', 'Next'),
+    opt('&hellip; use AI in my work', 'In the job I do every day.', 'data-step="lrn-l" data-key="lrn_for" data-val="work"', 'monitor', 'Next'),
+    opt('&hellip; build my own AI agents', 'Agents, skills and the harnesses they run in.', 'data-step="lrn-l" data-key="lrn_for" data-val="agents"', 'bot', 'Next'),
 ]
 LRN_L = [  # L — LABEL
     pick('I use it like a search box', 'Questions in, answers out, nothing more.', 'data-val="search" data-solve="You watch it work — departments, workflows, pages — and ask why at every step."', 'monitor'),
@@ -174,11 +174,11 @@ LRN_R = [  # R — REINFORCE, at the cart; then the free hand-holding
 
 # THE ENTREPRENEUR'S CLOSER (avatar 4, "I want to learn to sell, market or run my operations"). Need frameworks? Here they
 # are (the B2B bootcamp, /bootcamp, for entrepreneurs to learn from) — and they are inside JobWorld too: want that?
-ENT_C = [  # C — CLARIFY: which of the three
-    opt('Sell', 'Turn conversations into customers.', 'data-step="ent-l" data-key="ent_want" data-val="sell"', 'phone', 'Next'),
-    opt('Market', 'Get noticed by the right people.', 'data-step="ent-l" data-key="ent_want" data-val="market"', 'megaphone', 'Next'),
-    opt('Run my operations', 'Deliver without it all running through me.', 'data-step="ent-l" data-key="ent_want" data-val="run"', 'store', 'Next'),
-    opt('All three', 'The whole machine.', 'data-step="ent-l" data-key="ent_want" data-val="all"', 'trend', 'Next'),
+ENT_C = [  # C — CLARIFY: why they are here — what they do not know how to do yet
+    opt('&hellip; sell', 'Turn conversations into customers.', 'data-step="ent-l" data-key="ent_want" data-val="sell"', 'phone', 'Next'),
+    opt('&hellip; market', 'Get noticed by the right people.', 'data-step="ent-l" data-key="ent_want" data-val="market"', 'megaphone', 'Next'),
+    opt('&hellip; run my operations', 'Deliver without it all running through me.', 'data-step="ent-l" data-key="ent_want" data-val="run"', 'store', 'Next'),
+    opt('&hellip; do all three', 'The whole machine.', 'data-step="ent-l" data-key="ent_want" data-val="all"', 'trend', 'Next'),
 ]
 ENT_L = [  # L — LABEL; each pain carries the framework that answers it
     pick('Nobody notices me', 'I post and nothing comes back.', 'data-val="noticed" data-solve="PSA: the broadcast that names a condition they did not know they had."', 'megaphone'),
@@ -214,11 +214,11 @@ ENT_R = [  # R — REINFORCE, at the cart (the front end only: done-with-you is 
 # THE AGENCY'S CLOSER (avatar 5, "I want to sell JobWorld to my clients"). The cart is the agency level — Meta Business
 # (lamai-saas DESIGN §2): JobWorld under their own brand, each client its own business under them, paid in their own
 # Stripe; tailoring it with Isaac is offered once they have bought (docs/the-door.md §4).
-AGC_C = [  # C — CLARIFY: what they do
-    opt('A marketing or lead-generation agency', 'You run campaigns and leads for clients.', 'data-step="agc-l" data-key="agc_do" data-val="agency"', 'megaphone', 'Next'),
-    opt('Consulting or coaching', 'You advise owners on how to run the business.', 'data-step="agc-l" data-key="agc_do" data-val="consulting"', 'compass', 'Next'),
-    opt('Software or IT services', 'You build or run systems for clients.', 'data-step="agc-l" data-key="agc_do" data-val="it"', 'code', 'Next'),
-    opt('Something else', 'You serve businesses another way.', 'data-step="agc-l" data-key="agc_do" data-val="other"', 'dots', 'Next'),
+AGC_C = [  # C — CLARIFY: why they are here — what they do not know how to do yet
+    opt('&hellip; deliver AI to my clients', 'They ask for it; I have nothing to hand them.', 'data-step="agc-l" data-key="agc_do" data-val="deliver"', 'bot', 'Next'),
+    opt('&hellip; scale delivery without hiring', 'Every new client means another hire.', 'data-step="agc-l" data-key="agc_do" data-val="scale"', 'users', 'Next'),
+    opt('&hellip; sell a product of my own', 'I resell tools under someone else&rsquo;s name.', 'data-step="agc-l" data-key="agc_do" data-val="product"', 'store', 'Next'),
+    opt('&hellip; keep clients past month three', 'Results stall and they start asking.', 'data-step="agc-l" data-key="agc_do" data-val="keep"', 'tag', 'Next'),
 ]
 AGC_L = [  # L — LABEL
     pick('Clients leave when results stall', 'Month three is when they start asking.', 'data-val="churn" data-solve="Each client gets a JobWorld working their business every day — results that do not wait on your team."', 'tag'),
@@ -373,35 +373,35 @@ page = f'''<!doctype html>
       <div class="door-dots" aria-hidden="true" data-dots></div>
     </div>
 {step('start', 1, 'Start here', 'What brings you here?', 'Five ways in. Pick yours.', chr(10).join(START), first=True)}
-{step('own-c', 2, 'For your business', 'What do you want most right now?', 'Pick the one that matters most.', chr(10).join(OWN_C), of=8)}
-{step('own-l', 3, 'For your business', 'Which of these is happening to you?', 'Tick every one that is true.', chr(10).join(OWN_L), of=8, mode='data-multi="own_pains"', after=nxt('That&rsquo;s me', 'own-o'))}
+{step('own-c', 2, 'For your business', 'I don&rsquo;t know how to&hellip;', 'That is why you are here. Pick the one that is closest.', chr(10).join(OWN_C), of=8)}
+{step('own-l', 3, 'For your business', 'Here is what must be happening. Which is you?', 'Tick every one that is true.', chr(10).join(OWN_L), of=8, mode='data-multi="own_pains"', after=nxt('That&rsquo;s me', 'own-o'))}
 {step('own-o', 4, 'For your business', 'What have you tried so far?', 'So I do not sell you what already failed you.', chr(10).join(OWN_O), of=8)}
 {step('own-n', 5, 'For your business', 'How many people run the business with you?', 'Each of them gets their own JobWorld seat.', chr(10).join(OWN_N), of=8)}
 {step('own-s', 6, 'For your business', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="own"></div>' + nxt('That&rsquo;s what I want', 'own-e'))}
 {step('own-e', 7, 'For your business', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(OWN_E), of=8, mode='data-concerns="own_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'own-r'))}
 {step('own-r', 8, 'For your business', 'You are making the right call.', 'Your departments run without waiting on you, nothing goes out without your say, and everything they make stays yours.', chr(10).join(OWN_R), of=8, after=offer('own'))}
-{step('fnd-c', 2, 'Start a business', 'Where are you starting from?', 'Pick the one that is closest.', chr(10).join(FND_C), of=7)}
-{step('fnd-l', 3, 'Start a business', 'What is in the way?', 'Tick every one that is true.', chr(10).join(FND_L), of=7, mode='data-multi="fnd_pains"', after=nxt('That&rsquo;s me', 'fnd-o'))}
+{step('fnd-c', 2, 'Start a business', 'I don&rsquo;t know how to&hellip;', 'That is why you are here. Pick the one that is closest.', chr(10).join(FND_C), of=7)}
+{step('fnd-l', 3, 'Start a business', 'Here is what must be happening. Which is you?', 'Tick every one that is true.', chr(10).join(FND_L), of=7, mode='data-multi="fnd_pains"', after=nxt('That&rsquo;s me', 'fnd-o'))}
 {step('fnd-o', 4, 'Start a business', 'What have you tried so far?', 'So I do not sell you what already failed you.', chr(10).join(FND_O), of=7)}
 {step('fnd-s', 5, 'Start a business', 'Here is where you will be.', '', '', of=7, after='<div class="door-vac" data-vacation="fnd"></div>' + nxt('That&rsquo;s what I want', 'fnd-e'))}
 {step('fnd-e', 6, 'Start a business', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(FND_E), of=7, mode='data-concerns="fnd_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'fnd-r'))}
 {step('fnd-r', 7, 'Start a business', 'You are making the right call.', 'You start with a company that already knows how to work, it asks before anything goes out, and everything it makes is yours.', chr(10).join(FND_R), of=7, after=offer('fnd'))}
-{step('lrn-c', 2, 'Learn AI', 'Learn AI &mdash; for what?', 'So what you learn fits.', chr(10).join(LRN_C), of=8)}
-{step('lrn-l', 3, 'Learn AI', 'Where does it stop working for you?', 'Tick every one that is true.', chr(10).join(LRN_L), of=8, mode='data-multi="lrn_pains"', after=nxt('That&rsquo;s me', 'lrn-o'))}
+{step('lrn-c', 2, 'Learn AI', 'I don&rsquo;t know how to&hellip;', 'That is why you are here. Pick the one that is closest.', chr(10).join(LRN_C), of=8)}
+{step('lrn-l', 3, 'Learn AI', 'Here is what must be happening. Which is you?', 'Tick every one that is true.', chr(10).join(LRN_L), of=8, mode='data-multi="lrn_pains"', after=nxt('That&rsquo;s me', 'lrn-o'))}
 {step('lrn-o', 4, 'Learn AI', 'How have you learned so far?', 'So I do not sell you what already failed you.', chr(10).join(LRN_O), of=8)}
 {step('lrn-s', 5, 'Learn AI', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="lrn"></div>' + nxt('That&rsquo;s what I want', 'lrn-e'))}
 {step('lrn-e', 6, 'Learn AI', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(LRN_E), of=8, mode='data-concerns="lrn_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'lrn-r'))}
 {step('lrn-r', 7, 'Learn AI', 'You are making the right call.', 'You learn AI by using it on real work, and you are never learning it alone.', chr(10).join(LRN_R), of=8, after=offer('lrn'))}
 {step('lrn-send', 8, 'Learn AI', 'Where should it go?', 'The weekly letter, the frameworks and manuals, and the way into the community.', SEND, of=8)}
-{step('ent-c', 2, 'Grow your business', 'What do you want to get better at?', 'Pick the one that matters most.', chr(10).join(ENT_C), of=8)}
-{step('ent-l', 3, 'Grow your business', 'Where does it stall?', 'Tick every one that is true.', chr(10).join(ENT_L), of=8, mode='data-multi="ent_pains"', after=nxt('That&rsquo;s me', 'ent-o'))}
+{step('ent-c', 2, 'Grow your business', 'I don&rsquo;t know how to&hellip;', 'That is why you are here. Pick the one that is closest.', chr(10).join(ENT_C), of=8)}
+{step('ent-l', 3, 'Grow your business', 'Here is what must be happening. Which is you?', 'Tick every one that is true.', chr(10).join(ENT_L), of=8, mode='data-multi="ent_pains"', after=nxt('That&rsquo;s me', 'ent-o'))}
 {step('ent-o', 4, 'Grow your business', 'What have you tried so far?', 'So I do not sell you what already failed you.', chr(10).join(ENT_O), of=8)}
 {step('ent-s', 5, 'Grow your business', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="ent"></div>' + nxt('Show me how', 'ent-f'))}
 {step('ent-f', 6, 'Grow your business', 'You need frameworks. Here they are.', 'Open any one. All of them, free, are on <a href="bootcamp" target="_blank" rel="noopener">the bootcamp page</a> &mdash; and every one runs inside JobWorld too.', chr(10).join(ENT_F), of=8, mode='data-concerns="ent_frameworks"', after=nxt('I want them run for me', 'ent-e'))}
 {step('ent-e', 7, 'Grow your business', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(ENT_E), of=8, mode='data-concerns="ent_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'ent-r'))}
 {step('ent-r', 8, 'Grow your business', 'You are making the right call.', 'You have the frameworks, and a system that runs them with you and for you.', chr(10).join(ENT_R), of=8, after=offer('ent'))}
-{step('agc-c', 2, 'Sell JobWorld', 'What do you do?', 'So I know who your clients are.', chr(10).join(AGC_C), of=8)}
-{step('agc-l', 3, 'Sell JobWorld', 'What is hard about it now?', 'Tick every one that is true.', chr(10).join(AGC_L), of=8, mode='data-multi="agc_pains"', after=nxt('That&rsquo;s me', 'agc-o'))}
+{step('agc-c', 2, 'Sell JobWorld', 'I don&rsquo;t know how to&hellip;', 'That is why you are here. Pick the one that is closest.', chr(10).join(AGC_C), of=8)}
+{step('agc-l', 3, 'Sell JobWorld', 'Here is what must be happening. Which is you?', 'Tick every one that is true.', chr(10).join(AGC_L), of=8, mode='data-multi="agc_pains"', after=nxt('That&rsquo;s me', 'agc-o'))}
 {step('agc-o', 4, 'Sell JobWorld', 'What have you tried so far?', 'So I do not sell you what already failed you.', chr(10).join(AGC_O), of=8)}
 {step('agc-n', 5, 'Sell JobWorld', 'How many clients would you put on it?', 'Each one gets its own JobWorld, under your name.', chr(10).join(AGC_N), of=8)}
 {step('agc-s', 6, 'Sell JobWorld', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="agc"></div>' + nxt('That&rsquo;s what I want', 'agc-e'))}
