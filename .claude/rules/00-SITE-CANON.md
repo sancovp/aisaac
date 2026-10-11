@@ -7,7 +7,21 @@ missing or stale, that is a BLOCKER to report, not a gap to fill with judgment.
 
 ## WHAT IS PUBLIC
 
-**One page is presented: `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
+**THE HOME IS THE DOOR: A SHORT, BEAUTIFUL SURVEY (*USER*'s ruling) — "why are you here, which avatar are you" — and
+the visitor is let into the part they self-selected.** Not a page that explains: a few steps, each transition animated
+with THE ROBOT ARM (`arm.js`, `docs/arm-press/`) and the AGENTS of the site's own films (the owner with the gold orb, the
+cyan agents, the black wires — `video-aios/draw-the-box/`), in the Blueprint System. Its LOGIC is the survey the site
+once had — `git show 9b26f427:index.html` (2026-06-10): "What brings you here? Four paths" as cards, a qualification flow
+under one of them (revenue · what's eating your time · how soon), step dots, the answers kept in `localStorage`, each
+result routing to its page — "it probably has everything already except the cool animations": take its logic, give it the
+animations. The PARTS it opens are the avatars' pages — THE FRONT LOOP's two (the funnel page; the concierge page, § below)
+first — and EACH PART OPENS WITH A VSL, played by *USER*'s AVATAR DIGITAL TWIN, with the same animations: ASPIRATIONAL
+until the twin exists (it is being made and is not ready). ⏸ OPEN (*USER*'s): the survey's questions and avatars in his
+words (the old four — the Sanctuary System · I need AI in my business now · I want to make money with AI · I want to build
+AI agents — are the starting point; which stay, and what each lands in) · the twin · the VSL of each part. Until the door
+is built, the presented page below stands at the home.
+
+**Until the door: one page is presented, `ai-transformation.html`.** Above it rides the glass top bar (RULE 02 §9):
 the TWI wordmark and a red BOOK A CALL that never leaves the screen. The page is seven things and one
 action — the hero (the claim and the red Book a call on the left — behind it THE ARM PRESS (`arm.js`, RULE 02 §8b):
 a robot arm that is never seen until the button is clicked, then comes up from behind, reaches over and presses it,
@@ -199,9 +213,10 @@ not being presented; the laws below govern each page whenever it is.
    no move except the sanctioned ones. Every page's visible exits ARE its sanctioned moves — design each
    exit set deliberately. On the full site: the brand button → `isaac.html` (the hub) · `index.html`
    is the entrypoint only, one-way, with no nav route back to it (browser-back only). On the public
-   page: the booking form is the one exit. On THE FRONT LOOP (§ WHAT IS PUBLIC): the funnel page's exits are
-   its booking form, the sign-in and the concierge page; the concierge page's are its booking form, the
-   funnel page and the sign-up; the accounts app's pages lead back to the funnel page — nothing else.
+   page: the booking form is the one exit. THE DOOR's exits are its avatars' parts and nothing else (the
+   way out is the same door). On THE FRONT LOOP (§ WHAT IS PUBLIC): the funnel page's exits are its booking
+   form, the sign-in and the concierge page; the concierge page's are its booking form, the funnel page and
+   the sign-up; the accounts app's pages lead back to the funnel page — nothing else.
 10. **THE BRANDED-FILTER LAW.** Every browse or filter surface filters by Isaac's framework concepts,
     never by generic categories. The corpus index files every piece under the seven levels of agent
     engineering (the flagship: `lab/explainer.html` → `blog/levels-overview.html`) plus the
@@ -311,7 +326,7 @@ Paths below marked ✓ resolve here.
 |---|---|
 | **the whole funnel** (IA, what sells, the ladder) | `~/aios-research/FLYWHEEL.md` (THE SPINE) · `~/aios-research/THE-CLINIC-MAP.md` (the operating-structure ruling) · ✓ `~/claude_code/video-aios/references/content-plan/THE-OFFER-AND-FUNNEL.md` (the concrete money offer) · `~/aios-research/ME2C-FUNNEL.md` (creator side) |
 | **positioning / category** | `~/aios-research/GARAGE-LAB-LAUNCH-STRATEGY.md` §0 (simulations and world loops: iteration does not compound; worlds compound), §1 (legibility grammar), §1b (content pipeline), §1c (voice — law 4) |
-| **index.html / the door** | the two rows above + `~/aios-research/SITE-CEO-BRANCH-REVIEW.md` (live decisions, incl. hero-first) |
+| **the home / THE DOOR (the survey)** | ✓ § WHAT IS PUBLIC's ruling · ✓ `git show 9b26f427:index.html` (the survey's logic and its four cards, verbatim as the starting point) · ✓ `arm.js` + `docs/arm-press/` (the arm) · ✓ `~/claude_code/video-aios/draw-the-box/` (the characters) · *USER*'s words for the questions and avatars (OPEN) · the two rows above + `~/aios-research/SITE-CEO-BRANCH-REVIEW.md` (live decisions, incl. hero-first) |
 | **isaac.html (the hero site)** | `GARAGE-LAB-LAUNCH-STRATEGY.md` §1c · `~/aios-research/HJ-GAUGE-SPEC.md` (the theses) · `~/repo/garage-lab/CATALOG.md` + `INDEX.md` (the receipts) · `~/repo/garage-lab/CLAIM-AUDIT.md` (the honest claim board) · myth flavor ONLY from ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/SANCTUARY-MYTH-ORIGIN.md` Part V |
 | **isaac-wostrel-rubin.html (his personal page)** | ✓ `isaac.html` (the content it started from — the beliefs, the story, the open rows, verbatim) · ✓ `ssri/papers/flat-vs-tree.html` (the paper — only its own sentences) · ✓ `~/claude_code/sanctuary-revolution-alpha/research/ssri/ship/arrow-book/` — `MANUSCRIPT.md`'s title page and Chapter One (the passages), `front-matter/` (the mark, `assets/sanc-mark-white.png`, byte-identical), and the book's own gates: nothing from `sgc/`, no practice text, nothing from the raw autobiography corpus · `gh api repos/sancovp/<repo> .description` (each repo card's words) · every repo linked returns 200 unauthenticated |
 | **framework.html (the DIY framework + community funnel)** | ✓ `docs/the-transformation-method-2026-09-17.md` §1 (the seven parts, his questions) + §1a (the central test, the two shapes of a business that fails it) — never §1a-bis's cascade, never §1c–§1f · ✓ `~/claude_code/sanctuary-revolution-alpha/application/jobworld/avi-jw/docs/autonomy-framework/AUTONOMY-MANIFESTO.md` §II.2–II.4 (the autonomy ladder; its canon copy `~/autonomy-framework` is outside the world dir) · ✓ `b2b-bootcamp/` — thirteen of sixteen files, the SANCTUARY–WASTELAND cosmology leading them as the map; OUT: the origin story (personal), the pitch script, and `human-vs-ai-comparison.md` (its statistics name no source, law 3) · ✓ `~/claude_code/sanctuary-revolution-alpha/base/chaincompiler/` (public, MIT) — `DIETC-AIOS-REBUILD.md` §1–§5 (the AIOS template → BUILD AN AIOS) · `README.md` § The stack, § The formal spec, changelog v0.1.34–v0.1.36 (GBA · COG · HBA → THE LEVELS) · `chains/skill2framework.chain` + `skills/skill2framework/*` (the six stages → TOME) · ✓ `docs/business-context-2026-09-15-first-client.md` (the ordering rule that keeps it unpresented) · *USER*'s own description of the community (owners + operators on his model, his GoHighLevel, Skool) — the Skool link, the price and what the GHL access includes are his, OPEN |
