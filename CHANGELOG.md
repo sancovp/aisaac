@@ -4,6 +4,17 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — each cart shows its offer
+
+- Isaac: "PUT THE BASE FUCKING PART OF THE OFFER IN EVERY SINGLE PART WE FUCKING KNWO IT GOES IN NOW ... I AM TRYING TO
+  ITERATIVELY BUILD UP EVERY SINGLE OFFER AT ONCE" · "PUT THE FUCKING THINGS I FUCKING TELL YOU IN THE WEBSITE. STOP
+  TRYING TO FINISH IT BEFORE YOU KNOW WHAT IT IS."
+- Each avatar's cart screen now carries *What you get*: the lines known to go in its JobWorld (the owner's departments
+  and seats; the founder's one seat and the idea shaped with it; the learner's compilation skills, letter, frameworks and
+  manuals; the entrepreneur's frameworks running inside; the agency's white label, clients under them and own Stripe;
+  the community free for all), then the size their answers chose. Before, the cart showed only a one-line summary.
+- Files: `tools/build_door.py` → `door.html` · `style.css` · `docs/the-door.md`.
+
 ## 2026-10-11 — every offer in the cart is JobWorld, or more on JobWorld
 
 - Isaac: "i just told you the offers earlier in this conversation. They are all jobworld. you can ONLY put more things on

@@ -83,6 +83,9 @@ the CLOSER ─▶ 1 FRONT END ─▶ 2 CHECKOUT ─▶ 3 ONE-TIME OFFER ─▶ 4
 4. **No thanks** → a smaller step on JobWorld, or straight in.
 5. **In:** the dashboard and the community.
 
+**Each cart shows its offer:** under the cards, *What you get* — the lines known to go in that avatar's JobWorld (the
+`OFFER` table in `tools/build_door.py`), then the size their answers chose. Lines are added as each offer is built up.
+
 What exists to put on JobWorld today: **seats** (one JobWorld per person in the org chart, `application/jobworld/DESIGN.md`
 §6) and **the agency level** (Meta Business — the white label, each client its own business under them). Which goes at
 which step, per avatar, is *USER*'s (§6).

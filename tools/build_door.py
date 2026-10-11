@@ -24,7 +24,7 @@ APP = 'https://app.iwantaiformybusiness.com'
 TITLE = 'What brings you here? — AI Transformations With Isaac'
 DESC = 'Pick the one that sounds like you, and go straight to the part that is for you.'
 URL = 'https://iwantaiformybusiness.com/'
-V_CSS, V_ARM, V_DOOR = '2026-10-11j', '2026-10-11e', '2026-10-11e'
+V_CSS, V_ARM, V_DOOR = '2026-10-11k', '2026-10-11e', '2026-10-11e'
 
 
 ICONS = {'briefcase': '<rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>', 'rocket': '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>', 'cap': '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/><path d="M22 10v6"/>', 'trend': '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>', 'users': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', 'store': '<path d="M3 9 4.5 4h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>', 'monitor': '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/>', 'bot': '<rect width="16" height="12" x="4" y="8" rx="2"/><path d="M12 8V4H8"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>', 'megaphone': '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>', 'compass': '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>', 'code': '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>', 'dots': '<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>', 'phone': '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>', 'tag': '<path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r=".5"/>'}
@@ -249,6 +249,44 @@ AGC_R = [  # R — REINFORCE, at the cart (the agency level); tailoring with Isa
 ]
 
 
+# THE OFFER — what each avatar gets, shown at its cart (docs/the-door.md §4): every offer is JobWorld or more on JobWorld;
+# no prices here (the plans page holds them). Each line is what is known to go in it now; lines are added as it is built up.
+OFFER = {
+    'own': ['JobWorld for your business: an AI CEO in the chair, and its departments',
+            'A seat for each person who runs part of the business',
+            'Workflows on the calendar, the dashboard, and pages built on request',
+            'Everything it makes kept in your own private repository',
+            'Nothing goes out without your say; your money never moves',
+            'The JobWorld community, free'],
+    'fnd': ['JobWorld, one seat: an AI CEO and its departments from day one',
+            'An idea shaped with you into a business it can run on its own &mdash; or one it helps you run',
+            'Outreach drafted and lead lists built, sent when you approve',
+            'Everything it makes kept in your own private repository',
+            'The JobWorld community, free'],
+    'lrn': ['JobWorld: it does the work with you and shows you how',
+            'My Claude compilation skills, inside it',
+            'The weekly letter, every framework and manual',
+            'The JobWorld community, free'],
+    'ent': ['JobWorld, running the frameworks with you and for you',
+            'PSA &middot; SCREENING &middot; CLINIC &middot; DOCTOR &middot; LIFE &middot; MEDICINE &middot; OFFERS, inside it',
+            'Its CEO and departments doing the selling, the marketing and the operations',
+            'Nothing goes out without your say; your money never moves',
+            'The JobWorld community, free'],
+    'agc': ['JobWorld&rsquo;s agency level: JobWorld under your own name',
+            'Your name, logo, colours, domain and email &mdash; ours never shows',
+            'Each client its own JobWorld, with its own login, under you',
+            'Your clients pay you in your own Stripe; one monthly bill to us',
+            'The JobWorld community, free'],
+}
+
+
+def offer(p):
+    """the offer box at a cart: what they get, then the size their answers chose (door.js fills data-cart-sum)"""
+    items = ''.join(f'<li>{x}</li>' for x in OFFER[p])
+    return (f'<div class="door-offer"><p class="door-offer-k">What you get</p><ul class="door-offer-list">{items}</ul>'
+            f'<div class="door-cart-sum" data-cart-sum="{p}"></div></div>')
+
+
 def step(sid, n, pill, h, sub, body, first=False, of=3, mode='', after=''):
     """one screen of the door: its place in its flow (n of `of`, the dots), a question, and its cards; `mode` marks a
     pick-many list (`data-multi`) or a list of concerns (`data-concerns`); `after` follows the cards (a Next, a summary)"""
@@ -326,19 +364,19 @@ page = f'''<!doctype html>
 {step('own-n', 5, 'For your business', 'How many people run the business with you?', 'Each of them gets their own JobWorld seat.', chr(10).join(OWN_N), of=8)}
 {step('own-s', 6, 'For your business', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="own"></div>' + nxt('That&rsquo;s what I want', 'own-e'))}
 {step('own-e', 7, 'For your business', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(OWN_E), of=8, mode='data-concerns="own_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'own-r'))}
-{step('own-r', 8, 'For your business', 'You are making the right call.', 'Your departments run without waiting on you, nothing goes out without your say, and everything they make stays yours.', chr(10).join(OWN_R), of=8, after='<div class="door-vac door-cart-sum" data-cart-sum="own"></div>')}
+{step('own-r', 8, 'For your business', 'You are making the right call.', 'Your departments run without waiting on you, nothing goes out without your say, and everything they make stays yours.', chr(10).join(OWN_R), of=8, after=offer('own'))}
 {step('fnd-c', 2, 'Start a business', 'Where are you starting from?', 'Pick the one that is closest.', chr(10).join(FND_C), of=7)}
 {step('fnd-l', 3, 'Start a business', 'What is in the way?', 'Tick every one that is true.', chr(10).join(FND_L), of=7, mode='data-multi="fnd_pains"', after=nxt('That&rsquo;s me', 'fnd-o'))}
 {step('fnd-o', 4, 'Start a business', 'What have you tried so far?', 'So I do not sell you what already failed you.', chr(10).join(FND_O), of=7)}
 {step('fnd-s', 5, 'Start a business', 'Here is where you will be.', '', '', of=7, after='<div class="door-vac" data-vacation="fnd"></div>' + nxt('That&rsquo;s what I want', 'fnd-e'))}
 {step('fnd-e', 6, 'Start a business', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(FND_E), of=7, mode='data-concerns="fnd_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'fnd-r'))}
-{step('fnd-r', 7, 'Start a business', 'You are making the right call.', 'You start with a company that already knows how to work, it asks before anything goes out, and everything it makes is yours.', chr(10).join(FND_R), of=7, after='<div class="door-vac door-cart-sum" data-cart-sum="fnd"></div>')}
+{step('fnd-r', 7, 'Start a business', 'You are making the right call.', 'You start with a company that already knows how to work, it asks before anything goes out, and everything it makes is yours.', chr(10).join(FND_R), of=7, after=offer('fnd'))}
 {step('lrn-c', 2, 'Learn AI', 'Learn AI &mdash; for what?', 'So what you learn fits.', chr(10).join(LRN_C), of=8)}
 {step('lrn-l', 3, 'Learn AI', 'Where does it stop working for you?', 'Tick every one that is true.', chr(10).join(LRN_L), of=8, mode='data-multi="lrn_pains"', after=nxt('That&rsquo;s me', 'lrn-o'))}
 {step('lrn-o', 4, 'Learn AI', 'How have you learned so far?', 'So I do not sell you what already failed you.', chr(10).join(LRN_O), of=8)}
 {step('lrn-s', 5, 'Learn AI', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="lrn"></div>' + nxt('That&rsquo;s what I want', 'lrn-e'))}
 {step('lrn-e', 6, 'Learn AI', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(LRN_E), of=8, mode='data-concerns="lrn_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'lrn-r'))}
-{step('lrn-r', 7, 'Learn AI', 'You are making the right call.', 'You learn AI by using it on real work, and you are never learning it alone.', chr(10).join(LRN_R), of=8, after='<div class="door-vac door-cart-sum" data-cart-sum="lrn"></div>')}
+{step('lrn-r', 7, 'Learn AI', 'You are making the right call.', 'You learn AI by using it on real work, and you are never learning it alone.', chr(10).join(LRN_R), of=8, after=offer('lrn'))}
 {step('lrn-send', 8, 'Learn AI', 'Where should it go?', 'The weekly letter, the frameworks and manuals, and the way into the community.', SEND, of=8)}
 {step('ent-c', 2, 'Grow your business', 'What do you want to get better at?', 'Pick the one that matters most.', chr(10).join(ENT_C), of=8)}
 {step('ent-l', 3, 'Grow your business', 'Where does it stall?', 'Tick every one that is true.', chr(10).join(ENT_L), of=8, mode='data-multi="ent_pains"', after=nxt('That&rsquo;s me', 'ent-o'))}
@@ -346,14 +384,14 @@ page = f'''<!doctype html>
 {step('ent-s', 5, 'Grow your business', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="ent"></div>' + nxt('Show me how', 'ent-f'))}
 {step('ent-f', 6, 'Grow your business', 'You need frameworks. Here they are.', 'Open any one. All of them, free, are on <a href="bootcamp" target="_blank" rel="noopener">the bootcamp page</a> &mdash; and every one runs inside JobWorld too.', chr(10).join(ENT_F), of=8, mode='data-concerns="ent_frameworks"', after=nxt('I want them run for me', 'ent-e'))}
 {step('ent-e', 7, 'Grow your business', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(ENT_E), of=8, mode='data-concerns="ent_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'ent-r'))}
-{step('ent-r', 8, 'Grow your business', 'You are making the right call.', 'You have the frameworks, and a system that runs them with you and for you.', chr(10).join(ENT_R), of=8, after='<div class="door-vac door-cart-sum" data-cart-sum="ent"></div>')}
+{step('ent-r', 8, 'Grow your business', 'You are making the right call.', 'You have the frameworks, and a system that runs them with you and for you.', chr(10).join(ENT_R), of=8, after=offer('ent'))}
 {step('agc-c', 2, 'Sell JobWorld', 'What do you do?', 'So I know who your clients are.', chr(10).join(AGC_C), of=8)}
 {step('agc-l', 3, 'Sell JobWorld', 'What is hard about it now?', 'Tick every one that is true.', chr(10).join(AGC_L), of=8, mode='data-multi="agc_pains"', after=nxt('That&rsquo;s me', 'agc-o'))}
 {step('agc-o', 4, 'Sell JobWorld', 'What have you tried so far?', 'So I do not sell you what already failed you.', chr(10).join(AGC_O), of=8)}
 {step('agc-n', 5, 'Sell JobWorld', 'How many clients would you put on it?', 'Each one gets its own JobWorld, under your name.', chr(10).join(AGC_N), of=8)}
 {step('agc-s', 6, 'Sell JobWorld', 'Here is where you will be.', '', '', of=8, after='<div class="door-vac" data-vacation="agc"></div>' + nxt('That&rsquo;s what I want', 'agc-e'))}
 {step('agc-e', 7, 'Sell JobWorld', 'Anything holding you back?', 'Open any one and read the answer.', chr(10).join(AGC_E), of=8, mode='data-concerns="agc_concerns"', after=nxt('No &mdash; I&rsquo;m in', 'agc-r'))}
-{step('agc-r', 8, 'Sell JobWorld', 'You are making the right call.', 'Your clients get a company of AI working their business, under your name, billed by you.', chr(10).join(AGC_R), of=8, after='<div class="door-vac door-cart-sum" data-cart-sum="agc"></div>')}
+{step('agc-r', 8, 'Sell JobWorld', 'You are making the right call.', 'Your clients get a company of AI working their business, under your name, billed by you.', chr(10).join(AGC_R), of=8, after=offer('agc'))}
   </div>
 </main>
 
