@@ -121,9 +121,20 @@ takes it from there → $1,000) · two ways to refer (the link; the warm-intro f
 `ref.js`) · who it's for · the terms · the close. Public and indexable since 2026-09-28 (his go), linked from nothing — partners are sent the link; its
 button is INK.
 
-**Public, not linked from the landing page: `jobworld.html`** — THE JOBWORLD PRODUCT PAGE, at
-`/jobworld` on the business domain and the home of `app.iwantaiformybusiness.com` (the accounts app's root shows it).
-BUILT, not hand-edited: `python3 tools/build_jobworld.py` writes it and lifts the booking dialog whole from
+**THE FRONT LOOP (*USER*'s ruling): two pages, one theme, and the visitor moves only between them.** The FUNNEL
+PAGE — `jobworld.html`, THE JOBWORLD PRODUCT PAGE, at `/jobworld` on the business domain and THE MAIN PAGE of
+`app.iwantaiformybusiness.com` (the accounts app's root shows it) — ADVERTISES the CONCIERGE PAGE (the coaching,
+done-with-you service: a button on the funnel page to it), and the concierge page ADVERTISES THE SAAS back (a button to
+the funnel page and to `app.iwantaiformybusiness.com/sign-up`); each page's visible exits are those buttons and its
+own action (the booking form, the sign-in), so a visitor can only go back and forth between the two. Every page the
+accounts app shows (sign-in, sign-up, pricing, the dashboard) wears THIS site's theme — the Blueprint System (RULE 02),
+its `style.css` served to the app as it is — so the funnel, the concierge page and the product are one object.
+⏸ OPEN (*USER*'s): THE CONCIERGE PAGE'S SOURCE — no coaching / done-with-you / concierge offer is written anywhere on
+the site or in the offer corpus; the candidate is `pricing.html`'s "Retainer — Your AI CTO" (two 55-minute strategy
+sessions a month, the roadmap planned and implemented together, direct access to Isaac) with the landing page's lede,
+no price (law 1; "priced on the call"); and its address. Until ruled, the page is not built and the funnel page carries
+no button to it (law 00: a surface without its source row is a blocker, not a gap).
+`jobworld.html` is BUILT, not hand-edited: `python3 tools/build_jobworld.py` writes it and lifts the booking dialog whole from
 `ai-transformation.html`. Its top bar: the wordmark `JobWorld`, an INK `Sign in` (owners who already have a
 JobWorld, to `https://app.iwantaiformybusiness.com/sign-in` — the page's second sanctioned exit) and the red Book a
 call. Its order: the hero (h1 "Your company, with an AI CEO in the chair." — the product's own line, the title of
@@ -188,7 +199,9 @@ not being presented; the laws below govern each page whenever it is.
    no move except the sanctioned ones. Every page's visible exits ARE its sanctioned moves — design each
    exit set deliberately. On the full site: the brand button → `isaac.html` (the hub) · `index.html`
    is the entrypoint only, one-way, with no nav route back to it (browser-back only). On the public
-   page: the booking form is the one exit.
+   page: the booking form is the one exit. On THE FRONT LOOP (§ WHAT IS PUBLIC): the funnel page's exits are
+   its booking form, the sign-in and the concierge page; the concierge page's are its booking form, the
+   funnel page and the sign-up; the accounts app's pages lead back to the funnel page — nothing else.
 10. **THE BRANDED-FILTER LAW.** Every browse or filter surface filters by Isaac's framework concepts,
     never by generic categories. The corpus index files every piece under the seven levels of agent
     engineering (the flagship: `lab/explainer.html` → `blog/levels-overview.html`) plus the

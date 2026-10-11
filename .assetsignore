@@ -11,3 +11,4 @@ worker.js
 wrangler.jsonc
 node_modules/
 *.py
+CHANGELOG.md
