@@ -15,3 +15,12 @@ as it lands centred (first field focused), nods, hops back in, and the door clos
   spin 20–29 · throw 30–32 · haul 33–46 · release 47).
 - `lasso.js` — the sprite over the button, the rope drawn live in SVG from the hand to the form's corner, the real
   form moved along it. Reduced motion: the form opens at once.
+
+## The pop — the agent arrives where something new appears (the app's spawns)
+
+- `build_pop.py` — the same scene (`agent.blend`): the lasso's frames 1–19 (the door opens, the agent comes out and hops
+  down), three hops on its own `jump` clip lifted on an arc with the door held open (the clips' root and torso keys
+  dropped, so it keeps facing the camera; at the app's size the limbs move a few pixels and the whole body carries the
+  beat), then the lasso's frames 48–74 (the nod, home, the door closes). Writes `frames/p_NNN.png`.
+- `pack_pop.py` → `agent-pop.webp` + `agent-pop.json` (cell, the same button box, the beats: out · work · home).
+Run: `Blender -b agent.blend -P build_pop.py`, then `python3 pack_pop.py`.
