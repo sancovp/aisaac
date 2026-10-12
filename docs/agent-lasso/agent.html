@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent lasso — sample</title>
+<style>
+  @font-face { font-family: 'Geist'; src: url(../../assets/fonts/geist-var.woff2) format('woff2'); font-weight: 100 900; }
+  @font-face { font-family: 'Geist Mono'; src: url(../../assets/fonts/geist-mono-var.woff2) format('woff2'); font-weight: 100 900; }
+  :root { --paper:#fff; --ink:#000; --text-2:#3d3d3d; --text-3:#6b6b6b; --line:#e6e6e6; --signal:#e10600; --signal-deep:#b30500; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Geist', system-ui, sans-serif; overflow-x: hidden; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 48px 16px 96px; }
+  .eyebrow { display:flex; align-items:center; font: 600 0.8rem 'Geist Mono', monospace; margin:0 0 18px; }
+  .eyebrow::before { content:''; width:9px; height:9px; border:1px solid var(--ink); }
+  .eyebrow::after { content:''; order:1; width:32px; height:1px; background:var(--ink); }
+  .eyebrow span { order:2; border:1px solid var(--ink); border-radius:99px; padding:4px 12px; }
+  h1 { font: 700 clamp(2rem, 5vw, 3.4rem)/1.05 'Geist Mono', monospace; letter-spacing:-0.04em; margin: 0 0 18px; max-width: 18ch; }
+  h1 span { color: var(--text-3); }
+  .lede { color: var(--text-2); font-size: 1.1rem; line-height: 1.7; max-width: 46ch; margin: 0; }
+  .card { border:1px solid var(--ink); border-radius:28px; padding:48px; margin-top: 8px; }
+  .gn { position: relative; margin-top: 120px; height: 90px; }
+  .gn-sprite { position: absolute; pointer-events: none; background-repeat: no-repeat; z-index: 2; opacity: 0; }
+  .cta { font: 700 1rem 'Geist Mono', monospace; letter-spacing: 0.02em; color:#fff; background: var(--signal);
+         border: 1px solid var(--signal); border-radius: 14px; padding: 18px 28px; cursor: pointer; position: relative; z-index: 1;
+         transition: background 160ms; }
+  .cta:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
+  .gn-rope { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 60; overflow: visible; }
+  .gn-rope path, .gn-rope ellipse { transition: opacity 120ms; }
+  /* the booking form: hidden until the rope brings it */
+  .bookform { position: fixed; left: 0; top: 0; z-index: 50; width: min(440px, calc(100vw - 32px)); background: var(--paper);
+              border: 1px solid var(--ink); border-radius: 22px; padding: 28px; display: none; }
+  .bookform.is-out { display: block; }
+  .bookform h2 { font: 700 1.3rem 'Geist Mono', monospace; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .bookform p { color: var(--text-2); margin: 0 0 18px; line-height: 1.6; }
+  .bookform label { display:block; font: 600 0.78rem 'Geist Mono', monospace; margin: 0 0 12px; }
+  .bookform input { display:block; width:100%; margin-top:6px; font: 1rem 'Geist', sans-serif; padding: 12px 14px; border:1px solid var(--ink); border-radius: 10px; }
+  .bookform .cta { width: 100%; margin-top: 8px; }
+  .bookform [data-close] { position:absolute; top: 14px; right: 16px; border:0; background:none; font-size: 1.4rem; cursor:pointer; }
+  .note { margin-top: 40px; font: 500 0.82rem/1.6 'Geist Mono', monospace; color: var(--text-3); max-width: 70ch; }
+  @media (max-width: 640px) { .card { padding: 28px 20px; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="eyebrow"><span>Sample · not live</span></p>
+  <div class="card">
+    <h1>Turn your business into software <span>that runs without you.</span></h1>
+    <p class="lede">Click it. A door opens in the button, an agent comes out, and it lassos the form onto your screen.</p>
+    <div class="gn" id="gn">
+      <button class="cta" type="button">Book a call &rarr;</button>
+      <div class="gn-sprite" aria-hidden="true"></div>
+    </div>
+  </div>
+  <p class="note">The agent is the films' AI (Kenney's platformer character, CC0), rendered in Blender on the gnome's scene and timeline — one sprite sheet. Its hand is recorded on every frame, and the rope is drawn live from it to the real form's corner.</p>
+</main>
+
+<form class="bookform" id="bookform" onsubmit="return false">
+  <button type="button" data-close aria-label="Close">&times;</button>
+  <h2>Tell me how the business runs</h2>
+  <p>And I'll tell you where the first box goes. No purchase.</p>
+  <label>Your name<input type="text" autocomplete="name"></label>
+  <label>Email<input type="email" autocomplete="email"></label>
+  <button class="cta" type="submit">Book a call &rarr;</button>
+</form>
+
+<script src="lasso.js"></script>
+<script>
+  // the sheet's data lives in the page, so it also works opened straight from disk
+  var meta = {"cell": [239, 196], "cols": 10, "fps": 24, "frames": 74, "button": {"left": -347.0455156326294, "right": 92.95448436737061, "top": 38.78132038116456, "bottom": 168.58132038116457}, "hands": [[33.4, 101.6], [32.7, 103.3], [31.4, 106.5], [30.7, 108.3], [33.5, 104.5], [37.2, 101.9], [31.6, 108.3], [26.3, 116.5], [29.8, 114.3], [34.5, 112.5], [27.2, 118.3], [21.8, 124.6], [50.4, 100.8], [69.4, 74.2], [99.4, 59.8], [134.8, 95.0], [152.2, 130.0], [141.9, 129.2], [133.5, 130.2], [131.5, 140.1], [129.8, 161.4], [129.8, 159.9], [129.8, 157.2], [129.8, 155.8], [129.8, 157.2], [129.8, 159.9], [129.8, 161.4], [128.3, 161.4], [123.6, 159.9], [117.8, 156.7], [115.4, 152.9], [126.4, 146.7], [140.5, 147.5], [144.9, 147.5], [147.9, 143.8], [148.4, 145.7], [148.9, 147.5], [151.9, 143.8], [152.4, 145.7], [152.9, 147.5], [155.9, 143.8], [156.4, 145.7], [156.9, 147.5], [159.9, 143.8], [160.4, 145.7], [160.9, 147.5], [163.9, 143.8], [158.9, 138.7], [151.9, 132.8], [150.2, 137.8], [149.8, 143.1], [149.8, 143.1], [149.8, 143.3], [149.8, 143.6], [149.8, 143.9], [149.8, 144.1], [149.8, 144.2], [157.1, 123.7], [160.2, 92.9], [141.5, 67.6], [109.4, 56.1], [67.0, 85.7], [44.2, 115.2], [39.3, 112.6], [33.6, 109.6], [28.8, 111.8], [28.4, 112.6], [34.3, 105.3], [39.3, 101.1], [39.3, 101.1], [39.3, 101.1], [39.3, 101.1], [39.3, 101.1], [39.3, 101.1]], "beats": {"spin": [20, 30], "throw": [30, 33], "haul": [33, 47], "release": 47}};
+  Lasso(document.getElementById('gn'), meta, { sheet: 'agent-sheet.webp', form: '#bookform' });
+</script>
+</body>
+</html>
