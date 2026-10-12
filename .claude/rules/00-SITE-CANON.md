@@ -1,3 +1,6 @@
+⛔ MOVED: this canon, the style, the funnel law and the business pages now live in
+`~/claude_code/sanctuary-revolution-alpha/not-unified/business-runtime/site/` — this copy is old; edit there.
+
 # RULE 00 — THE SITE CANON (nobody edits this site without reading their sources)
 
 **THE LAW: NOBODY MAY EDIT THE SITE WITHOUT BEING TOLD WHAT TO READ TO PUT THERE.** **HOW THE SITE SELLS — the frame, telling, one conversation per

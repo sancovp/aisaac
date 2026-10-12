@@ -4,6 +4,13 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — the business site moved to business-runtime
+
+- The business site (iwantaiformybusiness.com) now lives in the canonical home at
+  `not-unified/business-runtime/site/` and deploys from there (the worker's build repointed; verified byte for byte).
+  This repo's business pages and site rules are old copies; `CLAUDE.md` and the site canon say so at the top.
+- Files: `CLAUDE.md` · `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — RULE 01 scoped to the personal site; its two live principles move into the funnel law
 
 - Isaac ruled what "superiority never stated" means: never say we are superior to X — show what we do, show what they
