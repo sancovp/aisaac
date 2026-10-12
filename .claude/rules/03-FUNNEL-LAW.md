@@ -22,6 +22,10 @@ DO:[
   what is happening (they name themselves in it) → what they tried → where it ends if nothing changes (each pain carried
   to its end and left with them) → THE TRICK (the expectation, then the literal thing — JobWorld working, on screen — so
   the meaning snaps: JOKE = MEDICINE = SALE) → where they will be → their doubts answered → their offer at the cart
+- NEVER STATE SUPERIORITY: never "we are better than X" — show what we do, show what the alternative does, and lay
+  out the value stack; the visitor deduces the rest (the reveal is this move: they watch it work)
+- MAKE DEPTH INITIATION on the education paths: each step takes the visitor one level deeper into the frameworks
+  (the bootcamp, the transformation map), so by the offer they already think in them and the purchase formalizes it
 - BUILD EVERY OFFER AROUND JOBWORLD: JobWorld is the main product of every offer, and a bump, upsell or downsell only puts
   more on JobWorld (seats, the agency level); a B2B business alone may start with the retainer and is sold into JobWorld
   from inside; each offer is a Grand Slam built from the skills — a MAGIC name, its core, bonuses named for their benefit
@@ -39,6 +43,7 @@ NOT:[
 - offer anything that is not JobWorld or more on JobWorld (the B2B retainer start excepted); fill an offer from an older
   price list; set a price, a guarantee or a scarcity (law 1 — they are *USER*'s)
 - state anything false — no invented number, no invented scarcity, no fake case study (law 3)
+- claim superiority in words, or put our numbers and a competitor's in one sum, column or ladder
 - treat a mechanical check as proof that a funnel works
 - quote an angry message or a swear of *USER*'s anywhere
 ]

@@ -1,3 +1,3 @@
-# Funnel Depth Is Initiation Depth
+# Funnel Depth Is Initiation Depth (the personal site's lored ladder — the business site's version is `03-FUNNEL-LAW.md`)
 
 Each level of the value ladder is a deeper level of the language world. By the time someone reaches the Sanctuary System / Mahajalakala / Completely Fake Dharma content, they are already operating inside Isaac's conceptual framework — they've internalized Flow, Towering, SOSEEH, Meta-Cognitive Awareness, the Seven Disciplines. They're thinking in the frameworks. The "hypnotic language world" built itself around them one blog post at a time. The deepest funnel content doesn't sell — it describes where they already are. The purchase is formalizing what already happened.

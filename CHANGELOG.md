@@ -4,6 +4,15 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-11 — RULE 01 scoped to the personal site; its two live principles move into the funnel law
+
+- Isaac ruled what "superiority never stated" means: never say we are superior to X — show what we do, show what they
+  do, the value stack. With his trust, the two principles that hold for the business site (superiority never stated;
+  funnel depth is initiation depth, on the education paths) are now in `03-FUNNEL-LAW.md`; RULE 01, the funnel-depth
+  rule and canon law 12 (hero first) now state that they bind only the personal site.
+- Files: `.claude/rules/03-FUNNEL-LAW.md` · `.claude/rules/01-IDENTITY.md` · `.claude/rules/funnel-depth-is-initiation-depth.md` ·
+  `.claude/rules/00-SITE-CANON.md`.
+
 ## 2026-10-11 — the ordering rule binds meta models, not info products
 
 - Isaac ruled: it is not that education and community must come after a successful business — META MODELS must; info

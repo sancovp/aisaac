@@ -260,7 +260,7 @@ not being presented; the laws below govern each page whenever it is.
     cave-teams README copy — the best zero-lore public text in the ecosystem — and never paraphrases
     over it. dark-factory's one-liner: *"no human is in the loop; what stops it shipping garbage is
     three independent gates ending in a controlled experiment."*
-12. **HERO FIRST (full site).** The site is about Isaac and what he thinks; the funnel sits
+12. **HERO FIRST (THE PERSONAL SITE ONLY — never the business site, where the visitor is the subject).** The site is about Isaac and what he thinks; the funnel sits
     downstream. Funnel category = simulations-and-world-loops. The h1 scoreboard line returns only
     when a scoreboard page is published.
 13. **EVERY FORM THAT TAKES A PERSON'S OWN DETAILS ASKS FOR EVERY CONSENT WE MAY LEGALLY ASK FOR.**

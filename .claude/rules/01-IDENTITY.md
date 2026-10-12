@@ -1,4 +1,9 @@
-# RULE 01 — THE IDENTITY (what this site makes deducible; read with 00-SITE-CANON)
+# RULE 01 — THE IDENTITY (THE PERSONAL SITE ONLY; read with 00-SITE-CANON)
+
+SCOPE: this rule binds the personal site (Isaac's own pages, the blog, the notes, the lore) and NOTHING of the
+business site (the door, `/jobworld`, `/bootcamp`, `/framework`, `/partners`, the landing page) — the business site
+sells by `03-FUNNEL-LAW.md`, which carries the two principles that hold there (superiority never stated; depth is
+initiation).
 
 **THE IDENTITY: Isaac builds WORLDS out of language. Everyone else builds tools.**
 Tools are things a person uses; worlds are realities with laws, economies, seasons,
