@@ -4,6 +4,17 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-16 — no swearing in the site's own copy
+
+- `inside/fake-dharma.html`: the guru "taught me the whole path with total nonsense" (was a swear).
+  `books/wantrepreneur-guide/OUTLINE.md`: "why the market rewards hype". Isaac ruled that swearing is not good.
+- Left for his word: the personal page's book excerpt ("dumb as fuck"), which `tools/build_personal.py` pulls from
+  the book's MANUSCRIPT, where it is one of the four named failures. Left as sources: the archived psychoblood
+  conversation and the notes quoting it, and the YouTube transcripts. The bootcamp files here are old copies;
+  their live copies are in business-runtime.
+- Two YouTube transcripts (AI dropshipping) found untracked at the root were filed into `docs/yt-transcripts/`.
+- Files: `inside/fake-dharma.html` · `books/wantrepreneur-guide/OUTLINE.md` · `CHANGELOG.md`.
+
 ## 2026-10-11 — the business site moved to business-runtime
 
 - The business site (iwantaiformybusiness.com) now lives in the canonical home at

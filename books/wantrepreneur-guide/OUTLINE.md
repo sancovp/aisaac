@@ -13,7 +13,7 @@ This book explains the joke. If you read it you're in on it.
 - What compound intelligence actually looks like (not chatbots)
 - What the AI agency market actually sells (SaaS markup)
 - The 7 levels of complexity — most agencies sell L1-L2
-- Why the market rewards bullshit and punishes real engineering
+- Why the market rewards hype and punishes real engineering
 
 **Source material:** The Fair Game, Seven Disciplines (L1-L2 sections)
 
