@@ -6,8 +6,8 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 ## 2026-10-16 — no swearing: what the first search could not see
 
-- The first search's pattern never matched "damn" or "crap" (this machine's `git grep -E` ignores `\b`) and did not
-  look for "wtf"; the re-run with a Perl pattern found three more. `blog/progressive-disclosure-harness.html`: "losing
+- The first search's pattern never matched the word-bounded mild swears (this machine's `git grep -E` ignores `\b`)
+  and did not look for abbreviations; the re-run with a Perl pattern found three more. `blog/progressive-disclosure-harness.html`: "losing
   my mind". `b2b-bootcamp/CLINIC-framework.md` and `origin-story.md` take their live copies' wording (business-runtime
   `site/b2b-bootcamp/`), so the old copies here no longer differ. The entry below no longer quotes the swear.
 - Files: `blog/progressive-disclosure-harness.html` · `b2b-bootcamp/{CLINIC-framework,origin-story}.md` · `CHANGELOG.md`.
