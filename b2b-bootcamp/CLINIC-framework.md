@@ -42,7 +42,7 @@ The CLINIC environment creates PROFESSIONAL OBLIGATION, not sales pressure.
 
 After the CLINIC, the prospect thinks:
 
-"I would have to be such a fucking moron not to engage this..."
+"I would have to be crazy not to engage this..."
 
 And in B2B specifically:
 

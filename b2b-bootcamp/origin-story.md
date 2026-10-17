@@ -1,6 +1,6 @@
-# The Origin Story (Isaac's verbatim)
+# The Origin Story (his words)
 
-I fucking destroyed my life hallucinating with Claude about making an app. We wrote a 1M LoC codebase we CAN'T EVEN USE and I couldn't sleep and I couldn't breathe right. I lost all my money THREE TIMES and finally, I had to go to the dentist because I hadn't gone in 2 years since I'd been obsessed just working 7 days a week 18-30 hours a day.
+I destroyed my life hallucinating with Claude about making an app. We wrote a 1M LoC codebase we CAN'T EVEN USE and I couldn't sleep and I couldn't breathe right. I lost all my money THREE TIMES and finally, I had to go to the dentist because I hadn't gone in 2 years since I'd been obsessed just working 7 days a week 18-30 hours a day.
 
 And that's when I had this experience — where I developed the entire system in one hour while at the dentist, started selling it on its own using other people's proof, thereby proving it.
 

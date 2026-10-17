@@ -4,12 +4,20 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-16 — no swearing: what the first search could not see
+
+- The first search's pattern never matched "damn" or "crap" (this machine's `git grep -E` ignores `\b`) and did not
+  look for "wtf"; the re-run with a Perl pattern found three more. `blog/progressive-disclosure-harness.html`: "losing
+  my mind". `b2b-bootcamp/CLINIC-framework.md` and `origin-story.md` take their live copies' wording (business-runtime
+  `site/b2b-bootcamp/`), so the old copies here no longer differ. The entry below no longer quotes the swear.
+- Files: `blog/progressive-disclosure-harness.html` · `b2b-bootcamp/{CLINIC-framework,origin-story}.md` · `CHANGELOG.md`.
+
 ## 2026-10-16 — no swearing in the site's own copy
 
 - `inside/fake-dharma.html`: the guru "taught me the whole path with total nonsense" (was a swear).
   `books/wantrepreneur-guide/OUTLINE.md`: "why the market rewards hype". Isaac ruled that swearing is not good.
-- Left for his word: the personal page's book excerpt ("dumb as fuck"), which `tools/build_personal.py` pulls from
-  the book's MANUSCRIPT, where it is one of the four named failures. Left as sources: the archived psychoblood
+- Left for his word: the personal page's book excerpt (the second of the four named failures), which
+  `tools/build_personal.py` pulls from the book's MANUSCRIPT. Left as sources: the archived psychoblood
   conversation and the notes quoting it, and the YouTube transcripts. The bootcamp files here are old copies;
   their live copies are in business-runtime.
 - Two YouTube transcripts (AI dropshipping) found untracked at the root were filed into `docs/yt-transcripts/`.
