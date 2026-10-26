@@ -4,6 +4,14 @@ What changed, what it replaced or corrected, and why. Appended, never edited; ne
 
 
 
+## 2026-10-26 — the Dharma Concierge's prayer PDFs served from Do Ngak Dzong's own site
+
+- The Teachings page's three prayer downloads (the Aspiration, the Long Life Prayer, Making Offerings to the Great
+  Stupa) pointed at GoDaddy's servers (`img1.wsimg.com`), which belong to the Do Ngak Dzong Website Builder site whose
+  subscription is being cancelled. They now point at `https://dongakdzong.org/files/` — the same three files,
+  byte-identical by SHA-256, served by Do Ngak Dzong's own site on Cloudflare.
+- Files: `dharma-concierge/teachings.html` · `CHANGELOG.md`.
+
 ## 2026-10-16 — no swearing: what the first search could not see
 
 - The first search's pattern never matched the word-bounded mild swears (this machine's `git grep -E` ignores `\b`)
